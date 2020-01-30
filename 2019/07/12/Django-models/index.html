@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/g.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/g.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/g.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="定义模型model： 一个模型对应数据库一个表；继承model.Model类；  不需要定义主键，系统自动生成  外键关联： sgrade=models.ForeignKey(&amp;quot;Grades&amp;quot;)  #意思是Grades的主键作为Student sgrade的外键 数据库表生成两步走：    python manage.py makemigrations 创建迁移文件  pyth">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Django模型models">
+<meta property="og:url" content="http://yoursite.com/2019/07/12/Django-models/index.html">
+<meta property="og:site_name" content="躲不掉的风">
+<meta property="og:description" content="定义模型model： 一个模型对应数据库一个表；继承model.Model类；  不需要定义主键，系统自动生成  外键关联： sgrade=models.ForeignKey(&amp;quot;Grades&amp;quot;)  #意思是Grades的主键作为Student sgrade的外键 数据库表生成两步走：    python manage.py makemigrations 创建迁移文件  pyth">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-01-28T04:29:49.825Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Django模型models">
+<meta name="twitter:description" content="定义模型model： 一个模型对应数据库一个表；继承model.Model类；  不需要定义主键，系统自动生成  外键关联： sgrade=models.ForeignKey(&amp;quot;Grades&amp;quot;)  #意思是Grades的主键作为Student sgrade的外键 数据库表生成两步走：    python manage.py makemigrations 创建迁移文件  pyth">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/07/12/Django-models/">
+
+
+
+
+
+  <title>Django模型models | 躲不掉的风</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">躲不掉的风</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="Searching..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Django-models/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Django模型models</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T17:45:16+08:00">
+                2019-07-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4 id="定义模型model："><a href="#定义模型model：" class="headerlink" title="定义模型model："></a>定义模型model：</h4><ul>
+<li><p>一个模型对应数据库一个表；继承model.Model类；</p>
+</li>
+<li><p>不需要定义主键，系统自动生成</p>
+</li>
+<li><p>外键关联：</p>
+<pre><code>sgrade=models.ForeignKey(&quot;Grades&quot;) 
+#意思是Grades的主键作为Student sgrade的外键</code></pre></li>
+<li><p>数据库表生成两步走：</p>
+</li>
+</ul>
+<ol>
+<li>python manage.py makemigrations 创建迁移文件 </li>
+<li>python manage.py migrate</li>
+</ol>
+<ul>
+<li><p>测试数据操作：python manage.py shell</p>
+</li>
+<li><p>添加数据：本质是创建一个模型类的对象;示例:<br>  grade1=Grades()<br>  grade1.gname=”python”<br>  grade1.gtime=datetime(year=2017,month=12,day=17)<br>  grade1.save()  #注意保存</p>
+</li>
+<li><p>查询支持切片,但不支持负数Grades.objects.all()[:10]</p>
+</li>
+<li><p>条件查询：grade1=类名.objects.get(pk=2)#主键查找用关键字pk</p>
+</li>
+<li><p>修改数据：grade1.gname=”python22”   grade1.save()</p>
+</li>
+<li><p>删除数据：grade1.delete()</p>
+</li>
+<li><p>更新数据：update()  返回匹配的行数。唯一的限制是它只能作用在表记录上，不能直接作用在模型object上，返回执行行数。举例： </p>
+<pre><code>&gt;&gt;&gt; Entry.objects.update(blog__name=&apos;foo&apos;) # Won&apos;t work!
+&gt;&gt;&gt;  Entry.objects.filter(blog__id=1).update(comments_on=True) # works!</code></pre><p>   若单个object更新，则跟添加数据方法一致。</p>
+</li>
+<li><p>如果只是检查 Entry 中是否有对象，应该用 Entry.objects.all().exists()</p>
+</li>
+<li><p>推荐用 Entry.objects.count()来查询数量</p>
+</li>
+<li><p>list(es) 可以强行将 QuerySet 变成 列表</p>
+</li>
+<li><p>关联：</p>
+<ol>
+<li>grade1.student_set.all()  #对象名.关联类小写_set.all()<br>#班级grades1里所有的学生</li>
+<li>grade1.student_set.create(…)<br>#创建一条学生新数据 </li>
+</ol>
+</li>
+<li><p>模型类中定义元信息Meta :</p>
+<p>1.db_table定义数据表名，推荐小写，默认是项目表名_类名<br>2.ordering 排序 如ordering[-id] 加负号是倒序</p>
+</li>
+<li><p>自定义Manager类：</p>
+<p>  模型管理器是Django的模型与数据库进行交互的接口，一个模型可以有多个模型管理器。object是manager类的一个对象；</p>
+<p>作用： 向管理器中添加额外的方法；修改管理器返回的原始查询集（重写get_queryset）</p>
+</li>
+</ul>
+<pre><code>class diffManager(models.Manager):
+    def get_queryset(self):#重写原函数
+        return super(diffManager,self).get_queryset().filter(isdelete=True)
+    #super参数，第一个是子类类名，第二个一般为self
+class  Diffhsy(models.Model):
+    dfhobj=diffManager() #调用自定义的Manager类，替代Django为模型默认生成的objects模型管理器
+ #在view.py中调用自定义模型管理器
+ Student.dfhobj.all()</code></pre><ul>
+<li><p>创建对象</p>
+<p>  作用:像数据库中添加数据</p>
+<p>  方法：1. 模型中类中添加方法 2. 在自定义管理器里添加方法。</p>
+<pre><code>class Batchinfo(models.Model):
+    @classmethod
+    def createbatch(cls,time,oth):
+        bt=cls(createtime=time,other=oth)
+    return bt</code></pre></li>
+</ul>
+<h4 id="模型查询："><a href="#模型查询：" class="headerlink" title="模型查询："></a>模型查询：</h4><p>  官方接口文档：<a href="https://docs.djangoproject.com/zh-hans/2.1/ref/models/querysets/#filter" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.1/ref/models/querysets/#filter</a><br>  自强学院：<a href="https://code.ziqiangxuetang.com/django/django-models.html" target="_blank" rel="noopener">https://code.ziqiangxuetang.com/django/django-models.html</a></p>
+<h5 id="返回查询集-多个"><a href="#返回查询集-多个" class="headerlink" title="返回查询集(多个):"></a>返回查询集(多个):</h5><pre><code>filter(键=值，键=值)等价于 filter(键=值).filter(键=值)经过过滤器返回的仍然是查询集；
+可以有多个过滤器链式调用；
+exclude() 过滤掉符合条件的数据
+order_by()
+values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" class="headerlink" title="返回单个对象:"></a>返回单个对象:</h5><pre><code>  get()  1.若没找到符合条件的对象，会引发DoesNotExits异常2.若返回多条，会引发MultipleObjectsReturned异常
+  count()  返回查询集对象的个数
+  first()  返回查询集第一个对象
+  last()   返回查询集最后一个对象
+  exist()  若有数据返回True
+
+比较运算符:字段名__运算符关键字=值：
+   isnull:Entry.objects.filter(pub_date__isnull=True)
+   in:Entry.objects.filter(headline__in=&apos;abc&apos;)
+   gt/gte/lt/lte
+   date/year/month/day/week/week_day:如pub_date__date=datetime.date(2005, 1, 1)
+区分大小写，若前面加i则不区分：
+  exact/iexact  : Entry.objects.get(id__exact=14)
+  contains/icontains
+  startswith/endswith/istartswith/iendswith
+ pk：代表主键
+ 聚合函数：aggregate方法：
+    Avg/Count/Max/Min:Student.object.aggregate(Max(&apos;sage&apos;))
+关联查询：
+    Grades.objects.filter(student__scontend__contains(&apos;李爱国&apos;))
+ F对象：使用模型的两个属性进行比较
+    from django.db.models import F,Q
+    Student.object.filter(num1__gt=F(&apos;num2&apos;)+20)#F对象也可以进行算术运算
+ Q对象：
+    Model.objects.filter(Q(x=1) | Q(y=2))
+    Model.objects.filter(~Q(x=1)) #非，即取反</code></pre><h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><ol>
+<li><p>创建模型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from django.db import models</span><br><span class="line">class ContentTable(models.Model):</span><br><span class="line">    title=models.CharField(default=&quot;&quot;,max_length=50)</span><br><span class="line">    content=models.CharField(default=&quot;&quot;,max_length=1000)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>views.py中使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from wkbenchapp.models import ContentTable</span><br><span class="line">ct = ContentTable.objects.create(title=&quot;标题&quot;, content=&quot;内容&quot;)</span><br><span class="line">value = ContentTable.objects.filter(title=&quot;标题&quot;) #返回QuerySet object类型</span><br><span class="line">for v in value:#其中每个记录v都是个ContentTable object</span><br><span class="line">   print (&quot;v&quot;,v.content)</span><br></pre></td></tr></table></figure>
+
+<h4 id="QuerySet-API"><a href="#QuerySet-API" class="headerlink" title="QuerySet API"></a>QuerySet API</h4><h4 id="常用字段类型"><a href="#常用字段类型" class="headerlink" title="常用字段类型"></a>常用字段类型</h4></li>
+</ol>
+<pre><code>·AutoField
+    ·一个根据实际ID自动增长的IntegerField，通常不指定如果不指定，一个主键字段将自动添加到模型中
+
+·CharField(max_length=字符长度)
+    ·字符串，默认的表单样式是 TextInput
+
+·TextField
+    ·大文本字段，一般超过4000使用，默认的表单控件是Textarea
+
+·IntegerField
+    ·整数
+
+·DecimalField(max_digits=None, decimal_places=None)
+    ·使用python的Decimal实例表示的十进制浮点数
+    ·参数说明
+        ·DecimalField.max_digits
+            ·位数总数
+        ·DecimalField.decimal_places
+            ·小数点后的数字位数
+
+·FloatField
+    ·用Python的float实例来表示的浮点数
+
+·BooleanField
+    ·true/false 字段，此字段的默认表单控制是CheckboxInput
+
+·NullBooleanField
+    ·支持null、true、false三种值
+
+·DateField([auto_now=False, auto_now_add=False]) --- 日期
+    ·使用Python的datetime.date实例表示的日期
+    ·参数说明
+        ·DateField.auto_now(最后更新时间)
+            ·每次保存对象时，自动设置该字段为当前时间，用于&quot;最后一次修改&quot;的时间戳，它总是使用当前日期，默认为false
+        ·DateField.auto_now_add（创建时间）
+            ·当对象第一次被创建时自动设置当前时间，用于创建的时间戳，它总是使用当前日期，默认为false
+    ·说明
+        ·该字段默认对应的表单控件是一个TextInput. 在管理员站点添加了一个JavaScript写的日历控件，和一个“Today&quot;的快捷按钮，包含了一个额外的invalid_date错误消息键
+    ·注意
+        ·auto_now_add, auto_now, and default 这些设置是相互排斥的，他们之间的任何组合将会发生错误的结果
+
+·TimeField                                 ------时间
+    ·使用Python的datetime.time实例表示的时间，参数同DateField
+
+·DateTimeField               -------------------日期+时间
+    ·使用Python的datetime.datetime实例表示的日期和时间，参数同DateField
+
+·FileField
+    ·一个上传文件的字段
+
+·ImageField
+    ·继承了FileField的所有属性和方法，但对上传的对象进行校验，确保它是个有效的image</code></pre><h4 id="字段选项"><a href="#字段选项" class="headerlink" title="字段选项"></a>字段选项</h4><pre><code>·概述
+    ·通过字段选项，可以实现对字段的约束
+    ·在字段对象时通过关键字参数指定
+
+·null
+    ·如果为True，Django 将空值以NULL 存储到数据库中，默认值是 False
+
+·blank
+    ·如果为True，则该字段允许为空白，默认值是 False
+
+·注意
+    ·null是数据库范畴的概念，blank是表单验证证范畴的
+
+·db_column
+    ·字段的名称，如果未指定，则使用属性的名称
+
+·db_index
+    ·若值为 True, 则在表中会为此字段创建索引
+
+·default
+    ·默认值
+
+·primary_key
+    ·若为 True, 则该字段会成为模型的主键字段
+
+·unique
+    ·如果为 True, 这个字段在表中必须有唯一值</code></pre><h4 id="错误调试"><a href="#错误调试" class="headerlink" title="错误调试"></a>错误调试</h4><ol>
+<li>django.db.utils.IntegrityError: UNIQUE constraint failed: wkbenchapp_content.id…<br>migrate更新表的时候不知道怎么回事总是报这个错，怎么改都不行，最后删除migrations里除了初始化外的所有日志，重新从makemigrations来一遍就顺利的好了。</li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/07/11/几大未解之谜/" rel="next" title="出错排查和记录">
+                <i class="fa fa-chevron-left"></i> 出错排查和记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/07/12/Django项目实践偏代码实现/" rel="prev" title="Django项目实践二(偏代码实现)">
+                Django项目实践二(偏代码实现) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">躲不掉的风</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义模型model："><span class="nav-number">1.</span> <span class="nav-text">定义模型model：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#模型查询："><span class="nav-number">2.</span> <span class="nav-text">模型查询：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#返回查询集-多个"><span class="nav-number">2.1.</span> <span class="nav-text">返回查询集(多个):</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#返回单个对象"><span class="nav-number">2.2.</span> <span class="nav-text">返回单个对象:</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例"><span class="nav-number">3.</span> <span class="nav-text">示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#QuerySet-API"><span class="nav-number">4.</span> <span class="nav-text">QuerySet API</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用字段类型"><span class="nav-number">5.</span> <span class="nav-text">常用字段类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字段选项"><span class="nav-number">6.</span> <span class="nav-text">字段选项</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#错误调试"><span class="nav-number">7.</span> <span class="nav-text">错误调试</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">躲不掉的风</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
