@@ -261,6 +261,478 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/10/Django/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/10/Django/" itemprop="url">Django</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-10T15:41:27+08:00">
+                2019-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>MVC的核心是思想是：解耦即减少相互联系，使得各个模块相互独立。</p>
+</li>
+<li><p>Django : MTV </p>
+</li>
+<li><p>安装：pip install Django==1.11.4  不写等号默认安装最新版本</p>
+<p>卸载：pip uninsall Django</p>
+</li>
+<li><p>验证 django.get_version()</p>
+</li>
+<li><p>创建项目：</p>
+<ol>
+<li>创建目录  </li>
+<li>cd到该目录下，输入命令django-admin startproject projectname  </li>
+<li>tree . /F (win)查看目录层级</li>
+</ol>
+</li>
+<li><p>配置数据库：</p>
+<pre><code>mysql数据库：安装pymysql
+1、setting配置：
+&apos;ENGINE&apos;:&apos;django.db.backends.mysql&apos;,
+&apos;NAME&apos;:&apos;Learn&apos;,
+&apos;USER&apos;:&apos;root&apos;,
+&apos;PASSWORD&apos;:&apos;rock1204&apos;,
+&apos;HOST&apos;:&apos;localhost&apos;,
+&apos;PORT&apos;:&apos;3306&apos;,
+2、在__init__.py中添加 import pymysql pymysql.install_as_MySQLdb()  不添加这些会报错</code></pre></li>
+<li><p>创建应用（app）：<br>可以创建多个应用；</p>
+<p> 步骤：</p>
+<ol>
+<li>在manage所在目录中，输入命令python manage.py startapp myapp</li>
+<li>激活应用，在setting将myapp应用加入到app配置中</li>
+</ol>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/10/正则表达式-grep/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/10/正则表达式-grep/" itemprop="url">正则表达式+grep</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-10T15:30:42+08:00">
+                2019-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="正则表表达式"><a href="#正则表表达式" class="headerlink" title="正则表表达式"></a>正则表表达式</h4><ul>
+<li>shell 通配符不区分大小写，正则区分;  </li>
+<li>是一种字符模式（pattern）；  </li>
+<li>绝大部分正则表达式都被放在两个正斜杠之间；  </li>
+<li>元字符是最重要的概念;  </li>
+<li>习惯:加单引号如  grep ‘^root’ /etc/passwd   </li>
+</ul>
+<h5 id="基本元字符"><a href="#基本元字符" class="headerlink" title="基本元字符"></a>基本元字符</h5><pre><code>^ 行首定位符
+$ 行尾定位符
+.指的是任意一个字符
+* 单独不能活，指的是前面字符出现次数&gt;=0
+.*任意多个字符（无敌了）
+[]匹配指定范围内的一个字符 [lL]ove
+[ - ]匹配指定范围内的一个字符 [a-z0-9]ove
+[^]用来匹配不在指定范围内的字符
+    注意与外面的^的区别：外面的指的是行首，[]里面的指的是取反，如[^0-9A-Z]love不在0-9和A-Z范围内的一个字符
+\ 用来转义后面的字符，使得后面字符失去元字符作用
+\&lt;词首定位符
+\&gt;词尾定位符 \&lt;love\&gt;指的是love这个单词
+\(..\)匹配稍后使用的字符的标签  如vim中替换:%s#\(10.18.40.\)#\1200#   其中\1替代的是第一个括号的内容
+x\{m\}x重复出现m次  o\{5\}
+x\{m,\}x重复出现m次及以上 o\{5,\}
+x\{m,n\}x重复出现m次到n次 o\{5,8\}
+\+
+\|</code></pre><h5 id="扩展元字符"><a href="#扩展元字符" class="headerlink" title="扩展元字符"></a>扩展元字符</h5><pre><code>+ 单独不能活，指的是前面字符出现次数&gt;=1  
+    grep &apos;ro\+t&apos; /etc/passwd  或者 egrep &apos;ro+t&apos; /etc/passwd  （grep不支持元字符，需要转义，或者替换成egrep）
+? 单独不能活，指的是前面字符出现次数0次或者1次
+a|b 匹配a或b
+()组字符  ov+ 指的是v出现1次或多次 (ov)+ 指的是ov出现1次或多次 
+(..)(..)\1\2 标签匹配字符 （love)able\1er     
+x{m}x重复出现m次  o{5}
+x{m,}x重复出现m次及以上 o｛5,}
+x{m,n}x重复出现m次到n次 o{5,8}</code></pre><h4 id="grep-egrep-fgrep"><a href="#grep-egrep-fgrep" class="headerlink" title="grep/egrep/fgrep"></a>grep/egrep/fgrep</h4><p>  grep：支持基本元字符  grep -e 等价于egrep<br>  egrep:支持扩展元字符<br>  fgrep   </p>
+<pre><code>格式： grep [选项] PATTERN filename1 filename2
+如：grep -i &apos;Tom&apos; /etc/passwd</code></pre><p>   特别可以使用：</p>
+<pre><code>    \w 代表所有字母与数字  等价于[a-zA-Z0-9]
+    \W 代表所有字母与数字之外的字符   等价于[^a-zA-Z0-9]
+    \b 词边界 等价于\&lt; \&gt;
+
+选项参数：
+-i  忽略大小写
+-q   quiet  无输出
+-v    反向查找
+grep --help|grep &apos;\-v&apos;
+-r/-R 针对目录文件
+-o  only match 只打印找到的内容，非匹配的整行
+-n 显示行号
+-l 显示匹配的目录  grep -l &apos;root&apos; /etc/passwd  /etc/shadow /etc/hosts
+-A  后几行
+-B  前几行
+-C  前后几行</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/05/matplotlib/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/05/matplotlib/" itemprop="url">matplotlib_pyplot</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-05T12:36:15+08:00">
+                2019-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="pyplot"><a href="#pyplot" class="headerlink" title="pyplot"></a>pyplot</h4><p>subplot(numRows, numCols, plotnum)   如</p>
+<pre><code>plt.figure()
+plt.subplot(121) #一行两列，处于第一个位置
+plt.title(&quot;line&quot;)
+#只有一个列表，默认索引为X轴坐标
+p1=plt.plot(range(5),linewidth=2.0,color=&apos;g&apos;)
+p2=plt.plot([5,4,3,2,1],linewidth=2.0,color=&apos;r&apos;)
+
+plt.xlabel(&quot;this is x&quot;)
+plt.ylabel(&quot;this is y&quot;)
+plt.legend([p1,p2],[&apos;p1label&apos;,&apos;p2label&apos;])
+#print(line)
+#line.set(color = &apos;g&apos;,linewidth = 2.0)
+
+plt.subplot(122)
+plt.title(&quot;src_img&quot;)
+plt.imshow(src_img, cmap=&apos;gray&apos;)
+plt.savefig(&quot;d:/cly/xuanxiu/img/test.png&quot;)#不支持jpg
+
+plt.show()#必须加</code></pre><h4 id="pyplot-legend"><a href="#pyplot-legend" class="headerlink" title="pyplot.legend"></a>pyplot.legend</h4><p>loc：位置信息</p>
+<pre><code>0: ‘best&apos;
+1: ‘upper right&apos;
+2: ‘upper left&apos;
+3: ‘lower left&apos;
+4: ‘lower right&apos;
+5: ‘right&apos;
+6: ‘center left&apos;
+7: ‘center right&apos;
+8: ‘lower center&apos;
+9: ‘upper center&apos;
+10: ‘center&apos;</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/python-OpenCV/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -638,6 +1110,8 @@ HEAD：类似GET，只是返回内容里只有报头</code></pre><h5 id="状态�
         
           
             <ul>
+<li><p>变量使用推荐加花括号，如${name}，但定义变量时，变量名不加美元符号！</p>
+</li>
 <li><p>字符串可以用单引号，双引号，也可以不用引号</p>
 </li>
 <li><p>语句中一般不包含分号，空格/tab，以及冒号的标点符号；只在特殊条件下使用。</p>
@@ -647,8 +1121,6 @@ HEAD：类似GET，只是返回内容里只有报头</code></pre><h5 id="状态�
 <ul>
 <li>冒号：主要用于参数扩展。如echo ${a:-newword}或者{a:=newword}即— word前的“-”可以理解为“没定义，则替换成word”；“+”正相反，可以理解为“有定义，则替换成word”。“?”可以理解为“参数到底定义了没，没定义，把word当错误消息打印出来。”<br>除此获取子字符串可以用${parameter:offset}和${parameter:offset:length}若倒数，则加负号如echo $(var: -5)区别于(var:-5)，后者是没定义则替换成5</li>
 </ul>
-</li>
-<li><p>变量使用推荐加花括号，如${name}</p>
 </li>
 <li><p>函数内部使用$n来调用入参</p>
 <pre><code>$0当前脚本名称
@@ -701,7 +1173,7 @@ do
 { echo $c; grep :$g: /etc/group|cut -d: -f1;}|xargs -n 2
 done</code></pre></li>
 <li><p>文件描述符0代表标准输入、1代表标准输出、2代表标准错误输出。<br>若错误输出和标准输出都同时重定向到一个位置，使用2&gt;&amp;1如</p>
-<pre><code>ls /usr/share/doc &gt; out.txt 2&gt;&amp;1 </code></pre></li>
+<pre><code>ls /usr/share/doc &gt; out.txt 2&gt;&amp;1</code></pre></li>
 </ul>
 
           
@@ -1297,421 +1769,11 @@ done</code></pre></li>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/Docker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/07/Docker/" itemprop="url">Docker使用篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-07T16:24:49+08:00">
-                2019-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>参考菜鸟教程 <a href="https://www.runoob.com/docker/docker-tutorial.html" target="_blank" rel="noopener">https://www.runoob.com/docker/docker-tutorial.html</a></p>
-<h2 id="1-启动docker"><a href="#1-启动docker" class="headerlink" title="1. 启动docker"></a><strong>1. 启动docker</strong></h2><p> 命令行启动 或点击图标app启动</p>
-<ol start="2">
-<li>运行前检查<br>$ docker   查看所有命令<br>$ docker –version<br>$ docker info<br>$ docker images  查看当前所有镜像</li>
-</ol>
-<h2 id="3-启动容器：docker-run-imageID"><a href="#3-启动容器：docker-run-imageID" class="headerlink" title="3. 启动容器：docker run imageID"></a><strong>3. 启动容器：docker run imageID</strong></h2><p> –name  容器名称，用一个有意义的名称命名即可。<br>  -i -t 保留命令行运行(之后可以输入命令)<br>  -p 7777:8888<br>   7777是宿主机暴露出来的端口号，8888是容器内jupyter服务器的端口号。<br>   -d:让容器在后台运行。<br>   -v  :   表示需要将本地哪个目录挂载到容器中，格式：-v &lt;宿主机目录&gt;:&lt;容器目录&gt;<br>   eg：<del>/tensorflow:/notebooks/data<br>   将本地的</del>/tensorflow文件夹挂载到新建容器的/notebooks/data下（这样可是实现本地文件和docker文件互通）<br>   tensorflow/tensorflow为指定的镜像，默认标签为latest（即tensorflow/tensorflow:latest）<br>   -w  指定其为工作目录<br><img src="https://img-blog.csdnimg.cn/20190519154825167.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>后台：<br><img src="https://img-blog.csdnimg.cn/2019051415473048.png" alt="在这里插入图片描述"></p>
-<pre><code>    runoob@runoob:~/python$ docker run  -v $PWD/myapp:/usr/src/myapp  -w /usr/src/myapp python:3.5 python helloworld.py
-命令说明：
-    -v ：$PWD/myapp:/usr/src/myapp :将主机中当前目录下的myapp挂载到容器的/usr/src/myapp
-    -w ：/usr/src/myapp :指定容器的/usr/src/myapp目录为工作目录
-    python helloworld.py : 使用容器的python命令来执行工作目录中的helloworld.py文件</code></pre><h2 id="3-容器管理"><a href="#3-容器管理" class="headerlink" title="3. 容器管理"></a><strong>3. 容器管理</strong></h2><pre><code>$ docker ps  -a  //使用 docker ps 来查看我们 **正在运行** 的容器</code></pre><p><img src="https://img-blog.csdnimg.cn/20190514152454652.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>docker rm +容器名                 //删除容器时，容器必须是停止状态，否则会报错<br>docker rm $(docker ps -a -q)<br>docker stop +ID 或者名字<br>docker start +容器名               //已经停止的容器，我们可以使用命令 docker start 来启动。<br><img src="https://img-blog.csdnimg.cn/20190514160952467.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>其他：<br>    docker port +（ID 或者名字）//容器的某个确定端口映射到宿主机的端口号<br>    docker logs [ID或者名字]       //可以查看容器内部的标准输出。<br>    docker top +容器名                          //查看容器内部运行的进程<br>    docker inspect +容器名 //查看 Docker 的底层信息。它会返回一个 JSON 文件记录着 Docker 容器的配置和状态信息。</p>
-<h2 id="4-镜像管理"><a href="#4-镜像管理" class="headerlink" title="4. 镜像管理"></a><strong>4. 镜像管理</strong></h2><p>  <strong>docker images</strong>   //列出本地主机上的镜像<br>    REPOSITORY：表示镜像的仓库源<br>    TAG：镜像的标签(可以理解为不同的版本号)<br>    IMAGE ID：镜像ID<br>    CREATED：镜像创建时间<br>  <strong>docker pull</strong>  获取新镜像</p>
-<pre><code>Crunoob@runoob:~$ docker pull ubuntu:13.10</code></pre><p>我们可以从 Docker Hub 网站来搜索镜像，Docker Hub 网址为： <a href="https://hub.docker.com/" target="_blank" rel="noopener">https://hub.docker.com/</a><br>我们也可以使用 <strong>docker search</strong> 命令来搜索镜像<br><img src="https://img-blog.csdnimg.cn/20190514164058817.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>ps:<br>镜像加速<br>mac:<a href="http://f971cfe6.m.daocloud.io加入deamon-Registry" target="_blank" rel="noopener">http://f971cfe6.m.daocloud.io加入deamon-Registry</a> mirrors</p>
-<p>实例：<br>1、docker ps或docker images<br>Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?<br>原因：未打开docker，启动docker图标，直至展示running<br>2、打开后发现需要指定运行目录<br>ls查看当前目录结构，选择映射目录<br>再停掉容器：<br>docker stop  362f8b09c8f43517957423b23f5e0d07ffa164864170262ec14150f2ad267<br>再打开的时候加-v 参数</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/05/性能测试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/05/性能测试/" itemprop="url">性能测试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-05T22:01:07+08:00">
-                2019-10-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><strong>重要指标</strong></li>
-</ul>
-<p>TPS ：是TransactionsPerSecond的缩写，也就是事务数/秒</p>
-<p>QPS：Queries Per Second意思是“每秒查询率</p>
-<p>区别：  </p>
-<pre><code>tps，即每秒处理事务数，每个事务包括了如下3个过程：a.用户请求服务器
-b.服务器自己的内部处理（包含应用服务器、数据库服务器等）c.服务器返回给用户
-如果每秒能够完成N个这三个过程，tps就是N；
-
-qps，如果是对一个页面请求一次，形成一个tps，但一次页面请求，可能产生多次对服务器的请求（页面上有很多**html资源，比如图片**等），服务器对这些请求，就可计入“qps”之中；
-
-但是，如今的项目基本上都是前后端分离的，性能也分为前端性能和后端性能，通常默认是后端性能，即服务端性能，也就是对服务端接口做压测
-
-如果是对一个接口（单场景）压测，且这个接口内部不会再去请求其它接口，那么tps=qps，否则，tps≠qps
-
-如果是对多个接口（混合场景）压测，不加事务控制器，jmeter会统计每个接口的tps，而混合场景是要测试这个场景的tps，显然这样得不到混合场景的tps，所以，要加了事物控制器，结果才是整个场景的tps</code></pre><p><strong>找到平衡点</strong></p>
-<p>1.尽可能多的做不同并发数下的压测，记录下响应时间（1s以内）和最大tps，当然，服务器端，各个服务器的资源利用率在可接受范围内（每个公司不一样，我们是90%以内）；</p>
-<p>2.然后根据获取到的不同并发下的指标数据（并发数、tps、响应时间），画出上图，关注右侧的交点，即tps下降的地方和响应时间的交点，这个点的tps最大，如果响应时间在1s以内，此时并发数也是比较大的，这个点就可以认为是三个指标都不错的平衡点（当然，我这里把tps放在第一位优先考虑了，这个就看大家最在乎哪个指标了，排个优先级）；如果响应时间大于1s，最佳平衡点就往左找，找到响应时间为1秒的点，此时对应的tps和并发值，就是最佳平衡点。总之，测试采样越多，获取的平衡点就越准确</p>
-<p>参考：<a href="https://mp.weixin.qq.com/s/p_3C7e65v7mwfth3tHUB9A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/p_3C7e65v7mwfth3tHUB9A</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/26/接口测试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/26/接口测试/" itemprop="url">接口测试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-26T18:22:35+08:00">
-                2019-09-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>接口测试</strong></p>
-<ul>
-<li><p>业务功能测试</p>
-<p>  正常场景</p>
-<p> 异常场景：重复提交，库存不足,风控失败</p>
-</li>
-<li><p>边界值测试</p>
-<p>  输入/输出参数边界值测试：必选参数、可选参数、无，null，特殊字符<br>参数的顺序，个数，类型，取值范围，字符串长短</p>
-</li>
-<li><p>输入参数组合测试</p>
-</li>
-<li><p>性能测试</p>
-<p>  响应时间、吞吐量。。</p>
-</li>
-<li><p>安全性测试</p>
-<p>  敏感信息是否加密、SQL注入</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1757,7 +1819,7 @@ qps，如果是对一个页面请求一次，形成一个tps，但一次页面�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

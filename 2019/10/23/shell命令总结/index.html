@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="字符串可以用单引号，双引号，也可以不用引号  语句中一般不包含分号，空格/tab，以及冒号的标点符号；只在特殊条件下使用。  分号：只有在代码块都写在一行的时候用分号区分，注意then后面和结束不用分号如if [ “$PS1” ]; then echo test is ok; fi   冒号：主要用于参数扩展。如echo ${a:-newword}或者{a:=newword}即— word前的“">
+<meta name="description" content="变量使用推荐加花括号，如${name}，但定义变量时，变量名不加美元符号！  字符串可以用单引号，双引号，也可以不用引号  语句中一般不包含分号，空格/tab，以及冒号的标点符号；只在特殊条件下使用。  分号：只有在代码块都写在一行的时候用分号区分，注意then后面和结束不用分号如if [ “$PS1” ]; then echo test is ok; fi   冒号：主要用于参数扩展。如ech">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell命令">
 <meta property="og:url" content="http://yoursite.com/2019/10/23/shell命令总结/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="字符串可以用单引号，双引号，也可以不用引号  语句中一般不包含分号，空格/tab，以及冒号的标点符号；只在特殊条件下使用。  分号：只有在代码块都写在一行的时候用分号区分，注意then后面和结束不用分号如if [ “$PS1” ]; then echo test is ok; fi   冒号：主要用于参数扩展。如echo ${a:-newword}或者{a:=newword}即— word前的“">
+<meta property="og:description" content="变量使用推荐加花括号，如${name}，但定义变量时，变量名不加美元符号！  字符串可以用单引号，双引号，也可以不用引号  语句中一般不包含分号，空格/tab，以及冒号的标点符号；只在特殊条件下使用。  分号：只有在代码块都写在一行的时候用分号区分，注意then后面和结束不用分号如if [ “$PS1” ]; then echo test is ok; fi   冒号：主要用于参数扩展。如ech">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-28T04:29:49.831Z">
+<meta property="og:updated_time" content="2020-01-31T13:40:24.402Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell命令">
-<meta name="twitter:description" content="字符串可以用单引号，双引号，也可以不用引号  语句中一般不包含分号，空格/tab，以及冒号的标点符号；只在特殊条件下使用。  分号：只有在代码块都写在一行的时候用分号区分，注意then后面和结束不用分号如if [ “$PS1” ]; then echo test is ok; fi   冒号：主要用于参数扩展。如echo ${a:-newword}或者{a:=newword}即— word前的“">
+<meta name="twitter:description" content="变量使用推荐加花括号，如${name}，但定义变量时，变量名不加美元符号！  字符串可以用单引号，双引号，也可以不用引号  语句中一般不包含分号，空格/tab，以及冒号的标点符号；只在特殊条件下使用。  分号：只有在代码块都写在一行的时候用分号区分，注意then后面和结束不用分号如if [ “$PS1” ]; then echo test is ok; fi   冒号：主要用于参数扩展。如ech">
 
 
 
@@ -332,6 +332,8 @@
 
       
         <ul>
+<li><p>变量使用推荐加花括号，如${name}，但定义变量时，变量名不加美元符号！</p>
+</li>
 <li><p>字符串可以用单引号，双引号，也可以不用引号</p>
 </li>
 <li><p>语句中一般不包含分号，空格/tab，以及冒号的标点符号；只在特殊条件下使用。</p>
@@ -341,8 +343,6 @@
 <ul>
 <li>冒号：主要用于参数扩展。如echo ${a:-newword}或者{a:=newword}即— word前的“-”可以理解为“没定义，则替换成word”；“+”正相反，可以理解为“有定义，则替换成word”。“?”可以理解为“参数到底定义了没，没定义，把word当错误消息打印出来。”<br>除此获取子字符串可以用${parameter:offset}和${parameter:offset:length}若倒数，则加负号如echo $(var: -5)区别于(var:-5)，后者是没定义则替换成5</li>
 </ul>
-</li>
-<li><p>变量使用推荐加花括号，如${name}</p>
 </li>
 <li><p>函数内部使用$n来调用入参</p>
 <pre><code>$0当前脚本名称
@@ -395,7 +395,7 @@ do
 { echo $c; grep :$g: /etc/group|cut -d: -f1;}|xargs -n 2
 done</code></pre></li>
 <li><p>文件描述符0代表标准输入、1代表标准输出、2代表标准错误输出。<br>若错误输出和标准输出都同时重定向到一个位置，使用2&gt;&amp;1如</p>
-<pre><code>ls /usr/share/doc &gt; out.txt 2&gt;&amp;1 </code></pre></li>
+<pre><code>ls /usr/share/doc &gt; out.txt 2&gt;&amp;1</code></pre></li>
 </ul>
 
       
@@ -501,7 +501,7 @@ done</code></pre></li>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

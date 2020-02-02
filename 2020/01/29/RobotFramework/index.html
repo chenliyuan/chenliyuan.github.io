@@ -81,16 +81,16 @@
 
 <meta name="description" content="语法记录官方文档：https://robotframework.org/#/documentation 条件语句12345678*** Test Cases ***test case8    $&amp;#123;a&amp;#125;    Set variable    59    run keyword if    $&amp;#123;a&amp;#125;&amp;gt;=90    log    优秀    ...    E">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RT使用记录">
+<meta property="og:title" content="RT使用语法记录">
 <meta property="og:url" content="http://yoursite.com/2020/01/29/RobotFramework/index.html">
 <meta property="og:site_name" content="躲不掉的风">
 <meta property="og:description" content="语法记录官方文档：https://robotframework.org/#/documentation 条件语句12345678*** Test Cases ***test case8    $&amp;#123;a&amp;#125;    Set variable    59    run keyword if    $&amp;#123;a&amp;#125;&amp;gt;=90    log    优秀    ...    E">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/pasted-79.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-76.png">
-<meta property="og:updated_time" content="2020-01-30T07:31:57.069Z">
+<meta property="og:updated_time" content="2020-02-02T02:58:23.457Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RT使用记录">
+<meta name="twitter:title" content="RT使用语法记录">
 <meta name="twitter:description" content="语法记录官方文档：https://robotframework.org/#/documentation 条件语句12345678*** Test Cases ***test case8    $&amp;#123;a&amp;#125;    Set variable    59    run keyword if    $&amp;#123;a&amp;#125;&amp;gt;=90    log    优秀    ...    E">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-79.png">
 
@@ -128,7 +128,7 @@
 
 
 
-  <title>RT使用记录 | 躲不掉的风</title>
+  <title>RT使用语法记录 | 躲不掉的风</title>
   
 
 
@@ -284,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">RT使用记录</h1>
+          <h1 class="post-title" itemprop="name headline">RT使用语法记录</h1>
         
 
         <div class="post-meta">
@@ -374,26 +374,35 @@
 
 <p>列表元素是整形</p>
 <pre><code>| ${ints} =   | Create List | ${1} | ${2} | ${3} |</code></pre><h6 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h6><p>需要双杠</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;rt&#125;=    Get Regexp Matches        $&#123;test&#125;     \\$\\d,\\d+</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;rt&#125;=    Get Regexp Matches        $&#123;test&#125;     \\$\\d,\\d+</span><br><span class="line">should match regexp    $&#123;get_amount&#125;    \\$(\\d)*,?(\\d)+</span><br></pre></td></tr></table></figure>
 
 <p>模糊匹配</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File Should Exist    /Users/liyuanchen/Downloads/weekly_report*</span><br></pre></td></tr></table></figure>
 
-<h6 id="其他技巧"><a href="#其他技巧" class="headerlink" title="其他技巧"></a>其他技巧</h6><p>Get WebElement 和Get WebElements的区别：前者会中断执行，后者返回空。可使用来判断元素是否存在</p>
+<h6 id="其他关键字"><a href="#其他关键字" class="headerlink" title="其他关键字"></a>其他关键字</h6><ul>
+<li><strong>Get WebElement 和Get WebElements的区别</strong>：前者会中断执行，后者返回空。可使用来判断元素是否存在</li>
+</ul>
 <p><img src="/images/pasted-76.png" alt="upload successful"></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;temp&#125;    GetWebElements    css=.username</span><br><span class="line">run keyword if  $&#123;temp&#125;   click button   css=.username</span><br></pre></td></tr></table></figure>
 
-<p>对输入框执行ENTER操作可使用press keys</p>
+<ul>
+<li><p>对输入框执行ENTER操作可使用<strong>press keys</strong></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">press keys   css=.shopee-input__input    RETURN</span><br></pre></td></tr></table></figure>
-
-<p>生成指定数据范围的随机数字(包括左边，也包括右边)</p>
+</li>
+<li><p>生成指定数据范围的随机数字(包括左边，也包括右边)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;pagenum&#125;    Evaluate    random.randint(1, $&#123;pagescount+1&#125;)    random</span><br><span class="line">log    $&#123;pagenum&#125;</span><br></pre></td></tr></table></figure>
-
-<p>robot中，断言有时会失败，但不想影响后面语句的执行，这时候要用到</p>
-<pre><code>Run Keyword And Continue On Failure</code></pre><p>计算可使用Evaluate关键字</p>
-<pre><code>${rt}    Evaluate    ${num}+1
-或${i+1} </code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;if_visible_download&#125;    Run_keyword_and_return_status    Element_Should_Contain    Xpath=//button[@class=&apos;shopee-button shopee-button--primary shopee-button--normal&apos;]    Download</span><br></pre></td></tr></table></figure>
-
+</li>
+<li><p>robot中，断言有时会失败，但不想影响后面语句的执行，这时候要用到</p>
+<p>  Run Keyword And Continue On Failure</p>
+</li>
+<li><p>计算可使用Evaluate关键字</p>
+<p>  ${rt}    Evaluate    ${num}+1<br>  或${i+1} </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;if_visible_download&#125;    Run_keyword_and_return_status    Element_Should_Contain    Xpath=//button[@class=&apos;shopee-button shopee-button--primary shopee-button--normal&apos;]    Download</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他：</p>
+<p>  run keyword and return status</p>
+</li>
+</ul>
 <h5 id="为解决有些操作失败重新执行："><a href="#为解决有些操作失败重新执行：" class="headerlink" title="为解决有些操作失败重新执行："></a>为解决有些操作失败重新执行：</h5><h6 id="1-添加关键字"><a href="#1-添加关键字" class="headerlink" title="1.添加关键字"></a>1.添加关键字</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">若找不到元素则重新执行</span><br><span class="line">    [Arguments]    $&#123;locator&#125;    $&#123;keyword&#125;</span><br><span class="line">    $&#123;ele&#125;    get webelements    $&#123;locator&#125;</span><br><span class="line">    run keyword unless     $&#123;ele&#125;     $&#123;keyword&#125;</span><br></pre></td></tr></table></figure>
 
 <h6 id="2-case后添加teardown"><a href="#2-case后添加teardown" class="headerlink" title="2.case后添加teardown"></a>2.case后添加teardown</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">03BlanceAccountCB</span><br><span class="line">    [Documentation]  CB seller进入balance页面，能够展示cb卡片信息,同Bank页面</span><br><span class="line">    [Tags]  all</span><br><span class="line">    [Setup]    获取配置数据</span><br><span class="line">    登录SellerCenter    seller=cbseller</span><br><span class="line">    进入cb_balance模块</span><br><span class="line">    comment  cb账号进如balance校验cb卡片信息</span><br><span class="line">    校验CB卡片信息</span><br><span class="line">    [Teardown]    run keyword if test failed    校验CB卡片信息</span><br></pre></td></tr></table></figure>
@@ -428,8 +437,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/01/28/mac终端快捷键/" rel="next" title="mac终端快捷键">
-                <i class="fa fa-chevron-left"></i> mac终端快捷键
+              <a href="/2020/01/28/mac终端快捷键/" rel="next" title="mac终端快捷键使用">
+                <i class="fa fa-chevron-left"></i> mac终端快捷键使用
               </a>
             
           </div>
@@ -517,7 +526,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -563,7 +572,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#语法记录"><span class="nav-number">1.</span> <span class="nav-text">语法记录</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#条件语句"><span class="nav-number">1.1.</span> <span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#For循环"><span class="nav-number">1.2.</span> <span class="nav-text">For循环</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#字符串使用"><span class="nav-number">1.3.</span> <span class="nav-text">字符串使用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#列表操作"><span class="nav-number">1.4.</span> <span class="nav-text">列表操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#正则表达式"><span class="nav-number">1.5.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#其他技巧"><span class="nav-number">1.6.</span> <span class="nav-text">其他技巧</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为解决有些操作失败重新执行："><span class="nav-number">2.</span> <span class="nav-text">为解决有些操作失败重新执行：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-添加关键字"><span class="nav-number">2.1.</span> <span class="nav-text">1.添加关键字</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-case后添加teardown"><span class="nav-number">2.2.</span> <span class="nav-text">2.case后添加teardown</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#窗口问题："><span class="nav-number">3.</span> <span class="nav-text">窗口问题：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#语法记录"><span class="nav-number">1.</span> <span class="nav-text">语法记录</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#条件语句"><span class="nav-number">1.1.</span> <span class="nav-text">条件语句</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#For循环"><span class="nav-number">1.2.</span> <span class="nav-text">For循环</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#字符串使用"><span class="nav-number">1.3.</span> <span class="nav-text">字符串使用</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#列表操作"><span class="nav-number">1.4.</span> <span class="nav-text">列表操作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#正则表达式"><span class="nav-number">1.5.</span> <span class="nav-text">正则表达式</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#其他关键字"><span class="nav-number">1.6.</span> <span class="nav-text">其他关键字</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#为解决有些操作失败重新执行："><span class="nav-number">2.</span> <span class="nav-text">为解决有些操作失败重新执行：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-添加关键字"><span class="nav-number">2.1.</span> <span class="nav-text">1.添加关键字</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-case后添加teardown"><span class="nav-number">2.2.</span> <span class="nav-text">2.case后添加teardown</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#窗口问题："><span class="nav-number">3.</span> <span class="nav-text">窗口问题：</span></a></li></ol></div>
             
 
           </div>

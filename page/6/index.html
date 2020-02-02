@@ -261,6 +261,441 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/html css js学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/07/html css js学习笔记/" itemprop="url">html/css/js问题记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-07T16:27:32+08:00">
+                2018-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、出现中文乱码<br>检查是否添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta charset=&quot;utf-8&quot;/&gt;</span><br></pre></td></tr></table></figure>
+
+<p>2、html将h2块元素与超链接a元素同行<br>解决方案：h2中添加style=”display:inline” ，变成行内元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;&lt;h2 align=&quot;center&quot; style=&quot;display:inline&quot; &gt;&lt;font color=&quot;red&quot;&gt;常用链接-线上灰度不要用真实酒店&lt;/font&gt;&lt;/h2&gt;&lt;a href=&quot;http://10.160.84.95:8000/index/&quot; target=&quot;_blank&quot;&gt;&gt;&gt;体验新版&lt;/a&gt;&lt;/h2&gt;</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/git篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/07/git篇/" itemprop="url">git使用篇</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-07T16:19:32+08:00">
+                2018-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>git命令基础操作这篇文章很清楚：<a href="https://www.cnblogs.com/tocy/p/git-command-line-manual.html" target="_blank" rel="noopener">https://www.cnblogs.com/tocy/p/git-command-line-manual.html</a></p>
+<h2 id="常见出错和问题"><a href="#常见出错和问题" class="headerlink" title="常见出错和问题"></a>常见出错和问题</h2><h6 id="1-出现error-The-following-untracked-working-tree-files-would-be-overwritten-by-checkout"><a href="#1-出现error-The-following-untracked-working-tree-files-would-be-overwritten-by-checkout" class="headerlink" title="1.  出现error: The following untracked working tree files would be overwritten by checkout"></a>1.  出现error: The following untracked working tree files would be overwritten by checkout</h6><p>解决： $ git clean -d -fx “”<br>参考   <a href="http://blog.chinaunix.net/uid-23366077-id-3581375.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-23366077-id-3581375.html</a></p>
+<h6 id="2-Git冲突：commit-your-changes-or-stash-them-before-you-can-merge-解决办法"><a href="#2-Git冲突：commit-your-changes-or-stash-them-before-you-can-merge-解决办法" class="headerlink" title="2. Git冲突：commit your changes or stash them before you can merge. 解决办法"></a>2. Git冲突：commit your changes or stash them before you can merge. 解决办法</h6><p>出现这个问题的原因是其他人修改了xxx.php并提交到版本库中去了，而你本地也修改了xxx.php，这时候你进行git pull操作就好出现冲突了，解决方法，在上面的提示中也说的很明确了。<br><a href="https://www.cnblogs.com/wenlj/p/5866356.html" target="_blank" rel="noopener">https://www.cnblogs.com/wenlj/p/5866356.html</a><br>1）直接commit本地的修改 —-也一般不用这种方法<br>2）通过git stash  —- 通常用这种方法</p>
+<pre><code>git stash
+git pull
+git stash pop</code></pre><p>通过git stash将工作区恢复到上次提交的内容，同时备份本地所做的修改，之后就可以正常git pull了，git pull完成后，执行git stash pop将之前本地做的修改应用到当前工作区。</p>
+<h6 id="3-github多人协作"><a href="#3-github多人协作" class="headerlink" title="3. github多人协作"></a>3. github多人协作</h6><p>1、创建组织–创建库，创建Team(邀请成员，设置每人owner权限，保证每人都可写)</p>
+<p>参考：<a href="https://www.cnblogs.com/zhaoyanjun/p/5882784.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhaoyanjun/p/5882784.html</a></p>
+<h6 id="4-为GitLab帐号添加SSH-keys并连接GitLab"><a href="#4-为GitLab帐号添加SSH-keys并连接GitLab" class="headerlink" title="4.为GitLab帐号添加SSH keys并连接GitLab"></a>4.为GitLab帐号添加SSH keys并连接GitLab</h6><p><a href="https://blog.csdn.net/qq_21916259/article/details/81000723" target="_blank" rel="noopener">https://blog.csdn.net/qq_21916259/article/details/81000723</a><br>密匙生成成功之后，复制 .ssh目录下的id_rsa.pub文件中的密匙，添加gitLab上后就可以使用git clone …了<br>可以设置多个设备的秘钥，实现多设备共享。</p>
+<h6 id="5-删除内容"><a href="#5-删除内容" class="headerlink" title="5. 删除内容"></a>5. 删除内容</h6>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git rm test.txt</span><br><span class="line">rm &apos;test.txt&apos;</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;remove test.txt&quot;</span><br><span class="line">[master d46f35e] remove test.txt</span><br><span class="line"> 1 file changed, 1 deletion(-)</span><br><span class="line"> delete mode 100644 test.txt</span><br></pre></td></tr></table></figure>
+
+<h6 id="6-git提交代码时，出现这个错误“error-The-requested-URL-returned-error-403-Forbidden-while-accessing-https”"><a href="#6-git提交代码时，出现这个错误“error-The-requested-URL-returned-error-403-Forbidden-while-accessing-https”" class="headerlink" title="6. git提交代码时，出现这个错误“error: The requested URL returned error: 403 Forbidden while accessing https”"></a>6. git提交代码时，出现这个错误“error: The requested URL returned error: 403 Forbidden while accessing https”</h6><p>   解决：编辑.git目录下的config文件即可。</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim .git/config</span><br><span class="line">#修改对于的配置</span><br><span class="line">#原来的url = https://github.com/elitecodegroovy/PhoenixC.git</span><br><span class="line"></span><br><span class="line">url = https://elitecodegroovy@github.com/elitecodegroovy/PhoenixC.git</span><br></pre></td></tr></table></figure>
+
+<h6 id="7-git别人提交的时候冲突了，需要回退到之前某版本"><a href="#7-git别人提交的时候冲突了，需要回退到之前某版本" class="headerlink" title="7. git别人提交的时候冲突了，需要回退到之前某版本"></a>7. git别人提交的时候冲突了，需要回退到之前某版本</h6><p>   首先要git pull 否则直接按照以下的操作，最后还会提示pull</p>
+<ol>
+<li><p>查找历史版本<br>  使用git log命令查看所有的历史版本，获取你git的某个历史版本的id</p>
+<p>  假设查到历史版本的id是fae6966548e3ae76cfa7f38a461c438cf75ba965。</p>
+</li>
+<li><p>恢复到历史版本<br>   $ git reset –hard fae6966548e3ae76cfa7f38a461c438cf75ba965</p>
+</li>
+<li><p>把修改推到远程服务器</p>
+<pre><code>$ git push -f -u origin master  </code></pre><p>出错：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">remote: GitLab: You are not allowed to force push code to a protected branch on this project.</span><br><span class="line">To git.17usoft.com:app_test/doc.git</span><br><span class="line"> ! [remote rejected] master -&gt; master (pre-receive hook declined)</span><br><span class="line">error: failed to push some refs to &apos;git@git.17usoft.com:app_test/doc.git&apos;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>原因：一般默认会开启保护模式，保护模式下不允许任何人push<br><img src="https://img-blog.csdnimg.cn/2019041712030931.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>解决：去掉保护模式<br><img src="https://img-blog.csdnimg.cn/20190417120340626.png" alt="在这里插入图片描述"></p>
+<h6 id="8-GIT-warning-LF-will-be-replaced-by-CRLF问题解决方法"><a href="#8-GIT-warning-LF-will-be-replaced-by-CRLF问题解决方法" class="headerlink" title="8. [GIT] warning: LF will be replaced by CRLF问题解决方法"></a>8. [GIT] warning: LF will be replaced by CRLF问题解决方法</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --gobal core.autocrlf false</span><br></pre></td></tr></table></figure>
+
+<h6 id="9-由于某配置项错误配置导致push失败，解决：删除配置项目"><a href="#9-由于某配置项错误配置导致push失败，解决：删除配置项目" class="headerlink" title="9. 由于某配置项错误配置导致push失败，解决：删除配置项目"></a>9. 由于某配置项错误配置导致push失败，解决：删除配置项目</h6><pre><code>1) git config --list 或者git config -l查看配置项
+2) git  config --global unset +配置项全名</code></pre><h6 id="10-、git-分支拉取"><a href="#10-、git-分支拉取" class="headerlink" title="10. 、git 分支拉取"></a>10. 、git 分支拉取</h6><p>   <a href="https://blog.51cto.com/13893093/2175764?source=dra" target="_blank" rel="noopener">https://blog.51cto.com/13893093/2175764?source=dra</a></p>
+<ol>
+<li>查看本地分支<br>$ git branch</li>
+<li>查看远程分支<br>$ git branch -r</li>
+<li>查看所有分支<br>$ git branch -a</li>
+<li>拉取远程分支<br>新建一个空文件<br>初始化 git init<br>自己要与origin master建立连接（下划线远程仓库链接）<br>git remote add origin <a href="http://192.168.9.10:8888/root/game-of-life.git" target="_blank" rel="noopener">http://192.168.9.10:8888/root/game-of-life.git</a><br>把远程分支拉到本地（game-of-live-first_branch为远程仓库的分支名）<br>git fetch origin game-of-live-first_branch<br>在本地创建分支game-of-live-first_branch并切换到该分支<br>git checkout -b game-of-live-first_branch origin/game-of-live-first_branch<br>把game-of-live-first_branch远程分支上的内容都拉取到本地<br>git pull origin game-of-live-first_branch</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/Python--类成员学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/07/Python--类成员学习/" itemprop="url">Python--类成员</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-07T09:55:11+08:00">
+                2018-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://img-blog.csdnimg.cn/20190218115154175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">class Foo():</span><br><span class="line">    #静态字段</span><br><span class="line">    country=&quot;公有静态字段&quot;</span><br><span class="line">    __name=&quot;私有静态字段&quot;#带有__开头属于私有</span><br><span class="line">    def __init__(self):</span><br><span class="line">    #普通字段</span><br><span class="line">        print (self.country)</span><br><span class="line">        print ( self.__name)#类内部可以访问私有</span><br><span class="line">    @staticmethod</span><br><span class="line">    def static_func():</span><br><span class="line">        &quot;&quot;&quot;定义静态方法，无默认参数&quot;&quot;&quot;</span><br><span class="line">        print (&apos;这个是静态方法&apos;)</span><br><span class="line">    @classmethod</span><br><span class="line">    def  class_func(cls):</span><br><span class="line">        print(&quot;这个是类方法&quot;)</span><br><span class="line">    def ord_func(self):</span><br><span class="line">        &quot;&quot;&quot;定义普通方法，至少有一个self参数&quot;&quot;&quot;</span><br><span class="line">        print(&quot;这个是普通方法&quot;)</span><br><span class="line">    @property</span><br><span class="line">    def price(self):</span><br><span class="line">        &quot;&quot;&quot;定义一个属性，有返回&quot;&quot;&quot;</span><br><span class="line">        return &quot;cheap&quot;</span><br><span class="line">class Foo_son(Foo):</span><br><span class="line">    def showcountry(self):</span><br><span class="line">        print (self.country)</span><br><span class="line">    def showname(self):</span><br><span class="line">        print (self.__name)</span><br><span class="line">Foo.static_func()#调用静态方法</span><br><span class="line">Foo.class_func()#调用类方法</span><br><span class="line">f=Foo()</span><br><span class="line">f.ord_func()#调用普通方法</span><br><span class="line">f.price#调用属性</span><br><span class="line">###################################################</span><br><span class="line">Foo.country #类可以访问公有字段</span><br><span class="line">f.country #对象可以访问公有字段</span><br><span class="line">#f.__name #错误，私有字段，类无法访问，只能；类内部使用</span><br><span class="line">####################################################</span><br><span class="line">f1=Foo_son()#创建派生类对象</span><br><span class="line">f1.showcountry()#派生类可以访问公有字段</span><br><span class="line">#f1.showname()# 错误,派生类无法访问私有字段</span><br></pre></td></tr></table></figure>
+
+<p>*<em>私有属性是否可以被外部访问？ *</em></p>
+<p>可以，但是需要使用_ClassName_methodName的形式如._Person__country(前面一条下划线，后面两条)</p>
+<pre><code>class Person(object):
+    __country = &apos;China&apos; #私有属性
+    def __init__(self,name,age):
+        self.__query()
+    def __query(self):
+         print(&quot;country:%s&quot; % self.__country)
+
+gf = Person(&apos;林小花&apos;,18)
+print(gf.__country)#报错，不能直接访问
+
+gf.__country = &apos;America&apos; #非原来的私有属性，另外一个新字段了
+print(gf.__country)
+print(gf._Person__country)#原来字段没有变
+
+gf._Person__country = &apos;America2&apos; #使用类名可以访问私有属性
+print(gf.__country)
+print(gf._Person__country)#被改变成America2</code></pre><p> <strong>类方法和静态方法</strong></p>
+<p> 类方法：将类本身作为对象进行操作的方法，第一个参数是cls，代表当前类对象，使用装饰器@classmethod。</p>
+<p> 静态方法:是个独立的单纯的函数，不含有类或实例的任何属性和方法。</p>
+<p> <strong>类变量和实例变量定义</strong></p>
+<p>在类中声明的变量我们称之为类变量[静态成员变量]，</p>
+<p>在init()函数中声明的变量并且绑定在实例上的变量我们称之为成员变量[实例变量]。</p>
+<p>类变量直接可以通过类名来调用。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Dog:</span><br><span class="line"></span><br><span class="line">   kind = &apos;canine&apos;         # class variable shared by all instances</span><br><span class="line"></span><br><span class="line">   def __init__(self, name):</span><br><span class="line">       self.name = name    # instance variable unique to each instance</span><br></pre></td></tr></table></figure>
+
+<p><strong>类方法与成员方法</strong></p>
+<p>类方法：使用类名来调用的方法</p>
+<p>成员方法：使用对象来调用的方法</p>
+<p>参考：<a href="https://www.jb51.net/article/159611.htm" target="_blank" rel="noopener">https://www.jb51.net/article/159611.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/25/python学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1710,797 +2145,11 @@ SyntaxError: invalid syntax</code></li>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/python语法/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/09/python语法/" itemprop="url">语法_python3记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-09T17:29:00+08:00">
-                2018-08-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h4><p>分为两种方式</p>
-<p>1.np.dot(A,B)</p>
-<ul>
-<li>对于多维矩阵，计算真正意义上的矩阵乘积(数学线性运算)</li>
-<li>对于一维矩阵，计算内积</li>
-</ul>
-<p>2.np.multiply()或*</p>
-<p>实现对应元素直接相乘，即mn和m<em>n相乘得到的还是m</em>n的矩阵</p>
-<p><a href="https://www.cnblogs.com/hezhiyao/p/8177832.html" target="_blank" rel="noopener">https://www.cnblogs.com/hezhiyao/p/8177832.html</a></p>
-<pre><code>import numpy as np
-xx =np.array([[-1, 0, 1],[-2, 0, 2]])
-yy =np.array([[-1, 0, 1],[-2, 0, 2]])
-rt=xx*yy
-count=sum(rt) #每列相加
-print(rt)
-print(count)
-print(sum(count))
-
-返回值
-[[1 0 1]
-[4 0 4]]
-
-[5 0 5]
-10</code></pre><h4 id="字符串判定"><a href="#字符串判定" class="headerlink" title="字符串判定"></a>字符串判定</h4><pre><code>isalnum()数字或字母
-isalpha()字母
-isdigit()数字
-isupper()大写
-istitle()首字母大写
-isspace()所有字母都是空白字符、\t、\n、\r</code></pre><h4 id="max函数"><a href="#max函数" class="headerlink" title="max函数"></a>max函数</h4><p>1)除了数值类型，字符串取字母表最靠后的字母</p>
-<p>2）可以添加参数key，指定方法，入参即为比较的元素</p>
-<pre><code>sample=[40,53,12,5,5,9,9]
-print(max(set(sample), key=sample.count))</code></pre><h4 id="yield和斐波那契数列"><a href="#yield和斐波那契数列" class="headerlink" title="yield和斐波那契数列"></a>yield和斐波那契数列</h4><p>比如爬楼梯和生兔子问题都是斐波那契数列问题。我的理解比如爬楼梯要么从下两层爬上来，要么就是从下1层爬上来，一共两种方式，肯定就是这两种方法的总和，兔子问题需要推出来符合斐波那契数列数列规律。</p>
-<pre><code>def fab(max):
-a,b,n=0,1,0
-while(n&lt;max):
-    yield b
-    print(&quot;aaa&quot;)
-    a,b=b,a+b
-    n+=1
-f=fab(5)
-print(f.__next__())#1
-print(f.__next__())#aaa 1
-print(f.__next__())#aaa 2</code></pre><p> yield：返回值b；每次调用<strong>next</strong>()的时候执行到此关键字处。下次<strong>next</strong>()再继续执行yeild后面的语句。</p>
-<p> 因为是迭代器，所以可以改成遍历获取：</p>
-<pre><code>for i in fab(5):
-   print (i)</code></pre><p> 对于斐波那契数列还可以使用装饰器进行优化：</p>
-<pre><code> def cache(fun):
-    fibdict = {}
-    print (&quot;cache begin..&quot;)
-    def wrapper(n):
-
-        if n in fibdict:
-            return fibdict[n]
-        fibdict[n]=fun(n)
-        return fibdict[n]
-    return wrapper
-@cache
-def fib(n):
-    return 1 if n &lt;2 else fib(n-1)+fib(n-2)
-
-print(fib(7))</code></pre><h4 id="re-search和re-match"><a href="#re-search和re-match" class="headerlink" title="re.search和re.match"></a>re.search和re.match</h4><p>前者从整个字符串中寻找一个匹配，后者只匹配字符串的开始。</p>
-<pre><code>import re
-a=&quot;worldhellodfddjhello&quot;
-print(re.match(&quot;hello&quot;,a).group())#None
-print(re.search(&quot;hello&quot;,a).group())#hello</code></pre><h4 id="dict-fromkeys-seq-value"><a href="#dict-fromkeys-seq-value" class="headerlink" title="dict.fromkeys(seq,value)"></a>dict.fromkeys(seq,value)</h4><p>或{}.fromkeys(seq,value)</p>
-<p>取序列元素作为key，value作为默认值(无value就是None)</p>
-<p>【注意】：这个方法因为是创建字典，所以会自动去重</p>
-<pre><code>a = [1,5,5,7]
-print(dict.fromkeys(a,&quot;defaultvalue&quot;))
-
-#输出
-{1: &apos;defaultvalue&apos;, 5: &apos;defaultvalue&apos;, 7: &apos;defaultvalue&apos;}
-
- list({}.fromkeys(plist).keys())</code></pre><h4 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h4><pre><code>read():读取整个文件，内容为字符串
-readline()：返回下一行，内容为字符串；
-readlines():返回list,保存有每行的数据。</code></pre><h4 id="下划线命名"><a href="#下划线命名" class="headerlink" title="下划线命名"></a>下划线命名</h4><p>python中主要存在四种命名方式：</p>
-<p>1、object #无下划线：公用方法</p>
-<p>2、_object #单下划线：半保护</p>
-<pre><code>被看作是“protect”，意思是只有类对象和子类对象自己能访问到这些变量，
- 在模块或类外不可以使用，不能用’from module import *’导入。
-__object 是为了避免与子类的方法名称冲突， 对于该标识符描述的方法，父
-类的方法不能轻易地被子类的方法覆盖，他们的名字实际上是_classname__methodname。</code></pre><p>3、__object  #双下划线：全私有，全保护</p>
-<pre><code>私有成员“private”，意思是只有类对象自己能访问，连子类对象也不能访问到这个数据，不能用’from module import *’导入。</code></pre><p>4、_ _ object_ _     #前后都有双下划线：内建方法，用户不要这样定义</p>
-<h4 id="jsonpath模块"><a href="#jsonpath模块" class="headerlink" title="jsonpath模块"></a>jsonpath模块</h4><p>安装pip install jsonpath</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from jsonpath import jsonpath</span><br><span class="line"></span><br><span class="line">testdict=&#123;</span><br><span class="line">    &quot;config&quot;: &#123;</span><br><span class="line">        &quot;host_huidu&quot;: &quot;10.39.34.70:8080&quot;,</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;name&quot;: &quot;hotel&quot;,</span><br><span class="line">    &quot;groups&quot;: &#123;</span><br><span class="line">        &quot;order&quot; : [</span><br><span class="line">            &quot;/hotel/getHomepageOrderList&quot;,</span><br><span class="line">            &quot;/myelong/getHotelOrder&quot;,</span><br><span class="line">            &quot;/myelong/getHotellist&quot;</span><br><span class="line">        ]        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">ret=jsonpath(testdict,&quot;$.name&quot;)</span><br><span class="line">ret=jsonpath(testdict,&quot;$.groups.order[1]&quot;)</span><br><span class="line">ret=jsonpath(testdict,&quot;$..order[1:3]&quot;)</span><br><span class="line">print(ret)</span><br></pre></td></tr></table></figure>
-
-<h4 id="单例（Singleton）"><a href="#单例（Singleton）" class="headerlink" title="单例（Singleton）"></a>单例（Singleton）</h4><p>单例是一种设计模式，应用该模式的类只会生成一个实例</p>
-<p>在 Python 中，我们可以用多种方法来实现单例模式：</p>
-<ul>
-<li><p>使用模块</p>
-</li>
-<li><p>使用 <strong>new</strong></p>
-</li>
-<li><p>使用装饰器（decorator）</p>
-</li>
-<li><p>使用元类（metaclass）</p>
-</li>
-</ul>
-<p>重写new函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 实例化一个单例</span><br><span class="line">class Singleton():</span><br><span class="line">    __instance = None</span><br><span class="line"> </span><br><span class="line">    def __new__(cls, age, name):</span><br><span class="line">        #如果类属性__instance的值为None，</span><br><span class="line">        #那么就创建一个对象，并且赋值为这个对象的引用，保证下次调用这个方法时</span><br><span class="line">        #能够知道之前已经创建过对象了，这样就保证了只有1个对象</span><br><span class="line">        if not cls.__instance:</span><br><span class="line">            cls.__instance = super().__new__(cls)</span><br><span class="line">        return cls.__instance</span><br><span class="line"> </span><br><span class="line">a = Singleton(18, &quot;dongGe&quot;)</span><br><span class="line">b = Singleton(8, &quot;dongGe&quot;)</span><br><span class="line"> </span><br><span class="line">print(id(a))</span><br><span class="line">print(id(b))</span><br></pre></td></tr></table></figure>
-
-<p>【注】 区别:cls是类本身的一个对象,self是类实例的一个对象</p>
-<p>参考：<a href="https://segmentfault.com/a/1190000008141049" target="_blank" rel="noopener">https://segmentfault.com/a/1190000008141049</a></p>
-<h4 id="python-赋值-深拷贝-浅拷贝"><a href="#python-赋值-深拷贝-浅拷贝" class="headerlink" title="python 赋值 深拷贝    浅拷贝"></a>python 赋值 深拷贝    浅拷贝</h4><pre><code>浅拷贝：即引用，共用一个地址，互相受影响。  
-深拷贝：完全独立的地址，互相不受影响。  
-赋值：字典，列表等对象赋值相当于浅拷贝，而int,str,float,bool在值改变后新增了内存地址存放新值，与原来不共用一个地址，相当于深拷贝。  </code></pre><p>一般默认是浅拷贝，有速度快，占用内存小等特点</p>
-<h4 id="yaml模块"><a href="#yaml模块" class="headerlink" title="yaml模块"></a>yaml模块</h4><ol>
-<li>安装：pip install pyyaml  </li>
-</ol>
-<p>  *<em>语法 *</em>：  </p>
-<ol>
-<li><p>大小写敏感 </p>
-</li>
-<li><p>使用缩进表示层级关系</p>
-</li>
-<li><p>缩进时不允许使用Tab，只允许使用空格</p>
-</li>
-<li><p>缩进的空格数目不重要，只要相同层级的元素左对齐即可</p>
-</li>
-<li><p>‘#’表示注释，从它开始到行尾都被忽略</p>
-<p>yaml模块常用的两个方法时yaml.load和yaml.dump</p>
-<ol start="2">
-<li>yaml.load<br>返回一个对象dict</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import yaml</span><br><span class="line">f = open(r&apos;E:\AutomaticTest\Test_Framework\config\config.yml&apos;)</span><br><span class="line">y = yaml.load(f)</span><br><span class="line">print (y)</span><br></pre></td></tr></table></figure>
-
-<ol start="3">
-<li><p>yaml.dump 将一个python对象生成为yaml文档,除此还有safe_dump等<br>若有中文，必须添加<strong>allow_unicode</strong>参数<br>第二个参数，是要写进的文件</p>
-<p> dump(data, stream=None, Dumper=Dumper,<br>   default_style=None,<br>   default_flow_style=None,<br>   encoding=’utf-8’, # encoding=None (Python 3)<br>   explicit_start=None,<br>   explicit_end=None,<br>   version=None,<br>   tags=None,<br>   canonical=None,<br>   indent=None,<br>   width=None,<br>   allow_unicode=None,<br>   line_break=None)<br> dump_all(data, stream=None, Dumper=Dumper, …)  </p>
-<p> safe_dump(data, stream=None, …)  </p>
-<p> safe_dump_all(data, stream=None, …)  </p>
-</li>
-</ol>
-</li>
-</ol>
-<p>举例：<br>      import yaml<br>      with open(‘abc.conf’,’w’)as f:<br>         yaml.dump(self.config, f, default_flow_style=False,<br>         indent=2, allow_unicode=True)<br>      <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JSON转YAML</span><br></pre></td></tr></table></figure></p>
-<pre><code>import json,yaml
-str = &apos;{ &quot;foo&quot;: &quot;bar&quot; }&apos;
-data = json.loads(str)
-yml = yaml.safe_dump(data,allow_unicode=True)
-print(yml)</code></pre><p>  参考：<a href="http://www.361way.com/python-pyyaml-module/4271.html" target="_blank" rel="noopener">http://www.361way.com/python-pyyaml-module/4271.html</a><br>  参考：<a href="https://www.cnblogs.com/klb561/p/9326677.html" target="_blank" rel="noopener">https://www.cnblogs.com/klb561/p/9326677.html</a></p>
-<h4 id="json模块"><a href="#json模块" class="headerlink" title="json模块"></a>json模块</h4><ol>
-<li><p>json.dumps[卸载掉对象]   </p>
-<p> 把一个Python对象编码转换成—&gt;json<strong>字符串</strong></p>
-</li>
-<li><p>json.loads[装上对象]    </p>
-<p>   把json字符串解码转换成—&gt;python<strong>对象dict</strong></p>
-<p>   其中 json 有下面三种样式：</p>
-<p> 字典样式 ‘{“name”:”gzj”, “age”:”23”, “sex”:”man”}’<br> 列表样式 ‘[“gzj”, 23, “man”]’<br> 字典和列表相互嵌套的样式 “””[“gzj”, “{‘age’:’23’}”]”””<br> 特别注意 JSON 字符串中的内容用双引号，而非单引号。</p>
-</li>
-<li><p>json.dump和json.load均是针对文件的。<br>json.dump<br>我理解为两个动作，一个动作是将”obj“转换为JSON格式的字符串，还有一个动作是将字符串写入到文件中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;&quot;name&quot;:&quot;Tom&quot;, &quot;age&quot;:23&#125;</span><br><span class="line">with open(&quot;test.json&quot;, &quot;w&quot;, encoding=&apos;utf-8&apos;) as f:</span><br><span class="line">  ... # Parameter sort_keys    是否按照字母排序</span><br><span class="line">   ... # Parameter indent       缩进的空格数</span><br><span class="line">   ... # Parameter separators   分割符号形式</span><br><span class="line">     json.dump(a,f,indent=4) </span><br><span class="line">   # indent 超级好用，格式化保存字典，默认为None，小于0为零个空格</span><br><span class="line">   # f.write(json.dumps(a, indent=4))</span><br><span class="line">   # 和上面的效果一样！！！</span><br></pre></td></tr></table></figure>
-
-<p>json.load<br>一个动作是将一个包含JSON格式数据从文件中取出来，还有一个动作是将其序列化为一个python对象dict</p>
-<p><strong>当打开文件的时候，注意加上encoding否则会因为中文报错！</strong></p>
-<p>import json<br>with open(“test.json”, “r”, encoding=’utf-8’) as f:<br>   aa = json.loads(f.read())<br>   f.seek(0)<br>   bb = json.load(f)    # 与 json.loads(f.read())</p>
-</li>
-</ol>
-<h4 id="encode-和decode"><a href="#encode-和decode" class="headerlink" title="encode 和decode"></a>encode 和decode</h4><p>这里只说python3,不谈python2</p>
-<pre><code>- 字符串通过编码转换为字节码，字节码通过解码转换为字符串   </code></pre><p>   str（unicode）—&gt;(encode)—&gt;bytes，bytes—&gt;(decode)—&gt;str </p>
-<p>   python3默认编码是unicode编码，非utf8,需要经过encode才可能到utf8.</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name=&quot;小明&quot;   #类型：&lt;class &apos;str&apos;&gt;</span><br><span class="line">name1=name.encode(&quot;utf-8&quot;)  #加密输出：b&apos;\xe5\xb0\x8f\xe6\x98\x8e&apos;</span><br><span class="line">name2=name1.decode(&quot;utf-8&quot;) #解密还原：&apos;小明&apos;</span><br></pre></td></tr></table></figure>
-
-<p>   u’\u7b80’ 是unicode, ‘\xe7\xae\x80’是byte , byte和unicode之间一一对应, 可以相互转换, 转换规则如下:<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;b&apos;\xe7\xae\x80&apos;.decode(&apos;utf-8&apos;)   #字节转unicode（str）</span><br><span class="line">&apos;简&apos;</span><br><span class="line">&gt;&gt;&gt;u&apos;\u7b80&apos;.encode(&apos;utf-8&apos;)    #unicode转字节</span><br><span class="line">b&apos;\xe7\xae\x80&apos;</span><br></pre></td></tr></table></figure></p>
-<p>   参考：<a href="https://www.jianshu.com/p/4ced2bbc9334" target="_blank" rel="noopener">https://www.jianshu.com/p/4ced2bbc9334</a><br>   <a href="https://blog.csdn.net/qq_29053519/article/details/79170519" target="_blank" rel="noopener">https://blog.csdn.net/qq_29053519/article/details/79170519</a></p>
-<h4 id="装饰器和闭包"><a href="#装饰器和闭包" class="headerlink" title="装饰器和闭包"></a>装饰器和闭包</h4><p>  自定义装饰器，常用作打日志和运行时间</p>
-<pre><code>import time
-def logger(func):
-    #如果原函数有参数，那闭包函数必须保持参数个数一致
-    def mywrapper(x,y):#将函数外面包一层
-        print(x,y)#添加的额外功能,打印日志(1,2)
-        t1=time.time()
-        func(x,y)#原函数add(a,b)
-        t2=time.time()
-        cost=t2-t1#额外功能：计算时间
-        print(&quot;共计花费时间{}&quot;.format(cost))
-    return mywrapper
-
-@logger
-def add(a,b):
-    print(&quot;a+b={}&quot;.format(a+b))
-    time.sleep(1)
-add(1,2) #相当于logger(add)</code></pre><p>  装饰器属于闭包函数：什么是闭包函数？</p>
-<h5 id="闭包函数"><a href="#闭包函数" class="headerlink" title="闭包函数"></a>闭包函数</h5><pre><code>1.函数内部定义的函数  
-2.包含对外部变量而非全局变量的引用，如：
-
-def outer():
-    x = 1
-    def inner():
-      print(&quot;x=%s&quot; %x)
-      print(&quot;inner func excuted&quot;)
-    inner()#也可以return
-  print(&quot;outer func excuted&quot;)
-
-outer()
-
-#####输出结果#########
-x=1
-inner func excuted
-outer func excuted</code></pre><p>   闭包函数,它必须包含自己的函数以及一个外部变量才能真正称得上是一个闭包函数。如果没有一个外部变量与其绑定,那么這个函数不能算得上是闭包函数.</p>
-<p>   有了以上基础,对于装饰器就好理解了. </p>
-<h5 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h5><p>   外部函数传入被装饰函数名，内部函数返回装饰函数名。</p>
-<pre><code>  特点：  
-     1.不修改被装饰函数的调用方式   
-     2.不修改被装饰函数的源代码
-
-import time
-import random
-
-def timmer(func):
-    def wrapper():
-        start_time = time.time()
-        func()
-        stop_time=time.time()
-        print(&apos;run time is %s&apos; %(stop_time-start_time))
-    return wrapper
-def auth(func):
-    def deco():
-        name=input(&apos;name: &apos;)
-        password=input(&apos;password: &apos;)
-        if name == &apos;egon&apos; and password == &apos;123&apos;:
-            print(&apos;login successful&apos;)
-            func() #wrapper()
-        else:
-            print(&apos;login err&apos;)
-    return deco
-
-@auth   # index = auth(timmer(index))                 
-@timmer # index = timmer(index)
-def index():
-
-  time.sleep(3)
-  print(&apos;welecome to index page&apos;)
-index()</code></pre><p>   如果有多个引用如上面的@auth,@timmer,顺序是从下至上。</p>
-<p>   参考：<a href="https://www.cnblogs.com/huchong/p/7725564.html#_label1" target="_blank" rel="noopener">https://www.cnblogs.com/huchong/p/7725564.html#_label1</a></p>
-<h4 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h4><pre><code>https://www.cnblogs.com/lvcm/p/8859225.html这篇文章总结的很好</code></pre><h4 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h4><p> python3常用的两个模块为：</p>
-<ul>
-<li>_thread</li>
-<li>threading(推荐使用)</li>
-</ul>
-<p>线程中参数传递方法：</p>
-<pre><code>1、仅使用元组传递初始化
-    threading.Thread(target=song,args=(1,2,3)).start()
-2、仅使用字典传递 threading.Thread(target=方法名, kwargs={&quot;参数名&quot;: 参数1, &quot;参数名&quot;: 参数2, ...})
-
-threading.Thread(target=song,kwargs={&quot;a&quot;:1,&quot;c&quot;:3,&quot;b&quot;:2}).start() #参数顺序可以变
-3、混合使用元组和字典 threading.Thread(target=方法名，args=（参数1, 参数2, ...）, kwargs={&quot;参数名&quot;: 参数1,&quot;参数名&quot;: 参数2, ...})
-
-threading.Thread(target=song,args=(1,),kwargs={&quot;c&quot;:3,&quot;b&quot;:2}).start()</code></pre><p>   主要参数：</p>
-<pre><code>target表示调用对象 , 即子进程要执行的任务  
-args表示调用对象的位置参数,元组类型。  </code></pre><p>  方法介绍：    </p>
-<pre><code>p.start() : 启动进程,并调用子进程中的p.run ()  
-p.is_alive () : 如果p仍然运行 , 返回True</code></pre><p>threading参考：<a href="https://www.jb51.net/article/161728.htm" target="_blank" rel="noopener">https://www.jb51.net/article/161728.htm</a></p>
-<h4 id="处理小数"><a href="#处理小数" class="headerlink" title="处理小数"></a>处理小数</h4><p>参考：<a href="https://www.jb51.net/article/102248.htm" target="_blank" rel="noopener">https://www.jb51.net/article/102248.htm</a></p>
-<ul>
-<li><p>向下取整 int()</p>
-</li>
-<li><p>四舍五入 round()</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; round(3.25); round(4.85)</span><br><span class="line">3.0</span><br><span class="line">5.0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>向上取整 ceil()</p>
-</li>
-<li><p>分别取整数部分和小数部分</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import math</span><br><span class="line">&gt;&gt;&gt; math.modf(3.25)</span><br><span class="line">(0.25, 3.0)</span><br><span class="line">&gt;&gt;&gt; math.modf(4.2)</span><br><span class="line">(0.20000000000000018, 4.0)</span><br><span class="line">&gt;&gt;&gt;b = math.modf(123.34)#分开两部分</span><br><span class="line">&gt;&gt;&gt;print(b)                </span><br><span class="line">&gt;&gt;&gt;print(&apos;%.2f&apos; % b[0]) #保留两位小数0.34</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h4 id="string模块"><a href="#string模块" class="headerlink" title="string模块"></a>string模块</h4><pre><code>import string
-string.ascii_lowercase  #打印所有的小写字母
-string.ascii_uppercase  #打印所有的大写字母
-string.ascii_letters #打印所有的大小写字母
-string.digits  #打印0-9的数字
-string.punctuation  #打印所有的特殊字符
-
-string.hexdigits #打印十六进制的字符
-string.printable  #打印所有的大小写，数字，特殊字符</code></pre><h4 id="hashlib模块"><a href="#hashlib模块" class="headerlink" title="hashlib模块"></a>hashlib模块</h4><pre><code>python的hashlib库的md5摘要是不可反解的，非常安全
-
-  hash.update(arg)
-  更新hash对象。连续的调用该方法相当于连续的追加更新。例如m.update(a); m.update(b)相当于m.update(a+b)。  
-  hash.digest() 返回摘要，作为二进制数据字符串值,  
-  hash.hexdigest() 返回摘要，作为十六进制数据字符串值,  
-  hash.copy() 复制  </code></pre><p>示例：加盐</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def my_md5(s:str,salt=None):</span><br><span class="line">s=str(s)</span><br><span class="line">if salt:</span><br><span class="line">  s=s+salt</span><br><span class="line">m=hashlib.md5(s.encode())</span><br><span class="line">return m.hexdigest()</span><br></pre></td></tr></table></figure>
-
-<p> 或</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> import hashlib</span><br><span class="line">obj=hashlib.md5(b&apos;12334&apos;)                #实例化md5的时候可以给传个参数，这叫加盐</span><br><span class="line">obj.update(&quot;admin&quot;.encode(&quot;utf-8&quot;))      #是再加密的时候传入自己的一块字节，</span><br><span class="line">secret=obj.hexdigest()</span><br><span class="line">print(secret)</span><br></pre></td></tr></table></figure>
-
-<h4 id="局部变量和全局变量"><a href="#局部变量和全局变量" class="headerlink" title="局部变量和全局变量"></a>局部变量和全局变量</h4><h6 id="列表-字典-集合-类-—-局部变量可以改全局变量，除了整数和字符串"><a href="#列表-字典-集合-类-—-局部变量可以改全局变量，除了整数和字符串" class="headerlink" title="列表 字典 集合 类 —-局部变量可以改全局变量，除了整数和字符串"></a>列表 字典 集合 类 —-局部变量可以改全局变量，除了整数和字符串</h6>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;&#125;</span><br><span class="line">def test():</span><br><span class="line">    d[&apos;url&apos;]=&apos;https://www.cnblogs.com/uncleyong/p/10530261.html&apos;</span><br><span class="line">def test2():</span><br><span class="line">    d[&apos;url&apos;]=&apos;https://www.cnblogs.com/uncleyong/&apos;</span><br><span class="line">test()</span><br><span class="line">test2()</span><br><span class="line">print(d)</span><br><span class="line">#&#123;&apos;url&apos;: &apos;https://www.cnblogs.com/uncleyong/&apos;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>但是如果重新创建则不是一回事</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">info =&#123;&apos;age&apos;:18,  &apos;url&apos;:&apos;https://www.cnblogs.com/uncleyong/p/10530261.html&apos;&#125;</span><br><span class="line">def test():</span><br><span class="line">    #重新创建了一个区别全局info的变量（地址变了，可用id函数验证）		</span><br><span class="line">    info=&#123;&#125;</span><br><span class="line">    info[&apos;name&apos;] = &apos;qzcsbj&apos;</span><br><span class="line">test()</span><br><span class="line">print(info)</span><br><span class="line">#&#123;&apos;age&apos;: 18, &apos;url&apos;: &apos;https://www.cnblogs.com/uncleyong/p/10530261.html&apos;&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="global"><a href="#global" class="headerlink" title="global"></a>global</h6><p>  global需要在局部变量定义之前声明，否则报错</p>
-<pre><code>res = None
-def calc(a,b):
-    res = 0
-    global res
-    res = a+b
-calc(1,2)
-print(res)
-#报错:SyntaxError: name &apos;res&apos; is assigned to before global declaration</code></pre><p>　　</p>
-<h4 id="random模块"><a href="#random模块" class="headerlink" title="random模块"></a>random模块</h4><p> random中的一些重要函数的用法：</p>
-<pre><code>random.random()函数是这个模块中最常用的方法了，它会生成一个随机的浮点数，范围是在0.0~1.0之间。
-
-random.uniform()正好弥补了上面函数的不足，它可以设定浮点数的范围，一个是上限，一个是下限。
-
-random.randint()随机生一个整数int类型，可以指定这个整数的范围，同样有上限和下限值，如random.randint（0，4）包括0和4中的随机整数。
-
-random.choice()可以从任何序列，比如list列表中，选取一个随机的元素返回，可以用于字符串、列表、元组等。
-
-random.sample()可以从指定的序列中，随机的截取指定长度的片断，不作原地修改。</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/08/Django项目实践一/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/08/Django项目实践一/" itemprop="url">Django问题记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-08T19:53:45+08:00">
-                2018-08-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="环境准备"><a href="#环境准备" class="headerlink" title="环境准备"></a>环境准备</h4><p>本机之前一直装的是2.7，但是现在3.x已然成为趋势，准备更新3.7</p>
-<p>   windows:</p>
-<p>  下载python最新版本逐步进行安装（一定要选中pip）<br>     安装requests，直接pip install requests即可。<br>    Python 下载地址：<a href="https://www.python.org/downloads/" target="_blank" rel="noopener">https://www.python.org/downloads/</a></p>
-<p>  Linux(centos 6.4):<br> 参考： <a href="https://www.cnblogs.com/dukuan/p/8252019.html" target="_blank" rel="noopener">https://www.cnblogs.com/dukuan/p/8252019.html</a><br>    wget <a href="https://www.python.org/ftp/python/3.4.4/Python-3.4.4.tgz" target="_blank" rel="noopener">https://www.python.org/ftp/python/3.4.4/Python-3.4.4.tgz</a></p>
-<pre><code>ls
-tar xf Python-3.4.4.tgz 
-mkdir /usr/local/python3
-cd Python-3.4.4
-ls
-./configure --prefix=/usr/local/python3
-make all
-make install</code></pre><ul>
-<li><p>下载Django，并安装<br>Django 下载地址：<a href="https://www.djangoproject.com/download/" target="_blank" rel="noopener">https://www.djangoproject.com/download/</a><br>解压缩后安装：<br>   D:\下载\Django-2.1.7\Django-2.1.7&gt;python setup.py install<br>   将这几个目录添加到系统环境变量中如： C:\Python33\Lib\site-packages\django;C:\Python33\Scripts。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import django    #检查</span><br><span class="line">&gt;&gt;&gt; django.get_version()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>下载 安装pycharm专业版<br> 打开 <a href="http://idea.lanyus.com/" target="_blank" rel="noopener">http://idea.lanyus.com/</a></p>
-<h4 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h4></li>
-<li><p>创建项目，使用自己机器上的python编译器。添加app名称，IDE会默认创建app相关文件和配置。<br><img src="https://img-blog.csdnimg.cn/2019022014425410.png" alt="在这里插入图片描述"></p>
-</li>
-<li><p>启动服务<br>在开发阶段，为了能够快速预览到开发的效果，django提供了一个纯python编写的轻量级web服务器，仅在开发阶段使用<br>可以在Terminal运行如下命令启动服务器：<br>python manage.py runserver（默认127.0.0.1:8000 也可以使用0.0.0.0:8888这样可以再其他机器访问此端口的这个服务）<br><img src="https://img-blog.csdnimg.cn/20190220145321590.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>如果增加、修改、删除python文件，服务器会自动重启<br>如果想关闭服务器可以使用ctrl+c或点击run窗口的红色方块按钮<br>当然可以直接在目录上启动服务，以上是为了方便开发使用。</p>
-</li>
-</ul>
-<ul>
-<li>提交表单 MultiValueDictKeyError<br><img src="https://img-blog.csdnimg.cn/20190220182153159.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">原因：<br>找了好久原因，不是语法的错误，而是逻辑错误。不应该在matrix.html页面传参，matrix是接收参数跳转的页面。解决方法就是新起了一个search.html的页面，进行传参。</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def getSchedule(request):</span><br><span class="line">    context=&#123;&#125;</span><br><span class="line">    pid=request.GET[&apos;pid&apos;]</span><br><span class="line">    sid=request.GET[&apos;sid&apos;]</span><br><span class="line">    context[&quot;list&quot;]=task(pid,sid)</span><br><span class="line">    return render(request,&quot;matrix.html&quot;,context)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>使用openpyxl<br><a href="https://www.cnblogs.com/anpengapple/p/6399304.html" target="_blank" rel="noopener">https://www.cnblogs.com/anpengapple/p/6399304.html</a><br>eg:行添加,直接用sheet.append(rowlist)</li>
-<li>AJAX的四种异步请求方式<br>简单理解jQuery中$.getJSON、$.get、$.post、$.ajax用法<br><a href="https://www.cnblogs.com/dongsh/p/3235487.html" target="_blank" rel="noopener">https://www.cnblogs.com/dongsh/p/3235487.html</a></li>
-</ul>
-<ul>
-<li><p>模板前端与后台交互方法 $.getJSON</p>
-<pre><code>$(document).ready(function () {
-    $(&quot;#dl&quot;).click(function () {
-        var sid=$(&quot;#sid&quot;).val();
-        var pid=$(&quot;#pid&quot;).val();
-    $.getJSON(&quot;/download/&quot;,{&apos;sid&apos;:sid,&apos;pid&apos;:pid},)
-    });
-
-    $(&quot;#submit&quot;).click(function () {
-        var sd=$(&quot;#sid&quot;).val();
-        var pd=$(&quot;#pid&quot;).val();
-        $.getJSON(&quot;/getSchedule/&quot;,{&apos;sd&apos;:sd,&apos;pd&apos;:pd},function (ret) {
-            $(&quot;#result&quot;).html(&quot;&quot;);
-           for(var i =0;i&lt;ret.length;i++){
-               $(&apos;#result&apos;).append(ret[i]).append(&quot;&lt;br&gt;&quot;)
-           }
-        })
-    });
-});</code></pre><ul>
-<li>由于用 jQuery 实现 ajax 比较简单，所以我们用 jQuery库来实现</li>
-<li>js调试  console.log</li>
-<li>Django 后台返回<br>数组：return HttpResponse(json.dumps(a), content_type=’application/json’)<br>字典：return HttpResponse(json.dumps(name_dict), content_type=’application/json’)</li>
-<li>url前面加/，指的是根目录。不加则指的是当前页面的子路径。<br><img src="https://img-blog.csdnimg.cn/20190222121737705.png" alt="在这里插入图片描述"></li>
-<li>js清空标签内容：$(“#result”).html(“”)，而非$(“#result”).val(“”)<br>val是value的缩写  是给value属性赋值而已  并不是清空节点内的html元素<br>但是你如果html(‘2’)  就会变成<input type="text" value>2   虽然这个写法不对  但是这个意思</li>
-</ul>
-</li>
-<li><p>python3.5中，import sqlite3 出现 no module named _sqlite3的解决方法<br>检查自己有没有安装sqlite-devel(rpm -qa |grep sqlite-devel) ，没有的话yum -y install sqlite-devel<br>然后进入到Python目录，（cd python目录）<br>然后命令行输入./configure，然后make和make  install<br>这个时候可以输入python，进入python环境后，import sqlite3，看还会不会报错。</p>
-</li>
-<li><p>ImportError: No module named openpyxl,xlrd<br>pip  install openpyxl</p>
-</li>
-<li><p>ImportError: No module named ‘requests’<br>pip install requests</p>
-</li>
-<li><p>How to fix error: django.db.utils.NotSupportedError: URIs not supported<br>这个问题浪费了很长的时间解决，首先是尝试升级qlite的版本，但是升级后依旧不能解决，最后根据提示中的目录将base.py中的字段改后解决了。即参考文章中的第一个方法。摘自:<a href="https://blog.csdn.net/zhuangmezhuang/article/details/82776272" target="_blank" rel="noopener">https://blog.csdn.net/zhuangmezhuang/article/details/82776272</a></p>
-</li>
-<li><p>‘WSGIRequest’ object has no attribute ‘urlopen’</p>
-</li>
-<li><p>views返回几种方式<br> return render_to_response(“search.html”)<br> 属于shortcuts模块，常用需要2个参数，第一个是模板如hello.html，第二个是字典，其中字典key就是模板中的变量。<br> return HttpResponse(“success!”)<br> 常用于直接返回字符串</p>
-</li>
-<li><p>静态文件的使用<br>settings.py 中两处注意：</p>
-<ol>
-<li>setting文件  </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-INSTALLED_APPS中 注册了‘django.contrib.staticfiles’，默认生成的文件已注册。 </span><br><span class="line">-指定STATIC_URL 与 STATICFILES_DIRS 的值.</span><br><span class="line"></span><br><span class="line">INSTALLED_APPS=[</span><br><span class="line">    &apos;...&apos;,</span><br><span class="line">    &apos;django.contrib.staticfiles&apos;,</span><br><span class="line">    &apos;...&apos;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">STATIC_URL=&apos;/static/&apos;</span><br><span class="line">STATICFILES_DIRS=(BASE_DIR,&apos;static&apos;)</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<p>  2.html文件中引用静态文件（常加在link前）：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load staticfiles %&#125;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&#123;% static &apos;css/main.css&apos; %&#125;&quot; /&gt;</span><br><span class="line">...</span><br><span class="line">&#123;% static &apos;/image/test.png&apos; %&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>打开text文件乱码且每次打开的时候会多出一行？</p>
-<p>本地的ct.txt文件保存格式未必是utf-8，所以需要指定编码格式才更准确，使用newline防止在每次写入默认新添加一空行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file=open(&quot;templates/ct.txt&quot;,&quot;w&quot;,encoding=&quot;utf-8&quot;, newline=&apos;&apos;)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>表单提交后不调view接口？<br>表单submit按钮类型写错，应该是submit类型，非button类型。</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/07/my-first-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/07/my-first-blog/" itemprop="url">搭建博客(blog)踩得最主要的坑</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-07T22:39:00+08:00">
-                2018-06-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>使用过程中博客报错：Unhandled rejection Template render error: (unknown path) [Line 9, Column 39]</p>
-<p>一篇博客中带有大括号的符号导致，以后避免使用或者放在代码框中。</p>
-<p><img src="/images/pasted-60.png" alt="upload successful"></p>
-<h5 id="——以下是搭建过程和问题-——"><a href="#——以下是搭建过程和问题-——" class="headerlink" title="——以下是搭建过程和问题 ——-"></a>——以下是搭建过程和问题 ——-</h5><p>参考博客：<a href="https://samxrtq.github.io/2019/05/16/%E5%BB%BA%E7%AB%8BHEXO-github%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener">https://samxrtq.github.io/2019/05/16/%E5%BB%BA%E7%AB%8BHEXO-github%E5%8D%9A%E5%AE%A2/</a></p>
-<ul>
-<li>问题1：<br>hexo fs.SyncWriteStream is deprecated</li>
-</ul>
-<p>查看各种博客，还让再安装一系列的包，最后一步步入坑，比如这种</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-fs --save</span><br><span class="line">npm install hexo-deployer-git@0.3.1 --save</span><br><span class="line">npm install hexo-renderer-ejs@0.3.1 --save</span><br><span class="line">npm install hexo-server@0.2.2 --save</span><br><span class="line"></span><br><span class="line">npm audit fix</span><br></pre></td></tr></table></figure>
-
-<p>回头来看，其实是思路除了问题，最终从头抓起，应该找到问题源头才行。最后查到了一篇对路解决方案<br><a href="https://blog.csdn.net/qq_31975963/article/details/82882465" target="_blank" rel="noopener">https://blog.csdn.net/qq_31975963/article/details/82882465</a></p>
-<p>在hexo项目中其中有一个hexo-fs的插件调用了这个方法，所以需要更新hexo-fs插件，更新方法如下：</p>
-<p>npm install hexo-fs –save</p>
-<p>更新插件后问题依然无法解决。</p>
-<p>通过–debug来查看在哪里出了问题：</p>
-<p>通过–debug来查看：</p>
-<p>[root@server init]# <font color="red"> hexo –debug</font><br>06:55:32.711 DEBUG Hexo version: 3.5.0<br>06:55:32.714 DEBUG Working directory: /data/wwwroot/init/<br>06:55:32.787 DEBUG Config loaded: /data/wwwroot/init/_config.yml<br>06:55:32.832 DEBUG Plugin loaded: hexo-admin<br>(node:25414) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.</p>
-<p>问题出在：hexo-admin的hexo-fs<br>因hexo-admin作为后台管理，无法npm uninstall hexo-admin卸载,则找到对应文件，注释：</p>
-<p>打开文件<br>./node_modules/hexo-admin/node_modules/hexo-fs/lib/fs.js</p>
-<p>找到 718行:exports.SyncWriteStream = fs.SyncWriteStream;<br>将对应的exports.SyncWriteStream = fs.SyncWriteStream;注释(前面 //)即可！</p>
-<hr>
-<p>在windows上同步搭建<br>参考：<a href="https://samxrtq.github.io/2019/05/17/Windows%E4%B8%8Emac%E5%8F%8C%E7%AB%AF%E7%94%A8hexo%E5%86%99%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener">https://samxrtq.github.io/2019/05/17/Windows%E4%B8%8Emac%E5%8F%8C%E7%AB%AF%E7%94%A8hexo%E5%86%99%E5%8D%9A%E5%AE%A2/</a></p>
-<p>问题：<br>1、如何在本机创建多个key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#第一步 创建别名key</span><br><span class="line">ssh-keygen -t rsa -f ~/.ssh/id_rsa.github -C &quot;entere@126.com&quot; </span><br><span class="line">#第二步创建config文件</span><br><span class="line">touch ~/.ssh/config</span><br><span class="line">chmod 600 ~/.ssh/config#根据需要进行这一步（win上没用这一步）</span><br><span class="line">#第三步 编辑config文件，将私钥地址附上去</span><br><span class="line">Host github.com</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa.github</span><br></pre></td></tr></table></figure>
-
-<p>2、hexo d -g的时候提示git不是内部命令<br>解决：检查环境变量，后来发现环境变量的目录git执行文件名字是git_cmd.exe,于是将其改名为git.exe.</p>
-<p><img src="%5Cimages%5Cpasted-29.png" alt="upload successful"><br>3、上个问题解决后随即提示add不是内部或外部命令<br>解决：换成bash命令，脱离cmd</p>
-<p><img src="%5Cimages%5Cpasted-30.png" alt="upload successful"><br>4、错误：git地址提交混乱，其中gitpagesource应该放源码，不该提到原来的git库里，后来重新按照步骤来了一遍好了。<br>5、不该更改_config.yml里原来的配置。<br>6、图片上传后不展示？<br>找大牛解决，替换了marked.js文件<br>7、mac和win不同步？<br>大牛给贴心画出原理图后秒懂，原因是源码没有在git仓库上同步<br><img src="%5Cimages%5Cpasted-33.png" alt="upload successful"></p>
-<p>1.git pull    #将源码从gitpagesource仓库更新<br>2.hexo s后，用admin写博客<br>3.hexo d -g   #将博客推送到chenliyuan.github.io  （hexo d会清空chenliyuan.github.io这个仓库，然后将发布后的html们放上去，chenliyuan.github.io这个仓库就是网址要显示的内容）<br>4.git add.  commit  push  #这一步是为了把源代码上传到GitpageSource仓库，以防你下一个设备用的时候，源代码不同步<br>5.以.md文件存储的，程序会将这些.md文件，给转换为html;你的主题设置，hexo设置，你的网站颜色设置，等等++++你写的博客源码(.md文件)+++图片.然后你hexo g的时候，hexo就会将这些源码进行编译，发布到public文件夹下，那里就是发布后的    其实是一个网站</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2546,7 +2195,7 @@ make install</code></pre><ul>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

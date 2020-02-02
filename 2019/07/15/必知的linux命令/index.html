@@ -89,8 +89,7 @@
 <meta property="og:image" content="http://yoursite.com/2019/07/15/必知的linux命令/%5Cimages%5Cpasted-68.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/15/必知的linux命令/%5Cimages%5Cpasted-65.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/15/必知的linux命令/%5Cimages%5Cpasted-66.png">
-<meta property="og:image" content="http://yoursite.com/2019/07/15/必知的linux命令/%5Cimages%5Cpasted-64.png">
-<meta property="og:updated_time" content="2020-01-28T04:29:49.833Z">
+<meta property="og:updated_time" content="2020-01-31T14:11:41.398Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="必知的linux命令">
 <meta name="twitter:description" content="cut命令-b 以字节为单位分割 -c以字符为单位分割 -d 自定义分隔符 -f与-d一起使用，指定哪一列  如：以冒号为分隔符，取第四列相当于awk -F: ‘{print $4}’ cat /etc/passwd|cut -d: -f4/etc/passwd字段/etc/passwd中一行记录对应着一个用户，每行记录又被冒号(分隔为7个字段，其格式和具体含义如下： /etc/passwd  用">
@@ -336,11 +335,11 @@
       
 
       
-        <h4 id="cut命令"><a href="#cut命令" class="headerlink" title="cut命令"></a>cut命令</h4><pre><code>-b 以字节为单位分割
+        <h5 id="cut命令"><a href="#cut命令" class="headerlink" title="cut命令"></a>cut命令</h5><pre><code>-b 以字节为单位分割
 -c以字符为单位分割
 -d 自定义分隔符
 -f与-d一起使用，指定哪一列</code></pre><p>  如：以冒号为分隔符，取第四列相当于awk -F: ‘{print $4}’</p>
-<pre><code>cat /etc/passwd|cut -d: -f4</code></pre><h4 id="etc-passwd字段"><a href="#etc-passwd字段" class="headerlink" title="/etc/passwd字段"></a>/etc/passwd字段</h4><p>/etc/passwd中一行记录对应着一个用户，每行记录又被冒号(分隔为7个字段，其格式和具体含义如下：</p>
+<pre><code>cat /etc/passwd|cut -d: -f4</code></pre><h5 id="etc-passwd字段"><a href="#etc-passwd字段" class="headerlink" title="/etc/passwd字段"></a>/etc/passwd字段</h5><p>/etc/passwd中一行记录对应着一个用户，每行记录又被冒号(分隔为7个字段，其格式和具体含义如下：</p>
 <pre><code>/etc/passwd
  用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录Shell
 
@@ -375,14 +374,9 @@ sed -i &apos;3s/原字符串/新字符串/g&apos; ab.txt
 
 # 显示文件的第二行到最后一行
 sed -n &apos;2, $p&apos; ab.txt        </code></pre><p>原文链接：<a href="https://blog.csdn.net/yjk13703623757/article/details/79548450" target="_blank" rel="noopener">https://blog.csdn.net/yjk13703623757/article/details/79548450</a></p>
-<ul>
-<li><p>awk ‘{print $1}’ fortest.php |sort|uniq -c|wc -l  </p>
-<p>  sort命令排序（默认安卓首字母ASCII排序）<br>  uniq常与sort结合使用，去除重复行 -c 显示重复个数  </p>
-</li>
-<li><p><strong>wc 命令</strong><br>计算行数、单词数、字节数。只有三个参数：</p>
-<p>-l 只显示行数（lines）<br>-w 只显示单词数(words)<br>-c 只显示字节数(chars)</p>
-</li>
-</ul>
+<h5 id="awk-‘-print-1-’-fortest-php-sort-uniq-c-wc-l"><a href="#awk-‘-print-1-’-fortest-php-sort-uniq-c-wc-l" class="headerlink" title="awk ‘{print $1}’ fortest.php |sort|uniq -c|wc -l"></a>awk ‘{print $1}’ fortest.php |sort|uniq -c|wc -l</h5><pre><code>sort命令排序（默认安卓首字母ASCII排序）  
+uniq常与sort结合使用，去除重复行 -c 显示重复个数  </code></pre><h5 id="wc-命令"><a href="#wc-命令" class="headerlink" title="wc 命令"></a><strong>wc 命令</strong></h5><p>计算行数、单词数、字节数。只有三个参数：</p>
+<p>  -l 只显示行数（lines）<br>  -w 只显示单词数(words)<br>  -c 只显示字节数(chars)</p>
 <h5 id="查看网络连接状态-路由表"><a href="#查看网络连接状态-路由表" class="headerlink" title="查看网络连接状态(路由表)"></a>查看网络连接状态(路由表)</h5><p> 可以查端口号，而ps无端口号</p>
 <pre><code>netstat -nlap |grep -i 6379</code></pre>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-n 拒绝显示别名，能显示数字的全部转化成数字。</span><br><span class="line">-l 仅列出有在 Listen (监听) 的服務状态</span><br><span class="line">-a (all)显示所有选项，默认不显示LISTEN相关</span><br><span class="line">-p 显示建立相关链接的程序名</span><br></pre></td></tr></table></figure>
 
@@ -438,8 +432,6 @@ ps -aux
 <li>cat /dev/null &gt;log.txt</li>
 </ol>
 </li>
-</ul>
-<ul>
 <li><p>创建用户以及查看当前用户</p>
 <p>useradd redis<br>passwd  redis<br>/etc/group 查看所有组<br>/etc/shadow和/etc/passwd查看所有用户</p>
 </li>
@@ -471,27 +463,18 @@ ps -aux
 - 若要rw-属性则4+2=6
 - 若要r-x属性则4+1=5
 - 若用chmod 4755（或755） filename可使其具有root权限</code></pre><ul>
-<li><p>cp<br>cp -r 原文件  新文件名<br>-r目录复制</p>
-</li>
-<li><p>mv<br>对于当前路径下文件重命名，非当前路径移动</p>
-</li>
-<li><p>查看linux内核<br>结合使用uname -a 查看linux内核</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@tv6-hotelqa-newhotel-17 ~]# cat /etc/issue</span><br><span class="line">CentOS release 6.4 (Final</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>ln 软连接和硬链接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">第一，ln命令会保持每一处链接文件的同步性，也就是说，不论你改动了哪一处，其它的文件都会发生相同的变化；</span><br><span class="line">第二，ln的链接又软链接 和硬链接两种，</span><br><span class="line">		 软链接就是ln -s src  dst,它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，</span><br><span class="line">		 硬链接ln src  dst,没有参数-s, 它会在你选定的位置上生成一个和源文件大小相同的文件，无论是软链接还是硬链接，文件都保持同步变化。 </span><br><span class="line">第三，指向一个文件的所有 硬链接都删掉的话文件的内容才会被删掉</span><br><span class="line">		  软链接只要删掉了源链接文件，软链接也就失效了</span><br></pre></td></tr></table></figure>
-
+<li>cp<br>cp -r 原文件  新文件名<br>-r目录复制</li>
+<li>mv<br>对于当前路径下文件重命名，非当前路径移动</li>
+<li>查看linux内核<br>结合使用uname -a 查看linux内核<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@tv6-hotelqa-newhotel-17 ~]# cat /etc/issue</span><br><span class="line">CentOS release 6.4 (Final</span><br></pre></td></tr></table></figure>
 
 </li>
 </ul>
-<ul>
-<li><strong>查看linux系统版本</strong><br>cat /etc/issue</li>
-</ul>
+<h5 id="ln-软连接和硬链接"><a href="#ln-软连接和硬链接" class="headerlink" title="ln 软连接和硬链接"></a>ln 软连接和硬链接</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">第一，ln命令会保持每一处链接文件的同步性，也就是说，不论你改动了哪一处，其它的文件都会发生相同的变化；</span><br><span class="line">第二，ln的链接又软链接 和硬链接两种，</span><br><span class="line">		 软链接就是ln -s src  dst,它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，</span><br><span class="line">		 硬链接ln src  dst,没有参数-s, 它会在你选定的位置上生成一个和源文件大小相同的文件，无论是软链接还是硬链接，文件都保持同步变化。 </span><br><span class="line">第三，指向一个文件的所有 硬链接都删掉的话文件的内容才会被删掉</span><br><span class="line">		  软链接只要删掉了源链接文件，软链接也就失效了</span><br></pre></td></tr></table></figure>
+
+<p>   若失败可添加-f参数即ln -sf强行添加试试</p>
+<h5 id="查看linux系统版本"><a href="#查看linux系统版本" class="headerlink" title="查看linux系统版本"></a><strong>查看linux系统版本</strong></h5><p> cat /etc/issue  或者 uname -a</p>
 <p><img src="%5Cimages%5Cpasted-65.png" alt="upload successful"></p>
-<ul>
-<li>三大操作系统</li>
-</ul>
-<p><img src="%5Cimages%5Cpasted-66.png" alt="upload successful"></p>
+<h5 id="三大操作系统关系"><a href="#三大操作系统关系" class="headerlink" title="三大操作系统关系"></a>三大操作系统关系</h5><p><img src="%5Cimages%5Cpasted-66.png" alt="upload successful"></p>
 <ul>
 <li><p>一般来说著名的<strong>linux系统</strong>基本上分两大类：</p>
 <pre><code>1.RedHat系列：Redhat、Centos、Fedora等 
@@ -504,21 +487,13 @@ Debian系列
 1 常见的安装包格式 deb包,安装deb包的命令是“dpkg -参数” 
 2 包管理工具 apt-get 
 3支持tar包</code></pre></li>
-<li><p>linux常用目录</p>
-</li>
 </ul>
-<p>/bin  存放二进制可执行文件，常用命令一般都在这里<br>/etc 存放系统管理和配置文件<br>/usr/<br>/opt<br>/root<br>/var   </p>
-<ul>
-<li>文件颜色<br>绿色-&gt; 可执行文件<br>蓝色-&gt; 目录<br>浅蓝色-&gt;链接<br>红色-&gt;压缩文件  </li>
-</ul>
-<p><img src="%5Cimages%5Cpasted-64.png" alt="upload successful">   </p>
-<h5 id="linux上安装软件"><a href="#linux上安装软件" class="headerlink" title="linux上安装软件"></a>linux上安装软件</h5><pre><code>1）解压缩，如tar.gz格式的解压缩命令为tar -xzvf soft.tar.gz 
+<h5 id="Ubuntu-命令行-访问网页"><a href="#Ubuntu-命令行-访问网页" class="headerlink" title="Ubuntu 命令行 访问网页"></a>Ubuntu 命令行 访问网页</h5><pre><code>apt-get install w3m
+w3m https://blog.csdn.net/x_xx_xxx_xxxx/article/details/92574331</code></pre><h5 id="linux上安装软件"><a href="#linux上安装软件" class="headerlink" title="linux上安装软件"></a>linux上安装软件</h5><pre><code>1）解压缩，如tar.gz格式的解压缩命令为tar -xzvf soft.tar.gz 
 2） 执行“./configure”命令为编译做好准备；
 3） 执行“make”命令进行软件编译；
 4） 执行“make install”完成安装；
 5） 执行“make clean”删除安装时产生的临时文件。</code></pre><ul>
-<li><p><strong>about mac操作</strong><br>mac下显示/隐藏文件，shit+cmd+句号</p>
-</li>
 <li><p><strong>安装Yum</strong><br>找了很多资料，什么简洁办法都不管用，还是需要下载很多依赖包安装才行。参考如下<br><a href="https://blog.csdn.net/zgege/article/details/82315110" target="_blank" rel="noopener">https://blog.csdn.net/zgege/article/details/82315110</a><br>但是由于yum的版本与当前python的版本不一致会报错？</p>
 <p>  There was a problem importing one of the Python modules required to run yum. The error leading to this problem was:</p>
 <pre><code>No module named yum</code></pre><p>  Please install a package which provides this module, or verify that the module is installed correctly.</p>
@@ -639,7 +614,7 @@ Debian系列
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">60</span>
+                  <span class="site-state-item-count">63</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -685,7 +660,7 @@ Debian系列
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#cut命令"><span class="nav-number">1.</span> <span class="nav-text">cut命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#etc-passwd字段"><span class="nav-number">2.</span> <span class="nav-text">/etc/passwd字段</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#替换sed"><span class="nav-number">2.1.</span> <span class="nav-text">替换sed</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看网络连接状态-路由表"><span class="nav-number">2.2.</span> <span class="nav-text">查看网络连接状态(路由表)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看进程-ps"><span class="nav-number">2.3.</span> <span class="nav-text">查看进程 ps</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tar命令"><span class="nav-number">2.4.</span> <span class="nav-text">tar命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#vim-常用命令"><span class="nav-number">2.5.</span> <span class="nav-text">vim 常用命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查找命令："><span class="nav-number">2.6.</span> <span class="nav-text">查找命令：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#chown-修改所属用户"><span class="nav-number">2.7.</span> <span class="nav-text">chown  修改所属用户</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#chmod-权限修改两种语法"><span class="nav-number">2.8.</span> <span class="nav-text">chmod  权限修改两种语法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#一种是chmod-ugo-r-file-这种"><span class="nav-number">2.8.1.</span> <span class="nav-text">一种是chmod ugo+r file 这种</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#一种是chmod-abc-file-其中abc是数字"><span class="nav-number">2.8.2.</span> <span class="nav-text">一种是chmod abc file(其中abc是数字)</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#linux上安装软件"><span class="nav-number">2.9.</span> <span class="nav-text">linux上安装软件</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#cut命令"><span class="nav-number">1.</span> <span class="nav-text">cut命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#etc-passwd字段"><span class="nav-number">2.</span> <span class="nav-text">/etc/passwd字段</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#替换sed"><span class="nav-number">3.</span> <span class="nav-text">替换sed</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#awk-‘-print-1-’-fortest-php-sort-uniq-c-wc-l"><span class="nav-number">4.</span> <span class="nav-text">awk ‘{print $1}’ fortest.php |sort|uniq -c|wc -l</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#wc-命令"><span class="nav-number">5.</span> <span class="nav-text">wc 命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看网络连接状态-路由表"><span class="nav-number">6.</span> <span class="nav-text">查看网络连接状态(路由表)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看进程-ps"><span class="nav-number">7.</span> <span class="nav-text">查看进程 ps</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tar命令"><span class="nav-number">8.</span> <span class="nav-text">tar命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#vim-常用命令"><span class="nav-number">9.</span> <span class="nav-text">vim 常用命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查找命令："><span class="nav-number">10.</span> <span class="nav-text">查找命令：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#chown-修改所属用户"><span class="nav-number">11.</span> <span class="nav-text">chown  修改所属用户</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#chmod-权限修改两种语法"><span class="nav-number">12.</span> <span class="nav-text">chmod  权限修改两种语法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#一种是chmod-ugo-r-file-这种"><span class="nav-number">12.1.</span> <span class="nav-text">一种是chmod ugo+r file 这种</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#一种是chmod-abc-file-其中abc是数字"><span class="nav-number">12.2.</span> <span class="nav-text">一种是chmod abc file(其中abc是数字)</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ln-软连接和硬链接"><span class="nav-number">13.</span> <span class="nav-text">ln 软连接和硬链接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看linux系统版本"><span class="nav-number">14.</span> <span class="nav-text">查看linux系统版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三大操作系统关系"><span class="nav-number">15.</span> <span class="nav-text">三大操作系统关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ubuntu-命令行-访问网页"><span class="nav-number">16.</span> <span class="nav-text">Ubuntu 命令行 访问网页</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#linux上安装软件"><span class="nav-number">17.</span> <span class="nav-text">linux上安装软件</span></a></li></ol></div>
             
 
           </div>
