@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="变量使用推荐加花括号，如${name}，但定义变量时，变量名不加美元符号！  字符串可以用单引号，双引号，也可以不用引号  语句中一般不包含分号，空格/tab，以及冒号的标点符号；只在特殊条件下使用。  分号：只有在代码块都写在一行的时候用分号区分，注意then后面和结束不用分号如if [ “$PS1” ]; then echo test is ok; fi   冒号：主要用于参数扩展。如ech">
+<meta name="description" content="shell执行   若想让代码影响当前shell比如路径，可使用.  或者source执行  bg 后台 ，fg 前台 例如：执行 vi /etc/hosts可以通过ctrl+Z暂停退出，在shell窗口通过fg再返回来  cat &amp;lt; /etc/hosts 同 cat  /etc/hosts  cat &amp;lt;&amp;lt;EOF 把后面输入的内容给cat作为参数执行  cat   &amp;gt;fi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell命令">
 <meta property="og:url" content="http://yoursite.com/2019/10/23/shell命令总结/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="变量使用推荐加花括号，如${name}，但定义变量时，变量名不加美元符号！  字符串可以用单引号，双引号，也可以不用引号  语句中一般不包含分号，空格/tab，以及冒号的标点符号；只在特殊条件下使用。  分号：只有在代码块都写在一行的时候用分号区分，注意then后面和结束不用分号如if [ “$PS1” ]; then echo test is ok; fi   冒号：主要用于参数扩展。如ech">
+<meta property="og:description" content="shell执行   若想让代码影响当前shell比如路径，可使用.  或者source执行  bg 后台 ，fg 前台 例如：执行 vi /etc/hosts可以通过ctrl+Z暂停退出，在shell窗口通过fg再返回来  cat &amp;lt; /etc/hosts 同 cat  /etc/hosts  cat &amp;lt;&amp;lt;EOF 把后面输入的内容给cat作为参数执行  cat   &amp;gt;fi">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-31T13:40:24.402Z">
+<meta property="og:updated_time" content="2020-02-04T13:03:52.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell命令">
-<meta name="twitter:description" content="变量使用推荐加花括号，如${name}，但定义变量时，变量名不加美元符号！  字符串可以用单引号，双引号，也可以不用引号  语句中一般不包含分号，空格/tab，以及冒号的标点符号；只在特殊条件下使用。  分号：只有在代码块都写在一行的时候用分号区分，注意then后面和结束不用分号如if [ “$PS1” ]; then echo test is ok; fi   冒号：主要用于参数扩展。如ech">
+<meta name="twitter:description" content="shell执行   若想让代码影响当前shell比如路径，可使用.  或者source执行  bg 后台 ，fg 前台 例如：执行 vi /etc/hosts可以通过ctrl+Z暂停退出，在shell窗口通过fg再返回来  cat &amp;lt; /etc/hosts 同 cat  /etc/hosts  cat &amp;lt;&amp;lt;EOF 把后面输入的内容给cat作为参数执行  cat   &amp;gt;fi">
 
 
 
@@ -332,6 +332,39 @@
 
       
         <ul>
+<li><p>shell执行</p>
+<p>  若想让代码影响当前shell比如路径，可使用.  或者source执行</p>
+</li>
+<li><p>bg 后台 ，fg 前台</p>
+<p>例如：执行 vi /etc/hosts可以通过ctrl+Z暂停退出，在shell窗口通过fg再返回来</p>
+</li>
+<li><p>cat &lt; /etc/hosts 同 cat  /etc/hosts</p>
+</li>
+<li><p>cat &lt;&lt;EOF 把后面输入的内容给cat作为参数执行</p>
+</li>
+<li><p>cat   &gt;file  &lt;&lt;EOF 将后面输入的内容重定向到file文件中</p>
+</li>
+<li><p>命令行排序 ；&amp; ||</p>
+<pre><code>;  无论怎样每条都执行  
+&amp;  上一条为真下条才执行  
+||  上条为假下一条才执行  </code></pre></li>
+</ul>
+<ul>
+<li><p>元字符</p>
+<pre><code>*   任意字符
+?  单个任意字符
+[] 子shell ，不会影响主shell
+[^abcd]这里^是非的意思，但是外面不支持，不同与正则。正则[]里面同此，外面使用是以什么开头的意思
+{} 集合</code></pre></li>
+</ul>
+<h4 id="shell-语法"><a href="#shell-语法" class="headerlink" title="shell 语法"></a>shell 语法</h4><ul>
+<li><p>shell中调用Python程序<br>使用相同的标识符比如EOF，其中-为了格式考虑</p>
+<pre><code>#!/usr/bin/bash
+echo &quot;hello shell&quot;
+
+/usr/bin/python &lt;&lt;-EOF
+print(&quot;hello python&quot;)
+EOF</code></pre></li>
 <li><p>变量使用推荐加花括号，如${name}，但定义变量时，变量名不加美元符号！</p>
 </li>
 <li><p>字符串可以用单引号，双引号，也可以不用引号</p>
@@ -485,8 +518,17 @@ done</code></pre></li>
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -537,6 +579,22 @@ done</code></pre></li>
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#shell-语法"><span class="nav-number">1.</span> <span class="nav-text">shell 语法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

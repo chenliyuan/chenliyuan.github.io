@@ -1420,6 +1420,39 @@ HEAD：类似GET，只是返回内容里只有报头</code></pre><h5 id="状态�
         
           
             <ul>
+<li><p>shell执行</p>
+<p>  若想让代码影响当前shell比如路径，可使用.  或者source执行</p>
+</li>
+<li><p>bg 后台 ，fg 前台</p>
+<p>例如：执行 vi /etc/hosts可以通过ctrl+Z暂停退出，在shell窗口通过fg再返回来</p>
+</li>
+<li><p>cat &lt; /etc/hosts 同 cat  /etc/hosts</p>
+</li>
+<li><p>cat &lt;&lt;EOF 把后面输入的内容给cat作为参数执行</p>
+</li>
+<li><p>cat   &gt;file  &lt;&lt;EOF 将后面输入的内容重定向到file文件中</p>
+</li>
+<li><p>命令行排序 ；&amp; ||</p>
+<pre><code>;  无论怎样每条都执行  
+&amp;  上一条为真下条才执行  
+||  上条为假下一条才执行  </code></pre></li>
+</ul>
+<ul>
+<li><p>元字符</p>
+<pre><code>*   任意字符
+?  单个任意字符
+[] 子shell ，不会影响主shell
+[^abcd]这里^是非的意思，但是外面不支持，不同与正则。正则[]里面同此，外面使用是以什么开头的意思
+{} 集合</code></pre></li>
+</ul>
+<h4 id="shell-语法"><a href="#shell-语法" class="headerlink" title="shell 语法"></a>shell 语法</h4><ul>
+<li><p>shell中调用Python程序<br>使用相同的标识符比如EOF，其中-为了格式考虑</p>
+<pre><code>#!/usr/bin/bash
+echo &quot;hello shell&quot;
+
+/usr/bin/python &lt;&lt;-EOF
+print(&quot;hello python&quot;)
+EOF</code></pre></li>
 <li><p>变量使用推荐加花括号，如${name}，但定义变量时，变量名不加美元符号！</p>
 </li>
 <li><p>字符串可以用单引号，双引号，也可以不用引号</p>
