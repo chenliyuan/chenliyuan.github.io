@@ -261,6 +261,259 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/16/jmeter实践笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/16/jmeter实践笔记/" itemprop="url">jmeter实践笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T14:10:29+08:00">
+                2019-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><p>安装参考：<a href="https://blog.csdn.net/lovesoo/article/details/78579547" target="_blank" rel="noopener">https://blog.csdn.net/lovesoo/article/details/78579547</a></p>
+<p>线程数：可以理解为并发数，在jmeter中一个线程代表一个用户。</p>
+<p>Ramp-Up Period (in seconds): 多长时间内初始化完这些线程。单位是秒。我这里设置的是10秒启动100个也就是1秒启动10。</p>
+<p>循环次数：如果你要限定循环次数为10次的话，就取消永远前面的那个勾，然后在后面的文本框里面填写10；在这里我们勾上永远，表示如果不停止或者限定时间将会一直执行下去， 是为了方便调度器的调用。一般勾选永远后要在调度器里填写持续时间。</p>
+<p>对于结果和图表，原生三个元件常用：聚合报告、图表结果、响应时间图</p>
+<h4 id="2-插件使用"><a href="#2-插件使用" class="headerlink" title="2.插件使用"></a>2.插件使用</h4><p>第一步：下载jmeter-plugins，<a href="https://jmeter-plugins.org/install/Install/，安装提示将jar包放在jmeter安装目录lib/ext下" target="_blank" rel="noopener">https://jmeter-plugins.org/install/Install/，安装提示将jar包放在jmeter安装目录lib/ext下</a>  </p>
+<p>第二步：jmeter中option-jmeter plugins Manager-Available Plugins-jdbc Standard Set,点击右下角的Apply Changes and Restart JMeter</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/Django项目实践-Crypto库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/07/Django项目实践-Crypto库/" itemprop="url">Crypto模块</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-07T17:12:39+08:00">
+                2019-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>背景：<br>    由于公司接口有加密解密，自定义接口脚本需要调取Crypto模块，之前用的是php调用python脚本实现的结构体，过于繁琐，打算搭建Django框架实现</p>
+<h2 id="问题一："><a href="#问题一：" class="headerlink" title="问题一："></a>问题一：</h2><p>但是搭建后发现调用Crypto模块经常会报错，主要报错是：<br>from Crypto.Cipher import _AES<br>ImportError: DLL load failed: 找不到指定的模块。<br>这个问题困扰了我很久，原来代码目录<br><img src="https://img-blog.csdnimg.cn/201903111457336.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述
+"></p>
+<p>1、一直认为引用这个模块使用的是目录调用，然后验证路径调用是否正确，怎么验证也没发现什么毛病<br>2、文件里引用当前目录的_AES,最开始以为是AES.py文件本身（单下划线私有变量）；后来知道.pyd文件实际上就是个库文件（DLL），才转移到是引用的_ASE.pyd，但是也没有找出找不到它的理由<br><img src="https://img-blog.csdnimg.cn/20190311150008620.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>解决：<br>后来尝试在原来PHP框架里删除该引用文件，发现依旧可用，于是明确一点：该实现并不依赖该路径，而是与系统安装的pycrypto路径文件有关，但是wondows本地一直有问题，于是直接从当前正在使用PHP linux服务器上调试。做法：删除本地目录（直接用系统的，经之前项目验证系统的没问题，可以用），然后启动Django服务就不报错了，后来又调试了下报错都是些其他的问题了，困扰我两周的问题终于终于落幕了，可以收下心做正事了~~</p>
+<h2 id="问题2："><a href="#问题2：" class="headerlink" title="问题2："></a>问题2：</h2><p>虽然在linux上的这个问题莫名其妙的解决了，但是在台式机win7（py3.7）系统上还是有问题，使用django框架吊起来没有问题，但是直接执行python脚本还是会报一样的错误。忍了一段时间后终于忍不下去了。<br>最开始听人说在linux环境可行，于是在windows下打开git bash确实可行，但是还是会报其他的错，可能是因为版本换了，因为他走的是Anaconda里面的插件，后来干脆还是修复本地的吧<br>1、卸载本地的pycrypto<br>卸载失败提示:Cannot uninstall ‘’. It is a distutils installed project and thus we cannot accurately.<br>解决：直接全局搜索对应文件，具体包括 “package name” 文件夹 和 “package name”.egg-info ，找到后直接删除即可<br>2、重新安装pip install pycrypto<br>直接安装报错，使用源码安装？一样报错<br>error: command ‘C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\<br>x86_amd64\cl.exe’ failed with exit status 2<br>解决：从网上找的经验<br>1）添加VC环境变量，设置用户环境变量，这里划重点！！！是用户环境变量，不是系统环境变量<br>变量名：VCINSTALLDIR<br>（变量值为vs安装路径下的VC，默认是这个）<br>变量值：C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC<br> win+R运行cmd，执行命令set CL=/FI”%VCINSTALLDIR%\INCLUDE\stdint.h” %CL% </p>
+<p>2）安装twisted <a href="https://blog.csdn.net/jiangyunsheng147/article/details/80449556" target="_blank" rel="noopener">https://blog.csdn.net/jiangyunsheng147/article/details/80449556</a></p>
+<p>还会报错warning: GMP or MPIR library not found; Not building Crypto.PublicKey._fastmath.<br>building ‘Crypto.Random.OSRNG.winrandom’ extension<br>error: Unable to find vcvarsall.bat</p>
+<p>3）降低版本3.7–&gt;3.6<br>还是报楼上错误，最后看到有pycrypto-2.6.1.win-amd64-py3.4.exe可行，但是需要3.4.于是降到3.4，刚开始用的exe事32位的不行，后来下了64的果然可以了，搞了一天的环境终于在最后搞定了，也不辜负这一天的工时。<br>插曲：在降低版本的时候，出现了明明已经降到3.4，但是python -V的时候一直仍然显示3.7，后来又是删注册表，又是卸载程序的，我怀疑跟我安装的Anaconda有关系。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/Docker/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1390,290 +1643,6 @@ qps，如果是对一个页面请求一次，形成一个tps，但一次页面�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/22/python3升级后不支持的2文件的操作/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/22/python3升级后不支持的2文件的操作/" itemprop="url">python3升级后不支持的2.x文件的操作</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-22T15:17:41+08:00">
-                2019-08-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><h5 id="range"><a href="#range" class="headerlink" title="range()"></a>range()</h5>Python3 range()函数返回的是一个<strong>可迭代对象（类型是对象）</strong>，而不是列表类型， 所以打印的时候不会打印列表。</li>
-</ul>
-<ul>
-<li><h5 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h5></li>
-</ul>
-<p><strong>python 3.3.2报错：No module named ‘urllib2’ 解决方法</strong><br>在python3.3里面，用urllib.request代替urllib2<br> <strong>ImportError: No module named ‘ConfigParser</strong><br>from configparser import  ConfigParser#引用文件全部变成小写<br><strong>AttributeError: module ‘urllib’ has no attribute ‘quote’</strong><br>urllib.quote改成urllib.request.quote<br><strong>POST data should be bytes or an iterable of bytes. It cannot be of type str.</strong><br>  最后通过交流发现需要加在urlencode语句后加encode(encoding=’UTF8’)<br>同时，在输出时，再使用decode(“utf-8”)进行解码，往往更加能够取的理想的效果。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> 1 from urllib import request</span><br><span class="line"> 2 from urllib import parse</span><br><span class="line"> 3 </span><br><span class="line"> 4 url = &quot;https://movie.douban.com/j/chart/top_list?type=11&amp;interval_id=100%3A90&amp;action=&quot;</span><br><span class="line"> 5 headers = &#123;&quot;User-Agent&quot;:&quot;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36&quot;&#125;</span><br><span class="line"> 6 formdata = &#123;</span><br><span class="line"> 7     &apos;start&apos;: &apos;0&apos;,</span><br><span class="line"> 8     &apos;limit&apos;: &apos;10&apos;</span><br><span class="line"> 9 &#125;</span><br><span class="line">10 </span><br><span class="line">11 data = parse.urlencode(formdata).encode(encoding=&quot;utf-8&quot;)</span><br><span class="line">12 req = request.Request(url=url,headers=headers)</span><br><span class="line">13 response = request.urlopen(req)</span><br><span class="line">14 print(response.read().decode(&quot;utf-8&quot;))</span><br></pre></td></tr></table></figure>
-
-<p><strong>TypeError: Can‘t convert ‘bytes‘ object to str implicitly</strong><br>解决方法：使用字节码的decode()方法。</p>
-<p>示例：</p>
-<pre><code>str = ‘I am string‘
-byte = b‘ I am bytes‘
-s = str + byte
-print(s)</code></pre><p>　　这时会报错：TypeError: Can‘t convert ‘bytes‘ object to str implicitly</p>
-<p>解决方法：</p>
-<pre><code>s = str + byte.decode()</code></pre><p><strong>python reload(sys)找不到，name ‘reload’ is not defined</strong><br>在3.x中已经被毙掉了被替换为</p>
-<pre><code>import importlib
-importlib.reload(sys)
- sys.setdefaultencoding(“utf-8”) 这种方式在3.x中被彻底遗</code></pre><p> <strong>关于 urllib.request.urlopen()的错误</strong><br> 这种错不常见，主要是由于我的文件名称含有http.py，这里应该是关键字敏感导致的错误。删除这个文件的子文件和修改文件名后就可以正常运行了！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/Python3内置函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/18/Python3内置函数/" itemprop="url">Python3内置函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-18T19:25:14+08:00">
-                2019-07-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-内建模块collections"><a href="#1-内建模块collections" class="headerlink" title="1. 内建模块collections"></a>1. 内建模块collections</h3><p><strong>collections.Counter</strong>计数器，计算列表中每项出现的次数，并返回<strong>字典类型</strong>，其中元素作为key，其计数作为value。</p>
-<p><img src="https://img-blog.csdnimg.cn/20190326145102507.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>当所访问的键不存在时，返回0，而不是KeyError；否则返回它的计数。</p>
-<p><img src="https://img-blog.csdnimg.cn/20190526121803806.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h3 id="2-sort-与-sorted-区别："><a href="#2-sort-与-sorted-区别：" class="headerlink" title="2. sort 与 sorted 区别："></a>2. sort 与 sorted 区别：</h3><ul>
-<li><p>sort 是应用在 list 上的<strong>方法</strong>。  
-sorted 是<strong>函数</strong>，可以对所有可迭代的对象（比如字典）进行排序操作。</p>
-<p><strong>sorted 语法：</strong><br>sorted(iterable, key=None, reverse=False)<br>如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array = [&#123;&quot;age&quot;:20,&quot;name&quot;:&quot;a&quot;&#125;,&#123;&quot;age&quot;:25,&quot;name&quot;:&quot;b&quot;&#125;,&#123;&quot;age&quot;:10,&quot;name&quot;:&quot;c&quot;&#125;]</span><br><span class="line">array = sorted(array,key=lambda x:-x[&quot;age&quot;])</span><br><span class="line">#其中负号表示降序（默认升序），与reverse=True相同</span><br></pre></td></tr></table></figure>
-
-<p>以上是使用关键词对元组进行的排序，lambda是隐函数固定格式；x标识列表中的一个元素，在这里标识一个元组，x可以任意起名。<br>也可以对<strong>set集合</strong>进行排序，返回列表类型。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;sorted(&#123;&apos;mm&apos;,&apos;dd&apos;,&apos;aa&apos;&#125;)</span><br><span class="line">&gt;&gt;&gt;[&apos;aa&apos;, &apos;dd&apos;, &apos;mm&apos;]</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li>list 的 sort 方法返回的是对已经存在的列表进行操作；<br>而内建函数 sorted 方法返回的是一个新的 list，而不是在原来的基础上进行的操作。</li>
-</ul>
-<h3 id="3-zip-和zip"><a href="#3-zip-和zip" class="headerlink" title="3. zip()和zip(*)"></a>3. zip()和zip(*)</h3><p>zip() 函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。<br>zip 方法在 Python 2 和 Python 3 中的不同：在 Python 2.x zip() 返回的是一个列表。在3.x中返回的是一个对象，需要使用list将其转换为列表。<br>zip(*) 可理解为解压，返回二维矩阵式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a = [1,2,3]</span><br><span class="line">&gt;&gt;&gt; b = [4,5,6]</span><br><span class="line">&gt;&gt;&gt; c = [4,5,6,7,8]</span><br><span class="line">&gt;&gt;&gt; zipped = zip(a,b)     # 返回一个对象</span><br><span class="line">&gt;&gt;&gt; zipped</span><br><span class="line">&lt;zip object at 0x103abc288&gt;</span><br><span class="line">&gt;&gt;&gt; list(zipped)  # list() 转换为列表</span><br><span class="line">[(1, 4), (2, 5), (3, 6)]</span><br><span class="line">&gt;&gt;&gt; list(zip(a,c))              # 元素个数与最短的列表一致</span><br><span class="line">[(1, 4), (2, 5), (3, 6)]</span><br><span class="line"> </span><br><span class="line">&gt;&gt;&gt; a1, a2 = zip(*zip(a,b)) # 与 zip 相反，zip(*) 可理解为解压，返回二维矩阵式</span><br><span class="line">&gt;&gt;&gt; list(a1)</span><br><span class="line">[1, 2, 3]</span><br><span class="line">&gt;&gt;&gt; list(a2)</span><br><span class="line">[4, 5, 6]</span><br></pre></td></tr></table></figure>
-
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
-<li>数值的除法包含两个运算符：/ 返回一个浮点数，// 返回一个整数。</li>
-<li>列表中元素是元组，可以这样遍历<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  list=[(1,3),(2,4)]</span><br><span class="line">  for i ,j in list:</span><br><span class="line">      print (&quot;first:&quot;,i)</span><br><span class="line">      print(&quot;second&quot;,j)</span><br><span class="line">结果：</span><br><span class="line">first: 1</span><br><span class="line">second 3</span><br><span class="line">first: 2</span><br><span class="line">second 4</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1724,7 +1693,7 @@ sorted 是<strong>函数</strong>，可以对所有可迭代的对象（比如�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

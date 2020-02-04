@@ -261,6 +261,301 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/awk知识点汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/22/awk知识点汇总/" itemprop="url">awk知识点汇总</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-22T15:23:35+08:00">
+                2018-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>参考原文：<a href="https://blog.csdn.net/liang5603/article/details/80855426" target="_blank" rel="noopener">https://blog.csdn.net/liang5603/article/details/80855426</a></p>
+<p>grep sed awk 被称为linux中的“三剑客”<br>grep更适合单纯的查找或匹配文本<br>sed更适合编辑匹配到的文本<br>awk更适合格式化文本，对文本进行较复杂格式处理</p>
+<ul>
+<li><p>*<em>awk语法： awk [options]  ‘pattern{Action}’ file  *</em>  </p>
+</li>
+<li><h5 id="【action】"><a href="#【action】" class="headerlink" title="【action】"></a>【action】</h5><ul>
+<li>awk最常用的动作(action)就是print和printf   </li>
+</ul>
+<ul>
+<li><p>awk是<strong>逐行</strong>处理的，处理完一行再处理下一行，默认以“换行符”为标记，识别每一行。   </p>
+</li>
+<li><p>awk<strong>默认使用空格作为分隔符</strong>去分割当前行。分割完的第一个字段为$1（不是$0，$0表示所有行）,以此类推。   </p>
+</li>
+<li><p>$NF表示表示分割后的最后一列,NF和$NF不一样，NF表示每行被分割的数量。（NR - Number of Record）</p>
+</li>
+<li><p><strong>输出多列(多个参数值)</strong>。使用逗号隔开awk  ‘{print $1,$2,$3}’：结果以空格分开，但是不加逗号会连接在一起输出</p>
+</li>
+<li><p><strong>awk可用于拼接</strong>。被拼接字符串用双引号括起来 如：awk’{print “column1:”$1,”column2:”$2}’,注意$1这种内置变了不能使用双引号，否则被当做普通文本输出。</p>
+</li>
+<li><p><strong>输出所有行</strong>：awk’{print $0}’ 等价于 awk ‘{print}’</p>
+</li>
+<li><p><strong>awk变量</strong>: 分为<strong>内置变量</strong>和自定义变量</p>
+</li>
+<li><p><strong>过滤操作</strong> ：结合运算符在action中判断如awk ‘$1&gt;20’ log.txt 输出第一列值大于2的记录</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><h5 id="【options】"><a href="#【options】" class="headerlink" title="【options】"></a>【options】</h5><ul>
+<li><p>BEGIN，END；在处理文本之前/后执行的操作，eg：</p>
+<p>$ awk ‘<strong>BEGIN</strong>{print “wolaiceshibegin..”} {print $1,$2}’ awktest.txt<br>$ awk ‘{print $1,$2}<strong>END</strong>{print “test ending”}’ awktest.txt</p>
+</li>
+</ul>
+<ul>
+<li><p>-F指定分隔符   -v 设置变量的值</p>
+<ul>
+<li><p><strong>设置输入分隔符</strong>（列以什么分隔符为准split）：<br>awk -F或者awk -v -FS<br>如    awk -F# ‘{print $1,$2}’   test.txt<br>相当于 awk -v FS=’#’ ‘{print $1,$2}’ test.txt</p>
+</li>
+<li><p><strong>设置输出分隔符</strong>（输出列以什么分隔符join）：<br>awk -v OFS<br>如 awk -v FS=”#” -v OFS=’—‘’{print $1,$2}’ test.txt (输入和输出一起用，OFS output field seperator)</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>  如NR代表行号，NF代表每行被分列数：</p>
+<blockquote>
+<p>细心如你一定注意到了一个细节，就是在打印 $0 , $1, $2 这些内置变量的时候，都有使用到”$”符号，但是在调用 NR , NF 这些内置变量的时候，就没有使用”$”，如果你有点不习惯，那么可能是因为你已经习惯了使用bash的语法去使用变量，在bash中，我们在引用变量时，都会使用$符进行引用，但是在awk中，只有在引用$0、$1等内置变量的值的时候才会用到”$”,引用其他变量时，不管是内置变量，还是自定义变量，都不使用”$”,而是直接使用变量名。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/12/常用的web服务器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/12/常用的web服务器/" itemprop="url">常用的web服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-12T19:45:21+08:00">
+                2018-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>参考：<a href="http://www.coozhi.com/youxishuma/g4/63698.html" target="_blank" rel="noopener">http://www.coozhi.com/youxishuma/g4/63698.html</a></p>
+<ol>
+<li>Apache<br>也被叫做httpd服务器，是目前使用<strong>最广泛的</strong>web服务器。<br>优点：小巧，灵活，可扩展，稳定<br>缺点：软件开源，漏洞易被发现</li>
+<li>Nginx<br>是<strong>Linux</strong>平台下优秀的web服务器.不仅是HTTP服务器而且也是负载均衡的反向代理。<br>优点：压缩率高，支持负载均衡，<strong>速度快</strong></li>
+<li>IIS<br>IIS是微软平台的web服务器，是针对windows平台的服务器。和NET非常搭配<br>优点：安装配置简单，学起来容易<br>缺点：平台适用性单一，安全性有待提高</li>
+<li>Tomcat<br>免费，深受java开发者喜爱。<br>优点：简单易掌握，部署容易，应用广泛<br>缺点：扩展性不强，可配置性弱，大并发能力不强</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/python语法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1084,7 +1379,7 @@ make install</code></pre><ul>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

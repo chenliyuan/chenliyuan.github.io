@@ -261,6 +261,285 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/08/tensorflow环境安装实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/08/tensorflow环境安装实践/" itemprop="url">tensorflow环境安装实践</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T20:27:00+08:00">
+                2019-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>环境选择：<br>python2.7、mac<br>原因：<br>1、有个县城的项目是基于python2写的，希望可以运行。<br>2、参考此网站说明支持2.7，未提及3.x(可能还没更新)</p>
+<h5 id="弯路1："><a href="#弯路1：" class="headerlink" title="弯路1："></a>弯路1：</h5><p>参考tf中文社区下载和安装步骤：<a href="http://www.tensorfly.cn/tfdoc/get_started/os_setup.html" target="_blank" rel="noopener">http://www.tensorfly.cn/tfdoc/get_started/os_setup.html</a><br>一共提供了四种方式，最后选择了从源码安装</p>
+<ul>
+<li>二进制安装</li>
+<li>基于 Docker 的安装：<br> <em>之前试了很久也没成功过，再加上没找到python2.7的镜像</em></li>
+<li>基于 VirtualEnv 的安装</li>
+<li>从源码安装<br>安装 Bazel、SWIG（依赖PCRE）、Numpy，然后安装，最后一步失败了。</li>
+</ul>
+<p><img src="/images/pasted-0.png" alt="upload successful"></p>
+<h4 id="弯路2："><a href="#弯路2：" class="headerlink" title="弯路2："></a>弯路2：</h4><p>探索使用二进制安装中提供的这个命令直接使用（是virtualenv 中的）：<br>$ pip install <a href="https://storage.googleapis.com/tensorflow/mac/tensorflow-0.5.0-py2-none-any.whl" target="_blank" rel="noopener">https://storage.googleapis.com/tensorflow/mac/tensorflow-0.5.0-py2-none-any.whl</a><br>结果果然不行</p>
+<p><img src="/images/pasted-1.png" alt="upload successful"></p>
+<h3 id="成功案例"><a href="#成功案例" class="headerlink" title="成功案例"></a>成功案例</h3><p>于是更改方案，找tf官网：<a href="https://tensorflow.google.cn/" target="_blank" rel="noopener">https://tensorflow.google.cn/</a></p>
+<p>选择pip安装方式</p>
+<ol>
+<li>在系统上安装 Python 开发环境</li>
+<li>创建虚拟环境（推荐</li>
+<li>安装 TensorFlow pip 软件包</li>
+</ol>
+<p>选的是3中按系统安装：<br> pip install –user –upgrade tensorflow  </p>
+<p> 但是无论怎样，都提示pip版本有问题</p>
+<p><img src="/images/pasted-2.png" alt="upload successful"></p>
+<p>于是安装pip：<br>直接按照提示升级安装？结果不行<br>pip install pip? 还是不行<br>下载源码安装？OK，安装日志大概20页。。<br><img src="/images/pasted-3.png" alt="upload successful"></p>
+<p>然后再次安装tensorflow，第一次超时，第二次成功了（很慢，需要耐心等待）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/08/python版本升级/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/08/python版本升级/" itemprop="url">python版本升级和卸载</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-08T18:06:30+08:00">
+                2019-06-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Linux安装python2.7、pip和setuptools写的特别详细：<br><a href="https://www.jianshu.com/p/200c9b9dcac8" target="_blank" rel="noopener">https://www.jianshu.com/p/200c9b9dcac8</a></p>
+<p> 由python2.7升级至python3.x<br> linux:<br> <a href="https://blog.csdn.net/qq_37342157/article/details/81244667" target="_blank" rel="noopener">https://blog.csdn.net/qq_37342157/article/details/81244667</a><br> mac:<br><a href="https://www.cnblogs.com/cynthia-wuqian/p/9303514.html" target="_blank" rel="noopener">https://www.cnblogs.com/cynthia-wuqian/p/9303514.html</a></p>
+<p>卸载python3 for mac:<br><a href="https://www.jianshu.com/p/98383a7688a5" target="_blank" rel="noopener">https://www.jianshu.com/p/98383a7688a5</a></p>
+<ol>
+<li>经验：【软连接】</li>
+</ol>
+<p><strong>ln -s建立软链接；不带-s建立的是硬链接<br>建立软连接：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@tv6-hotelqa-newhotel-17 bin]# ln -s /usr/local/python2.7/bin/pip2  /usr/bin/pip</span><br></pre></td></tr></table></figure>
+
+<p>建立后效果：<br>相当于windows的快捷方式，搜索pip的时候相当于直接访问的对应的软链接pip2</p>
+<p>==<strong>ln   -s    跳转的目录     快捷键</strong>==<br><img src="https://img-blog.csdnimg.cn/20181227184924613.png" alt="在这里插入图片描述"><br><strong>删除软连接：</strong><br><img src="https://img-blog.csdnimg.cn/20181227185207357.png" alt="在这里插入图片描述"><br>==切记：后面不要加“/”==，尽管知道这个点，但是手一抖删除了其对应软件的所有内容，不长教训不长记性啊</p>
+<p><strong>取消链接</strong></p>
+<pre><code>[root@tv6-hotelqa-newhotel-17 bin]# unlink python</code></pre><ol start="2">
+<li>升级带来的版本问题</li>
+</ol>
+<p>==<em>由python2升级至python3.X,但是python -V(或–version)总还是2.7版本，改了/usr/bin下的python软连各种，都不行（搞了好几个小时，眼快瞎了）</em>==<br><img src="https://img-blog.csdnimg.cn/2019022815140256.png" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/2019022816031164.png" alt="在这里插入图片描述"><br>试着更改环境变量：<br>echo $PATH查看环境变量<br>/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:/root/bin<br>vi /etc/profile   source  /etc/profile 更改环境变量</p>
+<h4 id="Finally："><a href="#Finally：" class="headerlink" title="Finally："></a>Finally：</h4><p>觉悟到是不是在别的路径，于是在环境变量中的usr/local/bin中找到了有个同名的python，原来指向的就是2.7.于是删除此软链，果然提示在该目录（即usr/local/bin）目录找不到python,这下狐狸尾巴露出来了吧~~ 于是添加指向到python3的软链，测试终于OK了，功夫不负苦心人到底！<br><img src="https://img-blog.csdnimg.cn/20190228162706440.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/html css js学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1850,301 +2129,6 @@ SyntaxError: invalid syntax</code></li>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/awk知识点汇总/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/22/awk知识点汇总/" itemprop="url">awk知识点汇总</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-22T15:23:35+08:00">
-                2018-08-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>参考原文：<a href="https://blog.csdn.net/liang5603/article/details/80855426" target="_blank" rel="noopener">https://blog.csdn.net/liang5603/article/details/80855426</a></p>
-<p>grep sed awk 被称为linux中的“三剑客”<br>grep更适合单纯的查找或匹配文本<br>sed更适合编辑匹配到的文本<br>awk更适合格式化文本，对文本进行较复杂格式处理</p>
-<ul>
-<li><p>*<em>awk语法： awk [options]  ‘pattern{Action}’ file  *</em>  </p>
-</li>
-<li><h5 id="【action】"><a href="#【action】" class="headerlink" title="【action】"></a>【action】</h5><ul>
-<li>awk最常用的动作(action)就是print和printf   </li>
-</ul>
-<ul>
-<li><p>awk是<strong>逐行</strong>处理的，处理完一行再处理下一行，默认以“换行符”为标记，识别每一行。   </p>
-</li>
-<li><p>awk<strong>默认使用空格作为分隔符</strong>去分割当前行。分割完的第一个字段为$1（不是$0，$0表示所有行）,以此类推。   </p>
-</li>
-<li><p>$NF表示表示分割后的最后一列,NF和$NF不一样，NF表示每行被分割的数量。（NR - Number of Record）</p>
-</li>
-<li><p><strong>输出多列(多个参数值)</strong>。使用逗号隔开awk  ‘{print $1,$2,$3}’：结果以空格分开，但是不加逗号会连接在一起输出</p>
-</li>
-<li><p><strong>awk可用于拼接</strong>。被拼接字符串用双引号括起来 如：awk’{print “column1:”$1,”column2:”$2}’,注意$1这种内置变了不能使用双引号，否则被当做普通文本输出。</p>
-</li>
-<li><p><strong>输出所有行</strong>：awk’{print $0}’ 等价于 awk ‘{print}’</p>
-</li>
-<li><p><strong>awk变量</strong>: 分为<strong>内置变量</strong>和自定义变量</p>
-</li>
-<li><p><strong>过滤操作</strong> ：结合运算符在action中判断如awk ‘$1&gt;20’ log.txt 输出第一列值大于2的记录</p>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><h5 id="【options】"><a href="#【options】" class="headerlink" title="【options】"></a>【options】</h5><ul>
-<li><p>BEGIN，END；在处理文本之前/后执行的操作，eg：</p>
-<p>$ awk ‘<strong>BEGIN</strong>{print “wolaiceshibegin..”} {print $1,$2}’ awktest.txt<br>$ awk ‘{print $1,$2}<strong>END</strong>{print “test ending”}’ awktest.txt</p>
-</li>
-</ul>
-<ul>
-<li><p>-F指定分隔符   -v 设置变量的值</p>
-<ul>
-<li><p><strong>设置输入分隔符</strong>（列以什么分隔符为准split）：<br>awk -F或者awk -v -FS<br>如    awk -F# ‘{print $1,$2}’   test.txt<br>相当于 awk -v FS=’#’ ‘{print $1,$2}’ test.txt</p>
-</li>
-<li><p><strong>设置输出分隔符</strong>（输出列以什么分隔符join）：<br>awk -v OFS<br>如 awk -v FS=”#” -v OFS=’—‘’{print $1,$2}’ test.txt (输入和输出一起用，OFS output field seperator)</p>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>  如NR代表行号，NF代表每行被分列数：</p>
-<blockquote>
-<p>细心如你一定注意到了一个细节，就是在打印 $0 , $1, $2 这些内置变量的时候，都有使用到”$”符号，但是在调用 NR , NF 这些内置变量的时候，就没有使用”$”，如果你有点不习惯，那么可能是因为你已经习惯了使用bash的语法去使用变量，在bash中，我们在引用变量时，都会使用$符进行引用，但是在awk中，只有在引用$0、$1等内置变量的值的时候才会用到”$”,引用其他变量时，不管是内置变量，还是自定义变量，都不使用”$”,而是直接使用变量名。</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/12/常用的web服务器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/12/常用的web服务器/" itemprop="url">常用的web服务器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-12T19:45:21+08:00">
-                2018-08-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>参考：<a href="http://www.coozhi.com/youxishuma/g4/63698.html" target="_blank" rel="noopener">http://www.coozhi.com/youxishuma/g4/63698.html</a></p>
-<ol>
-<li>Apache<br>也被叫做httpd服务器，是目前使用<strong>最广泛的</strong>web服务器。<br>优点：小巧，灵活，可扩展，稳定<br>缺点：软件开源，漏洞易被发现</li>
-<li>Nginx<br>是<strong>Linux</strong>平台下优秀的web服务器.不仅是HTTP服务器而且也是负载均衡的反向代理。<br>优点：压缩率高，支持负载均衡，<strong>速度快</strong></li>
-<li>IIS<br>IIS是微软平台的web服务器，是针对windows平台的服务器。和NET非常搭配<br>优点：安装配置简单，学起来容易<br>缺点：平台适用性单一，安全性有待提高</li>
-<li>Tomcat<br>免费，深受java开发者喜爱。<br>优点：简单易掌握，部署容易，应用广泛<br>缺点：扩展性不强，可配置性弱，大并发能力不强</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2195,7 +2179,7 @@ SyntaxError: invalid syntax</code></li>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

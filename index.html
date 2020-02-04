@@ -261,6 +261,415 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/03/Go语言/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/03/Go语言/" itemprop="url">Go语言</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-03T19:56:22+08:00">
+                2020-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h4><p>官网下载atom，并安装go-plus插件</p>
+<h4 id="运行程序"><a href="#运行程序" class="headerlink" title="运行程序"></a>运行程序</h4><pre><code>go run hello.go
+或者
+$ go build hello.go 
+$ ls
+hello    hello.go
+$ ./hello</code></pre><h4 id="特点-与其他语言差别"><a href="#特点-与其他语言差别" class="headerlink" title="特点:与其他语言差别"></a>特点:与其他语言差别</h4><ul>
+<li><p>应用程序入口</p>
+<ol>
+<li>必须是 main 包：package main</li>
+<li>必须是 main ⽅法：func main()</li>
+<li>⽂件名不⼀定是 main.go</li>
+</ol>
+</li>
+<li><p>Go 中 main 函数不⽀持任何返回值<br>通过 os.Exit 来返回状态</p>
+</li>
+<li><p>main 函数不⽀持传⼊参数 func main(arg []string) 是错误的<br>在程序中直接通过 os.Args 获取命令⾏参数 </p>
+</li>
+<li><p>编写测试程序</p>
+<ol>
+<li>源码⽂件以 _test 结尾：xxx_test.go</li>
+<li>测试⽅法名以 Test 开头：func TestXXX(t *testing.T){}</li>
+</ol>
+<p>运行测试程序：</p>
+<p>1）Atom-&gt;preferences-&gt;packages<br>搜索找到go-plus<br>在settings中，Test配置中选中 Run with verbose flag setting<br>2）若不好用，可以用修改快捷键绑定keymap.cson文件,先执行保存再使用快捷键运行</p>
+</li>
+<li><p>不支持隐式类型转换，如Int和Int64。别名和原有类型也不能进⾏隐式类型转换</p>
+</li>
+<li><p>不支持指针运算</p>
+</li>
+<li><p>运算符之后后置++和–</p>
+</li>
+<li><p>&amp;^ 运算符：只要后面是1，结果变成0，否则为左边值即不变</p>
+<p>   1 &amp;^ 0 – 1<br>   1 &amp;^ 1 – 0<br>   0 &amp;^ 1 – 0<br>   0 &amp;^ 0 – 0</p>
+</li>
+<li><p>string 是值类型，其默认的初始化值为空字符串，⽽不是 nil</p>
+</li>
+<li><p>Go 语⾔仅⽀持循环关键字 for</p>
+</li>
+<li><p>条件语句</p>
+<ol>
+<li>condition 表达式结果必须为布尔值</li>
+<li>⽀持变量赋值：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if  var declaration;  condition &#123;</span><br><span class="line">    // code to be executed if condition is true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>switch条件</p>
+<ol>
+<li>条件表达式不限制为常量或者整数；</li>
+<li>单个 case 中，可以出现多个结果选项, 使⽤逗号分隔；</li>
+<li>Go 语⾔不需要⽤break来明确退出⼀个 case；</li>
+<li>可以不设定 switch 之后的条件表达式，在此种情况下，整个 switch 结构与多个 if…else… 的逻辑作⽤等同</li>
+</ol>
+</li>
+</ul>
+<h5 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h5><ul>
+<li>数组的声明<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a [3] int //声明并初始化为默认零值</span><br><span class="line">a[0] = 1</span><br><span class="line">b := [3]int&#123;1, 2, 3&#125; //声明同时初始化</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li>数组元素遍历</li>
+</ul>
+<pre><code>func TestTravelArray(t *testing.T) {
+ a := [...]int{1, 2, 3, 4, 5} //不指定元素个数
+ for idx/*索引*/, elem/*元素*/ := range a {
+ fmt.Println(idx, elem)
+ }</code></pre><ul>
+<li><p>数组截取</p>
+<pre><code>a := [...]int{1, 2, 3, 4, 5}
+a[1:2] //2
+a[1:3] //2,3
+a[1:len(a)] //2,3,4,5
+a[1:] //2,3,4,5
+a[:3] //1,2,3</code></pre><p>  负数索引？不支持</p>
+</li>
+</ul>
+<h5 id="Go-语言切片-Slice"><a href="#Go-语言切片-Slice" class="headerlink" title="Go 语言切片(Slice)"></a>Go 语言切片(Slice)</h5><p>Go 语言切片是对数组的抽象。</p>
+<p>Go 数组的长度不可改变，在特定场景中这样的集合就不太适用，Go中提供了一种灵活，功能强悍的内置类型切片(“动态数组”),与数组相比切片的长度是不固定的，可以追加元素，在追加时可能使切片的容量增大。 </p>
+<ul>
+<li><p>初始化同数组，缺少长度 </p>
+</li>
+<li><p>数组可以比较，切片不可比较</p>
+<p>切⽚声明</p>
+<pre><code> var s0 []int
+ s0 = append(s0, 1)
+ s := []int{}
+ s1 := []int{1, 2, 3}
+ s2 := make([]int, 2, 4)  
+make参数/*[]type, len, cap
+其中len个元素会被初始化为默认零值，未初始化元素不可以访问
+*/</code></pre></li>
+<li><p>len() cap()  make()</p>
+<p>append() 和 copy() 函数</p>
+</li>
+</ul>
+<h5 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h5><ul>
+<li><p>Map 声明</p>
+<p>  声明变量，默认 map 是 nil</p>
+<pre><code>var map_variable map[key_data_type]value_data_type</code></pre><p>  使用 make 函数</p>
+<pre><code>map_variable := make(map[key_data_type]value_data_type)</code></pre><p>  举例：</p>
+<pre><code>m := map[string]int{&quot;one&quot;: 1, &quot;two&quot;: 2, &quot;three&quot;: 3}
+m1 := map[string]int{}
+m1[&quot;one&quot;] = 1
+m2 := make(map[string]int, 10 /*Initial Capacity*/)</code></pre></li>
+<li><p>在访问的 Key 不存在时，仍会返回零值，不能通过返回 nil 来判断元素是否存在</p>
+</li>
+<li><p>Mapi遍历</p>
+<pre><code>m := map[string]int{&quot;one&quot;: 1}
+for k, v := range m {
+    t.Log(k, v)
+}</code></pre></li>
+<li><p>Mapi delete()函数</p>
+</li>
+<li><p>Go 的内置集合中没有 Set 实现， 可以 map[type]bool</p>
+</li>
+</ul>
+<h5 id="字符串与字符编码"><a href="#字符串与字符编码" class="headerlink" title="字符串与字符编码"></a>字符串与字符编码</h5><p>字符串是只读不可变的byte slice</p>
+<p>len()函数得出的是byte的长度而未必是字符长度。</p>
+<p>rune()函数:得到unicode编码</p>
+<p>常用的函数包：strings strconv<br>如：split join Atoi  itoA</p>
+<h5 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h5><p>可单独声明，也可以一次声明多个变量：如</p>
+<pre><code>var a string = &quot;Runoob&quot;
+var b, c int = 1, 2</code></pre><ul>
+<li><p>若没有初始化系统默认为0或者False或者”“</p>
+</li>
+<li><p>也可是不指定类型，系统自动识别</p>
+</li>
+<li><p>使用因式分解关键字写法</p>
+<pre><code>var (  // 这种因式分解关键字的写法一般用于声明全局变量
+  a int
+  b bool
+  )</code></pre></li>
+<li><p>也可是省略var,使用:=来声明新变量</p>
+<pre><code>vname1, vname2, vname3 := v1, v2, v3</code></pre></li>
+</ul>
+<h5 id="常量：iota"><a href="#常量：iota" class="headerlink" title="常量：iota"></a>常量：iota</h5><p> iota 在 const关键字出现时将被重置为 0(const 内部的第一行之前)，const 中每<font color="red">新增一行</font>常量声明将使 iota 计数一次</p>
+<pre><code>package main
+import &quot;fmt&quot;
+func main() {
+    const (
+            a = iota   //0
+            b          //1
+            c          //2
+            d = &quot;ha&quot;   //独立值，iota += 1
+            e          //&quot;ha&quot;   iota += 1
+            f = 100    //iota +=1
+            g          //100  iota +=1
+            h = iota   //7,恢复计数
+            i          //8
+    )
+    fmt.Println(a,b,c,d,e,f,g,h,i)
+}</code></pre><h6 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h6><pre><code>t.Logf(&quot;%T&quot;, aP)</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/03/python-GIL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/03/python-GIL/" itemprop="url">Python-GIL&进程线程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-03T18:27:32+08:00">
+                2020-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="GIL-全局解释器锁"><a href="#GIL-全局解释器锁" class="headerlink" title="GIL 全局解释器锁"></a>GIL 全局解释器锁</h5><p>GIL本质就是一把互斥锁，既然是互斥锁，所有互斥锁的本质都一样，都是将并发运行变成串行，以此来控制同一时间内共享数据只能被一个任务所修改，进而保证数据安全。</p>
+<h6 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h6><p>  使用死循环程序while True:pass</p>
+<p>  双核CPU:可用htop实时查看进程占用情况</p>
+<ul>
+<li>单进程单线程执行1个线程   CPU1占满100%</li>
+<li>单进程多线程执行两个线程   各占用50%（加起来是一个核）</li>
+<li>使用多进程执行两个进程   各占满100%（每个进程真正占满一个核）</li>
+</ul>
+<h6 id="结论：python中多线程是假的。只有多进程能实现并发，每个进程占用一个CPU。"><a href="#结论：python中多线程是假的。只有多进程能实现并发，每个进程占用一个CPU。" class="headerlink" title="结论：python中多线程是假的。只有多进程能实现并发，每个进程占用一个CPU。"></a>结论：<font color="red">python中多线程是假的。只有多进程能实现并发</font>，每个进程占用一个CPU。</h6><h6 id="原因：GIL：使得多线程程序一个时刻只能有一个线程在使用。"><a href="#原因：GIL：使得多线程程序一个时刻只能有一个线程在使用。" class="headerlink" title="原因：GIL：使得多线程程序一个时刻只能有一个线程在使用。"></a>原因：<font color="red">GIL</font>：使得多线程程序一个时刻只能有一个线程在使用。</h6><p>为什么python有这个问题？</p>
+<pre><code>实际不是python本身的问题，而是由于其解释器的限制：
+Python默认使用C-python解释器（其他版本比如Java版的python解释器就不会有这个问题,但是这个GIL问题不容易解决所以至今依旧如此）</code></pre><p>所以python可使用多进程来实现多任务并发，替代多线程实现。</p>
+<h5 id="多线程是否要比单线程快？"><a href="#多线程是否要比单线程快？" class="headerlink" title="多线程是否要比单线程快？"></a>多线程是否要比单线程快？</h5><p>回答：是的。因为多线程会在适当的实际执行必要的操作，避免等待造成的时间消耗。增加效率。</p>
+<h5 id="什么时候用进程什么时候用线程？"><a href="#什么时候用进程什么时候用线程？" class="headerlink" title="什么时候用进程什么时候用线程？"></a>什么时候用进程什么时候用线程？</h5><ul>
+<li><p>计算密集型程序：进程（可以发挥多核cpu的作用）</p>
+</li>
+<li><p>io密集型程序：线程、协程（可以充分利用等待时间）</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/02/RT中的chrome设置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1386,317 +1795,9 @@ Pillow==6.2.1</code></pre></li>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + a 跳到行首</span><br><span class="line">Ctrl + e 跳到行尾</span><br><span class="line">Ctrl + l 清屏，相当于执行clear命令</span><br><span class="line">Command + K 清屏</span><br></pre></td></tr></table></figure>
 
 <p>mac下是否显示隐藏文件，可使用shit+cmd+句号来切换</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/jenkins安装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/28/jenkins安装/" itemprop="url">Jenkins安装和配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-28T15:13:46+08:00">
-                2020-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h6 id="Jenkins安装"><a href="#Jenkins安装" class="headerlink" title="Jenkins安装"></a>Jenkins安装</h6><p>环境：Ubuntu</p>
-<p>参考：<br><a href="https://www.jianshu.com/p/845f267aec52" target="_blank" rel="noopener">https://www.jianshu.com/p/845f267aec52</a><br><a href="https://www.cnblogs.com/shuoer/p/9471839.html" target="_blank" rel="noopener">https://www.cnblogs.com/shuoer/p/9471839.html</a></p>
-<p>步骤：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#添加官方软件仓库的秘钥到本地的apt秘钥中</span><br><span class="line"> wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -</span><br><span class="line"> </span><br><span class="line">echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list</span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install jenkins</span><br></pre></td></tr></table></figure>
-
-<p>安装成功后打开服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@sz-dev-77-89:/var/lib/dpkg# /etc/init.d/jenkins  start</span><br><span class="line">Correct java version found</span><br><span class="line">[ ok ] Starting jenkins (via systemctl): jenkins.service.</span><br><span class="line">root@sz-dev-77-89:/var/lib/dpkg# systemctl status jenkins</span><br></pre></td></tr></table></figure>
-
-<p>安装时若报错：</p>
-<p><img src="/images/pasted-74.png" alt="upload successful"></p>
-<p>使用操作文件/var/lib/dpkg/info解决：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd /var/lib/dpkg/</span><br><span class="line">mv info/ info_bak         </span><br><span class="line">mkdir info                 </span><br><span class="line">apt-get update            </span><br><span class="line">apt-get -f install         </span><br><span class="line">mv info/* info_bak/        </span><br><span class="line">rm -rf info                </span><br><span class="line">mv info_bak info</span><br></pre></td></tr></table></figure>
-
-<h6 id="Jenkins安装git插件"><a href="#Jenkins安装git插件" class="headerlink" title="Jenkins安装git插件"></a>Jenkins安装git插件</h6><p>安装jenkins时候安装git插件失败，需在本地先安装git</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install git</span><br></pre></td></tr></table></figure>
-
-<p>然后在插件管理中选中git安装</p>
-<h6 id="Jenkins安装配置git"><a href="#Jenkins安装配置git" class="headerlink" title="Jenkins安装配置git"></a>Jenkins安装配置git</h6><p><img src="/images/pasted-75.png" alt="upload successful"></p>
-<p>【问题】配置git用户时一直报错：Jenkins Host key verification failed</p>
-<p>1.需要在jenkins路径下生产公钥和私钥</p>
-<p>2.把所属用户改成jenkins</p>
-<p>具体步骤   参考<a href="https://blog.csdn.net/hursing/article/details/90521031" target="_blank" rel="noopener">https://blog.csdn.net/hursing/article/details/90521031</a></p>
-<p>1）ssh-keygen -t rsa -C <a href="mailto:jenkinsServerOnLinux@shopeemobile.com" target="_blank" rel="noopener">jenkinsServerOnLinux@shopeemobile.com</a>     </p>
-<p>-c是备注；-f 指定密钥的文件名  ;-t 是type用于指定算法一般rsa;<br>在过程中提示生成路径可以直接改成/var/lib/jenkins/.ssh/id_rsa，其他直接回车即可</p>
-<p>2）生成的公钥放在gitlab下<br>3）按照jenkins提示执行命令<br> git ls-remote -h ssh://gitlab@git.garena.com:2222/autotest/scqa_ui_auto_platform_projects.git HEAD</p>
-<p>根据提示直接yes就好，此步骤会生产know_hosts的文件如果在根路径/root/.ssh下就拷贝过jenkins路径下（不确定这一步的作用是否对结果管用）<br>4）对文件授权<br>chown jenkins:jenkins  id_rsa   id_rsa.pub</p>
-<p>5)重启jenkins<br>/etc/init.d/jenkins restart</p>
-<p>如果没设置管理员密码，需要通过命令获取cat   /var/lib/jenkins/secrets/initialAdminPassword</p>
-<h6 id="设置jenkins无需登录"><a href="#设置jenkins无需登录" class="headerlink" title="设置jenkins无需登录"></a>设置jenkins无需登录</h6><p>链接：<a href="https://www.jianshu.com/p/6591c9bdcca6" target="_blank" rel="noopener">https://www.jianshu.com/p/6591c9bdcca6</a></p>
-<ul>
-<li>进入Jenkins根目录，复制config.xml 为 config.xml.bak用于备份  </li>
-<li>而后打开 config.xml 配置文件；    </li>
-<li>修改“&lt; useSecurity &gt;true&lt; /useSecurity &gt;”为“&lt; useSecurity&gt;false&lt; /useSecurity&gt;”；      </li>
-<li>删掉“&lt; authorizationStrategy …&gt;…&lt; /authorizationStrategy&gt;”；      </li>
-<li>保存修改的confi.xml，重启Jenkins服务已无需登录 </li>
-</ul>
-<h6 id="【问题】打不开log-html-提示Opening-Robot-Framework-log-failed"><a href="#【问题】打不开log-html-提示Opening-Robot-Framework-log-failed" class="headerlink" title="【问题】打不开log.html 提示Opening Robot Framework log failed"></a>【问题】打不开log.html 提示Opening Robot Framework log failed</h6><p>Verify that you have JavaScript enabled in your browser.<br>Make sure you are using a modern enough browser. Firefox 3.5, IE 8, or equivalent is required, newer browsers are recommended.<br>Check are there messages in your browser’s JavaScript error log. Please report the problem if you suspect you have encountered a bug.<br>…”</p>
-<p>解决办法：<br>For resolve your problem you must :</p>
-<ul>
-<li><p>Connect on your jenkins url (http://[IP]:8080/)</p>
-</li>
-<li><p>Click on Manage Jenkins from left side panel.</p>
-</li>
-<li><p>Click on Script Console</p>
-</li>
-<li><p>Copy this into the field<br>System.setProperty(“hudson.model.DirectoryBrowserSupport.CSP”,”sandbox allow-scripts; default-src ‘none’; img-src ‘self’ data: ; style-src ‘self’ ‘unsafe-inline’ data: ; script-src ‘self’ ‘unsafe-inline’ ‘unsafe-eval’ ;”)</p>
-</li>
-<li><p>Click on Run button.</p>
-</li>
-<li><p>Execute your Jenkins build.</p>
-<h5 id="【问题】设置multijob构建任务时只执行第一个任务，报错信息"><a href="#【问题】设置multijob构建任务时只执行第一个任务，报错信息" class="headerlink" title="【问题】设置multijob构建任务时只执行第一个任务，报错信息"></a>【问题】设置multijob构建任务时只执行第一个任务，报错信息</h5><p> Job status: [login for id] the ‘build only if scm changes’ feature is disabled.</p>
-<p>  解决：勾选build only if scm changes为true</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/本地上传和下载远程LInux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/28/本地上传和下载远程LInux/" itemprop="url">本地上传和下载远程LInux</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-28T12:41:23+08:00">
-                2020-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>上传命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp path/filename userName@sseverName:path</span><br></pre></td></tr></table></figure>
-
-<p>下载：调换位置即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp userName@sseverName:path path/filename</span><br></pre></td></tr></table></figure>
-
-<p>我的执行命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo scp /Users/liyuanchen/Documents/workspace/JenkinsTask.zip  xxxxqa@10.12.77.89:/home</span><br></pre></td></tr></table></figure>
-
-<p>【报错】</p>
-<ol>
-<li><p><a href="mailto:xxxxqa@10.12.77.89" target="_blank" rel="noopener">xxxxqa@10.12.77.89</a>: Permission denied (publickey,password). </p>
-<p>解决方法，在同账户下把A的公钥放到B上，注意你scp的账户，添加在该账户下。<br>具体操作：<br>A：cat .ssh/id_rsa.pub<br>B: cat .ssh/authorized_keys （没有该文件创建一个）<br> 把A的公钥贴过来即可</p>
-</li>
-<li><p>scp: /home/setuptools/JenkinsTask.zip: Permission denied</p>
-<p>还是报错，按照网上的折腾了一番/etc/ssh/sshd/sshd_config中的PasswordAuthentication和AuthorizedKeysFile,放开了注释保证是开通状态；<br>还是不行，在命令行前加sudo。<br>还是不行，直到更改目标文件夹到xxxxqa，因为原文件夹权限是root，使用xxxxqa用户当然不行啦。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drwxr-xr-x  8 root     root     4096 1月  21 14:40 setuptools</span><br><span class="line">drwxr-xr-x 17 xxxxqa   xxxxqa   4096 1月  27 22:14 xxxxqa</span><br></pre></td></tr></table></figure></li>
-</ol>
-
+<p>终端相关 </p>
+<p><a href="https://support.apple.com/zh-cn/guide/terminal/trmlshtcts/mac" target="_blank" rel="noopener">https://support.apple.com/zh-cn/guide/terminal/trmlshtcts/mac</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">新建标签页    Command-T</span><br><span class="line">下一个标签页    Control-Tab</span><br><span class="line">上一个标签页    Control-Shift-Tab</span><br><span class="line">放大字体    Command-加号键 (+)</span><br><span class="line">缩小字体   Command-减号键 (–)</span><br></pre></td></tr></table></figure>
           
         
       
@@ -1781,7 +1882,7 @@ Pillow==6.2.1</code></pre></li>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">63</span>
+                  <span class="site-state-item-count">65</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
