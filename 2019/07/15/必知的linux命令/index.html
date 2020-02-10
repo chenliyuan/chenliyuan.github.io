@@ -79,20 +79,20 @@
 
 
 
-<meta name="description" content="cut命令-b 以字节为单位分割 -c以字符为单位分割 -d 自定义分隔符 -f与-d一起使用，指定哪一列  如：以冒号为分隔符，取第四列相当于awk -F: ‘{print $4}’ cat /etc/passwd|cut -d: -f4/etc/passwd字段/etc/passwd中一行记录对应着一个用户，每行记录又被冒号(分隔为7个字段，其格式和具体含义如下： /etc/passwd  用">
+<meta name="description" content="Linux文件有四种时间:# stat /etc/hostname //查看文件详细信息包括时间  访问时间:atime，查看内容  修改时间:mtime，修改内容  改变时间:ctime，文件属性，比如权限 删除时间:dtime，文件被删除的时间文件类型   ls -l 文件名 //看第一个字符 - 普通文件(文本文件，二进制文件，压缩文件，电影，图片。。。) d 目录文件(蓝色) b 设备文件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="必知的linux命令">
 <meta property="og:url" content="http://yoursite.com/2019/07/15/必知的linux命令/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="cut命令-b 以字节为单位分割 -c以字符为单位分割 -d 自定义分隔符 -f与-d一起使用，指定哪一列  如：以冒号为分隔符，取第四列相当于awk -F: ‘{print $4}’ cat /etc/passwd|cut -d: -f4/etc/passwd字段/etc/passwd中一行记录对应着一个用户，每行记录又被冒号(分隔为7个字段，其格式和具体含义如下： /etc/passwd  用">
+<meta property="og:description" content="Linux文件有四种时间:# stat /etc/hostname //查看文件详细信息包括时间  访问时间:atime，查看内容  修改时间:mtime，修改内容  改变时间:ctime，文件属性，比如权限 删除时间:dtime，文件被删除的时间文件类型   ls -l 文件名 //看第一个字符 - 普通文件(文本文件，二进制文件，压缩文件，电影，图片。。。) d 目录文件(蓝色) b 设备文件">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2019/07/15/必知的linux命令/%5Cimages%5Cpasted-68.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/15/必知的linux命令/%5Cimages%5Cpasted-65.png">
 <meta property="og:image" content="http://yoursite.com/2019/07/15/必知的linux命令/%5Cimages%5Cpasted-66.png">
-<meta property="og:updated_time" content="2020-01-31T14:11:41.398Z">
+<meta property="og:updated_time" content="2020-02-07T12:08:39.447Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="必知的linux命令">
-<meta name="twitter:description" content="cut命令-b 以字节为单位分割 -c以字符为单位分割 -d 自定义分隔符 -f与-d一起使用，指定哪一列  如：以冒号为分隔符，取第四列相当于awk -F: ‘{print $4}’ cat /etc/passwd|cut -d: -f4/etc/passwd字段/etc/passwd中一行记录对应着一个用户，每行记录又被冒号(分隔为7个字段，其格式和具体含义如下： /etc/passwd  用">
+<meta name="twitter:description" content="Linux文件有四种时间:# stat /etc/hostname //查看文件详细信息包括时间  访问时间:atime，查看内容  修改时间:mtime，修改内容  改变时间:ctime，文件属性，比如权限 删除时间:dtime，文件被删除的时间文件类型   ls -l 文件名 //看第一个字符 - 普通文件(文本文件，二进制文件，压缩文件，电影，图片。。。) d 目录文件(蓝色) b 设备文件">
 <meta name="twitter:image" content="http://yoursite.com/2019/07/15/必知的linux命令/%5Cimages%5Cpasted-68.png">
 
 
@@ -335,7 +335,22 @@
       
 
       
-        <h5 id="cut命令"><a href="#cut命令" class="headerlink" title="cut命令"></a>cut命令</h5><pre><code>-b 以字节为单位分割
+        <h4 id="Linux文件有四种时间"><a href="#Linux文件有四种时间" class="headerlink" title="Linux文件有四种时间:"></a>Linux文件有四种时间:</h4><pre><code># stat /etc/hostname //查看文件详细信息包括时间
+
+访问时间:atime，查看内容 
+修改时间:mtime，修改内容 
+改变时间:ctime，文件属性，比如权限
+删除时间:dtime，文件被删除的时间</code></pre><h4 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h4><p>   ls -l 文件名 //看第一个字符</p>
+<pre><code>- 普通文件(文本文件，二进制文件，压缩文件，电影，图片。。。) d 目录文件(蓝色)
+b 设备文件(块设备)存储设备硬盘，U盘 /dev/sda, /dev/sda1
+c 设备文件(字符设备)打印机，终端 /dev/tty1, /dev/zero
+s 套接字文件
+p 管道文件
+l 链接文件(淡蓝色)</code></pre><h4 id="type-stat-file"><a href="#type-stat-file" class="headerlink" title="type stat file"></a>type stat file</h4><p>type        查看命令类型  -a查看所有<br>stat        查看文件详细信息<br>file        查看文件类型 </p>
+<h5 id="cat命令"><a href="#cat命令" class="headerlink" title="cat命令"></a>cat命令</h5><pre><code>-n 显示行号
+-A 包括控制字符(换行符/制表符)
+linux $ 
+Windows ^M$ 可通过其他方式转换成unix文件</code></pre><h5 id="cut命令"><a href="#cut命令" class="headerlink" title="cut命令"></a>cut命令</h5><pre><code>-b 以字节为单位分割
 -c以字符为单位分割
 -d 自定义分隔符
 -f与-d一起使用，指定哪一列</code></pre><p>  如：以冒号为分隔符，取第四列相当于awk -F: ‘{print $4}’</p>
@@ -614,7 +629,7 @@ w3m https://blog.csdn.net/x_xx_xxx_xxxx/article/details/92574331</code></pre><h5
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -660,7 +675,7 @@ w3m https://blog.csdn.net/x_xx_xxx_xxxx/article/details/92574331</code></pre><h5
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#cut命令"><span class="nav-number">1.</span> <span class="nav-text">cut命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#etc-passwd字段"><span class="nav-number">2.</span> <span class="nav-text">/etc/passwd字段</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#替换sed"><span class="nav-number">3.</span> <span class="nav-text">替换sed</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#awk-‘-print-1-’-fortest-php-sort-uniq-c-wc-l"><span class="nav-number">4.</span> <span class="nav-text">awk ‘{print $1}’ fortest.php |sort|uniq -c|wc -l</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#wc-命令"><span class="nav-number">5.</span> <span class="nav-text">wc 命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看网络连接状态-路由表"><span class="nav-number">6.</span> <span class="nav-text">查看网络连接状态(路由表)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看进程-ps"><span class="nav-number">7.</span> <span class="nav-text">查看进程 ps</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tar命令"><span class="nav-number">8.</span> <span class="nav-text">tar命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#vim-常用命令"><span class="nav-number">9.</span> <span class="nav-text">vim 常用命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查找命令："><span class="nav-number">10.</span> <span class="nav-text">查找命令：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#chown-修改所属用户"><span class="nav-number">11.</span> <span class="nav-text">chown  修改所属用户</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#chmod-权限修改两种语法"><span class="nav-number">12.</span> <span class="nav-text">chmod  权限修改两种语法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#一种是chmod-ugo-r-file-这种"><span class="nav-number">12.1.</span> <span class="nav-text">一种是chmod ugo+r file 这种</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#一种是chmod-abc-file-其中abc是数字"><span class="nav-number">12.2.</span> <span class="nav-text">一种是chmod abc file(其中abc是数字)</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ln-软连接和硬链接"><span class="nav-number">13.</span> <span class="nav-text">ln 软连接和硬链接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看linux系统版本"><span class="nav-number">14.</span> <span class="nav-text">查看linux系统版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三大操作系统关系"><span class="nav-number">15.</span> <span class="nav-text">三大操作系统关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ubuntu-命令行-访问网页"><span class="nav-number">16.</span> <span class="nav-text">Ubuntu 命令行 访问网页</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#linux上安装软件"><span class="nav-number">17.</span> <span class="nav-text">linux上安装软件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#Linux文件有四种时间"><span class="nav-number">1.</span> <span class="nav-text">Linux文件有四种时间:</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件类型"><span class="nav-number">2.</span> <span class="nav-text">文件类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#type-stat-file"><span class="nav-number">3.</span> <span class="nav-text">type stat file</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cat命令"><span class="nav-number">3.1.</span> <span class="nav-text">cat命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cut命令"><span class="nav-number">3.2.</span> <span class="nav-text">cut命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#etc-passwd字段"><span class="nav-number">3.3.</span> <span class="nav-text">/etc/passwd字段</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#替换sed"><span class="nav-number">3.4.</span> <span class="nav-text">替换sed</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#awk-‘-print-1-’-fortest-php-sort-uniq-c-wc-l"><span class="nav-number">3.5.</span> <span class="nav-text">awk ‘{print $1}’ fortest.php |sort|uniq -c|wc -l</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#wc-命令"><span class="nav-number">3.6.</span> <span class="nav-text">wc 命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看网络连接状态-路由表"><span class="nav-number">3.7.</span> <span class="nav-text">查看网络连接状态(路由表)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看进程-ps"><span class="nav-number">3.8.</span> <span class="nav-text">查看进程 ps</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#tar命令"><span class="nav-number">3.9.</span> <span class="nav-text">tar命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#vim-常用命令"><span class="nav-number">3.10.</span> <span class="nav-text">vim 常用命令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查找命令："><span class="nav-number">3.11.</span> <span class="nav-text">查找命令：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#chown-修改所属用户"><span class="nav-number">3.12.</span> <span class="nav-text">chown  修改所属用户</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#chmod-权限修改两种语法"><span class="nav-number">3.13.</span> <span class="nav-text">chmod  权限修改两种语法</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#一种是chmod-ugo-r-file-这种"><span class="nav-number">3.13.1.</span> <span class="nav-text">一种是chmod ugo+r file 这种</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#一种是chmod-abc-file-其中abc是数字"><span class="nav-number">3.13.2.</span> <span class="nav-text">一种是chmod abc file(其中abc是数字)</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ln-软连接和硬链接"><span class="nav-number">3.14.</span> <span class="nav-text">ln 软连接和硬链接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#查看linux系统版本"><span class="nav-number">3.15.</span> <span class="nav-text">查看linux系统版本</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#三大操作系统关系"><span class="nav-number">3.16.</span> <span class="nav-text">三大操作系统关系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Ubuntu-命令行-访问网页"><span class="nav-number">3.17.</span> <span class="nav-text">Ubuntu 命令行 访问网页</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#linux上安装软件"><span class="nav-number">3.18.</span> <span class="nav-text">linux上安装软件</span></a></li></ol></li></ol></div>
             
 
           </div>

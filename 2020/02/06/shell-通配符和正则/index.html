@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="模板前端与后台交互方法 $.getJSON $(document).ready(function () {     $(&amp;quot;#dl&amp;quot;).click(function () {         var sid=$(&amp;quot;#sid&amp;quot;).val();         var pid=$(&amp;quot;#pid&amp;quot;).val();     $.getJSON(&amp;q">
+<meta name="description" content="通配符和正则 shell 元字符(也称为通配符) 由 shell 来解析，如 rm -rf .pdf，元字符 Shell 将其解析为任意 多个字符 正则表达式元字符 由各种执行模式匹配操作的程序来解析，比如 vi、grep、sed、awk、python  shell中定义元字符 *   任意字符 ?  单个任意字符 [] 子shell ，不会影响主shell [^abcd]这里^是非的意思，但是外">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Django项目实践二(偏代码实现)">
-<meta property="og:url" content="http://yoursite.com/2019/07/12/Django项目实践偏代码实现/index.html">
+<meta property="og:title" content="shell 通配符和正则表达式">
+<meta property="og:url" content="http://yoursite.com/2020/02/06/shell-通配符和正则/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="模板前端与后台交互方法 $.getJSON $(document).ready(function () {     $(&amp;quot;#dl&amp;quot;).click(function () {         var sid=$(&amp;quot;#sid&amp;quot;).val();         var pid=$(&amp;quot;#pid&amp;quot;).val();     $.getJSON(&amp;q">
+<meta property="og:description" content="通配符和正则 shell 元字符(也称为通配符) 由 shell 来解析，如 rm -rf .pdf，元字符 Shell 将其解析为任意 多个字符 正则表达式元字符 由各种执行模式匹配操作的程序来解析，比如 vi、grep、sed、awk、python  shell中定义元字符 *   任意字符 ?  单个任意字符 [] 子shell ，不会影响主shell [^abcd]这里^是非的意思，但是外">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-28T04:29:49.827Z">
+<meta property="og:updated_time" content="2020-02-06T14:12:20.619Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Django项目实践二(偏代码实现)">
-<meta name="twitter:description" content="模板前端与后台交互方法 $.getJSON $(document).ready(function () {     $(&amp;quot;#dl&amp;quot;).click(function () {         var sid=$(&amp;quot;#sid&amp;quot;).val();         var pid=$(&amp;quot;#pid&amp;quot;).val();     $.getJSON(&amp;q">
+<meta name="twitter:title" content="shell 通配符和正则表达式">
+<meta name="twitter:description" content="通配符和正则 shell 元字符(也称为通配符) 由 shell 来解析，如 rm -rf .pdf，元字符 Shell 将其解析为任意 多个字符 正则表达式元字符 由各种执行模式匹配操作的程序来解析，比如 vi、grep、sed、awk、python  shell中定义元字符 *   任意字符 ?  单个任意字符 [] 子shell ，不会影响主shell [^abcd]这里^是非的意思，但是外">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/12/Django项目实践偏代码实现/">
+  <link rel="canonical" href="http://yoursite.com/2020/02/06/shell-通配符和正则/">
 
 
 
 
 
-  <title>Django项目实践二(偏代码实现) | 躲不掉的风</title>
+  <title>shell 通配符和正则表达式 | 躲不掉的风</title>
   
 
 
@@ -264,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Django项目实践偏代码实现/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-通配符和正则/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -281,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Django项目实践二(偏代码实现)</h1>
+          <h1 class="post-title" itemprop="name headline">shell 通配符和正则表达式</h1>
         
 
         <div class="post-meta">
@@ -293,8 +293,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T20:14:56+08:00">
-                2019-07-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T21:08:33+08:00">
+                2020-02-06
               </time>
             
 
@@ -331,49 +331,68 @@
       
 
       
-        <ul>
-<li><p>模板前端与后台交互方法 $.getJSON</p>
-<pre><code>$(document).ready(function () {
-    $(&quot;#dl&quot;).click(function () {
-        var sid=$(&quot;#sid&quot;).val();
-        var pid=$(&quot;#pid&quot;).val();
-    $.getJSON(&quot;/download/&quot;,{&apos;sid&apos;:sid,&apos;pid&apos;:pid},)
-    });
-
-    $(&quot;#submit&quot;).click(function () {
-        var sd=$(&quot;#sid&quot;).val();
-        var pd=$(&quot;#pid&quot;).val();
-        $.getJSON(&quot;/getSchedule/&quot;,{&apos;sd&apos;:sd,&apos;pd&apos;:pd},function (ret) {
-            $(&quot;#result&quot;).html(&quot;&quot;);
-           for(var i =0;i&lt;ret.length;i++){
-               $(&apos;#result&apos;).append(ret[i]).append(&quot;&lt;br&gt;&quot;)
-           }
-        })
-    });
-});</code></pre></li>
-<li><p>views返回几种方式<br> return render_to_response(“search.html”)<br> 属于shortcuts模块，常用需要2个参数，第一个是模板如hello.html，第二个是字典，其中字典key就是模板中的变量。<br> return HttpResponse(“success!”)<br> 常用于直接返回字符串</p>
-<ul>
-<li>静态文件的使用<br>settings.py 中两处注意：</li>
+        <h5 id="通配符和正则"><a href="#通配符和正则" class="headerlink" title="通配符和正则"></a>通配符和正则</h5><ul>
+<li><p>shell 元字符(也称为通配符) 由 shell 来解析，如 rm -rf <em>.pdf，元字符</em> Shell 将其解析为任意 多个字符</p>
+<p>正则表达式元字符 由各种执行模式匹配操作的程序来解析，比如 vi、grep、sed、awk、python</p>
+</li>
+<li><p>shell中定义元字符</p>
+<pre><code>*   任意字符
+?  单个任意字符
+[] 子shell ，不会影响主shell
+[^abcd]这里^是非的意思，但是外面不支持，不同与正则。正则[]里面同此，外面使用是以什么开头的意思
+{} 集合</code></pre></li>
 </ul>
+<ul>
+<li><p>基本正则表达式元字符:</p>
+<pre><code>元字符 功能 示例 ======================================================== ^ 行首定位符 ^love
+$ 行尾定位符 love$
+. 匹配单个任意字符 l..e
+* 匹配前导符 0 到多次 ab*love
+.* 任意多个字符
+[] 匹配指定范围内的一个字符 [lL]ove
+[ - ] 匹配指定范围内的一个字符 [a-z0-9]ove
+[^] 匹配不在指定组内的字符 [^a-z0-9]ove
+\ 用来转义元字符 love\.
+\&lt; 词首定位符 \&lt;love
+\&gt; 词尾定位符 love\&gt;
+\(..\) 匹配稍后使用的字符的标签 :% s/172.16.130.1/172.16.130.5/ :% s/\(172.16.130.\)1/\15/
+:% s/\(172.\)\(16.\)\(130.\)1/\1\2\35/
+:3,9 s/\(.*\)/#\1/
+x\{m\} 字符 x 重复出现 m 次 o\{5\}
+x\{m,\} 字符 x 重复出现 m 次以上 o\{5,\} x\{m,n\} 字符x重复出现m到n次o\{5,10\}</code></pre></li>
+<li><p>扩展正则表达式元字符（egrep或使用转义\）</p>
+<pre><code>+ 匹配一个或多个前导字符 [a-z]+ove
+? 匹配零个或一个前导字符 lo?ve
+a|b 匹配 a 或 b love|hate
+() 组字符 loveable|rs love(able|rs) ov+ (ov)+ (..)(..)\1\2 标签匹配字符 (love)able\1er x{m} 字符x重复m次o{5}
+x{m,} 字符 x 重复至少 m 次 o{5,}
+x{m,n} 字符x重复m到n次o{5,10}</code></pre></li>
+<li><p>其他</p>
+<pre><code>\w  所有字母和数字 相当于[a-zA-Z0-9]*
+\W  非字母和数字
+\b  边界</code></pre></li>
+</ul>
+<h5 id="grep命令"><a href="#grep命令" class="headerlink" title="grep命令"></a>grep命令</h5><ul>
+<li><p>习惯性加上单引号</p>
+</li>
+<li><p>返回状态exit 0 1 2</p>
+</li>
+<li><p>grep -e  相当于 egrep </p>
+</li>
+<li><p>grep  –help |grep ‘-v’<br>其中-v被认为是选项，非模式，所以需要转义</p>
 </li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-INSTALLED_APPS中 注册了‘django.contrib.staticfiles’，默认生成的文件已注册。 </span><br><span class="line">-指定STATIC_URL 与 STATICFILES_DIRS 的值.</span><br><span class="line"></span><br><span class="line">INSTALLED_APPS=[</span><br><span class="line">    &apos;...&apos;,</span><br><span class="line">    &apos;django.contrib.staticfiles&apos;,</span><br><span class="line">    &apos;...&apos;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">STATIC_URL=&apos;/static/&apos;</span><br><span class="line">STATICFILES_DIRS=(BASE_DIR,&apos;static&apos;)</span><br></pre></td></tr></table></figure>
+<pre><code>-i, --ignore-case         忽略大小写
+-v, --invert-match        选中不匹配的行
+-q, --quiet, --silent     不显示所有常规输出
+-r, --recursive           等同于--directories=recurse递归目录
 
+-o, --only-matching       只显示匹配PATTERN 部分的行
+-B, --before-context=NUM  打印文本及其前面NUM 行
+-A, --after-context=NUM   打印文本及其后面NUM 行
+-C, --context=NUM         打印NUM 行输出文本
 
-<p>*.html中引用（常加在link前）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load staticfiles %&#125;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&#123;% static &apos;css/main.css&apos; %&#125;&quot; /&gt;</span><br><span class="line">...</span><br><span class="line">&#123;% static &apos;/image/test.png&apos; %&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>打开text文件乱码且每次打开的时候会多出一行？</p>
-<p>本地的ct.txt文件保存格式未必是utf-8，所以需要指定编码格式才更准确，使用newline防止在每次写入默认新添加一空行</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file=open(&quot;templates/ct.txt&quot;,&quot;w&quot;,encoding=&quot;utf-8&quot;, newline=&apos;&apos;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>表单提交后不调view接口？<br>表单submit按钮类型写错，应该是submit类型，非button类型。</li>
-</ul>
-
+-n, --line-number         输出的同时打印行号</code></pre>
       
     </div>
     
@@ -397,8 +416,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/12/Django-models/" rel="next" title="Django模型models">
-                <i class="fa fa-chevron-left"></i> Django模型models
+              <a href="/2020/02/06/shell-变量和数组/" rel="next" title="shell 变量和数组">
+                <i class="fa fa-chevron-left"></i> shell 变量和数组
               </a>
             
           </div>
@@ -406,10 +425,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/07/13/Django视图/" rel="prev" title="Django视图View">
-                Django视图View <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -461,8 +476,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -513,6 +537,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#通配符和正则"><span class="nav-number">1.</span> <span class="nav-text">通配符和正则</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#grep命令"><span class="nav-number">2.</span> <span class="nav-text">grep命令</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

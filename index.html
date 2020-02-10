@@ -261,6 +261,687 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-通配符和正则/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/06/shell-通配符和正则/" itemprop="url">shell 通配符和正则表达式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T21:08:33+08:00">
+                2020-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="通配符和正则"><a href="#通配符和正则" class="headerlink" title="通配符和正则"></a>通配符和正则</h5><ul>
+<li><p>shell 元字符(也称为通配符) 由 shell 来解析，如 rm -rf <em>.pdf，元字符</em> Shell 将其解析为任意 多个字符</p>
+<p>正则表达式元字符 由各种执行模式匹配操作的程序来解析，比如 vi、grep、sed、awk、python</p>
+</li>
+<li><p>shell中定义元字符</p>
+<pre><code>*   任意字符
+?  单个任意字符
+[] 子shell ，不会影响主shell
+[^abcd]这里^是非的意思，但是外面不支持，不同与正则。正则[]里面同此，外面使用是以什么开头的意思
+{} 集合</code></pre></li>
+</ul>
+<ul>
+<li><p>基本正则表达式元字符:</p>
+<pre><code>元字符 功能 示例 ======================================================== ^ 行首定位符 ^love
+$ 行尾定位符 love$
+. 匹配单个任意字符 l..e
+* 匹配前导符 0 到多次 ab*love
+.* 任意多个字符
+[] 匹配指定范围内的一个字符 [lL]ove
+[ - ] 匹配指定范围内的一个字符 [a-z0-9]ove
+[^] 匹配不在指定组内的字符 [^a-z0-9]ove
+\ 用来转义元字符 love\.
+\&lt; 词首定位符 \&lt;love
+\&gt; 词尾定位符 love\&gt;
+\(..\) 匹配稍后使用的字符的标签 :% s/172.16.130.1/172.16.130.5/ :% s/\(172.16.130.\)1/\15/
+:% s/\(172.\)\(16.\)\(130.\)1/\1\2\35/
+:3,9 s/\(.*\)/#\1/
+x\{m\} 字符 x 重复出现 m 次 o\{5\}
+x\{m,\} 字符 x 重复出现 m 次以上 o\{5,\} x\{m,n\} 字符x重复出现m到n次o\{5,10\}</code></pre></li>
+<li><p>扩展正则表达式元字符（egrep或使用转义\）</p>
+<pre><code>+ 匹配一个或多个前导字符 [a-z]+ove
+? 匹配零个或一个前导字符 lo?ve
+a|b 匹配 a 或 b love|hate
+() 组字符 loveable|rs love(able|rs) ov+ (ov)+ (..)(..)\1\2 标签匹配字符 (love)able\1er x{m} 字符x重复m次o{5}
+x{m,} 字符 x 重复至少 m 次 o{5,}
+x{m,n} 字符x重复m到n次o{5,10}</code></pre></li>
+<li><p>其他</p>
+<pre><code>\w  所有字母和数字 相当于[a-zA-Z0-9]*
+\W  非字母和数字
+\b  边界</code></pre></li>
+</ul>
+<h5 id="grep命令"><a href="#grep命令" class="headerlink" title="grep命令"></a>grep命令</h5><ul>
+<li><p>习惯性加上单引号</p>
+</li>
+<li><p>返回状态exit 0 1 2</p>
+</li>
+<li><p>grep -e  相当于 egrep </p>
+</li>
+<li><p>grep  –help |grep ‘-v’<br>其中-v被认为是选项，非模式，所以需要转义</p>
+</li>
+</ul>
+<pre><code>-i, --ignore-case         忽略大小写
+-v, --invert-match        选中不匹配的行
+-q, --quiet, --silent     不显示所有常规输出
+-r, --recursive           等同于--directories=recurse递归目录
+
+-o, --only-matching       只显示匹配PATTERN 部分的行
+-B, --before-context=NUM  打印文本及其前面NUM 行
+-A, --after-context=NUM   打印文本及其后面NUM 行
+-C, --context=NUM         打印NUM 行输出文本
+
+-n, --line-number         输出的同时打印行号</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-变量和数组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/06/shell-变量和数组/" itemprop="url">shell 变量和数组</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T20:17:32+08:00">
+                2020-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><ul>
+<li><p>查看变量: echo $变量名 set(所有变量:包括自定义变量和环境变量) </p>
+</li>
+<li><p>取消变量: unset 变量名</p>
+</li>
+<li><p>位置变量：如通过$1 $2获取第一第二个参数</p>
+</li>
+<li><p>环境变量：export back_dir=xxxx  定义全局变量；或者export $var 转化成全局变量</p>
+</li>
+<li><p>预定义变量</p>
+<pre><code>$0 脚本名
+$* 所有的参数
+$@ 所有的参数
+$# 参数的个数
+$$ 当前进程的 PID
+$! 上一个后台进程的 PID
+$? 上一个命令的返回值 0 表示成功</code></pre><p>$@和$星区别：不加引号时,二者都是返回传入的参数,但加了引号后（”$@”）,此时$*把参数作为一个字符串整体(单字符串)返回,$@把每个参数作为一个字符串返回</p>
+</li>
+<li><p>键盘输入变量：通过read -n 2 -p “please input: “ p</p>
+</li>
+</ul>
+<ul>
+<li><p>调用其他脚本变量值：可在b脚本中通过调用.a.sh,直接获取a的变量数据</p>
+</li>
+<li><p>“”双引号-强引用会替换里面变量值；’’-弱引用，原样输出引用符号</p>
+</li>
+<li><p>变量删除（获取部分字符串）</p>
+<pre><code>${url#*a}  从头到尾最短匹配删除即直到第一个a之前的都删除
+${url##*a}  从头到尾贪婪匹配，删除直到最后一个匹配a
+${url%a*}  后面加%，从后到前最短匹配删除a后面所有字符    
+${url%%}  后面加%，从后到前贪婪匹配删除最后一个a后面所有字符</code></pre></li>
+<li><p>变量替换(最短替换/和贪婪替换//)</p>
+<pre><code>liyuan$ var=tom.ton.com
+liyuan$ echo ${var/to/TO}
+TOm.ton.com
+liyuan$ echo ${var//to/TO}</code></pre></li>
+</ul>
+<ul>
+<li><p>变量替代；可理解为变量初始化</p>
+<pre><code>echo ${var1-aaaaa}
+echo ${var1:-aaaaa}</code></pre><p>  使用 <font color="red">-</font> ,若没有被赋值过，就使用默认值替代(是否unset)</p>
+<p>  使用 <font color="red">:-</font>，区别在于即使赋值空值也会被新值替代(是否为空值)</p>
+</li>
+<li><p>切片操作  echo ${url:5:7}</p>
+</li>
+<li><p>可使用反引号或者$()执行内部命令</p>
+</li>
+<li><p>date +%F  格式化日期输出</p>
+</li>
+<li><p>特殊符号总结</p>
+<pre><code>（） 子shell执行
+(()) 数值比较
+$()  命令替换，同反引号
+$(()) 整数运算
+
+{}  集合
+${}  变量
+
+[]  条件测试
+[[]] 条件测试，支持正则 =~
+$[]  整数运算</code></pre></li>
+</ul>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><ol>
+<li><p>普通数组</p>
+<pre><code>一次赋多值，可指定索引
+# array2=(tom jack alice [20]=aa)
+# echo ${!array2[@]}
+0 1 2 20</code></pre></li>
+<li><p>关联数组</p>
+<p> 必须申明关联数组变量</p>
+<pre><code># declare -A ass_array1
+# ass_array2=([index1]=tom [index2]=jack [index4]=&apos;bash shell&apos;)
+
+查看数组
+# declare -A</code></pre></li>
+<li><p>访问数组元数:</p>
+<pre><code># echo ${ass_array2[index2]} 访问数组中的第二个元数
+# echo ${ass_array2[@]} 访问数组中所有元数 等同于 echo ${array1[*]} 
+# echo ${#ass_array2[@]} 获得数组元数的个数
+# echo ${!ass_array2[@]} 获得数组元数的索引</code></pre></li>
+<li><p>遍历数组</p>
+<p>通过获取数组索引遍历   </p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/06/shell-函数/" itemprop="url">shell 函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T20:07:46+08:00">
+                2020-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="1-定义函数"><a href="#1-定义函数" class="headerlink" title="1. 定义函数"></a>1. 定义函数</h5><h6 id="方法一（常用）"><a href="#方法一（常用）" class="headerlink" title="方法一（常用）:"></a>方法一（常用）:</h6><pre><code>函数名() { 函数要实现的功能代码 }</code></pre><h6 id="方法二"><a href="#方法二" class="headerlink" title="方法二:"></a>方法二:</h6><pre><code>function 函数名 { 函数要实现的功能代码 }</code></pre><h5 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h5><pre><code>函数名 函数名参数1 参数2</code></pre><p>举例：</p>
+<pre><code>#!/usr/bin/bash
+jiecheng(){
+result=1
+for i in `seq $1`
+do
+        echo $i
+        result=$[$result*$i]
+done
+echo $result
+}
+
+jiecheng $1
+
+1.实践证明，do中的result必须不能加$符号，否则错误
+2.$[]运算结果赋值的时候，=左右不能有空格</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li><p>函数接收位置参数 $1 $2… $n</p>
+</li>
+<li><p>函数接收数组变量使用$@ $*</p>
+</li>
+<li><p>函数接收参数个数$#</p>
+</li>
+<li><p>函数将受到的所有参数赋值给数组 newarray=($*)</p>
+</li>
+<li><p>养成在函数内部的变量习惯性加local关键字供内部函数使用的习惯</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-条件测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/06/shell-条件测试/" itemprop="url">shell 条件测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T12:21:04+08:00">
+                2020-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Shell 条件测试</p>
+<pre><code>格式 1: test 条件表达式 
+格式 2: [ 条件表达式 ] 
+格式 3: [[ 条件表达式 ]]</code></pre><ol>
+<li><p>文件测试</p>
+<pre><code>test -d /home
+[ -e dir|file ]  True if file exists (regardless of type)
+[ -d dir ] True if file exists and is a directory.
+[ -f file ] True if file exists and is a regular file.
+[ -d /ccc ] || mkdir /ccc</code></pre></li>
+<li><p>数值比较 </p>
+<pre><code>[ 整数1  操作符  整数2] 
+[ 1 -gt 10 ] 大于
+[ 1 -eq 10 ] 等于</code></pre></li>
+<li><p>数值比较–C语言风格 </p>
+<pre><code>[root@xxxx ~]# ((1&lt;2));echo $?
+0
+[root@xxxx ~]# ((1==2));echo $?</code></pre></li>
+<li><p>字符串比较</p>
+<pre><code>等号
+[root@xxxx ~]# [ &quot;$USER&quot; = &quot;root&quot; ];echo $?
+[root@xxxx ~]# [ -z &quot;$var1&quot; ];echo $?
+条件判断
+[root@xxxx ~]# [ 1 -lt 2 -a 5 -gt 10 ];echo $?
+[root@xxxx ~]# [ 1 -lt 2 -o 5 -gt 10 ];echo $?
+使用正则    
+[root@yangs ~]# [[ &quot;$num10&quot; =~ ^[0-9]+$ ]];echo $?</code></pre><p> 【注】:变量为空 或 未定义: 长度都为 0</p>
+</li>
+<li><p>eq  ge等用于数字比较</p>
+<p>= &gt;等都是字符串比较    </p>
+<p> 字符串比较一般要加双引号</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/03/Go语言/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1232,606 +1913,6 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/RT本地环境配置/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/29/RT本地环境配置/" itemprop="url">RT本地环境配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T21:16:20+08:00">
-                2020-01-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>本地环境:Mac</p>
-<ul>
-<li><p>安装谷歌浏览器</p>
-</li>
-<li><p>安装chromedriver<br><a href="http://chromedriver.chromium.org/downloads" target="_blank" rel="noopener">http://chromedriver.chromium.org/downloads</a><br>下载的driver的版本需要和浏览器的版本匹配，解压后放到本机,将文件路径添加至PATH中</p>
-</li>
-<li><p>安装本地运行环境依赖库</p>
-<p>如Python版本：python3.6</p>
-<p>requirements.txt:</p>
-<pre><code>requests==2.22.0
-robotframework==3.1.2
-robotframework-ride==1.7.3.1
-robotframework-seleniumlibrary==3.3.1
-selenium==3.141.0
-xlrd==1.2.0
-Pillow==6.2.1</code></pre></li>
-<li><p>安装插件 IntelliBot 、IntelliBot @SeleniumLibrary Patched、Robot Framework support </p>
-</li>
-<li><p>Preferences-Editor-File Types-Robot Feature下添加*.robot类型</p>
-</li>
-<li><p>Tools-External Tools 配置Tool Setting，其中Arguments配置如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--loglevel TRACE -d /Users/liyuan/Documents/Log     $FileName$</span><br><span class="line"></span><br><span class="line">-d /Users/liyuan/Documents/Log --loglevel TRACE -t &quot;$SelectedText$&quot; ./</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-77.png" alt="upload successful"></p>
-<p><img src="/images/pasted-78.png" alt="upload successful"></p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/RT使用pycharm点击引用失效问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/29/RT使用pycharm点击引用失效问题/" itemprop="url">RT使用pycharm点击引用失效问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T19:09:50+08:00">
-                2020-01-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="pycharm引用库文件失效问题"><a href="#pycharm引用库文件失效问题" class="headerlink" title="pycharm引用库文件失效问题"></a>pycharm引用库文件失效问题</h5><p>点击引用的库文件应用链接无效，导致输入相应库方法无提示，有以下几种检查办法：</p>
-<p>-1) 检查以下插件是否已安装</p>
-<p>IntelliBot、IntelliBot@SeleniumLibrary Patched 、Robot Framework support</p>
-<p>2) 检查IDE设置</p>
-<p>如pycharm检查Project Interpreter编译器是否错选，或者没选</p>
-<p>3) 检查库文件引用是否重复</p>
-<p>如通过集成已经继承了的库文件，就不要再引用一遍了</p>
-<p>4) 检查代码格式</p>
-<p>Keywords 前最好留有空格；</p>
-<p>本次未提交文件提交上去；</p>
-<p>5) 清零</p>
-<p>如果以上都无法解决，删除本地代码，重新拉取； 重启电脑</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/RobotFramework/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/29/RobotFramework/" itemprop="url">RT使用语法记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T11:27:02+08:00">
-                2020-01-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="语法记录"><a href="#语法记录" class="headerlink" title="语法记录"></a>语法记录</h5><p>官方文档：<a href="https://robotframework.org/#/documentation" target="_blank" rel="noopener">https://robotframework.org/#/documentation</a></p>
-<h6 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">*** Test Cases ***</span><br><span class="line"></span><br><span class="line">test case8</span><br><span class="line">    $&#123;a&#125;    Set variable    59</span><br><span class="line">    run keyword if    $&#123;a&#125;&gt;=90    log    优秀</span><br><span class="line">    ...    ELSE IF    $&#123;a&#125;&gt;=70    log    良好</span><br><span class="line">    ...    ELSE IF    $&#123;a&#125;&gt;=60    log    及格</span><br><span class="line">    ...    ELSE    log    不及格</span><br></pre></td></tr></table></figure>
-
-<p>条件判断赋值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;ele&#125;    run keyword if    $&#123;i&#125;&lt;$&#123;pagescount&#125;        Get WebElement    $&#123;ele_path&#125;</span><br></pre></td></tr></table></figure>
-
-<p>一个条件多个执行,注意AND大写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run keyword if    $&#123;variable&#125;   run keywords  点击按钮    $&#123;homepage_ele&#125;[vacationmode_on]    AND    获取文本    $&#123;homepage_ele&#125;</span><br></pre></td></tr></table></figure>
-
-<p>条件判断字符串不存在的时候,字符串变量必须外边必须加引号用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\    run keyword if    &apos;$&#123;temp&#125;&apos;!=&apos;&apos;   exit for loop</span><br></pre></td></tr></table></figure>
-
-<p>可以使用and和or连接。连接两个条件经常报错，可能是空格的问题，and两边必须保持一个空格</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Run Keyword If   &apos;$&#123;B_name&#125;&apos;==&apos;$&#123;B&#125;&apos; and &apos;$&#123;C&#125;&apos;== &apos;0&apos;</span><br></pre></td></tr></table></figure>
-
-<p>数字使用或操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;0|0|0|1|0&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="For循环"><a href="#For循环" class="headerlink" title="For循环"></a>For循环</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test case9</span><br><span class="line">:FOR    $&#123;i&#125;    IN RANGE     1      $&#123;trsize&#125;</span><br><span class="line">\    $&#123;ele&#125;    Catenate    SEPARATOR=$&#123;i+1&#125;   css=tbody tr:nth-of-type(    )&gt;.transaction-escrow-status</span><br><span class="line">\    log    $&#123;ele&#125;</span><br></pre></td></tr></table></figure>
-
-<p>若for循环体中嵌套了条件判断则else前无需加\，否则报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\    Run Keyword If    &apos;$&#123;get_value&#125;&apos;!=&apos;register&apos;    获取文本校验    $&#123;ele&#125;    $&#123;get_value&#125;</span><br><span class="line">     ...    ELSE    获取文本校验  $&#123;ele_register&#125;    Register/Login</span><br></pre></td></tr></table></figure>
-
-<h6 id="字符串使用"><a href="#字符串使用" class="headerlink" title="字符串使用"></a>字符串使用</h6><p>三目运算</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;seller&#125;    set variable if    $&#123;seller&#125;    $&#123;seller&#125;    $&#123;test_data&#125;[seller][account]</span><br></pre></td></tr></table></figure>
-
-<p>移除部分字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;t&#125;    remove string     ShopeePay.ps_reports_wallet_all.20191125_20191225.csv    .csv</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;after&#125;=     remove string     $&#123;test&#125;       ,     $&#123;SPACE&#125;</span><br></pre></td></tr></table></figure>
-
-<p>字符串连接 Catenate（与变量连接直接放一起也可以）<br><img src="/images/pasted-79.png" alt="upload successful"></p>
-<p>字符串转换成数字，可直接使用${${numstr}}或者int(${numstr})</p>
-<h6 id="列表操作"><a href="#列表操作" class="headerlink" title="列表操作"></a>列表操作</h6><p>所有列表操作举例：cnblogs.com/ronyjay/p/11598107.html </p>
-<p>对列表进行遍历的时候IN后面需用@</p>
-<p>如果通过“@{}”去定义列表的话，可以通过“log many”关键字进行打印 ,当然也可以选择不这么做默认还是用$<br>列表切片</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;expectedlist&#125;    get slice from list     $&#123;expected&#125;    1</span><br></pre></td></tr></table></figure>
-
-<p>列表元素是整形</p>
-<pre><code>| ${ints} =   | Create List | ${1} | ${2} | ${3} |</code></pre><h6 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h6><p>需要双杠</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;rt&#125;=    Get Regexp Matches        $&#123;test&#125;     \\$\\d,\\d+</span><br><span class="line">should match regexp    $&#123;get_amount&#125;    \\$(\\d)*,?(\\d)+</span><br></pre></td></tr></table></figure>
-
-<p>模糊匹配</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File Should Exist    /Users/liyuanchen/Downloads/weekly_report*</span><br></pre></td></tr></table></figure>
-
-<h6 id="其他关键字"><a href="#其他关键字" class="headerlink" title="其他关键字"></a>其他关键字</h6><ul>
-<li><strong>Get WebElement 和Get WebElements的区别</strong>：前者会中断执行，后者返回空。可使用来判断元素是否存在</li>
-</ul>
-<p><img src="/images/pasted-76.png" alt="upload successful"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;temp&#125;    GetWebElements    css=.username</span><br><span class="line">run keyword if  $&#123;temp&#125;   click button   css=.username</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>对输入框执行ENTER操作可使用<strong>press keys</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">press keys   css=.shopee-input__input    RETURN</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>生成指定数据范围的随机数字(包括左边，也包括右边)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;pagenum&#125;    Evaluate    random.randint(1, $&#123;pagescount+1&#125;)    random</span><br><span class="line">log    $&#123;pagenum&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>robot中，断言有时会失败，但不想影响后面语句的执行，这时候要用到</p>
-<p>  Run Keyword And Continue On Failure</p>
-</li>
-<li><p>计算可使用Evaluate关键字</p>
-<p>  ${rt}    Evaluate    ${num}+1<br>  或${i+1} </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;if_visible_download&#125;    Run_keyword_and_return_status    Element_Should_Contain    Xpath=//button[@class=&apos;shopee-button shopee-button--primary shopee-button--normal&apos;]    Download</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>其他：</p>
-<p>  run keyword and return status</p>
-</li>
-</ul>
-<h5 id="为解决有些操作失败重新执行："><a href="#为解决有些操作失败重新执行：" class="headerlink" title="为解决有些操作失败重新执行："></a>为解决有些操作失败重新执行：</h5><h6 id="1-添加关键字"><a href="#1-添加关键字" class="headerlink" title="1.添加关键字"></a>1.添加关键字</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">若找不到元素则重新执行</span><br><span class="line">    [Arguments]    $&#123;locator&#125;    $&#123;keyword&#125;</span><br><span class="line">    $&#123;ele&#125;    get webelements    $&#123;locator&#125;</span><br><span class="line">    run keyword unless     $&#123;ele&#125;     $&#123;keyword&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="2-case后添加teardown"><a href="#2-case后添加teardown" class="headerlink" title="2.case后添加teardown"></a>2.case后添加teardown</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">03BlanceAccountCB</span><br><span class="line">    [Documentation]  CB seller进入balance页面，能够展示cb卡片信息,同Bank页面</span><br><span class="line">    [Tags]  all</span><br><span class="line">    [Setup]    获取配置数据</span><br><span class="line">    登录SellerCenter    seller=cbseller</span><br><span class="line">    进入cb_balance模块</span><br><span class="line">    comment  cb账号进如balance校验cb卡片信息</span><br><span class="line">    校验CB卡片信息</span><br><span class="line">    [Teardown]    run keyword if test failed    校验CB卡片信息</span><br></pre></td></tr></table></figure>
-
-<p>   3.登陆的时候经常不定时出现某些弹窗影响下一步的case？封装关键字轮询查找弹窗<br>登陆弹窗轮询查找</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Arguments]    $&#123;timeout&#125;=5</span><br><span class="line">:FOR    $&#123;i&#125;    IN RANGE    $&#123;timeout&#125;</span><br><span class="line">\   $&#123;servererror&#125;    弹出框存在则点击    $&#123;homepage_ele&#125;[alert_servererror]     $&#123;timeout&#125;</span><br><span class="line">\   $&#123;version&#125;    弹出框存在则点击    $&#123;login_ele&#125;[version]     $&#123;timeout&#125;</span><br><span class="line">\   $&#123;navigation&#125;    弹出框存在则点击    $&#123;login_ele&#125;[navigation]     $&#123;timeout&#125;</span><br><span class="line">\   $&#123;mainaccount_tips&#125;    弹出框存在则点击    $&#123;login_ele&#125;[mainaccount_tips]     $&#123;timeout&#125;</span><br><span class="line">\   $&#123;mainaccount_tips&#125;    弹出框存在则点击    $&#123;login_ele&#125;[mainaccount_tips]     $&#123;timeout&#125;</span><br><span class="line">\   弹出框存在则点击    $&#123;homepage_ele&#125;[alert_servererror]     $&#123;timeout&#125;</span><br><span class="line">\   exit for loop if   $&#123;$&#123;servererror&#125;|$&#123;version&#125;|$&#123;navigation&#125;|$&#123;mainaccount_tips&#125;|$&#123;mainaccount_tips&#125;&#125;==0</span><br></pre></td></tr></table></figure>
-
-<h5 id="窗口问题："><a href="#窗口问题：" class="headerlink" title="窗口问题："></a>窗口问题：</h5><p>当有两个窗口如果选择新打开的窗口则用select window   NEW   老窗口换成MAIN，但是如果是三个窗口取中间的窗口呢？</p>
-<p>使用Handles解决：</p>
-<p>1、删除第三个窗口<br>2、获取当前Handle,选择最后一个（实践证明，不可用New，若使用可能会认为被关掉的那个才是new，故不生效）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$&#123;handels_bf&#125;    get window handles</span><br><span class="line">close window</span><br><span class="line">$&#123;handels&#125;    get window handles</span><br><span class="line">$&#123;currenthd&#125;    get from list    $&#123;handels&#125;    -1</span><br><span class="line">select window    $&#123;currenthd&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/mac终端快捷键/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/28/mac终端快捷键/" itemprop="url">mac终端快捷键使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-28T15:41:11+08:00">
-                2020-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>常用的快捷键：<br>参考<a href="https://www.jianshu.com/p/87581b2c570c" target="_blank" rel="noopener">https://www.jianshu.com/p/87581b2c570c</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + a 跳到行首</span><br><span class="line">Ctrl + e 跳到行尾</span><br><span class="line">Ctrl + l 清屏，相当于执行clear命令</span><br><span class="line">Command + K 清屏</span><br><span class="line">ctrl+u   删除前面的所有内容</span><br></pre></td></tr></table></figure>
-
-<p>mac下是否显示隐藏文件，可使用shit+cmd+句号来切换</p>
-<p>终端相关 </p>
-<p><a href="https://support.apple.com/zh-cn/guide/terminal/trmlshtcts/mac" target="_blank" rel="noopener">https://support.apple.com/zh-cn/guide/terminal/trmlshtcts/mac</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">新建标签页    Command-T</span><br><span class="line">下一个标签页    Control-Tab</span><br><span class="line">上一个标签页    Control-Shift-Tab</span><br><span class="line">放大字体    Command-加号键 (+)</span><br><span class="line">缩小字体   Command-减号键 (–)</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1882,7 +1963,7 @@ Pillow==6.2.1</code></pre></li>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

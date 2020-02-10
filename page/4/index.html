@@ -261,6 +261,566 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/TensorFlow实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/24/TensorFlow实践/" itemprop="url">TensorFlow实践</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T15:30:42+08:00">
+                2019-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>安装 TensorFlow<br>系统版本：mac 10.12.6 python版本：2.7<br>安装指南：TensorFlow中文社区<br><a href="http://www.tensorfly.cn/tfdoc/get_started/os_setup.html#virtualenv_install" target="_blank" rel="noopener">http://www.tensorfly.cn/tfdoc/get_started/os_setup.html#virtualenv_install</a><br>1）尝试了使用直接安装\homebrew，都会提示错误：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">There was a problem confirming the ssl certificate: [SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:590) - skipping</span><br></pre></td></tr></table></figure>
+
+<p>说是因为python社区已不支持TLS version 1.0 &amp; 1.1，可以通过升级pip实现，但是升级pip还会由于这个问题不能成功，后放弃。但是本机是Python2.7不愿因为安装这个升级python版本，毕竟是几个电脑里唯一一个2.x的版本，希望可以保留。<br>2）使用docker安装<br>参考：<br><a href="https://blog.csdn.net/qq_35624642/article/details/82910641" target="_blank" rel="noopener">https://blog.csdn.net/qq_35624642/article/details/82910641</a><br>报错：<br><img src="https://img-blog.csdnimg.cn/20190322173316121.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>于是试图更改用户名和用户组，查阅各种资料，mac操作用户和用户组跟linux不一样，使用dscl命令<a href="https://www.4455q.com/tech/mac-dscl-user-group-create-delete-append.html" target="_blank" rel="noopener">https://www.4455q.com/tech/mac-dscl-user-group-create-delete-append.html</a><br>查到用户名和用户组id后，使用后：<br><img src="https://img-blog.csdnimg.cn/20190322173457617.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>查看版本和安装路径<br>import tensorflow as tf</p>
+<p>tf.<strong>version</strong></p>
+<p>查询tensorflow安装路径为:</p>
+<p>tf.<strong>path</strong></p>
+<hr>
+<p>docker打开容器运行tensorflow镜像：<br>    <strong>docker run –name xiaolei-tensortflow -it -p 8888:8888 -v ~/tensorflow:/notebooks/data  tensorflow/tensorflow</strong></p>
+<p>docker run 运行镜像，<br>–name 为容器创建别名，<br>-it 保留命令行运行(之后可以输入命令)<br>-p 8888:8888 将本地的8888端口 <a href="http://localhost:8888/" target="_blank" rel="noopener">http://localhost:8888/</a> 映射（对应前面的端口），<br>-v <del>/tensorflow:/notebooks/data 将本地的</del>/tensorflow文件夹挂载到新建容器的/notebooks/data下（这样可是实现本地文件和docker文件互通）<br>tensorflow/tensorflow 为指定的镜像，默认标签为latest（即tensorflow/tensorflow:latest）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/python读取文件的几种方式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/24/python读取文件的几种方式/" itemprop="url">python读取文件的几种方式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T15:30:42+08:00">
+                2019-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1.python读取文件的几种方式</p>
+<p><strong>read_csv 从文件，url，文件型对象中加载带分隔符的数据。默认分隔符为逗号<br>read_table 从文件，url，文件型对象中加载带分隔符的数据。默认分隔符为制表符（“\t”）<br>read_fwf 读取定宽列格式数据（也就是没有分隔符）<br>read_cliboard 读取剪切板中的数据，可以看做read_table的剪切板。在将网页转换为表格时很有用<br>np.loadtxt()用于从文本加载数据。常用：loadtxt(fname,  delimiter=None)</strong></p>
+<p>2.pandas.read_csv参数整理</p>
+<p>读取CSV（逗号分割）文件到DataFrame<br>也支持文件的部分导入和选择迭代<br>更多帮助参见：<a href="http://pandas.pydata.org/pandas-docs/stable/io.html" target="_blank" rel="noopener">http://pandas.pydata.org/pandas-docs/stable/io.html</a><br>参数：<br>filepath_or_buffer : str，pathlib。str, pathlib.Path, py._path.local.LocalPath or any object with a read() method (such as a file handle or StringIO)<br>可以是URL，可用URL类型包括：http, ftp, s3和文件。对于多文件正在准备中<br>本地文件读取实例：://localhost/path/to/table.csv</p>
+<p>sep : str, default ‘,’<br>指定分隔符。如果不指定参数，则会尝试使用逗号分隔。分隔符长于一个字符并且不是‘\s+’,将使用python的语法分析器。并且忽略数据中的逗号。正则表达式例子：’\r\t’</p>
+<p>delimiter : str, default None<br>定界符，备选分隔符（如果指定该参数，则sep参数失效）</p>
+<p>delim_whitespace : boolean, default False.<br>指定空格(例如’ ‘或者’ ‘)是否作为分隔符使用，等效于设定sep=’\s+’。如果这个参数设定为Ture那么delimiter 参数失效。<br>在新版本0.18.1支持</p>
+<p>header : int or list of ints, default ‘infer’<br>指定行数用来作为列名，数据开始行数。如果文件中没有列名，则默认为0，否则设置为None。如果明确设定header=0 就会替换掉原来存在列名。header参数可以是一个list例如：[0,1,3]，这个list表示将文件中的这些行作为列标题（意味着每一列有多个标题），介于中间的行将被忽略掉（例如本例中的2；本例中的数据1,2,4行将被作为多级标题出现，第3行数据将被丢弃，dataframe的数据从第5行开始。）。<br>注意：如果skip_blank_lines=True 那么header参数忽略注释行和空行，所以header=0表示第一行数据而不是文件的第一行。</p>
+<p>names : array-like, default None<br>用于结果的列名列表，如果数据文件中没有列标题行，就需要执行header=None。默认列表中不能出现重复，除非设定参数mangle_dupe_cols=True。</p>
+<p>index_col : int or sequence or False, default None<br>用作行索引的列编号或者列名，如果给定一个序列则有多个行索引。<br>如果文件不规则，行尾有分隔符，则可以设定index_col=False 来是的pandas不适用第一列作为行索引。</p>
+<p>usecols : array-like, default None<br>返回一个数据子集，该列表中的值必须可以对应到文件中的位置（数字可以对应到指定的列）或者是字符传为文件中的列名。例如：usecols有效参数可能是 [0,1,2]或者是 [‘foo’, ‘bar’, ‘baz’]。使用这个参数可以加快加载速度并降低内存消耗。</p>
+<p>as_recarray : boolean, default False<br>不赞成使用：该参数会在未来版本移除。请使用pd.read_csv(…).to_records()替代。<br>返回一个Numpy的recarray来替代DataFrame。如果该参数设定为True。将会优先squeeze参数使用。并且行索引将不再可用，索引列也将被忽略。</p>
+<p>squeeze : boolean, default False<br>如果文件值包含一列，则返回一个Series</p>
+<p>prefix : str, default None<br>在没有列标题时，给列添加前缀。例如：添加‘X’ 成为 X0, X1, …</p>
+<p>mangle_dupe_cols : boolean, default True<br>重复的列，将‘X’…’X’表示为‘X.0’…’X.N’。如果设定为false则会将所有重名列覆盖。</p>
+<p>dtype : Type name or dict of column -&gt; type, default None<br>每列数据的数据类型。例如 {‘a’: np.float64, ‘b’: np.int32}</p>
+<p>engine : {‘c’, ‘python’}, optional<br>Parser engine to use. The C engine is faster while the python engine is currently more feature-complete.<br>使用的分析引擎。可以选择C或者是python。C引擎快但是Python引擎功能更加完备。</p>
+<p>converters : dict, default None<br>列转换函数的字典。key可以是列名或者列的序号。</p>
+<p>true_values : list, default None<br>Values to consider as True</p>
+<p>false_values : list, default None<br>Values to consider as False</p>
+<p>skipinitialspace : boolean, default False<br>忽略分隔符后的空白（默认为False，即不忽略）.</p>
+<p>skiprows : list-like or integer, default None<br>需要忽略的行数（从文件开始处算起），或需要跳过的行号列表（从0开始）。</p>
+<p>skipfooter : int, default 0<br>从文件尾部开始忽略。 (c引擎不支持)</p>
+<p>skip_footer : int, default 0<br>不推荐使用：建议使用skipfooter ，功能一样。</p>
+<p>nrows : int, default None<br>需要读取的行数（从文件头开始算起）。</p>
+<p>na_values : scalar, str, list-like, or dict, default None<br>一组用于替换NA/NaN的值。如果传参，需要制定特定列的空值。默认为‘1.#IND’, ‘1.#QNAN’, ‘N/A’, ‘NA’, ‘NULL’, ‘NaN’, ‘nan’`.</p>
+<p>keep_default_na : bool, default True<br>如果指定na_values参数，并且keep_default_na=False，那么默认的NaN将被覆盖，否则添加。</p>
+<p>na_filter : boolean, default True<br>是否检查丢失值（空字符串或者是空值）。对于大文件来说数据集中没有空值，设定na_filter=False可以提升读取速度。</p>
+<p>verbose : boolean, default False<br>是否打印各种解析器的输出信息，例如：“非数值列中缺失值的数量”等。</p>
+<p>skip_blank_lines : boolean, default True<br>如果为True，则跳过空行；否则记为NaN。</p>
+<p>parse_dates : boolean or list of ints or names or list of lists or dict, default False<br>boolean. True -&gt; 解析索引<br>list of ints or names. e.g. If [1, 2, 3] -&gt; 解析1,2,3列的值作为独立的日期列；<br>list of lists. e.g. If [[1, 3]] -&gt; 合并1,3列作为一个日期列使用<br>dict, e.g. {‘foo’ : [1, 3]} -&gt; 将1,3列合并，并给合并后的列起名为”foo”</p>
+<p>infer_datetime_format : boolean, default False<br>如果设定为True并且parse_dates 可用，那么pandas将尝试转换为日期类型，如果可以转换，转换方法并解析。在某些情况下会快5~10倍。</p>
+<p>keep_date_col : boolean, default False<br>如果连接多列解析日期，则保持参与连接的列。默认为False。</p>
+<p>date_parser : function, default None<br>用于解析日期的函数，默认使用dateutil.parser.parser来做转换。Pandas尝试使用三种不同的方式解析，如果遇到问题则使用下一种方式。<br>1.使用一个或者多个arrays（由parse_dates指定）作为参数；<br>2.连接指定多列字符串作为一个列作为参数；<br>3.每行调用一次date_parser函数来解析一个或者多个字符串（由parse_dates指定）作为参数。</p>
+<p>dayfirst : boolean, default False<br>DD/MM格式的日期类型</p>
+<p>iterator : boolean, default False<br>返回一个TextFileReader 对象，以便逐块处理文件。</p>
+<p>chunksize : int, default None<br>文件块的大小， See IO Tools docs for more informationon iterator and chunksize.</p>
+<p>compression : {‘infer’, ‘gzip’, ‘bz2’, ‘zip’, ‘xz’, None}, default ‘infer’<br>直接使用磁盘上的压缩文件。如果使用infer参数，则使用 gzip, bz2, zip或者解压文件名中以‘.gz’, ‘.bz2’, ‘.zip’, or ‘xz’这些为后缀的文件，否则不解压。如果使用zip，那么ZIP包中国必须只包含一个文件。设置为None则不解压。<br>新版本0.18.1版本支持zip和xz解压</p>
+<p>thousands : str, default None<br>千分位分割符，如“，”或者“.”</p>
+<p>decimal : str, default ‘.’<br>字符中的小数点 (例如：欧洲数据使用’，‘).</p>
+<p>float_precision : string, default None<br>Specifies which converter the C engine should use for floating-point values. The options are None for the ordinary converter, high for the high-precision converter, and round_trip for the round-trip converter.<br>指定</p>
+<p>lineterminator : str (length 1), default None<br>行分割符，只在C解析器下使用。</p>
+<p>quotechar : str (length 1), optional<br>引号，用作标识开始和解释的字符，引号内的分割符将被忽略。</p>
+<p>quoting : int or csv.QUOTE_* instance, default 0<br>控制csv中的引号常量。可选 QUOTE_MINIMAL (0), QUOTE_ALL (1), QUOTE_NONNUMERIC (2) or QUOTE_NONE (3)</p>
+<p>doublequote : boolean, default True<br>双引号，当单引号已经被定义，并且quoting 参数不是QUOTE_NONE的时候，使用双引号表示引号内的元素作为一个元素使用。</p>
+<p>escapechar : str (length 1), default None<br>当quoting 为QUOTE_NONE时，指定一个字符使的不受分隔符限值。</p>
+<p>comment : str, default None<br>标识着多余的行不被解析。如果该字符出现在行首，这一行将被全部忽略。这个参数只能是一个字符，空行（就像skip_blank_lines=True）注释行被header和skiprows忽略一样。例如如果指定comment=’#’ 解析‘#empty\na,b,c\n1,2,3’ 以header=0 那么返回结果将是以’a,b,c’作为header。</p>
+<p>encoding : str, default None<br>指定字符集类型，通常指定为’utf-8’. List of Python standard encodings</p>
+<p>dialect : str or csv.Dialect instance, default None<br>如果没有指定特定的语言，如果sep大于一个字符则忽略。具体查看csv.Dialect 文档</p>
+<p>tupleize_cols : boolean, default False<br>Leave a list of tuples on columns as is (default is to convert to a Multi Index on the columns)</p>
+<p>error_bad_lines : boolean, default True<br>如果一行包含太多的列，那么默认不会返回DataFrame ，如果设置成false，那么会将改行剔除（只能在C解析器下使用）。</p>
+<p>warn_bad_lines : boolean, default True<br>如果error_bad_lines =False，并且warn_bad_lines =True 那么所有的“bad lines”将会被输出（只能在C解析器下使用）。</p>
+<p>low_memory : boolean, default True<br>分块加载到内存，再低内存消耗中解析。但是可能出现类型混淆。确保类型不被混淆需要设置为False。或者使用dtype 参数指定类型。注意使用chunksize 或者iterator 参数分块读入会将整个文件读入到一个Dataframe，而忽略类型（只能在C解析器中有效）</p>
+<p>buffer_lines : int, default None<br>不推荐使用，这个参数将会在未来版本移除，因为他的值在解析器中不推荐使用</p>
+<p>compact_ints : boolean, default False<br>不推荐使用，这个参数将会在未来版本移除<br>如果设置compact_ints=True ，那么任何有整数类型构成的列将被按照最小的整数类型存储，是否有符号将取决于use_unsigned 参数</p>
+<p>use_unsigned : boolean, default False<br>不推荐使用：这个参数将会在未来版本移除<br>如果整数列被压缩(i.e. compact_ints=True)，指定被压缩的列是有符号还是无符号的。<br>memory_map : boolean, default False<br>如果使用的文件在内存内，那么直接map文件使用。使用这种方式可以避免文件再次进行IO操作。</p>
+<p>参考博文：<br><a href="https://www.cnblogs.com/datablog/p/6127000.html" target="_blank" rel="noopener">https://www.cnblogs.com/datablog/p/6127000.html</a><br><a href="https://www.cnblogs.com/heitaoq/p/7994842.html" target="_blank" rel="noopener">https://www.cnblogs.com/heitaoq/p/7994842.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/使用nc命令传输数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/24/使用nc命令传输数据/" itemprop="url">使用nc命令传输数据</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T15:30:42+08:00">
+                2019-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>原文：<a href="https://www.cnblogs.com/nmap/p/6148306.html" target="_blank" rel="noopener">https://www.cnblogs.com/nmap/p/6148306.html</a><br>    nc是netcat的简写，有着网络界的瑞士军刀美誉。因为它短小精悍、功能实用，被设计为一个简单、可靠的网络工具</p>
+<h2 id="使用ncp命令传送数据"><a href="#使用ncp命令传送数据" class="headerlink" title="使用ncp命令传送数据"></a>使用ncp命令传送数据</h2><p>需注意操作次序，receiver先侦听端口，sender向receiver所在机器的该端口发送数据。<br>步骤一：在接收端B侦听端口数据，并将数据写到file里<br>nc -l port &gt;file<br><img src="https://img-blog.csdnimg.cn/20190128143512804.png" alt="在接收端侦听端口数据，并将数据写到file里"><br>步骤二：在发送端A往接收端B的指定端口发送数据，把文件发送过去<br>nc ip port &lt; somefile<br>nc 10.0.1.162 9995 &lt; somefile<br><img src="https://img-blog.csdnimg.cn/20190128143444169.png" alt="在这里插入图片描述"></p>
+<h2 id="安装nc"><a href="#安装nc" class="headerlink" title="安装nc"></a>安装nc</h2><p>1、先将已安装的nc删除</p>
+<p>yum erase nc</p>
+<p>2.下载较低版本的nc的.rpm文件</p>
+<pre><code>wget   http://vault.centos.org/6.6/os/x86_64/Packages/nc-1.84-22.el6.x86_64.rpm</code></pre><p>3.安装.rpm文件</p>
+<p>rpm   -iUv    nc-1.84-22.el6.x86_64.rpm</p>
+<p>原文：<a href="https://blog.csdn.net/yctccg/article/details/52218055" target="_blank" rel="noopener">https://blog.csdn.net/yctccg/article/details/52218055</a> </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/AI关键词/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/24/AI关键词/" itemprop="url">AI关键词</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T15:30:00+08:00">
+                2019-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>1. 常用名词缩写</strong><br>NLP：Natural Language Processing   自然语言处理<br>CNN:  Convolutional Neural Networks 卷积神经网络<br>LSTM:Long Short-Term Memory       长短期记忆网络<br>RNN:Recurrent Neural Network        循环神经网络<br>GPU:Graphics Processing Unit       图形处理器</p>
+<p><strong>2.普遍的深度学习框架有：Tensorflow、Caffe、PyTorch、Theano、CNTK</strong><br>（1） Caffe：卷积神经网络框架，专注于卷积神经网络和图像处理，因为是基于C++语言，所以执行速度非常的快。</p>
+<p>（2） PyTorch：动态computation graph！！！（笔者学习Tensorflow一段后，便会转学PyTorch试试看）</p>
+<p>（3） Theano：因其定义复杂模型很容易，在研究中比较流行。</p>
+<p>（4） CNTK：微软开发的，微软称其在语音和图像识别方面比其他框架更有优势。不过代码只支持C++.</p>
+<p>（5）Tensorflow作为谷歌主持的开源项目，它的社区热度目前看来是旺盛的，而且现在也最为流行。听说，它是在谷歌总结了DistBelief的经验教训上形成的；它运行高效、可扩展性强，可以运行在手机、普通电脑、计算机群上。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/22/python3升级后不支持的2文件的操作/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -616,7 +1176,22 @@ sorted 是<strong>函数</strong>，可以对所有可迭代的对象（比如�
       
         
           
-            <h5 id="cut命令"><a href="#cut命令" class="headerlink" title="cut命令"></a>cut命令</h5><pre><code>-b 以字节为单位分割
+            <h4 id="Linux文件有四种时间"><a href="#Linux文件有四种时间" class="headerlink" title="Linux文件有四种时间:"></a>Linux文件有四种时间:</h4><pre><code># stat /etc/hostname //查看文件详细信息包括时间
+
+访问时间:atime，查看内容 
+修改时间:mtime，修改内容 
+改变时间:ctime，文件属性，比如权限
+删除时间:dtime，文件被删除的时间</code></pre><h4 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h4><p>   ls -l 文件名 //看第一个字符</p>
+<pre><code>- 普通文件(文本文件，二进制文件，压缩文件，电影，图片。。。) d 目录文件(蓝色)
+b 设备文件(块设备)存储设备硬盘，U盘 /dev/sda, /dev/sda1
+c 设备文件(字符设备)打印机，终端 /dev/tty1, /dev/zero
+s 套接字文件
+p 管道文件
+l 链接文件(淡蓝色)</code></pre><h4 id="type-stat-file"><a href="#type-stat-file" class="headerlink" title="type stat file"></a>type stat file</h4><p>type        查看命令类型  -a查看所有<br>stat        查看文件详细信息<br>file        查看文件类型 </p>
+<h5 id="cat命令"><a href="#cat命令" class="headerlink" title="cat命令"></a>cat命令</h5><pre><code>-n 显示行号
+-A 包括控制字符(换行符/制表符)
+linux $ 
+Windows ^M$ 可通过其他方式转换成unix文件</code></pre><h5 id="cut命令"><a href="#cut命令" class="headerlink" title="cut命令"></a>cut命令</h5><pre><code>-b 以字节为单位分割
 -c以字符为单位分割
 -d 自定义分隔符
 -f与-d一起使用，指定哪一列</code></pre><p>  如：以冒号为分隔符，取第四列相当于awk -F: ‘{print $4}’</p>
@@ -1286,770 +1861,6 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/Django模板/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/14/Django模板/" itemprop="url">Django模板template</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-14T08:43:07+08:00">
-                2019-07-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>模板标签</p>
-<ul>
-<li>循环标签（for标签）<br>这种适合返回的字典值是列表的情况<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%for value in value_list %&#125;</span><br><span class="line">	&#123;&#123;value&#125;&#125;</span><br><span class="line">&#123;%endfor%&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>for遍历<br>除了普通列表遍历还可以实现:  </p>
-<ul>
-<li><p>对列表进行翻转</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% for obj in list reversed%&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>循环遍历字典</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%for key ,value in data.items %&#125;</span><br><span class="line">		&#123;&#123;key&#125;&#125;:&#123;&#123;value&#125;&#125;</span><br><span class="line">&#123;%endfor%&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<ul>
-<li>条件控制标签<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  &#123;% if condition1 %&#125;</span><br><span class="line">	...</span><br><span class="line">&#123;% elif condition2 %&#125;</span><br><span class="line">	...</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">	...</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="2">
-<li>过滤器<br>在原来值后面加上过滤的关键字，起到过滤效果<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;somekeyname|upper|first|lower|length&#125;&#125;</span><br><span class="line">常用的过滤器：</span><br><span class="line">capfirst首字母大写</span><br><span class="line">cut：删除指定值，如&#123;&#123;value|cut:&quot;&quot;&#125;&#125;</span><br><span class="line">date:格式化日期，如&#123;&#123;value|date:&quot;D d M Y&quot;&#125;&#125;</span><br><span class="line">default</span><br><span class="line">join拼接如&#123;&#123;value|join:&quot;//&quot;&#125;&#125;</span><br><span class="line">truncatewords 缩短内容长度</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-</li>
-</ol>
-<p>  【问题】  </p>
-<ol>
-<li>表单提交返回后，请求input中填写值不展示？<br>value中设置返回值：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">input type=&quot;text&quot; name=&quot;phone&quot; placeholder=&quot;手机号&quot; value=&#123;&#123; cardno &#125;&#125;&gt;&lt;/td&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/13/Django视图/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/13/Django视图/" itemprop="url">Django视图View</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T21:37:30+08:00">
-                2019-07-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>视图快捷方式shortcut  </p>
-<ul>
-<li><p>常用的是render函数，该函数主要3个参数，第一个参数固定是request,第二个参数是模板文件名，第三个参数是字典类型，其中key就是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;...&#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>中所用的标识符，实际是双括号后返回的是key对应的值。如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#hello.html#</span><br><span class="line">		&lt;h1&gt;&#123;&#123;hello&#125;&#125;&lt;/h1&gt;</span><br><span class="line">#views.py#</span><br><span class="line">def hello(request):</span><br><span class="line">		values=&#123;&#125;</span><br><span class="line">		values[&quot;hello&quot;]=&quot;hello world!&quot;</span><br><span class="line">		return render(request,&apos;hello.html&apos;,values)</span><br></pre></td></tr></table></figure>
-
-<p>【注】render()与render_to_response()均是django中用来显示模板页面的，但是在django1.3之后，render()便比render_to_response()更加招人待见！最明显的就是前者会自动使用RequestContext，而后者需要coding进去</p>
-</li>
-<li><p>render_to_string 返回字符串</p>
-</li>
-<li><p>redict（to,permanent=False,<em>args,*</em>kwargs）第一个参数常常为模板</p>
-</li>
-<li><p>get_object_or_404 提取数据不存在则抛出异常</p>
-</li>
-<li><p>get_list_or_404使用filter方法提取数据不存在抛出异常<br>最终浏览器测试，显示hello world!  </p>
-</li>
-</ul>
-</li>
-<li><p>HttpRequest对象即我们经常用的request<br>有很多属性和方法，比如body\path\method\encoding\META…<br>我们常用它的属性POST\GET，返回类似字典QueryDict的对象，包含表单中提交的数据。</p>
-<p>```</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Django项目实践偏代码实现/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/12/Django项目实践偏代码实现/" itemprop="url">Django项目实践二(偏代码实现)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T20:14:56+08:00">
-                2019-07-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>模板前端与后台交互方法 $.getJSON</p>
-<pre><code>$(document).ready(function () {
-    $(&quot;#dl&quot;).click(function () {
-        var sid=$(&quot;#sid&quot;).val();
-        var pid=$(&quot;#pid&quot;).val();
-    $.getJSON(&quot;/download/&quot;,{&apos;sid&apos;:sid,&apos;pid&apos;:pid},)
-    });
-
-    $(&quot;#submit&quot;).click(function () {
-        var sd=$(&quot;#sid&quot;).val();
-        var pd=$(&quot;#pid&quot;).val();
-        $.getJSON(&quot;/getSchedule/&quot;,{&apos;sd&apos;:sd,&apos;pd&apos;:pd},function (ret) {
-            $(&quot;#result&quot;).html(&quot;&quot;);
-           for(var i =0;i&lt;ret.length;i++){
-               $(&apos;#result&apos;).append(ret[i]).append(&quot;&lt;br&gt;&quot;)
-           }
-        })
-    });
-});</code></pre></li>
-<li><p>views返回几种方式<br> return render_to_response(“search.html”)<br> 属于shortcuts模块，常用需要2个参数，第一个是模板如hello.html，第二个是字典，其中字典key就是模板中的变量。<br> return HttpResponse(“success!”)<br> 常用于直接返回字符串</p>
-<ul>
-<li>静态文件的使用<br>settings.py 中两处注意：</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-INSTALLED_APPS中 注册了‘django.contrib.staticfiles’，默认生成的文件已注册。 </span><br><span class="line">-指定STATIC_URL 与 STATICFILES_DIRS 的值.</span><br><span class="line"></span><br><span class="line">INSTALLED_APPS=[</span><br><span class="line">    &apos;...&apos;,</span><br><span class="line">    &apos;django.contrib.staticfiles&apos;,</span><br><span class="line">    &apos;...&apos;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">STATIC_URL=&apos;/static/&apos;</span><br><span class="line">STATICFILES_DIRS=(BASE_DIR,&apos;static&apos;)</span><br></pre></td></tr></table></figure>
-
-
-<p>*.html中引用（常加在link前）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load staticfiles %&#125;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&#123;% static &apos;css/main.css&apos; %&#125;&quot; /&gt;</span><br><span class="line">...</span><br><span class="line">&#123;% static &apos;/image/test.png&apos; %&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>打开text文件乱码且每次打开的时候会多出一行？</p>
-<p>本地的ct.txt文件保存格式未必是utf-8，所以需要指定编码格式才更准确，使用newline防止在每次写入默认新添加一空行</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file=open(&quot;templates/ct.txt&quot;,&quot;w&quot;,encoding=&quot;utf-8&quot;, newline=&apos;&apos;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>表单提交后不调view接口？<br>表单submit按钮类型写错，应该是submit类型，非button类型。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Django-models/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/12/Django-models/" itemprop="url">Django模型models</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T17:45:16+08:00">
-                2019-07-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="定义模型model："><a href="#定义模型model：" class="headerlink" title="定义模型model："></a>定义模型model：</h4><ul>
-<li><p>一个模型对应数据库一个表；继承model.Model类；</p>
-</li>
-<li><p>不需要定义主键，系统自动生成</p>
-</li>
-<li><p>外键关联：</p>
-<pre><code>sgrade=models.ForeignKey(&quot;Grades&quot;) 
-#意思是Grades的主键作为Student sgrade的外键</code></pre></li>
-<li><p>数据库表生成两步走：</p>
-</li>
-</ul>
-<ol>
-<li>python manage.py makemigrations 创建迁移文件 </li>
-<li>python manage.py migrate</li>
-</ol>
-<ul>
-<li><p>测试数据操作：python manage.py shell</p>
-</li>
-<li><p>添加数据：本质是创建一个模型类的对象;示例:<br>  grade1=Grades()<br>  grade1.gname=”python”<br>  grade1.gtime=datetime(year=2017,month=12,day=17)<br>  grade1.save()  #注意保存</p>
-</li>
-<li><p>查询支持切片,但不支持负数Grades.objects.all()[:10]</p>
-</li>
-<li><p>条件查询：grade1=类名.objects.get(pk=2)#主键查找用关键字pk</p>
-</li>
-<li><p>修改数据：grade1.gname=”python22”   grade1.save()</p>
-</li>
-<li><p>删除数据：grade1.delete()</p>
-</li>
-<li><p>更新数据：update()  返回匹配的行数。唯一的限制是它只能作用在表记录上，不能直接作用在模型object上，返回执行行数。举例： </p>
-<pre><code>&gt;&gt;&gt; Entry.objects.update(blog__name=&apos;foo&apos;) # Won&apos;t work!
-&gt;&gt;&gt;  Entry.objects.filter(blog__id=1).update(comments_on=True) # works!</code></pre><p>   若单个object更新，则跟添加数据方法一致。</p>
-</li>
-<li><p>如果只是检查 Entry 中是否有对象，应该用 Entry.objects.all().exists()</p>
-</li>
-<li><p>推荐用 Entry.objects.count()来查询数量</p>
-</li>
-<li><p>list(es) 可以强行将 QuerySet 变成 列表</p>
-</li>
-<li><p>关联：</p>
-<ol>
-<li>grade1.student_set.all()  #对象名.关联类小写_set.all()<br>#班级grades1里所有的学生</li>
-<li>grade1.student_set.create(…)<br>#创建一条学生新数据 </li>
-</ol>
-</li>
-<li><p>模型类中定义元信息Meta :</p>
-<p>1.db_table定义数据表名，推荐小写，默认是项目表名_类名<br>2.ordering 排序 如ordering[-id] 加负号是倒序</p>
-</li>
-<li><p>自定义Manager类：</p>
-<p>  模型管理器是Django的模型与数据库进行交互的接口，一个模型可以有多个模型管理器。object是manager类的一个对象；</p>
-<p>作用： 向管理器中添加额外的方法；修改管理器返回的原始查询集（重写get_queryset）</p>
-</li>
-</ul>
-<pre><code>class diffManager(models.Manager):
-    def get_queryset(self):#重写原函数
-        return super(diffManager,self).get_queryset().filter(isdelete=True)
-    #super参数，第一个是子类类名，第二个一般为self
-class  Diffhsy(models.Model):
-    dfhobj=diffManager() #调用自定义的Manager类，替代Django为模型默认生成的objects模型管理器
- #在view.py中调用自定义模型管理器
- Student.dfhobj.all()</code></pre><ul>
-<li><p>创建对象</p>
-<p>  作用:像数据库中添加数据</p>
-<p>  方法：1. 模型中类中添加方法 2. 在自定义管理器里添加方法。</p>
-<pre><code>class Batchinfo(models.Model):
-    @classmethod
-    def createbatch(cls,time,oth):
-        bt=cls(createtime=time,other=oth)
-    return bt</code></pre></li>
-</ul>
-<h4 id="模型查询："><a href="#模型查询：" class="headerlink" title="模型查询："></a>模型查询：</h4><p>  官方接口文档：<a href="https://docs.djangoproject.com/zh-hans/2.1/ref/models/querysets/#filter" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.1/ref/models/querysets/#filter</a><br>  自强学院：<a href="https://code.ziqiangxuetang.com/django/django-models.html" target="_blank" rel="noopener">https://code.ziqiangxuetang.com/django/django-models.html</a></p>
-<h5 id="返回查询集-多个"><a href="#返回查询集-多个" class="headerlink" title="返回查询集(多个):"></a>返回查询集(多个):</h5><pre><code>filter(键=值，键=值)等价于 filter(键=值).filter(键=值)经过过滤器返回的仍然是查询集；
-可以有多个过滤器链式调用；
-exclude() 过滤掉符合条件的数据
-order_by()
-values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" class="headerlink" title="返回单个对象:"></a>返回单个对象:</h5><pre><code>  get()  1.若没找到符合条件的对象，会引发DoesNotExits异常2.若返回多条，会引发MultipleObjectsReturned异常
-  count()  返回查询集对象的个数
-  first()  返回查询集第一个对象
-  last()   返回查询集最后一个对象
-  exist()  若有数据返回True
-
-比较运算符:字段名__运算符关键字=值：
-   isnull:Entry.objects.filter(pub_date__isnull=True)
-   in:Entry.objects.filter(headline__in=&apos;abc&apos;)
-   gt/gte/lt/lte
-   date/year/month/day/week/week_day:如pub_date__date=datetime.date(2005, 1, 1)
-区分大小写，若前面加i则不区分：
-  exact/iexact  : Entry.objects.get(id__exact=14)
-  contains/icontains
-  startswith/endswith/istartswith/iendswith
- pk：代表主键
- 聚合函数：aggregate方法：
-    Avg/Count/Max/Min:Student.object.aggregate(Max(&apos;sage&apos;))
-关联查询：
-    Grades.objects.filter(student__scontend__contains(&apos;李爱国&apos;))
- F对象：使用模型的两个属性进行比较
-    from django.db.models import F,Q
-    Student.object.filter(num1__gt=F(&apos;num2&apos;)+20)#F对象也可以进行算术运算
- Q对象：
-    Model.objects.filter(Q(x=1) | Q(y=2))
-    Model.objects.filter(~Q(x=1)) #非，即取反</code></pre><h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><ol>
-<li><p>创建模型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from django.db import models</span><br><span class="line">class ContentTable(models.Model):</span><br><span class="line">    title=models.CharField(default=&quot;&quot;,max_length=50)</span><br><span class="line">    content=models.CharField(default=&quot;&quot;,max_length=1000)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>views.py中使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from wkbenchapp.models import ContentTable</span><br><span class="line">ct = ContentTable.objects.create(title=&quot;标题&quot;, content=&quot;内容&quot;)</span><br><span class="line">value = ContentTable.objects.filter(title=&quot;标题&quot;) #返回QuerySet object类型</span><br><span class="line">for v in value:#其中每个记录v都是个ContentTable object</span><br><span class="line">   print (&quot;v&quot;,v.content)</span><br></pre></td></tr></table></figure>
-
-<h4 id="QuerySet-API"><a href="#QuerySet-API" class="headerlink" title="QuerySet API"></a>QuerySet API</h4><h4 id="常用字段类型"><a href="#常用字段类型" class="headerlink" title="常用字段类型"></a>常用字段类型</h4></li>
-</ol>
-<pre><code>·AutoField
-    ·一个根据实际ID自动增长的IntegerField，通常不指定如果不指定，一个主键字段将自动添加到模型中
-
-·CharField(max_length=字符长度)
-    ·字符串，默认的表单样式是 TextInput
-
-·TextField
-    ·大文本字段，一般超过4000使用，默认的表单控件是Textarea
-
-·IntegerField
-    ·整数
-
-·DecimalField(max_digits=None, decimal_places=None)
-    ·使用python的Decimal实例表示的十进制浮点数
-    ·参数说明
-        ·DecimalField.max_digits
-            ·位数总数
-        ·DecimalField.decimal_places
-            ·小数点后的数字位数
-
-·FloatField
-    ·用Python的float实例来表示的浮点数
-
-·BooleanField
-    ·true/false 字段，此字段的默认表单控制是CheckboxInput
-
-·NullBooleanField
-    ·支持null、true、false三种值
-
-·DateField([auto_now=False, auto_now_add=False]) --- 日期
-    ·使用Python的datetime.date实例表示的日期
-    ·参数说明
-        ·DateField.auto_now(最后更新时间)
-            ·每次保存对象时，自动设置该字段为当前时间，用于&quot;最后一次修改&quot;的时间戳，它总是使用当前日期，默认为false
-        ·DateField.auto_now_add（创建时间）
-            ·当对象第一次被创建时自动设置当前时间，用于创建的时间戳，它总是使用当前日期，默认为false
-    ·说明
-        ·该字段默认对应的表单控件是一个TextInput. 在管理员站点添加了一个JavaScript写的日历控件，和一个“Today&quot;的快捷按钮，包含了一个额外的invalid_date错误消息键
-    ·注意
-        ·auto_now_add, auto_now, and default 这些设置是相互排斥的，他们之间的任何组合将会发生错误的结果
-
-·TimeField                                 ------时间
-    ·使用Python的datetime.time实例表示的时间，参数同DateField
-
-·DateTimeField               -------------------日期+时间
-    ·使用Python的datetime.datetime实例表示的日期和时间，参数同DateField
-
-·FileField
-    ·一个上传文件的字段
-
-·ImageField
-    ·继承了FileField的所有属性和方法，但对上传的对象进行校验，确保它是个有效的image</code></pre><h4 id="字段选项"><a href="#字段选项" class="headerlink" title="字段选项"></a>字段选项</h4><pre><code>·概述
-    ·通过字段选项，可以实现对字段的约束
-    ·在字段对象时通过关键字参数指定
-
-·null
-    ·如果为True，Django 将空值以NULL 存储到数据库中，默认值是 False
-
-·blank
-    ·如果为True，则该字段允许为空白，默认值是 False
-
-·注意
-    ·null是数据库范畴的概念，blank是表单验证证范畴的
-
-·db_column
-    ·字段的名称，如果未指定，则使用属性的名称
-
-·db_index
-    ·若值为 True, 则在表中会为此字段创建索引
-
-·default
-    ·默认值
-
-·primary_key
-    ·若为 True, 则该字段会成为模型的主键字段
-
-·unique
-    ·如果为 True, 这个字段在表中必须有唯一值</code></pre><h4 id="错误调试"><a href="#错误调试" class="headerlink" title="错误调试"></a>错误调试</h4><ol>
-<li>django.db.utils.IntegrityError: UNIQUE constraint failed: wkbenchapp_content.id…<br>migrate更新表的时候不知道怎么回事总是报这个错，怎么改都不行，最后删除migrations里除了初始化外的所有日志，重新从makemigrations来一遍就顺利的好了。</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2100,7 +1911,7 @@ values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" c
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">65</span>
+                  <span class="site-state-item-count">69</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="模板前端与后台交互方法 $.getJSON $(document).ready(function () {     $(&amp;quot;#dl&amp;quot;).click(function () {         var sid=$(&amp;quot;#sid&amp;quot;).val();         var pid=$(&amp;quot;#pid&amp;quot;).val();     $.getJSON(&amp;q">
+<meta name="description" content="Shell 条件测试 格式 1: test 条件表达式  格式 2: [ 条件表达式 ]  格式 3: [[ 条件表达式 ]] 文件测试 test -d /home [ -e dir|file ]  True if file exists (regardless of type) [ -d dir ] True if file exists and is a directory. [ -f fil">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Django项目实践二(偏代码实现)">
-<meta property="og:url" content="http://yoursite.com/2019/07/12/Django项目实践偏代码实现/index.html">
+<meta property="og:title" content="shell 条件测试">
+<meta property="og:url" content="http://yoursite.com/2020/02/06/shell-条件测试/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="模板前端与后台交互方法 $.getJSON $(document).ready(function () {     $(&amp;quot;#dl&amp;quot;).click(function () {         var sid=$(&amp;quot;#sid&amp;quot;).val();         var pid=$(&amp;quot;#pid&amp;quot;).val();     $.getJSON(&amp;q">
+<meta property="og:description" content="Shell 条件测试 格式 1: test 条件表达式  格式 2: [ 条件表达式 ]  格式 3: [[ 条件表达式 ]] 文件测试 test -d /home [ -e dir|file ]  True if file exists (regardless of type) [ -d dir ] True if file exists and is a directory. [ -f fil">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-28T04:29:49.827Z">
+<meta property="og:updated_time" content="2020-02-06T13:46:35.858Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Django项目实践二(偏代码实现)">
-<meta name="twitter:description" content="模板前端与后台交互方法 $.getJSON $(document).ready(function () {     $(&amp;quot;#dl&amp;quot;).click(function () {         var sid=$(&amp;quot;#sid&amp;quot;).val();         var pid=$(&amp;quot;#pid&amp;quot;).val();     $.getJSON(&amp;q">
+<meta name="twitter:title" content="shell 条件测试">
+<meta name="twitter:description" content="Shell 条件测试 格式 1: test 条件表达式  格式 2: [ 条件表达式 ]  格式 3: [[ 条件表达式 ]] 文件测试 test -d /home [ -e dir|file ]  True if file exists (regardless of type) [ -d dir ] True if file exists and is a directory. [ -f fil">
 
 
 
@@ -119,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/07/12/Django项目实践偏代码实现/">
+  <link rel="canonical" href="http://yoursite.com/2020/02/06/shell-条件测试/">
 
 
 
 
 
-  <title>Django项目实践二(偏代码实现) | 躲不掉的风</title>
+  <title>shell 条件测试 | 躲不掉的风</title>
   
 
 
@@ -264,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Django项目实践偏代码实现/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-条件测试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -281,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Django项目实践二(偏代码实现)</h1>
+          <h1 class="post-title" itemprop="name headline">shell 条件测试</h1>
         
 
         <div class="post-meta">
@@ -293,8 +293,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T20:14:56+08:00">
-                2019-07-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T12:21:04+08:00">
+                2020-02-06
               </time>
             
 
@@ -331,48 +331,39 @@
       
 
       
-        <ul>
-<li><p>模板前端与后台交互方法 $.getJSON</p>
-<pre><code>$(document).ready(function () {
-    $(&quot;#dl&quot;).click(function () {
-        var sid=$(&quot;#sid&quot;).val();
-        var pid=$(&quot;#pid&quot;).val();
-    $.getJSON(&quot;/download/&quot;,{&apos;sid&apos;:sid,&apos;pid&apos;:pid},)
-    });
-
-    $(&quot;#submit&quot;).click(function () {
-        var sd=$(&quot;#sid&quot;).val();
-        var pd=$(&quot;#pid&quot;).val();
-        $.getJSON(&quot;/getSchedule/&quot;,{&apos;sd&apos;:sd,&apos;pd&apos;:pd},function (ret) {
-            $(&quot;#result&quot;).html(&quot;&quot;);
-           for(var i =0;i&lt;ret.length;i++){
-               $(&apos;#result&apos;).append(ret[i]).append(&quot;&lt;br&gt;&quot;)
-           }
-        })
-    });
-});</code></pre></li>
-<li><p>views返回几种方式<br> return render_to_response(“search.html”)<br> 属于shortcuts模块，常用需要2个参数，第一个是模板如hello.html，第二个是字典，其中字典key就是模板中的变量。<br> return HttpResponse(“success!”)<br> 常用于直接返回字符串</p>
-<ul>
-<li>静态文件的使用<br>settings.py 中两处注意：</li>
-</ul>
+        <p>Shell 条件测试</p>
+<pre><code>格式 1: test 条件表达式 
+格式 2: [ 条件表达式 ] 
+格式 3: [[ 条件表达式 ]]</code></pre><ol>
+<li><p>文件测试</p>
+<pre><code>test -d /home
+[ -e dir|file ]  True if file exists (regardless of type)
+[ -d dir ] True if file exists and is a directory.
+[ -f file ] True if file exists and is a regular file.
+[ -d /ccc ] || mkdir /ccc</code></pre></li>
+<li><p>数值比较 </p>
+<pre><code>[ 整数1  操作符  整数2] 
+[ 1 -gt 10 ] 大于
+[ 1 -eq 10 ] 等于</code></pre></li>
+<li><p>数值比较–C语言风格 </p>
+<pre><code>[root@xxxx ~]# ((1&lt;2));echo $?
+0
+[root@xxxx ~]# ((1==2));echo $?</code></pre></li>
+<li><p>字符串比较</p>
+<pre><code>等号
+[root@xxxx ~]# [ &quot;$USER&quot; = &quot;root&quot; ];echo $?
+[root@xxxx ~]# [ -z &quot;$var1&quot; ];echo $?
+条件判断
+[root@xxxx ~]# [ 1 -lt 2 -a 5 -gt 10 ];echo $?
+[root@xxxx ~]# [ 1 -lt 2 -o 5 -gt 10 ];echo $?
+使用正则    
+[root@yangs ~]# [[ &quot;$num10&quot; =~ ^[0-9]+$ ]];echo $?</code></pre><p> 【注】:变量为空 或 未定义: 长度都为 0</p>
 </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-INSTALLED_APPS中 注册了‘django.contrib.staticfiles’，默认生成的文件已注册。 </span><br><span class="line">-指定STATIC_URL 与 STATICFILES_DIRS 的值.</span><br><span class="line"></span><br><span class="line">INSTALLED_APPS=[</span><br><span class="line">    &apos;...&apos;,</span><br><span class="line">    &apos;django.contrib.staticfiles&apos;,</span><br><span class="line">    &apos;...&apos;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">STATIC_URL=&apos;/static/&apos;</span><br><span class="line">STATICFILES_DIRS=(BASE_DIR,&apos;static&apos;)</span><br></pre></td></tr></table></figure>
-
-
-<p>*.html中引用（常加在link前）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load staticfiles %&#125;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&#123;% static &apos;css/main.css&apos; %&#125;&quot; /&gt;</span><br><span class="line">...</span><br><span class="line">&#123;% static &apos;/image/test.png&apos; %&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>打开text文件乱码且每次打开的时候会多出一行？</p>
-<p>本地的ct.txt文件保存格式未必是utf-8，所以需要指定编码格式才更准确，使用newline防止在每次写入默认新添加一空行</p>
+<li><p>eq  ge等用于数字比较</p>
+<p>= &gt;等都是字符串比较    </p>
+<p> 字符串比较一般要加双引号</p>
 </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file=open(&quot;templates/ct.txt&quot;,&quot;w&quot;,encoding=&quot;utf-8&quot;, newline=&apos;&apos;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>表单提交后不调view接口？<br>表单submit按钮类型写错，应该是submit类型，非button类型。</li>
-</ul>
+</ol>
 
       
     </div>
@@ -397,8 +388,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/07/12/Django-models/" rel="next" title="Django模型models">
-                <i class="fa fa-chevron-left"></i> Django模型models
+              <a href="/2020/02/03/Go语言/" rel="next" title="Go语言">
+                <i class="fa fa-chevron-left"></i> Go语言
               </a>
             
           </div>
@@ -407,8 +398,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/07/13/Django视图/" rel="prev" title="Django视图View">
-                Django视图View <i class="fa fa-chevron-right"></i>
+              <a href="/2020/02/06/shell-函数/" rel="prev" title="shell 函数">
+                shell 函数 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
