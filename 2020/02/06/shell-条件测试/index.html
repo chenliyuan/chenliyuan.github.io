@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="躲不掉的风">
 <meta property="og:description" content="Shell 条件测试 格式 1: test 条件表达式  格式 2: [ 条件表达式 ]  格式 3: [[ 条件表达式 ]] 文件测试 test -d /home [ -e dir|file ]  True if file exists (regardless of type) [ -d dir ] True if file exists and is a directory. [ -f fil">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-02-06T13:46:35.858Z">
+<meta property="og:updated_time" content="2020-02-14T07:29:13.367Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="shell 条件测试">
 <meta name="twitter:description" content="Shell 条件测试 格式 1: test 条件表达式  格式 2: [ 条件表达式 ]  格式 3: [[ 条件表达式 ]] 文件测试 test -d /home [ -e dir|file ]  True if file exists (regardless of type) [ -d dir ] True if file exists and is a directory. [ -f fil">
@@ -363,6 +363,20 @@
 <p>= &gt;等都是字符串比较    </p>
 <p> 字符串比较一般要加双引号</p>
 </li>
+<li><p>在shell脚本里，推荐按以下方式声明和使用布尔类型。</p>
+<pre><code>bool=true
+if [ &quot;$bool&quot; = true ]; then
+if [ &quot;$bool&quot; = &quot;true&quot; ]; then
+if [[ &quot;$bool&quot; = true ]]; then
+if [[ &quot;$bool&quot; = &quot;true&quot; ]]; then
+if [[ &quot;$bool&quot; == true ]]; then
+if [[ &quot;$bool&quot; == &quot;true&quot; ]]; then
+if test &quot;$bool&quot; = true; then
+if test &quot;$bool&quot; = &quot;true&quot;; then</code></pre></li>
+</ol>
+<ol start="7">
+<li><p>实例 判断bool变量不存在或者为false</p>
+<pre><code>if [ ${#usePFB} -eq 0 -o &quot;$usePFB&quot; = &quot;false&quot; ]</code></pre></li>
 </ol>
 
       
