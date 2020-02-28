@@ -261,6 +261,142 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/元素定位问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/29/元素定位问题/" itemprop="url">RT元素定位等问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T21:49:53+08:00">
+                2020-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="元素定位问题"><a href="#元素定位问题" class="headerlink" title="元素定位问题"></a>元素定位问题</h5><ol>
+<li><p>元素名称错误，比如后面少了对应右括号）</p>
+</li>
+<li><p>元素本身就不存在，比如调试元素在所在环境中不存在，然而编写代码定位的时候使用的是线上环境账号，其具有该元素，造成元素找不到</p>
+</li>
+<li><p>元素前面未加css=或者xpath=类型名称</p>
+</li>
+<li><p>元素不在屏幕可视范围内导致找不到元素。可使用避免方法：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	scroll element into view  $&#123;locator&#125;貌似不好用</span><br><span class="line">5. css之间不能用空格，用点来替代</span><br><span class="line"></span><br><span class="line">6. AttributeError: &apos;list&apos; object has no attribute &apos;startswith&apos;？</span><br></pre></td></tr></table></figure>
+
+<p>${obj}    GetWebElements    ${homepage_ele}[button_proceed]<br>Runkeywordif    ${obj}  click element    ${obj}</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">	click element后面的按钮元素多次被我写成了对象，会报这个错</span><br><span class="line">7. ...&lt;/a&gt; is not clickable at point (1435, 107). Other element would receive the click: &lt;div class=&quot;shopee-modal__container&quot;</span><br><span class="line">       确实是被其他元素遮挡住了</span><br><span class="line"></span><br><span class="line">8. StaleElementReferenceException: Message: stale element reference: element is not attached to the page document</span><br><span class="line"> </span><br><span class="line">	很多时候sleep一下就好了</span><br><span class="line">      </span><br><span class="line">9. 一个查了很久的问题，有个场景，进入链接后如果有密码框则点击按钮，但是第一个链接执行之后第二个链接依旧检测到有密码框于是就开始找按钮（实际没有）</span><br><span class="line"></span><br><span class="line">	本来以为是变量第二次赋值的时候有第一次的缓存，但是重新设置$&#123;None&#125;后依旧无效。</span><br><span class="line">    </span><br><span class="line">	原因：第二个link页面没有展示密码框但是元素中却能搜索到这个css元素值。</span><br><span class="line"></span><br><span class="line">10. 元素前面忘了写css=  或者xpath=</span><br><span class="line"></span><br><span class="line">11. 元素一直定位不到，本地机器可以。但是实际看页面上是展示出该元素的</span><br><span class="line"></span><br><span class="line">	后来找人查了很久，还是最后查出还是之前我怀疑过的一个问题，就是侧边栏的链接父元素class会变化，后来由开发得知是根据高度来判断的，后来兼容使用模糊匹配xpath=//ul[contains(@class, &apos;sidebar&apos;)]//a[contains(text(),&quot;&#123;&#125;&quot;)]</span><br><span class="line"></span><br><span class="line">12. 同一个页面元素有时候路径不同，需要综合不同情况时的共同点，来取该元素的值。</span><br><span class="line">	比如my wallet链接。有时候是a有时候是div/span</span><br><span class="line">    </span><br><span class="line">##### 其他</span><br><span class="line"></span><br><span class="line">1. 路径问题直接拼接为何不用os.path.join连接避免缺少多余/的情况？</span><br><span class="line">	使用robot关键字，直接没有这个关键字，需要额外封装。</span><br><span class="line">2. 在容器中获取设置下载路径，获取不到该目录</span><br><span class="line"></span><br><span class="line">  解决：使用谷歌驱动获取下载路径文件列表</span><br></pre></td></tr></table></figure>
+
+<p>from openapi_utils import split_order, init_forder<br>from robot.libraries.BuiltIn import BuiltIn<br>def get_downloaded_files():<br>   seleniumlib = BuiltIn().get_library_instance(‘SeleniumLibrary’)<br>   driver = seleniumlib.driver<br>   if not driver.current_url.startswith(“chrome://downloads”):</p>
+<pre><code>driver.get(&quot;chrome://downloads/&quot;)</code></pre><p>   return driver.execute_script( <br>   “return downloads.Manager.get().items_   “<br>   “  .filter(e =&gt; e.state === ‘COMPLETE’)  “<br>   “  .map(e =&gt; e.filePath || e.file_path); “ )<br>```</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/RT本地环境配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1630,156 +1766,6 @@ plt.show()#必须加</code></pre><h4 id="pyplot-legend"><a href="#pyplot-legend"
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/python-OpenCV/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/04/python-OpenCV/" itemprop="url">python  OpenCV</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-04T20:24:15+08:00">
-                2019-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><pre><code>import cv2
-#生成图片
-img=cv2.imread(&quot;D:/cly/xuanxiu/img/girl.jpg&quot;)
-#生成灰色图片
-imgGray=cv2.imread(&quot;D:/cly/xuanxiu/img/girl.jpg&quot;,0)
-print(img.shape)#图片高、宽、通道
-print(img.size)#图总像素
-print(img.dtype)#图片数据类型是uint8
-
-print(imgGray.shape)#图片高、宽、通道；灰色图不返通道
-#操作：中值滤波
-result=cv2.medianBlur(imgGray,3)
-cv2.namedWindow(&apos;result&apos;,0)#创建窗口
-cv2.resizeWindow(&apos;result&apos;,300,400)#设置大小
-#显示图片
-cv2.imshow(&quot;result&quot;,result)
-#等待图片关闭
-cv2.waitKey(0)
-
-#销毁所有窗口
-cv2.destroyAllWindows()</code></pre><h4 id="图像处理"><a href="#图像处理" class="headerlink" title="图像处理"></a>图像处理</h4><h5 id="中值滤波：medianBlur"><a href="#中值滤波：medianBlur" class="headerlink" title="中值滤波：medianBlur"></a>中值滤波：medianBlur</h5><p>优点：中值滤波在一定的条件下可以克服常见线性滤波器如方框滤波器、均值滤波等带来的图像细节模糊，而且对滤除脉冲干扰及图像扫描噪声非常有效，也常用于保护边缘信息, 保存边缘的特性使它在不希望出现边缘模糊的场合也很有用，是非常经典的平滑噪声处理方法。</p>
-<p>缺点：但是中值滤波的缺点也很明显，因为要进行排序操作，所以处理的时间长，是均值滤波的5倍以上。</p>
-<h5 id="双边滤波-bilateralFilter"><a href="#双边滤波-bilateralFilter" class="headerlink" title="双边滤波 bilateralFilter"></a>双边滤波 bilateralFilter</h5><p>是一种非线性滤波方法。能够保持边界清晰的情况下有效的去除噪声，但是这种操作比较慢。它拥有着美颜的效果。</p>
-<pre><code>dst = cv2.bilateralFilter(src=image, d=0, sigmaColor=100, sigmaSpace=15)
-
-src：原图像；
-d：像素的邻域直径，可有sigmaColor和sigmaSpace计算可得；
-sigmaColor：颜色空间的标准方差，一般尽可能大；（越大越模糊）
-sigmaSpace：坐标空间的标准方差(像素单位)，一般尽可能小。(发现越大处理时间越久)</code></pre><p>链接：<a href="https://www.jianshu.com/p/6c8db06bb0dc" target="_blank" rel="noopener">https://www.jianshu.com/p/6c8db06bb0dc</a><br>链接：<a href="https://www.jianshu.com/p/8d11e26c9665" target="_blank" rel="noopener">https://www.jianshu.com/p/8d11e26c9665</a></p>
-<h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><p>1、读取图片尽量不用中文路径</p>
-<p>2、不加waitKey造成程序无响应</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1830,7 +1816,7 @@ sigmaSpace：坐标空间的标准方差(像素单位)，一般尽可能小。(�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

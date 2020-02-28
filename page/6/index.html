@@ -261,6 +261,130 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/Django实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/15/Django实践/" itemprop="url">TensorFlow实践</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-15T18:19:23+08:00">
+                2019-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>创建隔离的python环境</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv #安装</span><br><span class="line">virtualenv my_env#创建目录</span><br><span class="line">which python3  #找到python3目录</span><br><span class="line">virtualenv my_env -p /Library/Frameworks/Python.framework/Versions/3.7/bin/python3 </span><br><span class="line">#将python3作为解释器</span><br><span class="line">source my_env/bin/activate  #激活，开始使用</span><br><span class="line">deactivate 退出</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/Flask框架学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1494,163 +1618,6 @@ print(gf._Person__country)#被改变成America2</code></pre><p> <strong>类方�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/25/python学习笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/25/python学习笔记/" itemprop="url">python3 HTTP请求</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-25T17:29:18+08:00">
-                2018-09-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>利用python作HTTP请求，主要分为以下两种方法</p>
-<ol>
-<li><p>** 使用urllib  **</p>
-<p>在Python 3以后的版本中，urllib2这个模块已经不单独存在（也就是说当你import urllib2时，系统提示你没这个模块），urllib2被合并到了urllib中，叫做urllib.request 和 urllib.error 。</p>
-<p>urllib整个模块分为urllib.request, urllib.parse, urllib.error。</p>
-<p>例：<br>其中urllib2.urlopen()变成了urllib.request.urlopen()<br>urllib2.Request()变成了urllib.request.Request()<br>官网地址：<br><a href="https://docs.python.org/3.5/library/urllib.html" target="_blank" rel="noopener">https://docs.python.org/3.5/library/urllib.html</a></p>
-</li>
-</ol>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"># coding:utf-8</span><br><span class="line">from urllib import request</span><br><span class="line">from urllib import parse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">url = &quot;http://10.1.2.151/ctower-mall-c/sys/login/login.do&quot;</span><br><span class="line">data = &#123;&quot;id&quot;:&quot;wdb&quot;,&quot;pwd&quot;:&quot;wdb&quot;&#125;</span><br><span class="line"></span><br><span class="line">params=&quot;?&quot;</span><br><span class="line">for key in data:</span><br><span class="line">    params = params + key + &quot;=&quot; + data[key] + &quot;&amp;&quot;</span><br><span class="line">print(&quot;Get方法参数：&quot;+params)</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    #heard部分直接通过chrome部分request header部分</span><br><span class="line">    &apos;Accept&apos;:&apos;application/json, text/plain, */*&apos;,</span><br><span class="line">    &apos;Accept-Encoding&apos;:&apos;gzip, deflate&apos;,</span><br><span class="line">    &apos;Accept-Language&apos;:&apos;zh-CN,zh;q=0.8&apos;,</span><br><span class="line">    &apos;Connection&apos;:&apos;keep-alive&apos;,</span><br><span class="line">    &apos;Content-Length&apos;:&apos;14&apos;, #get方式提交的数据长度，如果是post方式，转成get方式：【id=wdb&amp;pwd=wdb】</span><br><span class="line">    &apos;Content-Type&apos;:&apos;application/x-www-form-urlencoded&apos;,</span><br><span class="line">    &apos;Referer&apos;:&apos;http://10.1.2.151/&apos;,</span><br><span class="line">    &apos;User-Agent&apos;:&apos;Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.23 Mobile Safari/537.36&apos;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">data = parse.urlencode(data).encode(&apos;utf-8&apos;)</span><br><span class="line">req = request.Request(url, headers=headers, data=data)  #POST方法</span><br><span class="line">#req = request.Request(url+params)  # GET方法</span><br><span class="line">page = request.urlopen(req).read()</span><br><span class="line">page = page.decode(&apos;utf-8&apos;)</span><br></pre></td></tr></table></figure>
-
-<p>  【报错】<br>  python3 raise HTTPError(req.full_url, code, msg, hdrs, fp) urllib.error.HTTPError: HTTP Error 403: Forbid<br>  1.分析:</p>
-<p>  如果用 urllib.request.urlopen 方式打开一个URL,服务器端只会收到一个单纯的对于该页面访问的请求,但是服务器并不知道发送这个请求使用的浏览器,操作系统,硬件平台等信息,而缺失这些信息的请求往往都是非正常的访问,例如爬虫.<br>  有些网站验证请求信息中的UserAgent(它的信息包括硬件平台、系统软件、应用软件和用户个人偏好),如果UserAgent存在异常或者是不存在,那么这次请求将会被拒绝(如上错误信息所示)<br>  所以可以尝试在请求中加入UserAgent的信息<br>  方案:<br>  对于Python 3.x来说,在请求中添加UserAgent的信息非常简单,代码如下:<br>  可以在请求加上头信息，伪装成浏览器访问User-Agent,具体的信息可以通过火狐的FireBug插件查询<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">headers = &#123;&apos;User-Agent&apos;:&apos;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0&apos;&#125;  </span><br><span class="line">req = request.Request(url=chaper_url, headers=headers)  </span><br><span class="line">page  = request.urlopen(req).read()</span><br></pre></td></tr></table></figure></p>
-<p>   但是没有解决问题，我用的python3.4不知道是不是不支持，于是改用requests</p>
-<ol start="2">
-<li>urllib.quote  </li>
-</ol>
-<p>参考：<a href="https://www.cnblogs.com/lyxdw/p/9935137.html" target="_blank" rel="noopener">https://www.cnblogs.com/lyxdw/p/9935137.html</a><br>最近在抓请求有个这样的get参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%22pageIndex%22:0,%22pageSize%22:50,%22preference%22:%221563432582190%22,%22from%22:0%7D</span><br></pre></td></tr></table></figure>
-
-<p>本来以为用urllib的urlencode结果死活不行，最后发现应该直接用quote。<br>再观察得知其中:/,这几个特殊字符没有转，所以safe中需要忽略处理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">param=&apos;&#123;&quot;condition&quot;:&#123;&quot;servicename&quot;:&quot;/hotel/someinterface_POST&quot;&#125;,&quot;startTime&quot;:1563431682190,&quot;endTime&quot;:1563432582190,&quot;pageIndex&quot;:0,&quot;pageSize&quot;:50,&quot;preference&quot;:&quot;1563432582190&quot;,&quot;from&quot;:0&#125;)&apos;</span><br><span class="line">param=parse.quote(param.encode(&apos;utf-8&apos;),,safe=&apos;:/,&apos;)</span><br><span class="line">print (param)</span><br></pre></td></tr></table></figure>
-
-<p>quote 和 urlencode 的区别:urlencode 需要用字典  quote单个字符就行了，因为quote只需要字符串就行了    </p>
-<p>quote和quote_plus的区别：前者默认safe=’/‘；后者会将“空格”转换成“加号”，默认safe为空。</p>
-<ol start="2">
-<li><p>requests模块 </p>
-<p>参考<br><a href="https://blog.csdn.net/xuezhangjun0121/article/details/82024075" target="_blank" rel="noopener">https://blog.csdn.net/xuezhangjun0121/article/details/82024075</a><br>因为传入的参数是以json形式传入所以headers={‘Content-Type’:’application/json’}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url=&quot;http://127.0.0.1:5555/member/grade/query&quot;</span><br><span class="line">r=requests.post(url,headers=&#123;&apos;Content-Type&apos;:&apos;application/json&apos;&#125;,data=json.dumps(params))</span><br><span class="line">print (r.text)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>或</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; payload = &#123;&apos;key1&apos;: &apos;value1&apos;, &apos;key2&apos;: [&apos;value2&apos;, &apos;value3&apos;]&#125;</span><br><span class="line">&gt;&gt;&gt; r = requests.get(&apos;http://httpbin.org/get&apos;, params=payload)</span><br><span class="line">&gt;&gt;&gt; print(r.url)</span><br><span class="line">http://httpbin.org/get?key1=value1&amp;key2=value2&amp;key2=value3#已被正确编码</span><br></pre></td></tr></table></figure>
-
-<p>返回：   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">r.encoding                       #获取当前的编码</span><br><span class="line">r.encoding = &apos;utf-8&apos;             #设置编码</span><br><span class="line">r.text                           #以encoding解析返回内容。字符串方式的响应体，会自动根据响应头部的字符编码进行解码。</span><br><span class="line">r.content                        #以字节形式（二进制）返回。字节方式的响应体，会自动为你解码 gzip 和 deflate 压缩。</span><br><span class="line"></span><br><span class="line">r.headers                        #以字典对象存储服务器响应头，但是这个字典比较特殊，字典键不区分大小写，若键不存在则返回None</span><br><span class="line"></span><br><span class="line">r.status_code                     #响应状态码</span><br><span class="line">r.raw                             #返回原始响应体，也就是 urllib 的 response 对象，使用 r.raw.read()   </span><br><span class="line">r.ok                              # 查看r.ok的布尔值便可以知道是否登陆成功</span><br><span class="line"> #*特殊方法*#</span><br><span class="line">r.json()                         #Requests中内置的JSON解码器，以json形式返回,前提返回的内容确保是json格式的，不然解析出错会抛异常</span><br><span class="line">r.raise_for_status()             #失败请求(非200响应)抛出异常</span><br></pre></td></tr></table></figure>
-
-<p>待总结：<a href="https://2.python-requests.org//zh_CN/latest/user/quickstart.html" target="_blank" rel="noopener">https://2.python-requests.org//zh_CN/latest/user/quickstart.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1701,7 +1668,7 @@ print(gf._Person__country)#被改变成America2</code></pre><p> <strong>类方�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

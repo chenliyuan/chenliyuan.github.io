@@ -261,6 +261,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/python-OpenCV/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/04/python-OpenCV/" itemprop="url">python  OpenCV</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-04T20:24:15+08:00">
+                2019-11-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><pre><code>import cv2
+#生成图片
+img=cv2.imread(&quot;D:/cly/xuanxiu/img/girl.jpg&quot;)
+#生成灰色图片
+imgGray=cv2.imread(&quot;D:/cly/xuanxiu/img/girl.jpg&quot;,0)
+print(img.shape)#图片高、宽、通道
+print(img.size)#图总像素
+print(img.dtype)#图片数据类型是uint8
+
+print(imgGray.shape)#图片高、宽、通道；灰色图不返通道
+#操作：中值滤波
+result=cv2.medianBlur(imgGray,3)
+cv2.namedWindow(&apos;result&apos;,0)#创建窗口
+cv2.resizeWindow(&apos;result&apos;,300,400)#设置大小
+#显示图片
+cv2.imshow(&quot;result&quot;,result)
+#等待图片关闭
+cv2.waitKey(0)
+
+#销毁所有窗口
+cv2.destroyAllWindows()</code></pre><h4 id="图像处理"><a href="#图像处理" class="headerlink" title="图像处理"></a>图像处理</h4><h5 id="中值滤波：medianBlur"><a href="#中值滤波：medianBlur" class="headerlink" title="中值滤波：medianBlur"></a>中值滤波：medianBlur</h5><p>优点：中值滤波在一定的条件下可以克服常见线性滤波器如方框滤波器、均值滤波等带来的图像细节模糊，而且对滤除脉冲干扰及图像扫描噪声非常有效，也常用于保护边缘信息, 保存边缘的特性使它在不希望出现边缘模糊的场合也很有用，是非常经典的平滑噪声处理方法。</p>
+<p>缺点：但是中值滤波的缺点也很明显，因为要进行排序操作，所以处理的时间长，是均值滤波的5倍以上。</p>
+<h5 id="双边滤波-bilateralFilter"><a href="#双边滤波-bilateralFilter" class="headerlink" title="双边滤波 bilateralFilter"></a>双边滤波 bilateralFilter</h5><p>是一种非线性滤波方法。能够保持边界清晰的情况下有效的去除噪声，但是这种操作比较慢。它拥有着美颜的效果。</p>
+<pre><code>dst = cv2.bilateralFilter(src=image, d=0, sigmaColor=100, sigmaSpace=15)
+
+src：原图像；
+d：像素的邻域直径，可有sigmaColor和sigmaSpace计算可得；
+sigmaColor：颜色空间的标准方差，一般尽可能大；（越大越模糊）
+sigmaSpace：坐标空间的标准方差(像素单位)，一般尽可能小。(发现越大处理时间越久)</code></pre><p>链接：<a href="https://www.jianshu.com/p/6c8db06bb0dc" target="_blank" rel="noopener">https://www.jianshu.com/p/6c8db06bb0dc</a><br>链接：<a href="https://www.jianshu.com/p/8d11e26c9665" target="_blank" rel="noopener">https://www.jianshu.com/p/8d11e26c9665</a></p>
+<h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><p>1、读取图片尽量不用中文路径</p>
+<p>2、不加waitKey造成程序无响应</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/26/http前端/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1623,140 +1773,6 @@ qps，如果是对一个页面请求一次，形成一个tps，但一次页面�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/面试准备/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/24/面试准备/" itemprop="url">面试准备</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T20:04:49+08:00">
-                2019-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>*<em>HTTP  *</em>  </p>
-<p>  8种方法 GET POST DELETE PUT<br>HEAD  OPTIONS TRACE CONNECT </p>
-<ol>
-<li>基于TCP/IP的应用层协议  </li>
-<li>基于请求-响应的模式   由客户端发出请求，服务器接收请求后做出响应返回给客户端</li>
-<li>无状态保存<br>对发送的状态不做持久化处理。</li>
-</ol>
-</li>
-<li><p>排序算法</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">def bubbleSort(arr):</span><br><span class="line">    for i in range(1, len(arr)):</span><br><span class="line">        for j in range(0, len(arr)-i):</span><br><span class="line">            if arr[j] &gt; arr[j+1]:</span><br><span class="line">                arr[j], arr[j + 1] = arr[j + 1], arr[j]</span><br><span class="line">    return arr</span><br><span class="line">    </span><br><span class="line">def selectionSort(arr):</span><br><span class="line">    for i in range(len(arr) - 1):</span><br><span class="line">        # 记录最小数的索引</span><br><span class="line">        minIndex = i</span><br><span class="line">        for j in range(i + 1, len(arr)):</span><br><span class="line">            if arr[j] &lt; arr[minIndex]:</span><br><span class="line">                minIndex = j</span><br><span class="line">        # i 不是最小数时，将 i 和最小数进行交换</span><br><span class="line">        if i != minIndex:</span><br><span class="line">            arr[i], arr[minIndex] = arr[minIndex], arr[i]</span><br><span class="line">    return arr</span><br><span class="line"></span><br><span class="line">def insertionSort(arr):</span><br><span class="line">    for i in range(len(arr)):</span><br><span class="line">        preIndex = i-1</span><br><span class="line">        current = arr[i]</span><br><span class="line">        while preIndex &gt;= 0 and arr[preIndex] &gt; current:</span><br><span class="line">            arr[preIndex+1] = arr[preIndex]</span><br><span class="line">            preIndex-=1</span><br><span class="line">        arr[preIndex+1] = current</span><br><span class="line">    return arr</span><br><span class="line">    </span><br><span class="line">#快速排序复杂度nlog(n) 参考：https://blog.csdn.net/weixin_43250623/article/details/88931925    </span><br><span class="line">def quick_sort(li, start, end):</span><br><span class="line">    i=start</span><br><span class="line">    j=end</span><br><span class="line">    pivot=li[start]</span><br><span class="line">    if start&gt;=end:#注意结束条件</span><br><span class="line">        return</span><br><span class="line">    while(i&lt;j):</span><br><span class="line">         print(li,i,j)</span><br><span class="line">         while i&lt;j and li[i]&lt;pivot:#如果加等号pivot值就不换了</span><br><span class="line">             i+=1</span><br><span class="line">         li[j]=li[i]</span><br><span class="line">         while i&lt;j and li[j]&gt;=pivot:#必须加等号，不然遇到等于的情况，不往下走了</span><br><span class="line">             j-=1</span><br><span class="line">         li[i]=li[j]</span><br><span class="line">    li[i]=pivot</span><br><span class="line">    quick_sort(li, start, i-1)</span><br><span class="line">    quick_sort(li, i+1, end)</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]</span><br><span class="line">    quick_sort(alist, 0, len(alist) - 1)</span><br><span class="line">    print(alist)</span><br></pre></td></tr></table></figure>
-
-<p>找出字符串中所有回文：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">str = &quot;casacbc&quot;</span><br><span class="line">li=[]</span><br><span class="line">i = 1  </span><br><span class="line">while (i &lt; len(str)) :</span><br><span class="line">    for start in range(i+1):</span><br><span class="line">        str1 = str[start: i+1]</span><br><span class="line">        if str1 == str1[::-1] and len(str1)&gt;1:</span><br><span class="line">            li.append(str1)</span><br><span class="line">    i += 1</span><br><span class="line">print(li)</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1807,7 +1823,7 @@ qps，如果是对一个页面请求一次，形成一个tps，但一次页面�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

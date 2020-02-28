@@ -261,6 +261,140 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/面试准备/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/24/面试准备/" itemprop="url">面试准备</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T20:04:49+08:00">
+                2019-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>*<em>HTTP  *</em>  </p>
+<p>  8种方法 GET POST DELETE PUT<br>HEAD  OPTIONS TRACE CONNECT </p>
+<ol>
+<li>基于TCP/IP的应用层协议  </li>
+<li>基于请求-响应的模式   由客户端发出请求，服务器接收请求后做出响应返回给客户端</li>
+<li>无状态保存<br>对发送的状态不做持久化处理。</li>
+</ol>
+</li>
+<li><p>排序算法</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">def bubbleSort(arr):</span><br><span class="line">    for i in range(1, len(arr)):</span><br><span class="line">        for j in range(0, len(arr)-i):</span><br><span class="line">            if arr[j] &gt; arr[j+1]:</span><br><span class="line">                arr[j], arr[j + 1] = arr[j + 1], arr[j]</span><br><span class="line">    return arr</span><br><span class="line">    </span><br><span class="line">def selectionSort(arr):</span><br><span class="line">    for i in range(len(arr) - 1):</span><br><span class="line">        # 记录最小数的索引</span><br><span class="line">        minIndex = i</span><br><span class="line">        for j in range(i + 1, len(arr)):</span><br><span class="line">            if arr[j] &lt; arr[minIndex]:</span><br><span class="line">                minIndex = j</span><br><span class="line">        # i 不是最小数时，将 i 和最小数进行交换</span><br><span class="line">        if i != minIndex:</span><br><span class="line">            arr[i], arr[minIndex] = arr[minIndex], arr[i]</span><br><span class="line">    return arr</span><br><span class="line"></span><br><span class="line">def insertionSort(arr):</span><br><span class="line">    for i in range(len(arr)):</span><br><span class="line">        preIndex = i-1</span><br><span class="line">        current = arr[i]</span><br><span class="line">        while preIndex &gt;= 0 and arr[preIndex] &gt; current:</span><br><span class="line">            arr[preIndex+1] = arr[preIndex]</span><br><span class="line">            preIndex-=1</span><br><span class="line">        arr[preIndex+1] = current</span><br><span class="line">    return arr</span><br><span class="line">    </span><br><span class="line">#快速排序复杂度nlog(n) 参考：https://blog.csdn.net/weixin_43250623/article/details/88931925    </span><br><span class="line">def quick_sort(li, start, end):</span><br><span class="line">    i=start</span><br><span class="line">    j=end</span><br><span class="line">    pivot=li[start]</span><br><span class="line">    if start&gt;=end:#注意结束条件</span><br><span class="line">        return</span><br><span class="line">    while(i&lt;j):</span><br><span class="line">         print(li,i,j)</span><br><span class="line">         while i&lt;j and li[i]&lt;pivot:#如果加等号pivot值就不换了</span><br><span class="line">             i+=1</span><br><span class="line">         li[j]=li[i]</span><br><span class="line">         while i&lt;j and li[j]&gt;=pivot:#必须加等号，不然遇到等于的情况，不往下走了</span><br><span class="line">             j-=1</span><br><span class="line">         li[i]=li[j]</span><br><span class="line">    li[i]=pivot</span><br><span class="line">    quick_sort(li, start, i-1)</span><br><span class="line">    quick_sort(li, i+1, end)</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]</span><br><span class="line">    quick_sort(alist, 0, len(alist) - 1)</span><br><span class="line">    print(alist)</span><br></pre></td></tr></table></figure>
+
+<p>找出字符串中所有回文：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">str = &quot;casacbc&quot;</span><br><span class="line">li=[]</span><br><span class="line">i = 1  </span><br><span class="line">while (i &lt; len(str)) :</span><br><span class="line">    for start in range(i+1):</span><br><span class="line">        str1 = str[start: i+1]</span><br><span class="line">        if str1 == str1[::-1] and len(str1)&gt;1:</span><br><span class="line">            li.append(str1)</span><br><span class="line">    i += 1</span><br><span class="line">print(li)</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/TensorFlow实践/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1704,163 +1838,6 @@ fieldsets  给属性分组，与field不可同时使用
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/Django路由URL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/14/Django路由URL/" itemprop="url">Django路由URL</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-14T09:23:11+08:00">
-                2019-07-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="配置URL"><a href="#配置URL" class="headerlink" title="配置URL"></a>配置URL</h4><ul>
-<li>在myapp中创建urls.py文件，然后建立连接，从project的url中include到myapp中的urls文件<br>  re_path(r’^’,include(‘myapp.urls’))</li>
-</ul>
-<ul>
-<li><p>path函数的第一个参数是URL模式字符串，用于匹配URL<br>第二个参数是用于处理URL请求的视图函数  </p>
-</li>
-<li><p>使用尖括号提取URL中的参数，如<a href="int:year" target="_blank" rel="noopener">int:year</a>  </p>
-</li>
-<li><p>URL模式字符串不需要以/开头  </p>
-</li>
-<li><p>url传参：在Django 2.0版本以后，这里不再使用正则，而是用<br>…/&lt;参数类型:传入函数的形参名&gt;/…如path(r’oldurl/<a href="str:a" target="_blank" rel="noopener">str:a</a>/<a href="str:b" target="_blank" rel="noopener">str:b</a>/‘, views.oldUrl)类型转化器对参数类型进行转换，如：  </p>
-<pre><code>str：除了“/”以外的任意字符串，默认是它  
-int：匹配任意大于0的整数  
-slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_（汉字尝试没成功）</code></pre></li>
-</ul>
-<p>举例： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;articles/2003/&apos;, views.special_case_2003),</span><br><span class="line">    path(&apos;articles/&lt;title&gt;/&apos;, views.year_archive),</span><br><span class="line">    path(&apos;articles/&lt;int:year&gt;/&lt;int:month&gt;/&apos;, views.month_archive),</span><br><span class="line">    path(&apos;articles/&lt;int:year&gt;/&lt;int:month&gt;/&lt;slug:slug&gt;/&apos;, views.article_detail),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-58.png" alt="upload successful"></p>
-<h5 id="【其他】"><a href="#【其他】" class="headerlink" title="【其他】"></a>【其他】</h5><h6 id="urls与path区别"><a href="#urls与path区别" class="headerlink" title="urls与path区别"></a>urls与path区别</h6><p>   在使用Django的时候，多次遇到urls与path，不知道两者有什么区别。下面简单介绍一下两者</p>
-<p>  在django&gt;=2.0的版本，urls.py中的django.conf.urls已经被django.urls所取代。</p>
-<p>  django.urls的用法：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from django.urls import path</span><br><span class="line">from . import view</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;&apos;, view.hello),</span><br><span class="line">    path(&apos;world/&apos;, view.world)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>  其中最大的改变如下： </p>
-<ul>
-<li><p>import urls被import path所取代</p>
-</li>
-<li><p>如果是路径需要在路径的后面加上一个斜杠  /</p>
-<p>旧版本如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from django.conf.urls import url</span><br><span class="line"></span><br><span class="line">from . import view</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(r&apos;^hello$&apos;, view.hello),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>新版本如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from django.urls import path</span><br><span class="line">from . import view</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;hello/&apos;, view.hello),</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h6 id="可变参数就匹配不上-？"><a href="#可变参数就匹配不上-？" class="headerlink" title="可变参数就匹配不上 ？"></a>可变参数就匹配不上 ？</h6><p>Page not found (404)<br>The current path, getpapertextss, didn’t match any of these.<br>最后查跟url没关系，错误信息误导了我，原来是因为Views中从数据库获取数据时为空报了404<br>另外注意：<br>1）正则匹配django2.0需要用re_path<br>2）匹配的url后面有没有‘/’，与配置一致，除非设置中设置了默认加/</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1911,7 +1888,7 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

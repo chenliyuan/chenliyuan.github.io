@@ -261,6 +261,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/Django路由URL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/14/Django路由URL/" itemprop="url">Django路由URL</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-14T09:23:11+08:00">
+                2019-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="配置URL"><a href="#配置URL" class="headerlink" title="配置URL"></a>配置URL</h4><ul>
+<li>在myapp中创建urls.py文件，然后建立连接，从project的url中include到myapp中的urls文件<br>  re_path(r’^’,include(‘myapp.urls’))</li>
+</ul>
+<ul>
+<li><p>path函数的第一个参数是URL模式字符串，用于匹配URL<br>第二个参数是用于处理URL请求的视图函数  </p>
+</li>
+<li><p>使用尖括号提取URL中的参数，如<a href="int:year" target="_blank" rel="noopener">int:year</a>  </p>
+</li>
+<li><p>URL模式字符串不需要以/开头  </p>
+</li>
+<li><p>url传参：在Django 2.0版本以后，这里不再使用正则，而是用<br>…/&lt;参数类型:传入函数的形参名&gt;/…如path(r’oldurl/<a href="str:a" target="_blank" rel="noopener">str:a</a>/<a href="str:b" target="_blank" rel="noopener">str:b</a>/‘, views.oldUrl)类型转化器对参数类型进行转换，如：  </p>
+<pre><code>str：除了“/”以外的任意字符串，默认是它  
+int：匹配任意大于0的整数  
+slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_（汉字尝试没成功）</code></pre></li>
+</ul>
+<p>举例： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;articles/2003/&apos;, views.special_case_2003),</span><br><span class="line">    path(&apos;articles/&lt;title&gt;/&apos;, views.year_archive),</span><br><span class="line">    path(&apos;articles/&lt;int:year&gt;/&lt;int:month&gt;/&apos;, views.month_archive),</span><br><span class="line">    path(&apos;articles/&lt;int:year&gt;/&lt;int:month&gt;/&lt;slug:slug&gt;/&apos;, views.article_detail),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-58.png" alt="upload successful"></p>
+<h5 id="【其他】"><a href="#【其他】" class="headerlink" title="【其他】"></a>【其他】</h5><h6 id="urls与path区别"><a href="#urls与path区别" class="headerlink" title="urls与path区别"></a>urls与path区别</h6><p>   在使用Django的时候，多次遇到urls与path，不知道两者有什么区别。下面简单介绍一下两者</p>
+<p>  在django&gt;=2.0的版本，urls.py中的django.conf.urls已经被django.urls所取代。</p>
+<p>  django.urls的用法：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from django.urls import path</span><br><span class="line">from . import view</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;&apos;, view.hello),</span><br><span class="line">    path(&apos;world/&apos;, view.world)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>  其中最大的改变如下： </p>
+<ul>
+<li><p>import urls被import path所取代</p>
+</li>
+<li><p>如果是路径需要在路径的后面加上一个斜杠  /</p>
+<p>旧版本如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from django.conf.urls import url</span><br><span class="line"></span><br><span class="line">from . import view</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(r&apos;^hello$&apos;, view.hello),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>新版本如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from django.urls import path</span><br><span class="line">from . import view</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;hello/&apos;, view.hello),</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h6 id="可变参数就匹配不上-？"><a href="#可变参数就匹配不上-？" class="headerlink" title="可变参数就匹配不上 ？"></a>可变参数就匹配不上 ？</h6><p>Page not found (404)<br>The current path, getpapertextss, didn’t match any of these.<br>最后查跟url没关系，错误信息误导了我，原来是因为Views中从数据库获取数据时为空报了404<br>另外注意：<br>1）正则匹配django2.0需要用re_path<br>2）匹配的url后面有没有‘/’，与配置一致，除非设置中设置了默认加/</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/Django模板/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1699,130 +1856,6 @@ values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" c
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/Django实践/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/15/Django实践/" itemprop="url">TensorFlow实践</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-15T18:19:23+08:00">
-                2019-06-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>创建隔离的python环境</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv #安装</span><br><span class="line">virtualenv my_env#创建目录</span><br><span class="line">which python3  #找到python3目录</span><br><span class="line">virtualenv my_env -p /Library/Frameworks/Python.framework/Versions/3.7/bin/python3 </span><br><span class="line">#将python3作为解释器</span><br><span class="line">source my_env/bin/activate  #激活，开始使用</span><br><span class="line">deactivate 退出</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1873,7 +1906,7 @@ values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" c
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">69</span>
+                  <span class="site-state-item-count">70</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
