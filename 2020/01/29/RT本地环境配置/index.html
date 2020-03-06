@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="本地环境:Mac  安装谷歌浏览器  安装chromedriverhttp://chromedriver.chromium.org/downloads下载的driver的版本需要和浏览器的版本匹配，解压后放到本机,将文件路径添加至PATH中  安装本地运行环境依赖库 如Python版本：python3.6 requirements.txt: requests==2.22.0 robotframew">
+<meta name="description" content="本地环境:Mac  安装谷歌浏览器  安装chromedriver   http://chromedriver.chromium.org/downloads或 http://chromedriver.storage.googleapis.com/index.html 下载的driver的版本需要和浏览器的版本匹配，解压后放到本机,将文件路径添加至PATH中 1、将下载的可执行文件移到/usr/lo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RT本地环境配置">
 <meta property="og:url" content="http://yoursite.com/2020/01/29/RT本地环境配置/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="本地环境:Mac  安装谷歌浏览器  安装chromedriverhttp://chromedriver.chromium.org/downloads下载的driver的版本需要和浏览器的版本匹配，解压后放到本机,将文件路径添加至PATH中  安装本地运行环境依赖库 如Python版本：python3.6 requirements.txt: requests==2.22.0 robotframew">
+<meta property="og:description" content="本地环境:Mac  安装谷歌浏览器  安装chromedriver   http://chromedriver.chromium.org/downloads或 http://chromedriver.storage.googleapis.com/index.html 下载的driver的版本需要和浏览器的版本匹配，解压后放到本机,将文件路径添加至PATH中 1、将下载的可执行文件移到/usr/lo">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/pasted-77.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-78.png">
-<meta property="og:updated_time" content="2020-01-30T13:39:13.611Z">
+<meta property="og:updated_time" content="2020-03-02T09:42:47.616Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RT本地环境配置">
-<meta name="twitter:description" content="本地环境:Mac  安装谷歌浏览器  安装chromedriverhttp://chromedriver.chromium.org/downloads下载的driver的版本需要和浏览器的版本匹配，解压后放到本机,将文件路径添加至PATH中  安装本地运行环境依赖库 如Python版本：python3.6 requirements.txt: requests==2.22.0 robotframew">
+<meta name="twitter:description" content="本地环境:Mac  安装谷歌浏览器  安装chromedriver   http://chromedriver.chromium.org/downloads或 http://chromedriver.storage.googleapis.com/index.html 下载的driver的版本需要和浏览器的版本匹配，解压后放到本机,将文件路径添加至PATH中 1、将下载的可执行文件移到/usr/lo">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-77.png">
 
 
@@ -338,8 +338,19 @@
 <ul>
 <li><p>安装谷歌浏览器</p>
 </li>
-<li><p>安装chromedriver<br><a href="http://chromedriver.chromium.org/downloads" target="_blank" rel="noopener">http://chromedriver.chromium.org/downloads</a><br>下载的driver的版本需要和浏览器的版本匹配，解压后放到本机,将文件路径添加至PATH中</p>
+<li><p>安装chromedriver</p>
 </li>
+</ul>
+<p><a href="http://chromedriver.chromium.org/downloads" target="_blank" rel="noopener">http://chromedriver.chromium.org/downloads</a><br>或
+<a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">http://chromedriver.storage.googleapis.com/index.html</a></p>
+<p>下载的driver的版本需要和浏览器的版本匹配，解压后放到本机,将文件路径添加至PATH中</p>
+<p>1、将下载的可执行文件移到/usr/local/bin下</p>
+<p>sudo mv chromedriver /usr/local/bin/chromedriver</p>
+<p>2、: 修改文件权限</p>
+<p>sudo chmod u+x,o+x /usr/local/bin/chromedriver</p>
+<p>3、检查是否安装成功:</p>
+<p>chromedriver –version</p>
+<ul>
 <li><p>安装本地运行环境依赖库</p>
 <p>如Python版本：python3.6</p>
 <p>requirements.txt:</p>
