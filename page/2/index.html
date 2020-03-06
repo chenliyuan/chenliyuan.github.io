@@ -368,6 +368,9 @@
 </li>
 <li><p>同一个页面元素有时候路径不同，需要综合不同情况时的共同点，来取该元素的值。<br>比如my wallet链接。有时候是a有时候是div/span</p>
 </li>
+<li><p>JavascriptException: Message: javascript error: Failed to execute ‘elementsFromPoint’ on ‘Document’: The provided double value is non-finite.</p>
+<pre><code>scroll element into view  css=.multiple-level-items &gt; li:nth-of-type(1)</code></pre><p>原因：取消使用scroll element into view关键字 </p>
+</li>
 </ol>
 <h6 id="2-远程下载"><a href="#2-远程下载" class="headerlink" title="2. 远程下载"></a>2. 远程下载</h6><p>  解决：使用谷歌驱动获取远程下载路径文件列表</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from openapi_utils import split_order, init_forder</span><br><span class="line">from robot.libraries.BuiltIn import BuiltIn</span><br><span class="line">def get_downloaded_files():</span><br><span class="line">    seleniumlib = BuiltIn().get_library_instance(&apos;SeleniumLibrary&apos;)</span><br><span class="line">    driver = seleniumlib.driver</span><br><span class="line">    if not driver.current_url.startswith(&quot;chrome://downloads&quot;):</span><br><span class="line">        driver.get(&quot;chrome://downloads/&quot;)</span><br><span class="line"></span><br><span class="line">    return driver.execute_script( \</span><br><span class="line">    &quot;return downloads.Manager.get().items_   &quot;</span><br><span class="line">    &quot;  .filter(e =&gt; e.state === &apos;COMPLETE&apos;)  &quot;</span><br><span class="line">    &quot;  .map(e =&gt; e.filePath || e.file_path); &quot; )</span><br></pre></td></tr></table></figure>
