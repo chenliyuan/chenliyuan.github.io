@@ -261,6 +261,155 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/05/matplotlib/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/05/matplotlib/" itemprop="url">matplotlib_pyplot</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-05T12:36:15+08:00">
+                2019-11-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="pyplot"><a href="#pyplot" class="headerlink" title="pyplot"></a>pyplot</h4><p>subplot(numRows, numCols, plotnum)   如</p>
+<pre><code>plt.figure()
+plt.subplot(121) #一行两列，处于第一个位置
+plt.title(&quot;line&quot;)
+#只有一个列表，默认索引为X轴坐标
+p1=plt.plot(range(5),linewidth=2.0,color=&apos;g&apos;)
+p2=plt.plot([5,4,3,2,1],linewidth=2.0,color=&apos;r&apos;)
+
+plt.xlabel(&quot;this is x&quot;)
+plt.ylabel(&quot;this is y&quot;)
+plt.legend([p1,p2],[&apos;p1label&apos;,&apos;p2label&apos;])
+#print(line)
+#line.set(color = &apos;g&apos;,linewidth = 2.0)
+
+plt.subplot(122)
+plt.title(&quot;src_img&quot;)
+plt.imshow(src_img, cmap=&apos;gray&apos;)
+plt.savefig(&quot;d:/cly/xuanxiu/img/test.png&quot;)#不支持jpg
+
+plt.show()#必须加</code></pre><h4 id="pyplot-legend"><a href="#pyplot-legend" class="headerlink" title="pyplot.legend"></a>pyplot.legend</h4><p>loc：位置信息</p>
+<pre><code>0: ‘best&apos;
+1: ‘upper right&apos;
+2: ‘upper left&apos;
+3: ‘lower left&apos;
+4: ‘lower right&apos;
+5: ‘right&apos;
+6: ‘center left&apos;
+7: ‘center right&apos;
+8: ‘lower center&apos;
+9: ‘upper center&apos;
+10: ‘center&apos;</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/python-OpenCV/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1636,148 +1785,11 @@ qps，如果是对一个页面请求一次，形成一个tps，但一次页面�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/26/接口测试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/26/接口测试/" itemprop="url">接口测试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-26T18:22:35+08:00">
-                2019-09-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>接口测试</strong></p>
-<ul>
-<li><p>业务功能测试</p>
-<p>  正常场景</p>
-<p> 异常场景：重复提交，库存不足,风控失败</p>
-</li>
-<li><p>边界值测试</p>
-<p>  输入/输出参数边界值测试：必选参数、可选参数、无，null，特殊字符<br>参数的顺序，个数，类型，取值范围，字符串长短</p>
-</li>
-<li><p>输入参数组合测试</p>
-</li>
-<li><p>性能测试</p>
-<p>  响应时间、吞吐量。。</p>
-</li>
-<li><p>安全性测试</p>
-<p>  敏感信息是否加密、SQL注入</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1823,7 +1835,7 @@ qps，如果是对一个页面请求一次，形成一个tps，但一次页面�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

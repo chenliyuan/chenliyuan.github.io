@@ -261,6 +261,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/Python--类成员学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/07/Python--类成员学习/" itemprop="url">Python--类成员</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-07T09:55:11+08:00">
+                2018-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://img-blog.csdnimg.cn/20190218115154175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">class Foo():</span><br><span class="line">    #静态字段</span><br><span class="line">    country=&quot;公有静态字段&quot;</span><br><span class="line">    __name=&quot;私有静态字段&quot;#带有__开头属于私有</span><br><span class="line">    def __init__(self):</span><br><span class="line">    #普通字段</span><br><span class="line">        print (self.country)</span><br><span class="line">        print ( self.__name)#类内部可以访问私有</span><br><span class="line">    @staticmethod</span><br><span class="line">    def static_func():</span><br><span class="line">        &quot;&quot;&quot;定义静态方法，无默认参数&quot;&quot;&quot;</span><br><span class="line">        print (&apos;这个是静态方法&apos;)</span><br><span class="line">    @classmethod</span><br><span class="line">    def  class_func(cls):</span><br><span class="line">        print(&quot;这个是类方法&quot;)</span><br><span class="line">    def ord_func(self):</span><br><span class="line">        &quot;&quot;&quot;定义普通方法，至少有一个self参数&quot;&quot;&quot;</span><br><span class="line">        print(&quot;这个是普通方法&quot;)</span><br><span class="line">    @property</span><br><span class="line">    def price(self):</span><br><span class="line">        &quot;&quot;&quot;定义一个属性，有返回&quot;&quot;&quot;</span><br><span class="line">        return &quot;cheap&quot;</span><br><span class="line">class Foo_son(Foo):</span><br><span class="line">    def showcountry(self):</span><br><span class="line">        print (self.country)</span><br><span class="line">    def showname(self):</span><br><span class="line">        print (self.__name)</span><br><span class="line">Foo.static_func()#调用静态方法</span><br><span class="line">Foo.class_func()#调用类方法</span><br><span class="line">f=Foo()</span><br><span class="line">f.ord_func()#调用普通方法</span><br><span class="line">f.price#调用属性</span><br><span class="line">###################################################</span><br><span class="line">Foo.country #类可以访问公有字段</span><br><span class="line">f.country #对象可以访问公有字段</span><br><span class="line">#f.__name #错误，私有字段，类无法访问，只能；类内部使用</span><br><span class="line">####################################################</span><br><span class="line">f1=Foo_son()#创建派生类对象</span><br><span class="line">f1.showcountry()#派生类可以访问公有字段</span><br><span class="line">#f1.showname()# 错误,派生类无法访问私有字段</span><br></pre></td></tr></table></figure>
+
+<p>*<em>私有属性是否可以被外部访问？ *</em></p>
+<p>可以，但是需要使用_ClassName_methodName的形式如._Person__country(前面一条下划线，后面两条)</p>
+<pre><code>class Person(object):
+    __country = &apos;China&apos; #私有属性
+    def __init__(self,name,age):
+        self.__query()
+    def __query(self):
+         print(&quot;country:%s&quot; % self.__country)
+
+gf = Person(&apos;林小花&apos;,18)
+print(gf.__country)#报错，不能直接访问
+
+gf.__country = &apos;America&apos; #非原来的私有属性，另外一个新字段了
+print(gf.__country)
+print(gf._Person__country)#原来字段没有变
+
+gf._Person__country = &apos;America2&apos; #使用类名可以访问私有属性
+print(gf.__country)
+print(gf._Person__country)#被改变成America2</code></pre><p> <strong>类方法和静态方法</strong></p>
+<p> 类方法：将类本身作为对象进行操作的方法，第一个参数是cls，代表当前类对象，使用装饰器@classmethod。</p>
+<p> 静态方法:是个独立的单纯的函数，不含有类或实例的任何属性和方法。</p>
+<p> <strong>类变量和实例变量定义</strong></p>
+<p>在类中声明的变量我们称之为类变量[静态成员变量]，</p>
+<p>在init()函数中声明的变量并且绑定在实例上的变量我们称之为成员变量[实例变量]。</p>
+<p>类变量直接可以通过类名来调用。</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Dog:</span><br><span class="line"></span><br><span class="line">   kind = &apos;canine&apos;         # class variable shared by all instances</span><br><span class="line"></span><br><span class="line">   def __init__(self, name):</span><br><span class="line">       self.name = name    # instance variable unique to each instance</span><br></pre></td></tr></table></figure>
+
+<p><strong>类方法与成员方法</strong></p>
+<p>类方法：使用类名来调用的方法</p>
+<p>成员方法：使用对象来调用的方法</p>
+<p>参考：<a href="https://www.jb51.net/article/159611.htm" target="_blank" rel="noopener">https://www.jb51.net/article/159611.htm</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/25/python学习笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2431,159 +2584,11 @@ make install</code></pre><ul>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/07/my-first-blog/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/07/my-first-blog/" itemprop="url">搭建博客(blog)踩得最主要的坑</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-07T22:39:00+08:00">
-                2018-06-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>使用过程中博客报错：Unhandled rejection Template render error: (unknown path) [Line 9, Column 39]</p>
-<p>一篇博客中带有大括号的符号导致，以后避免使用或者放在代码框中。</p>
-<p><img src="/images/pasted-60.png" alt="upload successful"></p>
-<h5 id="——以下是搭建过程和问题-——"><a href="#——以下是搭建过程和问题-——" class="headerlink" title="——以下是搭建过程和问题 ——-"></a>——以下是搭建过程和问题 ——-</h5><p>参考博客：<a href="https://samxrtq.github.io/2019/05/16/%E5%BB%BA%E7%AB%8BHEXO-github%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener">https://samxrtq.github.io/2019/05/16/%E5%BB%BA%E7%AB%8BHEXO-github%E5%8D%9A%E5%AE%A2/</a></p>
-<ul>
-<li>问题1：<br>hexo fs.SyncWriteStream is deprecated</li>
-</ul>
-<p>查看各种博客，还让再安装一系列的包，最后一步步入坑，比如这种</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-fs --save</span><br><span class="line">npm install hexo-deployer-git@0.3.1 --save</span><br><span class="line">npm install hexo-renderer-ejs@0.3.1 --save</span><br><span class="line">npm install hexo-server@0.2.2 --save</span><br><span class="line"></span><br><span class="line">npm audit fix</span><br></pre></td></tr></table></figure>
-
-<p>回头来看，其实是思路除了问题，最终从头抓起，应该找到问题源头才行。最后查到了一篇对路解决方案<br><a href="https://blog.csdn.net/qq_31975963/article/details/82882465" target="_blank" rel="noopener">https://blog.csdn.net/qq_31975963/article/details/82882465</a></p>
-<p>在hexo项目中其中有一个hexo-fs的插件调用了这个方法，所以需要更新hexo-fs插件，更新方法如下：</p>
-<p>npm install hexo-fs –save</p>
-<p>更新插件后问题依然无法解决。</p>
-<p>通过–debug来查看在哪里出了问题：</p>
-<p>通过–debug来查看：</p>
-<p>[root@server init]# <font color="red"> hexo –debug</font><br>06:55:32.711 DEBUG Hexo version: 3.5.0<br>06:55:32.714 DEBUG Working directory: /data/wwwroot/init/<br>06:55:32.787 DEBUG Config loaded: /data/wwwroot/init/_config.yml<br>06:55:32.832 DEBUG Plugin loaded: hexo-admin<br>(node:25414) [DEP0061] DeprecationWarning: fs.SyncWriteStream is deprecated.</p>
-<p>问题出在：hexo-admin的hexo-fs<br>因hexo-admin作为后台管理，无法npm uninstall hexo-admin卸载,则找到对应文件，注释：</p>
-<p>打开文件<br>./node_modules/hexo-admin/node_modules/hexo-fs/lib/fs.js</p>
-<p>找到 718行:exports.SyncWriteStream = fs.SyncWriteStream;<br>将对应的exports.SyncWriteStream = fs.SyncWriteStream;注释(前面 //)即可！</p>
-<hr>
-<p>在windows上同步搭建<br>参考：<a href="https://samxrtq.github.io/2019/05/17/Windows%E4%B8%8Emac%E5%8F%8C%E7%AB%AF%E7%94%A8hexo%E5%86%99%E5%8D%9A%E5%AE%A2/" target="_blank" rel="noopener">https://samxrtq.github.io/2019/05/17/Windows%E4%B8%8Emac%E5%8F%8C%E7%AB%AF%E7%94%A8hexo%E5%86%99%E5%8D%9A%E5%AE%A2/</a></p>
-<p>问题：<br>1、如何在本机创建多个key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#第一步 创建别名key</span><br><span class="line">ssh-keygen -t rsa -f ~/.ssh/id_rsa.github -C &quot;entere@126.com&quot; </span><br><span class="line">#第二步创建config文件</span><br><span class="line">touch ~/.ssh/config</span><br><span class="line">chmod 600 ~/.ssh/config#根据需要进行这一步（win上没用这一步）</span><br><span class="line">#第三步 编辑config文件，将私钥地址附上去</span><br><span class="line">Host github.com</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa.github</span><br></pre></td></tr></table></figure>
-
-<p>2、hexo d -g的时候提示git不是内部命令<br>解决：检查环境变量，后来发现环境变量的目录git执行文件名字是git_cmd.exe,于是将其改名为git.exe.</p>
-<p><img src="%5Cimages%5Cpasted-29.png" alt="upload successful"><br>3、上个问题解决后随即提示add不是内部或外部命令<br>解决：换成bash命令，脱离cmd</p>
-<p><img src="%5Cimages%5Cpasted-30.png" alt="upload successful"><br>4、错误：git地址提交混乱，其中gitpagesource应该放源码，不该提到原来的git库里，后来重新按照步骤来了一遍好了。<br>5、不该更改_config.yml里原来的配置。<br>6、图片上传后不展示？<br>找大牛解决，替换了marked.js文件<br>7、mac和win不同步？<br>大牛给贴心画出原理图后秒懂，原因是源码没有在git仓库上同步<br><img src="%5Cimages%5Cpasted-33.png" alt="upload successful"></p>
-<p>1.git pull    #将源码从gitpagesource仓库更新<br>2.hexo s后，用admin写博客<br>3.hexo d -g   #将博客推送到chenliyuan.github.io  （hexo d会清空chenliyuan.github.io这个仓库，然后将发布后的html们放上去，chenliyuan.github.io这个仓库就是网址要显示的内容）<br>4.git add.  commit  push  #这一步是为了把源代码上传到GitpageSource仓库，以防你下一个设备用的时候，源代码不同步<br>5.以.md文件存储的，程序会将这些.md文件，给转换为html;你的主题设置，hexo设置，你的网站颜色设置，等等++++你写的博客源码(.md文件)+++图片.然后你hexo g的时候，hexo就会将这些源码进行编译，发布到public文件夹下，那里就是发布后的    其实是一个网站</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2629,7 +2634,7 @@ make install</code></pre><ul>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">70</span>
+                  <span class="site-state-item-count">71</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
