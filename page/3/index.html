@@ -261,6 +261,466 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/本地上传和下载远程LInux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/28/本地上传和下载远程LInux/" itemprop="url">本地上传和下载远程LInux</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-28T12:41:23+08:00">
+                2020-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>上传命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp path/filename userName@sseverName:path</span><br></pre></td></tr></table></figure>
+
+<p>下载：调换位置即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp userName@sseverName:path path/filename</span><br></pre></td></tr></table></figure>
+
+<p>我的执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo scp /Users/liyuanchen/Documents/workspace/JenkinsTask.zip  xxxxqa@10.12.77.89:/home</span><br></pre></td></tr></table></figure>
+
+<p>【报错】</p>
+<ol>
+<li><p><a href="mailto:xxxxqa@10.12.77.89" target="_blank" rel="noopener">xxxxqa@10.12.77.89</a>: Permission denied (publickey,password). </p>
+<p>解决方法，在同账户下把A的公钥放到B上，注意你scp的账户，添加在该账户下。<br>具体操作：<br>A：cat .ssh/id_rsa.pub<br>B: cat .ssh/authorized_keys （没有该文件创建一个）<br> 把A的公钥贴过来即可</p>
+</li>
+<li><p>scp: /home/setuptools/JenkinsTask.zip: Permission denied</p>
+<p>还是报错，按照网上的折腾了一番/etc/ssh/sshd/sshd_config中的PasswordAuthentication和AuthorizedKeysFile,放开了注释保证是开通状态；<br>还是不行，在命令行前加sudo。<br>还是不行，直到更改目标文件夹到xxxxqa，因为原文件夹权限是root，使用xxxxqa用户当然不行啦。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drwxr-xr-x  8 root     root     4096 1月  21 14:40 setuptools</span><br><span class="line">drwxr-xr-x 17 xxxxqa   xxxxqa   4096 1月  27 22:14 xxxxqa</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/10/Django/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/10/Django/" itemprop="url">Django</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-10T15:41:27+08:00">
+                2019-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>MVC的核心是思想是：解耦即减少相互联系，使得各个模块相互独立。</p>
+</li>
+<li><p>Django : MTV </p>
+</li>
+<li><p>安装：pip install Django==1.11.4  不写等号默认安装最新版本</p>
+<p>卸载：pip uninsall Django</p>
+</li>
+<li><p>验证 django.get_version()</p>
+</li>
+<li><p>创建项目：</p>
+<ol>
+<li>创建目录  </li>
+<li>cd到该目录下，输入命令django-admin startproject projectname  </li>
+<li>tree . /F (win)查看目录层级</li>
+</ol>
+</li>
+<li><p>配置数据库：</p>
+<pre><code>mysql数据库：安装pymysql
+1、setting配置：
+&apos;ENGINE&apos;:&apos;django.db.backends.mysql&apos;,
+&apos;NAME&apos;:&apos;Learn&apos;,
+&apos;USER&apos;:&apos;root&apos;,
+&apos;PASSWORD&apos;:&apos;rock1204&apos;,
+&apos;HOST&apos;:&apos;localhost&apos;,
+&apos;PORT&apos;:&apos;3306&apos;,
+2、在__init__.py中添加 import pymysql pymysql.install_as_MySQLdb()  不添加这些会报错</code></pre></li>
+<li><p>创建应用（app）：<br>可以创建多个应用；</p>
+<p> 步骤：</p>
+<ol>
+<li>在manage所在目录中，输入命令python manage.py startapp myapp</li>
+<li>激活应用，在setting将myapp应用加入到app配置中</li>
+</ol>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/10/正则表达式-grep/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/11/10/正则表达式-grep/" itemprop="url">正则表达式+grep</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-10T15:30:42+08:00">
+                2019-11-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="正则表表达式"><a href="#正则表表达式" class="headerlink" title="正则表表达式"></a>正则表表达式</h4><ul>
+<li>shell 通配符不区分大小写，正则区分;  </li>
+<li>是一种字符模式（pattern）；  </li>
+<li>绝大部分正则表达式都被放在两个正斜杠之间；  </li>
+<li>元字符是最重要的概念;  </li>
+<li>习惯:加单引号如  grep ‘^root’ /etc/passwd   </li>
+</ul>
+<h5 id="基本元字符"><a href="#基本元字符" class="headerlink" title="基本元字符"></a>基本元字符</h5><pre><code>^ 行首定位符
+$ 行尾定位符
+.指的是任意一个字符
+* 单独不能活，指的是前面字符出现次数&gt;=0
+.*任意多个字符（无敌了）
+[]匹配指定范围内的一个字符 [lL]ove
+[ - ]匹配指定范围内的一个字符 [a-z0-9]ove
+[^]用来匹配不在指定范围内的字符
+    注意与外面的^的区别：外面的指的是行首，[]里面的指的是取反，如[^0-9A-Z]love不在0-9和A-Z范围内的一个字符
+\ 用来转义后面的字符，使得后面字符失去元字符作用
+\&lt;词首定位符
+\&gt;词尾定位符 \&lt;love\&gt;指的是love这个单词
+\(..\)匹配稍后使用的字符的标签  如vim中替换:%s#\(10.18.40.\)#\1200#   其中\1替代的是第一个括号的内容
+x\{m\}x重复出现m次  o\{5\}
+x\{m,\}x重复出现m次及以上 o\{5,\}
+x\{m,n\}x重复出现m次到n次 o\{5,8\}
+\+
+\|</code></pre><h5 id="扩展元字符"><a href="#扩展元字符" class="headerlink" title="扩展元字符"></a>扩展元字符</h5><pre><code>+ 单独不能活，指的是前面字符出现次数&gt;=1  
+    grep &apos;ro\+t&apos; /etc/passwd  或者 egrep &apos;ro+t&apos; /etc/passwd  （grep不支持元字符，需要转义，或者替换成egrep）
+? 单独不能活，指的是前面字符出现次数0次或者1次
+a|b 匹配a或b
+()组字符  ov+ 指的是v出现1次或多次 (ov)+ 指的是ov出现1次或多次 
+(..)(..)\1\2 标签匹配字符 （love)able\1er     
+x{m}x重复出现m次  o{5}
+x{m,}x重复出现m次及以上 o｛5,}
+x{m,n}x重复出现m次到n次 o{5,8}</code></pre><h4 id="grep-egrep-fgrep"><a href="#grep-egrep-fgrep" class="headerlink" title="grep/egrep/fgrep"></a>grep/egrep/fgrep</h4><p>  grep：支持基本元字符  grep -e 等价于egrep<br>  egrep:支持扩展元字符<br>  fgrep   </p>
+<pre><code>格式： grep [选项] PATTERN filename1 filename2
+如：grep -i &apos;Tom&apos; /etc/passwd</code></pre><p>   特别可以使用：</p>
+<pre><code>    \w 代表所有字母与数字  等价于[a-zA-Z0-9]
+    \W 代表所有字母与数字之外的字符   等价于[^a-zA-Z0-9]
+    \b 词边界 等价于\&lt; \&gt;
+
+选项参数：
+-i  忽略大小写
+-q   quiet  无输出
+-v    反向查找
+grep --help|grep &apos;\-v&apos;
+-r/-R 针对目录文件
+-o  only match 只打印找到的内容，非匹配的整行
+-n 显示行号
+-l 显示匹配的目录  grep -l &apos;root&apos; /etc/passwd  /etc/shadow /etc/hosts
+-A  后几行
+-B  前几行
+-C  前后几行</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/05/matplotlib/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -481,12 +941,13 @@ plt.show()#必须加</code></pre><h4 id="pyplot-legend"><a href="#pyplot-legend"
       
         
           
-            <h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><pre><code>import cv2
+            <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>pip install opencv-python</p>
+<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><pre><code>import cv2
 #生成图片
 img=cv2.imread(&quot;D:/cly/xuanxiu/img/girl.jpg&quot;)
 #生成灰色图片
 imgGray=cv2.imread(&quot;D:/cly/xuanxiu/img/girl.jpg&quot;,0)
-print(img.shape)#图片高、宽、通道
+print(img.shape)#图片高、宽、通道（即y轴，x轴，通道）
 print(img.size)#图总像素
 print(img.dtype)#图片数据类型是uint8
 
@@ -501,8 +962,19 @@ cv2.imshow(&quot;result&quot;,result)
 cv2.waitKey(0)
 
 #销毁所有窗口
-cv2.destroyAllWindows()</code></pre><h4 id="图像处理"><a href="#图像处理" class="headerlink" title="图像处理"></a>图像处理</h4><h5 id="中值滤波：medianBlur"><a href="#中值滤波：medianBlur" class="headerlink" title="中值滤波：medianBlur"></a>中值滤波：medianBlur</h5><p>优点：中值滤波在一定的条件下可以克服常见线性滤波器如方框滤波器、均值滤波等带来的图像细节模糊，而且对滤除脉冲干扰及图像扫描噪声非常有效，也常用于保护边缘信息, 保存边缘的特性使它在不希望出现边缘模糊的场合也很有用，是非常经典的平滑噪声处理方法。</p>
+cv2.destroyAllWindows()</code></pre><h4 id="图像处理"><a href="#图像处理" class="headerlink" title="图像处理"></a>图像处理</h4><h5 id="像素"><a href="#像素" class="headerlink" title="像素"></a>像素</h5><p>图片是由像素组成的矩阵</p>
+<p>彩色图片访问方式为：</p>
+<pre><code>img[i,j,c]</code></pre><p>i表示图片的行数，j表示图片的列数，c表示图片的通道数（RGB三通道分别对应0，1，2）。坐标是从左上角开始。</p>
+<p>灰度图片访问方式为：</p>
+<pre><code>gray[i,j]  即  gray[row,col] 即gray[y,x]</code></pre><p> 坐标系这里有点晕，总结就是使用<strong>像素</strong>查找的时候前面是y后面是x跟正常是反着的(跟shape返回一致)，但是<strong>坐标</strong>点的话记得不要取错还是(x,y)<br>    若是直线坐标是[x,y,x1,y1]</p>
+<p> 需要注意的是(容易弄反)</p>
+<pre><code>row == height == Point.y
+col == width  == Point.x</code></pre><p><img src="/images/pasted-97.png" alt="upload successful"></p>
+<h5 id="OpenCV—图像二值化"><a href="#OpenCV—图像二值化" class="headerlink" title="OpenCV—图像二值化"></a>OpenCV—图像二值化</h5><p>好文章：<a href="https://www.cnblogs.com/ssyfj/p/9272615.html" target="_blank" rel="noopener">https://www.cnblogs.com/ssyfj/p/9272615.html</a></p>
+<p>就是把图像分成两种颜色：黑和白，1白色，0黑色</p>
+<h5 id="中值滤波：medianBlur"><a href="#中值滤波：medianBlur" class="headerlink" title="中值滤波：medianBlur"></a>中值滤波：medianBlur</h5><p>优点：中值滤波在一定的条件下可以克服常见线性滤波器如方框滤波器、均值滤波等带来的图像细节模糊，而且对滤除脉冲干扰及图像扫描噪声非常有效，也常用于保护边缘信息, 保存边缘的特性使它在不希望出现边缘模糊的场合也很有用，是非常经典的平滑噪声处理方法。</p>
 <p>缺点：但是中值滤波的缺点也很明显，因为要进行排序操作，所以处理的时间长，是均值滤波的5倍以上。</p>
+<p>python代码实现：<br><a href="https://blog.csdn.net/A_Z666666/article/details/81324288" target="_blank" rel="noopener">https://blog.csdn.net/A_Z666666/article/details/81324288</a></p>
 <h5 id="双边滤波-bilateralFilter"><a href="#双边滤波-bilateralFilter" class="headerlink" title="双边滤波 bilateralFilter"></a>双边滤波 bilateralFilter</h5><p>是一种非线性滤波方法。能够保持边界清晰的情况下有效的去除噪声，但是这种操作比较慢。它拥有着美颜的效果。</p>
 <pre><code>dst = cv2.bilateralFilter(src=image, d=0, sigmaColor=100, sigmaSpace=15)
 
@@ -510,8 +982,13 @@ src：原图像；
 d：像素的邻域直径，可有sigmaColor和sigmaSpace计算可得；
 sigmaColor：颜色空间的标准方差，一般尽可能大；（越大越模糊）
 sigmaSpace：坐标空间的标准方差(像素单位)，一般尽可能小。(发现越大处理时间越久)</code></pre><p>链接：<a href="https://www.jianshu.com/p/6c8db06bb0dc" target="_blank" rel="noopener">https://www.jianshu.com/p/6c8db06bb0dc</a><br>链接：<a href="https://www.jianshu.com/p/8d11e26c9665" target="_blank" rel="noopener">https://www.jianshu.com/p/8d11e26c9665</a></p>
+<h5 id="文字区域识别-投影法"><a href="#文字区域识别-投影法" class="headerlink" title="文字区域识别-投影法"></a>文字区域识别-投影法</h5><p><a href="https://www.jb51.net/article/178717.htm" target="_blank" rel="noopener">https://www.jb51.net/article/178717.htm</a></p>
 <h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><p>1、读取图片尽量不用中文路径</p>
 <p>2、不加waitKey造成程序无响应</p>
+<p>3、 在Pycharm中运行cv.imshow()函数的时候，图形界面闪了一下就消失了</p>
+<p>原来，在运行cv2.imshow后，需要使用cv2.waitKey来保持窗口的显示。</p>
+<p>再添加个cv2.destroyAllWindows()点击enter可自动销毁图片</p>
+<p><a href="https://my.oschina.net/u/4070307/blog/3008278" target="_blank" rel="noopener">https://my.oschina.net/u/4070307/blog/3008278</a></p>
 
           
         
@@ -1347,444 +1824,6 @@ done</code></pre></li>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/Django项目实践-Crypto库/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/07/Django项目实践-Crypto库/" itemprop="url">Crypto模块</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-07T17:12:39+08:00">
-                2019-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>背景：<br>    由于公司接口有加密解密，自定义接口脚本需要调取Crypto模块，之前用的是php调用python脚本实现的结构体，过于繁琐，打算搭建Django框架实现</p>
-<h2 id="问题一："><a href="#问题一：" class="headerlink" title="问题一："></a>问题一：</h2><p>但是搭建后发现调用Crypto模块经常会报错，主要报错是：<br>from Crypto.Cipher import _AES<br>ImportError: DLL load failed: 找不到指定的模块。<br>这个问题困扰了我很久，原来代码目录<br><img src="https://img-blog.csdnimg.cn/201903111457336.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述
-"></p>
-<p>1、一直认为引用这个模块使用的是目录调用，然后验证路径调用是否正确，怎么验证也没发现什么毛病<br>2、文件里引用当前目录的_AES,最开始以为是AES.py文件本身（单下划线私有变量）；后来知道.pyd文件实际上就是个库文件（DLL），才转移到是引用的_ASE.pyd，但是也没有找出找不到它的理由<br><img src="https://img-blog.csdnimg.cn/20190311150008620.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>解决：<br>后来尝试在原来PHP框架里删除该引用文件，发现依旧可用，于是明确一点：该实现并不依赖该路径，而是与系统安装的pycrypto路径文件有关，但是wondows本地一直有问题，于是直接从当前正在使用PHP linux服务器上调试。做法：删除本地目录（直接用系统的，经之前项目验证系统的没问题，可以用），然后启动Django服务就不报错了，后来又调试了下报错都是些其他的问题了，困扰我两周的问题终于终于落幕了，可以收下心做正事了~~</p>
-<h2 id="问题2："><a href="#问题2：" class="headerlink" title="问题2："></a>问题2：</h2><p>虽然在linux上的这个问题莫名其妙的解决了，但是在台式机win7（py3.7）系统上还是有问题，使用django框架吊起来没有问题，但是直接执行python脚本还是会报一样的错误。忍了一段时间后终于忍不下去了。<br>最开始听人说在linux环境可行，于是在windows下打开git bash确实可行，但是还是会报其他的错，可能是因为版本换了，因为他走的是Anaconda里面的插件，后来干脆还是修复本地的吧<br>1、卸载本地的pycrypto<br>卸载失败提示:Cannot uninstall ‘’. It is a distutils installed project and thus we cannot accurately.<br>解决：直接全局搜索对应文件，具体包括 “package name” 文件夹 和 “package name”.egg-info ，找到后直接删除即可<br>2、重新安装pip install pycrypto<br>直接安装报错，使用源码安装？一样报错<br>error: command ‘C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\<br>x86_amd64\cl.exe’ failed with exit status 2<br>解决：从网上找的经验<br>1）添加VC环境变量，设置用户环境变量，这里划重点！！！是用户环境变量，不是系统环境变量<br>变量名：VCINSTALLDIR<br>（变量值为vs安装路径下的VC，默认是这个）<br>变量值：C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC<br> win+R运行cmd，执行命令set CL=/FI”%VCINSTALLDIR%\INCLUDE\stdint.h” %CL% </p>
-<p>2）安装twisted <a href="https://blog.csdn.net/jiangyunsheng147/article/details/80449556" target="_blank" rel="noopener">https://blog.csdn.net/jiangyunsheng147/article/details/80449556</a></p>
-<p>还会报错warning: GMP or MPIR library not found; Not building Crypto.PublicKey._fastmath.<br>building ‘Crypto.Random.OSRNG.winrandom’ extension<br>error: Unable to find vcvarsall.bat</p>
-<p>3）降低版本3.7–&gt;3.6<br>还是报楼上错误，最后看到有pycrypto-2.6.1.win-amd64-py3.4.exe可行，但是需要3.4.于是降到3.4，刚开始用的exe事32位的不行，后来下了64的果然可以了，搞了一天的环境终于在最后搞定了，也不辜负这一天的工时。<br>插曲：在降低版本的时候，出现了明明已经降到3.4，但是python -V的时候一直仍然显示3.7，后来又是删注册表，又是卸载程序的，我怀疑跟我安装的Anaconda有关系。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/Docker/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/07/Docker/" itemprop="url">Docker使用篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-07T16:24:49+08:00">
-                2019-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>参考菜鸟教程 <a href="https://www.runoob.com/docker/docker-tutorial.html" target="_blank" rel="noopener">https://www.runoob.com/docker/docker-tutorial.html</a><br><a href="https://www.cnblogs.com/hellangels333/p/9749905.html" target="_blank" rel="noopener">https://www.cnblogs.com/hellangels333/p/9749905.html</a></p>
-<h4 id="启动docker"><a href="#启动docker" class="headerlink" title="启动docker"></a>启动docker</h4><p> 命令行启动 或点击图标启动app</p>
-<p> $ docker   可查看所有命令</p>
-<p> 比如常用命令：</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker version</span><br><span class="line">$ docker info</span><br></pre></td></tr></table></figure>
-
-
-<h4 id="镜像管理"><a href="#镜像管理" class="headerlink" title="镜像管理"></a>镜像管理</h4><ul>
-<li>docker search 命令来搜索镜像</li>
-</ul>
-<p>ps:镜像加速 mac:<a href="http://f971cfe6.m.daocloud.io加入deamon-Registry" target="_blank" rel="noopener">http://f971cfe6.m.daocloud.io加入deamon-Registry</a> mirrors</p>
-<ul>
-<li><p>docker pull  获取新镜像</p>
-<p>注意使用OFFICIAL的官方镜像</p>
-<p>  我们可以从 Docker Hub 网站来搜索镜像，Docker Hub 网址为：<br><a href="https://hub.docker.com/" target="_blank" rel="noopener">https://hub.docker.com/</a></p>
-<p>  使用国内镜像参考地址：<a href="https://www.docker-cn.com/registry-mirror" target="_blank" rel="noopener">https://www.docker-cn.com/registry-mirror</a></p>
-</li>
-<li><p>docker images   //列出本地主机上的镜像 </p>
-<pre><code>REPOSITORY：表示镜像的仓库源
-TAG：镜像的标签(可以理解为不同的版本号)
-IMAGE ID：镜像ID
-CREATED：镜像创建时间</code></pre><p>实例：</p>
-<p>1、docker ps或docker images</p>
-<p>Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?</p>
-<p>原因：未打开docker，启动docker图标，直至展示running</p>
-<p>2、打开后发现需要指定运行目录</p>
-<p>ls查看当前目录结构，选择映射目录<br>再停掉容器：<br>docker stop  362f8b09c8f43517957423b23f5e0d07ffa164864170262ec14150f2ad267<br>再打开的时候加-v 参数</p>
-</li>
-</ul>
-<h4 id="容器管理"><a href="#容器管理" class="headerlink" title="容器管理"></a>容器管理</h4><p>可通过docker –help 查看所有命令，常用以下几个命令</p>
-<pre><code>$ docker ps  -a  //使用 docker ps 来查看我们正在运行的容器</code></pre><p><img src="https://img-blog.csdnimg.cn/20190514152454652.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<pre><code>docker rm +容器名   //删除容器时，容器必须是停止状态，否则会报错
-docker rm $(docker ps -a -q)
-docker stop +ID 或者名字
-docker start +容器名 //已经停止状态的容器，我们可以使用命令 docker start 来启动。
-docker port +（ID 或者名字）//容器的某个确定端口映射到宿主机的端口号
-docker logs [ID或者名字] //可以查看容器内部的标准输出。  
-docker top +容器名  //查看容器内部运行的进程
-docker inspect +容器名 //查看 Docker 的底层信息。它会返回一个JSON 文件记录着 Docker 容器的配置和状态信息。</code></pre><h4 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h4><p>如果把镜像看成面向对象中的 类 的话，那么容器就是 类 的实例化 对象。</p>
-<h6 id="查看运行帮助："><a href="#查看运行帮助：" class="headerlink" title="查看运行帮助："></a>查看运行帮助：</h6><pre><code>$ sudo docker run --help</code></pre><h6 id="举例：启动-ngnix-容器"><a href="#举例：启动-ngnix-容器" class="headerlink" title="举例：启动 ngnix 容器"></a>举例：启动 ngnix 容器</h6><pre><code>$ sudo docker run --name some-nginx -d -p 8080:80 registry.docker-cn.com/library/nginx
-b5bbf1dfe86a21d641a161c05598c0f4f4d4b32fc8d756b6fdf306295067625f</code></pre><p>-name 指定启动容器的名称为 some-nginx。</p>
-<p>-d 让Docker容器在后台以守护态（Daemonized）形式运行。</p>
-<p>-p 将容器的80端口映射到主机的8080端口</p>
-<p>registry.docker-cn.com/library/nginx 为启动容器的镜像。</p>
-<p>处理过程： <font color="red"><br>浏览器 –&gt; ubuntu(8080) –&gt; Nginx容器(80)</font></p>
-<h6 id="其他参数说明"><a href="#其他参数说明" class="headerlink" title="其他参数说明"></a>其他参数说明</h6><p>  -t （tty）选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上。</p>
-<p>  -i (interactive)则让容器的标准输入保持打开,即保持交互模式。 </p>
-<p>  -v  :   表示需要将本地哪个目录挂载到容器中，格式：-v &lt;宿主机目录&gt;:&lt;容器目录&gt;<br>   eg：<del>/tensorflow:/notebooks/data<br>   将本地的</del>/tensorflow文件夹挂载到新建容器的/notebooks/data下（这样可是实现本地文件和docker文件互通）<br>   tensorflow/tensorflow为指定的镜像，默认标签为latest（即tensorflow/tensorflow:latest）</p>
-<p>   -w  指定其为工作目录</p>
-<pre><code>runoob@runoob:~/python$ docker run  -v $PWD/myapp:/usr/src/myapp  -w /usr/src/myapp python:3.5 python helloworld.py
-    命令说明：
-        -v ：$PWD/myapp:/usr/src/myapp :将主机中当前目录下的myapp挂载到容器的/usr/src/myapp
-        -w ：/usr/src/myapp :指定容器的/usr/src/myapp目录为工作目录
-        python helloworld.py : 使用容器的python命令来执行工作目录中的helloworld.py文件</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/05/性能测试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/05/性能测试/" itemprop="url">性能测试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-05T22:01:07+08:00">
-                2019-10-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><strong>重要指标</strong></li>
-</ul>
-<p>TPS ：是TransactionsPerSecond的缩写，也就是事务数/秒</p>
-<p>QPS：Queries Per Second意思是“每秒查询率</p>
-<p>区别：  </p>
-<pre><code>tps，即每秒处理事务数，每个事务包括了如下3个过程：a.用户请求服务器
-b.服务器自己的内部处理（包含应用服务器、数据库服务器等）c.服务器返回给用户
-如果每秒能够完成N个这三个过程，tps就是N；
-
-qps，如果是对一个页面请求一次，形成一个tps，但一次页面请求，可能产生多次对服务器的请求（页面上有很多**html资源，比如图片**等），服务器对这些请求，就可计入“qps”之中；
-
-但是，如今的项目基本上都是前后端分离的，性能也分为前端性能和后端性能，通常默认是后端性能，即服务端性能，也就是对服务端接口做压测
-
-如果是对一个接口（单场景）压测，且这个接口内部不会再去请求其它接口，那么tps=qps，否则，tps≠qps
-
-如果是对多个接口（混合场景）压测，不加事务控制器，jmeter会统计每个接口的tps，而混合场景是要测试这个场景的tps，显然这样得不到混合场景的tps，所以，要加了事物控制器，结果才是整个场景的tps</code></pre><p><strong>找到平衡点</strong></p>
-<p>1.尽可能多的做不同并发数下的压测，记录下响应时间（1s以内）和最大tps，当然，服务器端，各个服务器的资源利用率在可接受范围内（每个公司不一样，我们是90%以内）；</p>
-<p>2.然后根据获取到的不同并发下的指标数据（并发数、tps、响应时间），画出上图，关注右侧的交点，即tps下降的地方和响应时间的交点，这个点的tps最大，如果响应时间在1s以内，此时并发数也是比较大的，这个点就可以认为是三个指标都不错的平衡点（当然，我这里把tps放在第一位优先考虑了，这个就看大家最在乎哪个指标了，排个优先级）；如果响应时间大于1s，最佳平衡点就往左找，找到响应时间为1秒的点，此时对应的tps和并发值，就是最佳平衡点。总之，测试采样越多，获取的平衡点就越准确</p>
-<p>参考：<a href="https://mp.weixin.qq.com/s/p_3C7e65v7mwfth3tHUB9A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/p_3C7e65v7mwfth3tHUB9A</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1835,7 +1874,7 @@ qps，如果是对一个页面请求一次，形成一个tps，但一次页面�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

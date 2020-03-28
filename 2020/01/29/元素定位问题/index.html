@@ -79,17 +79,22 @@
 
 
 
-<meta name="description" content="1. 元素定位问题 元素名称错误，比如后面少了对应右括号）  元素本身就不存在，比如调试元素在所在环境中不存在，然而编写代码定位的时候使用的是线上环境账号，其具有该元素，造成元素找不到  元素前面未加css=或者xpath=类型名称  元素不在屏幕可视范围内导致找不到元素。可使用避免方法：  1ExecuteJavascriptdocument.documentElement.scrollTop=">
+<meta name="description" content="1. 元素定位问题【问题】各种找不到元素 语法问题-低级错误导致高级提醒 元素名称错误，比如后面少了对应右括号 ）  元素本身就不存在，比如调试元素在所在环境中不存在，然而编写代码定位的时候使用的是线上环境账号，其具有该元素，造成元素找不到  元素前面未加css=或者xpath=类型名称  css父子关系之间不用空格，用点来替代；祖辈关系使用单个空格  TypeError: Failed to e">
 <meta property="og:type" content="article">
-<meta property="og:title" content="RT元素定位等问题">
+<meta property="og:title" content="RT使用元素xpath定位等问题">
 <meta property="og:url" content="http://yoursite.com/2020/01/29/元素定位问题/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="1. 元素定位问题 元素名称错误，比如后面少了对应右括号）  元素本身就不存在，比如调试元素在所在环境中不存在，然而编写代码定位的时候使用的是线上环境账号，其具有该元素，造成元素找不到  元素前面未加css=或者xpath=类型名称  元素不在屏幕可视范围内导致找不到元素。可使用避免方法：  1ExecuteJavascriptdocument.documentElement.scrollTop=">
+<meta property="og:description" content="1. 元素定位问题【问题】各种找不到元素 语法问题-低级错误导致高级提醒 元素名称错误，比如后面少了对应右括号 ）  元素本身就不存在，比如调试元素在所在环境中不存在，然而编写代码定位的时候使用的是线上环境账号，其具有该元素，造成元素找不到  元素前面未加css=或者xpath=类型名称  css父子关系之间不用空格，用点来替代；祖辈关系使用单个空格  TypeError: Failed to e">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-06T11:16:55.193Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-96.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-95.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-98.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-100.png">
+<meta property="og:updated_time" content="2020-03-24T04:22:36.757Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="RT元素定位等问题">
-<meta name="twitter:description" content="1. 元素定位问题 元素名称错误，比如后面少了对应右括号）  元素本身就不存在，比如调试元素在所在环境中不存在，然而编写代码定位的时候使用的是线上环境账号，其具有该元素，造成元素找不到  元素前面未加css=或者xpath=类型名称  元素不在屏幕可视范围内导致找不到元素。可使用避免方法：  1ExecuteJavascriptdocument.documentElement.scrollTop=">
+<meta name="twitter:title" content="RT使用元素xpath定位等问题">
+<meta name="twitter:description" content="1. 元素定位问题【问题】各种找不到元素 语法问题-低级错误导致高级提醒 元素名称错误，比如后面少了对应右括号 ）  元素本身就不存在，比如调试元素在所在环境中不存在，然而编写代码定位的时候使用的是线上环境账号，其具有该元素，造成元素找不到  元素前面未加css=或者xpath=类型名称  css父子关系之间不用空格，用点来替代；祖辈关系使用单个空格  TypeError: Failed to e">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-96.png">
 
 
 
@@ -125,7 +130,7 @@
 
 
 
-  <title>RT元素定位等问题 | 躲不掉的风</title>
+  <title>RT使用元素xpath定位等问题 | 躲不掉的风</title>
   
 
 
@@ -281,7 +286,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">RT元素定位等问题</h1>
+          <h1 class="post-title" itemprop="name headline">RT使用元素xpath定位等问题</h1>
         
 
         <div class="post-meta">
@@ -331,21 +336,26 @@
       
 
       
-        <h5 id="1-元素定位问题"><a href="#1-元素定位问题" class="headerlink" title="1. 元素定位问题"></a>1. 元素定位问题</h5><ol>
-<li><p>元素名称错误，比如后面少了对应右括号）</p>
+        <h5 id="1-元素定位问题"><a href="#1-元素定位问题" class="headerlink" title="1. 元素定位问题"></a>1. 元素定位问题</h5><p>【问题】各种找不到元素</p>
+<h6 id="语法问题-低级错误导致高级提醒"><a href="#语法问题-低级错误导致高级提醒" class="headerlink" title="语法问题-低级错误导致高级提醒"></a>语法问题-低级错误导致高级提醒</h6><ol>
+<li><p>元素名称错误，比如后面少了对应右括号 ）</p>
 </li>
 <li><p>元素本身就不存在，比如调试元素在所在环境中不存在，然而编写代码定位的时候使用的是线上环境账号，其具有该元素，造成元素找不到</p>
 </li>
 <li><p>元素前面未加css=或者xpath=类型名称</p>
 </li>
-<li><p>元素不在屏幕可视范围内导致找不到元素。可使用避免方法：</p>
+<li><p>css父子关系之间不用空格，用点来替代；祖辈关系使用单个空格</p>
+</li>
+<li><p>TypeError: Failed to execute ‘evaluate’ on ‘Document’: The result is not a node set, and therefore cannot be converted to the desired type.</p>
+<p> 原因：多写了个xpath</p>
+<pre><code>xpath=xpath=//div/ul  </code></pre><h6 id="其他报错信息"><a href="#其他报错信息" class="headerlink" title="其他报错信息"></a>其他报错信息</h6><p>【解决原则】 判断元素存在后再操作；使用get webelements或者status等待判断</p>
+</li>
+<li><p>元素不在屏幕可视范围内导致找不到元素。可使用滚动查找元素：</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecuteJavascriptdocument.documentElement.scrollTop=10000</span><br></pre></td></tr></table></figure>
 
 <p> scroll element into view  ${locator}貌似不好用</p>
 </li>
-<li><p>css之间不能用空格，用点来替代</p>
-</li>
-<li><p>AttributeError: ‘list’ object has no attribute ‘startswith’？</p>
+<li><p>AttributeError: ‘list’ object has no attribute ‘startswith’？<br> 也是因为没有找到元素报的错，要保证元素存在的时候再进行操作</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;obj&#125;    GetWebElements    $&#123;homepage_ele&#125;[button_proceed]</span><br><span class="line">Runkeywordif    $&#123;obj&#125;  click element    $&#123;obj&#125;</span><br></pre></td></tr></table></figure>
 
 <p> click element后面的按钮元素多次被我写成了对象，会报这个错</p>
@@ -360,22 +370,46 @@
 <p> 本来以为是变量第二次赋值的时候有第一次的缓存，但是重新设置${None}后依旧无效。</p>
 <p> 原因：第二个link页面没有展示密码框但是元素中却能搜索到这个css元素值。</p>
 </li>
-<li><p>元素前面忘了写css=  或者xpath=</p>
-</li>
 <li><p>元素一直定位不到，本地机器可以。但是实际看页面上是展示出该元素的</p>
-<p>后来找人查了很久，还是最后查出还是之前我怀疑过的一个问题，就是侧边栏的链接父元素class会变化，后来由开发得知是根据高度来判断的，后来兼容使用模糊匹配xpath=//ul[contains(@class, ‘sidebar’)]//a[contains(text(),”{}”)]</p>
+<ul>
+<li><p>后来找人查了很久，还是最后查出还是之前我怀疑过的一个问题，就是侧边栏的链接父元素class会变化，后来由开发得知是根据高度来判断的，后来兼容使用模糊匹配xpath=//ul[contains(@class, ‘sidebar’)]//a[contains(text(),”{}”)]</p>
 </li>
-<li><p>同一个页面元素有时候路径不同，需要综合不同情况时的共同点，来取该元素的值。<br>比如my wallet链接。有时候是a有时候是div/span</p>
+<li><p>但是有时候按照文本查找的元素类型会变化</p>
+</li>
+</ul>
+<p>如在测试环境是这样的：</p>
+<p><img src="/images/pasted-96.png" alt="upload successful"></p>
+<p>但是在预发环境确是这样：</p>
+<p><img src="/images/pasted-95.png" alt="upload successful"></p>
+<p>解决办法还是找到共同点，获取公共元素进行定位如href：</p>
+<pre><code>//ul[contains(@class, &apos;sidebar&apos;)]//a[@href=&apos;/portal/finance/income&apos;]</code></pre></li>
+<li><p>相较上面还有更狠的，不仅环境不同元素取值不同，而且同一个元素会变化</p>
+<p>思路：</p>
+<ol>
+<li><p>根据环境设置元素模板，封装公共方法</p>
+</li>
+<li><p>使用或来判断(之前一直没找到或怎么用)</p>
+</li>
+</ol>
+<p>变化前：  <img src="/images/pasted-98.png" alt="upload successful"></p>
+<p>变化后：  <img src="/images/pasted-100.png" alt="upload successful"></p>
+<p>即在sidebar-container的div和ul之间总变化一个div,最后使用或限制class属性：</p>
+<pre><code>//div[@class=&apos;sidebar&apos; or contains(@class, &apos;sidebar-fixed&apos;)]//span[contains(text(),”xxx“)]/..    </code></pre></li>
+<li><p>同一个页面元素有时候路径不同，需要综合不同情况时的共同点，来取该元素的值。<br>比如my wallet链接。有时候是a有时候是div有时候span，可以考虑使用模糊匹配</p>
 </li>
 <li><p>JavascriptException: Message: javascript error: Failed to execute ‘elementsFromPoint’ on ‘Document’: The provided double value is non-finite.</p>
 <pre><code>scroll element into view  css=.multiple-level-items &gt; li:nth-of-type(1)</code></pre><p>原因：取消使用scroll element into view关键字 </p>
 </li>
+<li><p>不包含元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//span[not(contains(text(),&apos;Women Clothes&apos;))]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用preceding-sibling或者following-sibling</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xpath=//label[@class=&apos;shopee-radio&apos;]/span[contains(text(),&apos;&#123;&#125;&apos;)]/preceding-sibling::span</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>页面加载时间不确定，除了固定等待如何判断何时校验元素出现？ </p>
+<p>抓取loading元素，判断该元素何时不在即可</p>
+</li>
 </ol>
-<h6 id="2-远程下载"><a href="#2-远程下载" class="headerlink" title="2. 远程下载"></a>2. 远程下载</h6><p>  解决：使用谷歌驱动获取远程下载路径文件列表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from openapi_utils import split_order, init_forder</span><br><span class="line">from robot.libraries.BuiltIn import BuiltIn</span><br><span class="line">def get_downloaded_files():</span><br><span class="line">    seleniumlib = BuiltIn().get_library_instance(&apos;SeleniumLibrary&apos;)</span><br><span class="line">    driver = seleniumlib.driver</span><br><span class="line">    if not driver.current_url.startswith(&quot;chrome://downloads&quot;):</span><br><span class="line">        driver.get(&quot;chrome://downloads/&quot;)</span><br><span class="line"></span><br><span class="line">    return driver.execute_script( \</span><br><span class="line">    &quot;return downloads.Manager.get().items_   &quot;</span><br><span class="line">    &quot;  .filter(e =&gt; e.state === &apos;COMPLETE&apos;)  &quot;</span><br><span class="line">    &quot;  .map(e =&gt; e.filePath || e.file_path); &quot; )</span><br></pre></td></tr></table></figure>
-
-<h6 id="3-使用以上js下载脚本时一直提示这个错"><a href="#3-使用以上js下载脚本时一直提示这个错" class="headerlink" title="3. 使用以上js下载脚本时一直提示这个错"></a>3. 使用以上js下载脚本时一直提示这个错</h6><p>JavascriptException: Message: javascript error: Cannot read property ‘get’ of undefined<br>  (Session info: chrome=80.0.3987.122)</p>
-<p>  原因是chrome版本的问题，可能是80版本不兼容，将版本将至79且禁止浏览器更新~</p>
 
       
     </div>
@@ -489,7 +523,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -535,7 +569,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-元素定位问题"><span class="nav-number">1.</span> <span class="nav-text">1. 元素定位问题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#2-远程下载"><span class="nav-number">1.1.</span> <span class="nav-text">2. 远程下载</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-使用以上js下载脚本时一直提示这个错"><span class="nav-number">1.2.</span> <span class="nav-text">3. 使用以上js下载脚本时一直提示这个错</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-元素定位问题"><span class="nav-number">1.</span> <span class="nav-text">1. 元素定位问题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#语法问题-低级错误导致高级提醒"><span class="nav-number">1.1.</span> <span class="nav-text">语法问题-低级错误导致高级提醒</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#其他报错信息"><span class="nav-number">1.2.</span> <span class="nav-text">其他报错信息</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="jenkins在执行远程docker chrome hub运行RT时候报错：selenium.common.exceptions.WebDriverException: Message: unknown error: session deleted because of page crash from unknown error: cannot determine loading status f">
+<meta name="description" content="1.jenkins在执行远程docker chrome hub运行RT时候报错：selenium.common.exceptions.WebDriverException: Message: unknown error: session deleted because of page crash from unknown error: cannot determine loading status">
 <meta property="og:type" content="article">
 <meta property="og:title" content="RT中的chrome设置">
 <meta property="og:url" content="http://yoursite.com/2020/02/02/RT中的chrome设置/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="jenkins在执行远程docker chrome hub运行RT时候报错：selenium.common.exceptions.WebDriverException: Message: unknown error: session deleted because of page crash from unknown error: cannot determine loading status f">
+<meta property="og:description" content="1.jenkins在执行远程docker chrome hub运行RT时候报错：selenium.common.exceptions.WebDriverException: Message: unknown error: session deleted because of page crash from unknown error: cannot determine loading status">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-06T08:51:21.149Z">
+<meta property="og:updated_time" content="2020-03-24T04:23:16.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RT中的chrome设置">
-<meta name="twitter:description" content="jenkins在执行远程docker chrome hub运行RT时候报错：selenium.common.exceptions.WebDriverException: Message: unknown error: session deleted because of page crash from unknown error: cannot determine loading status f">
+<meta name="twitter:description" content="1.jenkins在执行远程docker chrome hub运行RT时候报错：selenium.common.exceptions.WebDriverException: Message: unknown error: session deleted because of page crash from unknown error: cannot determine loading status">
 
 
 
@@ -331,7 +331,7 @@
       
 
       
-        <h5 id="jenkins在执行远程docker-chrome-hub运行RT时候报错："><a href="#jenkins在执行远程docker-chrome-hub运行RT时候报错：" class="headerlink" title="jenkins在执行远程docker chrome hub运行RT时候报错："></a>jenkins在执行远程docker chrome hub运行RT时候报错：</h5><pre><code>selenium.common.exceptions.WebDriverException: Message: unknown error: session deleted because of page crash
+        <h5 id="1-jenkins在执行远程docker-chrome-hub运行RT时候报错："><a href="#1-jenkins在执行远程docker-chrome-hub运行RT时候报错：" class="headerlink" title="1.jenkins在执行远程docker chrome hub运行RT时候报错："></a>1.jenkins在执行远程docker chrome hub运行RT时候报错：</h5><pre><code>selenium.common.exceptions.WebDriverException: Message: unknown error: session deleted because of page crash
 from unknown error: cannot determine loading status
 from tab crashed</code></pre><ul>
 <li>解决方法一</li>
@@ -353,6 +353,13 @@ from tab crashed</code></pre><ul>
 <p>参考<br><a href="https://github.com/elgalu/docker-selenium/issues/20" target="_blank" rel="noopener">https://github.com/elgalu/docker-selenium/issues/20</a><br><a href="https://www.zhihu.com/question/40125229?sort=created" target="_blank" rel="noopener">https://www.zhihu.com/question/40125229?sort=created</a><br><a href="https://blog.csdn.net/isea533/article/details/95197468" target="_blank" rel="noopener">https://blog.csdn.net/isea533/article/details/95197468</a><br><a href="https://www.cnblogs.com/FZfangzheng/p/10851762.html" target="_blank" rel="noopener">https://www.cnblogs.com/FZfangzheng/p/10851762.html</a><br><a href="https://docker-py.readthedocs.io/en/stable/containers.html" target="_blank" rel="noopener">https://docker-py.readthedocs.io/en/stable/containers.html</a></p>
 <p>Finally:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client.containers.run(&apos;selenium/hub&apos;, name=hub_name, detach=True, tty=True, stdin_open=True,publish_all_ports=True,shm_size=&apos;1G&apos;)</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-chrome远程下载"><a href="#2-chrome远程下载" class="headerlink" title="2. chrome远程下载"></a>2. chrome远程下载</h6><p>  解决：使用谷歌驱动获取远程下载路径文件列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from openapi_utils import split_order, init_forder</span><br><span class="line">from robot.libraries.BuiltIn import BuiltIn</span><br><span class="line">def get_downloaded_files():</span><br><span class="line">    seleniumlib = BuiltIn().get_library_instance(&apos;SeleniumLibrary&apos;)</span><br><span class="line">    driver = seleniumlib.driver</span><br><span class="line">    if not driver.current_url.startswith(&quot;chrome://downloads&quot;):</span><br><span class="line">        driver.get(&quot;chrome://downloads/&quot;)</span><br><span class="line"></span><br><span class="line">    return driver.execute_script( \</span><br><span class="line">    &quot;return downloads.Manager.get().items_   &quot;</span><br><span class="line">    &quot;  .filter(e =&gt; e.state === &apos;COMPLETE&apos;)  &quot;</span><br><span class="line">    &quot;  .map(e =&gt; e.filePath || e.file_path); &quot; )</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-使用以上js下载脚本时一直提示这个错"><a href="#3-使用以上js下载脚本时一直提示这个错" class="headerlink" title="3. 使用以上js下载脚本时一直提示这个错"></a>3. 使用以上js下载脚本时一直提示这个错</h6><p>JavascriptException: Message: javascript error: Cannot read property ‘get’ of undefined<br>  (Session info: chrome=80.0.3987.122)</p>
+<p>  原因是chrome版本的问题，可能是80版本不兼容，将版本将至79且禁止浏览器更新~</p>
+
       
     </div>
     
@@ -465,7 +472,7 @@ from tab crashed</code></pre><ul>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -511,7 +518,7 @@ from tab crashed</code></pre><ul>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#jenkins在执行远程docker-chrome-hub运行RT时候报错："><span class="nav-number">1.</span> <span class="nav-text">jenkins在执行远程docker chrome hub运行RT时候报错：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#那么这些参数都有哪些意义呢？"><span class="nav-number">1.1.</span> <span class="nav-text">那么这些参数都有哪些意义呢？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#如何在RT中应用？"><span class="nav-number">1.2.</span> <span class="nav-text">如何在RT中应用？</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-jenkins在执行远程docker-chrome-hub运行RT时候报错："><span class="nav-number">1.</span> <span class="nav-text">1.jenkins在执行远程docker chrome hub运行RT时候报错：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#那么这些参数都有哪些意义呢？"><span class="nav-number">1.1.</span> <span class="nav-text">那么这些参数都有哪些意义呢？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#如何在RT中应用？"><span class="nav-number">1.2.</span> <span class="nav-text">如何在RT中应用？</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-chrome远程下载"><span class="nav-number">1.3.</span> <span class="nav-text">2. chrome远程下载</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-使用以上js下载脚本时一直提示这个错"><span class="nav-number">1.4.</span> <span class="nav-text">3. 使用以上js下载脚本时一直提示这个错</span></a></li></ol></li></ol></div>
             
 
           </div>

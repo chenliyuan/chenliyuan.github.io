@@ -261,6 +261,422 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/03/python-GIL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/03/python-GIL/" itemprop="url">Python-GIL&进程线程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-03T18:27:32+08:00">
+                2020-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="GIL-全局解释器锁"><a href="#GIL-全局解释器锁" class="headerlink" title="GIL 全局解释器锁"></a>GIL 全局解释器锁</h5><p>GIL本质就是一把互斥锁，既然是互斥锁，所有互斥锁的本质都一样，都是将并发运行变成串行，以此来控制同一时间内共享数据只能被一个任务所修改，进而保证数据安全。</p>
+<h6 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h6><p>  使用死循环程序while True:pass</p>
+<p>  双核CPU:可用htop实时查看进程占用情况</p>
+<ul>
+<li>单进程单线程执行1个线程   CPU1占满100%</li>
+<li>单进程多线程执行两个线程   各占用50%（加起来是一个核）</li>
+<li>使用多进程执行两个进程   各占满100%（每个进程真正占满一个核）</li>
+</ul>
+<h6 id="结论：python中多线程是假的。只有多进程能实现并发，每个进程占用一个CPU。"><a href="#结论：python中多线程是假的。只有多进程能实现并发，每个进程占用一个CPU。" class="headerlink" title="结论：python中多线程是假的。只有多进程能实现并发，每个进程占用一个CPU。"></a>结论：<font color="red">python中多线程是假的。只有多进程能实现并发</font>，每个进程占用一个CPU。</h6><h6 id="原因：GIL：使得多线程程序一个时刻只能有一个线程在使用。"><a href="#原因：GIL：使得多线程程序一个时刻只能有一个线程在使用。" class="headerlink" title="原因：GIL：使得多线程程序一个时刻只能有一个线程在使用。"></a>原因：<font color="red">GIL</font>：使得多线程程序一个时刻只能有一个线程在使用。</h6><p>为什么python有这个问题？</p>
+<pre><code>实际不是python本身的问题，而是由于其解释器的限制：
+Python默认使用C-python解释器（其他版本比如Java版的python解释器就不会有这个问题,但是这个GIL问题不容易解决所以至今依旧如此）</code></pre><p>所以python可使用多进程来实现多任务并发，替代多线程实现。</p>
+<h5 id="多线程是否要比单线程快？"><a href="#多线程是否要比单线程快？" class="headerlink" title="多线程是否要比单线程快？"></a>多线程是否要比单线程快？</h5><p>回答：是的。因为多线程会在适当的实际执行必要的操作，避免等待造成的时间消耗。增加效率。</p>
+<h5 id="什么时候用进程什么时候用线程？"><a href="#什么时候用进程什么时候用线程？" class="headerlink" title="什么时候用进程什么时候用线程？"></a>什么时候用进程什么时候用线程？</h5><ul>
+<li><p>计算密集型程序：进程（可以发挥多核cpu的作用）</p>
+</li>
+<li><p>io密集型程序：线程、协程（可以充分利用等待时间）</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/02/RT中的chrome设置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/02/RT中的chrome设置/" itemprop="url">RT中的chrome设置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-02T17:09:00+08:00">
+                2020-02-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="1-jenkins在执行远程docker-chrome-hub运行RT时候报错："><a href="#1-jenkins在执行远程docker-chrome-hub运行RT时候报错：" class="headerlink" title="1.jenkins在执行远程docker chrome hub运行RT时候报错："></a>1.jenkins在执行远程docker chrome hub运行RT时候报错：</h5><pre><code>selenium.common.exceptions.WebDriverException: Message: unknown error: session deleted because of page crash
+from unknown error: cannot determine loading status
+from tab crashed</code></pre><ul>
+<li>解决方法一</li>
+</ul>
+<p>一个解决办法就是要添加chrome参数Add the following chrome_options:</p>
+<pre><code>chrome_options.add_argument(&apos;--no-sandbox&apos;)   </code></pre><p>参考：<a href="https://stackoverflow.com/questions/53902507/unknown-error-session-deleted-because-of-page-crash-from-unknown-error-cannot" target="_blank" rel="noopener">https://stackoverflow.com/questions/53902507/unknown-error-session-deleted-because-of-page-crash-from-unknown-error-cannot</a></p>
+<h6 id="那么这些参数都有哪些意义呢？"><a href="#那么这些参数都有哪些意义呢？" class="headerlink" title="那么这些参数都有哪些意义呢？"></a>那么这些参数都有哪些意义呢？</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from selenium import webdriver</span><br><span class="line">from selenium.webdriver.chrome.options import Options</span><br><span class="line">chrome_options = Options()</span><br><span class="line">chrome_options.add_argument(&apos;--no-sandbox&apos;)#停止使用沙箱模式（沙箱模式就是一个封闭的独立的环境。）,也可解决DevToolsActivePort文件不存在的报错</span><br><span class="line">chrome_options.add_argument(&apos;window-size=1920x3000&apos;) #指定浏览器分辨率</span><br><span class="line">chrome_options.add_argument(&apos;--disable-gpu&apos;) #谷歌文档提到需要加上这个属性来规避bug</span><br><span class="line">chrome_options.add_argument(&apos;--hide-scrollbars&apos;) #隐藏滚动条, 应对一些特殊页面</span><br><span class="line">chrome_options.add_argument(&apos;blink-settings=imagesEnabled=false&apos;) #不加载图片, 提升速度</span><br><span class="line">chrome_options.add_argument(&apos;--headless&apos;) #浏览器不提供可视化页面. linux下如果系统不支持可视化不加这条会启动失败</span><br><span class="line">chrome_options.binary_location = r&quot;C:\Program Files (x86)\Google\Chrome\Application\chrome.exe&quot; #手动指定使用的浏览器位置</span><br><span class="line"></span><br><span class="line">driver=webdriver.Chrome(chrome_options=chrome_options)</span><br><span class="line">driver.get(&apos;https://www.baidu.com&apos;)</span><br><span class="line"></span><br><span class="line">print(&apos;hao123&apos; in driver.page_source)</span><br><span class="line">driver.close() #切记关闭浏览器，回收资源</span><br></pre></td></tr></table></figure>
+
+<h6 id="如何在RT中应用？"><a href="#如何在RT中应用？" class="headerlink" title="如何在RT中应用？"></a>如何在RT中应用？</h6><p>RT中添加需要转化成capabilities这样才可在使用远程driver的时候应用。</p>
+<p>参考大神:<a href="https://stackoverflow.com/questions/46812155/how-to-run-headless-remote-chrome-using-robot-framework/46817149" target="_blank" rel="noopener">https://stackoverflow.com/questions/46812155/how-to-run-headless-remote-chrome-using-robot-framework/46817149</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Headless Chrome - Open Browser</span><br><span class="line">    $&#123;chrome_options&#125; =     Evaluate    sys.modules[&apos;selenium.webdriver&apos;].ChromeOptions()    sys, selenium.webdriver</span><br><span class="line">    Call Method    $&#123;chrome_options&#125;   add_argument    headless</span><br><span class="line">    Call Method    $&#123;chrome_options&#125;   add_argument    disable-gpu</span><br><span class="line">    $&#123;options&#125;=     Call Method     $&#123;chrome_options&#125;    to_capabilities     </span><br><span class="line"></span><br><span class="line">    Open Browser    http://cnn.com    browser=chrome    remote_url=http://localhost:4444/wd/hub     desired_capabilities=$&#123;options&#125;</span><br><span class="line"></span><br><span class="line">    Maximize Browser Window</span><br><span class="line">    Capture Page Screenshot</span><br></pre></td></tr></table></figure>
+
+<p>解决方法二：方法一并没有有效的解决问题，以下贴出完整的问题log</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[ WARN ] Keyword &apos;Capture Page Screenshot&apos; could not be run on failure: WebDriverException: Message: Session [0c86405952403c3719bb6d9e8467b7f9] was terminated due to BROWSER_TIMEOUT</span><br><span class="line">Stacktrace:</span><br><span class="line">    at org.openqa.grid.internal.ActiveTestSessions.getExistingSession (ActiveTestSessions.java:115)</span><br><span class="line">    at org.openqa.grid.internal.DefaultGridRegistry.getExistingSession (DefaultGridRegistry.java:387)</span><br><span class="line">    at org.openqa.grid.web.servlet.handler.RequestHandler.getSession (RequestHandler.java:241)</span><br><span class="line">    at org.openqa.grid.web.servlet.handler.RequestHandler.process (RequestHandler.java:123)</span><br><span class="line">    at org.openqa.grid.web.servlet.DriverServlet.process (DriverServlet.java:85)</span><br><span class="line">    at org.openqa.grid.web.servlet.DriverServlet.doGet (DriverServlet.java:63)</span><br><span class="line">    at javax.servlet.http.HttpServlet.service (HttpServlet.java:687)</span><br><span class="line">    at javax.servlet.http.HttpServlet.service (HttpServlet.java:790)</span><br><span class="line">    at org.seleniumhq.jetty9.servlet.ServletHolder.handle (ServletHolder.java:865)</span><br><span class="line">    at org.seleniumhq.jetty9.servlet.ServletHandler.doHandle (ServletHandler.java:535)</span><br><span class="line">    [ Message content over the limit has been removed. ]</span><br><span class="line">    at org.seleniumhq.jetty9.io.AbstractConnection$ReadCallback.succeeded (AbstractConnection.java:305)</span><br><span class="line">    at org.seleniumhq.jetty9.io.FillInterest.fillable (FillInterest.java:103)</span><br><span class="line">    at org.seleniumhq.jetty9.io.ChannelEndPoint$2.run (ChannelEndPoint.java:118)</span><br><span class="line">    at org.seleniumhq.jetty9.util.thread.strategy.EatWhatYouKill.runTask (EatWhatYouKill.java:333)</span><br><span class="line">    at org.seleniumhq.jetty9.util.thread.strategy.EatWhatYouKill.doProduce (EatWhatYouKill.java:310)</span><br><span class="line">    at org.seleniumhq.jetty9.util.thread.strategy.EatWhatYouKill.tryProduce (EatWhatYouKill.java:168)</span><br><span class="line">    at org.seleniumhq.jetty9.util.thread.strategy.EatWhatYouKill.run (EatWhatYouKill.java:126)</span><br><span class="line">    at org.seleniumhq.jetty9.util.thread.ReservedThreadExecutor$ReservedThread.run (ReservedThreadExecutor.java:366)</span><br><span class="line">    at org.seleniumhq.jetty9.util.thread.QueuedThreadPool.runJob (QueuedThreadPool.java:765)</span><br><span class="line">    at org.seleniumhq.jetty9.util.thread.QueuedThreadPool$2.run (QueuedThreadPool.java:683)</span><br><span class="line">    at java.lang.Thread.run (Thread.java:748)</span><br><span class="line">| FAIL |</span><br><span class="line">WebDriverException: Message: unknown error: session deleted because of page crash</span><br><span class="line">from unknown error: cannot determine loading status</span><br><span class="line">from tab crashed</span><br><span class="line">  (Session info: chrome=79.0.3945.79)</span><br></pre></td></tr></table></figure>
+
+<p>解决方法：增加共享内存<br>虽然通过df -h 可以看到/dev/shm有7个多G的空间，但是容器默认配置共享空间是64M：”default-shm-size”: “64M”,使用docker for python 可以通过添加–shm-size参数来修改,官方参数说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shm_size (str or int) – Size of /dev/shm (e.g. 1G).</span><br></pre></td></tr></table></figure>
+
+<p>参考<br><a href="https://github.com/elgalu/docker-selenium/issues/20" target="_blank" rel="noopener">https://github.com/elgalu/docker-selenium/issues/20</a><br><a href="https://www.zhihu.com/question/40125229?sort=created" target="_blank" rel="noopener">https://www.zhihu.com/question/40125229?sort=created</a><br><a href="https://blog.csdn.net/isea533/article/details/95197468" target="_blank" rel="noopener">https://blog.csdn.net/isea533/article/details/95197468</a><br><a href="https://www.cnblogs.com/FZfangzheng/p/10851762.html" target="_blank" rel="noopener">https://www.cnblogs.com/FZfangzheng/p/10851762.html</a><br><a href="https://docker-py.readthedocs.io/en/stable/containers.html" target="_blank" rel="noopener">https://docker-py.readthedocs.io/en/stable/containers.html</a></p>
+<p>Finally:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client.containers.run(&apos;selenium/hub&apos;, name=hub_name, detach=True, tty=True, stdin_open=True,publish_all_ports=True,shm_size=&apos;1G&apos;)</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-chrome远程下载"><a href="#2-chrome远程下载" class="headerlink" title="2. chrome远程下载"></a>2. chrome远程下载</h6><p>  解决：使用谷歌驱动获取远程下载路径文件列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from openapi_utils import split_order, init_forder</span><br><span class="line">from robot.libraries.BuiltIn import BuiltIn</span><br><span class="line">def get_downloaded_files():</span><br><span class="line">    seleniumlib = BuiltIn().get_library_instance(&apos;SeleniumLibrary&apos;)</span><br><span class="line">    driver = seleniumlib.driver</span><br><span class="line">    if not driver.current_url.startswith(&quot;chrome://downloads&quot;):</span><br><span class="line">        driver.get(&quot;chrome://downloads/&quot;)</span><br><span class="line"></span><br><span class="line">    return driver.execute_script( \</span><br><span class="line">    &quot;return downloads.Manager.get().items_   &quot;</span><br><span class="line">    &quot;  .filter(e =&gt; e.state === &apos;COMPLETE&apos;)  &quot;</span><br><span class="line">    &quot;  .map(e =&gt; e.filePath || e.file_path); &quot; )</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-使用以上js下载脚本时一直提示这个错"><a href="#3-使用以上js下载脚本时一直提示这个错" class="headerlink" title="3. 使用以上js下载脚本时一直提示这个错"></a>3. 使用以上js下载脚本时一直提示这个错</h6><p>JavascriptException: Message: javascript error: Cannot read property ‘get’ of undefined<br>  (Session info: chrome=80.0.3987.122)</p>
+<p>  原因是chrome版本的问题，可能是80版本不兼容，将版本将至79且禁止浏览器更新~</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/01/RT运行命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/01/RT运行命令/" itemprop="url">RT运行命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-01T20:20:11+08:00">
+                2020-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="robot命令"><a href="#robot命令" class="headerlink" title="robot命令"></a>robot命令</h5><p>使用1：运行程序并生成报告</p>
+<pre><code>robot -d Output --loglevel TRACE -v env:$env -v HUB:$hub -i $area SellerCenterUI/TestCase/06Wallet/</code></pre><p>使用2：重新运行失败的case</p>
+<pre><code>robot -d Output --rerunfailed Output/output.xml --output rerun.xml --loglevel TRACE -v env:$env -v HUB:$hub  -i $area SellerCenterUI/TestCase/01Login/</code></pre><p>据robot –help可知</p>
+<pre><code>-d  --outputdir dir       Where to create output files. The default is the directory where tests are run from and the given path   is considered relative to that unless it is absolute.即指定生成报告的文件
+-L --loglevel level      Threshold level for logging. Available levels: TRACE,DEBUG, INFO (default), WARN, NONE (no logging).
+ -i --include tag * 
+ -v --variable name:value *      Set variables in the test data. Only scalar variables with string value are supported and name is given without `${}`.
+  -R --rerunfailed output       Select failed tests from an earlier output file</code></pre><h5 id="rebot命令"><a href="#rebot命令" class="headerlink" title="rebot命令"></a>rebot命令</h5><p>使用：合并报告</p>
+<pre><code>/usr/local/python3/bin/rebot -d Output --output output.xml --merge Output/output.xml Output/rerun.xml</code></pre><p>   使用rebot –help可知</p>
+<pre><code>-o --output file         XML output file. Not created unless this option is specified. Given path, similarly as paths given to --log, --report and --xunit, is relative to --outputdir unless given as an absolute path.
+-R --merge               When combining results, merge outputs together Example: rebot --merge orig.xml rerun.xml</code></pre><p>  最终根据xml文件生成Log和Report文件（个人理解）</p>
+<pre><code>Output:  /var/lib/jenkins/workspace/Staging/login for th/Output/output.xml
+Log:     /var/lib/jenkins/workspace/Staging/login for th/Output/log.html
+Report:  /var/lib/jenkins/workspace/Staging/login for th/Output/report.html</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/31/Selenium下Docker使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -460,7 +876,7 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/29/元素定位问题/" itemprop="url">RT元素定位等问题</a></h1>
+                <a class="post-title-link" href="/2020/01/29/元素定位问题/" itemprop="url">RT使用元素xpath定位等问题</a></h1>
         
 
         <div class="post-meta">
@@ -512,21 +928,26 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
       
         
           
-            <h5 id="1-元素定位问题"><a href="#1-元素定位问题" class="headerlink" title="1. 元素定位问题"></a>1. 元素定位问题</h5><ol>
-<li><p>元素名称错误，比如后面少了对应右括号）</p>
+            <h5 id="1-元素定位问题"><a href="#1-元素定位问题" class="headerlink" title="1. 元素定位问题"></a>1. 元素定位问题</h5><p>【问题】各种找不到元素</p>
+<h6 id="语法问题-低级错误导致高级提醒"><a href="#语法问题-低级错误导致高级提醒" class="headerlink" title="语法问题-低级错误导致高级提醒"></a>语法问题-低级错误导致高级提醒</h6><ol>
+<li><p>元素名称错误，比如后面少了对应右括号 ）</p>
 </li>
 <li><p>元素本身就不存在，比如调试元素在所在环境中不存在，然而编写代码定位的时候使用的是线上环境账号，其具有该元素，造成元素找不到</p>
 </li>
 <li><p>元素前面未加css=或者xpath=类型名称</p>
 </li>
-<li><p>元素不在屏幕可视范围内导致找不到元素。可使用避免方法：</p>
+<li><p>css父子关系之间不用空格，用点来替代；祖辈关系使用单个空格</p>
+</li>
+<li><p>TypeError: Failed to execute ‘evaluate’ on ‘Document’: The result is not a node set, and therefore cannot be converted to the desired type.</p>
+<p> 原因：多写了个xpath</p>
+<pre><code>xpath=xpath=//div/ul  </code></pre><h6 id="其他报错信息"><a href="#其他报错信息" class="headerlink" title="其他报错信息"></a>其他报错信息</h6><p>【解决原则】 判断元素存在后再操作；使用get webelements或者status等待判断</p>
+</li>
+<li><p>元素不在屏幕可视范围内导致找不到元素。可使用滚动查找元素：</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecuteJavascriptdocument.documentElement.scrollTop=10000</span><br></pre></td></tr></table></figure>
 
 <p> scroll element into view  ${locator}貌似不好用</p>
 </li>
-<li><p>css之间不能用空格，用点来替代</p>
-</li>
-<li><p>AttributeError: ‘list’ object has no attribute ‘startswith’？</p>
+<li><p>AttributeError: ‘list’ object has no attribute ‘startswith’？<br> 也是因为没有找到元素报的错，要保证元素存在的时候再进行操作</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;obj&#125;    GetWebElements    $&#123;homepage_ele&#125;[button_proceed]</span><br><span class="line">Runkeywordif    $&#123;obj&#125;  click element    $&#123;obj&#125;</span><br></pre></td></tr></table></figure>
 
 <p> click element后面的按钮元素多次被我写成了对象，会报这个错</p>
@@ -541,22 +962,46 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
 <p> 本来以为是变量第二次赋值的时候有第一次的缓存，但是重新设置${None}后依旧无效。</p>
 <p> 原因：第二个link页面没有展示密码框但是元素中却能搜索到这个css元素值。</p>
 </li>
-<li><p>元素前面忘了写css=  或者xpath=</p>
-</li>
 <li><p>元素一直定位不到，本地机器可以。但是实际看页面上是展示出该元素的</p>
-<p>后来找人查了很久，还是最后查出还是之前我怀疑过的一个问题，就是侧边栏的链接父元素class会变化，后来由开发得知是根据高度来判断的，后来兼容使用模糊匹配xpath=//ul[contains(@class, ‘sidebar’)]//a[contains(text(),”{}”)]</p>
+<ul>
+<li><p>后来找人查了很久，还是最后查出还是之前我怀疑过的一个问题，就是侧边栏的链接父元素class会变化，后来由开发得知是根据高度来判断的，后来兼容使用模糊匹配xpath=//ul[contains(@class, ‘sidebar’)]//a[contains(text(),”{}”)]</p>
 </li>
-<li><p>同一个页面元素有时候路径不同，需要综合不同情况时的共同点，来取该元素的值。<br>比如my wallet链接。有时候是a有时候是div/span</p>
+<li><p>但是有时候按照文本查找的元素类型会变化</p>
+</li>
+</ul>
+<p>如在测试环境是这样的：</p>
+<p><img src="/images/pasted-96.png" alt="upload successful"></p>
+<p>但是在预发环境确是这样：</p>
+<p><img src="/images/pasted-95.png" alt="upload successful"></p>
+<p>解决办法还是找到共同点，获取公共元素进行定位如href：</p>
+<pre><code>//ul[contains(@class, &apos;sidebar&apos;)]//a[@href=&apos;/portal/finance/income&apos;]</code></pre></li>
+<li><p>相较上面还有更狠的，不仅环境不同元素取值不同，而且同一个元素会变化</p>
+<p>思路：</p>
+<ol>
+<li><p>根据环境设置元素模板，封装公共方法</p>
+</li>
+<li><p>使用或来判断(之前一直没找到或怎么用)</p>
+</li>
+</ol>
+<p>变化前：  <img src="/images/pasted-98.png" alt="upload successful"></p>
+<p>变化后：  <img src="/images/pasted-100.png" alt="upload successful"></p>
+<p>即在sidebar-container的div和ul之间总变化一个div,最后使用或限制class属性：</p>
+<pre><code>//div[@class=&apos;sidebar&apos; or contains(@class, &apos;sidebar-fixed&apos;)]//span[contains(text(),”xxx“)]/..    </code></pre></li>
+<li><p>同一个页面元素有时候路径不同，需要综合不同情况时的共同点，来取该元素的值。<br>比如my wallet链接。有时候是a有时候是div有时候span，可以考虑使用模糊匹配</p>
 </li>
 <li><p>JavascriptException: Message: javascript error: Failed to execute ‘elementsFromPoint’ on ‘Document’: The provided double value is non-finite.</p>
 <pre><code>scroll element into view  css=.multiple-level-items &gt; li:nth-of-type(1)</code></pre><p>原因：取消使用scroll element into view关键字 </p>
 </li>
+<li><p>不包含元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//span[not(contains(text(),&apos;Women Clothes&apos;))]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用preceding-sibling或者following-sibling</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xpath=//label[@class=&apos;shopee-radio&apos;]/span[contains(text(),&apos;&#123;&#125;&apos;)]/preceding-sibling::span</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>页面加载时间不确定，除了固定等待如何判断何时校验元素出现？ </p>
+<p>抓取loading元素，判断该元素何时不在即可</p>
+</li>
 </ol>
-<h6 id="2-远程下载"><a href="#2-远程下载" class="headerlink" title="2. 远程下载"></a>2. 远程下载</h6><p>  解决：使用谷歌驱动获取远程下载路径文件列表</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from openapi_utils import split_order, init_forder</span><br><span class="line">from robot.libraries.BuiltIn import BuiltIn</span><br><span class="line">def get_downloaded_files():</span><br><span class="line">    seleniumlib = BuiltIn().get_library_instance(&apos;SeleniumLibrary&apos;)</span><br><span class="line">    driver = seleniumlib.driver</span><br><span class="line">    if not driver.current_url.startswith(&quot;chrome://downloads&quot;):</span><br><span class="line">        driver.get(&quot;chrome://downloads/&quot;)</span><br><span class="line"></span><br><span class="line">    return driver.execute_script( \</span><br><span class="line">    &quot;return downloads.Manager.get().items_   &quot;</span><br><span class="line">    &quot;  .filter(e =&gt; e.state === &apos;COMPLETE&apos;)  &quot;</span><br><span class="line">    &quot;  .map(e =&gt; e.filePath || e.file_path); &quot; )</span><br></pre></td></tr></table></figure>
-
-<h6 id="3-使用以上js下载脚本时一直提示这个错"><a href="#3-使用以上js下载脚本时一直提示这个错" class="headerlink" title="3. 使用以上js下载脚本时一直提示这个错"></a>3. 使用以上js下载脚本时一直提示这个错</h6><p>JavascriptException: Message: javascript error: Cannot read property ‘get’ of undefined<br>  (Session info: chrome=80.0.3987.122)</p>
-<p>  原因是chrome版本的问题，可能是80版本不兼容，将版本将至79且禁止浏览器更新~</p>
 
           
         
@@ -676,9 +1121,10 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
       
         
           
-            <p>本地环境:Mac</p>
-<ul>
+            <ul>
 <li><p>安装谷歌浏览器</p>
+<p>  在win上安装：现在百度找个可用的chrome包都很难，最后干脆下载了个软件管理，瞬间安装好了。。。</p>
+<p>  不过要想找历史版本就得海淘碰运气了，本来下载程序依赖79，但是后来79貌似不行了，一直报错，一段时间后还是又升级回了最新80版本</p>
 </li>
 <li><p>安装chromedriver</p>
 </li>
@@ -691,8 +1137,7 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
 <p>2、: 修改文件权限</p>
 <p>sudo chmod u+x,o+x /usr/local/bin/chromedriver</p>
 <p>3、检查是否安装成功:</p>
-<p>chromedriver –version</p>
-<ul>
+<pre><code>chromedriver --version</code></pre><ul>
 <li><p>安装本地运行环境依赖库</p>
 <p>如Python版本：python3.6</p>
 <p>requirements.txt:</p>
@@ -834,17 +1279,29 @@ Pillow==6.2.1</code></pre></li>
         
           
             <h5 id="pycharm引用库文件失效问题"><a href="#pycharm引用库文件失效问题" class="headerlink" title="pycharm引用库文件失效问题"></a>pycharm引用库文件失效问题</h5><p>点击引用的库文件应用链接无效，导致输入相应库方法无提示，有以下几种检查办法：</p>
-<p>-1) 检查以下插件是否已安装</p>
-<p>IntelliBot、IntelliBot@SeleniumLibrary Patched 、Robot Framework support</p>
-<p>2) 检查IDE设置</p>
-<p>如pycharm检查Project Interpreter编译器是否错选，或者没选</p>
-<p>3) 检查库文件引用是否重复</p>
+<ul>
+<li><p>1) 检查以下插件是否已安装</p>
+<p>  IntelliBot、IntelliBot@SeleniumLibrary Patched 、Robot Framework support</p>
+</li>
+<li><p>2) 检查IDE设置</p>
+<p>  如pycharm检查Project Interpreter编译器是否错选，或者没选</p>
+</li>
+<li><p>3) 检查库文件引用是否重复</p>
+</li>
+</ul>
 <p>如通过集成已经继承了的库文件，就不要再引用一遍了</p>
-<p>4) 检查代码格式</p>
+<ul>
+<li><p>4) 更换intelliBot插件</p>
+<p>出错也可能是因为安装的插件有问题，下载地址：<a href="https://github.com/youwi/intellibot/blob/master/intellibot.jar" target="_blank" rel="noopener">https://github.com/youwi/intellibot/blob/master/intellibot.jar</a><br><a href="https://blog.csdn.net/qq_33783424/article/details/80783092" target="_blank" rel="noopener">https://blog.csdn.net/qq_33783424/article/details/80783092</a></p>
+</li>
+<li><p>5) 检查代码格式</p>
 <p>Keywords 前最好留有空格；</p>
 <p>本次未提交文件提交上去；</p>
-<p>5) 清零</p>
-<p>如果以上都无法解决，删除本地代码，重新拉取； 重启电脑</p>
+</li>
+<li><p>6) 清零</p>
+<p>  如果以上都无法解决，删除本地代码，重新拉取； 重启电脑试试</p>
+</li>
+</ul>
 
           
         
@@ -912,7 +1369,7 @@ Pillow==6.2.1</code></pre></li>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/29/RobotFramework/" itemprop="url">RT使用语法记录</a></h1>
+                <a class="post-title-link" href="/2020/01/29/RobotFramework/" itemprop="url">RT使用语法和技巧</a></h1>
         
 
         <div class="post-meta">
@@ -964,7 +1421,23 @@ Pillow==6.2.1</code></pre></li>
       
         
           
-            <h5 id="语法记录"><a href="#语法记录" class="headerlink" title="语法记录"></a>语法记录</h5><p>官方文档：<a href="https://robotframework.org/#/documentation" target="_blank" rel="noopener">https://robotframework.org/#/documentation</a></p>
+            <p>官方文档：<a href="https://robotframework.org/#/documentation" target="_blank" rel="noopener">https://robotframework.org/#/documentation</a></p>
+<h6 id="架构-amp-变量"><a href="#架构-amp-变量" class="headerlink" title="架构&amp;变量"></a>架构&amp;变量</h6><p>参考： <a href="https://www.jianshu.com/p/dc9dea0741d5" target="_blank" rel="noopener">https://www.jianshu.com/p/dc9dea0741d5</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">*** Variables ***</span><br><span class="line"># 创建scalar变量</span><br><span class="line">$&#123;NAME&#125;             Robot Framework</span><br><span class="line">$&#123;VERSION&#125;         3.0</span><br><span class="line">$&#123;ROBOT&#125;            $&#123;NAME&#125;  $&#123;VERSION&#125;</span><br><span class="line">$&#123;NULL_VAR&#125;         # 空字符串被赋值给了$&#123;NULL_VAR&#125;</span><br><span class="line">$&#123;EXAMPLE&#125;          This value is joined together with a space</span><br><span class="line">...                 1122333333333333333333333333333333</span><br><span class="line">$&#123;LONG_WORDS&#125;       1111111111111111</span><br><span class="line"># 创建列表变量</span><br><span class="line">@&#123;list_data&#125;        1    2    3    4    5</span><br><span class="line">@&#123;list_data2&#125;       a    b    c    d    e    f</span><br><span class="line">#创建字典变量</span><br><span class="line">&amp;&#123;dict_data&#125;        a=b    e=w   y=1    asd=123</span><br><span class="line">&amp;&#123;dict_data1&#125;       a=1    b=2    c=3    d=4</span><br><span class="line">...                 r=7    u=90    # 列表元素太长时使用... 分割</span><br><span class="line"></span><br><span class="line">*** Test Cases ***</span><br><span class="line">test_01</span><br><span class="line">    log    $&#123;NAME&#125;</span><br><span class="line">    log    $&#123;VERSION&#125;</span><br><span class="line">    log   @&#123;list_data&#125; [0]</span><br><span class="line">    log many    &amp;&#123;dict_data&#125;[a]    &amp;&#123;dict_data1&#125;[a]</span><br><span class="line">    log    &amp;&#123;dict_data&#125;[a]</span><br></pre></td></tr></table></figure>
+
+<h6 id="全局变量怎么用"><a href="#全局变量怎么用" class="headerlink" title="全局变量怎么用"></a>全局变量怎么用</h6><p>问题：想执行一个文件夹下所有的suite，但是需要通过suite1的返回值供其他suite使用</p>
+<ol>
+<li><p>定义变量后，直接使用下面接收函数返回值，然后全局赋值？No</p>
+<pre><code>${download_dir}    校验已下载模板到本地
+set global variable    ${download_dir}</code></pre></li>
+<li><p>差点放弃的时候，发现使用set variable赋值替代接收的函数会有效果</p>
+</li>
+</ol>
+<h6 id="数字运算"><a href="#数字运算" class="headerlink" title="数字运算"></a>数字运算</h6><p>自增运算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test_05</span><br><span class="line">    :FOR   $&#123;i&#125;    IN RANGE     4</span><br><span class="line">    \    $&#123;i&#125;    run keyword if   $&#123;i&#125;&gt;2   evaluate    $&#123;i&#125;-1</span><br></pre></td></tr></table></figure>
+
+<p>数字运算不使用evaluate<br>如 ${i+1}</p>
+<p> range范围同python 比如range 4,则i 取值为0，1，2，3</p>
 <h6 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">*** Test Cases ***</span><br><span class="line"></span><br><span class="line">test case8</span><br><span class="line">    $&#123;a&#125;    Set variable    59</span><br><span class="line">    run keyword if    $&#123;a&#125;&gt;=90    log    优秀</span><br><span class="line">    ...    ELSE IF    $&#123;a&#125;&gt;=70    log    良好</span><br><span class="line">    ...    ELSE IF    $&#123;a&#125;&gt;=60    log    及格</span><br><span class="line">    ...    ELSE    log    不及格</span><br></pre></td></tr></table></figure>
 
 <p>条件判断赋值</p>
@@ -1003,7 +1476,14 @@ Pillow==6.2.1</code></pre></li>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;expectedlist&#125;    get slice from list     $&#123;expected&#125;    1</span><br></pre></td></tr></table></figure>
 
 <p>列表元素是整形</p>
-<pre><code>| ${ints} =   | Create List | ${1} | ${2} | ${3} |</code></pre><h6 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h6><p>需要双杠</p>
+<pre><code>| ${ints} =   | Create List | ${1} | ${2} | ${3} |</code></pre><p>列表列举定义的时候用@,传参的时候需要用$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">*** Variables ***</span><br><span class="line">@&#123;sales_info&#125;         Sales Info     價格及庫存     mass_update_sales</span><br><span class="line"></span><br><span class="line">*** Test Cases ***</span><br><span class="line">test_01</span><br><span class="line">    我是关键词    $&#123;sales_info&#125;</span><br><span class="line">    </span><br><span class="line">*** keywords ***</span><br><span class="line">我是关键词</span><br><span class="line">    [Arguments]    $&#123;x&#125;</span><br><span class="line">    log   $&#123;x&#125;[1]</span><br></pre></td></tr></table></figure>
+
+<p>若元组传参,这时候必须用@了，不然按照列表的方式认为只能传一个列表变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test_01</span><br><span class="line">    我是关键词   1   2   3    4</span><br><span class="line"></span><br><span class="line">*** keywords ***</span><br><span class="line">我是关键词</span><br><span class="line">    [Arguments]    @&#123;x&#125;</span><br><span class="line">    log   @&#123;x&#125;[1]</span><br></pre></td></tr></table></figure>
+
+<p>【总结】在RobotFramework中，标量指的是${}，链表指的是@{}，大括号中间的变量名如果是一样的，那么就是一个变量。区别是标量-&gt;整个值就会是一个整体，链表-&gt;代表多个值</p>
+<h6 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h6><p>需要双杠</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;rt&#125;=    Get Regexp Matches        $&#123;test&#125;     \\$\\d,\\d+</span><br><span class="line">should match regexp    $&#123;get_amount&#125;    \\$(\\d)*,?(\\d)+</span><br></pre></td></tr></table></figure>
 
 <p>模糊匹配</p>
@@ -1037,6 +1517,9 @@ Pillow==6.2.1</code></pre></li>
 
 <h6 id="2-case后添加teardown"><a href="#2-case后添加teardown" class="headerlink" title="2.case后添加teardown"></a>2.case后添加teardown</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">03BlanceAccountCB</span><br><span class="line">    [Documentation]  CB seller进入balance页面，能够展示cb卡片信息,同Bank页面</span><br><span class="line">    [Tags]  all</span><br><span class="line">    [Setup]    获取配置数据</span><br><span class="line">    登录SellerCenter    seller=cbseller</span><br><span class="line">    进入cb_balance模块</span><br><span class="line">    comment  cb账号进如balance校验cb卡片信息</span><br><span class="line">    校验CB卡片信息</span><br><span class="line">    [Teardown]    run keyword if test failed    校验CB卡片信息</span><br></pre></td></tr></table></figure>
 
+<p>也可以放在setting中声明，调用关键字如teststop</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*** Settings ***</span><br><span class="line">Test Teardown     teststop</span><br></pre></td></tr></table></figure>
+
 <p>   3.登陆的时候经常不定时出现某些弹窗影响下一步的case？封装关键字轮询查找弹窗<br>登陆弹窗轮询查找</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Arguments]    $&#123;timeout&#125;=5</span><br><span class="line">:FOR    $&#123;i&#125;    IN RANGE    $&#123;timeout&#125;</span><br><span class="line">\   $&#123;servererror&#125;    弹出框存在则点击    $&#123;homepage_ele&#125;[alert_servererror]     $&#123;timeout&#125;</span><br><span class="line">\   $&#123;version&#125;    弹出框存在则点击    $&#123;login_ele&#125;[version]     $&#123;timeout&#125;</span><br><span class="line">\   $&#123;navigation&#125;    弹出框存在则点击    $&#123;login_ele&#125;[navigation]     $&#123;timeout&#125;</span><br><span class="line">\   $&#123;mainaccount_tips&#125;    弹出框存在则点击    $&#123;login_ele&#125;[mainaccount_tips]     $&#123;timeout&#125;</span><br><span class="line">\   $&#123;mainaccount_tips&#125;    弹出框存在则点击    $&#123;login_ele&#125;[mainaccount_tips]     $&#123;timeout&#125;</span><br><span class="line">\   弹出框存在则点击    $&#123;homepage_ele&#125;[alert_servererror]     $&#123;timeout&#125;</span><br><span class="line">\   exit for loop if   $&#123;$&#123;servererror&#125;|$&#123;version&#125;|$&#123;navigation&#125;|$&#123;mainaccount_tips&#125;|$&#123;mainaccount_tips&#125;&#125;==0</span><br></pre></td></tr></table></figure>
 
@@ -1044,6 +1527,10 @@ Pillow==6.2.1</code></pre></li>
 <p>使用Handles解决：</p>
 <p>1、删除第三个窗口<br>2、获取当前Handle,选择最后一个（实践证明，不可用New，若使用可能会认为被关掉的那个才是new，故不生效）</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$&#123;handels_bf&#125;    get window handles</span><br><span class="line">close window</span><br><span class="line">$&#123;handels&#125;    get window handles</span><br><span class="line">$&#123;currenthd&#125;    get from list    $&#123;handels&#125;    -1</span><br><span class="line">select window    $&#123;currenthd&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="多个元素校验–使用或判断"><a href="#多个元素校验–使用或判断" class="headerlink" title="多个元素校验–使用或判断"></a>多个元素校验–使用或判断</h4><pre><code>${status1}   run keyword and return status     wait until element is visible    ${homepage_ele}[button_in_market_continue]
+${status2}   run keyword and return status     wait until element is visible  ${homepage_ele}[vari_marketingcentre]
+校验为真  ${status1} or ${status1}</code></pre><h4 id="定位元素至可见"><a href="#定位元素至可见" class="headerlink" title="定位元素至可见"></a>定位元素至可见</h4><pre><code>execute javascript    document.documentElement.scrollTop=200</code></pre>
           
         
       
@@ -1376,466 +1863,6 @@ Pillow==6.2.1</code></pre></li>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/本地上传和下载远程LInux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/28/本地上传和下载远程LInux/" itemprop="url">本地上传和下载远程LInux</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-28T12:41:23+08:00">
-                2020-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>上传命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp path/filename userName@sseverName:path</span><br></pre></td></tr></table></figure>
-
-<p>下载：调换位置即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp userName@sseverName:path path/filename</span><br></pre></td></tr></table></figure>
-
-<p>我的执行命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo scp /Users/liyuanchen/Documents/workspace/JenkinsTask.zip  xxxxqa@10.12.77.89:/home</span><br></pre></td></tr></table></figure>
-
-<p>【报错】</p>
-<ol>
-<li><p><a href="mailto:xxxxqa@10.12.77.89" target="_blank" rel="noopener">xxxxqa@10.12.77.89</a>: Permission denied (publickey,password). </p>
-<p>解决方法，在同账户下把A的公钥放到B上，注意你scp的账户，添加在该账户下。<br>具体操作：<br>A：cat .ssh/id_rsa.pub<br>B: cat .ssh/authorized_keys （没有该文件创建一个）<br> 把A的公钥贴过来即可</p>
-</li>
-<li><p>scp: /home/setuptools/JenkinsTask.zip: Permission denied</p>
-<p>还是报错，按照网上的折腾了一番/etc/ssh/sshd/sshd_config中的PasswordAuthentication和AuthorizedKeysFile,放开了注释保证是开通状态；<br>还是不行，在命令行前加sudo。<br>还是不行，直到更改目标文件夹到xxxxqa，因为原文件夹权限是root，使用xxxxqa用户当然不行啦。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drwxr-xr-x  8 root     root     4096 1月  21 14:40 setuptools</span><br><span class="line">drwxr-xr-x 17 xxxxqa   xxxxqa   4096 1月  27 22:14 xxxxqa</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/10/Django/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/10/Django/" itemprop="url">Django</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-10T15:41:27+08:00">
-                2019-11-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>MVC的核心是思想是：解耦即减少相互联系，使得各个模块相互独立。</p>
-</li>
-<li><p>Django : MTV </p>
-</li>
-<li><p>安装：pip install Django==1.11.4  不写等号默认安装最新版本</p>
-<p>卸载：pip uninsall Django</p>
-</li>
-<li><p>验证 django.get_version()</p>
-</li>
-<li><p>创建项目：</p>
-<ol>
-<li>创建目录  </li>
-<li>cd到该目录下，输入命令django-admin startproject projectname  </li>
-<li>tree . /F (win)查看目录层级</li>
-</ol>
-</li>
-<li><p>配置数据库：</p>
-<pre><code>mysql数据库：安装pymysql
-1、setting配置：
-&apos;ENGINE&apos;:&apos;django.db.backends.mysql&apos;,
-&apos;NAME&apos;:&apos;Learn&apos;,
-&apos;USER&apos;:&apos;root&apos;,
-&apos;PASSWORD&apos;:&apos;rock1204&apos;,
-&apos;HOST&apos;:&apos;localhost&apos;,
-&apos;PORT&apos;:&apos;3306&apos;,
-2、在__init__.py中添加 import pymysql pymysql.install_as_MySQLdb()  不添加这些会报错</code></pre></li>
-<li><p>创建应用（app）：<br>可以创建多个应用；</p>
-<p> 步骤：</p>
-<ol>
-<li>在manage所在目录中，输入命令python manage.py startapp myapp</li>
-<li>激活应用，在setting将myapp应用加入到app配置中</li>
-</ol>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/10/正则表达式-grep/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/10/正则表达式-grep/" itemprop="url">正则表达式+grep</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-10T15:30:42+08:00">
-                2019-11-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="正则表表达式"><a href="#正则表表达式" class="headerlink" title="正则表表达式"></a>正则表表达式</h4><ul>
-<li>shell 通配符不区分大小写，正则区分;  </li>
-<li>是一种字符模式（pattern）；  </li>
-<li>绝大部分正则表达式都被放在两个正斜杠之间；  </li>
-<li>元字符是最重要的概念;  </li>
-<li>习惯:加单引号如  grep ‘^root’ /etc/passwd   </li>
-</ul>
-<h5 id="基本元字符"><a href="#基本元字符" class="headerlink" title="基本元字符"></a>基本元字符</h5><pre><code>^ 行首定位符
-$ 行尾定位符
-.指的是任意一个字符
-* 单独不能活，指的是前面字符出现次数&gt;=0
-.*任意多个字符（无敌了）
-[]匹配指定范围内的一个字符 [lL]ove
-[ - ]匹配指定范围内的一个字符 [a-z0-9]ove
-[^]用来匹配不在指定范围内的字符
-    注意与外面的^的区别：外面的指的是行首，[]里面的指的是取反，如[^0-9A-Z]love不在0-9和A-Z范围内的一个字符
-\ 用来转义后面的字符，使得后面字符失去元字符作用
-\&lt;词首定位符
-\&gt;词尾定位符 \&lt;love\&gt;指的是love这个单词
-\(..\)匹配稍后使用的字符的标签  如vim中替换:%s#\(10.18.40.\)#\1200#   其中\1替代的是第一个括号的内容
-x\{m\}x重复出现m次  o\{5\}
-x\{m,\}x重复出现m次及以上 o\{5,\}
-x\{m,n\}x重复出现m次到n次 o\{5,8\}
-\+
-\|</code></pre><h5 id="扩展元字符"><a href="#扩展元字符" class="headerlink" title="扩展元字符"></a>扩展元字符</h5><pre><code>+ 单独不能活，指的是前面字符出现次数&gt;=1  
-    grep &apos;ro\+t&apos; /etc/passwd  或者 egrep &apos;ro+t&apos; /etc/passwd  （grep不支持元字符，需要转义，或者替换成egrep）
-? 单独不能活，指的是前面字符出现次数0次或者1次
-a|b 匹配a或b
-()组字符  ov+ 指的是v出现1次或多次 (ov)+ 指的是ov出现1次或多次 
-(..)(..)\1\2 标签匹配字符 （love)able\1er     
-x{m}x重复出现m次  o{5}
-x{m,}x重复出现m次及以上 o｛5,}
-x{m,n}x重复出现m次到n次 o{5,8}</code></pre><h4 id="grep-egrep-fgrep"><a href="#grep-egrep-fgrep" class="headerlink" title="grep/egrep/fgrep"></a>grep/egrep/fgrep</h4><p>  grep：支持基本元字符  grep -e 等价于egrep<br>  egrep:支持扩展元字符<br>  fgrep   </p>
-<pre><code>格式： grep [选项] PATTERN filename1 filename2
-如：grep -i &apos;Tom&apos; /etc/passwd</code></pre><p>   特别可以使用：</p>
-<pre><code>    \w 代表所有字母与数字  等价于[a-zA-Z0-9]
-    \W 代表所有字母与数字之外的字符   等价于[^a-zA-Z0-9]
-    \b 词边界 等价于\&lt; \&gt;
-
-选项参数：
--i  忽略大小写
--q   quiet  无输出
--v    反向查找
-grep --help|grep &apos;\-v&apos;
--r/-R 针对目录文件
--o  only match 只打印找到的内容，非匹配的整行
--n 显示行号
--l 显示匹配的目录  grep -l &apos;root&apos; /etc/passwd  /etc/shadow /etc/hosts
--A  后几行
--B  前几行
--C  前后几行</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1886,7 +1913,7 @@ grep --help|grep &apos;\-v&apos;
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

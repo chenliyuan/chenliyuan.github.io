@@ -261,6 +261,444 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/Django项目实践-Crypto库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/07/Django项目实践-Crypto库/" itemprop="url">Crypto模块</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-07T17:12:39+08:00">
+                2019-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>背景：<br>    由于公司接口有加密解密，自定义接口脚本需要调取Crypto模块，之前用的是php调用python脚本实现的结构体，过于繁琐，打算搭建Django框架实现</p>
+<h2 id="问题一："><a href="#问题一：" class="headerlink" title="问题一："></a>问题一：</h2><p>但是搭建后发现调用Crypto模块经常会报错，主要报错是：<br>from Crypto.Cipher import _AES<br>ImportError: DLL load failed: 找不到指定的模块。<br>这个问题困扰了我很久，原来代码目录<br><img src="https://img-blog.csdnimg.cn/201903111457336.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述
+"></p>
+<p>1、一直认为引用这个模块使用的是目录调用，然后验证路径调用是否正确，怎么验证也没发现什么毛病<br>2、文件里引用当前目录的_AES,最开始以为是AES.py文件本身（单下划线私有变量）；后来知道.pyd文件实际上就是个库文件（DLL），才转移到是引用的_ASE.pyd，但是也没有找出找不到它的理由<br><img src="https://img-blog.csdnimg.cn/20190311150008620.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>解决：<br>后来尝试在原来PHP框架里删除该引用文件，发现依旧可用，于是明确一点：该实现并不依赖该路径，而是与系统安装的pycrypto路径文件有关，但是wondows本地一直有问题，于是直接从当前正在使用PHP linux服务器上调试。做法：删除本地目录（直接用系统的，经之前项目验证系统的没问题，可以用），然后启动Django服务就不报错了，后来又调试了下报错都是些其他的问题了，困扰我两周的问题终于终于落幕了，可以收下心做正事了~~</p>
+<h2 id="问题2："><a href="#问题2：" class="headerlink" title="问题2："></a>问题2：</h2><p>虽然在linux上的这个问题莫名其妙的解决了，但是在台式机win7（py3.7）系统上还是有问题，使用django框架吊起来没有问题，但是直接执行python脚本还是会报一样的错误。忍了一段时间后终于忍不下去了。<br>最开始听人说在linux环境可行，于是在windows下打开git bash确实可行，但是还是会报其他的错，可能是因为版本换了，因为他走的是Anaconda里面的插件，后来干脆还是修复本地的吧<br>1、卸载本地的pycrypto<br>卸载失败提示:Cannot uninstall ‘’. It is a distutils installed project and thus we cannot accurately.<br>解决：直接全局搜索对应文件，具体包括 “package name” 文件夹 和 “package name”.egg-info ，找到后直接删除即可<br>2、重新安装pip install pycrypto<br>直接安装报错，使用源码安装？一样报错<br>error: command ‘C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\<br>x86_amd64\cl.exe’ failed with exit status 2<br>解决：从网上找的经验<br>1）添加VC环境变量，设置用户环境变量，这里划重点！！！是用户环境变量，不是系统环境变量<br>变量名：VCINSTALLDIR<br>（变量值为vs安装路径下的VC，默认是这个）<br>变量值：C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC<br> win+R运行cmd，执行命令set CL=/FI”%VCINSTALLDIR%\INCLUDE\stdint.h” %CL% </p>
+<p>2）安装twisted <a href="https://blog.csdn.net/jiangyunsheng147/article/details/80449556" target="_blank" rel="noopener">https://blog.csdn.net/jiangyunsheng147/article/details/80449556</a></p>
+<p>还会报错warning: GMP or MPIR library not found; Not building Crypto.PublicKey._fastmath.<br>building ‘Crypto.Random.OSRNG.winrandom’ extension<br>error: Unable to find vcvarsall.bat</p>
+<p>3）降低版本3.7–&gt;3.6<br>还是报楼上错误，最后看到有pycrypto-2.6.1.win-amd64-py3.4.exe可行，但是需要3.4.于是降到3.4，刚开始用的exe事32位的不行，后来下了64的果然可以了，搞了一天的环境终于在最后搞定了，也不辜负这一天的工时。<br>插曲：在降低版本的时候，出现了明明已经降到3.4，但是python -V的时候一直仍然显示3.7，后来又是删注册表，又是卸载程序的，我怀疑跟我安装的Anaconda有关系。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/Docker/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/07/Docker/" itemprop="url">Docker使用篇</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-07T16:24:49+08:00">
+                2019-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>参考菜鸟教程 <a href="https://www.runoob.com/docker/docker-tutorial.html" target="_blank" rel="noopener">https://www.runoob.com/docker/docker-tutorial.html</a><br><a href="https://www.cnblogs.com/hellangels333/p/9749905.html" target="_blank" rel="noopener">https://www.cnblogs.com/hellangels333/p/9749905.html</a></p>
+<h4 id="启动docker"><a href="#启动docker" class="headerlink" title="启动docker"></a>启动docker</h4><p> 命令行启动 或点击图标启动app</p>
+<p> $ docker   可查看所有命令</p>
+<p> 比如常用命令：</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker version</span><br><span class="line">$ docker info</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="镜像管理"><a href="#镜像管理" class="headerlink" title="镜像管理"></a>镜像管理</h4><ul>
+<li>docker search 命令来搜索镜像</li>
+</ul>
+<p>ps:镜像加速 mac:<a href="http://f971cfe6.m.daocloud.io加入deamon-Registry" target="_blank" rel="noopener">http://f971cfe6.m.daocloud.io加入deamon-Registry</a> mirrors</p>
+<ul>
+<li><p>docker pull  获取新镜像</p>
+<p>注意使用OFFICIAL的官方镜像</p>
+<p>  我们可以从 Docker Hub 网站来搜索镜像，Docker Hub 网址为：<br><a href="https://hub.docker.com/" target="_blank" rel="noopener">https://hub.docker.com/</a></p>
+<p>  使用国内镜像参考地址：<a href="https://www.docker-cn.com/registry-mirror" target="_blank" rel="noopener">https://www.docker-cn.com/registry-mirror</a></p>
+</li>
+<li><p>docker images   //列出本地主机上的镜像 </p>
+<pre><code>REPOSITORY：表示镜像的仓库源
+TAG：镜像的标签(可以理解为不同的版本号)
+IMAGE ID：镜像ID
+CREATED：镜像创建时间</code></pre><p>实例：</p>
+<p>1、docker ps或docker images</p>
+<p>Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?</p>
+<p>原因：未打开docker，启动docker图标，直至展示running</p>
+<p>2、打开后发现需要指定运行目录</p>
+<p>ls查看当前目录结构，选择映射目录<br>再停掉容器：<br>docker stop  362f8b09c8f43517957423b23f5e0d07ffa164864170262ec14150f2ad267<br>再打开的时候加-v 参数</p>
+</li>
+</ul>
+<h4 id="容器管理"><a href="#容器管理" class="headerlink" title="容器管理"></a>容器管理</h4><p>可通过docker –help 查看所有命令，常用以下几个命令</p>
+<pre><code>$ docker ps  -a  //使用 docker ps 来查看我们正在运行的容器</code></pre><p><img src="https://img-blog.csdnimg.cn/20190514152454652.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<pre><code>docker rm +容器名   //删除容器时，容器必须是停止状态，否则会报错
+docker rm $(docker ps -a -q)
+docker stop +ID 或者名字
+docker start +容器名 //已经停止状态的容器，我们可以使用命令 docker start 来启动。
+docker port +（ID 或者名字）//容器的某个确定端口映射到宿主机的端口号
+docker logs [ID或者名字] //可以查看容器内部的标准输出。  
+docker top +容器名  //查看容器内部运行的进程
+docker inspect +容器名 //查看 Docker 的底层信息。它会返回一个JSON 文件记录着 Docker 容器的配置和状态信息。</code></pre><h4 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h4><p>如果把镜像看成面向对象中的 类 的话，那么容器就是 类 的实例化 对象。</p>
+<h6 id="查看运行帮助："><a href="#查看运行帮助：" class="headerlink" title="查看运行帮助："></a>查看运行帮助：</h6><pre><code>$ sudo docker run --help</code></pre><h6 id="举例：启动-ngnix-容器"><a href="#举例：启动-ngnix-容器" class="headerlink" title="举例：启动 ngnix 容器"></a>举例：启动 ngnix 容器</h6><pre><code>$ sudo docker run --name some-nginx -d -p 8080:80 registry.docker-cn.com/library/nginx
+b5bbf1dfe86a21d641a161c05598c0f4f4d4b32fc8d756b6fdf306295067625f</code></pre><p>-name 指定启动容器的名称为 some-nginx。</p>
+<p>-d 让Docker容器在后台以守护态（Daemonized）形式运行。</p>
+<p>-p 将容器的80端口映射到主机的8080端口</p>
+<p>registry.docker-cn.com/library/nginx 为启动容器的镜像。</p>
+<p>处理过程： <font color="red"><br>浏览器 –&gt; ubuntu(8080) –&gt; Nginx容器(80)</font></p>
+<h6 id="其他参数说明"><a href="#其他参数说明" class="headerlink" title="其他参数说明"></a>其他参数说明</h6><p>  -t （tty）选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上。</p>
+<p>  -i (interactive)则让容器的标准输入保持打开,即保持交互模式。 </p>
+<p>  -v  :   表示需要将本地哪个目录挂载到容器中，格式：-v &lt;宿主机目录&gt;:&lt;容器目录&gt;<br>   eg：<del>/tensorflow:/notebooks/data<br>   将本地的</del>/tensorflow文件夹挂载到新建容器的/notebooks/data下（这样可是实现本地文件和docker文件互通）<br>   tensorflow/tensorflow为指定的镜像，默认标签为latest（即tensorflow/tensorflow:latest）</p>
+<p>   -w  指定其为工作目录</p>
+<pre><code>runoob@runoob:~/python$ docker run  -v $PWD/myapp:/usr/src/myapp  -w /usr/src/myapp python:3.5 python helloworld.py
+    命令说明：
+        -v ：$PWD/myapp:/usr/src/myapp :将主机中当前目录下的myapp挂载到容器的/usr/src/myapp
+        -w ：/usr/src/myapp :指定容器的/usr/src/myapp目录为工作目录
+        python helloworld.py : 使用容器的python命令来执行工作目录中的helloworld.py文件</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/05/性能测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/05/性能测试/" itemprop="url">性能测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-05T22:01:07+08:00">
+                2019-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><strong>重要指标</strong></li>
+</ul>
+<p>TPS ：是TransactionsPerSecond的缩写，也就是事务数/秒</p>
+<p>QPS：Queries Per Second意思是“每秒查询率</p>
+<p>区别：  </p>
+<pre><code>tps，即每秒处理事务数，每个事务包括了如下3个过程：a.用户请求服务器
+b.服务器自己的内部处理（包含应用服务器、数据库服务器等）c.服务器返回给用户
+如果每秒能够完成N个这三个过程，tps就是N；
+
+qps，如果是对一个页面请求一次，形成一个tps，但一次页面请求，可能产生多次对服务器的请求（页面上有很多**html资源，比如图片**等），服务器对这些请求，就可计入“qps”之中；
+
+但是，如今的项目基本上都是前后端分离的，性能也分为前端性能和后端性能，通常默认是后端性能，即服务端性能，也就是对服务端接口做压测
+
+如果是对一个接口（单场景）压测，且这个接口内部不会再去请求其它接口，那么tps=qps，否则，tps≠qps
+
+如果是对多个接口（混合场景）压测，不加事务控制器，jmeter会统计每个接口的tps，而混合场景是要测试这个场景的tps，显然这样得不到混合场景的tps，所以，要加了事物控制器，结果才是整个场景的tps</code></pre><p><strong>找到平衡点</strong></p>
+<p>1.尽可能多的做不同并发数下的压测，记录下响应时间（1s以内）和最大tps，当然，服务器端，各个服务器的资源利用率在可接受范围内（每个公司不一样，我们是90%以内）；</p>
+<p>2.然后根据获取到的不同并发下的指标数据（并发数、tps、响应时间），画出上图，关注右侧的交点，即tps下降的地方和响应时间的交点，这个点的tps最大，如果响应时间在1s以内，此时并发数也是比较大的，这个点就可以认为是三个指标都不错的平衡点（当然，我这里把tps放在第一位优先考虑了，这个就看大家最在乎哪个指标了，排个优先级）；如果响应时间大于1s，最佳平衡点就往左找，找到响应时间为1秒的点，此时对应的tps和并发值，就是最佳平衡点。总之，测试采样越多，获取的平衡点就越准确</p>
+<p>参考：<a href="https://mp.weixin.qq.com/s/p_3C7e65v7mwfth3tHUB9A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/p_3C7e65v7mwfth3tHUB9A</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/26/接口测试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1218,630 +1656,6 @@ importlib.reload(sys)
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/Python3内置函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/18/Python3内置函数/" itemprop="url">Python3内置函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-18T19:25:14+08:00">
-                2019-07-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-内建模块collections"><a href="#1-内建模块collections" class="headerlink" title="1. 内建模块collections"></a>1. 内建模块collections</h3><p><strong>collections.Counter</strong>计数器，计算列表中每项出现的次数，并返回<strong>字典类型</strong>，其中元素作为key，其计数作为value。</p>
-<p><img src="https://img-blog.csdnimg.cn/20190326145102507.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>当所访问的键不存在时，返回0，而不是KeyError；否则返回它的计数。</p>
-<p><img src="https://img-blog.csdnimg.cn/20190526121803806.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h3 id="2-sort-与-sorted-区别："><a href="#2-sort-与-sorted-区别：" class="headerlink" title="2. sort 与 sorted 区别："></a>2. sort 与 sorted 区别：</h3><ul>
-<li><p>sort 是应用在 list 上的<strong>方法</strong>。  
-sorted 是<strong>函数</strong>，可以对所有可迭代的对象（比如字典）进行排序操作。</p>
-<p><strong>sorted 语法：</strong><br>sorted(iterable, key=None, reverse=False)<br>如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array = [&#123;&quot;age&quot;:20,&quot;name&quot;:&quot;a&quot;&#125;,&#123;&quot;age&quot;:25,&quot;name&quot;:&quot;b&quot;&#125;,&#123;&quot;age&quot;:10,&quot;name&quot;:&quot;c&quot;&#125;]</span><br><span class="line">array = sorted(array,key=lambda x:-x[&quot;age&quot;])</span><br><span class="line">#其中负号表示降序（默认升序），与reverse=True相同</span><br></pre></td></tr></table></figure>
-
-<p>以上是使用关键词对元组进行的排序，lambda是隐函数固定格式；x标识列表中的一个元素，在这里标识一个元组，x可以任意起名。<br>也可以对<strong>set集合</strong>进行排序，返回列表类型。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;sorted(&#123;&apos;mm&apos;,&apos;dd&apos;,&apos;aa&apos;&#125;)</span><br><span class="line">&gt;&gt;&gt;[&apos;aa&apos;, &apos;dd&apos;, &apos;mm&apos;]</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li>list 的 sort 方法返回的是对已经存在的列表进行操作；<br>而内建函数 sorted 方法返回的是一个新的 list，而不是在原来的基础上进行的操作。</li>
-</ul>
-<h3 id="3-zip-和zip"><a href="#3-zip-和zip" class="headerlink" title="3. zip()和zip(*)"></a>3. zip()和zip(*)</h3><p>zip() 函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。<br>zip 方法在 Python 2 和 Python 3 中的不同：在 Python 2.x zip() 返回的是一个列表。在3.x中返回的是一个对象，需要使用list将其转换为列表。<br>zip(*) 可理解为解压，返回二维矩阵式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a = [1,2,3]</span><br><span class="line">&gt;&gt;&gt; b = [4,5,6]</span><br><span class="line">&gt;&gt;&gt; c = [4,5,6,7,8]</span><br><span class="line">&gt;&gt;&gt; zipped = zip(a,b)     # 返回一个对象</span><br><span class="line">&gt;&gt;&gt; zipped</span><br><span class="line">&lt;zip object at 0x103abc288&gt;</span><br><span class="line">&gt;&gt;&gt; list(zipped)  # list() 转换为列表</span><br><span class="line">[(1, 4), (2, 5), (3, 6)]</span><br><span class="line">&gt;&gt;&gt; list(zip(a,c))              # 元素个数与最短的列表一致</span><br><span class="line">[(1, 4), (2, 5), (3, 6)]</span><br><span class="line"> </span><br><span class="line">&gt;&gt;&gt; a1, a2 = zip(*zip(a,b)) # 与 zip 相反，zip(*) 可理解为解压，返回二维矩阵式</span><br><span class="line">&gt;&gt;&gt; list(a1)</span><br><span class="line">[1, 2, 3]</span><br><span class="line">&gt;&gt;&gt; list(a2)</span><br><span class="line">[4, 5, 6]</span><br></pre></td></tr></table></figure>
-
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
-<li>数值的除法包含两个运算符：/ 返回一个浮点数，// 返回一个整数。</li>
-<li>列表中元素是元组，可以这样遍历<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  list=[(1,3),(2,4)]</span><br><span class="line">  for i ,j in list:</span><br><span class="line">      print (&quot;first:&quot;,i)</span><br><span class="line">      print(&quot;second&quot;,j)</span><br><span class="line">结果：</span><br><span class="line">first: 1</span><br><span class="line">second 3</span><br><span class="line">first: 2</span><br><span class="line">second 4</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/必知的linux命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/15/必知的linux命令/" itemprop="url">必知的linux命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T19:28:00+08:00">
-                2019-07-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="Linux文件有四种时间"><a href="#Linux文件有四种时间" class="headerlink" title="Linux文件有四种时间:"></a>Linux文件有四种时间:</h4><pre><code># stat /etc/hostname //查看文件详细信息包括时间
-
-访问时间:atime，查看内容 
-修改时间:mtime，修改内容 
-改变时间:ctime，文件属性，比如权限
-删除时间:dtime，文件被删除的时间</code></pre><h4 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h4><p>   ls -l 文件名 //看第一个字符</p>
-<pre><code>- 普通文件(文本文件，二进制文件，压缩文件，电影，图片。。。) d 目录文件(蓝色)
-b 设备文件(块设备)存储设备硬盘，U盘 /dev/sda, /dev/sda1
-c 设备文件(字符设备)打印机，终端 /dev/tty1, /dev/zero
-s 套接字文件
-p 管道文件
-l 链接文件(淡蓝色)</code></pre><h4 id="type-stat-file"><a href="#type-stat-file" class="headerlink" title="type stat file"></a>type stat file</h4><p>type        查看命令类型  -a查看所有<br>stat        查看文件详细信息<br>file        查看文件类型 </p>
-<h5 id="cat命令"><a href="#cat命令" class="headerlink" title="cat命令"></a>cat命令</h5><pre><code>-n 显示行号
--A 包括控制字符(换行符/制表符)
-linux $ 
-Windows ^M$ 可通过其他方式转换成unix文件</code></pre><h5 id="cut命令"><a href="#cut命令" class="headerlink" title="cut命令"></a>cut命令</h5><pre><code>-b 以字节为单位分割
--c以字符为单位分割
--d 自定义分隔符
--f与-d一起使用，指定哪一列</code></pre><p>  如：以冒号为分隔符，取第四列相当于awk -F: ‘{print $4}’</p>
-<pre><code>cat /etc/passwd|cut -d: -f4</code></pre><h5 id="etc-passwd字段"><a href="#etc-passwd字段" class="headerlink" title="/etc/passwd字段"></a>/etc/passwd字段</h5><p>/etc/passwd中一行记录对应着一个用户，每行记录又被冒号(分隔为7个字段，其格式和具体含义如下：</p>
-<pre><code>/etc/passwd
- 用户名:口令:用户标识号:组标识号:注释性描述:主目录:登录Shell
-
-# cat /etc/group
-组名：加密密码：组ID：所有属于该组的用户。</code></pre><h5 id="替换sed"><a href="#替换sed" class="headerlink" title="替换sed"></a>替换sed</h5><p>  替换掉每行<br>  第一个原字符串 sed -i ‘s/原字符串/新字符串’ filename</p>
-<p>  替换掉所有的字符串 sed -i ‘s/原字符串/新字符串/g’ filename</p>
-<pre><code>-i 的作用是直接作用于(修改)文件，而不加-i只是在终端打印结果
-
- # 对每行匹配到的第一个字符串进行替换
-sed -i &apos;s/原字符串/新字符串/&apos; ab.txt 
-
-# 对全局匹配上的所有字符串进行替换
-sed -i &apos;s/原字符串/新字符串/g&apos; ab.txt 
-
-# 删除所有匹配到字符串的行
-sed -i &apos;/匹配字符串/d&apos;  ab.txt  
-
-# 特定字符串的行后插入新行
-sed -i &apos;/特定字符串/a 新行字符串&apos; ab.txt 
-
-# 特定字符串的行前插入新行
-sed -i &apos;/特定字符串/i 新行字符串&apos; ab.txt
-
-# 把匹配行中的某个字符串替换为目标字符串
-sed -i &apos;/匹配字符串/s/源字符串/目标字符串/g&apos; ab.txt
-
-# 在文件ab.txt中的末行之后，添加bye
-sed -i &apos;$a bye&apos; ab.txt   
-
-# 对于文件第3行，把匹配上的所有字符串进行替换
-sed -i &apos;3s/原字符串/新字符串/g&apos; ab.txt
-
-# 显示文件的第二行到最后一行
-sed -n &apos;2, $p&apos; ab.txt        </code></pre><p>原文链接：<a href="https://blog.csdn.net/yjk13703623757/article/details/79548450" target="_blank" rel="noopener">https://blog.csdn.net/yjk13703623757/article/details/79548450</a></p>
-<h5 id="awk-‘-print-1-’-fortest-php-sort-uniq-c-wc-l"><a href="#awk-‘-print-1-’-fortest-php-sort-uniq-c-wc-l" class="headerlink" title="awk ‘{print $1}’ fortest.php |sort|uniq -c|wc -l"></a>awk ‘{print $1}’ fortest.php |sort|uniq -c|wc -l</h5><pre><code>sort命令排序（默认安卓首字母ASCII排序）  
-uniq常与sort结合使用，去除重复行 -c 显示重复个数  </code></pre><h5 id="wc-命令"><a href="#wc-命令" class="headerlink" title="wc 命令"></a><strong>wc 命令</strong></h5><p>计算行数、单词数、字节数。只有三个参数：</p>
-<p>  -l 只显示行数（lines）<br>  -w 只显示单词数(words)<br>  -c 只显示字节数(chars)</p>
-<h5 id="查看网络连接状态-路由表"><a href="#查看网络连接状态-路由表" class="headerlink" title="查看网络连接状态(路由表)"></a>查看网络连接状态(路由表)</h5><p> 可以查端口号，而ps无端口号</p>
-<pre><code>netstat -nlap |grep -i 6379</code></pre>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-n 拒绝显示别名，能显示数字的全部转化成数字。</span><br><span class="line">-l 仅列出有在 Listen (监听) 的服務状态</span><br><span class="line">-a (all)显示所有选项，默认不显示LISTEN相关</span><br><span class="line">-p 显示建立相关链接的程序名</span><br></pre></td></tr></table></figure>
-
-<p>  nlap基本能满足一般的查找需求，记住这个组合即可 </p>
-<h5 id="查看进程-ps"><a href="#查看进程-ps" class="headerlink" title="查看进程 ps"></a>查看进程 ps</h5><p>常用两个组合：</p>
-<pre><code>ps -ef |grep -v grep |grep tomcat
-ps -aux
-类似于lsof -i :8080       
-#lsof (list openfiles)  相当于 netstat  nlap |grep -i 8080</code></pre><ul>
-<li><p>Linux 下命令有哪几种可使用的通配符？分别代表什么含义?</p>
-<pre><code>?可替代单个字符。
-*可替代任意多个字符。
-方括号[charset]可替代 charset 集中的任何单个字符，如[a-z]，[abABC]</code></pre><p><img src="%5Cimages%5Cpasted-68.png" alt="upload successful"></p>
-<h5 id="tar命令"><a href="#tar命令" class="headerlink" title="tar命令"></a>tar命令</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -czvf  test.tar.gz a.c  #将a.c文件压缩成test.tar.gz</span><br><span class="line">tar  -xzvf test.tar.gz      #解压缩</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>参数说明：<br>-t 查看内容<br>-c 建立压缩文档<br>-v 显示所有过程<br>-f 后面接要处理的文件,最后用<br>-x 解压缩<br>-z 有gzip属性  </p>
-<h5 id="vim-常用命令"><a href="#vim-常用命令" class="headerlink" title="vim 常用命令"></a>vim 常用命令</h5><pre><code>- u撤销  
-- vim -b 用来查看二进制比如结束符 
-- :set num显示行号 ;  
-- :7,10d 清除7到10行的内容；
-- 行定位：G 定位到最后一行；
-      1G定位到第一行；
-      17G定位到第17行；
-- 复制粘贴：
-  yy 复制当前行
-  p 粘贴
-- 字符替换命令：
-    :s/old/new/g ==:%s/old/new/g 替换所有</code></pre><ul>
-<li><p>|：   管道命令  如 cat note.conf |more<br>  其中Shift + PageUp 向上查看</p>
-</li>
-<li><p>grep：管道配合grep很好组合 如cat -n note.conf | grep head   -n显示行号    </p>
-<ul>
-<li>grep -i 不区分大小写</li>
-</ul>
-</li>
-<li><p>ls ：  -a 所有（all）、-l 列显示(list)、ls -h（大小GB、KB显示,默认是按照字节显示大小的）、<br>ls -l=ll ll -ht  t标识按照时间倒序</p>
-<h5 id="查找命令："><a href="#查找命令：" class="headerlink" title="查找命令："></a>查找命令：</h5><p>  find:</p>
-<pre><code>-name 例：find /home -name  h?llo;   
--size find /home -size +10k</code></pre><p> whereis: 二进制文件，说明文档，源文件等<br> which :可执行文件</p>
-</li>
-<li><p>重定向命令 &gt;  </p>
-<ul>
-<li>ls -l /etc  &gt; /home/myback.txt  (覆盖重定向)把显示的结果覆盖到/home/myback.txt中去   </li>
-<li>ls -l /etc/  &gt;&gt;  /home/myback.txt   追加重定向</li>
-</ul>
-</li>
-<li><p>清空文件三种方法</p>
-<ol>
-<li>》 log.txt   清空log.txt文件(单箭头)  </li>
-<li>echo “” &gt;log.txt  </li>
-<li>cat /dev/null &gt;log.txt</li>
-</ol>
-</li>
-<li><p>创建用户以及查看当前用户</p>
-<p>useradd redis<br>passwd  redis<br>/etc/group 查看所有组<br>/etc/shadow和/etc/passwd查看所有用户</p>
-</li>
-<li><p>查看内存使用情况</p>
-<p>free -m(m为MB,g为GB)<br>查看磁盘使用情况(disk free)：df -lh<br>查看当前目录下所有文件大小  du -sh *   </p>
-</li>
-</ul>
-<h5 id="chown-修改所属用户"><a href="#chown-修改所属用户" class="headerlink" title="chown  修改所属用户"></a>chown  修改所属用户</h5><p>chown -R tester:tester /var/www</p>
-<h5 id="chmod-权限修改两种语法"><a href="#chmod-权限修改两种语法" class="headerlink" title="chmod  权限修改两种语法"></a>chmod  权限修改两种语法</h5><h6 id="一种是chmod-ugo-r-file-这种"><a href="#一种是chmod-ugo-r-file-这种" class="headerlink" title="一种是chmod ugo+r file 这种"></a>一种是chmod ugo+r file 这种</h6><pre><code>命令格式：chmod {u|g|o|a}{+|-|=}{r|w|x} filename 
- u (user)   表示用户本人。 
- g (group)  表示同组用户。 
- o (oher)   表示其他用户。 
- a (all)    表示所有用户。 
- +          用于给予指定用户的许可权限。 
- -          用于取消指定用户的许可权限。 
- =          将所许可的权限赋给文件。 
- r (read)   读许可，表示可以拷贝该文件或目录的内容。 
- w (write)  写许可，表示可以修改该文件或目录的内容。 
- x (execute)执行许可，表示可以执行该文件或进入目录。</code></pre><p>  例如：   </p>
-<pre><code>      # chmod a+rx filename 
-        让所有用户可以读和执行文件filename。 
-      # chmod go-rx filename 
-        取消同组和其他用户的读和执行文件filename的权限。 
-      # chmod 741 filename 
-        让本人可读写执行、同组用户可读、其他用户可执行文件filename。 
-      # chmod -R 755 /home/oracle 
-递归更改目录权限，本人可读写执行、同组用户可读可执行、其他用户可读可执行 </code></pre><h6 id="一种是chmod-abc-file-其中abc是数字"><a href="#一种是chmod-abc-file-其中abc是数字" class="headerlink" title="一种是chmod abc file(其中abc是数字)"></a>一种是chmod abc file(其中abc是数字)</h6><p>   具体来说，abc分别表示User、Group、及Other的权限。其中r=4,w=2,x=1</p>
-<pre><code>- 若要rwx属性则4+2+1=7
-- 若要rw-属性则4+2=6
-- 若要r-x属性则4+1=5
-- 若用chmod 4755（或755） filename可使其具有root权限</code></pre><ul>
-<li>cp<br>cp -r 原文件  新文件名<br>-r目录复制</li>
-<li>mv<br>对于当前路径下文件重命名，非当前路径移动</li>
-<li>查看linux内核<br>结合使用uname -a 查看linux内核<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@tv6-hotelqa-newhotel-17 ~]# cat /etc/issue</span><br><span class="line">CentOS release 6.4 (Final</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h5 id="ln-软连接和硬链接"><a href="#ln-软连接和硬链接" class="headerlink" title="ln 软连接和硬链接"></a>ln 软连接和硬链接</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">第一，ln命令会保持每一处链接文件的同步性，也就是说，不论你改动了哪一处，其它的文件都会发生相同的变化；</span><br><span class="line">第二，ln的链接又软链接 和硬链接两种，</span><br><span class="line">		 软链接就是ln -s src  dst,它只会在你选定的位置上生成一个文件的镜像，不会占用磁盘空间，</span><br><span class="line">		 硬链接ln src  dst,没有参数-s, 它会在你选定的位置上生成一个和源文件大小相同的文件，无论是软链接还是硬链接，文件都保持同步变化。 </span><br><span class="line">第三，指向一个文件的所有 硬链接都删掉的话文件的内容才会被删掉</span><br><span class="line">		  软链接只要删掉了源链接文件，软链接也就失效了</span><br></pre></td></tr></table></figure>
-
-<p>   若失败可添加-f参数即ln -sf强行添加试试</p>
-<h5 id="查看linux系统版本"><a href="#查看linux系统版本" class="headerlink" title="查看linux系统版本"></a><strong>查看linux系统版本</strong></h5><p> cat /etc/issue  或者 uname -a</p>
-<p><img src="%5Cimages%5Cpasted-65.png" alt="upload successful"></p>
-<h5 id="三大操作系统关系"><a href="#三大操作系统关系" class="headerlink" title="三大操作系统关系"></a>三大操作系统关系</h5><p><img src="%5Cimages%5Cpasted-66.png" alt="upload successful"></p>
-<ul>
-<li><p>一般来说著名的<strong>linux系统</strong>基本上分两大类：</p>
-<pre><code>1.RedHat系列：Redhat、Centos、Fedora等 
-2.Debian系列：Debian、Ubuntu等 
-RedHat 系列 
-1 常见的安装包格式 rpm包,安装rpm包的命令是“rpm -参数” 
-2 包管理工具 yum 
-3 支持tar包 
-Debian系列 
-1 常见的安装包格式 deb包,安装deb包的命令是“dpkg -参数” 
-2 包管理工具 apt-get 
-3支持tar包</code></pre></li>
-</ul>
-<h5 id="Ubuntu-命令行-访问网页"><a href="#Ubuntu-命令行-访问网页" class="headerlink" title="Ubuntu 命令行 访问网页"></a>Ubuntu 命令行 访问网页</h5><pre><code>apt-get install w3m
-w3m https://blog.csdn.net/x_xx_xxx_xxxx/article/details/92574331</code></pre><h5 id="linux上安装软件"><a href="#linux上安装软件" class="headerlink" title="linux上安装软件"></a>linux上安装软件</h5><pre><code>1）解压缩，如tar.gz格式的解压缩命令为tar -xzvf soft.tar.gz 
-2） 执行“./configure”命令为编译做好准备；
-3） 执行“make”命令进行软件编译；
-4） 执行“make install”完成安装；
-5） 执行“make clean”删除安装时产生的临时文件。</code></pre><ul>
-<li><p><strong>安装Yum</strong><br>找了很多资料，什么简洁办法都不管用，还是需要下载很多依赖包安装才行。参考如下<br><a href="https://blog.csdn.net/zgege/article/details/82315110" target="_blank" rel="noopener">https://blog.csdn.net/zgege/article/details/82315110</a><br>但是由于yum的版本与当前python的版本不一致会报错？</p>
-<p>  There was a problem importing one of the Python modules required to run yum. The error leading to this problem was:</p>
-<pre><code>No module named yum</code></pre><p>  Please install a package which provides this module, or verify that the module is installed correctly.</p>
-<p>  It’s possible that the <strong>above module doesn’t match the current version of Python</strong>, which is:<br>  。。。<br>解决办法：更改配置python引用指向低版本（更改yum配置，因为其要用到python2才能执行，否则会导致yum不能正常使用）。<a href="http://www.cnblogs.com/blueel/archive/2012/08/19/2646127.html" target="_blank" rel="noopener">http://www.cnblogs.com/blueel/archive/2012/08/19/2646127.html</a></p>
-<p>  <code>vi /usr/bin/yum</code><br>  把#! /usr/bin/python修改为#! /usr/bin/python2</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/Django-admin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/15/Django-admin/" itemprop="url">Django站点admin</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T15:58:04+08:00">
-                2019-07-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="站点配置"><a href="#站点配置" class="headerlink" title="站点配置:"></a>站点配置:</h4><ol>
-<li><p>配置admin应用，默认已添加</p>
-</li>
-<li><p>创建管理员用户<br>python manage.py createsuperuser</p>
-</li>
-<li><p>汉化：LANGUAGE_CODE = ‘zh-Hans’<br>TIME_ZONE = ‘Asia/Shanghai’</p>
-</li>
-<li><p>注册数据表（模型）admin.py</p>
-<pre><code>from .models import  diffhsy,Runinfo
-#Register your models here.
-admin.site.register(diffhsy)
-admin.site.register(Runinfo)</code></pre></li>
-<li><p>自定义管理页面</p>
-<ol>
-<li><p>在admin.py文件中创建类（继承ModelAdmin）</p>
-</li>
-<li><p>在对应表注册后添加此类：admin.site.register(Batchinfo,biAdmin) #记得加，不然类没引用白写,示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class biAdmin(admin.ModelAdmin):</span><br><span class="line">    list_display = [&apos;pk&apos;,&apos;createtime&apos;,&apos;other&apos;]</span><br><span class="line"></span><br><span class="line">admin.site.register(Batchinfo,biAdmin）</span><br><span class="line">admin.site.register(Diffhsy)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-</li>
-</ol>
-<p>列表页属性：</p>
-<pre><code>list_display=[]   设置显示的字段  
-list_filter=[] 过滤字段  
-search_field=[] 按照某字段搜索  
-list_per_page=int 每几个一页  
-添加/修改页属性  
-field=[]  修改属性先后顺序  
-fieldsets  给属性分组，与field不可同时使用  
-示例：
-
-    fieldsets = [(&quot;condition&quot;, {&quot;fields&quot;: [&apos;servicename&apos;,&apos;rowkey&apos;,&apos;header_online&apos;]}), (&quot;result&quot;,{&quot;fields&quot;:[&apos;diff&apos;,&apos;run_no&apos;]})]</code></pre><p> 在主表里添加数据时，同时也可添加对应的子表数据：</p>
-<pre><code>    class bitchTodf(admin.TabularInline):
-        model = Diffhsy#子表
-        extra = 2
-    class biAdmin(admin.ModelAdmin):#主表
-        inlines = [bitchTodf]
-
-布尔值显示难看？封装函数，然后列表显示时调用
-
-    class BatchinfoAdmin(admin.ModelAdmin):
-        def status(self):
-            if not self.iserror:
-                return &apos;错误&apos;
-            else:
-                return &apos;正确&apos;
-        status.short_description = &apos;状态&apos;#设置页面列名
-        list_display = [&apos;pk&apos;,&apos;servicename&apos;,&apos;rowkey&apos;,status]#引用该函数
-
-执行动作位置问题（删除的那个控件）
-
-    actions_on_bottom = True #执行动作改成下边
-    actions_on_top = False
-
-使用装饰器完成注册（使用模型类）：
-
-    @admin.register(Diffhsy)
-    class DiffhsyAdmin(admin.ModelAdmin):</code></pre><h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><p> 报错：[error] 13838#0: *1475 open() “/var/www/html/newworkbench/static/admin/css/responsive.css” failed<br> 参考：<a href="https://blog.csdn.net/a657941877/article/details/8953233" target="_blank" rel="noopener">https://blog.csdn.net/a657941877/article/details/8953233</a><br> 解决：将admin静态文件拷贝到nginx配置的static路径下。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1892,7 +1706,7 @@ fieldsets  给属性分组，与field不可同时使用
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">71</span>
+                  <span class="site-state-item-count">74</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
