@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="安装pip install opencv-python 常用方法import cv2 #生成图片 img=cv2.imread(&amp;quot;D:/cly/xuanxiu/img/girl.jpg&amp;quot;) #生成灰色图片 imgGray=cv2.imread(&amp;quot;D:/cly/xuanxiu/img/girl.jpg&amp;quot;,0) print(img.shape)#图片高、宽、通道">
+<meta name="description" content="安装pip install opencv-python 简单举例import cv2 #生成图片 img=cv2.imread(&amp;quot;D:/cly/xuanxiu/img/girl.jpg&amp;quot;) #生成灰色图片 imgGray=cv2.imread(&amp;quot;D:/cly/xuanxiu/img/girl.jpg&amp;quot;,0) print(img.shape)#图片高、宽、通道">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python  OpenCV">
 <meta property="og:url" content="http://yoursite.com/2019/11/04/python-OpenCV/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="安装pip install opencv-python 常用方法import cv2 #生成图片 img=cv2.imread(&amp;quot;D:/cly/xuanxiu/img/girl.jpg&amp;quot;) #生成灰色图片 imgGray=cv2.imread(&amp;quot;D:/cly/xuanxiu/img/girl.jpg&amp;quot;,0) print(img.shape)#图片高、宽、通道">
+<meta property="og:description" content="安装pip install opencv-python 简单举例import cv2 #生成图片 img=cv2.imread(&amp;quot;D:/cly/xuanxiu/img/girl.jpg&amp;quot;) #生成灰色图片 imgGray=cv2.imread(&amp;quot;D:/cly/xuanxiu/img/girl.jpg&amp;quot;,0) print(img.shape)#图片高、宽、通道">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/pasted-97.png">
-<meta property="og:updated_time" content="2020-03-22T14:26:14.590Z">
+<meta property="og:updated_time" content="2020-03-28T14:16:12.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python  OpenCV">
-<meta name="twitter:description" content="安装pip install opencv-python 常用方法import cv2 #生成图片 img=cv2.imread(&amp;quot;D:/cly/xuanxiu/img/girl.jpg&amp;quot;) #生成灰色图片 imgGray=cv2.imread(&amp;quot;D:/cly/xuanxiu/img/girl.jpg&amp;quot;,0) print(img.shape)#图片高、宽、通道">
+<meta name="twitter:description" content="安装pip install opencv-python 简单举例import cv2 #生成图片 img=cv2.imread(&amp;quot;D:/cly/xuanxiu/img/girl.jpg&amp;quot;) #生成灰色图片 imgGray=cv2.imread(&amp;quot;D:/cly/xuanxiu/img/girl.jpg&amp;quot;,0) print(img.shape)#图片高、宽、通道">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-97.png">
 
 
@@ -334,7 +334,7 @@
 
       
         <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>pip install opencv-python</p>
-<h4 id="常用方法"><a href="#常用方法" class="headerlink" title="常用方法"></a>常用方法</h4><pre><code>import cv2
+<h4 id="简单举例"><a href="#简单举例" class="headerlink" title="简单举例"></a>简单举例</h4><pre><code>import cv2
 #生成图片
 img=cv2.imread(&quot;D:/cly/xuanxiu/img/girl.jpg&quot;)
 #生成灰色图片
@@ -354,7 +354,18 @@ cv2.imshow(&quot;result&quot;,result)
 cv2.waitKey(0)
 
 #销毁所有窗口
-cv2.destroyAllWindows()</code></pre><h4 id="图像处理"><a href="#图像处理" class="headerlink" title="图像处理"></a>图像处理</h4><h5 id="像素"><a href="#像素" class="headerlink" title="像素"></a>像素</h5><p>图片是由像素组成的矩阵</p>
+cv2.destroyAllWindows()</code></pre><h5 id="Python-OpenCV中的resize-函数的使用"><a href="#Python-OpenCV中的resize-函数的使用" class="headerlink" title="Python OpenCV中的resize()函数的使用"></a>Python OpenCV中的resize()函数的使用</h5><p><a href="https://www.jb51.net/article/163516.htm" target="_blank" rel="noopener">https://www.jb51.net/article/163516.htm</a></p>
+<p>常用于等比缩小比例，若参数中不适用fx而是使用指定dsize的话，需要注意的是(宽，长)即横纵坐标的顺序，这里也与shape里出来的相反</p>
+<pre><code>import cv2
+img = cv2.imread(&quot;./Pictures/python.png&quot;)
+print(&apos;Original Dimensions : &apos;, img.shape)
+
+resized = cv2.resize(img, None, fx=0.6, fy=0.6, interpolation=cv2.INTER_AREA)
+
+print(&apos;Resized Dimensions : &apos;,resized.shape)
+
+cv2.imshow(&quot;resized_img&quot;, resized)
+cv2.waitKey(0)</code></pre><h4 id="图像处理"><a href="#图像处理" class="headerlink" title="图像处理"></a>图像处理</h4><h5 id="像素"><a href="#像素" class="headerlink" title="像素"></a>像素</h5><p>图片是由像素组成的矩阵</p>
 <p>彩色图片访问方式为：</p>
 <pre><code>img[i,j,c]</code></pre><p>i表示图片的行数，j表示图片的列数，c表示图片的通道数（RGB三通道分别对应0，1，2）。坐标是从左上角开始。</p>
 <p>灰度图片访问方式为：</p>
@@ -540,7 +551,7 @@ sigmaSpace：坐标空间的标准方差(像素单位)，一般尽可能小。(�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#常用方法"><span class="nav-number">2.</span> <span class="nav-text">常用方法</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图像处理"><span class="nav-number">3.</span> <span class="nav-text">图像处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#像素"><span class="nav-number">3.1.</span> <span class="nav-text">像素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#OpenCV—图像二值化"><span class="nav-number">3.2.</span> <span class="nav-text">OpenCV—图像二值化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#中值滤波：medianBlur"><span class="nav-number">3.3.</span> <span class="nav-text">中值滤波：medianBlur</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#双边滤波-bilateralFilter"><span class="nav-number">3.4.</span> <span class="nav-text">双边滤波 bilateralFilter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文字区域识别-投影法"><span class="nav-number">3.5.</span> <span class="nav-text">文字区域识别-投影法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题："><span class="nav-number">4.</span> <span class="nav-text">问题：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#简单举例"><span class="nav-number">2.</span> <span class="nav-text">简单举例</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Python-OpenCV中的resize-函数的使用"><span class="nav-number">2.1.</span> <span class="nav-text">Python OpenCV中的resize()函数的使用</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图像处理"><span class="nav-number">3.</span> <span class="nav-text">图像处理</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#像素"><span class="nav-number">3.1.</span> <span class="nav-text">像素</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#OpenCV—图像二值化"><span class="nav-number">3.2.</span> <span class="nav-text">OpenCV—图像二值化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#中值滤波：medianBlur"><span class="nav-number">3.3.</span> <span class="nav-text">中值滤波：medianBlur</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#双边滤波-bilateralFilter"><span class="nav-number">3.4.</span> <span class="nav-text">双边滤波 bilateralFilter</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文字区域识别-投影法"><span class="nav-number">3.5.</span> <span class="nav-text">文字区域识别-投影法</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题："><span class="nav-number">4.</span> <span class="nav-text">问题：</span></a></li></ol></div>
             
 
           </div>
