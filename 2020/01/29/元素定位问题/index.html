@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://yoursite.com/images/pasted-95.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-98.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-100.png">
-<meta property="og:updated_time" content="2020-03-24T04:22:36.757Z">
+<meta property="og:updated_time" content="2020-04-02T08:23:41.827Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RT使用元素xpath定位等问题">
 <meta name="twitter:description" content="1. 元素定位问题【问题】各种找不到元素 语法问题-低级错误导致高级提醒 元素名称错误，比如后面少了对应右括号 ）  元素本身就不存在，比如调试元素在所在环境中不存在，然而编写代码定位的时候使用的是线上环境账号，其具有该元素，造成元素找不到  元素前面未加css=或者xpath=类型名称  css父子关系之间不用空格，用点来替代；祖辈关系使用单个空格  TypeError: Failed to e">
@@ -401,13 +401,16 @@
 <pre><code>scroll element into view  css=.multiple-level-items &gt; li:nth-of-type(1)</code></pre><p>原因：取消使用scroll element into view关键字 </p>
 </li>
 <li><p>不包含元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//span[not(contains(text(),&apos;Women Clothes&apos;))]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xpath=//span[not(contains(text(),&apos;Women Clothes&apos;))]</span><br><span class="line">xpath=//div[@class=&apos;btn-wrap-right&apos;][not(contains(@style,&apos;display&apos;))]</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>使用preceding-sibling或者following-sibling</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xpath=//label[@class=&apos;shopee-radio&apos;]/span[contains(text(),&apos;&#123;&#125;&apos;)]/preceding-sibling::span</span><br></pre></td></tr></table></figure>
+<li><p>使用preceding-sibling\following-sibling\ancestor</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xpath=//label[@class=&apos;shopee-radio&apos;]/span[contains(text(),&apos;&#123;&#125;&apos;)]/preceding-sibling::span</span><br><span class="line"></span><br><span class="line">xpath=//span[contains(text(), &apos;$&#123;image_name&#125;&apos;)]/ancestor::li//label</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>页面加载时间不确定，除了固定等待如何判断何时校验元素出现？ </p>
 <p>抓取loading元素，判断该元素何时不在即可</p>
+</li>
+<li><p>浮层上面的元素怎么定位(直接去取的话，与元素定位无法实现同步)</p>
+<p> 右键点击浮层上的元素，点击‘检查’，即可定位到该元素位置，可用console进行调试</p>
 </li>
 </ol>
 
@@ -523,7 +526,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

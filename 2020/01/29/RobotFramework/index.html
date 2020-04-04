@@ -88,7 +88,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/pasted-79.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-76.png">
-<meta property="og:updated_time" content="2020-03-25T07:20:49.809Z">
+<meta property="og:updated_time" content="2020-03-30T10:00:22.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RT使用语法和技巧">
 <meta name="twitter:description" content="官方文档：https://robotframework.org/#/documentation 架构&amp;amp;变量参考： https://www.jianshu.com/p/dc9dea0741d5 123456789101112131415161718192021222324*** Variables ***# 创建scalar变量$&amp;#123;NAME&amp;#125;             Ro">
@@ -443,7 +443,11 @@ set global variable    ${download_dir}</code></pre></li>
 
 <h4 id="多个元素校验–使用或判断"><a href="#多个元素校验–使用或判断" class="headerlink" title="多个元素校验–使用或判断"></a>多个元素校验–使用或判断</h4><pre><code>${status1}   run keyword and return status     wait until element is visible    ${homepage_ele}[button_in_market_continue]
 ${status2}   run keyword and return status     wait until element is visible  ${homepage_ele}[vari_marketingcentre]
-校验为真  ${status1} or ${status1}</code></pre><h4 id="定位元素至可见"><a href="#定位元素至可见" class="headerlink" title="定位元素至可见"></a>定位元素至可见</h4><pre><code>execute javascript    document.documentElement.scrollTop=200</code></pre>
+校验为真  ${status1} or ${status1}</code></pre><p>或</p>
+<pre><code>校验包含任何一个值
+    [Arguments]    ${str}    @{veluelist}
+    run keyword and continue on failure    should contain any    ${str}    @{veluelist}</code></pre><h4 id="定位元素至可见"><a href="#定位元素至可见" class="headerlink" title="定位元素至可见"></a>定位元素至可见</h4><pre><code>execute javascript    document.documentElement.scrollTop=200</code></pre><p>  若是向上滚动，则数值使用负数</p>
+
       
     </div>
     
@@ -556,7 +560,7 @@ ${status2}   run keyword and return status     wait until element is visible  ${
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

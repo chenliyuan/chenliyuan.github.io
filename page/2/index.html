@@ -261,6 +261,444 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-条件测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/06/shell-条件测试/" itemprop="url">shell 条件测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T12:21:04+08:00">
+                2020-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Shell 条件测试</p>
+<pre><code>格式 1: test 条件表达式 
+格式 2: [ 条件表达式 ] 
+格式 3: [[ 条件表达式 ]]</code></pre><ol>
+<li><p>文件测试</p>
+<pre><code>test -d /home
+[ -e dir|file ]  True if file exists (regardless of type)
+[ -d dir ] True if file exists and is a directory.
+[ -f file ] True if file exists and is a regular file.
+[ -d /ccc ] || mkdir /ccc</code></pre></li>
+<li><p>数值比较 </p>
+<pre><code>[ 整数1  操作符  整数2] 
+[ 1 -gt 10 ] 大于
+[ 1 -eq 10 ] 等于</code></pre></li>
+<li><p>数值比较–C语言风格 </p>
+<pre><code>[root@xxxx ~]# ((1&lt;2));echo $?
+0
+[root@xxxx ~]# ((1==2));echo $?</code></pre></li>
+<li><p>字符串比较</p>
+<pre><code>等号
+[root@xxxx ~]# [ &quot;$USER&quot; = &quot;root&quot; ];echo $?
+[root@xxxx ~]# [ -z &quot;$var1&quot; ];echo $?
+条件判断
+[root@xxxx ~]# [ 1 -lt 2 -a 5 -gt 10 ];echo $?
+[root@xxxx ~]# [ 1 -lt 2 -o 5 -gt 10 ];echo $?
+使用正则    
+[root@yangs ~]# [[ &quot;$num10&quot; =~ ^[0-9]+$ ]];echo $?</code></pre><p> 【注】:变量为空 或 未定义: 长度都为 0</p>
+</li>
+<li><p>eq  ge等用于数字比较</p>
+<p>= &gt;等都是字符串比较    </p>
+<p> 字符串比较一般要加双引号</p>
+</li>
+<li><p>在shell脚本里，推荐按以下方式声明和使用布尔类型。</p>
+<pre><code>bool=true
+if [ &quot;$bool&quot; = true ]; then
+if [ &quot;$bool&quot; = &quot;true&quot; ]; then
+if [[ &quot;$bool&quot; = true ]]; then
+if [[ &quot;$bool&quot; = &quot;true&quot; ]]; then
+if [[ &quot;$bool&quot; == true ]]; then
+if [[ &quot;$bool&quot; == &quot;true&quot; ]]; then
+if test &quot;$bool&quot; = true; then
+if test &quot;$bool&quot; = &quot;true&quot;; then</code></pre></li>
+</ol>
+<ol start="7">
+<li><p>实例 判断bool变量不存在或者为false</p>
+<pre><code>if [ ${#usePFB} -eq 0 -o &quot;$usePFB&quot; = &quot;false&quot; ]</code></pre></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/03/Go语言/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/03/Go语言/" itemprop="url">Go语言</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-03T19:56:22+08:00">
+                2020-02-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h4><p>官网下载atom，并安装go-plus插件</p>
+<h4 id="运行程序"><a href="#运行程序" class="headerlink" title="运行程序"></a>运行程序</h4><pre><code>go run hello.go
+或者
+$ go build hello.go 
+$ ls
+hello    hello.go
+$ ./hello</code></pre><h4 id="特点-与其他语言差别"><a href="#特点-与其他语言差别" class="headerlink" title="特点:与其他语言差别"></a>特点:与其他语言差别</h4><ul>
+<li><p>应用程序入口</p>
+<ol>
+<li>必须是 main 包：package main</li>
+<li>必须是 main ⽅法：func main()</li>
+<li>⽂件名不⼀定是 main.go</li>
+</ol>
+</li>
+<li><p>Go 中 main 函数不⽀持任何返回值<br>通过 os.Exit 来返回状态</p>
+</li>
+<li><p>main 函数不⽀持传⼊参数 func main(arg []string) 是错误的<br>在程序中直接通过 os.Args 获取命令⾏参数 </p>
+</li>
+<li><p>编写测试程序</p>
+<ol>
+<li>源码⽂件以 _test 结尾：xxx_test.go</li>
+<li>测试⽅法名以 Test 开头：func TestXXX(t *testing.T){}</li>
+</ol>
+<p>运行测试程序：</p>
+<p>1）Atom-&gt;preferences-&gt;packages<br>搜索找到go-plus<br>在settings中，Test配置中选中 Run with verbose flag setting<br>2）若不好用，可以用修改快捷键绑定keymap.cson文件,先执行保存再使用快捷键运行</p>
+</li>
+<li><p>不支持隐式类型转换，如Int和Int64。别名和原有类型也不能进⾏隐式类型转换</p>
+</li>
+<li><p>不支持指针运算</p>
+</li>
+<li><p>运算符之后后置++和–</p>
+</li>
+<li><p>&amp;^ 运算符：只要后面是1，结果变成0，否则为左边值即不变</p>
+<p>   1 &amp;^ 0 – 1<br>   1 &amp;^ 1 – 0<br>   0 &amp;^ 1 – 0<br>   0 &amp;^ 0 – 0</p>
+</li>
+<li><p>string 是值类型，其默认的初始化值为空字符串，⽽不是 nil</p>
+</li>
+<li><p>Go 语⾔仅⽀持循环关键字 for</p>
+</li>
+<li><p>条件语句</p>
+<ol>
+<li>condition 表达式结果必须为布尔值</li>
+<li>⽀持变量赋值：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if  var declaration;  condition &#123;</span><br><span class="line">    // code to be executed if condition is true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+<li><p>switch条件</p>
+<ol>
+<li>条件表达式不限制为常量或者整数；</li>
+<li>单个 case 中，可以出现多个结果选项, 使⽤逗号分隔；</li>
+<li>Go 语⾔不需要⽤break来明确退出⼀个 case；</li>
+<li>可以不设定 switch 之后的条件表达式，在此种情况下，整个 switch 结构与多个 if…else… 的逻辑作⽤等同</li>
+</ol>
+</li>
+</ul>
+<h5 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h5><ul>
+<li>数组的声明<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a [3] int //声明并初始化为默认零值</span><br><span class="line">a[0] = 1</span><br><span class="line">b := [3]int&#123;1, 2, 3&#125; //声明同时初始化</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<ul>
+<li>数组元素遍历</li>
+</ul>
+<pre><code>func TestTravelArray(t *testing.T) {
+ a := [...]int{1, 2, 3, 4, 5} //不指定元素个数
+ for idx/*索引*/, elem/*元素*/ := range a {
+ fmt.Println(idx, elem)
+ }</code></pre><ul>
+<li><p>数组截取</p>
+<pre><code>a := [...]int{1, 2, 3, 4, 5}
+a[1:2] //2
+a[1:3] //2,3
+a[1:len(a)] //2,3,4,5
+a[1:] //2,3,4,5
+a[:3] //1,2,3</code></pre><p>  负数索引？不支持</p>
+</li>
+</ul>
+<h5 id="Go-语言切片-Slice"><a href="#Go-语言切片-Slice" class="headerlink" title="Go 语言切片(Slice)"></a>Go 语言切片(Slice)</h5><p>Go 语言切片是对数组的抽象。</p>
+<p>Go 数组的长度不可改变，在特定场景中这样的集合就不太适用，Go中提供了一种灵活，功能强悍的内置类型切片(“动态数组”),与数组相比切片的长度是不固定的，可以追加元素，在追加时可能使切片的容量增大。 </p>
+<ul>
+<li><p>初始化同数组，缺少长度 </p>
+</li>
+<li><p>数组可以比较，切片不可比较</p>
+<p>切⽚声明</p>
+<pre><code> var s0 []int
+ s0 = append(s0, 1)
+ s := []int{}
+ s1 := []int{1, 2, 3}
+ s2 := make([]int, 2, 4)  
+make参数/*[]type, len, cap
+其中len个元素会被初始化为默认零值，未初始化元素不可以访问
+*/</code></pre></li>
+<li><p>len() cap()  make()</p>
+<p>append() 和 copy() 函数</p>
+</li>
+</ul>
+<h5 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h5><ul>
+<li><p>Map 声明</p>
+<p>  声明变量，默认 map 是 nil</p>
+<pre><code>var map_variable map[key_data_type]value_data_type</code></pre><p>  使用 make 函数</p>
+<pre><code>map_variable := make(map[key_data_type]value_data_type)</code></pre><p>  举例：</p>
+<pre><code>m := map[string]int{&quot;one&quot;: 1, &quot;two&quot;: 2, &quot;three&quot;: 3}
+m1 := map[string]int{}
+m1[&quot;one&quot;] = 1
+m2 := make(map[string]int, 10 /*Initial Capacity*/)</code></pre></li>
+<li><p>在访问的 Key 不存在时，仍会返回零值，不能通过返回 nil 来判断元素是否存在</p>
+</li>
+<li><p>Mapi遍历</p>
+<pre><code>m := map[string]int{&quot;one&quot;: 1}
+for k, v := range m {
+    t.Log(k, v)
+}</code></pre></li>
+<li><p>Mapi delete()函数</p>
+</li>
+<li><p>Go 的内置集合中没有 Set 实现， 可以 map[type]bool</p>
+</li>
+</ul>
+<h5 id="字符串与字符编码"><a href="#字符串与字符编码" class="headerlink" title="字符串与字符编码"></a>字符串与字符编码</h5><p>字符串是只读不可变的byte slice</p>
+<p>len()函数得出的是byte的长度而未必是字符长度。</p>
+<p>rune()函数:得到unicode编码</p>
+<p>常用的函数包：strings strconv<br>如：split join Atoi  itoA</p>
+<h5 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h5><p>可单独声明，也可以一次声明多个变量：如</p>
+<pre><code>var a string = &quot;Runoob&quot;
+var b, c int = 1, 2</code></pre><ul>
+<li><p>若没有初始化系统默认为0或者False或者”“</p>
+</li>
+<li><p>也可是不指定类型，系统自动识别</p>
+</li>
+<li><p>使用因式分解关键字写法</p>
+<pre><code>var (  // 这种因式分解关键字的写法一般用于声明全局变量
+  a int
+  b bool
+  )</code></pre></li>
+<li><p>也可是省略var,使用:=来声明新变量</p>
+<pre><code>vname1, vname2, vname3 := v1, v2, v3</code></pre></li>
+</ul>
+<h5 id="常量：iota"><a href="#常量：iota" class="headerlink" title="常量：iota"></a>常量：iota</h5><p> iota 在 const关键字出现时将被重置为 0(const 内部的第一行之前)，const 中每<font color="red">新增一行</font>常量声明将使 iota 计数一次</p>
+<pre><code>package main
+import &quot;fmt&quot;
+func main() {
+    const (
+            a = iota   //0
+            b          //1
+            c          //2
+            d = &quot;ha&quot;   //独立值，iota += 1
+            e          //&quot;ha&quot;   iota += 1
+            f = 100    //iota +=1
+            g          //100  iota +=1
+            h = iota   //7,恢复计数
+            i          //8
+    )
+    fmt.Println(a,b,c,d,e,f,g,h,i)
+}</code></pre><h6 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h6><pre><code>t.Logf(&quot;%T&quot;, aP)</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/03/python-GIL/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -993,13 +1431,16 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
 <pre><code>scroll element into view  css=.multiple-level-items &gt; li:nth-of-type(1)</code></pre><p>原因：取消使用scroll element into view关键字 </p>
 </li>
 <li><p>不包含元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">//span[not(contains(text(),&apos;Women Clothes&apos;))]</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xpath=//span[not(contains(text(),&apos;Women Clothes&apos;))]</span><br><span class="line">xpath=//div[@class=&apos;btn-wrap-right&apos;][not(contains(@style,&apos;display&apos;))]</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>使用preceding-sibling或者following-sibling</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xpath=//label[@class=&apos;shopee-radio&apos;]/span[contains(text(),&apos;&#123;&#125;&apos;)]/preceding-sibling::span</span><br></pre></td></tr></table></figure>
+<li><p>使用preceding-sibling\following-sibling\ancestor</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xpath=//label[@class=&apos;shopee-radio&apos;]/span[contains(text(),&apos;&#123;&#125;&apos;)]/preceding-sibling::span</span><br><span class="line"></span><br><span class="line">xpath=//span[contains(text(), &apos;$&#123;image_name&#125;&apos;)]/ancestor::li//label</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>页面加载时间不确定，除了固定等待如何判断何时校验元素出现？ </p>
 <p>抓取loading元素，判断该元素何时不在即可</p>
+</li>
+<li><p>浮层上面的元素怎么定位(直接去取的话，与元素定位无法实现同步)</p>
+<p> 右键点击浮层上的元素，点击‘检查’，即可定位到该元素位置，可用console进行调试</p>
 </li>
 </ol>
 
@@ -1530,304 +1971,10 @@ set global variable    ${download_dir}</code></pre></li>
 
 <h4 id="多个元素校验–使用或判断"><a href="#多个元素校验–使用或判断" class="headerlink" title="多个元素校验–使用或判断"></a>多个元素校验–使用或判断</h4><pre><code>${status1}   run keyword and return status     wait until element is visible    ${homepage_ele}[button_in_market_continue]
 ${status2}   run keyword and return status     wait until element is visible  ${homepage_ele}[vari_marketingcentre]
-校验为真  ${status1} or ${status1}</code></pre><h4 id="定位元素至可见"><a href="#定位元素至可见" class="headerlink" title="定位元素至可见"></a>定位元素至可见</h4><pre><code>execute javascript    document.documentElement.scrollTop=200</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/mac终端快捷键/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/28/mac终端快捷键/" itemprop="url">mac终端快捷键使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-28T15:41:11+08:00">
-                2020-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>常用的快捷键：<br>参考<a href="https://www.jianshu.com/p/87581b2c570c" target="_blank" rel="noopener">https://www.jianshu.com/p/87581b2c570c</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + a 跳到行首</span><br><span class="line">Ctrl + e 跳到行尾</span><br><span class="line">Ctrl + l 清屏，相当于执行clear命令</span><br><span class="line">Command + K 清屏</span><br><span class="line">ctrl+u   删除前面的所有内容</span><br></pre></td></tr></table></figure>
-
-<p>mac下是否显示隐藏文件，可使用shit+cmd+句号来切换</p>
-<p>终端相关 </p>
-<p><a href="https://support.apple.com/zh-cn/guide/terminal/trmlshtcts/mac" target="_blank" rel="noopener">https://support.apple.com/zh-cn/guide/terminal/trmlshtcts/mac</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">新建标签页    Command-T</span><br><span class="line">下一个标签页    Control-Tab</span><br><span class="line">上一个标签页    Control-Shift-Tab</span><br><span class="line">放大字体    Command-加号键 (+)</span><br><span class="line">缩小字体   Command-减号键 (–)</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/jenkins安装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/28/jenkins安装/" itemprop="url">Jenkins安装和配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-28T15:13:46+08:00">
-                2020-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h6 id="Jenkins安装"><a href="#Jenkins安装" class="headerlink" title="Jenkins安装"></a>Jenkins安装</h6><p>环境：Ubuntu</p>
-<p>参考：<br><a href="https://www.jianshu.com/p/845f267aec52" target="_blank" rel="noopener">https://www.jianshu.com/p/845f267aec52</a><br><a href="https://www.cnblogs.com/shuoer/p/9471839.html" target="_blank" rel="noopener">https://www.cnblogs.com/shuoer/p/9471839.html</a></p>
-<p>步骤：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#添加官方软件仓库的秘钥到本地的apt秘钥中</span><br><span class="line"> wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -</span><br><span class="line"> </span><br><span class="line">echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list</span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install jenkins</span><br></pre></td></tr></table></figure>
-
-<p>安装成功后打开服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@sz-dev-77-89:/var/lib/dpkg# /etc/init.d/jenkins  start</span><br><span class="line">Correct java version found</span><br><span class="line">[ ok ] Starting jenkins (via systemctl): jenkins.service.</span><br><span class="line">root@sz-dev-77-89:/var/lib/dpkg# systemctl status jenkins</span><br></pre></td></tr></table></figure>
-
-<p>安装时若报错：</p>
-<p><img src="/images/pasted-74.png" alt="upload successful"></p>
-<p>使用操作文件/var/lib/dpkg/info解决：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd /var/lib/dpkg/</span><br><span class="line">mv info/ info_bak         </span><br><span class="line">mkdir info                 </span><br><span class="line">apt-get update            </span><br><span class="line">apt-get -f install         </span><br><span class="line">mv info/* info_bak/        </span><br><span class="line">rm -rf info                </span><br><span class="line">mv info_bak info</span><br></pre></td></tr></table></figure>
-
-<h6 id="Jenkins安装git插件"><a href="#Jenkins安装git插件" class="headerlink" title="Jenkins安装git插件"></a>Jenkins安装git插件</h6><p>安装jenkins时候安装git插件失败，需在本地先安装git</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install git</span><br></pre></td></tr></table></figure>
-
-<p>然后在插件管理中选中git安装</p>
-<h6 id="Jenkins安装配置git"><a href="#Jenkins安装配置git" class="headerlink" title="Jenkins安装配置git"></a>Jenkins安装配置git</h6><p><img src="/images/pasted-75.png" alt="upload successful"></p>
-<p>【问题】配置git用户时一直报错：Jenkins Host key verification failed</p>
-<p>1.需要在jenkins路径下生产公钥和私钥</p>
-<p>2.把所属用户改成jenkins</p>
-<p>具体步骤   参考<a href="https://blog.csdn.net/hursing/article/details/90521031" target="_blank" rel="noopener">https://blog.csdn.net/hursing/article/details/90521031</a></p>
-<p>1）ssh-keygen -t rsa -C <a href="mailto:jenkinsServerOnLinux@shopeemobile.com" target="_blank" rel="noopener">jenkinsServerOnLinux@shopeemobile.com</a>     </p>
-<p>-c是备注；-f 指定密钥的文件名  ;-t 是type用于指定算法一般rsa;<br>在过程中提示生成路径可以直接改成/var/lib/jenkins/.ssh/id_rsa，其他直接回车即可</p>
-<p>2）生成的公钥放在gitlab下<br>3）按照jenkins提示执行命令<br> git ls-remote -h ssh://gitlab@git.garena.com:2222/autotest/scqa_ui_auto_platform_projects.git HEAD</p>
-<p>根据提示直接yes就好，此步骤会生产know_hosts的文件如果在根路径/root/.ssh下就拷贝过jenkins路径下（不确定这一步的作用是否对结果管用）<br>4）对文件授权<br>chown jenkins:jenkins  id_rsa   id_rsa.pub</p>
-<p>5)重启jenkins<br>/etc/init.d/jenkins restart</p>
-<p>如果没设置管理员密码，需要通过命令获取cat   /var/lib/jenkins/secrets/initialAdminPassword</p>
-<h6 id="设置jenkins无需登录"><a href="#设置jenkins无需登录" class="headerlink" title="设置jenkins无需登录"></a>设置jenkins无需登录</h6><p>链接：<a href="https://www.jianshu.com/p/6591c9bdcca6" target="_blank" rel="noopener">https://www.jianshu.com/p/6591c9bdcca6</a></p>
-<ul>
-<li>进入Jenkins根目录，复制config.xml 为 config.xml.bak用于备份  </li>
-<li>而后打开 config.xml 配置文件；    </li>
-<li>修改“&lt; useSecurity &gt;true&lt; /useSecurity &gt;”为“&lt; useSecurity&gt;false&lt; /useSecurity&gt;”；      </li>
-<li>删掉“&lt; authorizationStrategy …&gt;…&lt; /authorizationStrategy&gt;”；      </li>
-<li>保存修改的confi.xml，重启Jenkins服务已无需登录 </li>
-</ul>
-<h6 id="【问题】打不开log-html-提示Opening-Robot-Framework-log-failed"><a href="#【问题】打不开log-html-提示Opening-Robot-Framework-log-failed" class="headerlink" title="【问题】打不开log.html 提示Opening Robot Framework log failed"></a>【问题】打不开log.html 提示Opening Robot Framework log failed</h6><p>Verify that you have JavaScript enabled in your browser.<br>Make sure you are using a modern enough browser. Firefox 3.5, IE 8, or equivalent is required, newer browsers are recommended.<br>Check are there messages in your browser’s JavaScript error log. Please report the problem if you suspect you have encountered a bug.<br>…”</p>
-<p>解决办法：<br>For resolve your problem you must :</p>
-<ul>
-<li><p>Connect on your jenkins url (http://[IP]:8080/)</p>
-</li>
-<li><p>Click on Manage Jenkins from left side panel.</p>
-</li>
-<li><p>Click on Script Console</p>
-</li>
-<li><p>Copy this into the field<br>System.setProperty(“hudson.model.DirectoryBrowserSupport.CSP”,”sandbox allow-scripts; default-src ‘none’; img-src ‘self’ data: ; style-src ‘self’ ‘unsafe-inline’ data: ; script-src ‘self’ ‘unsafe-inline’ ‘unsafe-eval’ ;”)</p>
-</li>
-<li><p>Click on Run button.</p>
-</li>
-<li><p>Execute your Jenkins build.</p>
-<h5 id="【问题】设置multijob构建任务时只执行第一个任务，报错信息"><a href="#【问题】设置multijob构建任务时只执行第一个任务，报错信息" class="headerlink" title="【问题】设置multijob构建任务时只执行第一个任务，报错信息"></a>【问题】设置multijob构建任务时只执行第一个任务，报错信息</h5><p> Job status: [login for id] the ‘build only if scm changes’ feature is disabled.</p>
-<p>  解决：勾选build only if scm changes为true</p>
-</li>
-</ul>
+校验为真  ${status1} or ${status1}</code></pre><p>或</p>
+<pre><code>校验包含任何一个值
+    [Arguments]    ${str}    @{veluelist}
+    run keyword and continue on failure    should contain any    ${str}    @{veluelist}</code></pre><h4 id="定位元素至可见"><a href="#定位元素至可见" class="headerlink" title="定位元素至可见"></a>定位元素至可见</h4><pre><code>execute javascript    document.documentElement.scrollTop=200</code></pre><p>  若是向上滚动，则数值使用负数</p>
 
           
         
@@ -1913,7 +2060,7 @@ ${status2}   run keyword and return status     wait until element is visible  ${
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">74</span>
+                  <span class="site-state-item-count">76</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
