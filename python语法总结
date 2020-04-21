@@ -1,0 +1,56 @@
+title: python语法总结
+author: 躲不掉的风
+date: 2020-04-11 21:06:51
+tags:
+---
+##### 列表添加元素的三种方式
++号/append/extend/insert
+
+```
+one_list = ["Python"]
+other_list=["C++","C#"]
+other_tuple=("PHP","Ruby")
+# one_list=one_list+other_list
+# 1. 列表可使用+号直接相加['Python', 'C++', 'C#']
+# one_list.append(other_list)
+# one_list.append(other_tuple) 
+#2. append对象可以作为整体['Python', ['C++', 'C#'], ('PHP', 'Ruby')]
+# one_list.extend(other_list)
+# one_list.extend(other_tuple)
+#3. extend与append区别是不作为整体加入，拆分后融合['Python', 'C++', 'C#', 'PHP', 'Ruby']
+# one_list.insert(0,other_list)
+#4. 在某位置插入，作为整体与append一致[['C++', 'C#'], 'Python']
+print(one_list)
+```
+http://c.biancheng.net/view/7118.html
+##### 列表删除元素的四种方式
+del/pop/remove/clear
+```
+lang = ["Python", "C++", "Java", "PHP", "Ruby","Java" ,"MATLAB"]
+# del lang[2] 可使用切片删除连续元素
+# lang.pop(2)  #五无索引默认删除最后一个
+# lang.remove("Java") #根据元素值删除第一个符合条件的
+# lang.clear() #删除列表所有元素，返回空列表
+print(lang)
+```
+#### set集合
+	
+   无序的唯一的不可变元素组成；多用于去重和取交集并集；
+    
+    li=["hello","world","java"]
+    a=set(li)   #使用set创建集合；只能是不可变的数据：数字类、字符串和元组；不包括列表字典和集合
+    b={1,"java"} #使用{}创建集合；
+    b.add((2,3)) #添加元素
+    for i in b: #查找元素
+        print(i)
+    a.remove("hello") #删除元素
+    print(len(b))
+    print (a&b) #取交集
+    print(a|b)#取并集
+    print(a-b)#取除了交际的a
+    print(a^b) #取非交集的ab所有元素
+    del(a)  #删除集合
+	
+
+
+具体参考：http://c.biancheng.net/view/2209.html

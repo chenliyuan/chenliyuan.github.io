@@ -261,6 +261,311 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/tesseract训练字库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/12/tesseract训练字库/" itemprop="url">tesseract训练字库</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-12T13:50:29+08:00">
+                2020-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="准备条件："><a href="#准备条件：" class="headerlink" title="准备条件："></a>准备条件：</h4><ol>
+<li>tesseract-OCR   exe  我使用的是c5.0</li>
+<li>jdk</li>
+<li>jTessBoxEditor </li>
+</ol>
+<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ol>
+<li><p>单张图片可直接使用如下命令生成box文件：<br>tesseract myfontlab.normal.exp01.png myfontlab.normal.exp01 -l eng+chi_sim  batch.nochop makebox</p>
+<p>【语法】：tesseract [lang].[fontname].exp[num].tif [lang].[fontname].exp[num] batch.nochop makebox<br>【语法】：<br>lang为语言名称，为了不影响本有的语言eng，chi_sim等等，取成别的,比如数字可以是num,中文myfontlab myeng等<br>fontname为你对这门语言某一字体，你可以填任何你记得住的比如 trumpsb，normal;<br>num为序号；<br>在tesseract中，一定要注意格式</p>
+<p>多张图片，需先使用jTessBoxEditor 的train.bat 合并所有图片为一个tif文件然后使用命令生成box文件</p>
+<p>tesseract myfontlab.normal.exp01.tif myfontlab.normal.exp01 -l eng+chi_sim  batch.nochop makebox</p>
+</li>
+<li><p>用jTessBoxEditor 的train.bat打开tif文件，然后根据实际情况修改box文件，去除多余空格，修改识别文字。</p>
+</li>
+<li><p>产生字符特征文件，生成.tr文件。命令<br>单张推荐：<br>tesseract  myfontlab.normal.exp01.png  myfontlab.normal.exp01  nobatch box.train<br>多张推荐：<br>tesseract myfontlab.normal.exp01.tif myfontlab.normal.exp0 nobatch box.train  </p>
+</li>
+<li><p>生成字符集文件，生产unicharset文件。命令<br>unicharset_extractor myfontlab.normal.exp01.box</p>
+</li>
+<li><p>新建一个font_properties文件。注意，文件的名字就是font_properties，它没有.txt后缀。<br>里面内容写入 normal 0 0 0 0 0 表示默认普通字体</p>
+</li>
+<li><p>生成shape文件，生成五个文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shapeclustering -F font_properties -U unicharset myfontlab.normal.exp01.tr</span><br><span class="line"></span><br><span class="line">mftraining -F font_properties -U unicharset -O unicharset myfontlab.normal.exp01.tr</span><br><span class="line">cntraining myfontlab.normal.exp01.tr</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在这五个文件前加上normal.</p>
+</li>
+<li><p>合并五个文件，执行如下命令，会生成目标文件normal.traineddata，<br>combine_tessdata normal.</p>
+</li>
+<li><p>该文件就是训练好的字库。将它复制到你安装的Tesseract程序目录下的“tessdata”目录下即可。</p>
+</li>
+<li><p>验证：tesseract myfontlab.normal.exp01.png out –l normal  查看生成的out.txt文件</p>
+</li>
+</ol>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
+<li>中英文一块识别率很低？使用+连接<br>如： tesseract 05.png 05 -l chi_sim+eng<br>eng+chi_sim效果更好？试了一个案例验证没区别，不知道大数据是不是真的。</li>
+<li>最后有一个识别失败的案例，比如A竟然没有识别出来(box调试的时候已经识别出来了)<br>原因是Box里面A的范围不准确，有两个框，把最外面的删掉，剩余最内部分框框就好了。</li>
+<li>Other case a of A is not in unicharset<br>事实证明这个报错对识别结果未有影响</li>
+<li>语法说明：</li>
+</ol>
+<p>tesseract imagename outputbase [-l lang] [-psm pagesegmode] [configfile…]</p>
+<p>tesseract 图片名 输出文件名 -l 字库文件 -psm pagesegmode 配置文件<br>例如：<br>tesseract test.jpg result -l eng -psm 7 nobatch</p>
+<p>-l eng 表示用英文文字库（默认使用英文。如需要下载中文字库文件，解压后，存放到tessdata目录下去,字库文件扩展名为 .raineddata 简体中文字库文件名为: chi_sim.traineddata，命令为：chi_sim）</p>
+<p>-psm 7 表示告诉tesseract test.jpg图片是一行文本 这个参数可以减少识别错误率. 默认为 3</p>
+<p>configfile 参数值为tessdata\configs 和 tessdata\tessconfigs 目录下的文件名.</p>
+<p>————————————————<br>版权声明：本文为CSDN博主「_Cassie」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/wangyongxia921/article/details/52809079" target="_blank" rel="noopener">https://blog.csdn.net/wangyongxia921/article/details/52809079</a></p>
+<p>参考</p>
+<p><a href="https://blog.csdn.net/qq_31112205/article/details/100159963" target="_blank" rel="noopener">https://blog.csdn.net/qq_31112205/article/details/100159963</a></p>
+<p><a href="https://www.cnblogs.com/wj-1314/p/9454656.html" target="_blank" rel="noopener">https://www.cnblogs.com/wj-1314/p/9454656.html</a></p>
+<p><a href="https://www.cnblogs.com/pyweb/p/11457519.html" target="_blank" rel="noopener">https://www.cnblogs.com/pyweb/p/11457519.html</a>  多样本</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/labelme安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/29/labelme安装/" itemprop="url">labelme安装和使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-29T21:40:51+08:00">
+                2020-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>windows下安装和使用labelme </p>
+<p> 参考：<a href="https://www.jb51.net/article/166528.htm" target="_blank" rel="noopener">https://www.jb51.net/article/166528.htm</a></p>
+<p>  其中anaconda下载使用这个网址，(在官网下载快完成的时候停止了浪费了大把时间…)</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
+<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>1、管理员身份打开 anaconda prompt</p>
+<p>2、输入命令：conda create –name=labelme python=3.6</p>
+<p>3、输入命令：activate labelme</p>
+<p>(若环境未成功激活，则改用本地cmd)</p>
+<p>4、输入命令：pip install pyqt5，pip install pyside2(自己刚开始没有安装pyside2,运行 \anaconda安装目录\envs\labelme\Scripts\label_json_to_dataset.exe 会出现module “pyside”缺失错误)</p>
+<p>5、输入命令：pip install labelme（由于网络原因或者库的地址，经常运行一半出现错误，不要气馁，多执行几次）</p>
+<p>6、输入命令：labelme 即可打开labelme。如下：</p>
+<p>7、如果将单个json文件生成数据集，运行命令：</p>
+<p>\anaconda安装目录\envs\labelme\Scripts\label_json_to_dataset.exe    \保存xx.json文件地址</p>
+<p>xx.json 会成生成五个文件 img.png，info.yaml，label.png，label_names，label_viz.png。其中label.png即是我们要的label_data了。</p>
+<p>8、批量将json文件生成数据集。编写脚本如下：               </p>
+<pre><code>import os
+path = &apos;D:\\paper\\data\\&apos;  # path是你存放json的路径
+json_file = os.listdir(path)
+for file in json_file:
+    os.system(&quot;python C:\\Users\\Monica\\.conda\\envs\\labelme\\Scripts\\labelme_json_to_dataset.exe %s&quot;%(path + file))</code></pre><p><img src="%5Cimages%5Cpasted-102.png" alt="upload successful"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/22/图像处理坐标/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -410,7 +715,7 @@ cv2.imwrite(image_path, image)</code></pre><p>first_point和last_point都是矩�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/03/21/mac下python3-tesseract-pytesseract-的安装与调试/" itemprop="url">mac下python3 + tesseract + pytesseract 的安装与调试</a></h1>
+                <a class="post-title-link" href="/2020/03/21/mac下python3-tesseract-pytesseract-的安装与调试/" itemprop="url"> tesseract 的环境安装</a></h1>
         
 
         <div class="post-meta">
@@ -462,8 +767,26 @@ cv2.imwrite(image_path, image)</code></pre><p>first_point和last_point都是矩�
       
         
           
-            <p>环境：mac</p>
-<ol>
+            <h6 id="windows-10-安装"><a href="#windows-10-安装" class="headerlink" title="windows 10 安装:"></a>windows 10 安装:</h6><p>第一步在虚拟环境或者正式环境pip安装：</p>
+<pre><code>pip install pytesseract
+ pip install pillow</code></pre><p>第二步 安装Tesseract-OCR    </p>
+<ul>
+<li><p>下载安装包官网：<br>注意版本之前由于使用3.0.2一直报错，后来换成5.0才好</p>
+<p>  <a href="https://github.com/UB-Mannheim/tesseract/wiki" target="_blank" rel="noopener">https://github.com/UB-Mannheim/tesseract/wiki</a><br>一路安装时可选择下语言包</p>
+</li>
+<li><p>系统环境Path变量配置：</p>
+<p>  <img src="%5Cimages%5Cpasted-106.png" alt="upload successful"></p>
+<p>  <a href="https://www.cnblogs.com/chenshengkai/p/11318272.html" target="_blank" rel="noopener">https://www.cnblogs.com/chenshengkai/p/11318272.html</a></p>
+<p>  验证： </p>
+<pre><code>tesseract --version</code></pre></li>
+<li><p>在python文件下搜索pytesseract.py文件并修改路径：<br>tesseract_cmd = ‘C:\Program Files\Tesseract-OCR\tesseract.exe’</p>
+</li>
+</ul>
+<p><img src="%5Cimages%5Cpasted-104.png" alt="upload successful"></p>
+<p>   参考<br>   <a href="https://www.cnblogs.com/chenshengkai/p/11318387.html" target="_blank" rel="noopener">https://www.cnblogs.com/chenshengkai/p/11318387.html</a><br>    <a href="https://blog.csdn.net/qq_38161040/article/details/90649497" target="_blank" rel="noopener">https://blog.csdn.net/qq_38161040/article/details/90649497</a></p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pytesseract</span><br><span class="line">from PIL import Image</span><br><span class="line"></span><br><span class="line">image = Image.open(&quot;data/enzh.png&quot;)</span><br><span class="line">code = pytesseract.image_to_string(image,lang=&apos;chi_sim&apos;)</span><br><span class="line">print(code)</span><br></pre></td></tr></table></figure>
+
+<h6 id="mac安装"><a href="#mac安装" class="headerlink" title="mac安装"></a>mac安装</h6><ol>
 <li><p>pip install pytesseract<br>pip install tesseract  </p>
 <p>之后运行demo一直报这个错：</p>
 <p>NotADirectoryError: [Errno 20] Not a directory: ‘tesseract’</p>
@@ -549,7 +872,7 @@ export PATH=$PATH:$TESSDATA_PREFIX</code></pre><p>2）. 下载语言包</p>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/03/18/conda/" itemprop="url">conda使用</a></h1>
+                <a class="post-title-link" href="/2020/03/18/conda/" itemprop="url">Anaconda  conda使用</a></h1>
         
 
         <div class="post-meta">
@@ -601,12 +924,20 @@ export PATH=$PATH:$TESSDATA_PREFIX</code></pre><p>2）. 下载语言包</p>
       
         
           
-            <h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><p>  环境 mac ：官网下载sh包，</p>
-<pre><code>sh   Miniconda3-latest-MacOSX-x86_64.sh</code></pre><p>  安装后去/xxx/miniconda3/bin下执行 </p>
-<pre><code>.  activate</code></pre><h5 id="conda命令"><a href="#conda命令" class="headerlink" title="conda命令"></a>conda命令</h5><pre><code>conda 可查帮助信息
+            <h5 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h5><ul>
+<li><p>环境 mac ：官网下载sh包，</p>
+<p> sh   Miniconda3-latest-MacOSX-x86_64.sh</p>
+<p>安装后去/xxx/miniconda3/bin下执行 </p>
+<p> .  activate</p>
+</li>
+<li><p>windows安装</p>
+<p>下载： <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
+</li>
+</ul>
+<h4 id="2、conda命令"><a href="#2、conda命令" class="headerlink" title="2、conda命令"></a>2、conda命令</h4><pre><code>conda #可查帮助信息
 conda info -e
-source activate deeplearning   进入我们的虚拟环境其中deeplearning是名称
-  退出虚拟环境
+source activate deeplearning   #进入我们的虚拟环境其中deeplearning是名称
+  #退出虚拟环境
 conda remove -n deeplearning --all
 conda list 查看已安装软件
 conda available packages
@@ -614,8 +945,18 @@ conda search source deactivategatk
 conda install gatk
  which gatk  查看软件安装位置
 conda update gatk  升级软件
-conda remove gatk  卸载指定软件</code></pre><p>虚拟环境的使用：</p>
-<p><img src="/images/pasted-93.png" alt="upload successful"></p>
+conda remove gatk  卸载指定软件
+conda env list  环境列表，星号代表当前环境
+activate learn  切换到learn环境
+activate // 切换到base环境
+conda create -n learn python=3 // 创建一个名为learn的环境并指定python版本为3(的最新版本)
+conda remove -n learn --all // 删除learn环境及下属所有包</code></pre><p>  虚拟环境的使用：</p>
+<p>  <img src="/images/pasted-93.png" alt="upload successful"></p>
+<h4 id="3、问题"><a href="#3、问题" class="headerlink" title="3、问题"></a>3、问题</h4><ul>
+<li><p>【Anaconda】关于conda使用环境未被激活的问题</p>
+<pre><code>由powershell改成使用cmd</code></pre><p>  参考：<a href="https://www.cnblogs.com/happyamyhope/p/11547134.html" target="_blank" rel="noopener">https://www.cnblogs.com/happyamyhope/p/11547134.html</a></p>
+</li>
+</ul>
 
           
         
@@ -1451,355 +1792,6 @@ x{m,n} 字符x重复m到n次o{5,10}</code></pre></li>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-变量和数组/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/06/shell-变量和数组/" itemprop="url">shell 变量和数组</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T20:17:32+08:00">
-                2020-02-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><ul>
-<li><p>查看变量: echo $变量名 set(所有变量:包括自定义变量和环境变量) </p>
-</li>
-<li><p>取消变量: unset 变量名</p>
-</li>
-<li><p>位置变量：如通过$1 $2获取第一第二个参数</p>
-</li>
-<li><p>环境变量：export back_dir=xxxx  定义全局变量；或者export $var 转化成全局变量</p>
-</li>
-<li><p>预定义变量</p>
-<pre><code>$0 脚本名
-$* 所有的参数
-$@ 所有的参数
-$# 参数的个数
-$$ 当前进程的 PID
-$! 上一个后台进程的 PID
-$? 上一个命令的返回值 0 表示成功</code></pre><p>$@和$星区别：不加引号时,二者都是返回传入的参数,但加了引号后（”$@”）,此时$*把参数作为一个字符串整体(单字符串)返回,$@把每个参数作为一个字符串返回</p>
-</li>
-<li><p>键盘输入变量：通过read -n 2 -p “please input: “ p</p>
-</li>
-</ul>
-<ul>
-<li><p>调用其他脚本变量值：可在b脚本中通过调用.a.sh,直接获取a的变量数据</p>
-</li>
-<li><p>“”双引号-强引用会替换里面变量值；’’-弱引用，原样输出引用符号</p>
-</li>
-<li><p>变量删除（获取部分字符串）</p>
-<pre><code>${url#*a}  从头到尾最短匹配删除即直到第一个a之前的都删除
-${url##*a}  从头到尾贪婪匹配，删除直到最后一个匹配a
-${url%a*}  后面加%，从后到前最短匹配删除a后面所有字符    
-${url%%}  后面加%，从后到前贪婪匹配删除最后一个a后面所有字符</code></pre></li>
-<li><p>变量替换(最短替换/和贪婪替换//)</p>
-<pre><code>liyuan$ var=tom.ton.com
-liyuan$ echo ${var/to/TO}
-TOm.ton.com
-liyuan$ echo ${var//to/TO}</code></pre></li>
-</ul>
-<ul>
-<li><p>变量替代；可理解为变量初始化</p>
-<pre><code>echo ${var1-aaaaa}
-echo ${var1:-aaaaa}</code></pre><p>  使用 <font color="red">-</font> ,若没有被赋值过，就使用默认值替代(是否unset)</p>
-<p>  使用 <font color="red">:-</font>，区别在于即使赋值空值也会被新值替代(是否为空值)</p>
-</li>
-<li><p>切片操作  echo ${url:5:7}</p>
-</li>
-<li><p>可使用反引号或者$()执行内部命令</p>
-</li>
-<li><p>date +%F  格式化日期输出</p>
-</li>
-<li><p>特殊符号总结</p>
-<pre><code>（） 子shell执行
-(()) 数值比较
-$()  命令替换，同反引号
-$(()) 整数运算
-
-{}  集合
-${}  变量
-
-[]  条件测试
-[[]] 条件测试，支持正则 =~
-$[]  整数运算</code></pre></li>
-</ul>
-<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><ol>
-<li><p>普通数组</p>
-<pre><code>一次赋多值，可指定索引
-# array2=(tom jack alice [20]=aa)
-# echo ${!array2[@]}
-0 1 2 20</code></pre></li>
-<li><p>关联数组</p>
-<p> 必须申明关联数组变量</p>
-<pre><code># declare -A ass_array1
-# ass_array2=([index1]=tom [index2]=jack [index4]=&apos;bash shell&apos;)
-
-查看数组
-# declare -A</code></pre></li>
-<li><p>访问数组元数:</p>
-<pre><code># echo ${ass_array2[index2]} 访问数组中的第二个元数
-# echo ${ass_array2[@]} 访问数组中所有元数 等同于 echo ${array1[*]} 
-# echo ${#ass_array2[@]} 获得数组元数的个数
-# echo ${!ass_array2[@]} 获得数组元数的索引</code></pre></li>
-<li><p>遍历数组</p>
-<p>通过获取数组索引遍历   </p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/06/shell-函数/" itemprop="url">shell 函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T20:07:46+08:00">
-                2020-02-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="1-定义函数"><a href="#1-定义函数" class="headerlink" title="1. 定义函数"></a>1. 定义函数</h5><h6 id="方法一（常用）"><a href="#方法一（常用）" class="headerlink" title="方法一（常用）:"></a>方法一（常用）:</h6><pre><code>函数名() { 函数要实现的功能代码 }</code></pre><h6 id="方法二"><a href="#方法二" class="headerlink" title="方法二:"></a>方法二:</h6><pre><code>function 函数名 { 函数要实现的功能代码 }</code></pre><h5 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h5><pre><code>函数名 函数名参数1 参数2</code></pre><p>举例：</p>
-<pre><code>#!/usr/bin/bash
-jiecheng(){
-result=1
-for i in `seq $1`
-do
-        echo $i
-        result=$[$result*$i]
-done
-echo $result
-}
-
-jiecheng $1
-
-1.实践证明，do中的result必须不能加$符号，否则错误
-2.$[]运算结果赋值的时候，=左右不能有空格</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
-<li><p>函数接收位置参数 $1 $2… $n</p>
-</li>
-<li><p>函数接收数组变量使用$@ $*</p>
-</li>
-<li><p>函数接收参数个数$#</p>
-</li>
-<li><p>函数将受到的所有参数赋值给数组 newarray=($*)</p>
-</li>
-<li><p>养成在函数内部的变量习惯性加local关键字供内部函数使用的习惯</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1850,7 +1842,7 @@ jiecheng $1
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

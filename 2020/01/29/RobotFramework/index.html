@@ -88,7 +88,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/pasted-79.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-76.png">
-<meta property="og:updated_time" content="2020-03-30T10:00:22.379Z">
+<meta property="og:updated_time" content="2020-04-21T10:00:18.089Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RT使用语法和技巧">
 <meta name="twitter:description" content="官方文档：https://robotframework.org/#/documentation 架构&amp;amp;变量参考： https://www.jianshu.com/p/dc9dea0741d5 123456789101112131415161718192021222324*** Variables ***# 创建scalar变量$&amp;#123;NAME&amp;#125;             Ro">
@@ -373,16 +373,24 @@ set global variable    ${download_dir}</code></pre></li>
 <p>若for循环体中嵌套了条件判断则else前无需加\，否则报错</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\    Run Keyword If    &apos;$&#123;get_value&#125;&apos;!=&apos;register&apos;    获取文本校验    $&#123;ele&#125;    $&#123;get_value&#125;</span><br><span class="line">     ...    ELSE    获取文本校验  $&#123;ele_register&#125;    Register/Login</span><br></pre></td></tr></table></figure>
 
-<h6 id="字符串使用"><a href="#字符串使用" class="headerlink" title="字符串使用"></a>字符串使用</h6><p>三目运算</p>
+<h6 id="字符串使用"><a href="#字符串使用" class="headerlink" title="字符串使用"></a>字符串使用</h6><ul>
+<li><p>三目运算</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;seller&#125;    set variable if    $&#123;seller&#125;    $&#123;seller&#125;    $&#123;test_data&#125;[seller][account]</span><br></pre></td></tr></table></figure>
-
-<p>移除部分字符串</p>
+</li>
+<li><p>移除部分字符串</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;t&#125;    remove string     ShopeePay.ps_reports_wallet_all.20191125_20191225.csv    .csv</span><br></pre></td></tr></table></figure>
 
+</li>
+</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;after&#125;=     remove string     $&#123;test&#125;       ,     $&#123;SPACE&#125;</span><br></pre></td></tr></table></figure>
 
-<p>字符串连接 Catenate（与变量连接直接放一起也可以）<br><img src="/images/pasted-79.png" alt="upload successful"></p>
+<ul>
+<li>字符串连接 Catenate（与变量连接直接放一起也可以）<br><img src="/images/pasted-79.png" alt="upload successful"></li>
+</ul>
 <p>字符串转换成数字，可直接使用${${numstr}}或者int(${numstr})</p>
+<ul>
+<li>字符串格式化</li>
+</ul>
 <h6 id="列表操作"><a href="#列表操作" class="headerlink" title="列表操作"></a>列表操作</h6><p>所有列表操作举例：cnblogs.com/ronyjay/p/11598107.html </p>
 <p>对列表进行遍历的时候IN后面需用@</p>
 <p>如果通过“@{}”去定义列表的话，可以通过“log many”关键字进行打印 ,当然也可以选择不这么做默认还是用$<br>列表切片</p>
@@ -424,6 +432,10 @@ set global variable    ${download_dir}</code></pre></li>
 </li>
 <li><p>其他：</p>
 <p>  run keyword and return status</p>
+<p>  Run Keyword And Ignore Error  handle alert<br>#可接收浏览器alert默认接收，即选择OK</p>
+</li>
+<li><p>不支持的操作</p>
+<p> 循环嵌套、条件判断和循环直接组合(可通过定义关键字调用)</p>
 </li>
 </ul>
 <h5 id="为解决有些操作失败重新执行："><a href="#为解决有些操作失败重新执行：" class="headerlink" title="为解决有些操作失败重新执行："></a>为解决有些操作失败重新执行：</h5><h6 id="1-添加关键字"><a href="#1-添加关键字" class="headerlink" title="1.添加关键字"></a>1.添加关键字</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">若找不到元素则重新执行</span><br><span class="line">    [Arguments]    $&#123;locator&#125;    $&#123;keyword&#125;</span><br><span class="line">    $&#123;ele&#125;    get webelements    $&#123;locator&#125;</span><br><span class="line">    run keyword unless     $&#123;ele&#125;     $&#123;keyword&#125;</span><br></pre></td></tr></table></figure>
@@ -560,7 +572,7 @@ ${status2}   run keyword and return status     wait until element is visible  ${
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

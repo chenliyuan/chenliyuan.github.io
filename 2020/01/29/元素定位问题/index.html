@@ -90,7 +90,7 @@
 <meta property="og:image" content="http://yoursite.com/images/pasted-95.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-98.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-100.png">
-<meta property="og:updated_time" content="2020-04-02T08:23:41.827Z">
+<meta property="og:updated_time" content="2020-04-21T10:08:47.717Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="RT使用元素xpath定位等问题">
 <meta name="twitter:description" content="1. 元素定位问题【问题】各种找不到元素 语法问题-低级错误导致高级提醒 元素名称错误，比如后面少了对应右括号 ）  元素本身就不存在，比如调试元素在所在环境中不存在，然而编写代码定位的时候使用的是线上环境账号，其具有该元素，造成元素找不到  元素前面未加css=或者xpath=类型名称  css父子关系之间不用空格，用点来替代；祖辈关系使用单个空格  TypeError: Failed to e">
@@ -412,7 +412,13 @@
 <li><p>浮层上面的元素怎么定位(直接去取的话，与元素定位无法实现同步)</p>
 <p> 右键点击浮层上的元素，点击‘检查’，即可定位到该元素位置，可用console进行调试</p>
 </li>
+<li><p>svg 突然click失败了，之前还是好的，改成该元素上面的i也不行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ElementClickInterceptedException: Message: element click intercepted: Element &lt;i class=&quot;shopee-icon shopee-table__sort-icon up&quot;&gt;...&lt;/i&gt; is not clickable at point (1098, 441). Other element would receive the click: &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 16 16&quot;&gt; &lt;/svg&gt; (Session info: chrome=79.0.3945.117)</span><br></pre></td></tr></table></figure>
+
+
+</li>
 </ol>
+<p>  解决:该用press keys最终实现了该功能<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">press keys    $&#123;mediaspace_ele&#125;[button_storage_up]    RETURN</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -526,7 +532,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

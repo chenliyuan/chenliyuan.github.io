@@ -261,6 +261,406 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Vim命令及常见问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/16/Vim命令及常见问题/" itemprop="url">Vim命令及常见问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-16T20:55:46+08:00">
+                2018-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。</p>
+<h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><ol>
+<li><p>光标定位 </p>
+<pre><code>hjkl 上下左右移动
+0$  行首尾
+gg G   文首尾
+3G 进入第三行
+/string (n N 可以循环的) 快速定位到某一行 /^d   按照行搜索（注意）
+/txt$</code></pre></li>
+<li><p>文本编辑(少量)</p>
+<pre><code>复制 yy 3yy ygg(复制到行首) yG(复制到行尾) 
+删除 dd 3dd dgg(删除到行首) dG(删除到行尾) 
+粘贴 删除光标所在的字符
+x 删除光标后的字符
+D 删除这行光标后的所有字符
+r 可以用来修改一个字符
+u 撤销
+CTRL+r 反撤销</code></pre></li>
+<li><p>进入其它模式   </p>
+<pre><code>i 进入插入模式  当前字符前
+o 进入插入模式  另起一行
+A 进入插入模式  本行最后面</code></pre></li>
+</ol>
+<ul>
+<li><p>可视化模式</p>
+<pre><code>V   进可视块模式
+ctrl+v  进可视行模式
+R进替换模式
+
+块插入（在指定快前加入字符） 选择快，I 在块前插入字符，按esc一会就实现
+块替换：选择快，r输入替换的字符
+块删除：选择块，d|x
+块赋值，选择块，y</code></pre><p>   例子：多行剪切和粘贴</p>
+<pre><code>定位鼠标到剪切的开始位置
+输入v键开始选择剪切的字符，或者V键是为了选择 整行
+移动方向键到结束的地方
+d键是剪切，y键是复制  x是删除
+移动鼠标到粘贴的位置
+输入P是在鼠标位置前粘贴，输入p键是在鼠标的位置后粘贴</code></pre></li>
+<li><p>扩展命令模式</p>
+<ul>
+<li><p>保存退出</p>
+<pre><code>:10 进入第10行
+:w 保存
+:q 退出
+:wq 保存并退出 :w! 强制保存
+:q! 不保存并退出 :wq! 强制保存退出
+选择块，r 输入替换的字符 选择块，d | x
+选择块，y
+:x
+保存并退出 ZZ</code></pre></li>
+<li><p>查找替换</p>
+<pre><code>:范围 s/old/new/选项
+:1,5 s/root/yang/
+:5,$ s/root/yang/ :1,$ s/root/yang/g
+:% s#/dev/sda#/var/ccc#g :,8 s/root/yang/
+:4,9 s/^#// :5,10 s/.*/#&amp;/
+=
+
+从1-5行的root 替换为yang
+$表示最后一行
+:% s/root/yang/g %表示全文 g表示全局
+从当前行到第8行 4-9行的开头#替换为空</code></pre></li>
+<li><p>读入文件/写文件(另存为) :w</p>
+<pre><code>:w /tmp/aaa.txt 另存为
+:1,3 w /tmp/2.txt 
+:r /etc/hosts
+:5 r /etc/hosts</code></pre></li>
+<li><p>设置环境 临时设置:</p>
+<pre><code>:set nu    设置行号
+:set ic   ignore case不区分大小写
+:set ai    auto indent 自动缩进
+:set list   显示控制字符 
+:set nonu   取消操作
+:set noic   取消操作</code></pre></li>
+<li><p>永久的环境:</p>
+<pre><code>/etc/vimrc ~/.vimrc 修改vim环境配置文件 影响所有系统用户
+# vim ~/.vimrc 影响某一个用户</code></pre></li>
+<li><p>其他</p>
+<pre><code>  # vim -O /etc/hosts /etc/hostname ^ww切换   :qall退出
+# cp /etc/hosts hosts1
+# vimdiff /etc/hosts hosts1</code></pre></li>
+</ul>
+</li>
+</ul>
+<h5 id="详细命令"><a href="#详细命令" class="headerlink" title="详细命令"></a>详细命令</h5><p>一、光标控制命令</p>
+<pre><code>命令                   移动
+ k                   向上移一行
+ j                   向下移一行
+ h                   向左移一个字符
+ l                   向右移一个字符
+ gg                  移到文件的首行
+ G                   移到文件的末行    
+ H                   移到屏幕的第一行
+ w                   移到下一个字的开头
+ W                   移到下一个字的开头，忽略标点符号
+ e                   移到下一个字的结尾
+ E                   移到下一个字的结尾，忽略标点符号
+ ^                   移到当前行首
+ $                   移到当前行尾
+ {                   移到上一段开头
+ }                   移到上一段结尾
+ Enter               移到下一行行首</code></pre><p>二、在 vim 中添加文本</p>
+<pre><code>命令                   插入
+ i                   在光标前插入文本
+ I                   在当前行首插入文本
+ a                   在光标后插入文本
+ A                   在当前行末插入文本
+ o                   在当前行的下边插入新行
+ O                   在当前行的上边插入新行
+ s                   删除光标所在处字符，并进入插入模式
+ S                   删除光标所在的行，并进入插入模式
+ :r filename         读入指定文件内容，并插在当前行后
+ :nr file            读入文件 file 内容，并插在第 n 行后
+ Esc                 回到命令模式</code></pre><p>三、在 vim 中删除文本</p>
+<pre><code>命令                   删除
+ x                   删除光标处的字符
+ db                  删除光标前面的字
+ dw                  删至下一个字的开头
+ dd                  删除整行
+ :n,md               从第 m 行开始往前删除 n 行
+ d$                  从光标处删除到行尾
+ d^                  从光标处删除到行首</code></pre><p>四、在 vim 中查找与替换</p>
+<pre><code>  命令                  查找与替换
+ /target               在文件中向前查找 target
+ ?target               在文件中向后查找 target
+   n                    查找下一个
+   N                    查找上一个
+:set ic                查找时忽略大小写
+:set noic              查找时对大小写敏感
+  %s/text1/text2/g         在整个文件中查找text1并且替换为text2</code></pre><p>【注】其中s是查找search的意思，%是全文所有行，g全局即所有列</p>
+<p>五、在 vim 中复制文本</p>
+<pre><code>命令                      复制
+ yy                   复制当前行
+ nyy                  从当前开始复制n行
+  p                   粘贴至光标前
+  P                   粘贴至光标后
+  u                   撤消上一次修改
+  U                   撤消所有修改</code></pre><p>六、保存与退出vim</p>
+<pre><code>命令                      保存或退出
+ :w                   保存文件但不退出
+ :w file              将修改保存在 file 中但不退出
+:wq 或 ZZ 或 :x         保存文件并退出
+   :q!                  不保存文件,强制退出
+   :e!                   放弃所有修改，从上次保存文件开始再编辑</code></pre><p>七、其他选项</p>
+<pre><code> 选项                      作用
+ :set all             查看所有选项
+ :set nu              设置行号
+ :set showmode        显示是输入模式还是替换模式
+ :set ts=4            为文本输入设置 tab stops
+ :set nonumber        取消显示行数
+：set number  显示行数
+ :.=                  查看当前行的行号
+ :=                   查看总行数
+ ctrl+g             显示文件名、当前的行号、文件的总行数和文件位置的百分比</code></pre><p>这篇文章主要介绍了linux中快速清空文件内容的几种方法,需要的朋友可以参考下</p>
+<pre><code>$ : &gt; filename 
+$ &gt; filename 
+$ echo &quot;&quot; &gt; filename 
+$ echo &gt; filename 
+$ cat /dev/null &gt; filename</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Linux命令篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/09/16/Linux命令篇/" itemprop="url">Android命令篇</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-16T17:30:00+08:00">
+                2018-09-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li>adb shell pm   <a href="https://www.cnblogs.com/FlyToDream/p/10419755.html" target="_blank" rel="noopener">https://www.cnblogs.com/FlyToDream/p/10419755.html</a><br>adb pm  enable com.android.systemui</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/09/Django项目实例精讲/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1607,7 +2007,7 @@ make install</code></pre><ul>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

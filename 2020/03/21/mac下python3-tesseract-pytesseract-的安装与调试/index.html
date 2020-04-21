@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="环境：mac  pip install pytesseractpip install tesseract   之后运行demo一直报这个错： NotADirectoryError: [Errno 20] Not a directory: ‘tesseract’ 后来看到帖子说mac必须得用brew安装才行(救星)，又重新安装了一次，果然成功了 brew install tesseract 参考：">
+<meta name="description" content="windows 10 安装:第一步在虚拟环境或者正式环境pip安装： pip install pytesseract  pip install pillow第二步 安装Tesseract-OCR      下载安装包官网：注意版本之前由于使用3.0.2一直报错，后来换成5.0才好   https://github.com/UB-Mannheim/tesseract/wiki一路安装时可选择下语言包">
 <meta property="og:type" content="article">
-<meta property="og:title" content="mac下python3 + tesseract + pytesseract 的安装与调试">
+<meta property="og:title" content=" tesseract 的环境安装">
 <meta property="og:url" content="http://yoursite.com/2020/03/21/mac下python3-tesseract-pytesseract-的安装与调试/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="环境：mac  pip install pytesseractpip install tesseract   之后运行demo一直报这个错： NotADirectoryError: [Errno 20] Not a directory: ‘tesseract’ 后来看到帖子说mac必须得用brew安装才行(救星)，又重新安装了一次，果然成功了 brew install tesseract 参考：">
+<meta property="og:description" content="windows 10 安装:第一步在虚拟环境或者正式环境pip安装： pip install pytesseract  pip install pillow第二步 安装Tesseract-OCR      下载安装包官网：注意版本之前由于使用3.0.2一直报错，后来换成5.0才好   https://github.com/UB-Mannheim/tesseract/wiki一路安装时可选择下语言包">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-03-24T04:48:14.204Z">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/mac下python3-tesseract-pytesseract-的安装与调试/%5Cimages%5Cpasted-106.png">
+<meta property="og:image" content="http://yoursite.com/2020/03/21/mac下python3-tesseract-pytesseract-的安装与调试/%5Cimages%5Cpasted-104.png">
+<meta property="og:updated_time" content="2020-04-15T10:01:43.926Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="mac下python3 + tesseract + pytesseract 的安装与调试">
-<meta name="twitter:description" content="环境：mac  pip install pytesseractpip install tesseract   之后运行demo一直报这个错： NotADirectoryError: [Errno 20] Not a directory: ‘tesseract’ 后来看到帖子说mac必须得用brew安装才行(救星)，又重新安装了一次，果然成功了 brew install tesseract 参考：">
+<meta name="twitter:title" content=" tesseract 的环境安装">
+<meta name="twitter:description" content="windows 10 安装:第一步在虚拟环境或者正式环境pip安装： pip install pytesseract  pip install pillow第二步 安装Tesseract-OCR      下载安装包官网：注意版本之前由于使用3.0.2一直报错，后来换成5.0才好   https://github.com/UB-Mannheim/tesseract/wiki一路安装时可选择下语言包">
+<meta name="twitter:image" content="http://yoursite.com/2020/03/21/mac下python3-tesseract-pytesseract-的安装与调试/%5Cimages%5Cpasted-106.png">
 
 
 
@@ -125,7 +128,7 @@
 
 
 
-  <title>mac下python3 + tesseract + pytesseract 的安装与调试 | 躲不掉的风</title>
+  <title> tesseract 的环境安装 | 躲不掉的风</title>
   
 
 
@@ -281,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">mac下python3 + tesseract + pytesseract 的安装与调试</h1>
+          <h1 class="post-title" itemprop="name headline"> tesseract 的环境安装</h1>
         
 
         <div class="post-meta">
@@ -331,8 +334,26 @@
       
 
       
-        <p>环境：mac</p>
-<ol>
+        <h6 id="windows-10-安装"><a href="#windows-10-安装" class="headerlink" title="windows 10 安装:"></a>windows 10 安装:</h6><p>第一步在虚拟环境或者正式环境pip安装：</p>
+<pre><code>pip install pytesseract
+ pip install pillow</code></pre><p>第二步 安装Tesseract-OCR    </p>
+<ul>
+<li><p>下载安装包官网：<br>注意版本之前由于使用3.0.2一直报错，后来换成5.0才好</p>
+<p>  <a href="https://github.com/UB-Mannheim/tesseract/wiki" target="_blank" rel="noopener">https://github.com/UB-Mannheim/tesseract/wiki</a><br>一路安装时可选择下语言包</p>
+</li>
+<li><p>系统环境Path变量配置：</p>
+<p>  <img src="%5Cimages%5Cpasted-106.png" alt="upload successful"></p>
+<p>  <a href="https://www.cnblogs.com/chenshengkai/p/11318272.html" target="_blank" rel="noopener">https://www.cnblogs.com/chenshengkai/p/11318272.html</a></p>
+<p>  验证： </p>
+<pre><code>tesseract --version</code></pre></li>
+<li><p>在python文件下搜索pytesseract.py文件并修改路径：<br>tesseract_cmd = ‘C:\Program Files\Tesseract-OCR\tesseract.exe’</p>
+</li>
+</ul>
+<p><img src="%5Cimages%5Cpasted-104.png" alt="upload successful"></p>
+<p>   参考<br>   <a href="https://www.cnblogs.com/chenshengkai/p/11318387.html" target="_blank" rel="noopener">https://www.cnblogs.com/chenshengkai/p/11318387.html</a><br>    <a href="https://blog.csdn.net/qq_38161040/article/details/90649497" target="_blank" rel="noopener">https://blog.csdn.net/qq_38161040/article/details/90649497</a></p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pytesseract</span><br><span class="line">from PIL import Image</span><br><span class="line"></span><br><span class="line">image = Image.open(&quot;data/enzh.png&quot;)</span><br><span class="line">code = pytesseract.image_to_string(image,lang=&apos;chi_sim&apos;)</span><br><span class="line">print(code)</span><br></pre></td></tr></table></figure>
+
+<h6 id="mac安装"><a href="#mac安装" class="headerlink" title="mac安装"></a>mac安装</h6><ol>
 <li><p>pip install pytesseract<br>pip install tesseract  </p>
 <p>之后运行demo一直报这个错：</p>
 <p>NotADirectoryError: [Errno 20] Not a directory: ‘tesseract’</p>
@@ -375,8 +396,8 @@ export PATH=$PATH:$TESSDATA_PREFIX</code></pre><p>2）. 下载语言包</p>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/03/18/conda/" rel="next" title="conda使用">
-                <i class="fa fa-chevron-left"></i> conda使用
+              <a href="/2020/03/18/conda/" rel="next" title="Anaconda  conda使用">
+                <i class="fa fa-chevron-left"></i> Anaconda  conda使用
               </a>
             
           </div>
@@ -439,8 +460,17 @@ export PATH=$PATH:$TESSDATA_PREFIX</code></pre><p>2）. 下载语言包</p>
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -455,7 +485,7 @@ export PATH=$PATH:$TESSDATA_PREFIX</code></pre><p>2）. 下载语言包</p>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -491,6 +521,22 @@ export PATH=$PATH:$TESSDATA_PREFIX</code></pre><p>2）. 下载语言包</p>
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#windows-10-安装"><span class="nav-number">1.</span> <span class="nav-text">windows 10 安装:</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#mac安装"><span class="nav-number">2.</span> <span class="nav-text">mac安装</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

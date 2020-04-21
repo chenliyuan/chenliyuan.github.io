@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="安装  环境 mac ：官网下载sh包， sh   Miniconda3-latest-MacOSX-x86_64.sh  安装后去/xxx/miniconda3/bin下执行  .  activateconda命令conda 可查帮助信息 conda info -e source activate deeplearning   进入我们的虚拟环境其中deeplearning是名称   退出虚拟环">
+<meta name="description" content="1、安装 环境 mac ：官网下载sh包，  sh   Miniconda3-latest-MacOSX-x86_64.sh 安装后去/xxx/miniconda3/bin下执行   .  activate  windows安装 下载： https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/   2、conda命令conda #可查帮助信息 c">
 <meta property="og:type" content="article">
-<meta property="og:title" content="conda使用">
+<meta property="og:title" content="Anaconda  conda使用">
 <meta property="og:url" content="http://yoursite.com/2020/03/18/conda/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="安装  环境 mac ：官网下载sh包， sh   Miniconda3-latest-MacOSX-x86_64.sh  安装后去/xxx/miniconda3/bin下执行  .  activateconda命令conda 可查帮助信息 conda info -e source activate deeplearning   进入我们的虚拟环境其中deeplearning是名称   退出虚拟环">
+<meta property="og:description" content="1、安装 环境 mac ：官网下载sh包，  sh   Miniconda3-latest-MacOSX-x86_64.sh 安装后去/xxx/miniconda3/bin下执行   .  activate  windows安装 下载： https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/   2、conda命令conda #可查帮助信息 c">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/pasted-93.png">
-<meta property="og:updated_time" content="2020-03-18T12:54:22.891Z">
+<meta property="og:updated_time" content="2020-04-10T11:19:36.818Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="conda使用">
-<meta name="twitter:description" content="安装  环境 mac ：官网下载sh包， sh   Miniconda3-latest-MacOSX-x86_64.sh  安装后去/xxx/miniconda3/bin下执行  .  activateconda命令conda 可查帮助信息 conda info -e source activate deeplearning   进入我们的虚拟环境其中deeplearning是名称   退出虚拟环">
+<meta name="twitter:title" content="Anaconda  conda使用">
+<meta name="twitter:description" content="1、安装 环境 mac ：官网下载sh包，  sh   Miniconda3-latest-MacOSX-x86_64.sh 安装后去/xxx/miniconda3/bin下执行   .  activate  windows安装 下载： https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/   2、conda命令conda #可查帮助信息 c">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-93.png">
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <title>conda使用 | 躲不掉的风</title>
+  <title>Anaconda  conda使用 | 躲不掉的风</title>
   
 
 
@@ -283,7 +283,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">conda使用</h1>
+          <h1 class="post-title" itemprop="name headline">Anaconda  conda使用</h1>
         
 
         <div class="post-meta">
@@ -333,12 +333,20 @@
       
 
       
-        <h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5><p>  环境 mac ：官网下载sh包，</p>
-<pre><code>sh   Miniconda3-latest-MacOSX-x86_64.sh</code></pre><p>  安装后去/xxx/miniconda3/bin下执行 </p>
-<pre><code>.  activate</code></pre><h5 id="conda命令"><a href="#conda命令" class="headerlink" title="conda命令"></a>conda命令</h5><pre><code>conda 可查帮助信息
+        <h5 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h5><ul>
+<li><p>环境 mac ：官网下载sh包，</p>
+<p> sh   Miniconda3-latest-MacOSX-x86_64.sh</p>
+<p>安装后去/xxx/miniconda3/bin下执行 </p>
+<p> .  activate</p>
+</li>
+<li><p>windows安装</p>
+<p>下载： <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
+</li>
+</ul>
+<h4 id="2、conda命令"><a href="#2、conda命令" class="headerlink" title="2、conda命令"></a>2、conda命令</h4><pre><code>conda #可查帮助信息
 conda info -e
-source activate deeplearning   进入我们的虚拟环境其中deeplearning是名称
-  退出虚拟环境
+source activate deeplearning   #进入我们的虚拟环境其中deeplearning是名称
+  #退出虚拟环境
 conda remove -n deeplearning --all
 conda list 查看已安装软件
 conda available packages
@@ -346,8 +354,18 @@ conda search source deactivategatk
 conda install gatk
  which gatk  查看软件安装位置
 conda update gatk  升级软件
-conda remove gatk  卸载指定软件</code></pre><p>虚拟环境的使用：</p>
-<p><img src="/images/pasted-93.png" alt="upload successful"></p>
+conda remove gatk  卸载指定软件
+conda env list  环境列表，星号代表当前环境
+activate learn  切换到learn环境
+activate // 切换到base环境
+conda create -n learn python=3 // 创建一个名为learn的环境并指定python版本为3(的最新版本)
+conda remove -n learn --all // 删除learn环境及下属所有包</code></pre><p>  虚拟环境的使用：</p>
+<p>  <img src="/images/pasted-93.png" alt="upload successful"></p>
+<h4 id="3、问题"><a href="#3、问题" class="headerlink" title="3、问题"></a>3、问题</h4><ul>
+<li><p>【Anaconda】关于conda使用环境未被激活的问题</p>
+<pre><code>由powershell改成使用cmd</code></pre><p>  参考：<a href="https://www.cnblogs.com/happyamyhope/p/11547134.html" target="_blank" rel="noopener">https://www.cnblogs.com/happyamyhope/p/11547134.html</a></p>
+</li>
+</ul>
 
       
     </div>
@@ -382,8 +400,8 @@ conda remove gatk  卸载指定软件</code></pre><p>虚拟环境的使用：</p
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2020/03/21/mac下python3-tesseract-pytesseract-的安装与调试/" rel="prev" title="mac下python3 + tesseract + pytesseract 的安装与调试">
-                mac下python3 + tesseract + pytesseract 的安装与调试 <i class="fa fa-chevron-right"></i>
+              <a href="/2020/03/21/mac下python3-tesseract-pytesseract-的安装与调试/" rel="prev" title=" tesseract 的环境安装">
+                 tesseract 的环境安装 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -461,7 +479,7 @@ conda remove gatk  卸载指定软件</code></pre><p>虚拟环境的使用：</p
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -507,7 +525,7 @@ conda remove gatk  卸载指定软件</code></pre><p>虚拟环境的使用：</p
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#conda命令"><span class="nav-number">2.</span> <span class="nav-text">conda命令</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#1、安装"><span class="nav-number">1.</span> <span class="nav-text">1、安装</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#2、conda命令"><span class="nav-number"></span> <span class="nav-text">2、conda命令</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3、问题"><span class="nav-number"></span> <span class="nav-text">3、问题</span></a></li></div>
             
 
           </div>

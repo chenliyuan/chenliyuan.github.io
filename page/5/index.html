@@ -261,6 +261,309 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/python读取文件的几种方式/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/24/python读取文件的几种方式/" itemprop="url">python读取文件的几种方式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T15:30:42+08:00">
+                2019-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1.python读取文件的几种方式</p>
+<p><strong>read_csv 从文件，url，文件型对象中加载带分隔符的数据。默认分隔符为逗号<br>read_table 从文件，url，文件型对象中加载带分隔符的数据。默认分隔符为制表符（“\t”）<br>read_fwf 读取定宽列格式数据（也就是没有分隔符）<br>read_cliboard 读取剪切板中的数据，可以看做read_table的剪切板。在将网页转换为表格时很有用<br>np.loadtxt()用于从文本加载数据。常用：loadtxt(fname,  delimiter=None)</strong></p>
+<p>2.pandas.read_csv参数整理</p>
+<p>读取CSV（逗号分割）文件到DataFrame<br>也支持文件的部分导入和选择迭代<br>更多帮助参见：<a href="http://pandas.pydata.org/pandas-docs/stable/io.html" target="_blank" rel="noopener">http://pandas.pydata.org/pandas-docs/stable/io.html</a><br>参数：<br>filepath_or_buffer : str，pathlib。str, pathlib.Path, py._path.local.LocalPath or any object with a read() method (such as a file handle or StringIO)<br>可以是URL，可用URL类型包括：http, ftp, s3和文件。对于多文件正在准备中<br>本地文件读取实例：://localhost/path/to/table.csv</p>
+<p>sep : str, default ‘,’<br>指定分隔符。如果不指定参数，则会尝试使用逗号分隔。分隔符长于一个字符并且不是‘\s+’,将使用python的语法分析器。并且忽略数据中的逗号。正则表达式例子：’\r\t’</p>
+<p>delimiter : str, default None<br>定界符，备选分隔符（如果指定该参数，则sep参数失效）</p>
+<p>delim_whitespace : boolean, default False.<br>指定空格(例如’ ‘或者’ ‘)是否作为分隔符使用，等效于设定sep=’\s+’。如果这个参数设定为Ture那么delimiter 参数失效。<br>在新版本0.18.1支持</p>
+<p>header : int or list of ints, default ‘infer’<br>指定行数用来作为列名，数据开始行数。如果文件中没有列名，则默认为0，否则设置为None。如果明确设定header=0 就会替换掉原来存在列名。header参数可以是一个list例如：[0,1,3]，这个list表示将文件中的这些行作为列标题（意味着每一列有多个标题），介于中间的行将被忽略掉（例如本例中的2；本例中的数据1,2,4行将被作为多级标题出现，第3行数据将被丢弃，dataframe的数据从第5行开始。）。<br>注意：如果skip_blank_lines=True 那么header参数忽略注释行和空行，所以header=0表示第一行数据而不是文件的第一行。</p>
+<p>names : array-like, default None<br>用于结果的列名列表，如果数据文件中没有列标题行，就需要执行header=None。默认列表中不能出现重复，除非设定参数mangle_dupe_cols=True。</p>
+<p>index_col : int or sequence or False, default None<br>用作行索引的列编号或者列名，如果给定一个序列则有多个行索引。<br>如果文件不规则，行尾有分隔符，则可以设定index_col=False 来是的pandas不适用第一列作为行索引。</p>
+<p>usecols : array-like, default None<br>返回一个数据子集，该列表中的值必须可以对应到文件中的位置（数字可以对应到指定的列）或者是字符传为文件中的列名。例如：usecols有效参数可能是 [0,1,2]或者是 [‘foo’, ‘bar’, ‘baz’]。使用这个参数可以加快加载速度并降低内存消耗。</p>
+<p>as_recarray : boolean, default False<br>不赞成使用：该参数会在未来版本移除。请使用pd.read_csv(…).to_records()替代。<br>返回一个Numpy的recarray来替代DataFrame。如果该参数设定为True。将会优先squeeze参数使用。并且行索引将不再可用，索引列也将被忽略。</p>
+<p>squeeze : boolean, default False<br>如果文件值包含一列，则返回一个Series</p>
+<p>prefix : str, default None<br>在没有列标题时，给列添加前缀。例如：添加‘X’ 成为 X0, X1, …</p>
+<p>mangle_dupe_cols : boolean, default True<br>重复的列，将‘X’…’X’表示为‘X.0’…’X.N’。如果设定为false则会将所有重名列覆盖。</p>
+<p>dtype : Type name or dict of column -&gt; type, default None<br>每列数据的数据类型。例如 {‘a’: np.float64, ‘b’: np.int32}</p>
+<p>engine : {‘c’, ‘python’}, optional<br>Parser engine to use. The C engine is faster while the python engine is currently more feature-complete.<br>使用的分析引擎。可以选择C或者是python。C引擎快但是Python引擎功能更加完备。</p>
+<p>converters : dict, default None<br>列转换函数的字典。key可以是列名或者列的序号。</p>
+<p>true_values : list, default None<br>Values to consider as True</p>
+<p>false_values : list, default None<br>Values to consider as False</p>
+<p>skipinitialspace : boolean, default False<br>忽略分隔符后的空白（默认为False，即不忽略）.</p>
+<p>skiprows : list-like or integer, default None<br>需要忽略的行数（从文件开始处算起），或需要跳过的行号列表（从0开始）。</p>
+<p>skipfooter : int, default 0<br>从文件尾部开始忽略。 (c引擎不支持)</p>
+<p>skip_footer : int, default 0<br>不推荐使用：建议使用skipfooter ，功能一样。</p>
+<p>nrows : int, default None<br>需要读取的行数（从文件头开始算起）。</p>
+<p>na_values : scalar, str, list-like, or dict, default None<br>一组用于替换NA/NaN的值。如果传参，需要制定特定列的空值。默认为‘1.#IND’, ‘1.#QNAN’, ‘N/A’, ‘NA’, ‘NULL’, ‘NaN’, ‘nan’`.</p>
+<p>keep_default_na : bool, default True<br>如果指定na_values参数，并且keep_default_na=False，那么默认的NaN将被覆盖，否则添加。</p>
+<p>na_filter : boolean, default True<br>是否检查丢失值（空字符串或者是空值）。对于大文件来说数据集中没有空值，设定na_filter=False可以提升读取速度。</p>
+<p>verbose : boolean, default False<br>是否打印各种解析器的输出信息，例如：“非数值列中缺失值的数量”等。</p>
+<p>skip_blank_lines : boolean, default True<br>如果为True，则跳过空行；否则记为NaN。</p>
+<p>parse_dates : boolean or list of ints or names or list of lists or dict, default False<br>boolean. True -&gt; 解析索引<br>list of ints or names. e.g. If [1, 2, 3] -&gt; 解析1,2,3列的值作为独立的日期列；<br>list of lists. e.g. If [[1, 3]] -&gt; 合并1,3列作为一个日期列使用<br>dict, e.g. {‘foo’ : [1, 3]} -&gt; 将1,3列合并，并给合并后的列起名为”foo”</p>
+<p>infer_datetime_format : boolean, default False<br>如果设定为True并且parse_dates 可用，那么pandas将尝试转换为日期类型，如果可以转换，转换方法并解析。在某些情况下会快5~10倍。</p>
+<p>keep_date_col : boolean, default False<br>如果连接多列解析日期，则保持参与连接的列。默认为False。</p>
+<p>date_parser : function, default None<br>用于解析日期的函数，默认使用dateutil.parser.parser来做转换。Pandas尝试使用三种不同的方式解析，如果遇到问题则使用下一种方式。<br>1.使用一个或者多个arrays（由parse_dates指定）作为参数；<br>2.连接指定多列字符串作为一个列作为参数；<br>3.每行调用一次date_parser函数来解析一个或者多个字符串（由parse_dates指定）作为参数。</p>
+<p>dayfirst : boolean, default False<br>DD/MM格式的日期类型</p>
+<p>iterator : boolean, default False<br>返回一个TextFileReader 对象，以便逐块处理文件。</p>
+<p>chunksize : int, default None<br>文件块的大小， See IO Tools docs for more informationon iterator and chunksize.</p>
+<p>compression : {‘infer’, ‘gzip’, ‘bz2’, ‘zip’, ‘xz’, None}, default ‘infer’<br>直接使用磁盘上的压缩文件。如果使用infer参数，则使用 gzip, bz2, zip或者解压文件名中以‘.gz’, ‘.bz2’, ‘.zip’, or ‘xz’这些为后缀的文件，否则不解压。如果使用zip，那么ZIP包中国必须只包含一个文件。设置为None则不解压。<br>新版本0.18.1版本支持zip和xz解压</p>
+<p>thousands : str, default None<br>千分位分割符，如“，”或者“.”</p>
+<p>decimal : str, default ‘.’<br>字符中的小数点 (例如：欧洲数据使用’，‘).</p>
+<p>float_precision : string, default None<br>Specifies which converter the C engine should use for floating-point values. The options are None for the ordinary converter, high for the high-precision converter, and round_trip for the round-trip converter.<br>指定</p>
+<p>lineterminator : str (length 1), default None<br>行分割符，只在C解析器下使用。</p>
+<p>quotechar : str (length 1), optional<br>引号，用作标识开始和解释的字符，引号内的分割符将被忽略。</p>
+<p>quoting : int or csv.QUOTE_* instance, default 0<br>控制csv中的引号常量。可选 QUOTE_MINIMAL (0), QUOTE_ALL (1), QUOTE_NONNUMERIC (2) or QUOTE_NONE (3)</p>
+<p>doublequote : boolean, default True<br>双引号，当单引号已经被定义，并且quoting 参数不是QUOTE_NONE的时候，使用双引号表示引号内的元素作为一个元素使用。</p>
+<p>escapechar : str (length 1), default None<br>当quoting 为QUOTE_NONE时，指定一个字符使的不受分隔符限值。</p>
+<p>comment : str, default None<br>标识着多余的行不被解析。如果该字符出现在行首，这一行将被全部忽略。这个参数只能是一个字符，空行（就像skip_blank_lines=True）注释行被header和skiprows忽略一样。例如如果指定comment=’#’ 解析‘#empty\na,b,c\n1,2,3’ 以header=0 那么返回结果将是以’a,b,c’作为header。</p>
+<p>encoding : str, default None<br>指定字符集类型，通常指定为’utf-8’. List of Python standard encodings</p>
+<p>dialect : str or csv.Dialect instance, default None<br>如果没有指定特定的语言，如果sep大于一个字符则忽略。具体查看csv.Dialect 文档</p>
+<p>tupleize_cols : boolean, default False<br>Leave a list of tuples on columns as is (default is to convert to a Multi Index on the columns)</p>
+<p>error_bad_lines : boolean, default True<br>如果一行包含太多的列，那么默认不会返回DataFrame ，如果设置成false，那么会将改行剔除（只能在C解析器下使用）。</p>
+<p>warn_bad_lines : boolean, default True<br>如果error_bad_lines =False，并且warn_bad_lines =True 那么所有的“bad lines”将会被输出（只能在C解析器下使用）。</p>
+<p>low_memory : boolean, default True<br>分块加载到内存，再低内存消耗中解析。但是可能出现类型混淆。确保类型不被混淆需要设置为False。或者使用dtype 参数指定类型。注意使用chunksize 或者iterator 参数分块读入会将整个文件读入到一个Dataframe，而忽略类型（只能在C解析器中有效）</p>
+<p>buffer_lines : int, default None<br>不推荐使用，这个参数将会在未来版本移除，因为他的值在解析器中不推荐使用</p>
+<p>compact_ints : boolean, default False<br>不推荐使用，这个参数将会在未来版本移除<br>如果设置compact_ints=True ，那么任何有整数类型构成的列将被按照最小的整数类型存储，是否有符号将取决于use_unsigned 参数</p>
+<p>use_unsigned : boolean, default False<br>不推荐使用：这个参数将会在未来版本移除<br>如果整数列被压缩(i.e. compact_ints=True)，指定被压缩的列是有符号还是无符号的。<br>memory_map : boolean, default False<br>如果使用的文件在内存内，那么直接map文件使用。使用这种方式可以避免文件再次进行IO操作。</p>
+<p>参考博文：<br><a href="https://www.cnblogs.com/datablog/p/6127000.html" target="_blank" rel="noopener">https://www.cnblogs.com/datablog/p/6127000.html</a><br><a href="https://www.cnblogs.com/heitaoq/p/7994842.html" target="_blank" rel="noopener">https://www.cnblogs.com/heitaoq/p/7994842.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/使用nc命令传输数据/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/24/使用nc命令传输数据/" itemprop="url">使用nc命令传输数据</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T15:30:42+08:00">
+                2019-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>原文：<a href="https://www.cnblogs.com/nmap/p/6148306.html" target="_blank" rel="noopener">https://www.cnblogs.com/nmap/p/6148306.html</a><br>    nc是netcat的简写，有着网络界的瑞士军刀美誉。因为它短小精悍、功能实用，被设计为一个简单、可靠的网络工具</p>
+<h2 id="使用ncp命令传送数据"><a href="#使用ncp命令传送数据" class="headerlink" title="使用ncp命令传送数据"></a>使用ncp命令传送数据</h2><p>需注意操作次序，receiver先侦听端口，sender向receiver所在机器的该端口发送数据。<br>步骤一：在接收端B侦听端口数据，并将数据写到file里<br>nc -l port &gt;file<br><img src="https://img-blog.csdnimg.cn/20190128143512804.png" alt="在接收端侦听端口数据，并将数据写到file里"><br>步骤二：在发送端A往接收端B的指定端口发送数据，把文件发送过去<br>nc ip port &lt; somefile<br>nc 10.0.1.162 9995 &lt; somefile<br><img src="https://img-blog.csdnimg.cn/20190128143444169.png" alt="在这里插入图片描述"></p>
+<h2 id="安装nc"><a href="#安装nc" class="headerlink" title="安装nc"></a>安装nc</h2><p>1、先将已安装的nc删除</p>
+<p>yum erase nc</p>
+<p>2.下载较低版本的nc的.rpm文件</p>
+<pre><code>wget   http://vault.centos.org/6.6/os/x86_64/Packages/nc-1.84-22.el6.x86_64.rpm</code></pre><p>3.安装.rpm文件</p>
+<p>rpm   -iUv    nc-1.84-22.el6.x86_64.rpm</p>
+<p>原文：<a href="https://blog.csdn.net/yctccg/article/details/52218055" target="_blank" rel="noopener">https://blog.csdn.net/yctccg/article/details/52218055</a> </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/AI关键词/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1578,311 +1881,6 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/13/Django视图/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/13/Django视图/" itemprop="url">Django视图View</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T21:37:30+08:00">
-                2019-07-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>视图快捷方式shortcut  </p>
-<ul>
-<li><p>常用的是render函数，该函数主要3个参数，第一个参数固定是request,第二个参数是模板文件名，第三个参数是字典类型，其中key就是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;...&#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>中所用的标识符，实际是双括号后返回的是key对应的值。如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#hello.html#</span><br><span class="line">		&lt;h1&gt;&#123;&#123;hello&#125;&#125;&lt;/h1&gt;</span><br><span class="line">#views.py#</span><br><span class="line">def hello(request):</span><br><span class="line">		values=&#123;&#125;</span><br><span class="line">		values[&quot;hello&quot;]=&quot;hello world!&quot;</span><br><span class="line">		return render(request,&apos;hello.html&apos;,values)</span><br></pre></td></tr></table></figure>
-
-<p>【注】render()与render_to_response()均是django中用来显示模板页面的，但是在django1.3之后，render()便比render_to_response()更加招人待见！最明显的就是前者会自动使用RequestContext，而后者需要coding进去</p>
-</li>
-<li><p>render_to_string 返回字符串</p>
-</li>
-<li><p>redict（to,permanent=False,<em>args,*</em>kwargs）第一个参数常常为模板</p>
-</li>
-<li><p>get_object_or_404 提取数据不存在则抛出异常</p>
-</li>
-<li><p>get_list_or_404使用filter方法提取数据不存在抛出异常<br>最终浏览器测试，显示hello world!  </p>
-</li>
-</ul>
-</li>
-<li><p>HttpRequest对象即我们经常用的request<br>有很多属性和方法，比如body\path\method\encoding\META…<br>我们常用它的属性POST\GET，返回类似字典QueryDict的对象，包含表单中提交的数据。</p>
-<p>```</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Django项目实践偏代码实现/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/12/Django项目实践偏代码实现/" itemprop="url">Django项目实践二(偏代码实现)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T20:14:56+08:00">
-                2019-07-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>模板前端与后台交互方法 $.getJSON</p>
-<pre><code>$(document).ready(function () {
-    $(&quot;#dl&quot;).click(function () {
-        var sid=$(&quot;#sid&quot;).val();
-        var pid=$(&quot;#pid&quot;).val();
-    $.getJSON(&quot;/download/&quot;,{&apos;sid&apos;:sid,&apos;pid&apos;:pid},)
-    });
-
-    $(&quot;#submit&quot;).click(function () {
-        var sd=$(&quot;#sid&quot;).val();
-        var pd=$(&quot;#pid&quot;).val();
-        $.getJSON(&quot;/getSchedule/&quot;,{&apos;sd&apos;:sd,&apos;pd&apos;:pd},function (ret) {
-            $(&quot;#result&quot;).html(&quot;&quot;);
-           for(var i =0;i&lt;ret.length;i++){
-               $(&apos;#result&apos;).append(ret[i]).append(&quot;&lt;br&gt;&quot;)
-           }
-        })
-    });
-});</code></pre></li>
-<li><p>views返回几种方式<br> return render_to_response(“search.html”)<br> 属于shortcuts模块，常用需要2个参数，第一个是模板如hello.html，第二个是字典，其中字典key就是模板中的变量。<br> return HttpResponse(“success!”)<br> 常用于直接返回字符串</p>
-<ul>
-<li>静态文件的使用<br>settings.py 中两处注意：</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-INSTALLED_APPS中 注册了‘django.contrib.staticfiles’，默认生成的文件已注册。 </span><br><span class="line">-指定STATIC_URL 与 STATICFILES_DIRS 的值.</span><br><span class="line"></span><br><span class="line">INSTALLED_APPS=[</span><br><span class="line">    &apos;...&apos;,</span><br><span class="line">    &apos;django.contrib.staticfiles&apos;,</span><br><span class="line">    &apos;...&apos;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">STATIC_URL=&apos;/static/&apos;</span><br><span class="line">STATICFILES_DIRS=(BASE_DIR,&apos;static&apos;)</span><br></pre></td></tr></table></figure>
-
-
-<p>*.html中引用（常加在link前）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load staticfiles %&#125;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&#123;% static &apos;css/main.css&apos; %&#125;&quot; /&gt;</span><br><span class="line">...</span><br><span class="line">&#123;% static &apos;/image/test.png&apos; %&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>打开text文件乱码且每次打开的时候会多出一行？</p>
-<p>本地的ct.txt文件保存格式未必是utf-8，所以需要指定编码格式才更准确，使用newline防止在每次写入默认新添加一空行</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file=open(&quot;templates/ct.txt&quot;,&quot;w&quot;,encoding=&quot;utf-8&quot;, newline=&apos;&apos;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>表单提交后不调view接口？<br>表单submit按钮类型写错，应该是submit类型，非button类型。</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1933,7 +1931,7 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">76</span>
+                  <span class="site-state-item-count">78</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
