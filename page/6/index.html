@@ -261,6 +261,448 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/Django表单/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/15/Django表单/" itemprop="url">Django表单form</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T15:04:43+08:00">
+                2019-07-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>问题：<br>‘AddForm’ object has no attribute ‘cleaned_data’<br>由于么有调用is_valid，所以没有cleaned_data方法。</p>
+<h5 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h5><ul>
+<li>新建一个 forms.py 文件</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from django import forms</span><br><span class="line"> </span><br><span class="line">class AddForm(forms.Form):</span><br><span class="line">    a = forms.IntegerField()</span><br><span class="line">    b = forms.IntegerField()</span><br></pre></td></tr></table></figure>
+
+
+<p> 我们的视图函数 views.py 中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#coding:utf-8</span><br><span class="line">from django.shortcuts import render</span><br><span class="line">from django.http import HttpResponse</span><br><span class="line">#引入我们创建的表单类</span><br><span class="line">from .forms import AddForm </span><br><span class="line">def index(request):</span><br><span class="line">    if request.method == &apos;POST&apos;:# 当提交表单时</span><br><span class="line">        form = AddForm(request.POST) # form 包含提交的数据</span><br><span class="line">        if form.is_valid():# 如果提交的数据合法</span><br><span class="line">            a = form.cleaned_data[&apos;a&apos;]</span><br><span class="line">            b = form.cleaned_data[&apos;b&apos;]</span><br><span class="line">            return HttpResponse(str(int(a) + int(b)))</span><br><span class="line"></span><br><span class="line">    else:# 当正常访问时建表单视图</span><br><span class="line">        form = AddForm()</span><br><span class="line">    return render(request, &apos;index.html&apos;, &#123;&apos;form&apos;: form&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>对应的模板文件 index.html</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form method=&apos;post&apos;&gt;</span><br><span class="line">&#123;% csrf_token %&#125;</span><br><span class="line">&#123;&#123; form &#125;&#125;</span><br><span class="line">&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>表单域同model，有CharField、IntegerField等，具体见官方文档：<br><a href="https://docs.djangoproject.com/en/2.2/ref/forms/fields/" target="_blank" rel="noopener">https://docs.djangoproject.com/en/2.2/ref/forms/fields/</a><br>参考：<a href="https://code.ziqiangxuetang.com/django/django-forms.html" target="_blank" rel="noopener">https://code.ziqiangxuetang.com/django/django-forms.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/Django路由URL/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/14/Django路由URL/" itemprop="url">Django路由URL</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-14T09:23:11+08:00">
+                2019-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="配置URL"><a href="#配置URL" class="headerlink" title="配置URL"></a>配置URL</h4><ul>
+<li>在myapp中创建urls.py文件，然后建立连接，从project的url中include到myapp中的urls文件<br>  re_path(r’^’,include(‘myapp.urls’))</li>
+</ul>
+<ul>
+<li><p>path函数的第一个参数是URL模式字符串，用于匹配URL<br>第二个参数是用于处理URL请求的视图函数  </p>
+</li>
+<li><p>使用尖括号提取URL中的参数，如<a href="int:year" target="_blank" rel="noopener">int:year</a>  </p>
+</li>
+<li><p>URL模式字符串不需要以/开头  </p>
+</li>
+<li><p>url传参：在Django 2.0版本以后，这里不再使用正则，而是用<br>…/&lt;参数类型:传入函数的形参名&gt;/…如path(r’oldurl/<a href="str:a" target="_blank" rel="noopener">str:a</a>/<a href="str:b" target="_blank" rel="noopener">str:b</a>/‘, views.oldUrl)类型转化器对参数类型进行转换，如：  </p>
+<pre><code>str：除了“/”以外的任意字符串，默认是它  
+int：匹配任意大于0的整数  
+slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_（汉字尝试没成功）</code></pre></li>
+</ul>
+<p>举例： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;articles/2003/&apos;, views.special_case_2003),</span><br><span class="line">    path(&apos;articles/&lt;title&gt;/&apos;, views.year_archive),</span><br><span class="line">    path(&apos;articles/&lt;int:year&gt;/&lt;int:month&gt;/&apos;, views.month_archive),</span><br><span class="line">    path(&apos;articles/&lt;int:year&gt;/&lt;int:month&gt;/&lt;slug:slug&gt;/&apos;, views.article_detail),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-58.png" alt="upload successful"></p>
+<h5 id="【其他】"><a href="#【其他】" class="headerlink" title="【其他】"></a>【其他】</h5><h6 id="urls与path区别"><a href="#urls与path区别" class="headerlink" title="urls与path区别"></a>urls与path区别</h6><p>   在使用Django的时候，多次遇到urls与path，不知道两者有什么区别。下面简单介绍一下两者</p>
+<p>  在django&gt;=2.0的版本，urls.py中的django.conf.urls已经被django.urls所取代。</p>
+<p>  django.urls的用法：</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from django.urls import path</span><br><span class="line">from . import view</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;&apos;, view.hello),</span><br><span class="line">    path(&apos;world/&apos;, view.world)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>  其中最大的改变如下： </p>
+<ul>
+<li><p>import urls被import path所取代</p>
+</li>
+<li><p>如果是路径需要在路径的后面加上一个斜杠  /</p>
+<p>旧版本如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from django.conf.urls import url</span><br><span class="line"></span><br><span class="line">from . import view</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(r&apos;^hello$&apos;, view.hello),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+
+<p>新版本如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from django.urls import path</span><br><span class="line">from . import view</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;hello/&apos;, view.hello),</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h6 id="可变参数就匹配不上-？"><a href="#可变参数就匹配不上-？" class="headerlink" title="可变参数就匹配不上 ？"></a>可变参数就匹配不上 ？</h6><p>Page not found (404)<br>The current path, getpapertextss, didn’t match any of these.<br>最后查跟url没关系，错误信息误导了我，原来是因为Views中从数据库获取数据时为空报了404<br>另外注意：<br>1）正则匹配django2.0需要用re_path<br>2）匹配的url后面有没有‘/’，与配置一致，除非设置中设置了默认加/</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/Django模板/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/14/Django模板/" itemprop="url">Django模板template</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-14T08:43:07+08:00">
+                2019-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>模板标签</p>
+<ul>
+<li>循环标签（for标签）<br>这种适合返回的字典值是列表的情况<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%for value in value_list %&#125;</span><br><span class="line">	&#123;&#123;value&#125;&#125;</span><br><span class="line">&#123;%endfor%&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p>for遍历<br>除了普通列表遍历还可以实现:  </p>
+<ul>
+<li><p>对列表进行翻转</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% for obj in list reversed%&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>循环遍历字典</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%for key ,value in data.items %&#125;</span><br><span class="line">		&#123;&#123;key&#125;&#125;:&#123;&#123;value&#125;&#125;</span><br><span class="line">&#123;%endfor%&#125;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<ul>
+<li>条件控制标签<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  &#123;% if condition1 %&#125;</span><br><span class="line">	...</span><br><span class="line">&#123;% elif condition2 %&#125;</span><br><span class="line">	...</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">	...</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="2">
+<li>过滤器<br>在原来值后面加上过滤的关键字，起到过滤效果<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;somekeyname|upper|first|lower|length&#125;&#125;</span><br><span class="line">常用的过滤器：</span><br><span class="line">capfirst首字母大写</span><br><span class="line">cut：删除指定值，如&#123;&#123;value|cut:&quot;&quot;&#125;&#125;</span><br><span class="line">date:格式化日期，如&#123;&#123;value|date:&quot;D d M Y&quot;&#125;&#125;</span><br><span class="line">default</span><br><span class="line">join拼接如&#123;&#123;value|join:&quot;//&quot;&#125;&#125;</span><br><span class="line">truncatewords 缩短内容长度</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+</li>
+</ol>
+<p>  【问题】  </p>
+<ol>
+<li>表单提交返回后，请求input中填写值不展示？<br>value中设置返回值：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">input type=&quot;text&quot; name=&quot;phone&quot; placeholder=&quot;手机号&quot; value=&#123;&#123; cardno &#125;&#125;&gt;&lt;/td&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/13/Django视图/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1423,387 +1865,11 @@ values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" c
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/16/mysql数据库/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/16/mysql数据库/" itemprop="url">mysql数据库</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-16T12:36:57+08:00">
-                2019-06-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="linux安装mysql"><a href="#linux安装mysql" class="headerlink" title="linux安装mysql"></a>linux安装mysql</h5><p>使用pymysql的时候创建表不成功，提示连不到，于是才意识到本机没有安装Mysql服务，步骤：<br>1、下载<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a><br>2、安装的时候设置root密码<br>3、设置环境变量<br>打开终端,根目录：open .bash_profile<br>直接输入如下语句：export PATH=${PATH}:/usr/local/mysql/bin<br>4、终端登录  mysql -u root -p<br>5、手动创建数据库 语句参考<a href="https://www.cnblogs.com/zhuyongzhe/p/7686105.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhuyongzhe/p/7686105.html</a><br>6、执行创建表操作（本地写的create.py-连数据库和创建表操作）<br>执行后提示Warning: (3719, “‘utf8’ is currently an alias for the character set UTF8MB3, but will be an alias for UTF8MB4 in a future release. Please consider using UTF8MB4 in order to be unambiguous.”)<br>  result = self._query(query)<br>忽略即可，表已创建完毕</p>
-<h4 id="数据库创建满足三大范式"><a href="#数据库创建满足三大范式" class="headerlink" title="数据库创建满足三大范式"></a>数据库创建满足三大范式</h4><h6 id="1-原子性"><a href="#1-原子性" class="headerlink" title="1.原子性"></a>1.原子性</h6><p>不可再拆分</p>
-<h6 id="2-主键与其他列相关联"><a href="#2-主键与其他列相关联" class="headerlink" title="2.主键与其他列相关联"></a>2.主键与其他列相关联</h6><p>与主键无关的列需要去掉</p>
-<h6 id="3-主键与其他列直接相关联"><a href="#3-主键与其他列直接相关联" class="headerlink" title="3.主键与其他列直接相关联"></a>3.主键与其他列直接相关联</h6><p>若间接相关不可以，可拆分成两个表</p>
-<p>参考：<a href="https://blog.csdn.net/kenhins/article/details/51084815" target="_blank" rel="noopener">https://blog.csdn.net/kenhins/article/details/51084815</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/Django实践/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/15/Django实践/" itemprop="url">TensorFlow实践</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-15T18:19:23+08:00">
-                2019-06-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>创建隔离的python环境</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv #安装</span><br><span class="line">virtualenv my_env#创建目录</span><br><span class="line">which python3  #找到python3目录</span><br><span class="line">virtualenv my_env -p /Library/Frameworks/Python.framework/Versions/3.7/bin/python3 </span><br><span class="line">#将python3作为解释器</span><br><span class="line">source my_env/bin/activate  #激活，开始使用</span><br><span class="line">deactivate 退出</span><br></pre></td></tr></table></figure>
-
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/Flask框架学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/15/Flask框架学习/" itemprop="url">Flask+Django框架学习</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-15T17:50:33+08:00">
-                2019-06-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">app=Flask(__name__)</span><br><span class="line"></span><br><span class="line">@app.route(&apos;/&apos;)</span><br><span class="line">def hello_world():</span><br><span class="line">	return &quot;hello_world&quot;</span><br><span class="line">if __name==&apos;__main__&apos;:</span><br><span class="line">	app.run()</span><br></pre></td></tr></table></figure>
-
-<p>环境：mac 10.12.6  pycharm +Flask</p>
-<p>【问题1】找不到项目的Flask配置位置？debug模式怎么一直是off，即使run后面添加了debug=True？</p>
-<p>Flask配置：点击项目名，在如下位置编辑</p>
-<p><img src="/images/pasted-26.png" alt="upload successful"></p>
-<p><img src="/images/pasted-27.png" alt="upload successful"></p>
-<p>【问题2】执行创建数据库表的操作时提示Mysql Error 2003: Can’t connect to MySQL server on ‘127.0.0.1’ ([Errno 61] Connection refused)<br><img src="/images/pasted-28.png" alt="upload successful"><br>解决：没有安装Mysql服务，于是下载安装，具体见mysql那一篇</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1849,7 +1915,7 @@ values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" c
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">78</span>
+                  <span class="site-state-item-count">81</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
