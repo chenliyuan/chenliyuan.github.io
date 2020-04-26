@@ -79,19 +79,22 @@
 
 
 
-<meta name="description" content="Jenkins安装环境：Ubuntu 参考：https://www.jianshu.com/p/845f267aec52https://www.cnblogs.com/shuoer/p/9471839.html 步骤： 1234567#添加官方软件仓库的秘钥到本地的apt秘钥中 wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io">
+<meta name="description" content="Ubuntu安装Jenkins参考：https://www.jianshu.com/p/845f267aec52https://www.cnblogs.com/shuoer/p/9471839.html 1234567#添加官方软件仓库的秘钥到本地的apt秘钥中 wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Jenkins安装和配置">
 <meta property="og:url" content="http://yoursite.com/2020/01/28/jenkins安装/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="Jenkins安装环境：Ubuntu 参考：https://www.jianshu.com/p/845f267aec52https://www.cnblogs.com/shuoer/p/9471839.html 步骤： 1234567#添加官方软件仓库的秘钥到本地的apt秘钥中 wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io">
+<meta property="og:description" content="Ubuntu安装Jenkins参考：https://www.jianshu.com/p/845f267aec52https://www.cnblogs.com/shuoer/p/9471839.html 1234567#添加官方软件仓库的秘钥到本地的apt秘钥中 wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | s">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/pasted-74.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-109.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-108.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-75.png">
-<meta property="og:updated_time" content="2020-01-29T15:04:15.517Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-110.png">
+<meta property="og:updated_time" content="2020-04-26T07:09:50.461Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Jenkins安装和配置">
-<meta name="twitter:description" content="Jenkins安装环境：Ubuntu 参考：https://www.jianshu.com/p/845f267aec52https://www.cnblogs.com/shuoer/p/9471839.html 步骤： 1234567#添加官方软件仓库的秘钥到本地的apt秘钥中 wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io">
+<meta name="twitter:description" content="Ubuntu安装Jenkins参考：https://www.jianshu.com/p/845f267aec52https://www.cnblogs.com/shuoer/p/9471839.html 1234567#添加官方软件仓库的秘钥到本地的apt秘钥中 wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | s">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-74.png">
 
 
@@ -334,9 +337,7 @@
       
 
       
-        <h6 id="Jenkins安装"><a href="#Jenkins安装" class="headerlink" title="Jenkins安装"></a>Jenkins安装</h6><p>环境：Ubuntu</p>
-<p>参考：<br><a href="https://www.jianshu.com/p/845f267aec52" target="_blank" rel="noopener">https://www.jianshu.com/p/845f267aec52</a><br><a href="https://www.cnblogs.com/shuoer/p/9471839.html" target="_blank" rel="noopener">https://www.cnblogs.com/shuoer/p/9471839.html</a></p>
-<p>步骤：</p>
+        <h6 id="Ubuntu安装Jenkins"><a href="#Ubuntu安装Jenkins" class="headerlink" title="Ubuntu安装Jenkins"></a>Ubuntu安装Jenkins</h6><p>参考：<br><a href="https://www.jianshu.com/p/845f267aec52" target="_blank" rel="noopener">https://www.jianshu.com/p/845f267aec52</a><br><a href="https://www.cnblogs.com/shuoer/p/9471839.html" target="_blank" rel="noopener">https://www.cnblogs.com/shuoer/p/9471839.html</a></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#添加官方软件仓库的秘钥到本地的apt秘钥中</span><br><span class="line"> wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -</span><br><span class="line"> </span><br><span class="line">echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list</span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install jenkins</span><br></pre></td></tr></table></figure>
 
 <p>安装成功后打开服务</p>
@@ -347,6 +348,11 @@
 <p>使用操作文件/var/lib/dpkg/info解决：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd /var/lib/dpkg/</span><br><span class="line">mv info/ info_bak         </span><br><span class="line">mkdir info                 </span><br><span class="line">apt-get update            </span><br><span class="line">apt-get -f install         </span><br><span class="line">mv info/* info_bak/        </span><br><span class="line">rm -rf info                </span><br><span class="line">mv info_bak info</span><br></pre></td></tr></table></figure>
 
+<h6 id="jenkins节点配置"><a href="#jenkins节点配置" class="headerlink" title="jenkins节点配置"></a>jenkins节点配置</h6><ol>
+<li>在jenkins设置-节点管理中添加新节点，主要配置项如下（以90机器为例）：<br><img src="/images/pasted-109.png" alt="upload successful"></li>
+<li>添加节点后将如下代理链接在90机器浏览器中打开，点击Lunch按钮下载slave文件<br><img src="/images/pasted-108.png" alt="upload successful"></li>
+<li>在90机器成功下载Slave后，可放在桌面打开即启动服务。</li>
+</ol>
 <h6 id="Jenkins安装git插件"><a href="#Jenkins安装git插件" class="headerlink" title="Jenkins安装git插件"></a>Jenkins安装git插件</h6><p>安装jenkins时候安装git插件失败，需在本地先安装git</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install git</span><br></pre></td></tr></table></figure>
 
@@ -370,24 +376,11 @@
 <li>删掉“&lt; authorizationStrategy …&gt;…&lt; /authorizationStrategy&gt;”；      </li>
 <li>保存修改的confi.xml，重启Jenkins服务已无需登录 </li>
 </ul>
-<h6 id="【问题】打不开log-html-提示Opening-Robot-Framework-log-failed"><a href="#【问题】打不开log-html-提示Opening-Robot-Framework-log-failed" class="headerlink" title="【问题】打不开log.html 提示Opening Robot Framework log failed"></a>【问题】打不开log.html 提示Opening Robot Framework log failed</h6><p>Verify that you have JavaScript enabled in your browser.<br>Make sure you are using a modern enough browser. Firefox 3.5, IE 8, or equivalent is required, newer browsers are recommended.<br>Check are there messages in your browser’s JavaScript error log. Please report the problem if you suspect you have encountered a bug.<br>…”</p>
-<p>解决办法：<br>For resolve your problem you must :</p>
-<ul>
-<li><p>Connect on your jenkins url (http://[IP]:8080/)</p>
-</li>
-<li><p>Click on Manage Jenkins from left side panel.</p>
-</li>
-<li><p>Click on Script Console</p>
-</li>
-<li><p>Copy this into the field<br>System.setProperty(“hudson.model.DirectoryBrowserSupport.CSP”,”sandbox allow-scripts; default-src ‘none’; img-src ‘self’ data: ; style-src ‘self’ ‘unsafe-inline’ data: ; script-src ‘self’ ‘unsafe-inline’ ‘unsafe-eval’ ;”)</p>
-</li>
-<li><p>Click on Run button.</p>
-</li>
-<li><p>Execute your Jenkins build.</p>
-<h5 id="【问题】设置multijob构建任务时只执行第一个任务，报错信息"><a href="#【问题】设置multijob构建任务时只执行第一个任务，报错信息" class="headerlink" title="【问题】设置multijob构建任务时只执行第一个任务，报错信息"></a>【问题】设置multijob构建任务时只执行第一个任务，报错信息</h5><p> Job status: [login for id] the ‘build only if scm changes’ feature is disabled.</p>
-<p>  解决：勾选build only if scm changes为true</p>
-</li>
-</ul>
+<h6 id="【问题1】打不开log-html-提示Opening-Robot-Framework-log-failed"><a href="#【问题1】打不开log-html-提示Opening-Robot-Framework-log-failed" class="headerlink" title="【问题1】打不开log.html 提示Opening Robot Framework log failed"></a>【问题1】打不开log.html 提示Opening Robot Framework log failed</h6><p>Verify that you have JavaScript enabled in your browser.<br>Make sure you are using a modern enough browser. Firefox 3.5, IE 8, or equivalent is required, newer browsers are recommended.<br>Check are there messages in your browser’s JavaScript error log. Please report the problem if you suspect you have encountered a bug.<br>…”</p>
+<p>解决办法：<br>    For resolve your problem you must :<br>    - Connect on your jenkins url (http://[IP]:8080/)<br>    - Click on Manage Jenkins from left side panel.<br>    - Click on Script Console<br>    - Copy this into the field<br>    System.setProperty(“hudson.model.DirectoryBrowserSupport.CSP”,”sandbox allow-scripts; default-src ‘none’; img-src ‘self’ data: ; style-src ‘self’ ‘unsafe-inline’ data: ; script-src ‘self’ ‘unsafe-inline’ ‘unsafe-eval’ ;”)</p>
+<pre><code>- Click on Run button.
+- Execute your Jenkins build.</code></pre><h6 id="【问题2】设置multijob构建任务时只执行第一个任务"><a href="#【问题2】设置multijob构建任务时只执行第一个任务" class="headerlink" title="【问题2】设置multijob构建任务时只执行第一个任务"></a>【问题2】设置multijob构建任务时只执行第一个任务</h6><p>   忽略执行错误，继续下一个</p>
+<p>   <img src="/images/pasted-110.png" alt="upload successful"></p>
 
       
     </div>
@@ -547,7 +540,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#Jenkins安装"><span class="nav-number">1.</span> <span class="nav-text">Jenkins安装</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Jenkins安装git插件"><span class="nav-number">2.</span> <span class="nav-text">Jenkins安装git插件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Jenkins安装配置git"><span class="nav-number">3.</span> <span class="nav-text">Jenkins安装配置git</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#设置jenkins无需登录"><span class="nav-number">4.</span> <span class="nav-text">设置jenkins无需登录</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#【问题】打不开log-html-提示Opening-Robot-Framework-log-failed"><span class="nav-number">5.</span> <span class="nav-text">【问题】打不开log.html 提示Opening Robot Framework log failed</span></a></li></ol><li class="nav-item nav-level-5"><a class="nav-link" href="#【问题】设置multijob构建任务时只执行第一个任务，报错信息"><span class="nav-number"></span> <span class="nav-text">【问题】设置multijob构建任务时只执行第一个任务，报错信息</span></a></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#Ubuntu安装Jenkins"><span class="nav-number">1.</span> <span class="nav-text">Ubuntu安装Jenkins</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#jenkins节点配置"><span class="nav-number">2.</span> <span class="nav-text">jenkins节点配置</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Jenkins安装git插件"><span class="nav-number">3.</span> <span class="nav-text">Jenkins安装git插件</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Jenkins安装配置git"><span class="nav-number">4.</span> <span class="nav-text">Jenkins安装配置git</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#设置jenkins无需登录"><span class="nav-number">5.</span> <span class="nav-text">设置jenkins无需登录</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#【问题1】打不开log-html-提示Opening-Robot-Framework-log-failed"><span class="nav-number">6.</span> <span class="nav-text">【问题1】打不开log.html 提示Opening Robot Framework log failed</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#【问题2】设置multijob构建任务时只执行第一个任务"><span class="nav-number">7.</span> <span class="nav-text">【问题2】设置multijob构建任务时只执行第一个任务</span></a></li></ol></div>
             
 
           </div>
