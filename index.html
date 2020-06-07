@@ -261,6 +261,353 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/07/vue-Django项目实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/07/vue-Django项目实践/" itemprop="url">vue+Django项目实践问题汇总</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-07T20:42:35+08:00">
+                2020-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>Django跨域设置  </p>
+<p>pip install django-cors-header   </p>
+<p>setting中设置：</p>
+<pre><code>&apos;corsheaders.middleware.CorsMiddleware&apos; # 新加的插件位置最好放在CommonMiddleware之前      
+INSTALLED_APPS中添加&apos;corsheaders&apos;,    
+CORS_ORIGIN_ALLOW_ALL = True   //新增   
+CORS_ALLOW_CREDENTIALS = True  //新增</code></pre></li>
+<li><p>跨域设置后还是不可以？<br>/home/getallbus 可以<br>getallbus 单层就不可以 ？</p>
+</li>
+<li><p>接口报403  500 ?</p>
+<p>request.POST.get改成使用字典格式再用get获取<br>返回值是非json格式，在里的对象是键值对，不能缺少键值</p>
+</li>
+<li><p>生命周期中调用方法，因为是方法后面别忘了加()</p>
+<pre><code>this.getallbugs();</code></pre></li>
+<li><p>修改文件夹和文件名称后找不到？</p>
+<p> 把这修改的文件夹删除掉，重新新建了个文件夹</p>
+</li>
+<li><p>vue 父子组件的生命周期顺序：加载渲染顺序</p>
+<p> 父beforeCreate-&gt;父created-&gt;父beforeMount-&gt;子beforeCreate-&gt;子created-&gt;子beforeMount-&gt;子mounted-&gt;父mount</p>
+</li>
+<li><p>vue中created和mounted的区别</p>
+<p>created：在模板渲染成html前调用，即通常<strong>初始化某些属性值</strong>，然后再渲染成视图。<br>mounted：在模板渲染成html后调用，通常是初始化页面完成后，再对html的<strong>dom节点</strong>进行一些需要的操作。</p>
+</li>
+<li><p>axios post传递参数，使用$qs处理</p>
+<p> <a href="https://www.cnblogs.com/oukele/p/12670757.html" target="_blank" rel="noopener">https://www.cnblogs.com/oukele/p/12670757.html</a><br> axios post传递数组数据？<br> 通过indices参数，后台接收使用request.POST.getlist()方法接收<br> mains中设置</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.headers.post[&apos;Content-Type&apos;] = &apos;application/x-www-form-urlencoded&apos;</span><br></pre></td></tr></table></figure>
+
+<p> 传递参数时：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> (&#123;    </span><br><span class="line"> &apos;selecteddate&apos;:searchResult.date,</span><br><span class="line"> &apos;selectedbus&apos;:searchResult.bus</span><br><span class="line">&#125;, &#123; indices: false &#125;);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>路由:使用router-link :to 参数值使用this.xxx传参失败。最后使用Push操作解决</p>
+<p> <strong>和name配对的是params，和path配对的是query</strong></p>
+<p> query和params的区别，query相当于get请求，在页面跳转的时候，可以在地址栏看到请求参数，然而params则相当于post请求，参数不会在地址栏中显示。</p>
+<p> <a href="https://www.cnblogs.com/liweiz/p/10519629.html" target="_blank" rel="noopener">https://www.cnblogs.com/liweiz/p/10519629.html</a></p>
+<pre><code>1.命名路由搭配params，刷新页面参数会丢失
+2.查询参数搭配query，刷新页面数据不会丢失
+3.接受参数使用this.$route后面就是搭配路由的名称就能获取到参数的值</code></pre></li>
+<li><p>嵌套路由跳转失败？</p>
+<p>children挂载到了错误的节点上。</p>
+</li>
+<li><p>渲染chart图标报错？</p>
+<p>在created调用，此时div还没有出来，无法在其基础上加载图片。改成mounted</p>
+</li>
+<li><p>如何修改ui-element样式？</p>
+<p>通过查看元素找到原有样式，再针对性进行修改。     </p>
+</li>
+<li><p>align和text-align的区别<br>align直接写在是div的属性 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div align=&quot;center&quot;&gt; </span><br><span class="line">This is some text! </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>text-align则是Css的属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;text-align:center&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="14">
+<li><p>子组件传已选择项和所有项目，主组件全部接收后判断如果已选选项为空则取所有项，否则取已选选项</p>
+<p><img src="/images/pasted-114.png" alt="upload successful"></p>
+</li>
+<li><p>echarts的option内赋值，紧接着在外面值就为空了？</p>
+<p>this和that的问题，option内的this指的是option本身，非本组件</p>
+</li>
+<li><p>不可以直接绑定由props父组件传递过来的值，否则会报错</p>
+<p>[Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop’s value. Prop being mutated: “project”</p>
+</li>
+<li><p>props报错<br>Invalid prop: type check failed for prop “value”. Expected String, Number, got Array </p>
+<p>【解决】通过将定义的字符串类型转换成列表类型(定义的data属性原被定义成字符串了，所以报错)</p>
+</li>
+<li><p>多选和单选使用同一个控件控制<br>【解决】</p>
+<ul>
+<li><p>写两份下拉框，使用v-show控制multiple属性(控制是否多选)</p>
+</li>
+<li><p>多选和单选的绑定类型不一样，多选需是list，单选是字符串。然后通过判断来选择（出过错）</p>
+</li>
+</ul>
+</li>
+<li><p>padding  css设置方向，逆时针</p>
+<p><img src="/images/pasted-115.png" alt="upload successful"></p>
+</li>
+<li><p>引入的css样式没有生效？</p>
+<p>在main.js中引用未全部生效(局部生效，仅限于)，在app.vue中引用集体生效了<br><a href="https://blog.csdn.net/HY_358116732/article/details/82219387" target="_blank" rel="noopener">https://blog.csdn.net/HY_358116732/article/details/82219387</a></p>
+<p>即在app.vue中引入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> &lt;style&gt;</span><br><span class="line">@import &apos;./../static/css/global.css&apos;; /*引入公共样式*/</span><br><span class="line"> &lt;/style&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>如何限制柱形图的条状宽度(竖着)？</p>
+<p>barMaxWidth barMinWidth</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/08/Vue学习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/05/08/Vue学习笔记/" itemprop="url">Vue学习笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-08T15:09:01+08:00">
+                2020-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="父组件传参给子组件"><a href="#父组件传参给子组件" class="headerlink" title="父组件传参给子组件"></a>父组件传参给子组件</h5><p>父组件通过<code>属性</code>的形式向子组件传值<br>步骤：</p>
+<ol>
+<li>在父组件调用子组件时通过自定义属性名传递数值</li>
+<li>在子组件中定位使用props接收该属性</li>
+<li>在子组件中使用该属性</li>
+</ol>
+<p><img src="/images/pasted-112.png" alt="upload successful"></p>
+<h5 id="子组件传参给父组件"><a href="#子组件传参给父组件" class="headerlink" title="子组件传参给父组件"></a>子组件传参给父组件</h5><p>子组件通过<code>事件触发</code>的形式向父组件传值<br>步骤：</p>
+<ol>
+<li>子组件中调用触发自身事件</li>
+<li>子组件自身定义的事件通过$emit监听(父组件调用子组件时的)变量<br> （其中$emit两个参数，第一个事件名，第二个传递的参数）</li>
+<li>父组件调用子组件的变量通过父组件自身定义的方法接收使用值</li>
+</ol>
+<p>子组件通过某事件传递给指定getsearchvalue：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-form-item style=&quot;padding-top:0px&quot;&gt;</span><br><span class="line">   &lt;el-button type=&quot;info&quot; @click=&quot;childbyvalue&quot;&gt;Search&lt;/el-button&gt;</span><br><span class="line">&lt;/el-form-item&gt;</span><br><span class="line">    ...</span><br><span class="line">childbyvalue() &#123;</span><br><span class="line">   this.$emit(&quot;getsearchvalue&quot;, &#123;</span><br><span class="line">      date: this.selecteddate,</span><br><span class="line">      selectedproject: tmp,</span><br><span class="line">      allprojects: this.allprojects</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>父组件监听getsearchvalue</p>
+<p>执行getlivebugs方法参数为子组件传递过来的对象：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"> &lt;div&gt;</span><br><span class="line">   &lt;Searchbydate v-on:getsearchvalue=&quot;getlivebugs&quot;&gt;&lt;/Searchbydate&gt;</span><br><span class="line"> &lt;/div&gt;</span><br><span class="line"> ...</span><br><span class="line">getlivebugs(searchResult) &#123;</span><br><span class="line">   this.selecteddate = searchResult.date;</span><br><span class="line">   ...</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-113.png" alt="upload successful"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/24/RT框架/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1359,296 +1706,6 @@ conda remove -n learn --all // 删除learn环境及下属所有包</code></pre><
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/论文准备/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/18/论文准备/" itemprop="url">论文准备</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-18T17:00:52+08:00">
-                2020-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>计算机视觉（CV）领域的四大任务，在CV领域主要有八项任务，其他四大任务包括：图像生成、人体关键点检测、视频分类、度量学习等，其中</p>
-<p>图像分类：为图片中出现的物体目标分类出其所属类别的标签，如画面中的人、楼房、街道、车辆数目等；</p>
-<p>目标检测：将图片或者视频中感兴趣的目标提取出来，对于导盲系统来说，各类的车辆、行人、交通标识、红绿灯都是需要关注的对象；</p>
-<p>图像语义分割：将视野中的车辆和道路勾勒出来是必要的，这需要图像语义分割技术做为支撑，勾勒出图像物体中的前景物体的轮廓；</p>
-<p>场景文字识别：道路名、绿灯倒计时秒数、商店名称等，这些文字对于导盲功能的实现也是至关重要的。</p>
-<p>目标检测的一些常见模型架构：</p>
-<p>R-CNN</p>
-<p>Fast R-CNN</p>
-<p>Faster R-CNN</p>
-<p>Mask R-CNN</p>
-<p>SSD (Single Shot MultiBox Defender)</p>
-<p>YOLO (You Only Look Once)</p>
-<p><a href="https://www.sohu.com/a/340391518_120054440" target="_blank" rel="noopener">https://www.sohu.com/a/340391518_120054440</a></p>
-<p>图像语义分割的常见模型架构：<br>FCN, SegNet/DeconvNet，DeepLab。当然还有一些其他的结构方法，比如有用RNN来做的，还有更有实际意义的weakly-supervised方法等等</p>
-<ul>
-<li>Weakly- and Semi-Supervised Learning of a Deep Convolutional Network for Semantic Image Segmentation (用于语义分割的弱监督和半监督的深度神经网络)</li>
-<li>Fully Convolutional Networks for Semantic Segmentation (用于语义分割的全卷积神经网络)</li>
-<li>U-Net: Convolutional Networks for Biomedical Image Segmentation (用于生物医学图像的语义分割卷积神经网络)</li>
-<li>The One Hundred Layers Tiramisu: Fully Convolutional DenseNets for Semantic Segmentation （用于语义分割的全卷积DenseNet）</li>
-<li>Multi-Scale Context Aggregation by Dilated Convolutions (基于扩张卷积的多尺度上下文聚合)</li>
-<li>DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs(DeepLab: 使用深度神经网络，空洞卷积，和全连接CRF做语义分割的网络)</li>
-<li>Rethinking Atrous Convolution for Semantic Image Segmentation（语义分割中的空洞卷积的再思考）</li>
-<li>Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation（ 空间金字塔池化模块和编码-解码结构用于语义分割的深度网络结构.）</li>
-<li>FastFCN: Rethinking Dilated Convolution in the Backbone for Semantic Segmentation（Fast FCN:对语义分割分割后端的空洞卷积的再思考）</li>
-<li>Improving Semantic Segmentation via Video Propagation and Label Relaxation（通过视频传播和标签松弛改善语义分割）</li>
-<li>Gated-SCNN: Gated Shape CNNs for Semantic Segmentation（门控-SCNN: 用于语义分割的门控形状卷积神经网络）</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/17/xml-dom学习记录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/17/xml-dom学习记录/" itemprop="url">xml.dom学习记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-17T20:04:06+08:00">
-                2020-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>参考：<a href="https://www.cnblogs.com/xiaowuyi/archive/2012/10/17/2727912.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaowuyi/archive/2012/10/17/2727912.html</a><br>主要方法：</p>
-<p>minidom.parse(filename)：加载读取XML文件</p>
-<p>doc.documentElement：获取XML文档对象</p>
-<p>node.getAttribute(AttributeName)：获取XML节点属性值</p>
-<p>node.getElementsByTagName(TagName)：获取XML节点对象集合</p>
-<p>node.childNodes ：返回子节点列表。</p>
-<p>node.childNodes[index].nodeValue：获取XML节点值</p>
-<p>node.firstChild：访问第一个节点，等价于pagexml.childNodes[0]</p>
-<p>实践：逐层获取子Node的值</p>
-<p>源文件：</p>
-<p><img src="/images/pasted-92.png" alt="upload successful"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#encoding=utf-8</span><br><span class="line">from xml.dom.minidom import parse</span><br><span class="line">import xml.dom.minidom</span><br><span class="line">DOMTree = xml.dom.minidom.parse(&quot;/Users/ly/Documents/config.xml&quot;)</span><br><span class="line">root = DOMTree.documentElement #得到dom对象的根节点</span><br><span class="line">screenshotElementObj=root.getElementsByTagName(&quot;otherFiles&quot;)</span><br><span class="line">print(screenshotElementObj)</span><br><span class="line">if screenshotElementObj:</span><br><span class="line">    scobj=getElementsByTagName(&quot;otherFiles&quot;)[0].getElementsByTagName(&quot;string&quot;)</span><br><span class="line">    print(scobj)</span><br><span class="line">    print(&quot;childNodes：&quot;,scobj[0].childNodes)</span><br><span class="line">    for node in scobj[0].childNodes:</span><br><span class="line">        if node.nodeType in (node.TEXT_NODE,):           	      </span><br><span class="line">        	print(node.nodeName,node.nodeType,node.data)</span><br></pre></td></tr></table></figure>
-
-<p>运行结果：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[&lt;DOM Element: otherFiles at 0x10a0a54d0&gt;]</span><br><span class="line">[&lt;DOM Element: string at 0x10a0a55a8&gt;]</span><br><span class="line">(&apos;childNodes\xef\xbc\x9a&apos;, [&lt;DOM Text node &quot;u&apos;selenium-s&apos;...&quot;&gt;])</span><br><span class="line">(&apos;#text&apos;, 3, u&apos;selenium-screenshot-*.png&apos;)</span><br><span class="line">[Finished in 0.1s]</span><br></pre></td></tr></table></figure>
-
-<p>备注：</p>
-<ol>
-<li><p>获取节点后是个List，即使有一项也要记得别忘了加索引如<br>getElementsByTagName(“otherFiles”)</p>
-</li>
-<li><p>获取到childnotes节点后可以逐个判断若是text类型就打印，另外知道nodechild列表也可以直接通过索引打印，有时候可以替换成<br> print(“result:”,scobj[0].childNodes[0].data)</p>
-</li>
-<li><p>有时候提示没有data属性，可能就是None需要判断一下</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1699,7 +1756,7 @@ conda remove -n learn --all // 删除learn环境及下属所有包</code></pre><
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">81</span>
+                  <span class="site-state-item-count">83</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
