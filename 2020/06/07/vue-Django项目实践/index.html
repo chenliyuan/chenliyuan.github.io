@@ -87,8 +87,8 @@
 <meta property="og:description" content="Django跨域设置   pip install django-cors-header    setting中设置： &amp;apos;corsheaders.middleware.CorsMiddleware&amp;apos; # 新加的插件位置最好放在CommonMiddleware之前       INSTALLED_APPS中添加&amp;apos;corsheaders&amp;apos;,     CORS_O">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/pasted-114.png">
-<meta property="og:image" content="http://yoursite.com/images/pasted-115.png">
-<meta property="og:updated_time" content="2020-06-07T13:22:07.269Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-119.png">
+<meta property="og:updated_time" content="2020-06-30T03:07:59.566Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue+Django项目实践问题汇总">
 <meta name="twitter:description" content="Django跨域设置   pip install django-cors-header    setting中设置： &amp;apos;corsheaders.middleware.CorsMiddleware&amp;apos; # 新加的插件位置最好放在CommonMiddleware之前       INSTALLED_APPS中添加&amp;apos;corsheaders&amp;apos;,     CORS_O">
@@ -379,22 +379,10 @@ CORS_ALLOW_CREDENTIALS = True  //新增</code></pre></li>
 <p>在created调用，此时div还没有出来，无法在其基础上加载图片。改成mounted</p>
 </li>
 <li><p>如何修改ui-element样式？</p>
-<p>通过查看元素找到原有样式，再针对性进行修改。     </p>
+<p>通过查看元素找到原有样式，再针对性进行修改。       </p>
 </li>
-<li><p>align和text-align的区别<br>align直接写在是div的属性 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div align=&quot;center&quot;&gt; </span><br><span class="line">This is some text! </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>text-align则是Css的属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;text-align:center&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<ol start="14">
 <li><p>子组件传已选择项和所有项目，主组件全部接收后判断如果已选选项为空则取所有项，否则取已选选项</p>
 <p><img src="/images/pasted-114.png" alt="upload successful"></p>
-</li>
-<li><p>echarts的option内赋值，紧接着在外面值就为空了？</p>
-<p>this和that的问题，option内的this指的是option本身，非本组件</p>
 </li>
 <li><p>不可以直接绑定由props父组件传递过来的值，否则会报错</p>
 <p>[Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop’s value. Prop being mutated: “project”</p>
@@ -410,16 +398,103 @@ CORS_ALLOW_CREDENTIALS = True  //新增</code></pre></li>
 </li>
 </ul>
 </li>
-<li><p>padding  css设置方向，逆时针</p>
-<p><img src="/images/pasted-115.png" alt="upload successful"></p>
-</li>
 <li><p>引入的css样式没有生效？</p>
 <p>在main.js中引用未全部生效(局部生效，仅限于)，在app.vue中引用集体生效了<br><a href="https://blog.csdn.net/HY_358116732/article/details/82219387" target="_blank" rel="noopener">https://blog.csdn.net/HY_358116732/article/details/82219387</a></p>
 <p>即在app.vue中引入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> &lt;style&gt;</span><br><span class="line">@import &apos;./../static/css/global.css&apos;; /*引入公共样式*/</span><br><span class="line"> &lt;/style&gt;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>如何限制柱形图的条状宽度(竖着)？</p>
-<p>barMaxWidth barMinWidth</p>
+<li><p>Vue中使用svg  </p>
+<p><a href="https://zhuanlan.zhihu.com/p/67325098?1=1" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/67325098?1=1</a>  </p>
+</li>
+<li><p>html的link设置浏览器图标，如果不更换正确的图标原缓存很难清除掉，所以说如果新的图标没生效可能就是没设置对</p>
+<p>方法： 设置favicon.ico在static路径(图标有现成的话可以把别人下载下来己用哦)</p>
+</li>
+<li><p>ref和refs</p>
+<p>ref 被用来给DOM元素或子组件注册引用信息。引用信息会根据父组件的 $refs 对象进行注册。</p>
+<p>如果在普通的DOM元素上使用，引用信息就是元素; </p>
+<p>如果用在子组件上，引用信息就是组件实例,添加两个组件ref</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-form :model=&quot;form&quot; label-position=&quot;right&quot; :rules=&quot;rules&quot; ref=&quot;adviceForm&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>打印出两个组件对象：<br><img src="/images/pasted-119.png" alt="upload successful"><br>使用($refs引用)：</p>
+<pre><code>this.$refs.adviceForm.resetFields();</code></pre></li>
+<li><p>我们需要重置该页面的原始数据，每个数据进行重写特别麻烦。利用Object.assign 以及vue的数据可以快速重置。 </p>
+<pre><code>Object.assign(this.$data, this.$options.data())</code></pre></li>
+<li><p>分页实现</p>
+<pre><code>&lt;div class=&quot;paginationClass&quot;&gt;
+  &lt;el-pagination
+    @size-change=&quot;handleSizeChange&quot; //切换每页最多展示条数
+    @current-change=&quot;handleCurrentChange&quot;//切换页码
+    :page-sizes=&quot;[10, 20, 50]&quot;
+    :page-size=&quot;pagesize&quot;
+    layout=&quot;total, sizes, prev, pager, next, jumper&quot;
+    :total=&quot;total&quot;
+  &gt;&lt;/el-pagination&gt;
+&lt;/div&gt;</code></pre><p>方法实现：   </p>
+<pre><code>handleSizeChange: function(pagesize) {
+   // 每页条数切换
+   this.pagesize = pagesize;
+   if (pagesize &gt; 10) {
+     this.showtablehg = 800;
+   }
+   this.handleCurrentChange(this.currentPage);
+ },
+
+handleCurrentChange: function(currentPage) {
+   //页码切换
+   this.currentPage = currentPage;
+   this.getallbugs(currentPage);后端实现分页逻辑
+   // this.currentChangePage(this.bondsAllList, currentPage);
+
+ },
+ 前端实现分页逻辑(将当前页的数据取出给table绑定)：
+     currentChangePage(list, currentPage) {
+     let from = (currentPage - 1) * this.pagesize;
+     let to = currentPage * this.pagesize;
+     this.tempList = [];
+     for (; from &lt; to; from++) {
+       if (list[from]) {
+         this.tempList.push(list[from]);
+       }
+     }
+   },</code></pre><ol start="9">
+<li>为表格添加说明</li>
+</ol>
+<p>在el-table-column添加：<br>   :render-header=”renderHeader”<br>定义方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">   renderHeader(h, &#123; column, $index &#125;) &#123;</span><br><span class="line">        return h(</span><br><span class="line">          &quot;el-tooltip&quot;, //  标签的名称</span><br><span class="line">          &#123;</span><br><span class="line">            props: &#123;</span><br><span class="line">              //标签的参数　通过不同的标签 显示不同的文字</span><br><span class="line">              content: (function() &#123;</span><br><span class="line">                //如何拿到 label的文字？？ 通过column.label来拿</span><br><span class="line">                let property = column.property;</span><br><span class="line">                switch (property) &#123;</span><br><span class="line">                  case &quot;live_bugs&quot;:</span><br><span class="line">                    return &apos;我是提示文字live_bugs&apos;;</span><br><span class="line">                    break;</span><br><span class="line">                  case &quot;提示2&quot;:</span><br><span class="line">                    return &quot;提示文字2&quot;;</span><br><span class="line">                    break;</span><br><span class="line">                  case &quot;提示3&quot;:</span><br><span class="line">                    return &quot;提示文字3&quot;;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;)(),</span><br><span class="line">              placement: &quot;top&quot;</span><br><span class="line">              // effect: &quot;light&quot;,  //  默认为黑色主题</span><br><span class="line">            &#125;,</span><br><span class="line">            ///下面的意思是往el-tooltip　标签里面添加内容　column.label（拿到自己定义的显示内容：　拦截状态　）</span><br><span class="line">            domProps: &#123;</span><br><span class="line">              innerHTML:</span><br><span class="line">                column.label +</span><br><span class="line">                &apos;&lt;i class=&quot;el-icon-question&quot; style=&quot;margin-left:3px;font-size:15px;&quot;/&gt;&apos;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          [h(&quot;span&quot;)]</span><br><span class="line">        );</span><br><span class="line">      &#125;,</span><br><span class="line">  ```           </span><br><span class="line">10. 文件下载</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  对流文件可使用 Blob对象 和 使用 js-file-download</span><br><span class="line">  </span><br><span class="line">  发送请求时都要设置 responseType</span><br><span class="line">  </span><br><span class="line">  以下是完整的一个文件下载请求和处理过程：</span><br></pre></td></tr></table></figure>
+
+<p>{
+  var param = this.$qs.stringify(</p>
+<pre><code>{
+  sub_project: this.selectedsubproject,
+  src: this.selectedsrc,
+  version: this.selectedversion
+},
+{ indices: false }</code></pre><p>  );<br>  this.$axios</p>
+<pre><code>.post(&quot;version/task/detail/export/&quot;, param,{responseType: &apos;blob&apos;})
+.then(res =&gt; {
+
+const content = res.data
+const blob = new Blob([content]) // 构造一个blob对象来处理数据
+const fileName = &apos;test.xlsx&apos; // 导出文件名
+
+if (&apos;download&apos; in document.createElement(&apos;a&apos;)) { // 支持a标签download的浏览器
+  const link = document.createElement(&apos;a&apos;) // 创建a标签
+  link.download = fileName // a标签添加属性
+  link.style.display = &apos;none&apos;
+  link.href = URL.createObjectURL(blob)
+  document.body.appendChild(link)
+  link.click() // 执行下载
+  URL.revokeObjectURL(link.href) // 释放url
+  document.body.removeChild(link) // 释放标签
+} else { // 其他浏览器
+  navigator.msSaveBlob(blob, fileName)
+}
+})
+.catch(function(err) {
+  console.log(err);
+});</code></pre><p>},</p>
+<p>```
+参考：<a href="https://segmentfault.com/a/1190000020540788?utm_source=tag-newest" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020540788?utm_source=tag-newest</a></p>
 </li>
 </ol>
 
@@ -446,8 +521,8 @@ CORS_ALLOW_CREDENTIALS = True  //新增</code></pre></li>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/05/08/Vue学习笔记/" rel="next" title="Vue学习笔记">
-                <i class="fa fa-chevron-left"></i> Vue学习笔记
+              <a href="/2020/05/08/Vue学习笔记/" rel="next" title="Vue父子组件传值">
+                <i class="fa fa-chevron-left"></i> Vue父子组件传值
               </a>
             
           </div>
@@ -455,6 +530,10 @@ CORS_ALLOW_CREDENTIALS = True  //新增</code></pre></li>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/06/09/vue线上部署和维护/" rel="prev" title="vue线上部署和维护">
+                vue线上部署和维护 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -522,7 +601,7 @@ CORS_ALLOW_CREDENTIALS = True  //新增</code></pre></li>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">83</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

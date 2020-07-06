@@ -261,6 +261,1010 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/elementui使用小记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/24/elementui使用小记/" itemprop="url">elementui使用小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-24T11:26:36+08:00">
+                2020-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>需求：表格上拉加载刷新</p>
+<p>尝试单独使用InfiniteScroll 无限滚动 解决，但是一直存在两个问题</p>
+<ol>
+<li>每次重复执行3次</li>
+<li>第二次上拉时不加载</li>
+</ol>
+<p>猜测由于表格特定格式单纯使用InfiniteScroll 受限</p>
+<p>【解决】使用<code>el-table-infinite-scroll</code>指令结合elmentui中<code>infinite-scroll-disabled=&quot;disabled&quot;</code></p>
+<p>参考：<a href="https://zhuanlan.zhihu.com/p/114965548" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/114965548</a></p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/echarts使用小记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/22/echarts使用小记/" itemprop="url">echarts使用小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-22T14:12:45+08:00">
+                2020-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>echarts及option配置应用</p>
+<pre><code>import echarts from &apos;echarts&apos;;
+Vue.prototype.$echarts = echarts;
+
+import { bar_option, pie_option, line_bugrate_option } from &apos;@/components/chart_options/echart_options.js&apos;;
+Vue.prototype.$echartoptions = { bar_option, line_bugrate_option, pie_option };
+使用
+myChart.setOption(this.$echartoptions.line_bugrate_option);</code></pre></li>
+<li><p>echarts的option内赋值，紧接着在外面值就为空了？</p>
+<p> this和that的问题，option内的this指的是option本身，非本组件</p>
+</li>
+<li><p>如何限制柱形图的条状宽度(竖着)？</p>
+<p>barMaxWidth barMinWidth</p>
+</li>
+<li><p>echarts饼图提示线长度设置</p>
+<pre><code>labelLine:{
+normal:{
+    length:1,//第一段，紧跟饼图
+    length2:6//第二段，距离最远
+}</code></pre><p>   },<br>echarts icon图标格式只支持两种，dataURI和path://</p>
+<p>对于多个path构成的矢量图，可采用dataURL方式，在线很方便转换。</p>
+</li>
+<li><p>Echarts图表重复问题</p>
+<p> 除了数据源需要重置外，echarts需要重置myChart.clear();</p>
+</li>
+<li><p>区分横轴不同文案展示，在xAxis下设置axisLabel：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">axisLabel= &#123;</span><br><span class="line">         formatter: function(value, index) &#123;</span><br><span class="line">           if (value.search(&quot;QA&quot;) != -1) return &quot;&#123;a|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           else if (value.search(&quot;BE&quot;) != -1) &#123;</span><br><span class="line">             return &quot;&#123;b|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           &#125; else &#123;</span><br><span class="line">             return &quot;&#123;c|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;,</span><br><span class="line">         rich: &#123;</span><br><span class="line">           a: &#123;</span><br><span class="line">             color: &quot;red&quot;,</span><br><span class="line">             height: 40,</span><br><span class="line">             fontWeight: &quot;bold&quot;,</span><br><span class="line">           &#125;,</span><br><span class="line">           b: &#123;</span><br><span class="line">             color: &quot;blue&quot;,</span><br><span class="line">             height: 40,</span><br><span class="line">             fontWeight: &quot;bold&quot;,</span><br><span class="line"></span><br><span class="line">           &#125;,</span><br><span class="line">           c: &#123;</span><br><span class="line">             color: &quot;green&quot;,</span><br><span class="line">              height: 40,</span><br><span class="line"></span><br><span class="line">             fontWeight: &quot;bold&quot;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;</span><br><span class="line">       </span><br><span class="line">     &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义提示窗口</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">toolbox: &#123;</span><br><span class="line">      feature: &#123;</span><br><span class="line">        myTool2: &#123;</span><br><span class="line">          show: true, //是否显示</span><br><span class="line">          title: &quot;近半年趋势分析&quot;, //鼠标移动上去显示的文字     &quot;image://data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAFHklEQVRoQ+1Ze0xbVRj/fS2&quot;,</span><br><span class="line">          onclick: function() &#123;</span><br><span class="line">            that.piechartname = chartname;</span><br><span class="line">            that.titlename = &quot;近6个月&quot; + title + &quot;趋势图&quot;;</span><br><span class="line">            that.dialogVisible = true;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/CSS使用小记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/22/CSS使用小记/" itemprop="url">CSS使用小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-22T11:25:20+08:00">
+                2020-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>box-shadow 参数(除了color其他单位都是px)</p>
+<pre><code>h-shadow    必需的。水平阴影的位置。允许负值
+v-shadow    必需的。垂直阴影的位置。允许负值
+blur    可选。模糊距离
+spread    可选。阴影的大小
+color    可选。阴影的颜色
+inset</code></pre><p>前两项横竖方向决定了投影方向</p>
+<p>blur 值越大阴影越模糊</p>
+<p>spread值越大范围越大</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow:10px 10px 5px 20px #ee4d2d</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-116.png" alt="upload successful">  </p>
+<p>加inset效果：</p>
+<p><img src="/images/pasted-117.png" alt="upload successful"></p>
+</li>
+<li><p>padding 设置方向，逆时针（即上 右 下 左）</p>
+<p><img src="/images/pasted-115.png" alt="upload successful"></p>
+<p>若只有两项，则是上下、左右；一项是所有</p>
+<p>margin同理</p>
+</li>
+<li><p>align和text-align的区别<br>align直接写在是div的属性 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div align=&quot;center&quot;&gt; </span><br><span class="line">This is some text! </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>text-align则是Css的属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;text-align:center&quot;&gt;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/19/nginx知识小记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/19/nginx知识小记/" itemprop="url">nginx使用小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-19T10:38:15+08:00">
+                2020-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>常用命令：</p>
+<pre><code>nginx -s stop   直接干掉服务
+start nginx     启动服务
+nginx -s quit         优雅停止nginx，有连接时会等连接请求完成再杀死worker进程  
+ nginx -s reload     优雅重启，并重新载入配置文件nginx.conf
+ nginx -s reopen     重新打开日志文件，一般用于切割日志
+ nginx -v            查看版本  
+ nginx -t            检查nginx的配置文件
+ nginx -h            查看帮助信息
+ nginx -V       详细版本信息，包括编译参数 
+ nginx  -c filename  指定配置文件</code></pre></li>
+<li><p>查找和安装：</p>
+<pre><code>sudo apt-get install nginx
+cd /etc/nginx/conf.d
+查找
+find / -name nginx.conf   2&gt;/dev/null</code></pre></li>
+<li><p>没有root权限？</p>
+<p> 以非root权限安装nginx及运行:<br> <a href="https://www.cnblogs.com/xmaples/p/5836818.html" target="_blank" rel="noopener">https://www.cnblogs.com/xmaples/p/5836818.html</a></p>
+<p> 测试<br> pgrep -a nginx<br> nginx -c /home/ld-sgdev/liyuan_chen/nginx.conf<br> 验证<br> curl localhost:8080<br> 使用命令：<br> lsof -i :8080</p>
+</li>
+<li><p>修改nginx重启后未生效？<br> 很多进程需要逐一杀除</p>
+<p> ps -ef|grep nginx|awk ‘{print $2}’|xargs kill -9</p>
+</li>
+<li><p>nginx: [error] open() “/usr/local/var/run/nginx.pid” failed (2: No such file or directory)</p>
+<p> 直接启动命令nginx(非重启)，重新生成nginx.pid就可以了：</p>
+</li>
+<li><p>Mixed Content: The page at ‘xxx’ was loaded over HTTPS, but requested an insecure resource ‘xxx’.</p>
+<p>【解决】添加：<code>&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;upgrade-insecure-requests&quot;&gt;</code></p>
+</li>
+<li><p>mac 使用brew安装后默认地址：</p>
+<p>/usr/local/etc/nginx/nginx.conf </p>
+<p>默认端口占用8080</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/18/JS语法汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/18/JS语法汇总/" itemprop="url">JS语法使用小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-18T18:09:11+08:00">
+                2020-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>JS合并两个数组</p>
+<pre><code>a.push.apply(a,[4,5,6]);    </code></pre></li>
+<li><p>JS 排序功能</p>
+<p>  array.sort(fun)；参数fun可选，规定排序顺序。默认字母排序</p>
+<p>  示例：</p>
+<pre><code>var arr3 = [30,10,111,35,1899,50,45];
+arr3.sort(function(a,b){
+ return a - b;
+})
+console.log(arr3);//输出 [10, 30, 35, 45, 50, 111, 1899]</code></pre><p>   多属性判断排序(在project&amp;role相同的情况下才排序)</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">    export function compare(property, index, type) &#123;</span><br><span class="line">    return function(a, b) &#123;</span><br><span class="line">        if (a.project == b.project &amp;&amp; a.role == b.role) &#123;</span><br><span class="line">            var value1 = a[property][index];</span><br><span class="line">            var value2 = b[property][index];</span><br><span class="line">            if (type == &quot;ascending&quot;) &#123;</span><br><span class="line">                return value1 - value2;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return value2 - value1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<pre><code>具体可参考：https://www.cnblogs.com/lyc10/p/11348419.html</code></pre><ol start="6">
+<li><p>filter()函数</p>
+<p> 和map()类似，Array的filter()也接收一个函数。和map()不同的是，filter()把传入的函数依次作用于每个元素，然后根据返回值是true还是false决定保留还是丢弃该元素。</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+        var arr = [0,1,2,3,4,5,1,4,0];
+        var arr_filter = arr.filter(function(x){
+            return x%2 == 0;/* 筛选偶数 */ 
+        })
+        console.log(arr_filter)
+    &lt;/script&gt;</code></pre><p> 参考：<a href="https://www.cnblogs.com/jianxian/p/10582683.html" target="_blank" rel="noopener">https://www.cnblogs.com/jianxian/p/10582683.html</a></p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/vue线上部署和维护/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/09/vue线上部署和维护/" itemprop="url">vue线上部署和维护</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-09T11:55:38+08:00">
+                2020-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h6 id="二、数据传输"><a href="#二、数据传输" class="headerlink" title="二、数据传输"></a>二、数据传输</h6><pre><code>简单办法：启动本地服务：
+
+  python3 -m http.server 8000（python3）
+  curl -O  http://10.12.169.57:8000/dist.tar.gz</code></pre><p>####CSS文件不生效问题：<br>解决：1.  设置一些配置信息？—–依旧未生效<br><a href="https://www.jb51.net/article/174089.htm" target="_blank" rel="noopener">https://www.jb51.net/article/174089.htm</a></p>
+<h6 id="三、-域名配置"><a href="#三、-域名配置" class="headerlink" title="三、 域名配置"></a>三、 域名配置</h6><pre><code>netstat -nltp 查看
+
+切换至root  :sudo su root</code></pre><h6 id="四、-vue项目"><a href="#四、-vue项目" class="headerlink" title="四、 vue项目"></a>四、 vue项目</h6><ol>
+<li><p>引用的css样式文件大部分没有生效？</p>
+<p>【解决】</p>
+<ol>
+<li><p>一共三种引用方式，在main.js\index.html\app.vue中引入。<br>其中app中引入:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  @import &apos;./../static/css/global.css&apos;; /*引入公共样式*/</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>参考： <a href="https://blog.csdn.net/HY_358116732/article/details/82219387" target="_blank" rel="noopener">https://blog.csdn.net/HY_358116732/article/details/82219387</a></p>
+</li>
+<li><p>将element-ui的引用提到最最前面</p>
+</li>
+</ol>
+<p>因为引用的css样式是针对此ui进行的覆盖修改，所以需要在其后面引用，才起到覆盖的作用。</p>
+</li>
+<li><p>传文件使用 gitlab一致报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added &apos;gitlab.com,172.65.251.78&apos; (ECDSA) to the list of known hosts.</span><br><span class="line">Permission denied (publickey).</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>ping一下gitlab.com获取ip,然后设置host对应gitlab.com</p>
+<ol start="3">
+<li><p>上线步骤：</p>
+<pre><code>更改google认证，改成线上id
+本地和git上：清除dist文件
+npm run build pro
+生成dist文件拷贝到git文件(同步使用)
+git add .
+git commit -m &quot;update&quot;
+git push
+服务端git pull</code></pre></li>
+<li><p>浏览器缓存问题</p>
+<ul>
+<li><p>(1) nginx配置修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add_header Cache-Control &quot;no-cache, no-store&quot;;</span><br><span class="line">add_header Pragma no-cache;//http 1.0旧版本</span><br></pre></td></tr></table></figure>
+
+<p> no-cache, no-store选择一个即可</p>
+<p> no-cache浏览器会缓存，但刷新页面或者重新打开时 会请求服务器，服务器可以响应304，如果文件有改动就会响应200</p>
+<p>no-store浏览器不缓存，刷新页面需要重新下载页面</p>
+<p>Nginx下关于缓存控制字段cache-control的配置说明:<br><a href="https://www.cnblogs.com/kevingrace/p/10459429.html" target="_blank" rel="noopener">https://www.cnblogs.com/kevingrace/p/10459429.html</a></p>
+</li>
+<li><p>(2) 修改文件 webpack .prod.conf.js,使用时间戳动态定义版本号</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const Version = new Date().getTime();</span><br><span class="line">...</span><br><span class="line">filename: utils.assetsPath(&apos;js/[name].[chunkhash]._&apos; + Version + &apos;.js&apos;),</span><br><span class="line">...</span><br><span class="line">filename: utils.assetsPath(&apos;css/[name].[contenthash]._&apos; + Version + &apos;.css&apos;),</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<p> 但是后来经过实践证明，只需要配置nginx即可，每次刷新即可更新。猜测</p>
+<ol>
+<li><p>每次html不取缓存，拿到的js都是实际服务器文件</p>
+</li>
+<li><p>脚手架本身使用hash生成js和css文件，会根据改动更新文件名</p>
+<p>具体hash:</p>
+</li>
+</ol>
+<h6 id="五、google认证"><a href="#五、google认证" class="headerlink" title="五、google认证"></a>五、google认证</h6><ol>
+<li><p>开发者平台：<a href="https://console.developers.google.com/apis/credentials?project=probable-goods-278213&amp;supportedpurview=project" target="_blank" rel="noopener">https://console.developers.google.com/apis/credentials?project=probable-goods-278213&amp;supportedpurview=project</a></p>
+<p>在以上google开发者平台注册Client ID。</p>
+<p>分别在Authorized JavaScript origins 和Authorized redirect URIs 处注册</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://localhost:8080//本地</span><br><span class="line">https://test.test.io //线上</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>利用其写登陆功能：    </p>
+<p><a href="https://www.npmjs.com/package/vue-google-signin-button" target="_blank" rel="noopener">https://www.npmjs.com/package/vue-google-signin-button</a></p>
+</li>
+</ol>
+<p>具体步骤：</p>
+<pre><code>1. npm install vue-google-signin-button
+
+2. 添加
+&lt;script src=&quot;static/utils/googleclient.js&quot;&gt;&lt;/script&gt;
+...
+import GSignInButton from &apos;vue-google-signin-button&apos;
+Vue.use(GSignInButton)
+
+3. 登陆页
+    &lt;template&gt;
+  &lt;g-signin-button
+    :params=&quot;googleSignInParams&quot;
+    @success=&quot;onSignInSuccess&quot;
+    @error=&quot;onSignInError&quot;&gt;
+    Sign in with Google
+  &lt;/g-signin-button&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data () {
+    return {
+      /**
+       * The Auth2 parameters, as seen on
+       * https://developers.google.com/identity/sign-in/web/reference#gapiauth2initparams.
+       * As the very least, a valid client_id must present.
+       * @type {Object} 
+       */
+      googleSignInParams: {
+        client_id: &apos;YOUR_APP_CLIENT_ID.apps.googleusercontent.com&apos;
+      }
+    }
+  },
+  methods: {
+    onSignInSuccess (googleUser) {
+      // `googleUser` is the GoogleUser object that represents the just-signed-in user.
+      // See https://developers.google.com/identity/sign-in/web/reference#users
+      const profile = googleUser.getBasicProfile() // etc etc
+    },
+    onSignInError (error) {
+      // `error` contains any error occurred.
+      console.log(&apos;OH NOES&apos;, error)
+    }
+  }
+}
+   &lt;/script&gt; 
+    &lt;style&gt;
+.g-signin-button {
+  /* This is where you control how the button looks. Be creative! */
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 3px;
+  background-color: #3c82f7;
+  color: #fff;
+  box-shadow: 0 3px 0 #0f69ff;
+}
+&lt;/style&gt; </code></pre><ol>
+<li><p>打包后js文件 </p>
+<pre><code> app.js：基本就是你实际编写的那个app.vue(.vue或.js?),没这个页面跑不起来.
+
+vendor.js:vue-cli全家桶默认配置里面这个chunk就是将所有从node_modules/里require(import)的依赖都打包到这里，所以这个就是所有node_modules/下的被require(import)的js文件
+
+manifest.js: 最后一个chunk，被注入了webpackJsonp的定义及异步加载相关的定义(webpack调用CommonsChunkPlugin处理后模块管理的核心,因为是核心,所以要第一个进行加载,不然会报错).
+
+作者：_双眸
+链接：https://www.jianshu.com/p/7a888571522d
+来源：简书
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</code></pre><h6 id="六、解决问题思路"><a href="#六、解决问题思路" class="headerlink" title="六、解决问题思路"></a>六、解决问题思路</h6><p>关键block问题要学会问人，不要怕丢人</p>
+</li>
+</ol>
+<h6 id="七、-http和https实际上是跨域问题！！！"><a href="#七、-http和https实际上是跨域问题！！！" class="headerlink" title="七、 http和https实际上是跨域问题！！！"></a>七、 http和https实际上是跨域问题！！！</h6><p>  本地调试如果不设置会默认Https访问，但是服务端只能接收http协议，所以需要处理<br>  config/index.js:</p>
+<pre><code>proxyTable: {
+    &apos;/measurement&apos;: {
+        target: &apos;http://10.12.170.210:8000&apos;, //后端接口地址
+        changeOrigin: true, //是否允许跨越
+        pathRewrite: {
+            &apos;^/measurement&apos;: &apos;/measurement&apos;, //重写,
+        }
+    }
+},</code></pre><p>和
+main.js:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.baseURL = &apos;/measurement&apos;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/07/vue-Django项目实践/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -377,22 +1381,10 @@ CORS_ALLOW_CREDENTIALS = True  //新增</code></pre></li>
 <p>在created调用，此时div还没有出来，无法在其基础上加载图片。改成mounted</p>
 </li>
 <li><p>如何修改ui-element样式？</p>
-<p>通过查看元素找到原有样式，再针对性进行修改。     </p>
+<p>通过查看元素找到原有样式，再针对性进行修改。       </p>
 </li>
-<li><p>align和text-align的区别<br>align直接写在是div的属性 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div align=&quot;center&quot;&gt; </span><br><span class="line">This is some text! </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>text-align则是Css的属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;text-align:center&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-<ol start="14">
 <li><p>子组件传已选择项和所有项目，主组件全部接收后判断如果已选选项为空则取所有项，否则取已选选项</p>
 <p><img src="/images/pasted-114.png" alt="upload successful"></p>
-</li>
-<li><p>echarts的option内赋值，紧接着在外面值就为空了？</p>
-<p>this和that的问题，option内的this指的是option本身，非本组件</p>
 </li>
 <li><p>不可以直接绑定由props父组件传递过来的值，否则会报错</p>
 <p>[Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop’s value. Prop being mutated: “project”</p>
@@ -408,16 +1400,103 @@ CORS_ALLOW_CREDENTIALS = True  //新增</code></pre></li>
 </li>
 </ul>
 </li>
-<li><p>padding  css设置方向，逆时针</p>
-<p><img src="/images/pasted-115.png" alt="upload successful"></p>
-</li>
 <li><p>引入的css样式没有生效？</p>
 <p>在main.js中引用未全部生效(局部生效，仅限于)，在app.vue中引用集体生效了<br><a href="https://blog.csdn.net/HY_358116732/article/details/82219387" target="_blank" rel="noopener">https://blog.csdn.net/HY_358116732/article/details/82219387</a></p>
 <p>即在app.vue中引入</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"> &lt;style&gt;</span><br><span class="line">@import &apos;./../static/css/global.css&apos;; /*引入公共样式*/</span><br><span class="line"> &lt;/style&gt;</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>如何限制柱形图的条状宽度(竖着)？</p>
-<p>barMaxWidth barMinWidth</p>
+<li><p>Vue中使用svg  </p>
+<p><a href="https://zhuanlan.zhihu.com/p/67325098?1=1" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/67325098?1=1</a>  </p>
+</li>
+<li><p>html的link设置浏览器图标，如果不更换正确的图标原缓存很难清除掉，所以说如果新的图标没生效可能就是没设置对</p>
+<p>方法： 设置favicon.ico在static路径(图标有现成的话可以把别人下载下来己用哦)</p>
+</li>
+<li><p>ref和refs</p>
+<p>ref 被用来给DOM元素或子组件注册引用信息。引用信息会根据父组件的 $refs 对象进行注册。</p>
+<p>如果在普通的DOM元素上使用，引用信息就是元素; </p>
+<p>如果用在子组件上，引用信息就是组件实例,添加两个组件ref</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-form :model=&quot;form&quot; label-position=&quot;right&quot; :rules=&quot;rules&quot; ref=&quot;adviceForm&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+<p>打印出两个组件对象：<br><img src="/images/pasted-119.png" alt="upload successful"><br>使用($refs引用)：</p>
+<pre><code>this.$refs.adviceForm.resetFields();</code></pre></li>
+<li><p>我们需要重置该页面的原始数据，每个数据进行重写特别麻烦。利用Object.assign 以及vue的数据可以快速重置。 </p>
+<pre><code>Object.assign(this.$data, this.$options.data())</code></pre></li>
+<li><p>分页实现</p>
+<pre><code>&lt;div class=&quot;paginationClass&quot;&gt;
+  &lt;el-pagination
+    @size-change=&quot;handleSizeChange&quot; //切换每页最多展示条数
+    @current-change=&quot;handleCurrentChange&quot;//切换页码
+    :page-sizes=&quot;[10, 20, 50]&quot;
+    :page-size=&quot;pagesize&quot;
+    layout=&quot;total, sizes, prev, pager, next, jumper&quot;
+    :total=&quot;total&quot;
+  &gt;&lt;/el-pagination&gt;
+&lt;/div&gt;</code></pre><p>方法实现：   </p>
+<pre><code>handleSizeChange: function(pagesize) {
+   // 每页条数切换
+   this.pagesize = pagesize;
+   if (pagesize &gt; 10) {
+     this.showtablehg = 800;
+   }
+   this.handleCurrentChange(this.currentPage);
+ },
+
+handleCurrentChange: function(currentPage) {
+   //页码切换
+   this.currentPage = currentPage;
+   this.getallbugs(currentPage);后端实现分页逻辑
+   // this.currentChangePage(this.bondsAllList, currentPage);
+
+ },
+ 前端实现分页逻辑(将当前页的数据取出给table绑定)：
+     currentChangePage(list, currentPage) {
+     let from = (currentPage - 1) * this.pagesize;
+     let to = currentPage * this.pagesize;
+     this.tempList = [];
+     for (; from &lt; to; from++) {
+       if (list[from]) {
+         this.tempList.push(list[from]);
+       }
+     }
+   },</code></pre><ol start="9">
+<li>为表格添加说明</li>
+</ol>
+<p>在el-table-column添加：<br>   :render-header=”renderHeader”<br>定义方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">   renderHeader(h, &#123; column, $index &#125;) &#123;</span><br><span class="line">        return h(</span><br><span class="line">          &quot;el-tooltip&quot;, //  标签的名称</span><br><span class="line">          &#123;</span><br><span class="line">            props: &#123;</span><br><span class="line">              //标签的参数　通过不同的标签 显示不同的文字</span><br><span class="line">              content: (function() &#123;</span><br><span class="line">                //如何拿到 label的文字？？ 通过column.label来拿</span><br><span class="line">                let property = column.property;</span><br><span class="line">                switch (property) &#123;</span><br><span class="line">                  case &quot;live_bugs&quot;:</span><br><span class="line">                    return &apos;我是提示文字live_bugs&apos;;</span><br><span class="line">                    break;</span><br><span class="line">                  case &quot;提示2&quot;:</span><br><span class="line">                    return &quot;提示文字2&quot;;</span><br><span class="line">                    break;</span><br><span class="line">                  case &quot;提示3&quot;:</span><br><span class="line">                    return &quot;提示文字3&quot;;</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;)(),</span><br><span class="line">              placement: &quot;top&quot;</span><br><span class="line">              // effect: &quot;light&quot;,  //  默认为黑色主题</span><br><span class="line">            &#125;,</span><br><span class="line">            ///下面的意思是往el-tooltip　标签里面添加内容　column.label（拿到自己定义的显示内容：　拦截状态　）</span><br><span class="line">            domProps: &#123;</span><br><span class="line">              innerHTML:</span><br><span class="line">                column.label +</span><br><span class="line">                &apos;&lt;i class=&quot;el-icon-question&quot; style=&quot;margin-left:3px;font-size:15px;&quot;/&gt;&apos;</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;,</span><br><span class="line">          [h(&quot;span&quot;)]</span><br><span class="line">        );</span><br><span class="line">      &#125;,</span><br><span class="line">  ```           </span><br><span class="line">10. 文件下载</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  对流文件可使用 Blob对象 和 使用 js-file-download</span><br><span class="line">  </span><br><span class="line">  发送请求时都要设置 responseType</span><br><span class="line">  </span><br><span class="line">  以下是完整的一个文件下载请求和处理过程：</span><br></pre></td></tr></table></figure>
+
+<p>{
+  var param = this.$qs.stringify(</p>
+<pre><code>{
+  sub_project: this.selectedsubproject,
+  src: this.selectedsrc,
+  version: this.selectedversion
+},
+{ indices: false }</code></pre><p>  );<br>  this.$axios</p>
+<pre><code>.post(&quot;version/task/detail/export/&quot;, param,{responseType: &apos;blob&apos;})
+.then(res =&gt; {
+
+const content = res.data
+const blob = new Blob([content]) // 构造一个blob对象来处理数据
+const fileName = &apos;test.xlsx&apos; // 导出文件名
+
+if (&apos;download&apos; in document.createElement(&apos;a&apos;)) { // 支持a标签download的浏览器
+  const link = document.createElement(&apos;a&apos;) // 创建a标签
+  link.download = fileName // a标签添加属性
+  link.style.display = &apos;none&apos;
+  link.href = URL.createObjectURL(blob)
+  document.body.appendChild(link)
+  link.click() // 执行下载
+  URL.revokeObjectURL(link.href) // 释放url
+  document.body.removeChild(link) // 释放标签
+} else { // 其他浏览器
+  navigator.msSaveBlob(blob, fileName)
+}
+})
+.catch(function(err) {
+  console.log(err);
+});</code></pre><p>},</p>
+<p>```
+参考：<a href="https://segmentfault.com/a/1190000020540788?utm_source=tag-newest" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020540788?utm_source=tag-newest</a></p>
 </li>
 </ol>
 
@@ -487,7 +1566,7 @@ CORS_ALLOW_CREDENTIALS = True  //新增</code></pre></li>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/05/08/Vue学习笔记/" itemprop="url">Vue学习笔记</a></h1>
+                <a class="post-title-link" href="/2020/05/08/Vue学习笔记/" itemprop="url">Vue父子组件传值</a></h1>
         
 
         <div class="post-meta">
@@ -842,870 +1921,6 @@ report,html：为测试报告，整理性的展示测试用例的运行情况</c
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/cmd批处理命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/12/cmd批处理命令/" itemprop="url">cmd批处理命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-12T21:44:20+08:00">
-                2020-04-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.cnblogs.com/xpwi/p/9626959.html" target="_blank" rel="noopener">https://www.cnblogs.com/xpwi/p/9626959.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/tesseract训练字库/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/12/tesseract训练字库/" itemprop="url">tesseract训练字库</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-12T13:50:29+08:00">
-                2020-04-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="准备条件："><a href="#准备条件：" class="headerlink" title="准备条件："></a>准备条件：</h4><ol>
-<li>tesseract-OCR   exe  我使用的是c5.0</li>
-<li>jdk</li>
-<li>jTessBoxEditor </li>
-</ol>
-<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ol>
-<li><p>单张图片可直接使用如下命令生成box文件：<br>tesseract myfontlab.normal.exp01.png myfontlab.normal.exp01 -l eng+chi_sim  batch.nochop makebox</p>
-<p>【语法】：tesseract [lang].[fontname].exp[num].tif [lang].[fontname].exp[num] batch.nochop makebox<br>【语法】：<br>lang为语言名称，为了不影响本有的语言eng，chi_sim等等，取成别的,比如数字可以是num,中文myfontlab myeng等<br>fontname为你对这门语言某一字体，你可以填任何你记得住的比如 trumpsb，normal;<br>num为序号；<br>在tesseract中，一定要注意格式</p>
-<p>多张图片，需先使用jTessBoxEditor 的train.bat 合并所有图片为一个tif文件然后使用命令生成box文件</p>
-<p>tesseract myfontlab.normal.exp01.tif myfontlab.normal.exp01 -l eng+chi_sim  batch.nochop makebox</p>
-</li>
-<li><p>用jTessBoxEditor 的train.bat打开tif文件，然后根据实际情况修改box文件，去除多余空格，修改识别文字。</p>
-</li>
-<li><p>产生字符特征文件，生成.tr文件。命令<br>单张推荐：<br>tesseract  myfontlab.normal.exp01.png  myfontlab.normal.exp01  nobatch box.train<br>多张推荐：<br>tesseract myfontlab.normal.exp01.tif myfontlab.normal.exp0 nobatch box.train  </p>
-</li>
-<li><p>生成字符集文件，生产unicharset文件。命令<br>unicharset_extractor myfontlab.normal.exp01.box</p>
-</li>
-<li><p>新建一个font_properties文件。注意，文件的名字就是font_properties，它没有.txt后缀。<br>里面内容写入 normal 0 0 0 0 0 表示默认普通字体</p>
-</li>
-<li><p>生成shape文件，生成五个文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shapeclustering -F font_properties -U unicharset myfontlab.normal.exp01.tr</span><br><span class="line"></span><br><span class="line">mftraining -F font_properties -U unicharset -O unicharset myfontlab.normal.exp01.tr</span><br><span class="line">cntraining myfontlab.normal.exp01.tr</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在这五个文件前加上normal.</p>
-</li>
-<li><p>合并五个文件，执行如下命令，会生成目标文件normal.traineddata，<br>combine_tessdata normal.</p>
-</li>
-<li><p>该文件就是训练好的字库。将它复制到你安装的Tesseract程序目录下的“tessdata”目录下即可。</p>
-</li>
-<li><p>验证：tesseract myfontlab.normal.exp01.png out –l normal  查看生成的out.txt文件</p>
-</li>
-</ol>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
-<li>中英文一块识别率很低？使用+连接<br>如： tesseract 05.png 05 -l chi_sim+eng<br>eng+chi_sim效果更好？试了一个案例验证没区别，不知道大数据是不是真的。</li>
-<li>最后有一个识别失败的案例，比如A竟然没有识别出来(box调试的时候已经识别出来了)<br>原因是Box里面A的范围不准确，有两个框，把最外面的删掉，剩余最内部分框框就好了。</li>
-<li>Other case a of A is not in unicharset<br>事实证明这个报错对识别结果未有影响</li>
-<li>语法说明：</li>
-</ol>
-<p>tesseract imagename outputbase [-l lang] [-psm pagesegmode] [configfile…]</p>
-<p>tesseract 图片名 输出文件名 -l 字库文件 -psm pagesegmode 配置文件<br>例如：<br>tesseract test.jpg result -l eng -psm 7 nobatch</p>
-<p>-l eng 表示用英文文字库（默认使用英文。如需要下载中文字库文件，解压后，存放到tessdata目录下去,字库文件扩展名为 .raineddata 简体中文字库文件名为: chi_sim.traineddata，命令为：chi_sim）</p>
-<p>-psm 7 表示告诉tesseract test.jpg图片是一行文本 这个参数可以减少识别错误率. 默认为 3</p>
-<p>configfile 参数值为tessdata\configs 和 tessdata\tessconfigs 目录下的文件名.</p>
-<p>————————————————<br>版权声明：本文为CSDN博主「_Cassie」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/wangyongxia921/article/details/52809079" target="_blank" rel="noopener">https://blog.csdn.net/wangyongxia921/article/details/52809079</a></p>
-<p>参考</p>
-<p><a href="https://blog.csdn.net/qq_31112205/article/details/100159963" target="_blank" rel="noopener">https://blog.csdn.net/qq_31112205/article/details/100159963</a></p>
-<p><a href="https://www.cnblogs.com/wj-1314/p/9454656.html" target="_blank" rel="noopener">https://www.cnblogs.com/wj-1314/p/9454656.html</a></p>
-<p><a href="https://www.cnblogs.com/pyweb/p/11457519.html" target="_blank" rel="noopener">https://www.cnblogs.com/pyweb/p/11457519.html</a>  多样本</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/labelme安装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/29/labelme安装/" itemprop="url">labelme安装和使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-29T21:40:51+08:00">
-                2020-03-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>windows下安装和使用labelme </p>
-<p> 参考：<a href="https://www.jb51.net/article/166528.htm" target="_blank" rel="noopener">https://www.jb51.net/article/166528.htm</a></p>
-<p>  其中anaconda下载使用这个网址，(在官网下载快完成的时候停止了浪费了大把时间…)</p>
-<p><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
-<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>1、管理员身份打开 anaconda prompt</p>
-<p>2、输入命令：conda create –name=labelme python=3.6</p>
-<p>3、输入命令：activate labelme</p>
-<p>(若环境未成功激活，则改用本地cmd)</p>
-<p>4、输入命令：pip install pyqt5，pip install pyside2(自己刚开始没有安装pyside2,运行 \anaconda安装目录\envs\labelme\Scripts\label_json_to_dataset.exe 会出现module “pyside”缺失错误)</p>
-<p>5、输入命令：pip install labelme（由于网络原因或者库的地址，经常运行一半出现错误，不要气馁，多执行几次）</p>
-<p>6、输入命令：labelme 即可打开labelme。如下：</p>
-<p>7、如果将单个json文件生成数据集，运行命令：</p>
-<p>\anaconda安装目录\envs\labelme\Scripts\label_json_to_dataset.exe    \保存xx.json文件地址</p>
-<p>xx.json 会成生成五个文件 img.png，info.yaml，label.png，label_names，label_viz.png。其中label.png即是我们要的label_data了。</p>
-<p>8、批量将json文件生成数据集。编写脚本如下：               </p>
-<pre><code>import os
-path = &apos;D:\\paper\\data\\&apos;  # path是你存放json的路径
-json_file = os.listdir(path)
-for file in json_file:
-    os.system(&quot;python C:\\Users\\Monica\\.conda\\envs\\labelme\\Scripts\\labelme_json_to_dataset.exe %s&quot;%(path + file))</code></pre><p><img src="%5Cimages%5Cpasted-102.png" alt="upload successful"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/22/图像处理坐标/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/22/图像处理坐标/" itemprop="url">图像处理坐标</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-22T10:45:48+08:00">
-                2020-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>如何画矩形：<a href="https://www.cnblogs.com/ivy-blogs/p/10628189.html" target="_blank" rel="noopener">https://www.cnblogs.com/ivy-blogs/p/10628189.html</a></p>
-<pre><code>image_path = &apos;&apos;
-image = cv2.imread(image_path)
-first_point = (100, 100)
-last_point = (100, 100)
-
-cv2.rectangle(image, first_point, last_point, (0, 255, 0), 2)
-cv2.imwrite(image_path, image)</code></pre><p>first_point和last_point都是矩形在图片的像素坐标位置，且坐标位置为int整型。</p>
-<p>** first_point为矩形左上角的坐标位置**</p>
-<p>** last_point为矩形右下角的坐标位置**</p>
-<p>该两点的存在刚好能够组成一个矩形</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/21/mac下python3-tesseract-pytesseract-的安装与调试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/21/mac下python3-tesseract-pytesseract-的安装与调试/" itemprop="url"> tesseract 的环境安装</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-21T12:15:51+08:00">
-                2020-03-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h6 id="windows-10-安装"><a href="#windows-10-安装" class="headerlink" title="windows 10 安装:"></a>windows 10 安装:</h6><p>第一步在虚拟环境或者正式环境pip安装：</p>
-<pre><code>pip install pytesseract
- pip install pillow</code></pre><p>第二步 安装Tesseract-OCR    </p>
-<ul>
-<li><p>下载安装包官网：<br>注意版本之前由于使用3.0.2一直报错，后来换成5.0才好</p>
-<p>  <a href="https://github.com/UB-Mannheim/tesseract/wiki" target="_blank" rel="noopener">https://github.com/UB-Mannheim/tesseract/wiki</a><br>一路安装时可选择下语言包</p>
-</li>
-<li><p>系统环境Path变量配置：</p>
-<p>  <img src="%5Cimages%5Cpasted-106.png" alt="upload successful"></p>
-<p>  <a href="https://www.cnblogs.com/chenshengkai/p/11318272.html" target="_blank" rel="noopener">https://www.cnblogs.com/chenshengkai/p/11318272.html</a></p>
-<p>  验证： </p>
-<pre><code>tesseract --version</code></pre></li>
-<li><p>在python文件下搜索pytesseract.py文件并修改路径：<br>tesseract_cmd = ‘C:\Program Files\Tesseract-OCR\tesseract.exe’</p>
-</li>
-</ul>
-<p><img src="%5Cimages%5Cpasted-104.png" alt="upload successful"></p>
-<p>   参考<br>   <a href="https://www.cnblogs.com/chenshengkai/p/11318387.html" target="_blank" rel="noopener">https://www.cnblogs.com/chenshengkai/p/11318387.html</a><br>    <a href="https://blog.csdn.net/qq_38161040/article/details/90649497" target="_blank" rel="noopener">https://blog.csdn.net/qq_38161040/article/details/90649497</a></p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pytesseract</span><br><span class="line">from PIL import Image</span><br><span class="line"></span><br><span class="line">image = Image.open(&quot;data/enzh.png&quot;)</span><br><span class="line">code = pytesseract.image_to_string(image,lang=&apos;chi_sim&apos;)</span><br><span class="line">print(code)</span><br></pre></td></tr></table></figure>
-
-<h6 id="mac安装"><a href="#mac安装" class="headerlink" title="mac安装"></a>mac安装</h6><ol>
-<li><p>pip install pytesseract<br>pip install tesseract  </p>
-<p>之后运行demo一直报这个错：</p>
-<p>NotADirectoryError: [Errno 20] Not a directory: ‘tesseract’</p>
-<p>后来看到帖子说mac必须得用brew安装才行(救星)，又重新安装了一次，果然成功了</p>
-<p>brew install tesseract</p>
-<p>参考： <a href="https://blog.csdn.net/weixin_38246633/article/details/82993678" target="_blank" rel="noopener">https://blog.csdn.net/weixin_38246633/article/details/82993678</a></p>
-</li>
-<li><p>紧接着又报错：</p>
-<pre><code>pytesseract.pytesseract.TesseractError: (1, &apos;Error opening data file /usr/local/share/tessdata/chi_sim.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your &quot;tessdata&quot; directory. Failed loading language \&apos;chi_sim\&apos; Tesseract couldn\&apos;t load any languages! Could not initialize tesseract.&apos;)</code></pre><p>感谢文章：<br>   <a href="https://blog.csdn.net/magicianofcodes/article/details/79401622" target="_blank" rel="noopener">https://blog.csdn.net/magicianofcodes/article/details/79401622</a></p>
-<p> 即根据错误提示：</p>
-<p>1）.  需要设置环境变量    </p>
-<pre><code>export TESSDATA_PREFIX=/usr/local/Cellar/tesseract/3.05.01/share/tessdata
-export PATH=$PATH:$TESSDATA_PREFIX</code></pre><p>2）. 下载语言包</p>
-<p> <a href="https://github.com/tesseract-ocr/tessdata" target="_blank" rel="noopener">https://github.com/tesseract-ocr/tessdata</a></p>
-<p>下载相应缺少的语言包(这里是chi_sim)，然后放在/usr/local/Cellar/tesseract/3.05.01/share/tessdata之下</p>
-<p>至此，成功 ~</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/conda/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/18/conda/" itemprop="url">Anaconda  conda使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-18T18:28:58+08:00">
-                2020-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h5><ul>
-<li><p>环境 mac ：官网下载sh包，</p>
-<p> sh   Miniconda3-latest-MacOSX-x86_64.sh</p>
-<p>安装后去/xxx/miniconda3/bin下执行 </p>
-<p> .  activate</p>
-</li>
-<li><p>windows安装</p>
-<p>下载： <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
-</li>
-</ul>
-<h4 id="2、conda命令"><a href="#2、conda命令" class="headerlink" title="2、conda命令"></a>2、conda命令</h4><pre><code>conda #可查帮助信息
-conda info -e
-source activate deeplearning   #进入我们的虚拟环境其中deeplearning是名称
-  #退出虚拟环境
-conda remove -n deeplearning --all
-conda list 查看已安装软件
-conda available packages
-conda search source deactivategatk
-conda install gatk
- which gatk  查看软件安装位置
-conda update gatk  升级软件
-conda remove gatk  卸载指定软件
-conda env list  环境列表，星号代表当前环境
-activate learn  切换到learn环境
-activate // 切换到base环境
-conda create -n learn python=3 // 创建一个名为learn的环境并指定python版本为3(的最新版本)
-conda remove -n learn --all // 删除learn环境及下属所有包</code></pre><p>  虚拟环境的使用：</p>
-<p>  <img src="/images/pasted-93.png" alt="upload successful"></p>
-<h4 id="3、问题"><a href="#3、问题" class="headerlink" title="3、问题"></a>3、问题</h4><ul>
-<li><p>【Anaconda】关于conda使用环境未被激活的问题</p>
-<pre><code>由powershell改成使用cmd</code></pre><p>  参考：<a href="https://www.cnblogs.com/happyamyhope/p/11547134.html" target="_blank" rel="noopener">https://www.cnblogs.com/happyamyhope/p/11547134.html</a></p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1756,7 +1971,7 @@ conda remove -n learn --all // 删除learn环境及下属所有包</code></pre><
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">83</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -88,7 +88,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2019041712030931.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190417120340626.png">
-<meta property="og:updated_time" content="2020-04-10T11:19:36.819Z">
+<meta property="og:updated_time" content="2020-06-17T06:19:19.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git使用篇">
 <meta name="twitter:description" content="git命令基础操作这篇文章很清楚：https://www.cnblogs.com/tocy/p/git-command-line-manual.html 常见出错和问题1.  出现error: The following untracked working tree files would be overwritten by checkout解决： $ git clean -d -fx “”参考">
@@ -362,7 +362,7 @@ git stash pop</code></pre><p>通过git stash将工作区恢复到上次提交的
 </li>
 </ol>
 <p>原因：一般默认会开启保护模式，保护模式下不允许任何人push<br><img src="https://img-blog.csdnimg.cn/2019041712030931.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>解决：去掉保护模式<br><img src="https://img-blog.csdnimg.cn/20190417120340626.png" alt="在这里插入图片描述"></p>
-<h6 id="8-GIT-warning-LF-will-be-replaced-by-CRLF问题解决方法"><a href="#8-GIT-warning-LF-will-be-replaced-by-CRLF问题解决方法" class="headerlink" title="8. [GIT] warning: LF will be replaced by CRLF问题解决方法"></a>8. [GIT] warning: LF will be replaced by CRLF问题解决方法</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --gobal core.autocrlf false</span><br></pre></td></tr></table></figure>
+<h6 id="8-GIT-warning-LF-will-be-replaced-by-CRLF问题解决方法"><a href="#8-GIT-warning-LF-will-be-replaced-by-CRLF问题解决方法" class="headerlink" title="8. [GIT] warning: LF will be replaced by CRLF问题解决方法"></a>8. [GIT] warning: LF will be replaced by CRLF问题解决方法</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global core.autocrlf false</span><br></pre></td></tr></table></figure>
 
 <h6 id="9-由于某配置项错误配置导致push失败，解决：删除配置项目"><a href="#9-由于某配置项错误配置导致push失败，解决：删除配置项目" class="headerlink" title="9. 由于某配置项错误配置导致push失败，解决：删除配置项目"></a>9. 由于某配置项错误配置导致push失败，解决：删除配置项目</h6><pre><code>1) git config --list 或者git config -l查看配置项
 2) git  config --global unset +配置项全名</code></pre><h6 id="10-、git-分支拉取"><a href="#10-、git-分支拉取" class="headerlink" title="10. 、git 分支拉取"></a>10. 、git 分支拉取</h6><p>   <a href="https://blog.51cto.com/13893093/2175764?source=dra" target="_blank" rel="noopener">https://blog.51cto.com/13893093/2175764?source=dra</a></p>
@@ -375,8 +375,6 @@ git stash pop</code></pre><p>通过git stash将工作区恢复到上次提交的
 <h6 id="11-You-are-in-‘detached-HEAD’-state"><a href="#11-You-are-in-‘detached-HEAD’-state" class="headerlink" title="11.  You are in ‘detached HEAD’ state."></a>11.  You are in ‘detached HEAD’ state.</h6><p>You can look around, make experimental changes and commit them, and you can discard any commits you make in this state without impacting any branches by performing another checkout.</p>
 <p>解决：git checkout master</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LiyuandeMacBook-Pro:scqa_ui_auto_platform_projects liyuanchen$ git checkout master</span><br><span class="line">Already on &apos;master&apos;</span><br><span class="line">Your branch is up to date with &apos;origin/master&apos;.</span><br></pre></td></tr></table></figure>
-
-
       
     </div>
     
@@ -489,7 +487,7 @@ git stash pop</code></pre><p>通过git stash将工作区恢复到上次提交的
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">83</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

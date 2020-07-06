@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。 常用命令 光标定位  hjkl 上下左右移动 0$  行首尾 gg G   文首尾 3G 进入第三行 /string (n N 可以循环的) 快速定位到某一行 /^d   按照行搜索（注意） /txt$ 文本编辑(少量) 复制 yy 3yy ygg(复制到行首) yG(复制到行尾)  删除 dd 3dd dgg(">
+<meta name="description" content="以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。 常用命令 光标定位移动 hjkl 上下左右移动 0$  行首尾 gg G   文首尾 3G 进入第三行 /string (n N 可以循环的) 快速定位到某一行 /^d   按照行搜索（注意） /txt$ n&amp;lt;space&amp;gt;  :按下数字后再按空格键，光标会向右移动这一行的 n 个字符 文本编辑(少量)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vim命令及常见问题">
 <meta property="og:url" content="http://yoursite.com/2018/09/16/Vim命令及常见问题/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。 常用命令 光标定位  hjkl 上下左右移动 0$  行首尾 gg G   文首尾 3G 进入第三行 /string (n N 可以循环的) 快速定位到某一行 /^d   按照行搜索（注意） /txt$ 文本编辑(少量) 复制 yy 3yy ygg(复制到行首) yG(复制到行尾)  删除 dd 3dd dgg(">
+<meta property="og:description" content="以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。 常用命令 光标定位移动 hjkl 上下左右移动 0$  行首尾 gg G   文首尾 3G 进入第三行 /string (n N 可以循环的) 快速定位到某一行 /^d   按照行搜索（注意） /txt$ n&amp;lt;space&amp;gt;  :按下数字后再按空格键，光标会向右移动这一行的 n 个字符 文本编辑(少量)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-04-10T11:19:36.816Z">
+<meta property="og:updated_time" content="2020-06-27T02:38:38.497Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vim命令及常见问题">
-<meta name="twitter:description" content="以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。 常用命令 光标定位  hjkl 上下左右移动 0$  行首尾 gg G   文首尾 3G 进入第三行 /string (n N 可以循环的) 快速定位到某一行 /^d   按照行搜索（注意） /txt$ 文本编辑(少量) 复制 yy 3yy ygg(复制到行首) yG(复制到行尾)  删除 dd 3dd dgg(">
+<meta name="twitter:description" content="以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。 常用命令 光标定位移动 hjkl 上下左右移动 0$  行首尾 gg G   文首尾 3G 进入第三行 /string (n N 可以循环的) 快速定位到某一行 /^d   按照行搜索（注意） /txt$ n&amp;lt;space&amp;gt;  :按下数字后再按空格键，光标会向右移动这一行的 n 个字符 文本编辑(少量)">
 
 
 
@@ -333,13 +333,14 @@
       
         <p>以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。</p>
 <h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><ol>
-<li><p>光标定位 </p>
+<li><p>光标定位移动</p>
 <pre><code>hjkl 上下左右移动
 0$  行首尾
 gg G   文首尾
 3G 进入第三行
 /string (n N 可以循环的) 快速定位到某一行 /^d   按照行搜索（注意）
-/txt$</code></pre></li>
+/txt$
+n&lt;space&gt;  :按下数字后再按空格键，光标会向右移动这一行的 n 个字符</code></pre></li>
 <li><p>文本编辑(少量)</p>
 <pre><code>复制 yy 3yy ygg(复制到行首) yG(复制到行尾) 
 删除 dd 3dd dgg(删除到行首) dG(删除到行尾) 
@@ -490,7 +491,26 @@ $表示最后一行
 $ &gt; filename 
 $ echo &quot;&quot; &gt; filename 
 $ echo &gt; filename 
-$ cat /dev/null &gt; filename</code></pre>
+$ cat /dev/null &gt; filename</code></pre><hr>
+<p>【多行注释】</p>
+<ol>
+<li><p>进入命令行模式，按ctrl + v进入 visual block模式，然后按j, 或者k选中多行，把需要注释的行标记起来</p>
+</li>
+<li><p>按大写字母I，再插入注释符，例如//</p>
+</li>
+<li><p>按esc键就会全部注释了</p>
+</li>
+</ol>
+<p>【取消多行注释】</p>
+<ol>
+<li><p>进入命令行模式，按ctrl + v进入 visual block模式，按字母l横向选中列的个数，例如 // 需要选中2列</p>
+</li>
+<li><p>按字母j，或者k选中注释符号</p>
+</li>
+<li><p>按d键就可全部取消注释</p>
+</li>
+</ol>
+
       
     </div>
     
@@ -603,7 +623,7 @@ $ cat /dev/null &gt; filename</code></pre>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">83</span>
+                  <span class="site-state-item-count">89</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
