@@ -261,6 +261,134 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/28/Linux系统实践问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/28/Linux系统实践问题/" itemprop="url">Linux系统实践问题记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-28T14:18:35+08:00">
+                2020-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>记录一次在Linux（Ubuntu）中date命令无效的情况</p>
+<p> 解决方案参考<a href="http://blog.sina.cn/dpool/blog/s/blog_413d250e0102z2iy.html" target="_blank" rel="noopener">http://blog.sina.cn/dpool/blog/s/blog_413d250e0102z2iy.html</a></p>
+<pre><code>1、sudo timedatectl set-ntp false
+2、sudo date -s &apos;2020-2-20 12:12:12&apos;
+此时通过命令查看时间的话，就可以发现日期修改成功了，而如果需要将时间同步回去，直接执行 sudo timedatectl set-ntp true即可。</code></pre><p>更改时区：tzselect命令</p>
+<p>参考：<a href="https://blog.csdn.net/zhengchaooo/article/details/79500032" target="_blank" rel="noopener">https://blog.csdn.net/zhengchaooo/article/details/79500032</a></p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-通配符和正则/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1814,210 +1942,6 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/元素定位问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/29/元素定位问题/" itemprop="url">RT定位元素问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T21:49:53+08:00">
-                2020-01-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>【问题】各种找不到元素</p>
-<h6 id="语法问题-低级错误导致高级提醒"><a href="#语法问题-低级错误导致高级提醒" class="headerlink" title="语法问题-低级错误导致高级提醒"></a>语法问题-低级错误导致高级提醒</h6><ol>
-<li><p>元素名称错误，比如后面少了对应右括号 ）</p>
-</li>
-<li><p>元素本身就不存在，比如调试元素在所在环境中不存在，然而编写代码定位的时候使用的是线上环境账号，其具有该元素，造成元素找不到</p>
-</li>
-<li><p>元素前面未加css=或者xpath=类型名称</p>
-</li>
-<li><p>css父子关系之间不用空格，用点来替代；祖辈关系使用单个空格</p>
-</li>
-<li><p>TypeError: Failed to execute ‘evaluate’ on ‘Document’: The result is not a node set, and therefore cannot be converted to the desired type.</p>
-<p> 原因：多写了个xpath</p>
-<pre><code>xpath=xpath=//div/ul  </code></pre></li>
-</ol>
-<h6 id="其他报错信息"><a href="#其他报错信息" class="headerlink" title="其他报错信息"></a>其他报错信息</h6><p>【解决原则】 判断元素存在后再操作；使用get webelements或者status等待判断</p>
-<ol>
-<li><p>元素不在屏幕可视范围内导致找不到元素。可使用滚动查找元素：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecuteJavascriptdocument.documentElement.scrollTop=10000</span><br></pre></td></tr></table></figure>
-
-<p> scroll element into view  ${locator}貌似不好用</p>
-</li>
-<li><p>AttributeError: ‘list’ object has no attribute ‘startswith’？<br> 也是因为没有找到元素报的错，要保证元素存在的时候再进行操作</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;obj&#125;    GetWebElements    $&#123;homepage_ele&#125;[button_proceed]</span><br><span class="line">Runkeywordif    $&#123;obj&#125;  click element    $&#123;obj&#125;</span><br></pre></td></tr></table></figure>
-
-<p> click element后面的按钮元素多次被我写成了对象，会报这个错</p>
-</li>
-<li><p>is not clickable at point (1435, 107). Other element would receive the click: &lt;div class=”shopee-modal__container”</p>
-<p>确实是被其他元素遮挡住了</p>
-</li>
-<li><p>StaleElementReferenceException: Message: stale element reference: element is not attached to the page document</p>
-<p> 很多时候sleep一下就好了</p>
-</li>
-<li><p>一个查了很久的问题，有个场景，进入链接后如果有密码框则点击按钮，但是第一个链接执行之后第二个链接依旧检测到有密码框于是就开始找按钮（实际没有）</p>
-<p> 本来以为是变量第二次赋值的时候有第一次的缓存，但是重新设置${None}后依旧无效。</p>
-<p> 原因：第二个link页面没有展示密码框但是元素中却能搜索到这个css元素值。</p>
-</li>
-<li><p>元素一直定位不到，本地机器可以。但是实际看页面上是展示出该元素的</p>
-<ul>
-<li><p>后来找人查了很久，还是最后查出还是之前我怀疑过的一个问题，就是侧边栏的链接父元素class会变化，后来由开发得知是根据高度来判断的，后来兼容使用模糊匹配xpath=//ul[contains(@class, ‘sidebar’)]//a[contains(text(),”{}”)]</p>
-</li>
-<li><p>但是有时候按照文本查找的元素类型会变化</p>
-</li>
-</ul>
-<p>如在测试环境是这样的：</p>
-<p><img src="/images/pasted-96.png" alt="upload successful"></p>
-<p>但是在预发环境确是这样：</p>
-<p><img src="/images/pasted-95.png" alt="upload successful"></p>
-<p>解决办法还是找到共同点，获取公共元素进行定位如href：</p>
-<pre><code>//ul[contains(@class, &apos;sidebar&apos;)]//a[@href=&apos;/portal/finance/income&apos;]</code></pre></li>
-<li><p>相较上面还有更狠的，不仅环境不同元素取值不同，而且同一个元素会变化</p>
-<p>思路：</p>
-<ol>
-<li><p>根据环境设置元素模板，封装公共方法</p>
-</li>
-<li><p>使用或来判断(之前一直没找到或怎么用)</p>
-</li>
-</ol>
-<p>变化前：  <img src="/images/pasted-98.png" alt="upload successful"></p>
-<p>变化后：  <img src="/images/pasted-100.png" alt="upload successful"></p>
-<p>即在sidebar-container的div和ul之间总变化一个div,最后使用或限制class属性：</p>
-<pre><code>//div[@class=&apos;sidebar&apos; or contains(@class, &apos;sidebar-fixed&apos;)]//span[contains(text(),”xxx“)]/..    </code></pre></li>
-<li><p>同一个页面元素有时候路径不同，需要综合不同情况时的共同点，来取该元素的值。<br>比如my wallet链接。有时候是a有时候是div有时候span，可以考虑使用模糊匹配</p>
-</li>
-<li><p>JavascriptException: Message: javascript error: Failed to execute ‘elementsFromPoint’ on ‘Document’: The provided double value is non-finite.</p>
-<pre><code>scroll element into view  css=.multiple-level-items &gt; li:nth-of-type(1)</code></pre><p>原因：取消使用scroll element into view关键字 </p>
-</li>
-<li><p>不包含元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xpath=//span[not(contains(text(),&apos;Women Clothes&apos;))]</span><br><span class="line">xpath=//div[@class=&apos;btn-wrap-right&apos;][not(contains(@style,&apos;display&apos;))]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用preceding-sibling\following-sibling\ancestor</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xpath=//label[@class=&apos;shopee-radio&apos;]/span[contains(text(),&apos;&#123;&#125;&apos;)]/preceding-sibling::span</span><br><span class="line"></span><br><span class="line">xpath=//span[contains(text(), &apos;$&#123;image_name&#125;&apos;)]/ancestor::li//label</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>页面加载时间不确定，除了固定等待如何判断何时校验元素出现？ </p>
-<p>抓取loading元素，判断该元素何时不在即可</p>
-</li>
-<li><p>浮层上面的元素怎么定位(直接去取的话，与元素定位无法实现同步)</p>
-<p> 右键点击浮层上的元素，点击‘检查’，即可定位到该元素位置，可用console进行调试</p>
-</li>
-<li><p>svg 突然click失败了，之前还是好的，改成该元素上面的i也不行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ElementClickInterceptedException: Message: element click intercepted: Element &lt;i class=&quot;shopee-icon shopee-table__sort-icon up&quot;&gt;...&lt;/i&gt; is not clickable at point (1098, 441). Other element would receive the click: &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 16 16&quot;&gt; &lt;/svg&gt; (Session info: chrome=79.0.3945.117)</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<p>  解决:该用press keys最终实现了该功能<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">press keys    $&#123;mediaspace_ele&#125;[button_storage_up]    RETURN</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2068,7 +1992,7 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

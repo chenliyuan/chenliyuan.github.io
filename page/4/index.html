@@ -261,6 +261,210 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/元素定位问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/29/元素定位问题/" itemprop="url">RT定位元素问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T21:49:53+08:00">
+                2020-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>【问题】各种找不到元素</p>
+<h6 id="语法问题-低级错误导致高级提醒"><a href="#语法问题-低级错误导致高级提醒" class="headerlink" title="语法问题-低级错误导致高级提醒"></a>语法问题-低级错误导致高级提醒</h6><ol>
+<li><p>元素名称错误，比如后面少了对应右括号 ）</p>
+</li>
+<li><p>元素本身就不存在，比如调试元素在所在环境中不存在，然而编写代码定位的时候使用的是线上环境账号，其具有该元素，造成元素找不到</p>
+</li>
+<li><p>元素前面未加css=或者xpath=类型名称</p>
+</li>
+<li><p>css父子关系之间不用空格，用点来替代；祖辈关系使用单个空格</p>
+</li>
+<li><p>TypeError: Failed to execute ‘evaluate’ on ‘Document’: The result is not a node set, and therefore cannot be converted to the desired type.</p>
+<p> 原因：多写了个xpath</p>
+<pre><code>xpath=xpath=//div/ul  </code></pre></li>
+</ol>
+<h6 id="其他报错信息"><a href="#其他报错信息" class="headerlink" title="其他报错信息"></a>其他报错信息</h6><p>【解决原则】 判断元素存在后再操作；使用get webelements或者status等待判断</p>
+<ol>
+<li><p>元素不在屏幕可视范围内导致找不到元素。可使用滚动查找元素：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecuteJavascriptdocument.documentElement.scrollTop=10000</span><br></pre></td></tr></table></figure>
+
+<p> scroll element into view  ${locator}貌似不好用</p>
+</li>
+<li><p>AttributeError: ‘list’ object has no attribute ‘startswith’？<br> 也是因为没有找到元素报的错，要保证元素存在的时候再进行操作</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;obj&#125;    GetWebElements    $&#123;homepage_ele&#125;[button_proceed]</span><br><span class="line">Runkeywordif    $&#123;obj&#125;  click element    $&#123;obj&#125;</span><br></pre></td></tr></table></figure>
+
+<p> click element后面的按钮元素多次被我写成了对象，会报这个错</p>
+</li>
+<li><p>is not clickable at point (1435, 107). Other element would receive the click: &lt;div class=”shopee-modal__container”</p>
+<p>确实是被其他元素遮挡住了</p>
+</li>
+<li><p>StaleElementReferenceException: Message: stale element reference: element is not attached to the page document</p>
+<p> 很多时候sleep一下就好了</p>
+</li>
+<li><p>一个查了很久的问题，有个场景，进入链接后如果有密码框则点击按钮，但是第一个链接执行之后第二个链接依旧检测到有密码框于是就开始找按钮（实际没有）</p>
+<p> 本来以为是变量第二次赋值的时候有第一次的缓存，但是重新设置${None}后依旧无效。</p>
+<p> 原因：第二个link页面没有展示密码框但是元素中却能搜索到这个css元素值。</p>
+</li>
+<li><p>元素一直定位不到，本地机器可以。但是实际看页面上是展示出该元素的</p>
+<ul>
+<li><p>后来找人查了很久，还是最后查出还是之前我怀疑过的一个问题，就是侧边栏的链接父元素class会变化，后来由开发得知是根据高度来判断的，后来兼容使用模糊匹配xpath=//ul[contains(@class, ‘sidebar’)]//a[contains(text(),”{}”)]</p>
+</li>
+<li><p>但是有时候按照文本查找的元素类型会变化</p>
+</li>
+</ul>
+<p>如在测试环境是这样的：</p>
+<p><img src="/images/pasted-96.png" alt="upload successful"></p>
+<p>但是在预发环境确是这样：</p>
+<p><img src="/images/pasted-95.png" alt="upload successful"></p>
+<p>解决办法还是找到共同点，获取公共元素进行定位如href：</p>
+<pre><code>//ul[contains(@class, &apos;sidebar&apos;)]//a[@href=&apos;/portal/finance/income&apos;]</code></pre></li>
+<li><p>相较上面还有更狠的，不仅环境不同元素取值不同，而且同一个元素会变化</p>
+<p>思路：</p>
+<ol>
+<li><p>根据环境设置元素模板，封装公共方法</p>
+</li>
+<li><p>使用或来判断(之前一直没找到或怎么用)</p>
+</li>
+</ol>
+<p>变化前：  <img src="/images/pasted-98.png" alt="upload successful"></p>
+<p>变化后：  <img src="/images/pasted-100.png" alt="upload successful"></p>
+<p>即在sidebar-container的div和ul之间总变化一个div,最后使用或限制class属性：</p>
+<pre><code>//div[@class=&apos;sidebar&apos; or contains(@class, &apos;sidebar-fixed&apos;)]//span[contains(text(),”xxx“)]/..    </code></pre></li>
+<li><p>同一个页面元素有时候路径不同，需要综合不同情况时的共同点，来取该元素的值。<br>比如my wallet链接。有时候是a有时候是div有时候span，可以考虑使用模糊匹配</p>
+</li>
+<li><p>JavascriptException: Message: javascript error: Failed to execute ‘elementsFromPoint’ on ‘Document’: The provided double value is non-finite.</p>
+<pre><code>scroll element into view  css=.multiple-level-items &gt; li:nth-of-type(1)</code></pre><p>原因：取消使用scroll element into view关键字 </p>
+</li>
+<li><p>不包含元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xpath=//span[not(contains(text(),&apos;Women Clothes&apos;))]</span><br><span class="line">xpath=//div[@class=&apos;btn-wrap-right&apos;][not(contains(@style,&apos;display&apos;))]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用preceding-sibling\following-sibling\ancestor</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xpath=//label[@class=&apos;shopee-radio&apos;]/span[contains(text(),&apos;&#123;&#125;&apos;)]/preceding-sibling::span</span><br><span class="line"></span><br><span class="line">xpath=//span[contains(text(), &apos;$&#123;image_name&#125;&apos;)]/ancestor::li//label</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>页面加载时间不确定，除了固定等待如何判断何时校验元素出现？ </p>
+<p>抓取loading元素，判断该元素何时不在即可</p>
+</li>
+<li><p>浮层上面的元素怎么定位(直接去取的话，与元素定位无法实现同步)</p>
+<p> 右键点击浮层上的元素，点击‘检查’，即可定位到该元素位置，可用console进行调试</p>
+</li>
+<li><p>svg 突然click失败了，之前还是好的，改成该元素上面的i也不行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ElementClickInterceptedException: Message: element click intercepted: Element &lt;i class=&quot;shopee-icon shopee-table__sort-icon up&quot;&gt;...&lt;/i&gt; is not clickable at point (1098, 441). Other element would receive the click: &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 16 16&quot;&gt; &lt;/svg&gt; (Session info: chrome=79.0.3945.117)</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<p>  解决:该用press keys最终实现了该功能<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">press keys    $&#123;mediaspace_ele&#125;[button_storage_up]    RETURN</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/RT本地环境配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1514,7 +1718,15 @@ grep --help|grep &apos;\-v&apos;
 -l 显示匹配的目录  grep -l &apos;root&apos; /etc/passwd  /etc/shadow /etc/hosts
 -A  后几行
 -B  前几行
--C  前后几行</code></pre>
+-C  前后几行</code></pre><h6 id="正则表达式-和-的区别？"><a href="#正则表达式-和-的区别？" class="headerlink" title="正则表达式()和[]的区别？"></a>正则表达式()和[]的区别？</h6><ul>
+<li><p>（）表示分组，可以有多个字符</p>
+<p>  (ab){1,3},就表示ab一起连续出现最少1次，最多三次。如果没有括号的话，ab{1,3},<br>(abc|bcd|cde),表示这一段是abc、bcd、cde三者之一</p>
+</li>
+<li><p>[]单个进行匹配</p>
+<p>  例如[(a)],会匹配(、a、)、这三个字符</p>
+</li>
+</ul>
+
           
         
       
@@ -1698,213 +1910,6 @@ plt.show()#必须加</code></pre><h4 id="pyplot-legend"><a href="#pyplot-legend"
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/python-OpenCV/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/04/python-OpenCV/" itemprop="url">python  OpenCV</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-04T20:24:15+08:00">
-                2019-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>pip install opencv-python</code></pre><h4 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h4><pre><code>import cv2
-img=cv2.imread(&quot;D:/cly/xuanxiu/img/girl.jpg&quot;)
-imgGray=cv2.imread(&quot;D:/cly/xuanxiu/img/girl.jpg&quot;,0)#生成灰色图片
-print(img.shape)#图片高、宽、通道（即y轴，x轴，通道）
-print(img.size)#图总像素
-print(img.dtype)#图片数据类型是uint8
-
-print(imgGray.shape)#图片高、宽、通道；灰色图不返通道
-#操作：中值滤波
-result=cv2.medianBlur(imgGray,3)
-cv2.namedWindow(&apos;result&apos;,0)#创建窗口
-cv2.resizeWindow(&apos;result&apos;,300,400)#设置大小
-
-cv2.imshow(&quot;result&quot;,result)#显示图片  
-cv2.waitKey(0)#等待图片关闭
-cv2.destroyAllWindows()#销毁所有窗口</code></pre><h5 id="cv2-resize-函数的使用"><a href="#cv2-resize-函数的使用" class="headerlink" title="cv2.resize()函数的使用"></a>cv2.resize()函数的使用</h5><p><a href="https://www.jb51.net/article/163516.htm" target="_blank" rel="noopener">https://www.jb51.net/article/163516.htm</a></p>
-<p>常用于等比缩小比例，若参数中不适用fx而是使用指定dsize的话，需要注意的是(宽，长)即横纵坐标的顺序，这里也与shape里出来的相反</p>
-<pre><code>import cv2
-img = cv2.imread(&quot;./Pictures/python.png&quot;)
-print(&apos;Original Dimensions : &apos;, img.shape)
-resized = cv2.resize(img, None, fx=0.6, fy=0.6, interpolation=cv2.INTER_AREA)
-print(&apos;Resized Dimensions : &apos;,resized.shape)</code></pre><h5 id="像素坐标"><a href="#像素坐标" class="headerlink" title="像素坐标"></a>像素坐标</h5><p>图片是由像素组成的矩阵，彩色图片访问方式为：</p>
-<pre><code>img[i,j,c]</code></pre><p>i表示图片的行数，j表示图片的列数，c表示图片的通道数（RGB三通道分别对应0，1，2）。坐标是从左上角开始。</p>
-<p>灰度图片访问方式为：</p>
-<pre><code>gray[i,j]  即  gray[row,col] 即gray[y,x]</code></pre><p> 【注】坐标系这里有点晕，总结就是使用<strong>像素</strong>查找的时候前面是y后面是x跟正常是反着的(跟shape返回一致)，但是<strong>坐标</strong>点的话记得不要取错还是(x,y)<br>    若是直线坐标是[x,y,x1,y1]</p>
-<p> 需要注意的是(容易弄反，记住下面图就好了)</p>
-<pre><code>row == height == Point.y
-col == width  == Point.x</code></pre><p><img src="/images/pasted-97.png" alt="upload successful"></p>
-<h5 id="图像二值化"><a href="#图像二值化" class="headerlink" title="图像二值化"></a>图像二值化</h5><p>好文章：<a href="https://www.cnblogs.com/ssyfj/p/9272615.html" target="_blank" rel="noopener">https://www.cnblogs.com/ssyfj/p/9272615.html</a></p>
-<p>就是把图像分成两种颜色：黑和白，1白色，0黑色</p>
-<h5 id="噪声处理"><a href="#噪声处理" class="headerlink" title="噪声处理"></a>噪声处理</h5><p><a href="https://blog.csdn.net/RRWJ__/article/details/101013012" target="_blank" rel="noopener">https://blog.csdn.net/RRWJ__/article/details/101013012</a></p>
-<pre><code>blur = cv.blur(img,(15,15)) #均值滤波
-blur = cv.GaussianBlur(img,(5,5),0)#高斯滤波
-blur = cv.medianBlur(img,5)#中值滤波，去除椒盐噪声
-blur = cv.bilateralFilter(img,9,75,75)#双边滤波</code></pre><p>OpenCV提供了这种技术的四种变体。参考：<a href="https://blog.csdn.net/xiao_lxl/article/details/95346589" target="_blank" rel="noopener">https://blog.csdn.net/xiao_lxl/article/details/95346589</a></p>
-<pre><code>cv2.fastNlMeansDenoising（） - 使用单个灰度图像
-cv2.fastNlMeansDenoisingColored（） - 使用彩色图像。
-cv2.fastNlMeansDenoisingMulti（） - 用于在短时间内捕获的图像序列（灰度图像）
-cv2.fastNlMeansDenoisingColoredMulti（） - 与上面相同，但用于彩色图像。</code></pre><ul>
-<li><p>中值滤波：medianBlur </p>
-<p>优点：中值滤波在一定的条件下可以克服常见线性滤波器如方框滤波器、均值滤波等带来的图像细节模糊，而且对滤除脉冲干扰及图像扫描噪声非常有效，也常用于保护边缘信息, 保存边缘的特性使它在不希望出现边缘模糊的场合也很有用，是非常经典的平滑噪声处理方法。</p>
-<p>缺点：但是中值滤波的缺点也很明显，因为要进行排序操作，所以处理的时间长，是均值滤波的5倍以上。</p>
-<p>python代码实现：<br><a href="https://blog.csdn.net/A_Z666666/article/details/81324288" target="_blank" rel="noopener">https://blog.csdn.net/A_Z666666/article/details/81324288</a></p>
-</li>
-<li><p>双边滤波 bilateralFilter</p>
-<p>是一种非线性滤波方法。能够保持边界清晰的情况下有效的去除噪声，但是这种操作比较慢。它拥有着美颜的效果。</p>
-<pre><code>dst = cv2.bilateralFilter(src=image, d=0, sigmaColor=100, sigmaSpace=15)
-
-src：原图像；
-d：像素的邻域直径，可有sigmaColor和sigmaSpace计算可得；
-sigmaColor：颜色空间的标准方差，一般尽可能大；（越大越模糊）
-sigmaSpace：坐标空间的标准方差(像素单位)，一般尽可能小。(发现越大处理时间越久)</code></pre><p>链接：<a href="https://www.jianshu.com/p/6c8db06bb0dc" target="_blank" rel="noopener">https://www.jianshu.com/p/6c8db06bb0dc</a><br>链接：<a href="https://www.jianshu.com/p/8d11e26c9665" target="_blank" rel="noopener">https://www.jianshu.com/p/8d11e26c9665</a></p>
-</li>
-</ul>
-<h5 id="文字区域识别-投影法"><a href="#文字区域识别-投影法" class="headerlink" title="文字区域识别-投影法"></a>文字区域识别-投影法</h5><p><a href="https://www.jb51.net/article/178717.htm" target="_blank" rel="noopener">https://www.jb51.net/article/178717.htm</a></p>
-<h5 id="getStructuringElement-函数"><a href="#getStructuringElement-函数" class="headerlink" title="getStructuringElement()函数"></a>getStructuringElement()函数</h5><p>返回指定形状和尺寸的结构元素,一般在调用erode以及dilate函数之前，可根据特定的内核进行直线提取：</p>
-<p><img src="%5Cimages%5Cpasted-103.png" alt="upload successful"><br><a href="https://blog.csdn.net/u013066730/article/details/97242189" target="_blank" rel="noopener">https://blog.csdn.net/u013066730/article/details/97242189</a><br><a href="https://www.bilibili.com/read/cv2725908/" target="_blank" rel="noopener">https://www.bilibili.com/read/cv2725908/</a></p>
-<h5 id="cv2-bitwise-and-函数"><a href="#cv2-bitwise-and-函数" class="headerlink" title="cv2.bitwise_and() 函数"></a>cv2.bitwise_and() 函数</h5><p>cv2.bitwise_and()是对二进制数据进行“与”操作，即对图像（灰度图像或彩色图像均可）每个像素值进行二进制“与”操作，1&amp;1=1，1&amp;0=0，0&amp;1=0，0&amp;0=0</p>
-<pre><code>OutputArray dst  = cv2.bitwise_and(InputArray src1, InputArray src2, InputArray mask=noArray());//dst = src1 &amp; src2</code></pre><p>OutputArray dst  = cv2.bitwise_and(InputArray src1, InputArray src2, InputArray mask=noArray());//dst = src1 &amp; src2</p>
-<p>参考：<a href="https://blog.csdn.net/Hren0412/article/details/97623740" target="_blank" rel="noopener">https://blog.csdn.net/Hren0412/article/details/97623740</a></p>
-<h5 id="cv2-HoughLines"><a href="#cv2-HoughLines" class="headerlink" title="cv2.HoughLines"></a>cv2.HoughLines</h5><p>cv2.HoughLines()函数是在二值图像中查找直线，cv2.HoughLinesP()函数可以查找直线段。</p>
-<pre><code>cv2.HoughLinesP()函数原型：
-
-HoughLinesP(image, rho, theta, threshold, lines=None, minLineLength=None, maxLineGap=None) 
-
-image： 必须是二值图像，推荐使用canny边缘检测的结果图像； 
-rho: 线段以像素为单位的距离精度，double类型的，推荐用1.0 
-theta： 线段以弧度为单位的角度精度，推荐用numpy.pi/180 
-threshod: 累加平面的阈值参数，int类型，超过设定阈值才被检测出线段，值越大，基本上意味着检出的线段越长，检出的线段个数越少。根据情况推荐先用100试试
-lines：这个参数的意义未知，发现不同的lines对结果没影响，但是不要忽略了它的存在 
-minLineLength：线段以像素为单位的最小长度，根据应用场景设置 
-maxLineGap：同一方向上两条线段判定为一条线段的最大允许间隔（断裂），超过了设定值，则把两条线段当成一条线段，值越大，允许线段上的断裂越大，越有可能检出潜在的直线段</code></pre><p>参考：<a href="https://www.cnblogs.com/mtcnn/p/9411774.html" target="_blank" rel="noopener">https://www.cnblogs.com/mtcnn/p/9411774.html</a></p>
-<h5 id="高级形态学变换："><a href="#高级形态学变换：" class="headerlink" title="高级形态学变换："></a>高级形态学变换：</h5><pre><code>开运算：
-先腐蚀，再膨胀，可清除一些小东西(亮的)，放大局部低亮度的区域
-闭运算：
-先膨胀，再腐蚀，可清除小黑点
-形态学梯度：
-膨胀图与腐蚀图之差，提取物体边缘
-顶帽：
-原图像-开运算图，突出原图像中比周围亮的区域
-黑帽：
-闭运算图-原图像，突出原图像中比周围暗的区域</code></pre><p>原文链接：<a href="https://blog.csdn.net/keen_zuxwang/article/details/72768092" target="_blank" rel="noopener">https://blog.csdn.net/keen_zuxwang/article/details/72768092</a></p>
-<h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><p>1、读取图片尽量不用中文路径</p>
-<p>2、不加waitKey造成程序无响应</p>
-<p>3、 在Pycharm中运行cv.imshow()函数的时候，图形界面闪了一下就消失了</p>
-<p>原来，在运行cv2.imshow后，需要使用cv2.waitKey来保持窗口的显示。</p>
-<p>再添加个cv2.destroyAllWindows()点击enter可自动销毁图片</p>
-<p><a href="https://my.oschina.net/u/4070307/blog/3008278" target="_blank" rel="noopener">https://my.oschina.net/u/4070307/blog/3008278</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1955,7 +1960,7 @@ maxLineGap：同一方向上两条线段判定为一条线段的最大允许间�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

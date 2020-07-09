@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="躲不掉的风">
 <meta property="og:description" content="echarts及option配置应用 import echarts from &amp;apos;echarts&amp;apos;; Vue.prototype.$echarts = echarts;  import { bar_option, pie_option, line_bugrate_option } from &amp;apos;@/components/chart_options/echart_opti">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-06T02:17:30.620Z">
+<meta property="og:updated_time" content="2020-07-08T12:25:28.649Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="echarts使用小记">
 <meta name="twitter:description" content="echarts及option配置应用 import echarts from &amp;apos;echarts&amp;apos;; Vue.prototype.$echarts = echarts;  import { bar_option, pie_option, line_bugrate_option } from &amp;apos;@/components/chart_options/echart_opti">
@@ -362,7 +362,26 @@ normal:{
 </li>
 <li><p>自定义提示窗口</p>
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">toolbox: &#123;</span><br><span class="line">      feature: &#123;</span><br><span class="line">        myTool2: &#123;</span><br><span class="line">          show: true, //是否显示</span><br><span class="line">          title: &quot;近半年趋势分析&quot;, //鼠标移动上去显示的文字     &quot;image://data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAFHklEQVRoQ+1Ze0xbVRj/fS2&quot;,</span><br><span class="line">          onclick: function() &#123;</span><br><span class="line">            that.piechartname = chartname;</span><br><span class="line">            that.titlename = &quot;近6个月&quot; + title + &quot;趋势图&quot;;</span><br><span class="line">            that.dialogVisible = true;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为图标添加自定义图标，点击后弹出说明文案，且可换行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">myTool1: &#123;</span><br><span class="line">      show: showmytools1, //是否显示</span><br><span class="line">      title: &quot;信息说明&quot;, //鼠标移动上去显示的文字</span><br><span class="line">      ...</span><br><span class="line">      onclick: function() &#123;</span><br><span class="line">        that.$confirm(h(&quot;div&quot;, null, msgli), headtitle, &#123;</span><br><span class="line">          showConfirmButton: false,</span><br><span class="line">          showCancelButton: false,</span><br><span class="line">          type: &quot;info&quot;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
 
+<p>其中文案的处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">let msgli = [];//最终的显示文本</span><br><span class="line">let h = this.$createElement;</span><br><span class="line">let causeText = [];</span><br><span class="line">let headtitle = title + &quot;说明&quot;;</span><br><span class="line">switch (chartname) &#123;</span><br><span class="line">  case &quot;bug_role&quot;:</span><br><span class="line">    causeText = [</span><br><span class="line">      &quot;根据角色分析Bug分布情况，主要包括QA、FE、BE、PM&quot;,</span><br><span class="line">      &quot;QA: 取QA字段&quot;</span><br><span class="line">    ];</span><br><span class="line">    for (const i in causeText) &#123;</span><br><span class="line">      msgli.push(h(&quot;p&quot;, null, causeText[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    showmytools1 = true;//控制是否展示</span><br><span class="line">    break;</span><br></pre></td></tr></table></figure>
+
+<p>另外一种方式:使用el-dialog</p>
+<p>先定义一个el-dialog</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    &lt;el-dialog :title=&quot;direction_title&quot; :visible.sync=&quot;noteVisible&quot; width=&quot;25%&quot; </span><br><span class="line">top=&quot;15%&quot;  :show-close=&quot;false&quot;&gt;</span><br><span class="line">  &lt;div v-html=&quot;direction_content&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/el-dialog&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在onclick自定义事件中:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">that.direction_title = title + &quot;说明&quot;;//在option中使用that</span><br><span class="line">switch (chartname) &#123;</span><br><span class="line">	case &quot;bug_role&quot;:</span><br><span class="line">        that.direction_content =&quot;&lt;span&gt;说明文字1&lt;/span&gt;&quot; //需要在click事件中赋值，否则出错</span><br><span class="line">        ....</span><br><span class="line">     &#125;</span><br><span class="line">that.noteVisible = true;//控制显示el-dialog</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义的说明图标点击后文字this.direction_content展示的是最后一个饼图的数据？</p>
+<p> 【解决】</p>
+<ul>
+<li>在Onlick的时候再赋值 (尤其针对这种全局共享的语法糖)    </li>
+<li>在内部引用，使用that定义</li>
+</ul>
 </li>
 </ol>
 
@@ -469,7 +488,7 @@ normal:{
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">89</span>
+                  <span class="site-state-item-count">90</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
