@@ -1070,8 +1070,23 @@ find / -name nginx.conf   2&gt;/dev/null</code></pre></li>
         
           
             <ol>
-<li><p>JS合并两个数组</p>
-<pre><code>a.push.apply(a,[4,5,6]);    </code></pre></li>
+<li><p>JS合并两个数组 </p>
+<p>apply会改变原数组的值</p>
+<pre><code>a.push.apply(a,[4,5,6]);  </code></pre><p>concat不会改变原数组的值</p>
+<pre><code>arr1 = [1,2];
+arr2 = [&quot;aa&quot;,&quot;as&quot;];
+console.log(arr1.concat(arr2));//[1, 2, &quot;aa&quot;, &quot;as&quot;]</code></pre></li>
+<li><p>删除数组某项    </p>
+<p> splice(index,len,[item]) 注释：该方法会改变原始数组。<br> index:数组开始下标 </p>
+<p> len: 替换/删除的长度</p>
+<p> item:替换的值，删除操作的话 item为空</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;]; </span><br><span class="line">arr.splice(1,1); </span><br><span class="line">console.log(arr); </span><br><span class="line">//[&apos;a&apos;,&apos;c&apos;,&apos;d&apos;];</span><br></pre></td></tr></table></figure>
+
+<p> 删除某值元素</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=[1,2,3]</span><br><span class="line">a.splice(a.indexOf(2),1)// [1,3]</span><br></pre></td></tr></table></figure>
+
+<p> 参考 <a href="https://www.jb51.net/article/134312.htm" target="_blank" rel="noopener">https://www.jb51.net/article/134312.htm</a></p>
+</li>
 <li><p>JS 排序功能  sort()</p>
 <ul>
 <li><p>【原理】当数组长度&lt;=10的时候，采用插入排序；&gt;10的时候，采用快排。(当数据量很小的时候，插入排序效率优于快排)</p>
@@ -1130,9 +1145,23 @@ find / -name nginx.conf   2&gt;/dev/null</code></pre></li>
 <ul>
 <li>console.table，格式化表格</li>
 <li>统计代码执行时间<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.time(&apos;统计时间&apos;)</span><br><span class="line">for(var i = 0; i &lt; 999 ;i++)&#123;&#125;</span><br><span class="line">console.timeEnd(&apos;统计时间&apos;</span><br></pre></td></tr></table></figure>
-
 </li>
 </ul>
+</li>
+<li><p>数组对象筛选</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8. 对象列表排重</span><br></pre></td></tr></table></figure>
+
+<p>  function unique(arr,field){</p>
+<pre><code>var map = {};
+var res = [];
+for (var i = 0; i &lt; arr.length; i++) {
+    if (!map[arr[i][field]]) {
+        map[arr[i][field]]=1;//巧妙利用对象键值唯一性判重
+        res.push(arr[i]);
+    }
+}
+ return res;</code></pre><p>   ```
+原文链接：<a href="https://blog.csdn.net/qq_36949713/java/article/details/81942370" target="_blank" rel="noopener">https://blog.csdn.net/qq_36949713/java/article/details/81942370</a></p>
 </li>
 </ol>
 
@@ -1600,10 +1629,12 @@ CORS_ALLOW_CREDENTIALS = True  //新增</code></pre></li>
   },
   [h(&quot;span&quot;)]
 );</code></pre><p>   },</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">10. 文件下载</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  对流文件可使用 Blob对象 和 使用 js-file-download</span><br><span class="line">  </span><br><span class="line">  发送请求时都要设置 responseType</span><br><span class="line">  </span><br><span class="line">  以下是完整的一个文件下载请求和处理过程：</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10. 文件下载</span><br><span class="line">	后端Django</span><br></pre></td></tr></table></figure>
 
-<p>{
-   var param = this.$qs.stringify(</p>
+<p> file = open(update_file_path, ‘rb’) #update_file_path文件存放位置<br> response = FileResponse(file)<br> response[‘Content-Type’] = ‘application/octet-stream’<br> #file_name下载下来保存的文件名字<br> content_dis = ‘attachment;filename=”‘+file_name+’”‘<br> response[‘Content-Disposition’] = content_dis<br> return response</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">对流文件可使用 Blob对象 和 使用 js-file-download</span><br><span class="line"></span><br><span class="line">发送请求时都要设置 responseType</span><br><span class="line"></span><br><span class="line">以下是完整的一个文件下载请求和处理过程：</span><br></pre></td></tr></table></figure>
+
+<p> {<br>   var param = this.$qs.stringify(</p>
 <pre><code>{
   sub_project: this.selectedsubproject,
   src: this.selectedsrc,
@@ -1632,8 +1663,13 @@ if (&apos;download&apos; in document.createElement(&apos;a&apos;)) { // 支持a�
 })
 .catch(function(err) {
   console.log(err);
-});</code></pre><p> },<br>```
-参考：<a href="https://segmentfault.com/a/1190000020540788?utm_source=tag-newest" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020540788?utm_source=tag-newest</a></p>
+});</code></pre><p> },<br>```</p>
+<p>参考：<a href="https://segmentfault.com/a/1190000020540788?utm_source=tag-newest" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020540788?utm_source=tag-newest</a> </p>
+<ol start="23">
+<li><p>打开已成型的Django项目路径无法跳转，展示红线条？</p>
+<p>项目打开路径错误，应该打开到项目根路径(非外部路径)</p>
+</li>
+</ol>
 </el-form></li>
 </ol>
 

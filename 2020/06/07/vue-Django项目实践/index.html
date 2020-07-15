@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="躲不掉的风">
 <meta property="og:description" content="Django跨域设置   pip install django-cors-header    setting中设置： &amp;apos;corsheaders.middleware.CorsMiddleware&amp;apos; # 新加的插件位置最好放在CommonMiddleware之前       INSTALLED_APPS中添加&amp;apos;corsheaders&amp;apos;,     CORS_O">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-09T09:46:24.243Z">
+<meta property="og:updated_time" content="2020-07-14T06:19:55.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue+Django项目实践问题汇总">
 <meta name="twitter:description" content="Django跨域设置   pip install django-cors-header    setting中设置： &amp;apos;corsheaders.middleware.CorsMiddleware&amp;apos; # 新加的插件位置最好放在CommonMiddleware之前       INSTALLED_APPS中添加&amp;apos;corsheaders&amp;apos;,     CORS_O">
@@ -404,10 +404,12 @@ CORS_ALLOW_CREDENTIALS = True  //新增</code></pre></li>
   },
   [h(&quot;span&quot;)]
 );</code></pre><p>   },</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">10. 文件下载</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  对流文件可使用 Blob对象 和 使用 js-file-download</span><br><span class="line">  </span><br><span class="line">  发送请求时都要设置 responseType</span><br><span class="line">  </span><br><span class="line">  以下是完整的一个文件下载请求和处理过程：</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10. 文件下载</span><br><span class="line">	后端Django</span><br></pre></td></tr></table></figure>
 
-<p>{
-   var param = this.$qs.stringify(</p>
+<p> file = open(update_file_path, ‘rb’) #update_file_path文件存放位置<br> response = FileResponse(file)<br> response[‘Content-Type’] = ‘application/octet-stream’<br> #file_name下载下来保存的文件名字<br> content_dis = ‘attachment;filename=”‘+file_name+’”‘<br> response[‘Content-Disposition’] = content_dis<br> return response</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">对流文件可使用 Blob对象 和 使用 js-file-download</span><br><span class="line"></span><br><span class="line">发送请求时都要设置 responseType</span><br><span class="line"></span><br><span class="line">以下是完整的一个文件下载请求和处理过程：</span><br></pre></td></tr></table></figure>
+
+<p> {<br>   var param = this.$qs.stringify(</p>
 <pre><code>{
   sub_project: this.selectedsubproject,
   src: this.selectedsrc,
@@ -436,8 +438,13 @@ if (&apos;download&apos; in document.createElement(&apos;a&apos;)) { // 支持a�
 })
 .catch(function(err) {
   console.log(err);
-});</code></pre><p> },<br>```
-参考：<a href="https://segmentfault.com/a/1190000020540788?utm_source=tag-newest" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020540788?utm_source=tag-newest</a></p>
+});</code></pre><p> },<br>```</p>
+<p>参考：<a href="https://segmentfault.com/a/1190000020540788?utm_source=tag-newest" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020540788?utm_source=tag-newest</a> </p>
+<ol start="23">
+<li><p>打开已成型的Django项目路径无法跳转，展示红线条？</p>
+<p>项目打开路径错误，应该打开到项目根路径(非外部路径)</p>
+</li>
+</ol>
 </el-form></li>
 </ol>
 
