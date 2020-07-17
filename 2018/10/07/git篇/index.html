@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="git命令基础操作这篇文章很清楚：https://www.cnblogs.com/tocy/p/git-command-line-manual.html 常见出错和问题1.  出现error: The following untracked working tree files would be overwritten by checkout解决： $ git clean -d -fx “”参考">
+<meta name="description" content="git命令基础操作这篇文章很清楚：https://www.cnblogs.com/tocy/p/git-command-line-manual.html 创建分支并上传1.创建本地分支dev git branch dev (也可以在gitlab上手动添加后checkout) 2.切换到分支dev git checkout dev3.查看远程分支 git branch -a4.将代码暂存在本地 gi">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git使用篇">
 <meta property="og:url" content="http://yoursite.com/2018/10/07/git篇/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="git命令基础操作这篇文章很清楚：https://www.cnblogs.com/tocy/p/git-command-line-manual.html 常见出错和问题1.  出现error: The following untracked working tree files would be overwritten by checkout解决： $ git clean -d -fx “”参考">
+<meta property="og:description" content="git命令基础操作这篇文章很清楚：https://www.cnblogs.com/tocy/p/git-command-line-manual.html 创建分支并上传1.创建本地分支dev git branch dev (也可以在gitlab上手动添加后checkout) 2.切换到分支dev git checkout dev3.查看远程分支 git branch -a4.将代码暂存在本地 gi">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/2019041712030931.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190417120340626.png">
-<meta property="og:updated_time" content="2020-06-17T06:19:19.645Z">
+<meta property="og:updated_time" content="2020-07-16T04:03:29.820Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git使用篇">
-<meta name="twitter:description" content="git命令基础操作这篇文章很清楚：https://www.cnblogs.com/tocy/p/git-command-line-manual.html 常见出错和问题1.  出现error: The following untracked working tree files would be overwritten by checkout解决： $ git clean -d -fx “”参考">
+<meta name="twitter:description" content="git命令基础操作这篇文章很清楚：https://www.cnblogs.com/tocy/p/git-command-line-manual.html 创建分支并上传1.创建本地分支dev git branch dev (也可以在gitlab上手动添加后checkout) 2.切换到分支dev git checkout dev3.查看远程分支 git branch -a4.将代码暂存在本地 gi">
 <meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019041712030931.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70">
 
 
@@ -335,6 +335,20 @@
 
       
         <p>git命令基础操作这篇文章很清楚：<a href="https://www.cnblogs.com/tocy/p/git-command-line-manual.html" target="_blank" rel="noopener">https://www.cnblogs.com/tocy/p/git-command-line-manual.html</a></p>
+<h4 id="创建分支并上传"><a href="#创建分支并上传" class="headerlink" title="创建分支并上传"></a>创建分支并上传</h4><p>1.创建本地分支dev</p>
+<pre><code>git branch dev </code></pre><p>(也可以在gitlab上手动添加后checkout)</p>
+<p>2.切换到分支dev</p>
+<pre><code>git checkout dev</code></pre><p>3.查看远程分支</p>
+<pre><code>git branch -a</code></pre><p>4.将代码暂存在本地</p>
+<pre><code>git add .</code></pre><p>5.给暂存在本地的代码打个tag</p>
+<pre><code>git commit -am &quot;first commit&quot;</code></pre><p>6.将本地代码推送到远程指定分支</p>
+<pre><code>git push origin &lt;指定的分支名&gt;</code></pre><p>7.从远程指定分支上拉取代码</p>
+<pre><code>git clone -b  &lt;指定分支名&gt;  &lt;ssh或者http地址&gt; </code></pre><ol start="8">
+<li><p>删除远程分支</p>
+<p> git push origin –delete [branch_name]</p>
+</li>
+</ol>
+<p>链接：<a href="https://www.jianshu.com/p/801d00b15624" target="_blank" rel="noopener">https://www.jianshu.com/p/801d00b15624</a></p>
 <h2 id="常见出错和问题"><a href="#常见出错和问题" class="headerlink" title="常见出错和问题"></a>常见出错和问题</h2><h6 id="1-出现error-The-following-untracked-working-tree-files-would-be-overwritten-by-checkout"><a href="#1-出现error-The-following-untracked-working-tree-files-would-be-overwritten-by-checkout" class="headerlink" title="1.  出现error: The following untracked working tree files would be overwritten by checkout"></a>1.  出现error: The following untracked working tree files would be overwritten by checkout</h6><p>解决： $ git clean -d -fx “”<br>参考   <a href="http://blog.chinaunix.net/uid-23366077-id-3581375.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-23366077-id-3581375.html</a></p>
 <h6 id="2-Git冲突：commit-your-changes-or-stash-them-before-you-can-merge-解决办法"><a href="#2-Git冲突：commit-your-changes-or-stash-them-before-you-can-merge-解决办法" class="headerlink" title="2. Git冲突：commit your changes or stash them before you can merge. 解决办法"></a>2. Git冲突：commit your changes or stash them before you can merge. 解决办法</h6><p>出现这个问题的原因是其他人修改了xxx.php并提交到版本库中去了，而你本地也修改了xxx.php，这时候你进行git pull操作就好出现冲突了，解决方法，在上面的提示中也说的很明确了。<br><a href="https://www.cnblogs.com/wenlj/p/5866356.html" target="_blank" rel="noopener">https://www.cnblogs.com/wenlj/p/5866356.html</a><br>1）直接commit本地的修改 —-也一般不用这种方法<br>2）通过git stash  —- 通常用这种方法</p>
 <pre><code>git stash
@@ -487,7 +501,7 @@ git stash pop</code></pre><p>通过git stash将工作区恢复到上次提交的
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">90</span>
+                  <span class="site-state-item-count">93</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -533,7 +547,7 @@ git stash pop</code></pre><p>通过git stash将工作区恢复到上次提交的
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见出错和问题"><span class="nav-number">1.</span> <span class="nav-text">常见出错和问题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-出现error-The-following-untracked-working-tree-files-would-be-overwritten-by-checkout"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">1.  出现error: The following untracked working tree files would be overwritten by checkout</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-Git冲突：commit-your-changes-or-stash-them-before-you-can-merge-解决办法"><span class="nav-number">1.0.0.0.2.</span> <span class="nav-text">2. Git冲突：commit your changes or stash them before you can merge. 解决办法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-github多人协作"><span class="nav-number">1.0.0.0.3.</span> <span class="nav-text">3. github多人协作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-为GitLab帐号添加SSH-keys并连接GitLab"><span class="nav-number">1.0.0.0.4.</span> <span class="nav-text">4.为GitLab帐号添加SSH keys并连接GitLab</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-删除内容"><span class="nav-number">1.0.0.0.5.</span> <span class="nav-text">5. 删除内容</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-git提交代码时，出现这个错误“error-The-requested-URL-returned-error-403-Forbidden-while-accessing-https”"><span class="nav-number">1.0.0.0.6.</span> <span class="nav-text">6. git提交代码时，出现这个错误“error: The requested URL returned error: 403 Forbidden while accessing https”</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-git别人提交的时候冲突了，需要回退到之前某版本"><span class="nav-number">1.0.0.0.7.</span> <span class="nav-text">7. git别人提交的时候冲突了，需要回退到之前某版本</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#8-GIT-warning-LF-will-be-replaced-by-CRLF问题解决方法"><span class="nav-number">1.0.0.0.8.</span> <span class="nav-text">8. [GIT] warning: LF will be replaced by CRLF问题解决方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#9-由于某配置项错误配置导致push失败，解决：删除配置项目"><span class="nav-number">1.0.0.0.9.</span> <span class="nav-text">9. 由于某配置项错误配置导致push失败，解决：删除配置项目</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#10-、git-分支拉取"><span class="nav-number">1.0.0.0.10.</span> <span class="nav-text">10. 、git 分支拉取</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#11-You-are-in-‘detached-HEAD’-state"><span class="nav-number">1.0.0.0.11.</span> <span class="nav-text">11.  You are in ‘detached HEAD’ state.</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建分支并上传"><span class="nav-number">1.</span> <span class="nav-text">创建分支并上传</span></a></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#常见出错和问题"><span class="nav-number"></span> <span class="nav-text">常见出错和问题</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-出现error-The-following-untracked-working-tree-files-would-be-overwritten-by-checkout"><span class="nav-number">0.0.1.</span> <span class="nav-text">1.  出现error: The following untracked working tree files would be overwritten by checkout</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-Git冲突：commit-your-changes-or-stash-them-before-you-can-merge-解决办法"><span class="nav-number">0.0.2.</span> <span class="nav-text">2. Git冲突：commit your changes or stash them before you can merge. 解决办法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-github多人协作"><span class="nav-number">0.0.3.</span> <span class="nav-text">3. github多人协作</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-为GitLab帐号添加SSH-keys并连接GitLab"><span class="nav-number">0.0.4.</span> <span class="nav-text">4.为GitLab帐号添加SSH keys并连接GitLab</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#5-删除内容"><span class="nav-number">0.0.5.</span> <span class="nav-text">5. 删除内容</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#6-git提交代码时，出现这个错误“error-The-requested-URL-returned-error-403-Forbidden-while-accessing-https”"><span class="nav-number">0.0.6.</span> <span class="nav-text">6. git提交代码时，出现这个错误“error: The requested URL returned error: 403 Forbidden while accessing https”</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#7-git别人提交的时候冲突了，需要回退到之前某版本"><span class="nav-number">0.0.7.</span> <span class="nav-text">7. git别人提交的时候冲突了，需要回退到之前某版本</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#8-GIT-warning-LF-will-be-replaced-by-CRLF问题解决方法"><span class="nav-number">0.0.8.</span> <span class="nav-text">8. [GIT] warning: LF will be replaced by CRLF问题解决方法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#9-由于某配置项错误配置导致push失败，解决：删除配置项目"><span class="nav-number">0.0.9.</span> <span class="nav-text">9. 由于某配置项错误配置导致push失败，解决：删除配置项目</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#10-、git-分支拉取"><span class="nav-number">0.0.10.</span> <span class="nav-text">10. 、git 分支拉取</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#11-You-are-in-‘detached-HEAD’-state"><span class="nav-number">0.0.11.</span> <span class="nav-text">11.  You are in ‘detached HEAD’ state.</span></a></li></ol></li></div>
             
 
           </div>
