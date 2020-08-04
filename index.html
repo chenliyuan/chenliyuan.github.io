@@ -1453,7 +1453,8 @@ find / -name nginx.conf   2&gt;/dev/null</code></pre></li>
       
         
           
-            <ol>
+            <p>js数组操作方法以及es6新增方法:<a href="https://www.cnblogs.com/Ky-Thompson23/p/12408795.html" target="_blank" rel="noopener">https://www.cnblogs.com/Ky-Thompson23/p/12408795.html</a></p>
+<ol>
 <li><p>JS合并两个数组 </p>
 <p>apply会改变原数组的值</p>
 <pre><code>a.push.apply(a,[4,5,6]);  </code></pre><p>concat不会改变原数组的值</p>
@@ -1470,6 +1471,8 @@ console.log(arr1.concat(arr2));//[1, 2, &quot;aa&quot;, &quot;as&quot;]</code></
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=[1,2,3]</span><br><span class="line">a.splice(a.indexOf(2),1)// [1,3]</span><br></pre></td></tr></table></figure>
 
 <p> 参考 <a href="https://www.jb51.net/article/134312.htm" target="_blank" rel="noopener">https://www.jb51.net/article/134312.htm</a></p>
+<p>添加 —- len设置为0，item为添加的值 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> var arr = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;]; </span><br><span class="line">arr.splice(1,0,&apos;ttt&apos;); </span><br><span class="line">console.log(arr); </span><br><span class="line">//[&apos;a&apos;,&apos;ttt&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;] 表示在下标为1处添加一项&apos;ttt&apos;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>JS 排序功能  sort()</p>
 <ul>
@@ -1497,7 +1500,15 @@ console.log(arr1.concat(arr2));//[1, 2, &quot;aa&quot;, &quot;as&quot;]</code></
         console.log(arr_filter)
     &lt;/script&gt;</code></pre><p> 参考：<a href="https://www.cnblogs.com/jianxian/p/10582683.html" target="_blank" rel="noopener">https://www.cnblogs.com/jianxian/p/10582683.html</a></p>
 <p> 推荐：<a href="https://www.cnblogs.com/saifei/p/9043821.html" target="_blank" rel="noopener">https://www.cnblogs.com/saifei/p/9043821.html</a></p>
-</li>
+<pre><code>var summary = origin_outline
+  .replace(/&lt;\/p&gt;/g, &quot;&quot;)
+  .split(&quot;&lt;p&gt;&quot;)
+  .filter(function(s) {
+    return s &amp;&amp; s.trim();
+  })
+  .map(function(m) {
+    return m.trim();
+  });</code></pre></li>
 <li><p>ES箭头函数</p>
 <p>基本形式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let sum = (num1,num2) =&gt; num1 + num2;</span><br></pre></td></tr></table></figure>
@@ -1544,10 +1555,12 @@ for (var i = 0; i &lt; arr.length; i++) {
         res.push(arr[i]);
     }
 }
- return res;</code></pre><p>   ```
-原文链接：<a href="https://blog.csdn.net/qq_36949713/java/article/details/81942370" target="_blank" rel="noopener">https://blog.csdn.net/qq_36949713/java/article/details/81942370</a></p>
+ return res;</code></pre>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  原文链接：https://blog.csdn.net/qq_36949713/java/article/details/81942370</span><br><span class="line">  </span><br><span class="line">10. JS Base64转码</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
+<p>let Base64 = {<br>    encode(str) {<br>        // first we use encodeURIComponent to get percent-encoded UTF-8,<br>        // then we convert the percent encodings into raw bytes which<br>        // can be fed into btoa.<br>        return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,<br>            function toSolidBytes(match, p1) {<br>                return String.fromCharCode(‘0x’ + p1);<br>            }));<br>    },<br>    decode(str) {<br>        // Going backwards: from bytestream, to percent-encoding, to original string.<br>        return decodeURIComponent(atob(str).split(‘’).map(function(c) {<br>            return ‘%’ + (‘00’ + c.charCodeAt(0).toString(16)).slice(-2);<br>        }).join(‘’));<br>    }<br>};<br>```
+对于json数据，先转换成字符串<br>Base64.encode(JSON.stringify(this.result))</p>
 
           
         
@@ -1667,15 +1680,13 @@ for (var i = 0; i &lt; arr.length; i++) {
       
         
           
-            <h6 id="二、数据传输"><a href="#二、数据传输" class="headerlink" title="二、数据传输"></a>二、数据传输</h6><pre><code>简单办法：启动本地服务：
+            <h6 id="同步上线文件http-server"><a href="#同步上线文件http-server" class="headerlink" title="同步上线文件http.server"></a>同步上线文件http.server</h6><pre><code>简单办法：启动本地服务：
 
   python3 -m http.server 8000（python3）
-  curl -O  http://10.12.169.57:8000/dist.tar.gz</code></pre><p>####CSS文件不生效问题：<br>解决：1.  设置一些配置信息？—–依旧未生效<br><a href="https://www.jb51.net/article/174089.htm" target="_blank" rel="noopener">https://www.jb51.net/article/174089.htm</a></p>
-<h6 id="三、-域名配置"><a href="#三、-域名配置" class="headerlink" title="三、 域名配置"></a>三、 域名配置</h6><pre><code>netstat -nltp 查看
+  curl -O  http://10.12.169.57:8000/dist.tar.gz</code></pre><h6 id="CSS文件不生效问题："><a href="#CSS文件不生效问题：" class="headerlink" title="CSS文件不生效问题："></a>CSS文件不生效问题：</h6><p>解决：1.  设置一些配置信息？—–依旧未生效<br><a href="https://www.jb51.net/article/174089.htm" target="_blank" rel="noopener">https://www.jb51.net/article/174089.htm</a></p>
+<h6 id="域名配置"><a href="#域名配置" class="headerlink" title="域名配置"></a>域名配置</h6><pre><code>netstat -nltp 查看
 
-切换至root  :sudo su root</code></pre><h6 id="四、-vue项目"><a href="#四、-vue项目" class="headerlink" title="四、 vue项目"></a>四、 vue项目</h6><ol>
-<li><p>引用的css样式文件大部分没有生效？</p>
-<p>【解决】</p>
+切换至root  :sudo su root</code></pre><h6 id="引用的css样式文件大部分没有生效？"><a href="#引用的css样式文件大部分没有生效？" class="headerlink" title="引用的css样式文件大部分没有生效？"></a>引用的css样式文件大部分没有生效？</h6><p>  【解决】</p>
 <ol>
 <li><p>一共三种引用方式，在main.js\index.html\app.vue中引入。<br>其中app中引入:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  @import &apos;./../static/css/global.css&apos;; /*引入公共样式*/</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
@@ -1683,134 +1694,40 @@ for (var i = 0; i &lt; arr.length; i++) {
 <p>参考： <a href="https://blog.csdn.net/HY_358116732/article/details/82219387" target="_blank" rel="noopener">https://blog.csdn.net/HY_358116732/article/details/82219387</a></p>
 </li>
 <li><p>将element-ui的引用提到最最前面</p>
-</li>
-</ol>
 <p>因为引用的css样式是针对此ui进行的覆盖修改，所以需要在其后面引用，才起到覆盖的作用。</p>
 </li>
-<li><p>传文件使用 gitlab一致报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added &apos;gitlab.com,172.65.251.78&apos; (ECDSA) to the list of known hosts.</span><br><span class="line">Permission denied (publickey).</span><br></pre></td></tr></table></figure>
-
-</li>
 </ol>
+<h6 id="传文件使用-gitlab一致报错"><a href="#传文件使用-gitlab一致报错" class="headerlink" title="传文件使用 gitlab一致报错"></a>传文件使用 gitlab一致报错</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added &apos;gitlab.com,172.65.251.78&apos; (ECDSA) to the list of known hosts.</span><br><span class="line">Permission denied (publickey).</span><br></pre></td></tr></table></figure>
+
 <p>ping一下gitlab.com获取ip,然后设置host对应gitlab.com</p>
-<ol start="3">
-<li><p>上线步骤：</p>
-<pre><code>更改google认证，改成线上id
+<h6 id="上线步骤："><a href="#上线步骤：" class="headerlink" title="上线步骤："></a>上线步骤：</h6><pre><code>更改google认证，改成线上id
 本地和git上：清除dist文件
 npm run build pro
 生成dist文件拷贝到git文件(同步使用)
 git add .
 git commit -m &quot;update&quot;
 git push
-服务端git pull</code></pre></li>
-<li><p>浏览器缓存问题</p>
-<ul>
+服务端git pull</code></pre><h6 id="浏览器缓存问题"><a href="#浏览器缓存问题" class="headerlink" title="浏览器缓存问题"></a>浏览器缓存问题</h6><ul>
 <li><p>(1) nginx配置修改</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add_header Cache-Control &quot;no-cache, no-store&quot;;</span><br><span class="line">add_header Pragma no-cache;//http 1.0旧版本</span><br></pre></td></tr></table></figure>
 
-<p> no-cache, no-store选择一个即可</p>
-<p> no-cache浏览器会缓存，但刷新页面或者重新打开时 会请求服务器，服务器可以响应304，如果文件有改动就会响应200</p>
+<p>  no-cache, no-store选择一个即可</p>
+<p>  no-cache浏览器会缓存，但刷新页面或者重新打开时 会请求服务器，服务器可以响应304，如果文件有改动就会响应200</p>
 <p>no-store浏览器不缓存，刷新页面需要重新下载页面</p>
 <p>Nginx下关于缓存控制字段cache-control的配置说明:<br><a href="https://www.cnblogs.com/kevingrace/p/10459429.html" target="_blank" rel="noopener">https://www.cnblogs.com/kevingrace/p/10459429.html</a></p>
 </li>
 <li><p>(2) 修改文件 webpack .prod.conf.js,使用时间戳动态定义版本号</p>
-</li>
-</ul>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const Version = new Date().getTime();</span><br><span class="line">...</span><br><span class="line">filename: utils.assetsPath(&apos;js/[name].[chunkhash]._&apos; + Version + &apos;.js&apos;),</span><br><span class="line">...</span><br><span class="line">filename: utils.assetsPath(&apos;css/[name].[contenthash]._&apos; + Version + &apos;.css&apos;),</span><br></pre></td></tr></table></figure>
 
 
 </li>
-</ol>
+</ul>
 <p> 但是后来经过实践证明，只需要配置nginx即可，每次刷新即可更新。猜测</p>
 <ol>
-<li><p>每次html不取缓存，拿到的js都是实际服务器文件</p>
-</li>
-<li><p>脚手架本身使用hash生成js和css文件，会根据改动更新文件名</p>
-<p>具体hash:</p>
-</li>
+<li>每次html不取缓存，拿到的js都是实际服务器文件</li>
+<li>脚手架本身使用hash生成js和css文件，会根据改动更新文件名</li>
 </ol>
-<h6 id="五、google认证"><a href="#五、google认证" class="headerlink" title="五、google认证"></a>五、google认证</h6><ol>
-<li><p>开发者平台：<a href="https://console.developers.google.com/apis/credentials?project=probable-goods-278213&amp;supportedpurview=project" target="_blank" rel="noopener">https://console.developers.google.com/apis/credentials?project=probable-goods-278213&amp;supportedpurview=project</a></p>
-<p>在以上google开发者平台注册Client ID。</p>
-<p>分别在Authorized JavaScript origins 和Authorized redirect URIs 处注册</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://localhost:8080//本地</span><br><span class="line">https://test.test.io //线上</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>利用其写登陆功能：    </p>
-<p><a href="https://www.npmjs.com/package/vue-google-signin-button" target="_blank" rel="noopener">https://www.npmjs.com/package/vue-google-signin-button</a></p>
-</li>
-</ol>
-<p>具体步骤：</p>
-<pre><code>1. npm install vue-google-signin-button
-
-2. 添加
-&lt;script src=&quot;static/utils/googleclient.js&quot;&gt;&lt;/script&gt;
-...
-import GSignInButton from &apos;vue-google-signin-button&apos;
-Vue.use(GSignInButton)
-
-3. 登陆页
-    &lt;template&gt;
-  &lt;g-signin-button
-    :params=&quot;googleSignInParams&quot;
-    @success=&quot;onSignInSuccess&quot;
-    @error=&quot;onSignInError&quot;&gt;
-    Sign in with Google
-  &lt;/g-signin-button&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-export default {
-  data () {
-    return {
-      /**
-       * The Auth2 parameters, as seen on
-       * https://developers.google.com/identity/sign-in/web/reference#gapiauth2initparams.
-       * As the very least, a valid client_id must present.
-       * @type {Object} 
-       */
-      googleSignInParams: {
-        client_id: &apos;YOUR_APP_CLIENT_ID.apps.googleusercontent.com&apos;
-      }
-    }
-  },
-  methods: {
-    onSignInSuccess (googleUser) {
-      // `googleUser` is the GoogleUser object that represents the just-signed-in user.
-      // See https://developers.google.com/identity/sign-in/web/reference#users
-      const profile = googleUser.getBasicProfile() // etc etc
-    },
-    onSignInError (error) {
-      // `error` contains any error occurred.
-      console.log(&apos;OH NOES&apos;, error)
-    }
-  }
-}
-   &lt;/script&gt; 
-    &lt;style&gt;
-.g-signin-button {
-  /* This is where you control how the button looks. Be creative! */
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 3px;
-  background-color: #3c82f7;
-  color: #fff;
-  box-shadow: 0 3px 0 #0f69ff;
-}
-&lt;/style&gt; </code></pre><ol>
-<li><p>打包后js文件 </p>
-<pre><code> app.js：基本就是你实际编写的那个app.vue(.vue或.js?),没这个页面跑不起来.
-
-vendor.js:vue-cli全家桶默认配置里面这个chunk就是将所有从node_modules/里require(import)的依赖都打包到这里，所以这个就是所有node_modules/下的被require(import)的js文件
-
-manifest.js: 最后一个chunk，被注入了webpackJsonp的定义及异步加载相关的定义(webpack调用CommonsChunkPlugin处理后模块管理的核心,因为是核心,所以要第一个进行加载,不然会报错).
-
-作者：_双眸
-链接：https://www.jianshu.com/p/7a888571522d
-来源：简书
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</code></pre><h6 id="六、解决问题思路"><a href="#六、解决问题思路" class="headerlink" title="六、解决问题思路"></a>六、解决问题思路</h6><p>关键block问题要学会问人，不要怕丢人</p>
-</li>
-</ol>
-<h6 id="七、-http和https实际上是跨域问题！！！"><a href="#七、-http和https实际上是跨域问题！！！" class="headerlink" title="七、 http和https实际上是跨域问题！！！"></a>七、 http和https实际上是跨域问题！！！</h6><p>  本地调试如果不设置会默认Https访问，但是服务端只能接收http协议，所以需要处理<br>  config/index.js:</p>
+<h6 id="http和https实际上是跨域问题！！！"><a href="#http和https实际上是跨域问题！！！" class="headerlink" title="http和https实际上是跨域问题！！！"></a>http和https实际上是跨域问题！！！</h6><p>  本地调试如果不设置会默认Https访问，但是服务端只能接收http协议，所以需要处理<br>  config/index.js:</p>
 <pre><code>proxyTable: {
     &apos;/measurement&apos;: {
         target: &apos;http://10.12.170.210:8000&apos;, //后端接口地址
@@ -1822,6 +1739,25 @@ manifest.js: 最后一个chunk，被注入了webpackJsonp的定义及异步加�
 },</code></pre><p>和
 main.js:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.baseURL = &apos;/measurement&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="vue-elementUI打包后elmentui自带图标失效问题"><a href="#vue-elementUI打包后elmentui自带图标失效问题" class="headerlink" title="vue+elementUI打包后elmentui自带图标失效问题"></a>vue+elementUI打包后elmentui自带图标失效问题</h6><p>原文：<a href="https://blog.csdn.net/qq_37827221/article/details/100707748https://blog.csdn.net/qq_37827221/article/details/100707748" target="_blank" rel="noopener">https://blog.csdn.net/qq_37827221/article/details/100707748https://blog.csdn.net/qq_37827221/article/details/100707748</a><br>【问题】elmentui自带图标失效，本地打prod包就没有问题，一旦把相同的文件放在服务器就不对了</p>
+<p><img src="/images/pasted-124.png" alt="upload successful"><br>【原因】通过本地文件上传git后，再服务端拉取git代码的方式部署</p>
+<p>  但是由于git冲突(具体为啥不清楚)导致拉取git文件不全，没有拉取到font文件夹内容</p>
+<p>  【解决】删除文件，重新git clone到服务器端，保证代码统一</p>
+<p><img src="/images/pasted-125.png" alt="upload successful"></p>
+<h6 id="生产环境排序功能失效"><a href="#生产环境排序功能失效" class="headerlink" title="生产环境排序功能失效"></a>生产环境排序功能失效</h6><p>【原因】为了屏蔽线上log,在webpack.pro.config中新增了限制字段 </p>
+<pre><code>new UglifyJsPlugin({
+    uglifyOptions: {
+        compress: {
+            warnings: false,
+            // drop_debugger: true, //新增
+            // drop_console: true, //新增
+        }
+    },</code></pre><p>本身这个没有问题，但是排序的部分使用了log打印的方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(val.sort(this.$compareInGroup(this.sortkey, 0, this.order)));</span><br></pre></td></tr></table></figure>
+
+<p>【解决】去掉console.log即可</p>
+
           
         
       

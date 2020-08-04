@@ -458,6 +458,7 @@
         
           
             <p>git命令基础操作这篇文章很清楚：<a href="https://www.cnblogs.com/tocy/p/git-command-line-manual.html" target="_blank" rel="noopener">https://www.cnblogs.com/tocy/p/git-command-line-manual.html</a></p>
+<h4 id="分支合并到master"><a href="#分支合并到master" class="headerlink" title="分支合并到master"></a>分支合并到master</h4><p><a href="https://blog.csdn.net/boysky0015/article/details/78185879/" target="_blank" rel="noopener">https://blog.csdn.net/boysky0015/article/details/78185879/</a></p>
 <h4 id="创建分支并上传"><a href="#创建分支并上传" class="headerlink" title="创建分支并上传"></a>创建分支并上传</h4><p>1.创建本地分支dev</p>
 <pre><code>git branch dev </code></pre><p>(也可以在gitlab上手动添加后checkout)</p>
 <p>2.切换到分支dev</p>
@@ -472,7 +473,9 @@
 </li>
 </ol>
 <p>链接：<a href="https://www.jianshu.com/p/801d00b15624" target="_blank" rel="noopener">https://www.jianshu.com/p/801d00b15624</a></p>
-<h2 id="常见出错和问题"><a href="#常见出错和问题" class="headerlink" title="常见出错和问题"></a>常见出错和问题</h2><h6 id="1-出现error-The-following-untracked-working-tree-files-would-be-overwritten-by-checkout"><a href="#1-出现error-The-following-untracked-working-tree-files-would-be-overwritten-by-checkout" class="headerlink" title="1.  出现error: The following untracked working tree files would be overwritten by checkout"></a>1.  出现error: The following untracked working tree files would be overwritten by checkout</h6><p>解决： $ git clean -d -fx “”<br>参考   <a href="http://blog.chinaunix.net/uid-23366077-id-3581375.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-23366077-id-3581375.html</a></p>
+<p>拉取新分支</p>
+<pre><code>git checkout  -b new_camp //创建并跳转到new_camp新分支名
+(或你用两步代替：git  branch +新分支名，git  checkout +新的分支名)</code></pre><h2 id="常见出错和问题"><a href="#常见出错和问题" class="headerlink" title="常见出错和问题"></a>常见出错和问题</h2><h6 id="1-出现error-The-following-untracked-working-tree-files-would-be-overwritten-by-checkout"><a href="#1-出现error-The-following-untracked-working-tree-files-would-be-overwritten-by-checkout" class="headerlink" title="1.  出现error: The following untracked working tree files would be overwritten by checkout"></a>1.  出现error: The following untracked working tree files would be overwritten by checkout</h6><p>解决： $ git clean -d -fx “”<br>参考   <a href="http://blog.chinaunix.net/uid-23366077-id-3581375.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-23366077-id-3581375.html</a></p>
 <h6 id="2-Git冲突：commit-your-changes-or-stash-them-before-you-can-merge-解决办法"><a href="#2-Git冲突：commit-your-changes-or-stash-them-before-you-can-merge-解决办法" class="headerlink" title="2. Git冲突：commit your changes or stash them before you can merge. 解决办法"></a>2. Git冲突：commit your changes or stash them before you can merge. 解决办法</h6><p>出现这个问题的原因是其他人修改了xxx.php并提交到版本库中去了，而你本地也修改了xxx.php，这时候你进行git pull操作就好出现冲突了，解决方法，在上面的提示中也说的很明确了。<br><a href="https://www.cnblogs.com/wenlj/p/5866356.html" target="_blank" rel="noopener">https://www.cnblogs.com/wenlj/p/5866356.html</a><br>1）直接commit本地的修改 —-也一般不用这种方法<br>2）通过git stash  —- 通常用这种方法</p>
 <pre><code>git stash
 git pull

@@ -79,18 +79,18 @@
 
 
 
-<meta name="description" content="JS合并两个数组  apply会改变原数组的值 a.push.apply(a,[4,5,6]);  concat不会改变原数组的值 arr1 = [1,2]; arr2 = [&amp;quot;aa&amp;quot;,&amp;quot;as&amp;quot;]; console.log(arr1.concat(arr2));//[1, 2, &amp;quot;aa&amp;quot;, &amp;quot;as&amp;quot;] 删除数组某项">
+<meta name="description" content="js数组操作方法以及es6新增方法:https://www.cnblogs.com/Ky-Thompson23/p/12408795.html  JS合并两个数组  apply会改变原数组的值 a.push.apply(a,[4,5,6]);  concat不会改变原数组的值 arr1 = [1,2]; arr2 = [&amp;quot;aa&amp;quot;,&amp;quot;as&amp;quot;]; console">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS语法使用小记">
 <meta property="og:url" content="http://yoursite.com/2020/06/18/JS语法汇总/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="JS合并两个数组  apply会改变原数组的值 a.push.apply(a,[4,5,6]);  concat不会改变原数组的值 arr1 = [1,2]; arr2 = [&amp;quot;aa&amp;quot;,&amp;quot;as&amp;quot;]; console.log(arr1.concat(arr2));//[1, 2, &amp;quot;aa&amp;quot;, &amp;quot;as&amp;quot;] 删除数组某项">
+<meta property="og:description" content="js数组操作方法以及es6新增方法:https://www.cnblogs.com/Ky-Thompson23/p/12408795.html  JS合并两个数组  apply会改变原数组的值 a.push.apply(a,[4,5,6]);  concat不会改变原数组的值 arr1 = [1,2]; arr2 = [&amp;quot;aa&amp;quot;,&amp;quot;as&amp;quot;]; console">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/pasted-120.png">
-<meta property="og:updated_time" content="2020-07-14T10:40:42.786Z">
+<meta property="og:updated_time" content="2020-08-03T06:38:11.949Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS语法使用小记">
-<meta name="twitter:description" content="JS合并两个数组  apply会改变原数组的值 a.push.apply(a,[4,5,6]);  concat不会改变原数组的值 arr1 = [1,2]; arr2 = [&amp;quot;aa&amp;quot;,&amp;quot;as&amp;quot;]; console.log(arr1.concat(arr2));//[1, 2, &amp;quot;aa&amp;quot;, &amp;quot;as&amp;quot;] 删除数组某项">
+<meta name="twitter:description" content="js数组操作方法以及es6新增方法:https://www.cnblogs.com/Ky-Thompson23/p/12408795.html  JS合并两个数组  apply会改变原数组的值 a.push.apply(a,[4,5,6]);  concat不会改变原数组的值 arr1 = [1,2]; arr2 = [&amp;quot;aa&amp;quot;,&amp;quot;as&amp;quot;]; console">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-120.png">
 
 
@@ -333,7 +333,8 @@
       
 
       
-        <ol>
+        <p>js数组操作方法以及es6新增方法:<a href="https://www.cnblogs.com/Ky-Thompson23/p/12408795.html" target="_blank" rel="noopener">https://www.cnblogs.com/Ky-Thompson23/p/12408795.html</a></p>
+<ol>
 <li><p>JS合并两个数组 </p>
 <p>apply会改变原数组的值</p>
 <pre><code>a.push.apply(a,[4,5,6]);  </code></pre><p>concat不会改变原数组的值</p>
@@ -350,6 +351,8 @@ console.log(arr1.concat(arr2));//[1, 2, &quot;aa&quot;, &quot;as&quot;]</code></
  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=[1,2,3]</span><br><span class="line">a.splice(a.indexOf(2),1)// [1,3]</span><br></pre></td></tr></table></figure>
 
 <p> 参考 <a href="https://www.jb51.net/article/134312.htm" target="_blank" rel="noopener">https://www.jb51.net/article/134312.htm</a></p>
+<p>添加 —- len设置为0，item为添加的值 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> var arr = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;]; </span><br><span class="line">arr.splice(1,0,&apos;ttt&apos;); </span><br><span class="line">console.log(arr); </span><br><span class="line">//[&apos;a&apos;,&apos;ttt&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;] 表示在下标为1处添加一项&apos;ttt&apos;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>JS 排序功能  sort()</p>
 <ul>
@@ -377,7 +380,15 @@ console.log(arr1.concat(arr2));//[1, 2, &quot;aa&quot;, &quot;as&quot;]</code></
         console.log(arr_filter)
     &lt;/script&gt;</code></pre><p> 参考：<a href="https://www.cnblogs.com/jianxian/p/10582683.html" target="_blank" rel="noopener">https://www.cnblogs.com/jianxian/p/10582683.html</a></p>
 <p> 推荐：<a href="https://www.cnblogs.com/saifei/p/9043821.html" target="_blank" rel="noopener">https://www.cnblogs.com/saifei/p/9043821.html</a></p>
-</li>
+<pre><code>var summary = origin_outline
+  .replace(/&lt;\/p&gt;/g, &quot;&quot;)
+  .split(&quot;&lt;p&gt;&quot;)
+  .filter(function(s) {
+    return s &amp;&amp; s.trim();
+  })
+  .map(function(m) {
+    return m.trim();
+  });</code></pre></li>
 <li><p>ES箭头函数</p>
 <p>基本形式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let sum = (num1,num2) =&gt; num1 + num2;</span><br></pre></td></tr></table></figure>
@@ -424,10 +435,12 @@ for (var i = 0; i &lt; arr.length; i++) {
         res.push(arr[i]);
     }
 }
- return res;</code></pre><p>   ```
-原文链接：<a href="https://blog.csdn.net/qq_36949713/java/article/details/81942370" target="_blank" rel="noopener">https://blog.csdn.net/qq_36949713/java/article/details/81942370</a></p>
+ return res;</code></pre>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  原文链接：https://blog.csdn.net/qq_36949713/java/article/details/81942370</span><br><span class="line">  </span><br><span class="line">10. JS Base64转码</span><br></pre></td></tr></table></figure>
+
 </li>
 </ol>
+<p>let Base64 = {<br>    encode(str) {<br>        // first we use encodeURIComponent to get percent-encoded UTF-8,<br>        // then we convert the percent encodings into raw bytes which<br>        // can be fed into btoa.<br>        return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,<br>            function toSolidBytes(match, p1) {<br>                return String.fromCharCode(‘0x’ + p1);<br>            }));<br>    },<br>    decode(str) {<br>        // Going backwards: from bytestream, to percent-encoding, to original string.<br>        return decodeURIComponent(atob(str).split(‘’).map(function(c) {<br>            return ‘%’ + (‘00’ + c.charCodeAt(0).toString(16)).slice(-2);<br>        }).join(‘’));<br>    }<br>};<br>```
+对于json数据，先转换成字符串<br>Base64.encode(JSON.stringify(this.result))</p>
 
       
     </div>
