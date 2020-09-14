@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="linux安装mysql使用pymysql的时候创建表不成功，提示连不到，于是才意识到本机没有安装Mysql服务，步骤：1、下载https://dev.mysql.com/downloads/mysql/2、安装的时候设置root密码3、设置环境变量打开终端,根目录：open .bash_profile直接输入如下语句：export PATH=${PATH}:/usr/local/mysql/bi">
+<meta name="description" content="linux安装mysql使用pymysql的时候创建表不成功，提示连不到，于是才意识到本机没有安装Mysql服务，步骤： 1、下载https://dev.mysql.com/downloads/mysql/ 2、安装的时候设置root密码   3、设置环境变量   打开终端,根目录：open .bash_profile  直接输入如下语句：export PATH=${PATH}:/usr/loca">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mysql数据库">
 <meta property="og:url" content="http://yoursite.com/2019/06/16/mysql数据库/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="linux安装mysql使用pymysql的时候创建表不成功，提示连不到，于是才意识到本机没有安装Mysql服务，步骤：1、下载https://dev.mysql.com/downloads/mysql/2、安装的时候设置root密码3、设置环境变量打开终端,根目录：open .bash_profile直接输入如下语句：export PATH=${PATH}:/usr/local/mysql/bi">
+<meta property="og:description" content="linux安装mysql使用pymysql的时候创建表不成功，提示连不到，于是才意识到本机没有安装Mysql服务，步骤： 1、下载https://dev.mysql.com/downloads/mysql/ 2、安装的时候设置root密码   3、设置环境变量   打开终端,根目录：open .bash_profile  直接输入如下语句：export PATH=${PATH}:/usr/loca">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-01-28T04:29:49.830Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-127.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-128.png">
+<meta property="og:updated_time" content="2020-08-17T10:52:07.452Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mysql数据库">
-<meta name="twitter:description" content="linux安装mysql使用pymysql的时候创建表不成功，提示连不到，于是才意识到本机没有安装Mysql服务，步骤：1、下载https://dev.mysql.com/downloads/mysql/2、安装的时候设置root密码3、设置环境变量打开终端,根目录：open .bash_profile直接输入如下语句：export PATH=${PATH}:/usr/local/mysql/bi">
+<meta name="twitter:description" content="linux安装mysql使用pymysql的时候创建表不成功，提示连不到，于是才意识到本机没有安装Mysql服务，步骤： 1、下载https://dev.mysql.com/downloads/mysql/ 2、安装的时候设置root密码   3、设置环境变量   打开终端,根目录：open .bash_profile  直接输入如下语句：export PATH=${PATH}:/usr/loca">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-127.png">
 
 
 
@@ -331,7 +334,41 @@
       
 
       
-        <h5 id="linux安装mysql"><a href="#linux安装mysql" class="headerlink" title="linux安装mysql"></a>linux安装mysql</h5><p>使用pymysql的时候创建表不成功，提示连不到，于是才意识到本机没有安装Mysql服务，步骤：<br>1、下载<a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a><br>2、安装的时候设置root密码<br>3、设置环境变量<br>打开终端,根目录：open .bash_profile<br>直接输入如下语句：export PATH=${PATH}:/usr/local/mysql/bin<br>4、终端登录  mysql -u root -p<br>5、手动创建数据库 语句参考<a href="https://www.cnblogs.com/zhuyongzhe/p/7686105.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhuyongzhe/p/7686105.html</a><br>6、执行创建表操作（本地写的create.py-连数据库和创建表操作）<br>执行后提示Warning: (3719, “‘utf8’ is currently an alias for the character set UTF8MB3, but will be an alias for UTF8MB4 in a future release. Please consider using UTF8MB4 in order to be unambiguous.”)<br>  result = self._query(query)<br>忽略即可，表已创建完毕</p>
+        <h5 id="linux安装mysql"><a href="#linux安装mysql" class="headerlink" title="linux安装mysql"></a>linux安装mysql</h5><p>使用pymysql的时候创建表不成功，提示连不到，于是才意识到本机没有安装Mysql服务，步骤：</p>
+<pre><code>1、下载https://dev.mysql.com/downloads/mysql/
+2、安装的时候设置root密码  
+3、设置环境变量  
+打开终端,根目录：open .bash_profile 
+直接输入如下语句：export PATH=${PATH}:/usr/local/mysql/bin
+4、终端登录  mysql -u root -p   
+5、手动创建数据库 语句参考https://www.cnblogs.com/zhuyongzhe/p/7686105.html   
+6、执行创建表操作（本地写的create.py-连数据库和创建表操作）  
+执行后提示Warning: (3719, &quot;&apos;utf8&apos; is currently an alias for the character set UTF8MB3, but will be an alias for UTF8MB4 in a future release. Please consider using UTF8MB4 in order to be unambiguous.&quot;)
+  result = self._query(query)
+忽略即可，表已创建完毕</code></pre><h5 id="mac安装mysql"><a href="#mac安装mysql" class="headerlink" title="mac安装mysql"></a>mac安装mysql</h5><ol>
+<li><p>安装Mysql前，需要先把之前的文件清理干净（如果第一次安装，此步骤可忽略）</p>
+<pre><code>执行下列命令
+sudo rm /usr/local/mysql
+sudo rm -rf /usr/local/mysql*
+sudo rm -rf /Library/StartupItems/MySQLCOM
+sudo rm -rf /Library/PreferencePanes/My*
+rm -rf ~/Library/PreferencePanes/My*
+sudo rm -rf /Library/Receipts/mysql*
+sudo rm -rf /Library/Receipts/MySQL*
+sudo rm -rf /var/db/receipts/com.mysq</code></pre></li>
+<li><p>下载的安装版本需要macos与对应版本对应</p>
+<p><a href="https://downloads.mysql.com/archives/community/" target="_blank" rel="noopener">https://downloads.mysql.com/archives/community/</a></p>
+<p><img src="/images/pasted-127.png" alt="upload successful"></p>
+</li>
+</ol>
+<p> <img src="/images/pasted-128.png" alt="upload successful"><br>    此步骤需要设置密码，最好复制上去，以防输错</p>
+<ol start="3">
+<li><p>报错：使用记忆中设置的密码不正确(第一次OK的)</p>
+<p>Can’t connect to local MySQL server through socket ‘/var/lib/mysql/mysql.sock’ (2)</p>
+<p> ERROR 1045 (28000): Access denied for user ‘root’@’localhost’ (using password: YES)</p>
+<p>方法：卸载，重新下载符合mac版本的mysql版本重新安装</p>
+</li>
+</ol>
 <h4 id="数据库创建满足三大范式"><a href="#数据库创建满足三大范式" class="headerlink" title="数据库创建满足三大范式"></a>数据库创建满足三大范式</h4><h6 id="1-原子性"><a href="#1-原子性" class="headerlink" title="1.原子性"></a>1.原子性</h6><p>不可再拆分</p>
 <h6 id="2-主键与其他列相关联"><a href="#2-主键与其他列相关联" class="headerlink" title="2.主键与其他列相关联"></a>2.主键与其他列相关联</h6><p>与主键无关的列需要去掉</p>
 <h6 id="3-主键与其他列直接相关联"><a href="#3-主键与其他列直接相关联" class="headerlink" title="3.主键与其他列直接相关联"></a>3.主键与其他列直接相关联</h6><p>若间接相关不可以，可拆分成两个表</p>
@@ -449,7 +486,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -495,7 +532,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#linux安装mysql"><span class="nav-number">1.</span> <span class="nav-text">linux安装mysql</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库创建满足三大范式"><span class="nav-number"></span> <span class="nav-text">数据库创建满足三大范式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-原子性"><span class="nav-number">0.1.</span> <span class="nav-text">1.原子性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-主键与其他列相关联"><span class="nav-number">0.2.</span> <span class="nav-text">2.主键与其他列相关联</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-主键与其他列直接相关联"><span class="nav-number">0.3.</span> <span class="nav-text">3.主键与其他列直接相关联</span></a></li></ol></li></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#linux安装mysql"><span class="nav-number">1.</span> <span class="nav-text">linux安装mysql</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mac安装mysql"><span class="nav-number">2.</span> <span class="nav-text">mac安装mysql</span></a></li></ol><li class="nav-item nav-level-4"><a class="nav-link" href="#数据库创建满足三大范式"><span class="nav-number"></span> <span class="nav-text">数据库创建满足三大范式</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#1-原子性"><span class="nav-number">0.1.</span> <span class="nav-text">1.原子性</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#2-主键与其他列相关联"><span class="nav-number">0.2.</span> <span class="nav-text">2.主键与其他列相关联</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#3-主键与其他列直接相关联"><span class="nav-number">0.3.</span> <span class="nav-text">3.主键与其他列直接相关联</span></a></li></ol></li></div>
             
 
           </div>

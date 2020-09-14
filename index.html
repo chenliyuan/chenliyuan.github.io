@@ -261,6 +261,590 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/14/MAC配置安卓环境sdk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/14/MAC配置安卓环境sdk/" itemprop="url">MAC配置安卓环境sdk</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-14T20:37:11+08:00">
+                2020-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>打开官网-Android SDK工具–SDK Tools下载对应sdk  zip包</p>
+</li>
+<li><p>下载后解压</p>
+</li>
+<li><p>打开终端，输入</p>
+<pre><code>vim ~/.bash_profile        </code></pre></li>
+<li><p>添加如下</p>
+<p> export ANDROID_HOME=/Users/shmaur/android-sdk-macosx  //这里为 sdk 路径地址<br> export PATH=$PATH:$ANDROID_HOME/tools<br> export PATH=$PATH:$ANDROID_HOME/platform-tools</p>
+</li>
+<li><p>每次编辑完 .bash_profile 文件后必须要进行：</p>
+<pre><code>source .bash_profile //更新环境变量配置，不更新则不会使配置生效</code></pre></li>
+<li><p>配置好后可以查看一下是否成功：</p>
+<pre><code>echo $PATH</code></pre></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/11/Vue-Django跨域问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/11/Vue-Django跨域问题/" itemprop="url">Vue+Django跨域问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-11T18:42:29+08:00">
+                2020-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="Django跨域问题解决"><a href="#Django跨域问题解决" class="headerlink" title="Django跨域问题解决"></a>Django跨域问题解决</h5><p>由于请求本地服务另外端口号导致的跨域问题，可参考<br><a href="https://www.cnblogs.com/wasbg/p/10973880.html" target="_blank" rel="noopener">https://www.cnblogs.com/wasbg/p/10973880.html</a><br><a href="https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：" target="_blank" rel="noopener">https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：</a></p>
+<h6 id="前端解决："><a href="#前端解决：" class="headerlink" title="前端解决："></a>前端解决：</h6><pre><code>config/index.js(前提去掉Axios.defaults.baseURL)
+    proxyTable: {
+        &apos;/&apos;: {
+            target: &apos;http://127.0.0.1:8000/&apos;, //后端接口地址
+            changeOrigin: true, //是否允许跨越
+            pathRewrite: {
+                &apos;^/&apos;: &apos;/&apos;, //重写,
+            }
+        }
+    },</code></pre><h6 id="后端解决"><a href="#后端解决" class="headerlink" title="后端解决"></a>后端解决</h6><pre><code>pip install django-cors-headers   
+
+ setting中设置：
+
+  1. &apos;corsheaders.middleware.CorsMiddleware&apos; # 新加的插件位置最好放在CommonMiddleware之前
+
+  2. INSTALLED_APPS中添加
+  &apos;corsheaders&apos;,    
+  3. setting文件里新增
+
+  CORS_ORIGIN_ALLOW_ALL = True   //新增   
+  CORS_ALLOW_CREDENTIALS = True  //新增</code></pre><ol>
+<li><p>设置了axios.defaults.baseURL会跳过代理</p>
+</li>
+<li><p>浏览器是禁止跨域的，会检查origin是否同源,若非同源则禁止。</p>
+<p> 但是服务端不禁止，在本地运行npm run dev等命令时实际上是用node运行了一个服务器，因此proxyTable实际上是将请求发给自己的服务器，再由服务器转发给后台服务器，做了亦曾代理，因为不会出现跨域问题。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/17/Sonarque/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/17/Sonarque/" itemprop="url">Sonarque</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-17T11:21:26+08:00">
+                2020-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/images/pasted-126.png" alt="upload successful"></p>
+<h3 id="理论和安装准备"><a href="#理论和安装准备" class="headerlink" title="理论和安装准备"></a>理论和安装准备</h3><h6 id="sonarque对js的安全检查"><a href="#sonarque对js的安全检查" class="headerlink" title="sonarque对js的安全检查"></a>sonarque对js的安全检查</h6><p>导致漏洞：</p>
+<pre><code>1、凭据允许访问敏感组件，例如数据库，文件存储，API或服务。 
+2、标准输入
+3、使用命令行
+4、使用套接字
+5、Xpath注入    
+原因： 就是XPath解析器本身对URL、表单中提交的代码内容未做严格限制，导致恶意代码可以直接解析执行。
+举例：如
+   //users/user[loginID/text()=’abc’ and password/text()=’test123’] 中
+   注入：/users/user[LoginID/text()=&apos;&apos;or 1=1 and password/text()=&apos;&apos;or 1=1]。
+6、散列数据(哈希)
+7、加密数据
+8、正则表达式敏感  * + {
+9、跨文档消息传递
+10、随机数生成器
+11、SQL查询
+12、动态执行代码 (硬编码)
+let func = Function（&apos;obj&apos;+ propName）; //敏感
+13、使用OS命令时使用Shell解释器
+14、跨域资源共享
+15、Cookie</code></pre><h6 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h6><pre><code>硬编码：就是将数据直接写入到代码中进行编译开发
+软编码：则是将数据与源代码解耦
+硬编码就是什么都在你的程序代码里面写死了，你想稍微修改一下效果，都得修改你的代码。
+举个例子：举个例子，比如说你做个软件，他有菜单栏，你如果把菜单的标题全部写在代码里，那如果现在要换英文的，你就不得不改变代码。
+现在换一种方式，你把菜单标题全部写在一个文本里，比如叫title.txt，现在你要英文，那么只要把title.txt里面相对应的值换成英文就可以了。
+不用在去该代码本身。</code></pre><h6 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h6><ol>
+<li><p>安装mysql</p>
+<p>报错 org.sonar.process.MessageException: Unsupported JDBC driver provider: mysql</p>
+</li>
+</ol>
+<p> ** SonarQube 7.9以上版本已不再支持mysql**</p>
+<ol start="2">
+<li><p>安装PostgreSQL </p>
+<p><a href="https://www.cnblogs.com/sea-stream/p/11197603.html" target="_blank" rel="noopener">https://www.cnblogs.com/sea-stream/p/11197603.html</a></p>
+<p>如何配置sonar.properties</p>
+<p><a href="https://www.cnblogs.com/Simple-Small/archive/2020/05/13/12882948.html" target="_blank" rel="noopener">https://www.cnblogs.com/Simple-Small/archive/2020/05/13/12882948.html</a>    </p>
+</li>
+<li><p>通过命令扫描：<br><img src="/images/pasted-129.png" alt="upload successful"></p>
+</li>
+<li><p>中文插件</p>
+<p>SonarQube默认为英文，我们可以安装SonarQube提供提供了中文插件，以便更好地熟悉使用。</p>
+<p>github地址：</p>
+<p><a href="https://github.com/SonarQubeCommunity/sonar-l10n-zh" target="_blank" rel="noopener">https://github.com/SonarQubeCommunity/sonar-l10n-zh</a></p>
+<p>找到对应的released版本jar包下载后，放入sonar目录如下后重启</p>
+<pre><code>sonarqube-6.5/extensions/plugins</code></pre></li>
+</ol>
+<h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><h6 id="运行sonar"><a href="#运行sonar" class="headerlink" title="运行sonar"></a>运行sonar</h6><p>官网下载zip报(或者百度云)</p>
+<ul>
+<li><p>解压后相关命令</p>
+<pre><code>sh sonarqube-8.3.1.34397/bin/macosx-universal-64/sonar.sh  console
+
+tail -f /Users/liyuanchen/Documents/sonarqube-8.3.1.34397/logs/sonar.log
+
+打开本地9000端口即可</code></pre></li>
+<li><p>扫描项目</p>
+<p> <img src="/images/pasted-130.png" alt="upload successful"></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/13/静态代码扫描/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/13/静态代码扫描/" itemprop="url">静态代码扫描</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-13T15:22:40+08:00">
+                2020-08-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Eslint"><a href="#Eslint" class="headerlink" title="Eslint"></a>Eslint</h3><p>ESLint 是用来检查我们写的 JavaScript代码是否满足指定规则的静态代码检查工具。</p>
+<p>用途：</p>
+<p>1、审查代码是否符合编码规范和统一的代码风格；<br>2、审查代码是否存在语法错误；<br><a href="https://zhuanlan.zhihu.com/p/81541854" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/81541854</a></p>
+<h5 id="rules"><a href="#rules" class="headerlink" title="rules"></a>rules</h5><p>验证规则是写在 .eslintrc 文件中的 rules 下面的，配置一条验证规则，这么写规则名，值可以是以下几种:</p>
+<p>1)、off 或 0：表示不验证规则。<br>2)、warn 或 1：表示验证规则，当不满足时，给警告。<br>3)、error 或 2 ：表示验证规则，不满足时报错。<br>4)、如果规则有参数，则这么写<br>规则名: 【值, 参数1, 参数2…】 </p>
+<p>链接：<a href="https://www.jianshu.com/p/04256932d5e5" target="_blank" rel="noopener">https://www.jianshu.com/p/04256932d5e5</a></p>
+<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/17/单页面应用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -716,7 +1300,18 @@ default:...</code></pre><p><img src="/images/pasted-122.png" alt="upload success
       
         
           
-            <ol>
+            <ul>
+<li><p>命名规范：</p>
+<p>项目文件夹命名都是 kebab-case命名</p>
+<p>属于components文件夹下的子文件夹，使用大写字母开头的PascalBase风格</p>
+<ol>
+<li>全局通用的组件放在 /src/components下</li>
+<li>其他业务页面中的组件，放在各自页面下的 ./components文件夹下</li>
+<li>每个components文件夹下最多只有一层文件夹，且文件夹名称为组件的名称，文件夹下必须有index.vue或 index.js，其他.vue文件统一大写开头（Pascal case），components下的子文件夹名称统一大写开头（PascalCase）</li>
+</ol>
+</li>
+</ul>
+<ul>
 <li><p>event和method的区别?</p>
 <p>method，可以在程序中直接调用对象的方法, obj.method();</p>
 <p>event 是在事件发生时的处理函数，通过监听事件的方式来设置</p>
@@ -728,7 +1323,23 @@ default:...</code></pre><p><img src="/images/pasted-122.png" alt="upload success
 <pre><code>1.命名路由搭配params，刷新页面参数会丢失
 2.查询参数搭配query，刷新页面数据不会丢失
 3.接受参数使用this.$route后面就是搭配路由的名称就能获取到参数的值(如this.$route.query.xxx)</code></pre></li>
-</ol>
+<li><p>main.js和routers文件重复import所有组件</p>
+<p>  封装一个文件调用</p>
+<p><a href="https://blog.csdn.net/yang295242361/article/details/104960383/" target="_blank" rel="noopener">https://blog.csdn.net/yang295242361/article/details/104960383/</a></p>
+</li>
+<li><p>关于VUE中 import 、 export 和 export default</p>
+<p>  <a href="https://www.cnblogs.com/Ryan777/p/10769661.html" target="_blank" rel="noopener">https://www.cnblogs.com/Ryan777/p/10769661.html</a></p>
+</li>
+<li><p>bus总线传值</p>
+<pre><code>bus.$emit(&apos;Click&apos;, {
+    id: id,
+    num:num
+    })
+
+this.$EventBus.$on(&apos;uploading&apos;, val=&gt;{
+    console.log(val)       //打印出来 val ：sure
+ })</code></pre></li>
+</ul>
 
           
         
@@ -1033,730 +1644,12 @@ normal:{
 <li>在内部引用，使用that定义</li>
 </ul>
 </li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/CSS使用小记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/22/CSS使用小记/" itemprop="url">CSS使用小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-22T11:25:20+08:00">
-                2020-06-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>box-shadow 参数(除了color其他单位都是px)</p>
-<pre><code>h-shadow    必需的。水平阴影的位置。允许负值
-v-shadow    必需的。垂直阴影的位置。允许负值
-blur    可选。模糊距离
-spread    可选。阴影的大小
-color    可选。阴影的颜色
-inset</code></pre><p>前两项横竖方向决定了投影方向</p>
-<p>blur 值越大阴影越模糊</p>
-<p>spread值越大范围越大</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow:10px 10px 5px 20px #ee4d2d</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-116.png" alt="upload successful">  </p>
-<p>加inset效果：</p>
-<p><img src="/images/pasted-117.png" alt="upload successful"></p>
+<li><p>常用功能</p>
+<p> minInterval: 1//在横轴和纵轴添加可限制刻度最小间隔，避免出现小数<br> selector:legend中设置选中规则<br> barMaxWidth: ‘50’,  //现在柱子宽度，避免在极限的时候展示粗细情况</p>
 </li>
-<li><p>padding 设置方向，逆时针（即上 右 下 左）</p>
-<p><img src="/images/pasted-115.png" alt="upload successful"></p>
-<p>若只有两项，则是上下、左右；一项是所有</p>
-<p>margin同理</p>
-</li>
-<li><p>align和text-align的区别<br>align直接写在是div的属性 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div align=&quot;center&quot;&gt; </span><br><span class="line">This is some text! </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>text-align则是Css的属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;text-align:center&quot;&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/19/nginx知识小记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/19/nginx知识小记/" itemprop="url">nginx使用小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-19T10:38:15+08:00">
-                2020-06-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>常用命令：</p>
-<pre><code>nginx -s stop   直接干掉服务
-start nginx     启动服务
-nginx -s quit         优雅停止nginx，有连接时会等连接请求完成再杀死worker进程  
- nginx -s reload     优雅重启，并重新载入配置文件nginx.conf
- nginx -s reopen     重新打开日志文件，一般用于切割日志
- nginx -v            查看版本  
- nginx -t            检查nginx的配置文件
- nginx -h            查看帮助信息
- nginx -V       详细版本信息，包括编译参数 
- nginx  -c filename  指定配置文件</code></pre></li>
-<li><p>查找和安装：</p>
-<pre><code>sudo apt-get install nginx
-cd /etc/nginx/conf.d
-查找
-find / -name nginx.conf   2&gt;/dev/null</code></pre></li>
-<li><p>没有root权限？</p>
-<p> 以非root权限安装nginx及运行:<br> <a href="https://www.cnblogs.com/xmaples/p/5836818.html" target="_blank" rel="noopener">https://www.cnblogs.com/xmaples/p/5836818.html</a></p>
-<p> 测试<br> pgrep -a nginx<br> nginx -c /home/ld-sgdev/liyuan_chen/nginx.conf<br> 验证<br> curl localhost:8080<br> 使用命令：<br> lsof -i :8080</p>
-</li>
-<li><p>修改nginx重启后未生效？<br> 很多进程需要逐一杀除</p>
-<p> ps -ef|grep nginx|awk ‘{print $2}’|xargs kill -9</p>
-</li>
-<li><p>nginx: [error] open() “/usr/local/var/run/nginx.pid” failed (2: No such file or directory)</p>
-<p> 直接启动命令nginx(非重启)，重新生成nginx.pid就可以了：</p>
-</li>
-<li><p>Mixed Content: The page at ‘xxx’ was loaded over HTTPS, but requested an insecure resource ‘xxx’.</p>
-<p>【解决】添加：<code>&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;upgrade-insecure-requests&quot;&gt;</code></p>
-</li>
-<li><p>mac 使用brew安装后默认地址：</p>
-<p>/usr/local/etc/nginx/nginx.conf </p>
-<p>默认端口占用8080</p>
+<li><p>纵轴标记线–markline</p>
 </li>
 </ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/18/JS语法汇总/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/18/JS语法汇总/" itemprop="url">JS语法使用小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-18T18:09:11+08:00">
-                2020-06-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>js数组操作方法以及es6新增方法:<a href="https://www.cnblogs.com/Ky-Thompson23/p/12408795.html" target="_blank" rel="noopener">https://www.cnblogs.com/Ky-Thompson23/p/12408795.html</a></p>
-<ol>
-<li><p>JS合并两个数组 </p>
-<p>apply会改变原数组的值</p>
-<pre><code>a.push.apply(a,[4,5,6]);  </code></pre><p>concat不会改变原数组的值</p>
-<pre><code>arr1 = [1,2];
-arr2 = [&quot;aa&quot;,&quot;as&quot;];
-console.log(arr1.concat(arr2));//[1, 2, &quot;aa&quot;, &quot;as&quot;]</code></pre></li>
-<li><p>删除数组某项    </p>
-<p> splice(index,len,[item]) 注释：该方法会改变原始数组。<br> index:数组开始下标 </p>
-<p> len: 替换/删除的长度</p>
-<p> item:替换的值，删除操作的话 item为空</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;]; </span><br><span class="line">arr.splice(1,1); </span><br><span class="line">console.log(arr); </span><br><span class="line">//[&apos;a&apos;,&apos;c&apos;,&apos;d&apos;];</span><br></pre></td></tr></table></figure>
-
-<p> 删除某值元素</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=[1,2,3]</span><br><span class="line">a.splice(a.indexOf(2),1)// [1,3]</span><br></pre></td></tr></table></figure>
-
-<p> 参考 <a href="https://www.jb51.net/article/134312.htm" target="_blank" rel="noopener">https://www.jb51.net/article/134312.htm</a></p>
-<p>添加 —- len设置为0，item为添加的值 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> var arr = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;]; </span><br><span class="line">arr.splice(1,0,&apos;ttt&apos;); </span><br><span class="line">console.log(arr); </span><br><span class="line">//[&apos;a&apos;,&apos;ttt&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;] 表示在下标为1处添加一项&apos;ttt&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>JS 排序功能  sort()</p>
-<ul>
-<li><p>【原理】当数组长度&lt;=10的时候，采用插入排序；&gt;10的时候，采用快排。(当数据量很小的时候，插入排序效率优于快排)</p>
-<p>对于长度大于1000的数组，采用的是快排与插入排序混合的方式进行排序的.</p>
-</li>
-<li><p>array.sort(fun)；参数fun可选，规定排序顺序。默认字母排序</p>
-<p>示例：<br> var arr3 = [30,10,111,35,1899,50,45];<br> arr3.sort(function(a,b){<br>  return a - b;<br> })<br> console.log(arr3);//输出 [10, 30, 35, 45, 50, 111, 1899]</p>
-<p>多属性判断排序(在project&amp;role相同的情况下才排序)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> export function compare(property, index, type) &#123;</span><br><span class="line"> return function(a, b) &#123;</span><br><span class="line">        if (a.project == b.project &amp;&amp; a.role == b.role) &#123;</span><br><span class="line">            var value1 = a[property][index];</span><br><span class="line">            var value2 = b[property][index];</span><br><span class="line">            if (type == &quot;ascending&quot;) &#123;</span><br><span class="line">                return value1 - value2;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return value2 - value1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-</li>
-</ol>
-<pre><code>具体可参考：https://www.cnblogs.com/lyc10/p/11348419.html</code></pre><ol start="3">
-<li><p>filter()函数</p>
-<p> 和map()类似，Array的filter()也接收一个函数。和map()不同的是，filter()把传入的函数依次作用于每个元素，然后根据返回值是true还是false决定保留还是丢弃该元素。</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-        var arr = [0,1,2,3,4,5,1,4,0];
-        var arr_filter = arr.filter(function(x){
-            return x%2 == 0;/* 筛选偶数 */ 
-        })
-        console.log(arr_filter)
-    &lt;/script&gt;</code></pre><p> 参考：<a href="https://www.cnblogs.com/jianxian/p/10582683.html" target="_blank" rel="noopener">https://www.cnblogs.com/jianxian/p/10582683.html</a></p>
-<p> 推荐：<a href="https://www.cnblogs.com/saifei/p/9043821.html" target="_blank" rel="noopener">https://www.cnblogs.com/saifei/p/9043821.html</a></p>
-<pre><code>var summary = origin_outline
-  .replace(/&lt;\/p&gt;/g, &quot;&quot;)
-  .split(&quot;&lt;p&gt;&quot;)
-  .filter(function(s) {
-    return s &amp;&amp; s.trim();
-  })
-  .map(function(m) {
-    return m.trim();
-  });</code></pre></li>
-<li><p>ES箭头函数</p>
-<p>基本形式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let sum = (num1,num2) =&gt; num1 + num2;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="8">
-<li><p>引用类型和值类型</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let  tmp=this.a;   //this.a=[&#123;pj:&apos;listing&apos;&#125;&#125;]</span><br><span class="line">console.log(&quot;初始化的值：&quot;,tmp,this.a);</span><br><span class="line">tmp[&apos;aa&apos;]=111</span><br></pre></td></tr></table></figure>
-
-<p> 此段代码在console.log中返回：[{pj:’listing’,aa:111}}]  [{pj:’listing’,aa:111}}]</p>
-<p> 问题：<br> 1：为何tmp在打印的时候值已经变化？难道先执行下面再执行上面？<br> 2：为何tmp变化会引发a值的变化</p>
-<p> 解答：</p>
-<ol>
-<li><p><img src="/images/pasted-120.png" alt="upload successful"><br>如下代码片段</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var json = &#123;a:1,b:2&#125; </span><br><span class="line">console.log(json.a)//打印出来是3，不是1</span><br><span class="line">json.a = 3;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>赋值操作其实引用的都是同一块地址内容，所以一个改动会影响另一个取值的变化</p>
-<p>这里使用深拷贝解决<br>深浅拷贝：<a href="https://www.cnblogs.com/panrui1994/p/9378696.html" target="_blank" rel="noopener">https://www.cnblogs.com/panrui1994/p/9378696.html</a></p>
-</li>
-</ol>
-<p> <strong>深拷贝方法1</strong>: Object.assign(target, …sources)  对象</p>
-<p> 【注】assign方式用于对象方可实现深拷贝，[]不可以，因为内部若有对象，其对象依旧是引用类型可以变化)</p>
-<p> <strong>深拷贝方法2</strong>: JSON.parse(JSON.stringify(obj))</p>
-<p> 最终使用JSON.parse实现(JSON.stringify(obj)就是把对象转成字符串，然后JSON.parse就是把字符串再变为对象，那就完全是一个新的对象了，所有的东西都是新的</p>
-</li>
-<li><p>console.log的常用语法</p>
-<ul>
-<li>console.table，格式化表格</li>
-<li>统计代码执行时间<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.time(&apos;统计时间&apos;)</span><br><span class="line">for(var i = 0; i &lt; 999 ;i++)&#123;&#125;</span><br><span class="line">console.timeEnd(&apos;统计时间&apos;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>数组对象筛选</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8. 对象列表排重</span><br></pre></td></tr></table></figure>
-
-<p>  function unique(arr,field){</p>
-<pre><code>var map = {};
-var res = [];
-for (var i = 0; i &lt; arr.length; i++) {
-    if (!map[arr[i][field]]) {
-        map[arr[i][field]]=1;//巧妙利用对象键值唯一性判重
-        res.push(arr[i]);
-    }
-}
- return res;</code></pre>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  原文链接：https://blog.csdn.net/qq_36949713/java/article/details/81942370</span><br><span class="line">  </span><br><span class="line">10. JS Base64转码</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>let Base64 = {<br>    encode(str) {<br>        // first we use encodeURIComponent to get percent-encoded UTF-8,<br>        // then we convert the percent encodings into raw bytes which<br>        // can be fed into btoa.<br>        return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,<br>            function toSolidBytes(match, p1) {<br>                return String.fromCharCode(‘0x’ + p1);<br>            }));<br>    },<br>    decode(str) {<br>        // Going backwards: from bytestream, to percent-encoding, to original string.<br>        return decodeURIComponent(atob(str).split(‘’).map(function(c) {<br>            return ‘%’ + (‘00’ + c.charCodeAt(0).toString(16)).slice(-2);<br>        }).join(‘’));<br>    }<br>};<br>```
-对于json数据，先转换成字符串<br>Base64.encode(JSON.stringify(this.result))</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/vue线上部署和维护/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/09/vue线上部署和维护/" itemprop="url">vue线上部署和维护</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-09T11:55:38+08:00">
-                2020-06-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h6 id="同步上线文件http-server"><a href="#同步上线文件http-server" class="headerlink" title="同步上线文件http.server"></a>同步上线文件http.server</h6><pre><code>简单办法：启动本地服务：
-
-  python3 -m http.server 8000（python3）
-  curl -O  http://10.12.169.57:8000/dist.tar.gz</code></pre><h6 id="CSS文件不生效问题："><a href="#CSS文件不生效问题：" class="headerlink" title="CSS文件不生效问题："></a>CSS文件不生效问题：</h6><p>解决：1.  设置一些配置信息？—–依旧未生效<br><a href="https://www.jb51.net/article/174089.htm" target="_blank" rel="noopener">https://www.jb51.net/article/174089.htm</a></p>
-<h6 id="域名配置"><a href="#域名配置" class="headerlink" title="域名配置"></a>域名配置</h6><pre><code>netstat -nltp 查看
-
-切换至root  :sudo su root</code></pre><h6 id="引用的css样式文件大部分没有生效？"><a href="#引用的css样式文件大部分没有生效？" class="headerlink" title="引用的css样式文件大部分没有生效？"></a>引用的css样式文件大部分没有生效？</h6><p>  【解决】</p>
-<ol>
-<li><p>一共三种引用方式，在main.js\index.html\app.vue中引入。<br>其中app中引入:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  @import &apos;./../static/css/global.css&apos;; /*引入公共样式*/</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
-
-<p>参考： <a href="https://blog.csdn.net/HY_358116732/article/details/82219387" target="_blank" rel="noopener">https://blog.csdn.net/HY_358116732/article/details/82219387</a></p>
-</li>
-<li><p>将element-ui的引用提到最最前面</p>
-<p>因为引用的css样式是针对此ui进行的覆盖修改，所以需要在其后面引用，才起到覆盖的作用。</p>
-</li>
-</ol>
-<h6 id="传文件使用-gitlab一致报错"><a href="#传文件使用-gitlab一致报错" class="headerlink" title="传文件使用 gitlab一致报错"></a>传文件使用 gitlab一致报错</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added &apos;gitlab.com,172.65.251.78&apos; (ECDSA) to the list of known hosts.</span><br><span class="line">Permission denied (publickey).</span><br></pre></td></tr></table></figure>
-
-<p>ping一下gitlab.com获取ip,然后设置host对应gitlab.com</p>
-<h6 id="上线步骤："><a href="#上线步骤：" class="headerlink" title="上线步骤："></a>上线步骤：</h6><pre><code>更改google认证，改成线上id
-本地和git上：清除dist文件
-npm run build pro
-生成dist文件拷贝到git文件(同步使用)
-git add .
-git commit -m &quot;update&quot;
-git push
-服务端git pull</code></pre><h6 id="浏览器缓存问题"><a href="#浏览器缓存问题" class="headerlink" title="浏览器缓存问题"></a>浏览器缓存问题</h6><ul>
-<li><p>(1) nginx配置修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add_header Cache-Control &quot;no-cache, no-store&quot;;</span><br><span class="line">add_header Pragma no-cache;//http 1.0旧版本</span><br></pre></td></tr></table></figure>
-
-<p>  no-cache, no-store选择一个即可</p>
-<p>  no-cache浏览器会缓存，但刷新页面或者重新打开时 会请求服务器，服务器可以响应304，如果文件有改动就会响应200</p>
-<p>no-store浏览器不缓存，刷新页面需要重新下载页面</p>
-<p>Nginx下关于缓存控制字段cache-control的配置说明:<br><a href="https://www.cnblogs.com/kevingrace/p/10459429.html" target="_blank" rel="noopener">https://www.cnblogs.com/kevingrace/p/10459429.html</a></p>
-</li>
-<li><p>(2) 修改文件 webpack .prod.conf.js,使用时间戳动态定义版本号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const Version = new Date().getTime();</span><br><span class="line">...</span><br><span class="line">filename: utils.assetsPath(&apos;js/[name].[chunkhash]._&apos; + Version + &apos;.js&apos;),</span><br><span class="line">...</span><br><span class="line">filename: utils.assetsPath(&apos;css/[name].[contenthash]._&apos; + Version + &apos;.css&apos;),</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<p> 但是后来经过实践证明，只需要配置nginx即可，每次刷新即可更新。猜测</p>
-<ol>
-<li>每次html不取缓存，拿到的js都是实际服务器文件</li>
-<li>脚手架本身使用hash生成js和css文件，会根据改动更新文件名</li>
-</ol>
-<h6 id="http和https实际上是跨域问题！！！"><a href="#http和https实际上是跨域问题！！！" class="headerlink" title="http和https实际上是跨域问题！！！"></a>http和https实际上是跨域问题！！！</h6><p>  本地调试如果不设置会默认Https访问，但是服务端只能接收http协议，所以需要处理<br>  config/index.js:</p>
-<pre><code>proxyTable: {
-    &apos;/measurement&apos;: {
-        target: &apos;http://10.12.170.210:8000&apos;, //后端接口地址
-        changeOrigin: true, //是否允许跨越
-        pathRewrite: {
-            &apos;^/measurement&apos;: &apos;/measurement&apos;, //重写,
-        }
-    }
-},</code></pre><p>和
-main.js:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.baseURL = &apos;/measurement&apos;</span><br></pre></td></tr></table></figure>
-
-<h6 id="vue-elementUI打包后elmentui自带图标失效问题"><a href="#vue-elementUI打包后elmentui自带图标失效问题" class="headerlink" title="vue+elementUI打包后elmentui自带图标失效问题"></a>vue+elementUI打包后elmentui自带图标失效问题</h6><p>原文：<a href="https://blog.csdn.net/qq_37827221/article/details/100707748https://blog.csdn.net/qq_37827221/article/details/100707748" target="_blank" rel="noopener">https://blog.csdn.net/qq_37827221/article/details/100707748https://blog.csdn.net/qq_37827221/article/details/100707748</a><br>【问题】elmentui自带图标失效，本地打prod包就没有问题，一旦把相同的文件放在服务器就不对了</p>
-<p><img src="/images/pasted-124.png" alt="upload successful"><br>【原因】通过本地文件上传git后，再服务端拉取git代码的方式部署</p>
-<p>  但是由于git冲突(具体为啥不清楚)导致拉取git文件不全，没有拉取到font文件夹内容</p>
-<p>  【解决】删除文件，重新git clone到服务器端，保证代码统一</p>
-<p><img src="/images/pasted-125.png" alt="upload successful"></p>
-<h6 id="生产环境排序功能失效"><a href="#生产环境排序功能失效" class="headerlink" title="生产环境排序功能失效"></a>生产环境排序功能失效</h6><p>【原因】为了屏蔽线上log,在webpack.pro.config中新增了限制字段 </p>
-<pre><code>new UglifyJsPlugin({
-    uglifyOptions: {
-        compress: {
-            warnings: false,
-            // drop_debugger: true, //新增
-            // drop_console: true, //新增
-        }
-    },</code></pre><p>本身这个没有问题，但是排序的部分使用了log打印的方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(val.sort(this.$compareInGroup(this.sortkey, 0, this.order)));</span><br></pre></td></tr></table></figure>
-
-<p>【解决】去掉console.log即可</p>
 
           
         
@@ -1842,7 +1735,7 @@ main.js:</p>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

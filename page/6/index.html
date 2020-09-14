@@ -261,6 +261,565 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/21/web测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/21/web测试/" itemprop="url">web测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T15:11:38+08:00">
+                2019-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="web测试与APP测试区别"><a href="#web测试与APP测试区别" class="headerlink" title="web测试与APP测试区别"></a>web测试与APP测试区别</h4><p><img src="%5Cimages%5Cpasted-70.png" alt="upload successful"><br>参照：<a href="https://blog.csdn.net/weixin_34043301/article/details/94216811" target="_blank" rel="noopener">https://blog.csdn.net/weixin_34043301/article/details/94216811</a></p>
+<p>H5与web的不同点（具有的app特性）：</p>
+<pre><code>1、网络：2G、3G以及弱网测试
+2、有横屏竖屏之分
+3、兼容：需兼容不同分辨率/操作系统的手机浏览器
+4、手指滑动流畅度，手机点击焦点是否定位准确
+5、关注交互是否友好，尤其弹层
+6、嵌入手机端与native页有交互
+7、返回功能非手机自带，自己拥有</code></pre><p>H5与APP的不同点（具有的web特性）：</p>
+<pre><code>1、可以在PC端浏览器打开进行功能测试
+2、缓存在浏览器上，需要清理缓存测试
+3、安卓和IOS统一版本，一套代码部署</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/19/numpy函数总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/19/numpy函数总结/" itemprop="url">numpy函数总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-19T21:36:29+08:00">
+                2019-10-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>==DataFrame用法==</p>
+<h3 id="一、类型转换"><a href="#一、类型转换" class="headerlink" title="一、类型转换"></a>一、类型转换</h3><p> Numpy matrices必须是2维的,但是 numpy arrays (ndarrays) 可以是多维的（1D，2D，3D····ND）. Matrix是Array的一个小的分支，包含于Array。所以matrix 拥有array的所有特性。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">data = DataFrame(np.arange(16).reshape(4,4),index = list(&quot;ABCD&quot;),columns=list(&apos;wxyz&apos;))</span><br><span class="line">a=data.as_matrix() #将dataframe形式的数据框data转化为矩阵a</span><br><span class="line"> </span><br><span class="line">  #将dataframe形式的数据框存储到Excel文件中：</span><br><span class="line">data.to_excel(r&apos;E:\pypractice\Yun\doc\2.xls&apos;, sheet_name=&apos;Sheet1&apos;)      </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; from numpy import *</span><br><span class="line">&gt;&gt;&gt; a1 =[[1,2,3],[4,5,6]] #列表</span><br><span class="line">&gt;&gt;&gt; a1</span><br><span class="line">[[1, 2, 3], [4, 5, 6]]</span><br><span class="line">&gt;&gt;&gt; a2 = array(a1)   #列表 -----&gt; 数组</span><br><span class="line">&gt;&gt;&gt; a2</span><br><span class="line">array([[1, 2, 3],</span><br><span class="line">       [4, 5, 6]])</span><br><span class="line">&gt;&gt;&gt; a3 = np.mat(a1)      #列表 ----&gt; 矩阵</span><br><span class="line">&gt;&gt;&gt; a3</span><br><span class="line">matrix([[1, 2, 3],</span><br><span class="line">        [4, 5, 6]])</span><br><span class="line">&gt;&gt;&gt; a4=a3[:,0:2]   #对矩阵的操作,选取其前两列的数据</span><br><span class="line">&gt;&gt;&gt; a4</span><br><span class="line">matrix([[1, 2],</span><br><span class="line">        [4, 5]])</span><br><span class="line">&gt;&gt;&gt; a5 = a3.tolist()   #矩阵 ---&gt; 列表</span><br><span class="line">&gt;&gt;&gt; a5</span><br><span class="line">[[1, 2, 3], [4, 5, 6]]</span><br><span class="line">&gt;&gt;&gt; a5 == a1</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; a6 = list(a2)   #数组 ---&gt; 列表</span><br><span class="line">&gt;&gt;&gt; a6</span><br><span class="line">[array([1, 2, 3]), array([4, 5, 6])]</span><br><span class="line">&gt;&gt;&gt; a7=a2.tolist() #数组 ---&gt; 列表,内部数组也转换成列表</span><br><span class="line">&gt;&gt;&gt; a7</span><br><span class="line">[[1, 2, 3], [4, 5, 6]]</span><br><span class="line">&gt;&gt;&gt; a8 = array(a3)  #矩阵 ---&gt; 数组</span><br><span class="line">&gt;&gt;&gt; a8</span><br><span class="line">array([[1, 2, 3],</span><br><span class="line">       [4, 5, 6]])</span><br><span class="line">&gt;&gt;&gt; a9 = mat(a2)   #数组 ---&gt; 矩阵</span><br><span class="line">&gt;&gt;&gt; a9</span><br><span class="line">matrix([[1, 2, 3],</span><br><span class="line">        [4, 5, 6]])</span><br><span class="line">&gt;&gt;&gt; ################</span><br><span class="line">&gt;&gt;&gt; #在一维情况下的#矩阵 ---&gt; 数组---&gt; 矩阵结果不同</span><br><span class="line">&gt;&gt;&gt; #在一维情况下的列表 ----&gt; 矩阵 ---&gt; 列表结果不同</span><br><span class="line">&gt;&gt;&gt; a1 =[1,2,3,4,5,6] #列表</span><br><span class="line">&gt;&gt;&gt; a1</span><br><span class="line">[1, 2, 3, 4, 5, 6]</span><br><span class="line">&gt;&gt;&gt; a3 = mat(a1)      #列表 ----&gt; 矩阵</span><br><span class="line">&gt;&gt;&gt; a3</span><br><span class="line">matrix([[1, 2, 3, 4, 5, 6]])</span><br><span class="line">&gt;&gt;&gt; a4 = a3.tolist()  #矩阵 ---&gt; 列表</span><br><span class="line">&gt;&gt;&gt; a4</span><br><span class="line">[[1, 2, 3, 4, 5, 6]]</span><br><span class="line">&gt;&gt;&gt; a4[0]</span><br><span class="line">[1, 2, 3, 4, 5, 6]</span><br><span class="line">&gt;&gt;&gt; a5 = mat(array(a1))   #数组 ---&gt; 矩阵</span><br><span class="line">&gt;&gt;&gt; a5</span><br><span class="line">matrix([[1, 2, 3, 4, 5, 6]])</span><br><span class="line">&gt;&gt;&gt; a6 = array(a5)  #矩阵 ---&gt; 数组</span><br><span class="line">&gt;&gt;&gt; a6</span><br><span class="line">array([[1, 2, 3, 4, 5, 6]])</span><br></pre></td></tr></table></figure>
+
+<h3 id="二、选择对象"><a href="#二、选择对象" class="headerlink" title="二、选择对象"></a>二、选择对象</h3><p>1.选择特定列和行的数据<br>a[‘x’] 那么将会返回columns为x的列，注意这种方式一次只能返回一个列。a.x与a[‘x’]意思一样。</p>
+<p>取行数据，通过切片[]来选择<br>如：a[0:3] 则会返回前三行的数据。</p>
+<p>2.loc是通过标签来选择数据<br>a.loc[‘one’]则会默认表示选取行为’one’的行；</p>
+<p>a.loc[:,[‘a’,’b’] ] 表示选取所有的行以及columns为a,b的列；</p>
+<p>a.loc[[‘one’,’two’],[‘a’,’b’]] 表示选取’one’和’two’这两行以及columns为a,b的列；</p>
+<p>a.loc[‘one’,’a’]与a.loc[[‘one’],[‘a’]]作用是一样的，不过前者只显示对应的值，而后者会显示对应的行和列标签。</p>
+<p>3.iloc则是直接通过位置来选择数据<br>这与通过标签选择类似<br>a.iloc[1:2,1:2] 则会显示第一行第一列的数据;(切片后面的值取不到)</p>
+<p>a.iloc[1:2] 即后面表示列的值没有时，默认选取行位置为1的数据;</p>
+<p>a.iloc[[0,2],[1,2]] 即可以自由选取行位置，和列位置对应的数据。</p>
+<p>原文：<a href="https://blog.csdn.net/tanlangqie/article/details/78659988" target="_blank" rel="noopener">https://blog.csdn.net/tanlangqie/article/details/78659988</a> </p>
+<p>==转置==<br><img src="https://img-blog.csdnimg.cn/20190129142722602.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190129142701422.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>==numpy的array和python中自带的list之间相互转化==</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a=([3.234,34,3.777,6.33])#a为python的list类型</span><br><span class="line"></span><br><span class="line">np.array(a)#将a转化为numpy的array</span><br><span class="line">array([  3.234,  34.   ,   3.777,   6.33 ])</span><br><span class="line"></span><br><span class="line">a.tolist()#将a转化为python的list</span><br></pre></td></tr></table></figure>
+
+<p>==pandas中利用 .iloc 和 .loc 切片==</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rows = pd.read_csv(&apos;test.csv&apos;)</span><br><span class="line">row_slice = rows.iloc[0:2, 1:3]  # 取rows的0-1行，1-2列的元素</span><br><span class="line">print(row_slice)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://blog.csdn.net/qq1483661204/article/details/77587881" target="_blank" rel="noopener">https://blog.csdn.net/qq1483661204/article/details/77587881</a></p>
+<p>==numpy中reshape函数==<br>必须是矩阵格式或者数组格式，才能使用 .reshape(c, -1) 函数， 表示将此矩阵或者数组重组，以 c行d列的形式表示（-1的作用就在此，自动计算d(行或列)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a1=np.ones((3,2))</span><br><span class="line">print(a1.reshape(-1,1))</span><br><span class="line">结果：</span><br><span class="line">[[1.]</span><br><span class="line"> [1.]</span><br><span class="line"> [1.]</span><br><span class="line"> [1.]</span><br><span class="line"> [1.]</span><br><span class="line"> [1.]]</span><br></pre></td></tr></table></figure>
+
+<p>==Python取numpy数组的某几行某几列方法==<br><img src="https://img-blog.csdnimg.cn/20181218180709674.png" alt="在这里插入图片描述"></p>
+<p>正确分析：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">C_A = c[[0,2]]    #先取出想要的行数据</span><br><span class="line">C_A = C_A[:,[2,3]] #再取出要求的列数据</span><br><span class="line">print(C_A) #输出最终结果</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
+
+<p>原文：<a href="https://blog.csdn.net/qq_34734303/article/details/80631831" target="_blank" rel="noopener">https://blog.csdn.net/qq_34734303/article/details/80631831</a><br>==stack==</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">np.vstack():在竖直方向上堆叠</span><br><span class="line">np.hstack():在水平方向上平铺</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line">arr1=np.array([1,2,3])</span><br><span class="line">arr2=np.array([4,5,6])</span><br><span class="line">print (np.vstack((arr1,arr2)))</span><br><span class="line"> #[[1 2 3]</span><br><span class="line"> #[4 5 6]]</span><br><span class="line">print (np.hstack((arr1,arr2)))</span><br><span class="line">#  [1 2 3 4 5 6]</span><br><span class="line"></span><br><span class="line">a1=np.array([[1,2],[3,4],[5,6]])</span><br><span class="line">a2=np.array([[7,8],[9,10],[11,12]])</span><br><span class="line">print (a1)</span><br><span class="line">print (a2)</span><br><span class="line">print (np.hstack((a1,a2)))</span><br><span class="line"># [[ 1  2  7  8]</span><br><span class="line">#  [ 3  4  9 10]</span><br><span class="line">#  [ 5  6 11 12]]</span><br></pre></td></tr></table></figure>
+
+<p>原文 <a href="https://blog.csdn.net/m0_37393514/article/details/79538748" target="_blank" rel="noopener">https://blog.csdn.net/m0_37393514/article/details/79538748</a><br>==np.random.choice==</p>
+<p>参数意思分别 是从a 中以概率P，随机选择3个, p没有指定的时候相当于是一致的分布</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a1 = np.random.choice(a=5, size=3, replace=False, p=None)</span><br><span class="line">print(a1)</span><br></pre></td></tr></table></figure>
+
+<p>非一致的分布，会以多少的概率提出来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a2 = np.random.choice(a=5, size=3, replace=False, p=[0.2, 0.1, 0.3, 0.4, 0.0])</span><br><span class="line">print(a2)</span><br></pre></td></tr></table></figure>
+
+<p> replacement 代表的意思是抽样之后还放不放回去，如果是False的话，那么出来的三个数都不一样，如果是<br>True的话， 有可能会出现重复的，因为前面的抽的放回去了</p>
+<hr>
+<p>原文：<a href="https://blog.csdn.net/qfpkzheng/article/details/79061601" target="_blank" rel="noopener">https://blog.csdn.net/qfpkzheng/article/details/79061601</a> </p>
+<p>==numpy添加新的维度：newaxis==</p>
+<pre><code>newaxis放在第几个位置，就会在shape里面看到相应的位置增加了一个维数</code></pre><p><img src="https://img-blog.csdnimg.cn/20181218180609497.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Nub3d5YmVhcg==,size_16,color_FFFFFF,t_70" alt="è¿™é‡Œå†™å›¾ç‰‡æè¿°"><br>来源：<a href="https://blog.csdn.net/xtingjie/article/details/72510834" target="_blank" rel="noopener">https://blog.csdn.net/xtingjie/article/details/72510834</a><br>==.dot()==<br>一开始看到这个函数的时候，总是把它想成点积，因为dot是点的意思。。。</p>
+<p>后来在经历了dot()和*完全搞混，犯下错误之后，才终于弄明白了。</p>
+<p><em>dot()计算的是我们经常计算的矩阵乘法，设A(2 * 3), B(3 * 4), 那么dot(A, B)就表示两个矩阵相乘，得到的结果是一个2 * 4的矩阵。</em></p>
+<p>而<em>，相当于matlab中的.</em>, 也就是真正的点积，即元素对应相乘。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = [[1, 0], [0, 1]]</span><br><span class="line">&gt;&gt;&gt; b = [[4, 1], [2, 2]]</span><br><span class="line">&gt;&gt;&gt; np.dot(a, b)</span><br><span class="line">array([[4, 1],</span><br><span class="line">       [2, 2]])</span><br></pre></td></tr></table></figure>
+
+<p>两个向量a = [a1, a2,…, an]和b = [b1, b2,…, bn]的点积定义为：a·b=a1b1+a2b2+……+anbn</p>
+<p>引用：<a href="https://blog.csdn.net/qq_25436597/article/details/78839059" target="_blank" rel="noopener">https://blog.csdn.net/qq_25436597/article/details/78839059</a></p>
+<p>==numpy.concatenate==</p>
+<p>numpy提供了numpy.concatenate((a1,a2,…), axis=0)函数。能够一次完成多个数组的拼接。其中a1,a2,…是数组类型的参数</p>
+<p>示例3：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=np.array([1,2,3])</span><br><span class="line">&gt;&gt;&gt; b=np.array([11,22,33])</span><br><span class="line">&gt;&gt;&gt; c=np.array([44,55,66])</span><br><span class="line">&gt;&gt;&gt; np.concatenate((a,b,c),axis=0)  # 默认情况下，axis=0可以不写</span><br><span class="line">array([ 1,  2,  3, 11, 22, 33, 44, 55, 66]) #对于一维数组拼接，axis的值不影响最后的结果</span><br><span class="line">#多维数组：</span><br><span class="line">&gt;&gt;&gt; a=np.array([[1,2,3],[4,5,6]])</span><br><span class="line">&gt;&gt;&gt; b=np.array([[11,21,31],[7,8,9]])</span><br><span class="line">&gt;&gt;&gt; np.concatenate((a,b),axis=0)</span><br><span class="line">array([[ 1,  2,  3],</span><br><span class="line">       [ 4,  5,  6],</span><br><span class="line">       [11, 21, 31],</span><br><span class="line">       [ 7,  8,  9]])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.concatenate((a,b),axis=1)  #axis=1表示对应行的数组进行拼接</span><br><span class="line">array([[ 1,  2,  3, 11, 21, 31],</span><br><span class="line">       [ 4,  5,  6,  7,  8,  9]])OC](这里写自定义目录标题)</span><br></pre></td></tr></table></figure>
+
+<h4 id="其他函数-np-arange-np-repeat"><a href="#其他函数-np-arange-np-repeat" class="headerlink" title="其他函数 np.arange np.repeat"></a>其他函数 np.arange np.repeat</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"> </span><br><span class="line">x = np.arange(5)  </span><br><span class="line">print (x)</span><br><span class="line">c=np.array(([1,2],[3,4]))</span><br><span class="line">print (c)</span><br><span class="line">print(np.repeat(c,2))</span><br><span class="line">print(np.repeat(c,2,0))</span><br><span class="line">print(np.repeat(c,2,1))</span><br></pre></td></tr></table></figure>
+
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/16/jmeter实践笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/16/jmeter实践笔记/" itemprop="url">jmeter实践笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T14:10:29+08:00">
+                2019-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><p>安装参考：<a href="https://blog.csdn.net/lovesoo/article/details/78579547" target="_blank" rel="noopener">https://blog.csdn.net/lovesoo/article/details/78579547</a></p>
+<p>线程数：可以理解为并发数，在jmeter中一个线程代表一个用户。</p>
+<p>Ramp-Up Period (in seconds): 多长时间内初始化完这些线程。单位是秒。我这里设置的是10秒启动100个也就是1秒启动10。</p>
+<p>循环次数：如果你要限定循环次数为10次的话，就取消永远前面的那个勾，然后在后面的文本框里面填写10；在这里我们勾上永远，表示如果不停止或者限定时间将会一直执行下去， 是为了方便调度器的调用。一般勾选永远后要在调度器里填写持续时间。</p>
+<p>对于结果和图表，原生三个元件常用：聚合报告、图表结果、响应时间图</p>
+<h4 id="2-插件使用"><a href="#2-插件使用" class="headerlink" title="2.插件使用"></a>2.插件使用</h4><p>第一步：下载jmeter-plugins，<a href="https://jmeter-plugins.org/install/Install/，安装提示将jar包放在jmeter安装目录lib/ext下" target="_blank" rel="noopener">https://jmeter-plugins.org/install/Install/，安装提示将jar包放在jmeter安装目录lib/ext下</a>  </p>
+<p>第二步：jmeter中option-jmeter plugins Manager-Available Plugins-jdbc Standard Set,点击右下角的Apply Changes and Restart JMeter</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/Django项目实践-Crypto库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/07/Django项目实践-Crypto库/" itemprop="url">Crypto模块</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-07T17:12:39+08:00">
+                2019-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>背景：<br>    由于公司接口有加密解密，自定义接口脚本需要调取Crypto模块，之前用的是php调用python脚本实现的结构体，过于繁琐，打算搭建Django框架实现</p>
+<h2 id="问题一："><a href="#问题一：" class="headerlink" title="问题一："></a>问题一：</h2><p>但是搭建后发现调用Crypto模块经常会报错，主要报错是：<br>from Crypto.Cipher import _AES<br>ImportError: DLL load failed: 找不到指定的模块。<br>这个问题困扰了我很久，原来代码目录<br><img src="https://img-blog.csdnimg.cn/201903111457336.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述
+"></p>
+<p>1、一直认为引用这个模块使用的是目录调用，然后验证路径调用是否正确，怎么验证也没发现什么毛病<br>2、文件里引用当前目录的_AES,最开始以为是AES.py文件本身（单下划线私有变量）；后来知道.pyd文件实际上就是个库文件（DLL），才转移到是引用的_ASE.pyd，但是也没有找出找不到它的理由<br><img src="https://img-blog.csdnimg.cn/20190311150008620.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>解决：<br>后来尝试在原来PHP框架里删除该引用文件，发现依旧可用，于是明确一点：该实现并不依赖该路径，而是与系统安装的pycrypto路径文件有关，但是wondows本地一直有问题，于是直接从当前正在使用PHP linux服务器上调试。做法：删除本地目录（直接用系统的，经之前项目验证系统的没问题，可以用），然后启动Django服务就不报错了，后来又调试了下报错都是些其他的问题了，困扰我两周的问题终于终于落幕了，可以收下心做正事了~~</p>
+<h2 id="问题2："><a href="#问题2：" class="headerlink" title="问题2："></a>问题2：</h2><p>虽然在linux上的这个问题莫名其妙的解决了，但是在台式机win7（py3.7）系统上还是有问题，使用django框架吊起来没有问题，但是直接执行python脚本还是会报一样的错误。忍了一段时间后终于忍不下去了。<br>最开始听人说在linux环境可行，于是在windows下打开git bash确实可行，但是还是会报其他的错，可能是因为版本换了，因为他走的是Anaconda里面的插件，后来干脆还是修复本地的吧<br>1、卸载本地的pycrypto<br>卸载失败提示:Cannot uninstall ‘’. It is a distutils installed project and thus we cannot accurately.<br>解决：直接全局搜索对应文件，具体包括 “package name” 文件夹 和 “package name”.egg-info ，找到后直接删除即可<br>2、重新安装pip install pycrypto<br>直接安装报错，使用源码安装？一样报错<br>error: command ‘C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\<br>x86_amd64\cl.exe’ failed with exit status 2<br>解决：从网上找的经验<br>1）添加VC环境变量，设置用户环境变量，这里划重点！！！是用户环境变量，不是系统环境变量<br>变量名：VCINSTALLDIR<br>（变量值为vs安装路径下的VC，默认是这个）<br>变量值：C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC<br> win+R运行cmd，执行命令set CL=/FI”%VCINSTALLDIR%\INCLUDE\stdint.h” %CL% </p>
+<p>2）安装twisted <a href="https://blog.csdn.net/jiangyunsheng147/article/details/80449556" target="_blank" rel="noopener">https://blog.csdn.net/jiangyunsheng147/article/details/80449556</a></p>
+<p>还会报错warning: GMP or MPIR library not found; Not building Crypto.PublicKey._fastmath.<br>building ‘Crypto.Random.OSRNG.winrandom’ extension<br>error: Unable to find vcvarsall.bat</p>
+<p>3）降低版本3.7–&gt;3.6<br>还是报楼上错误，最后看到有pycrypto-2.6.1.win-amd64-py3.4.exe可行，但是需要3.4.于是降到3.4，刚开始用的exe事32位的不行，后来下了64的果然可以了，搞了一天的环境终于在最后搞定了，也不辜负这一天的工时。<br>插曲：在降低版本的时候，出现了明明已经降到3.4，但是python -V的时候一直仍然显示3.7，后来又是删注册表，又是卸载程序的，我怀疑跟我安装的Anaconda有关系。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/Docker/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1138,542 +1697,6 @@ qps，如果是对一个页面请求一次，形成一个tps，但一次页面�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/使用nc命令传输数据/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/24/使用nc命令传输数据/" itemprop="url">使用nc命令传输数据</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T15:30:42+08:00">
-                2019-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>原文：<a href="https://www.cnblogs.com/nmap/p/6148306.html" target="_blank" rel="noopener">https://www.cnblogs.com/nmap/p/6148306.html</a><br>    nc是netcat的简写，有着网络界的瑞士军刀美誉。因为它短小精悍、功能实用，被设计为一个简单、可靠的网络工具</p>
-<h2 id="使用ncp命令传送数据"><a href="#使用ncp命令传送数据" class="headerlink" title="使用ncp命令传送数据"></a>使用ncp命令传送数据</h2><p>需注意操作次序，receiver先侦听端口，sender向receiver所在机器的该端口发送数据。<br>步骤一：在接收端B侦听端口数据，并将数据写到file里<br>nc -l port &gt;file<br><img src="https://img-blog.csdnimg.cn/20190128143512804.png" alt="在接收端侦听端口数据，并将数据写到file里"><br>步骤二：在发送端A往接收端B的指定端口发送数据，把文件发送过去<br>nc ip port &lt; somefile<br>nc 10.0.1.162 9995 &lt; somefile<br><img src="https://img-blog.csdnimg.cn/20190128143444169.png" alt="在这里插入图片描述"></p>
-<h2 id="安装nc"><a href="#安装nc" class="headerlink" title="安装nc"></a>安装nc</h2><p>1、先将已安装的nc删除</p>
-<p>yum erase nc</p>
-<p>2.下载较低版本的nc的.rpm文件</p>
-<pre><code>wget   http://vault.centos.org/6.6/os/x86_64/Packages/nc-1.84-22.el6.x86_64.rpm</code></pre><p>3.安装.rpm文件</p>
-<p>rpm   -iUv    nc-1.84-22.el6.x86_64.rpm</p>
-<p>原文：<a href="https://blog.csdn.net/yctccg/article/details/52218055" target="_blank" rel="noopener">https://blog.csdn.net/yctccg/article/details/52218055</a> </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/AI关键词/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/24/AI关键词/" itemprop="url">AI关键词</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T15:30:00+08:00">
-                2019-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><strong>1. 常用名词缩写</strong><br>NLP：Natural Language Processing   自然语言处理<br>CNN:  Convolutional Neural Networks 卷积神经网络<br>LSTM:Long Short-Term Memory       长短期记忆网络<br>RNN:Recurrent Neural Network        循环神经网络<br>GPU:Graphics Processing Unit       图形处理器</p>
-<p><strong>2.普遍的深度学习框架有：Tensorflow、Caffe、PyTorch、Theano、CNTK</strong><br>（1） Caffe：卷积神经网络框架，专注于卷积神经网络和图像处理，因为是基于C++语言，所以执行速度非常的快。</p>
-<p>（2） PyTorch：动态computation graph！！！（笔者学习Tensorflow一段后，便会转学PyTorch试试看）</p>
-<p>（3） Theano：因其定义复杂模型很容易，在研究中比较流行。</p>
-<p>（4） CNTK：微软开发的，微软称其在语音和图像识别方面比其他框架更有优势。不过代码只支持C++.</p>
-<p>（5）Tensorflow作为谷歌主持的开源项目，它的社区热度目前看来是旺盛的，而且现在也最为流行。听说，它是在谷歌总结了DistBelief的经验教训上形成的；它运行高效、可扩展性强，可以运行在手机、普通电脑、计算机群上。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/22/python3升级后不支持的2文件的操作/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/22/python3升级后不支持的2文件的操作/" itemprop="url">python3升级后不支持的2.x文件的操作</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-22T15:17:41+08:00">
-                2019-08-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><h5 id="range"><a href="#range" class="headerlink" title="range()"></a>range()</h5>Python3 range()函数返回的是一个<strong>可迭代对象（类型是对象）</strong>，而不是列表类型， 所以打印的时候不会打印列表。</li>
-</ul>
-<ul>
-<li><h5 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h5></li>
-</ul>
-<p><strong>python 3.3.2报错：No module named ‘urllib2’ 解决方法</strong><br>在python3.3里面，用urllib.request代替urllib2<br> <strong>ImportError: No module named ‘ConfigParser</strong><br>from configparser import  ConfigParser#引用文件全部变成小写<br><strong>AttributeError: module ‘urllib’ has no attribute ‘quote’</strong><br>urllib.quote改成urllib.request.quote<br><strong>POST data should be bytes or an iterable of bytes. It cannot be of type str.</strong><br>  最后通过交流发现需要加在urlencode语句后加encode(encoding=’UTF8’)<br>同时，在输出时，再使用decode(“utf-8”)进行解码，往往更加能够取的理想的效果。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"> 1 from urllib import request</span><br><span class="line"> 2 from urllib import parse</span><br><span class="line"> 3 </span><br><span class="line"> 4 url = &quot;https://movie.douban.com/j/chart/top_list?type=11&amp;interval_id=100%3A90&amp;action=&quot;</span><br><span class="line"> 5 headers = &#123;&quot;User-Agent&quot;:&quot;Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36&quot;&#125;</span><br><span class="line"> 6 formdata = &#123;</span><br><span class="line"> 7     &apos;start&apos;: &apos;0&apos;,</span><br><span class="line"> 8     &apos;limit&apos;: &apos;10&apos;</span><br><span class="line"> 9 &#125;</span><br><span class="line">10 </span><br><span class="line">11 data = parse.urlencode(formdata).encode(encoding=&quot;utf-8&quot;)</span><br><span class="line">12 req = request.Request(url=url,headers=headers)</span><br><span class="line">13 response = request.urlopen(req)</span><br><span class="line">14 print(response.read().decode(&quot;utf-8&quot;))</span><br></pre></td></tr></table></figure>
-
-<p><strong>TypeError: Can‘t convert ‘bytes‘ object to str implicitly</strong><br>解决方法：使用字节码的decode()方法。</p>
-<p>示例：</p>
-<pre><code>str = ‘I am string‘
-byte = b‘ I am bytes‘
-s = str + byte
-print(s)</code></pre><p>　　这时会报错：TypeError: Can‘t convert ‘bytes‘ object to str implicitly</p>
-<p>解决方法：</p>
-<pre><code>s = str + byte.decode()</code></pre><p><strong>python reload(sys)找不到，name ‘reload’ is not defined</strong><br>在3.x中已经被毙掉了被替换为</p>
-<pre><code>import importlib
-importlib.reload(sys)
- sys.setdefaultencoding(“utf-8”) 这种方式在3.x中被彻底遗</code></pre><p> <strong>关于 urllib.request.urlopen()的错误</strong><br> 这种错不常见，主要是由于我的文件名称含有http.py，这里应该是关键字敏感导致的错误。删除这个文件的子文件和修改文件名后就可以正常运行了！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/18/Python3内置函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/18/Python3内置函数/" itemprop="url">Python3内置函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-18T19:25:14+08:00">
-                2019-07-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-内建模块collections"><a href="#1-内建模块collections" class="headerlink" title="1. 内建模块collections"></a>1. 内建模块collections</h3><p><strong>collections.Counter</strong>计数器，计算列表中每项出现的次数，并返回<strong>字典类型</strong>，其中元素作为key，其计数作为value。</p>
-<p><img src="https://img-blog.csdnimg.cn/20190326145102507.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>当所访问的键不存在时，返回0，而不是KeyError；否则返回它的计数。</p>
-<p><img src="https://img-blog.csdnimg.cn/20190526121803806.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<h3 id="2-sort-与-sorted-区别："><a href="#2-sort-与-sorted-区别：" class="headerlink" title="2. sort 与 sorted 区别："></a>2. sort 与 sorted 区别：</h3><ul>
-<li><p>sort 是应用在 list 上的<strong>方法</strong>。  
-sorted 是<strong>函数</strong>，可以对所有可迭代的对象（比如字典）进行排序操作。</p>
-<p><strong>sorted 语法：</strong><br>sorted(iterable, key=None, reverse=False)<br>如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array = [&#123;&quot;age&quot;:20,&quot;name&quot;:&quot;a&quot;&#125;,&#123;&quot;age&quot;:25,&quot;name&quot;:&quot;b&quot;&#125;,&#123;&quot;age&quot;:10,&quot;name&quot;:&quot;c&quot;&#125;]</span><br><span class="line">array = sorted(array,key=lambda x:-x[&quot;age&quot;])</span><br><span class="line">#其中负号表示降序（默认升序），与reverse=True相同</span><br></pre></td></tr></table></figure>
-
-<p>以上是使用关键词对元组进行的排序，lambda是隐函数固定格式；x标识列表中的一个元素，在这里标识一个元组，x可以任意起名。<br>也可以对<strong>set集合</strong>进行排序，返回列表类型。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;sorted(&#123;&apos;mm&apos;,&apos;dd&apos;,&apos;aa&apos;&#125;)</span><br><span class="line">&gt;&gt;&gt;[&apos;aa&apos;, &apos;dd&apos;, &apos;mm&apos;]</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<ul>
-<li>list 的 sort 方法返回的是对已经存在的列表进行操作；<br>而内建函数 sorted 方法返回的是一个新的 list，而不是在原来的基础上进行的操作。</li>
-</ul>
-<h3 id="3-zip-和zip"><a href="#3-zip-和zip" class="headerlink" title="3. zip()和zip(*)"></a>3. zip()和zip(*)</h3><p>zip() 函数用于将可迭代的对象作为参数，将对象中对应的元素打包成一个个元组，然后返回由这些元组组成的列表。<br>zip 方法在 Python 2 和 Python 3 中的不同：在 Python 2.x zip() 返回的是一个列表。在3.x中返回的是一个对象，需要使用list将其转换为列表。<br>zip(*) 可理解为解压，返回二维矩阵式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;a = [1,2,3]</span><br><span class="line">&gt;&gt;&gt; b = [4,5,6]</span><br><span class="line">&gt;&gt;&gt; c = [4,5,6,7,8]</span><br><span class="line">&gt;&gt;&gt; zipped = zip(a,b)     # 返回一个对象</span><br><span class="line">&gt;&gt;&gt; zipped</span><br><span class="line">&lt;zip object at 0x103abc288&gt;</span><br><span class="line">&gt;&gt;&gt; list(zipped)  # list() 转换为列表</span><br><span class="line">[(1, 4), (2, 5), (3, 6)]</span><br><span class="line">&gt;&gt;&gt; list(zip(a,c))              # 元素个数与最短的列表一致</span><br><span class="line">[(1, 4), (2, 5), (3, 6)]</span><br><span class="line"> </span><br><span class="line">&gt;&gt;&gt; a1, a2 = zip(*zip(a,b)) # 与 zip 相反，zip(*) 可理解为解压，返回二维矩阵式</span><br><span class="line">&gt;&gt;&gt; list(a1)</span><br><span class="line">[1, 2, 3]</span><br><span class="line">&gt;&gt;&gt; list(a2)</span><br><span class="line">[4, 5, 6]</span><br></pre></td></tr></table></figure>
-
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
-<li>数值的除法包含两个运算符：/ 返回一个浮点数，// 返回一个整数。</li>
-<li>列表中元素是元组，可以这样遍历<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">  list=[(1,3),(2,4)]</span><br><span class="line">  for i ,j in list:</span><br><span class="line">      print (&quot;first:&quot;,i)</span><br><span class="line">      print(&quot;second&quot;,j)</span><br><span class="line">结果：</span><br><span class="line">first: 1</span><br><span class="line">second 3</span><br><span class="line">first: 2</span><br><span class="line">second 4</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1724,7 +1747,7 @@ sorted 是<strong>函数</strong>，可以对所有可迭代的对象（比如�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="event和method的区别? method，可以在程序中直接调用对象的方法, obj.method(); event 是在事件发生时的处理函数，通过监听事件的方式来设置  路由:使用router-link :to 参数值使用this.xxx传参失败。最后使用Push操作解决  和name配对的是params，和path配对的是query  query和params的区别，query相当于ge">
+<meta name="description" content="命名规范： 项目文件夹命名都是 kebab-case命名 属于components文件夹下的子文件夹，使用大写字母开头的PascalBase风格  全局通用的组件放在 /src/components下 其他业务页面中的组件，放在各自页面下的 ./components文件夹下 每个components文件夹下最多只有一层文件夹，且文件夹名称为组件的名称，文件夹下必须有index.vue或 inde">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue语法小记">
 <meta property="og:url" content="http://yoursite.com/2020/07/09/Vue语法小记/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="event和method的区别? method，可以在程序中直接调用对象的方法, obj.method(); event 是在事件发生时的处理函数，通过监听事件的方式来设置  路由:使用router-link :to 参数值使用this.xxx传参失败。最后使用Push操作解决  和name配对的是params，和path配对的是query  query和params的区别，query相当于ge">
+<meta property="og:description" content="命名规范： 项目文件夹命名都是 kebab-case命名 属于components文件夹下的子文件夹，使用大写字母开头的PascalBase风格  全局通用的组件放在 /src/components下 其他业务页面中的组件，放在各自页面下的 ./components文件夹下 每个components文件夹下最多只有一层文件夹，且文件夹名称为组件的名称，文件夹下必须有index.vue或 inde">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-09T09:46:33.769Z">
+<meta property="og:updated_time" content="2020-09-14T08:45:23.303Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue语法小记">
-<meta name="twitter:description" content="event和method的区别? method，可以在程序中直接调用对象的方法, obj.method(); event 是在事件发生时的处理函数，通过监听事件的方式来设置  路由:使用router-link :to 参数值使用this.xxx传参失败。最后使用Push操作解决  和name配对的是params，和path配对的是query  query和params的区别，query相当于ge">
+<meta name="twitter:description" content="命名规范： 项目文件夹命名都是 kebab-case命名 属于components文件夹下的子文件夹，使用大写字母开头的PascalBase风格  全局通用的组件放在 /src/components下 其他业务页面中的组件，放在各自页面下的 ./components文件夹下 每个components文件夹下最多只有一层文件夹，且文件夹名称为组件的名称，文件夹下必须有index.vue或 inde">
 
 
 
@@ -331,7 +331,18 @@
       
 
       
-        <ol>
+        <ul>
+<li><p>命名规范：</p>
+<p>项目文件夹命名都是 kebab-case命名</p>
+<p>属于components文件夹下的子文件夹，使用大写字母开头的PascalBase风格</p>
+<ol>
+<li>全局通用的组件放在 /src/components下</li>
+<li>其他业务页面中的组件，放在各自页面下的 ./components文件夹下</li>
+<li>每个components文件夹下最多只有一层文件夹，且文件夹名称为组件的名称，文件夹下必须有index.vue或 index.js，其他.vue文件统一大写开头（Pascal case），components下的子文件夹名称统一大写开头（PascalCase）</li>
+</ol>
+</li>
+</ul>
+<ul>
 <li><p>event和method的区别?</p>
 <p>method，可以在程序中直接调用对象的方法, obj.method();</p>
 <p>event 是在事件发生时的处理函数，通过监听事件的方式来设置</p>
@@ -343,7 +354,23 @@
 <pre><code>1.命名路由搭配params，刷新页面参数会丢失
 2.查询参数搭配query，刷新页面数据不会丢失
 3.接受参数使用this.$route后面就是搭配路由的名称就能获取到参数的值(如this.$route.query.xxx)</code></pre></li>
-</ol>
+<li><p>main.js和routers文件重复import所有组件</p>
+<p>  封装一个文件调用</p>
+<p><a href="https://blog.csdn.net/yang295242361/article/details/104960383/" target="_blank" rel="noopener">https://blog.csdn.net/yang295242361/article/details/104960383/</a></p>
+</li>
+<li><p>关于VUE中 import 、 export 和 export default</p>
+<p>  <a href="https://www.cnblogs.com/Ryan777/p/10769661.html" target="_blank" rel="noopener">https://www.cnblogs.com/Ryan777/p/10769661.html</a></p>
+</li>
+<li><p>bus总线传值</p>
+<pre><code>bus.$emit(&apos;Click&apos;, {
+    id: id,
+    num:num
+    })
+
+this.$EventBus.$on(&apos;uploading&apos;, val=&gt;{
+    console.log(val)       //打印出来 val ：sure
+ })</code></pre></li>
+</ul>
 
       
     </div>
@@ -448,7 +475,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

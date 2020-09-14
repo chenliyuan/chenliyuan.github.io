@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="Django跨域设置   pip install django-cors-header    setting中设置： &amp;apos;corsheaders.middleware.CorsMiddleware&amp;apos; # 新加的插件位置最好放在CommonMiddleware之前       INSTALLED_APPS中添加&amp;apos;corsheaders&amp;apos;,     CORS_O">
+<meta name="description" content="接口报403  500 ? request.POST.get改成使用字典格式再用get获取返回值是非json格式，在里的对象是键值对，不能缺少键值  生命周期中调用方法，因为是方法后面别忘了加() this.getallbugs(); 修改文件夹和文件名称后找不到？  把这修改的文件夹删除掉，重新新建了个文件夹  vue 父子组件的生命周期顺序：加载渲染顺序  父beforeCreate-&amp;gt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue+Django项目实践问题汇总">
 <meta property="og:url" content="http://yoursite.com/2020/06/07/vue-Django项目实践/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="Django跨域设置   pip install django-cors-header    setting中设置： &amp;apos;corsheaders.middleware.CorsMiddleware&amp;apos; # 新加的插件位置最好放在CommonMiddleware之前       INSTALLED_APPS中添加&amp;apos;corsheaders&amp;apos;,     CORS_O">
+<meta property="og:description" content="接口报403  500 ? request.POST.get改成使用字典格式再用get获取返回值是非json格式，在里的对象是键值对，不能缺少键值  生命周期中调用方法，因为是方法后面别忘了加() this.getallbugs(); 修改文件夹和文件名称后找不到？  把这修改的文件夹删除掉，重新新建了个文件夹  vue 父子组件的生命周期顺序：加载渲染顺序  父beforeCreate-&amp;gt">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-14T06:19:55.224Z">
+<meta property="og:updated_time" content="2020-09-11T10:42:13.472Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue+Django项目实践问题汇总">
-<meta name="twitter:description" content="Django跨域设置   pip install django-cors-header    setting中设置： &amp;apos;corsheaders.middleware.CorsMiddleware&amp;apos; # 新加的插件位置最好放在CommonMiddleware之前       INSTALLED_APPS中添加&amp;apos;corsheaders&amp;apos;,     CORS_O">
+<meta name="twitter:description" content="接口报403  500 ? request.POST.get改成使用字典格式再用get获取返回值是非json格式，在里的对象是键值对，不能缺少键值  生命周期中调用方法，因为是方法后面别忘了加() this.getallbugs(); 修改文件夹和文件名称后找不到？  把这修改的文件夹删除掉，重新新建了个文件夹  vue 父子组件的生命周期顺序：加载渲染顺序  父beforeCreate-&amp;gt">
 
 
 
@@ -331,16 +331,7 @@
       
 
       
-        <ol>
-<li><p>Django跨域设置  </p>
-<p>pip install django-cors-header   </p>
-<p>setting中设置：</p>
-<pre><code>&apos;corsheaders.middleware.CorsMiddleware&apos; # 新加的插件位置最好放在CommonMiddleware之前      
-INSTALLED_APPS中添加&apos;corsheaders&apos;,    
-CORS_ORIGIN_ALLOW_ALL = True   //新增   
-CORS_ALLOW_CREDENTIALS = True  //新增</code></pre></li>
-<li><p>跨域设置后还是不可以？<br>/home/getallbus 可以<br>getallbus 单层就不可以 ？</p>
-</li>
+        <ol start="3">
 <li><p>接口报403  500 ?</p>
 <p>request.POST.get改成使用字典格式再用get获取<br>返回值是非json格式，在里的对象是键值对，不能缺少键值</p>
 </li>
@@ -551,7 +542,7 @@ if (&apos;download&apos; in document.createElement(&apos;a&apos;)) { // 支持a�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

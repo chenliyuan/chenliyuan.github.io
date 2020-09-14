@@ -87,8 +87,9 @@
 <meta property="og:description" content="安装pip install opencv-pythonDemoimport cv2 img=cv2.imread(&amp;quot;D:/cly/xuanxiu/img/girl.jpg&amp;quot;) imgGray=cv2.imread(&amp;quot;D:/cly/xuanxiu/img/girl.jpg&amp;quot;,0)#生成灰色图片 print(img.shape)#图片高、宽、通道（即y轴，x轴，">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/pasted-97.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-131.png">
 <meta property="og:image" content="http://yoursite.com/2019/11/04/python-OpenCV/%5Cimages%5Cpasted-103.png">
-<meta property="og:updated_time" content="2020-04-15T10:01:43.926Z">
+<meta property="og:updated_time" content="2020-09-01T03:45:09.871Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python  OpenCV">
 <meta name="twitter:description" content="安装pip install opencv-pythonDemoimport cv2 img=cv2.imread(&amp;quot;D:/cly/xuanxiu/img/girl.jpg&amp;quot;) imgGray=cv2.imread(&amp;quot;D:/cly/xuanxiu/img/girl.jpg&amp;quot;,0)#生成灰色图片 print(img.shape)#图片高、宽、通道（即y轴，x轴，">
@@ -362,7 +363,9 @@ print(&apos;Resized Dimensions : &apos;,resized.shape)</code></pre><h5 id="像�
 <p> 需要注意的是(容易弄反，记住下面图就好了)</p>
 <pre><code>row == height == Point.y
 col == width  == Point.x</code></pre><p><img src="/images/pasted-97.png" alt="upload successful"></p>
-<h5 id="图像二值化"><a href="#图像二值化" class="headerlink" title="图像二值化"></a>图像二值化</h5><p>好文章：<a href="https://www.cnblogs.com/ssyfj/p/9272615.html" target="_blank" rel="noopener">https://www.cnblogs.com/ssyfj/p/9272615.html</a></p>
+<h5 id="图像二值化"><a href="#图像二值化" class="headerlink" title="图像二值化"></a>图像二值化</h5><p>图像预处理一般步骤</p>
+<p><img src="/images/pasted-131.png" alt="upload successful"></p>
+<p>好文章：<a href="https://www.cnblogs.com/ssyfj/p/9272615.html" target="_blank" rel="noopener">https://www.cnblogs.com/ssyfj/p/9272615.html</a></p>
 <p>就是把图像分成两种颜色：黑和白，1白色，0黑色</p>
 <h5 id="噪声处理"><a href="#噪声处理" class="headerlink" title="噪声处理"></a>噪声处理</h5><p><a href="https://blog.csdn.net/RRWJ__/article/details/101013012" target="_blank" rel="noopener">https://blog.csdn.net/RRWJ__/article/details/101013012</a></p>
 <pre><code>blur = cv.blur(img,(15,15)) #均值滤波
@@ -388,7 +391,9 @@ sigmaColor：颜色空间的标准方差，一般尽可能大；（越大越模�
 sigmaSpace：坐标空间的标准方差(像素单位)，一般尽可能小。(发现越大处理时间越久)</code></pre><p>链接：<a href="https://www.jianshu.com/p/6c8db06bb0dc" target="_blank" rel="noopener">https://www.jianshu.com/p/6c8db06bb0dc</a><br>链接：<a href="https://www.jianshu.com/p/8d11e26c9665" target="_blank" rel="noopener">https://www.jianshu.com/p/8d11e26c9665</a></p>
 </li>
 </ul>
-<h5 id="文字区域识别-投影法"><a href="#文字区域识别-投影法" class="headerlink" title="文字区域识别-投影法"></a>文字区域识别-投影法</h5><p><a href="https://www.jb51.net/article/178717.htm" target="_blank" rel="noopener">https://www.jb51.net/article/178717.htm</a></p>
+<h5 id="文字区域识别-投影法"><a href="#文字区域识别-投影法" class="headerlink" title="文字区域识别-投影法"></a>文字区域识别-投影法</h5><p>最简单的投影：</p>
+<p>水平方向投影，将图像数组进行列求和；</p>
+<p>垂直方向投影，将图像数组进行行求和；<br><a href="https://www.jb51.net/article/178717.htm" target="_blank" rel="noopener">https://www.jb51.net/article/178717.htm</a><br><a href="https://www.jianshu.com/p/69940784c428?utm_source=oschina-app" target="_blank" rel="noopener">https://www.jianshu.com/p/69940784c428?utm_source=oschina-app</a></p>
 <h5 id="getStructuringElement-函数"><a href="#getStructuringElement-函数" class="headerlink" title="getStructuringElement()函数"></a>getStructuringElement()函数</h5><p>返回指定形状和尺寸的结构元素,一般在调用erode以及dilate函数之前，可根据特定的内核进行直线提取：</p>
 <p><img src="%5Cimages%5Cpasted-103.png" alt="upload successful"><br><a href="https://blog.csdn.net/u013066730/article/details/97242189" target="_blank" rel="noopener">https://blog.csdn.net/u013066730/article/details/97242189</a><br><a href="https://www.bilibili.com/read/cv2725908/" target="_blank" rel="noopener">https://www.bilibili.com/read/cv2725908/</a></p>
 <h5 id="cv2-bitwise-and-函数"><a href="#cv2-bitwise-and-函数" class="headerlink" title="cv2.bitwise_and() 函数"></a>cv2.bitwise_and() 函数</h5><p>cv2.bitwise_and()是对二进制数据进行“与”操作，即对图像（灰度图像或彩色图像均可）每个像素值进行二进制“与”操作，1&amp;1=1，1&amp;0=0，0&amp;1=0，0&amp;0=0</p>
@@ -416,6 +421,7 @@ maxLineGap：同一方向上两条线段判定为一条线段的最大允许间�
 原图像-开运算图，突出原图像中比周围亮的区域
 黑帽：
 闭运算图-原图像，突出原图像中比周围暗的区域</code></pre><p>原文链接：<a href="https://blog.csdn.net/keen_zuxwang/article/details/72768092" target="_blank" rel="noopener">https://blog.csdn.net/keen_zuxwang/article/details/72768092</a></p>
+<h5 id="霍夫曼变换直线检测"><a href="#霍夫曼变换直线检测" class="headerlink" title="霍夫曼变换直线检测"></a>霍夫曼变换直线检测</h5><p><a href="https://www.jb51.net/article/165241.htm" target="_blank" rel="noopener">https://www.jb51.net/article/165241.htm</a></p>
 <h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><p>1、读取图片尽量不用中文路径</p>
 <p>2、不加waitKey造成程序无响应</p>
 <p>3、 在Pycharm中运行cv.imshow()函数的时候，图形界面闪了一下就消失了</p>
@@ -535,7 +541,7 @@ maxLineGap：同一方向上两条线段判定为一条线段的最大允许间�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">93</span>
+                  <span class="site-state-item-count">97</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -581,7 +587,7 @@ maxLineGap：同一方向上两条线段判定为一条线段的最大允许间�
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Demo"><span class="nav-number">2.</span> <span class="nav-text">Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cv2-resize-函数的使用"><span class="nav-number">2.1.</span> <span class="nav-text">cv2.resize()函数的使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#像素坐标"><span class="nav-number">2.2.</span> <span class="nav-text">像素坐标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#图像二值化"><span class="nav-number">2.3.</span> <span class="nav-text">图像二值化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#噪声处理"><span class="nav-number">2.4.</span> <span class="nav-text">噪声处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文字区域识别-投影法"><span class="nav-number">2.5.</span> <span class="nav-text">文字区域识别-投影法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#getStructuringElement-函数"><span class="nav-number">2.6.</span> <span class="nav-text">getStructuringElement()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cv2-bitwise-and-函数"><span class="nav-number">2.7.</span> <span class="nav-text">cv2.bitwise_and() 函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cv2-HoughLines"><span class="nav-number">2.8.</span> <span class="nav-text">cv2.HoughLines</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高级形态学变换："><span class="nav-number">2.9.</span> <span class="nav-text">高级形态学变换：</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题："><span class="nav-number">3.</span> <span class="nav-text">问题：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Demo"><span class="nav-number">2.</span> <span class="nav-text">Demo</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cv2-resize-函数的使用"><span class="nav-number">2.1.</span> <span class="nav-text">cv2.resize()函数的使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#像素坐标"><span class="nav-number">2.2.</span> <span class="nav-text">像素坐标</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#图像二值化"><span class="nav-number">2.3.</span> <span class="nav-text">图像二值化</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#噪声处理"><span class="nav-number">2.4.</span> <span class="nav-text">噪声处理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#文字区域识别-投影法"><span class="nav-number">2.5.</span> <span class="nav-text">文字区域识别-投影法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#getStructuringElement-函数"><span class="nav-number">2.6.</span> <span class="nav-text">getStructuringElement()函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cv2-bitwise-and-函数"><span class="nav-number">2.7.</span> <span class="nav-text">cv2.bitwise_and() 函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#cv2-HoughLines"><span class="nav-number">2.8.</span> <span class="nav-text">cv2.HoughLines</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#高级形态学变换："><span class="nav-number">2.9.</span> <span class="nav-text">高级形态学变换：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#霍夫曼变换直线检测"><span class="nav-number">2.10.</span> <span class="nav-text">霍夫曼变换直线检测</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题："><span class="nav-number">3.</span> <span class="nav-text">问题：</span></a></li></ol></div>
             
 
           </div>
