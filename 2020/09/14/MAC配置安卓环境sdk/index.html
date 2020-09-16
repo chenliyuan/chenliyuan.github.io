@@ -79,17 +79,20 @@
 
 
 
-<meta name="description" content="打开官网-Android SDK工具–SDK Tools下载对应sdk  zip包  下载后解压  打开终端，输入 vim ~/.bash_profile         添加如下  export ANDROID_HOME=/Users/shmaur/android-sdk-macosx  //这里为 sdk 路径地址 export PATH=$PATH:$ANDROID_HOME/tools">
+<meta name="description" content="win版可参考：https://shifu-yan.github.io/2020/06/28/%E4%BD%BF%E7%94%A8Cordova%E5%B0%86H5-vue-%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E5%8D%93apk/ JDK要1.8版本的 可以先看看这个路径下是否有，有的话直接切就行了 /Library/Java/JavaVirtualMa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="MAC配置安卓环境sdk">
+<meta property="og:title" content="Cordova环境安装mac">
 <meta property="og:url" content="http://yoursite.com/2020/09/14/MAC配置安卓环境sdk/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="打开官网-Android SDK工具–SDK Tools下载对应sdk  zip包  下载后解压  打开终端，输入 vim ~/.bash_profile         添加如下  export ANDROID_HOME=/Users/shmaur/android-sdk-macosx  //这里为 sdk 路径地址 export PATH=$PATH:$ANDROID_HOME/tools">
+<meta property="og:description" content="win版可参考：https://shifu-yan.github.io/2020/06/28/%E4%BD%BF%E7%94%A8Cordova%E5%B0%86H5-vue-%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E5%8D%93apk/ JDK要1.8版本的 可以先看看这个路径下是否有，有的话直接切就行了 /Library/Java/JavaVirtualMa">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-14T12:40:36.097Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-132.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-133.png">
+<meta property="og:updated_time" content="2020-09-15T02:38:56.394Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="MAC配置安卓环境sdk">
-<meta name="twitter:description" content="打开官网-Android SDK工具–SDK Tools下载对应sdk  zip包  下载后解压  打开终端，输入 vim ~/.bash_profile         添加如下  export ANDROID_HOME=/Users/shmaur/android-sdk-macosx  //这里为 sdk 路径地址 export PATH=$PATH:$ANDROID_HOME/tools">
+<meta name="twitter:title" content="Cordova环境安装mac">
+<meta name="twitter:description" content="win版可参考：https://shifu-yan.github.io/2020/06/28/%E4%BD%BF%E7%94%A8Cordova%E5%B0%86H5-vue-%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E5%8D%93apk/ JDK要1.8版本的 可以先看看这个路径下是否有，有的话直接切就行了 /Library/Java/JavaVirtualMa">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-132.png">
 
 
 
@@ -125,7 +128,7 @@
 
 
 
-  <title>MAC配置安卓环境sdk | 躲不掉的风</title>
+  <title>Cordova环境安装mac | 躲不掉的风</title>
   
 
 
@@ -281,7 +284,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">MAC配置安卓环境sdk</h1>
+          <h1 class="post-title" itemprop="name headline">Cordova环境安装mac</h1>
         
 
         <div class="post-meta">
@@ -331,8 +334,14 @@
       
 
       
-        <ol>
-<li><p>打开官网-Android SDK工具–SDK Tools下载对应sdk  zip包</p>
+        <p>win版可参考：<a href="https://shifu-yan.github.io/2020/06/28/%E4%BD%BF%E7%94%A8Cordova%E5%B0%86H5-vue-%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E5%8D%93apk/" target="_blank" rel="noopener">https://shifu-yan.github.io/2020/06/28/%E4%BD%BF%E7%94%A8Cordova%E5%B0%86H5-vue-%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E5%8D%93apk/</a></p>
+<h6 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h6><p>要1.8版本的</p>
+<p>可以先看看这个路径下是否有，有的话直接切就行了</p>
+<p>/Library/Java/JavaVirtualMachines/</p>
+<p><img src="/images/pasted-132.png" alt="upload successful"></p>
+<p>可以参考：<a href="https://blog.csdn.net/liuxy_236/article/details/90381408" target="_blank" rel="noopener">https://blog.csdn.net/liuxy_236/article/details/90381408</a></p>
+<h6 id="安装cordova"><a href="#安装cordova" class="headerlink" title="安装cordova"></a>安装cordova</h6><pre><code>npm install -g cordova</code></pre><h6 id="安卓SDK"><a href="#安卓SDK" class="headerlink" title="安卓SDK"></a>安卓SDK</h6><ol>
+<li><p>打开官网（<a href="https://www.androiddevtools.cn/）-Android" target="_blank" rel="noopener">https://www.androiddevtools.cn/）-Android</a> SDK工具–SDK Tools下载对应sdk  zip包</p>
 </li>
 <li><p>下载后解压</p>
 </li>
@@ -346,6 +355,12 @@
 <li><p>配置好后可以查看一下是否成功：</p>
 <pre><code>echo $PATH</code></pre></li>
 </ol>
+<p>【问题】在tools路径下点击android或者终端./android sdk打不开manager 会报错</p>
+<p>  继续在官网手动下载包发对应目录：</p>
+<pre><code>下载SDK Platform-Tools
+下载Build-Tools
+下载SDK </code></pre><p><img src="/images/pasted-133.png" alt="upload successful"></p>
+<h6 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h6><pre><code>brew install gradle</code></pre><p>  直接安装即可，报错信息不影响</p>
 
       
     </div>
@@ -430,8 +445,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -482,6 +506,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#JDK"><span class="nav-number">1.</span> <span class="nav-text">JDK</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#安装cordova"><span class="nav-number">2.</span> <span class="nav-text">安装cordova</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#安卓SDK"><span class="nav-number">3.</span> <span class="nav-text">安卓SDK</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#Gradle"><span class="nav-number">4.</span> <span class="nav-text">Gradle</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

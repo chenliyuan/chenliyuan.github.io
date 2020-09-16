@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="躲不掉的风">
 <meta property="og:description" content="命名规范： 项目文件夹命名都是 kebab-case命名 属于components文件夹下的子文件夹，使用大写字母开头的PascalBase风格  全局通用的组件放在 /src/components下 其他业务页面中的组件，放在各自页面下的 ./components文件夹下 每个components文件夹下最多只有一层文件夹，且文件夹名称为组件的名称，文件夹下必须有index.vue或 inde">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-14T08:45:23.303Z">
+<meta property="og:updated_time" content="2020-09-16T06:52:49.653Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue语法小记">
 <meta name="twitter:description" content="命名规范： 项目文件夹命名都是 kebab-case命名 属于components文件夹下的子文件夹，使用大写字母开头的PascalBase风格  全局通用的组件放在 /src/components下 其他业务页面中的组件，放在各自页面下的 ./components文件夹下 每个components文件夹下最多只有一层文件夹，且文件夹名称为组件的名称，文件夹下必须有index.vue或 inde">
@@ -360,7 +360,16 @@
 </li>
 <li><p>关于VUE中 import 、 export 和 export default</p>
 <p>  <a href="https://www.cnblogs.com/Ryan777/p/10769661.html" target="_blank" rel="noopener">https://www.cnblogs.com/Ryan777/p/10769661.html</a></p>
-</li>
+<pre><code>1. export default 
+    在一个js文件中只能有一个
+    引用的时候可以自定义名称
+2. export 
+   在一个js文件中可以有多个
+   引用时候需要加上{} import { getList } from ‘./a.js’;
+
+其他:import引用依赖包不需要相对路径，但是引用自己的文件需要相对路径</code></pre></li>
+</ul>
+<ul>
 <li><p>bus总线传值</p>
 <pre><code>bus.$emit(&apos;Click&apos;, {
     id: id,
