@@ -261,6 +261,283 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/17/QS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/17/QS/" itemprop="url">QS</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-17T17:52:46+08:00">
+                2020-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>qs可通过npm install qs命令进行安装，是一个npm仓库所管理的包。</p>
+<h6 id="为什么用到qs？"><a href="#为什么用到qs？" class="headerlink" title="为什么用到qs？"></a>为什么用到qs？</h6><p>qs可以解决数组类型的参数。</p>
+<p>具体参考：<a href="https://www.jianshu.com/p/89716216edc2" target="_blank" rel="noopener">https://www.jianshu.com/p/89716216edc2</a></p>
+<h6 id="qs-stringify和JSON-stringify的使用和区别"><a href="#qs-stringify和JSON-stringify的使用和区别" class="headerlink" title="qs.stringify和JSON.stringify的使用和区别"></a>qs.stringify和JSON.stringify的使用和区别</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">qs.stringify(&#123; a: [1, 2, 3] &#125;, &#123; indices: false &#125;);</span><br><span class="line">//  &apos;a=1&amp;a=2&amp;a=3&apos;</span><br></pre></td></tr></table></figure>
+
+<p>【共同点】都是转化成字符串</p>
+<p>【不同点】qs.stringify() 将对象 序列化成以&amp;进行拼接的字符串；而JSON.stringify是转换成json字符串</p>
+<p><img src="/images/pasted-137.png" alt="upload successful"></p>
+<p>参考：<a href="https://www.cnblogs.com/web1/p/8659398.html" target="_blank" rel="noopener">https://www.cnblogs.com/web1/p/8659398.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/17/axios-delete等http请求/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/17/axios-delete等http请求/" itemprop="url">axios delete等http请求</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-17T17:10:14+08:00">
+                2020-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="axios-delete的时候报Method-Not-Allowed-405？"><a href="#axios-delete的时候报Method-Not-Allowed-405？" class="headerlink" title="axios delete的时候报Method Not Allowed  405？"></a>axios delete的时候报Method Not Allowed  405？</h5><p>参考：<a href="https://www.jianshu.com/p/85a0bb9436d0" target="_blank" rel="noopener">https://www.jianshu.com/p/85a0bb9436d0</a></p>
+<h6 id="1-params-接url-amp-data"><a href="#1-params-接url-amp-data" class="headerlink" title="1. params(接url)&amp;data"></a>1. params(接url)&amp;data</h6><p>查看源码可知axios传参分别如下,即post第二个参数直接传数据对象即可，但是get需要再包一层。</p>
+<p>若使用Params则会变成&amp;连接的形式在url上请求，若使用data则在body中传</p>
+<p><img src="/images/pasted-135.png" alt="upload successful"></p>
+<p>其中delete与Post不同，参数格式为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">axios.delete(&#123;</span><br><span class="line">            url: &apos;http://localhost:3000/todos&apos;,</span><br><span class="line">            data: &#123;</span><br><span class="line">                &quot;id&quot;: &quot;a&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">            .then(function (response) &#123;</span><br><span class="line">                console.log(response);</span><br><span class="line">            &#125;)</span><br><span class="line">            .catch(function (response) &#123;</span><br><span class="line">                console.log(response);</span><br><span class="line">            &#125;);</span><br></pre></td></tr></table></figure>
+
+
+<h6 id="2-url直接拼"><a href="#2-url直接拼" class="headerlink" title="2. url直接拼"></a>2. url直接拼</h6> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">axios.delete(&apos;http://localhost:3000/todos/&apos; + id).then(function (res) &#123;</span><br><span class="line">        console.log(res);</span><br><span class="line">    &#125;).catch(function (err) &#123;</span><br><span class="line">         console.log(err)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="关于请求方式"><a href="#关于请求方式" class="headerlink" title="关于请求方式"></a>关于请求方式</h5><p> <a href="https://blog.csdn.net/kjssjj12/article/details/106410399?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param" target="_blank" rel="noopener">https://blog.csdn.net/kjssjj12/article/details/106410399?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param</a></p>
+<p><img src="/images/pasted-136.png" alt="upload successful"></p>
+<p><a href="https://blog.csdn.net/jiangcs520/article/details/70141901/" target="_blank" rel="noopener">https://blog.csdn.net/jiangcs520/article/details/70141901/</a></p>
+<h6 id="content-type"><a href="#content-type" class="headerlink" title="content-type"></a>content-type</h6><p>作用：告诉服务端传递的内容是什么格式，如何接收。常用三个application/json’,’application/x-www-form-urlencoded’,’multipart/form-data’</p>
+<ul>
+<li><p>’application/json’</p>
+<p>传递的是一个json对象，并不是直接丢一个对象过去，需要进行序列化，JSON.stringify(data);</p>
+</li>
+</ul>
+<p><img src="/images/pasted-138.png" alt="upload successful"></p>
+<ul>
+<li><p>application/x-www-form-urlencoded</p>
+<p>若使用params</p>
+<p><img src="/images/pasted-142.png" alt="upload successful"></p>
+<p>否则是这样的</p>
+<p><img src="/images/pasted-139.png" alt="upload successful"></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/14/MAC配置安卓环境sdk/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -506,6 +783,9 @@
 <p> 但是服务端不禁止，在本地运行npm run dev等命令时实际上是用node运行了一个服务器，因此proxyTable实际上是将请求发给自己的服务器，再由服务器转发给后台服务器，做了亦曾代理，因为不会出现跨域问题。</p>
 </li>
 </ol>
+<p>【问题】<br>[HPM] Error occurred while trying to proxy request /api/logout/ from localhost:8088 to 127.0.0.1:8000/ (EHOSTUNREACH) (<a href="https://nodejs.org/api/errors.html#errors_common_system_errors" target="_blank" rel="noopener">https://nodejs.org/api/errors.html#errors_common_system_errors</a>)</p>
+<p>解决：</p>
+<p>解决了原来一个warning错后重启了前端服务，服务自动更换了个新的端口，就好了！</p>
 
           
         
@@ -1396,316 +1676,6 @@ this.$EventBus.$on(&apos;uploading&apos;, val=&gt;{
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/elementui使用小记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/24/elementui使用小记/" itemprop="url">elementui使用小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-24T11:26:36+08:00">
-                2020-06-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>需求：表格上拉加载刷新</p>
-<p>尝试单独使用InfiniteScroll 无限滚动 解决，但是一直存在两个问题</p>
-<ol>
-<li>每次重复执行3次</li>
-<li>第二次上拉时不加载</li>
-</ol>
-<p>猜测由于表格特定格式单纯使用InfiniteScroll 受限</p>
-<p>【解决】使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   参考：https://zhuanlan.zhihu.com/p/114965548</span><br><span class="line">2. 在加载树形数据懒加载的时候报错 ```if there&apos;s nested data,rowKey is required</span><br></pre></td></tr></table></figure></p>
-<p> 原因：原来使用懒加载，table数据中没有children字段，但是现在新增了这个字段。</p>
-<p>因此满足了懒加载的第一种策略：即使我根本没有设置第一项(第一项指的是子元素字段，第二项懒加载的时候使用字段)<br><code>:tree-props=&quot;{children: &#39;children&#39;, hasChildren: &#39;hasChildren&#39;}&quot;&gt;</code></p>
-<p>这样直接加载子项目的时候，发现我子项目里缺少id,因此报如上错</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/echarts使用小记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/22/echarts使用小记/" itemprop="url">echarts使用小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-22T14:12:45+08:00">
-                2020-06-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>echarts及option配置应用</p>
-<pre><code>import echarts from &apos;echarts&apos;;
-Vue.prototype.$echarts = echarts;
-
-import { bar_option, pie_option, line_bugrate_option } from &apos;@/components/chart_options/echart_options.js&apos;;
-Vue.prototype.$echartoptions = { bar_option, line_bugrate_option, pie_option };
-使用
-myChart.setOption(this.$echartoptions.line_bugrate_option);</code></pre></li>
-<li><p>echarts的option内赋值，紧接着在外面值就为空了？</p>
-<p> this和that的问题，option内的this指的是option本身，非本组件</p>
-</li>
-<li><p>如何限制柱形图的条状宽度(竖着)？</p>
-<p>barMaxWidth barMinWidth</p>
-</li>
-<li><p>echarts饼图提示线长度设置</p>
-<pre><code>labelLine:{
-normal:{
-    length:1,//第一段，紧跟饼图
-    length2:6//第二段，距离最远
-}</code></pre><p>   },<br>echarts icon图标格式只支持两种，dataURI和path://</p>
-<p>对于多个path构成的矢量图，可采用dataURL方式，在线很方便转换。</p>
-</li>
-<li><p>Echarts图表重复问题</p>
-<p> 除了数据源需要重置外，echarts需要重置myChart.clear();</p>
-</li>
-<li><p>区分横轴不同文案展示，在xAxis下设置axisLabel：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">axisLabel= &#123;</span><br><span class="line">         formatter: function(value, index) &#123;</span><br><span class="line">           if (value.search(&quot;QA&quot;) != -1) return &quot;&#123;a|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           else if (value.search(&quot;BE&quot;) != -1) &#123;</span><br><span class="line">             return &quot;&#123;b|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           &#125; else &#123;</span><br><span class="line">             return &quot;&#123;c|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;,</span><br><span class="line">         rich: &#123;</span><br><span class="line">           a: &#123;</span><br><span class="line">             color: &quot;red&quot;,</span><br><span class="line">             height: 40,</span><br><span class="line">             fontWeight: &quot;bold&quot;,</span><br><span class="line">           &#125;,</span><br><span class="line">           b: &#123;</span><br><span class="line">             color: &quot;blue&quot;,</span><br><span class="line">             height: 40,</span><br><span class="line">             fontWeight: &quot;bold&quot;,</span><br><span class="line"></span><br><span class="line">           &#125;,</span><br><span class="line">           c: &#123;</span><br><span class="line">             color: &quot;green&quot;,</span><br><span class="line">              height: 40,</span><br><span class="line"></span><br><span class="line">             fontWeight: &quot;bold&quot;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;</span><br><span class="line">       </span><br><span class="line">     &#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自定义提示窗口</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">toolbox: &#123;</span><br><span class="line">      feature: &#123;</span><br><span class="line">        myTool2: &#123;</span><br><span class="line">          show: true, //是否显示</span><br><span class="line">          title: &quot;近半年趋势分析&quot;, //鼠标移动上去显示的文字     &quot;image://data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAFHklEQVRoQ+1Ze0xbVRj/fS2&quot;,</span><br><span class="line">          onclick: function() &#123;</span><br><span class="line">            that.piechartname = chartname;</span><br><span class="line">            that.titlename = &quot;近6个月&quot; + title + &quot;趋势图&quot;;</span><br><span class="line">            that.dialogVisible = true;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>为图标添加自定义图标，点击后弹出说明文案，且可换行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">myTool1: &#123;</span><br><span class="line">      show: showmytools1, //是否显示</span><br><span class="line">      title: &quot;信息说明&quot;, //鼠标移动上去显示的文字</span><br><span class="line">      ...</span><br><span class="line">      onclick: function() &#123;</span><br><span class="line">        that.$confirm(h(&quot;div&quot;, null, msgli), headtitle, &#123;</span><br><span class="line">          showConfirmButton: false,</span><br><span class="line">          showCancelButton: false,</span><br><span class="line">          type: &quot;info&quot;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中文案的处理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">let msgli = [];//最终的显示文本</span><br><span class="line">let h = this.$createElement;</span><br><span class="line">let causeText = [];</span><br><span class="line">let headtitle = title + &quot;说明&quot;;</span><br><span class="line">switch (chartname) &#123;</span><br><span class="line">  case &quot;bug_role&quot;:</span><br><span class="line">    causeText = [</span><br><span class="line">      &quot;根据角色分析Bug分布情况，主要包括QA、FE、BE、PM&quot;,</span><br><span class="line">      &quot;QA: 取QA字段&quot;</span><br><span class="line">    ];</span><br><span class="line">    for (const i in causeText) &#123;</span><br><span class="line">      msgli.push(h(&quot;p&quot;, null, causeText[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    showmytools1 = true;//控制是否展示</span><br><span class="line">    break;</span><br></pre></td></tr></table></figure>
-
-<p>另外一种方式:使用el-dialog</p>
-<p>先定义一个el-dialog</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    &lt;el-dialog :title=&quot;direction_title&quot; :visible.sync=&quot;noteVisible&quot; width=&quot;25%&quot; </span><br><span class="line">top=&quot;15%&quot;  :show-close=&quot;false&quot;&gt;</span><br><span class="line">  &lt;div v-html=&quot;direction_content&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/el-dialog&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在onclick自定义事件中:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">that.direction_title = title + &quot;说明&quot;;//在option中使用that</span><br><span class="line">switch (chartname) &#123;</span><br><span class="line">	case &quot;bug_role&quot;:</span><br><span class="line">        that.direction_content =&quot;&lt;span&gt;说明文字1&lt;/span&gt;&quot; //需要在click事件中赋值，否则出错</span><br><span class="line">        ....</span><br><span class="line">     &#125;</span><br><span class="line">that.noteVisible = true;//控制显示el-dialog</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自定义的说明图标点击后文字this.direction_content展示的是最后一个饼图的数据？</p>
-<p> 【解决】</p>
-<ul>
-<li>在Onlick的时候再赋值 (尤其针对这种全局共享的语法糖)    </li>
-<li>在内部引用，使用that定义</li>
-</ul>
-</li>
-<li><p>常用功能</p>
-<p> minInterval: 1//在横轴和纵轴添加可限制刻度最小间隔，避免出现小数<br> selector:legend中设置选中规则<br> barMaxWidth: ‘50’,  //现在柱子宽度，避免在极限的时候展示粗细情况</p>
-</li>
-<li><p>纵轴标记线–markline</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1756,7 +1726,7 @@ normal:{
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">97</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

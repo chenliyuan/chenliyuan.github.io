@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="躲不掉的风">
 <meta property="og:description" content="Django跨域问题解决由于请求本地服务另外端口号导致的跨域问题，可参考https://www.cnblogs.com/wasbg/p/10973880.htmlhttps://segmentfault.com/a/1190000017952184?utm_source=tag-newest： 前端解决：config/index.js(前提去掉Axios.defaults.baseURL)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-14T06:09:04.076Z">
+<meta property="og:updated_time" content="2020-09-16T09:07:03.209Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue+Django跨域问题">
 <meta name="twitter:description" content="Django跨域问题解决由于请求本地服务另外端口号导致的跨域问题，可参考https://www.cnblogs.com/wasbg/p/10973880.htmlhttps://segmentfault.com/a/1190000017952184?utm_source=tag-newest： 前端解决：config/index.js(前提去掉Axios.defaults.baseURL)">
@@ -359,6 +359,9 @@
 <p> 但是服务端不禁止，在本地运行npm run dev等命令时实际上是用node运行了一个服务器，因此proxyTable实际上是将请求发给自己的服务器，再由服务器转发给后台服务器，做了亦曾代理，因为不会出现跨域问题。</p>
 </li>
 </ol>
+<p>【问题】<br>[HPM] Error occurred while trying to proxy request /api/logout/ from localhost:8088 to 127.0.0.1:8000/ (EHOSTUNREACH) (<a href="https://nodejs.org/api/errors.html#errors_common_system_errors" target="_blank" rel="noopener">https://nodejs.org/api/errors.html#errors_common_system_errors</a>)</p>
+<p>解决：</p>
+<p>解决了原来一个warning错后重启了前端服务，服务自动更换了个新的端口，就好了！</p>
 
       
     </div>
@@ -472,7 +475,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">97</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

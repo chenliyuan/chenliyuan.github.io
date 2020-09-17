@@ -261,6 +261,316 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/elementui使用小记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/24/elementui使用小记/" itemprop="url">elementui使用小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-24T11:26:36+08:00">
+                2020-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>需求：表格上拉加载刷新</p>
+<p>尝试单独使用InfiniteScroll 无限滚动 解决，但是一直存在两个问题</p>
+<ol>
+<li>每次重复执行3次</li>
+<li>第二次上拉时不加载</li>
+</ol>
+<p>猜测由于表格特定格式单纯使用InfiniteScroll 受限</p>
+<p>【解决】使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   参考：https://zhuanlan.zhihu.com/p/114965548</span><br><span class="line">2. 在加载树形数据懒加载的时候报错 ```if there&apos;s nested data,rowKey is required</span><br></pre></td></tr></table></figure></p>
+<p> 原因：原来使用懒加载，table数据中没有children字段，但是现在新增了这个字段。</p>
+<p>因此满足了懒加载的第一种策略：即使我根本没有设置第一项(第一项指的是子元素字段，第二项懒加载的时候使用字段)<br><code>:tree-props=&quot;{children: &#39;children&#39;, hasChildren: &#39;hasChildren&#39;}&quot;&gt;</code></p>
+<p>这样直接加载子项目的时候，发现我子项目里缺少id,因此报如上错</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/echarts使用小记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/22/echarts使用小记/" itemprop="url">echarts使用小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-22T14:12:45+08:00">
+                2020-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>echarts及option配置应用</p>
+<pre><code>import echarts from &apos;echarts&apos;;
+Vue.prototype.$echarts = echarts;
+
+import { bar_option, pie_option, line_bugrate_option } from &apos;@/components/chart_options/echart_options.js&apos;;
+Vue.prototype.$echartoptions = { bar_option, line_bugrate_option, pie_option };
+使用
+myChart.setOption(this.$echartoptions.line_bugrate_option);</code></pre></li>
+<li><p>echarts的option内赋值，紧接着在外面值就为空了？</p>
+<p> this和that的问题，option内的this指的是option本身，非本组件</p>
+</li>
+<li><p>如何限制柱形图的条状宽度(竖着)？</p>
+<p>barMaxWidth barMinWidth</p>
+</li>
+<li><p>echarts饼图提示线长度设置</p>
+<pre><code>labelLine:{
+normal:{
+    length:1,//第一段，紧跟饼图
+    length2:6//第二段，距离最远
+}</code></pre><p>   },<br>echarts icon图标格式只支持两种，dataURI和path://</p>
+<p>对于多个path构成的矢量图，可采用dataURL方式，在线很方便转换。</p>
+</li>
+<li><p>Echarts图表重复问题</p>
+<p> 除了数据源需要重置外，echarts需要重置myChart.clear();</p>
+</li>
+<li><p>区分横轴不同文案展示，在xAxis下设置axisLabel：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">axisLabel= &#123;</span><br><span class="line">         formatter: function(value, index) &#123;</span><br><span class="line">           if (value.search(&quot;QA&quot;) != -1) return &quot;&#123;a|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           else if (value.search(&quot;BE&quot;) != -1) &#123;</span><br><span class="line">             return &quot;&#123;b|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           &#125; else &#123;</span><br><span class="line">             return &quot;&#123;c|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;,</span><br><span class="line">         rich: &#123;</span><br><span class="line">           a: &#123;</span><br><span class="line">             color: &quot;red&quot;,</span><br><span class="line">             height: 40,</span><br><span class="line">             fontWeight: &quot;bold&quot;,</span><br><span class="line">           &#125;,</span><br><span class="line">           b: &#123;</span><br><span class="line">             color: &quot;blue&quot;,</span><br><span class="line">             height: 40,</span><br><span class="line">             fontWeight: &quot;bold&quot;,</span><br><span class="line"></span><br><span class="line">           &#125;,</span><br><span class="line">           c: &#123;</span><br><span class="line">             color: &quot;green&quot;,</span><br><span class="line">              height: 40,</span><br><span class="line"></span><br><span class="line">             fontWeight: &quot;bold&quot;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;</span><br><span class="line">       </span><br><span class="line">     &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义提示窗口</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">toolbox: &#123;</span><br><span class="line">      feature: &#123;</span><br><span class="line">        myTool2: &#123;</span><br><span class="line">          show: true, //是否显示</span><br><span class="line">          title: &quot;近半年趋势分析&quot;, //鼠标移动上去显示的文字     &quot;image://data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAFHklEQVRoQ+1Ze0xbVRj/fS2&quot;,</span><br><span class="line">          onclick: function() &#123;</span><br><span class="line">            that.piechartname = chartname;</span><br><span class="line">            that.titlename = &quot;近6个月&quot; + title + &quot;趋势图&quot;;</span><br><span class="line">            that.dialogVisible = true;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为图标添加自定义图标，点击后弹出说明文案，且可换行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">myTool1: &#123;</span><br><span class="line">      show: showmytools1, //是否显示</span><br><span class="line">      title: &quot;信息说明&quot;, //鼠标移动上去显示的文字</span><br><span class="line">      ...</span><br><span class="line">      onclick: function() &#123;</span><br><span class="line">        that.$confirm(h(&quot;div&quot;, null, msgli), headtitle, &#123;</span><br><span class="line">          showConfirmButton: false,</span><br><span class="line">          showCancelButton: false,</span><br><span class="line">          type: &quot;info&quot;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中文案的处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">let msgli = [];//最终的显示文本</span><br><span class="line">let h = this.$createElement;</span><br><span class="line">let causeText = [];</span><br><span class="line">let headtitle = title + &quot;说明&quot;;</span><br><span class="line">switch (chartname) &#123;</span><br><span class="line">  case &quot;bug_role&quot;:</span><br><span class="line">    causeText = [</span><br><span class="line">      &quot;根据角色分析Bug分布情况，主要包括QA、FE、BE、PM&quot;,</span><br><span class="line">      &quot;QA: 取QA字段&quot;</span><br><span class="line">    ];</span><br><span class="line">    for (const i in causeText) &#123;</span><br><span class="line">      msgli.push(h(&quot;p&quot;, null, causeText[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    showmytools1 = true;//控制是否展示</span><br><span class="line">    break;</span><br></pre></td></tr></table></figure>
+
+<p>另外一种方式:使用el-dialog</p>
+<p>先定义一个el-dialog</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    &lt;el-dialog :title=&quot;direction_title&quot; :visible.sync=&quot;noteVisible&quot; width=&quot;25%&quot; </span><br><span class="line">top=&quot;15%&quot;  :show-close=&quot;false&quot;&gt;</span><br><span class="line">  &lt;div v-html=&quot;direction_content&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/el-dialog&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在onclick自定义事件中:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">that.direction_title = title + &quot;说明&quot;;//在option中使用that</span><br><span class="line">switch (chartname) &#123;</span><br><span class="line">	case &quot;bug_role&quot;:</span><br><span class="line">        that.direction_content =&quot;&lt;span&gt;说明文字1&lt;/span&gt;&quot; //需要在click事件中赋值，否则出错</span><br><span class="line">        ....</span><br><span class="line">     &#125;</span><br><span class="line">that.noteVisible = true;//控制显示el-dialog</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义的说明图标点击后文字this.direction_content展示的是最后一个饼图的数据？</p>
+<p> 【解决】</p>
+<ul>
+<li>在Onlick的时候再赋值 (尤其针对这种全局共享的语法糖)    </li>
+<li>在内部引用，使用that定义</li>
+</ul>
+</li>
+<li><p>常用功能</p>
+<p> minInterval: 1//在横轴和纵轴添加可限制刻度最小间隔，避免出现小数<br> selector:legend中设置选中规则<br> barMaxWidth: ‘50’,  //现在柱子宽度，避免在极限的时候展示粗细情况</p>
+</li>
+<li><p>纵轴标记线–markline</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/CSS使用小记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1128,7 +1438,7 @@ main.js:</p>
 
  <el-form :model="form" label-position="right" :rules="rules" ref="adviceForm">
 
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">    打印出两个组件对象：</span><br><span class="line">	![upload successful](/images/pasted-119.png)</span><br><span class="line">    使用($refs引用)：</span><br><span class="line">        this.$refs.adviceForm.resetFields();</span><br><span class="line"></span><br><span class="line">30. 我们需要重置该页面的原始数据，每个数据进行重写特别麻烦。利用Object.assign 以及vue的数据可以快速重置。 </span><br><span class="line"></span><br><span class="line">		Object.assign(this.$data, this.$options.data())</span><br><span class="line">        </span><br><span class="line">31. 分页实现</span><br><span class="line"></span><br><span class="line">        &lt;div class=&quot;paginationClass&quot;&gt;</span><br><span class="line">          &lt;el-pagination</span><br><span class="line">            @size-change=&quot;handleSizeChange&quot; //切换每页最多展示条数</span><br><span class="line">            @current-change=&quot;handleCurrentChange&quot;//切换页码</span><br><span class="line">            :page-sizes=&quot;[10, 20, 50]&quot;</span><br><span class="line">            :page-size=&quot;pagesize&quot;</span><br><span class="line">            layout=&quot;total, sizes, prev, pager, next, jumper&quot;</span><br><span class="line">            :total=&quot;total&quot;</span><br><span class="line">          &gt;&lt;/el-pagination&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">  方法实现：   </span><br><span class="line">  </span><br><span class="line">         handleSizeChange: function(pagesize) &#123;</span><br><span class="line">            // 每页条数切换</span><br><span class="line">            this.pagesize = pagesize;</span><br><span class="line">            if (pagesize &gt; 10) &#123;</span><br><span class="line">              this.showtablehg = 800;</span><br><span class="line">            &#125;</span><br><span class="line">            this.handleCurrentChange(this.currentPage);</span><br><span class="line">          &#125;,</span><br><span class="line"></span><br><span class="line">         handleCurrentChange: function(currentPage) &#123;</span><br><span class="line">            //页码切换</span><br><span class="line">            this.currentPage = currentPage;</span><br><span class="line">            this.getallbugs(currentPage);后端实现分页逻辑</span><br><span class="line">            // this.currentChangePage(this.bondsAllList, currentPage);</span><br><span class="line"></span><br><span class="line">          &#125;,</span><br><span class="line">          前端实现分页逻辑(将当前页的数据取出给table绑定)：</span><br><span class="line">              currentChangePage(list, currentPage) &#123;</span><br><span class="line">              let from = (currentPage - 1) * this.pagesize;</span><br><span class="line">              let to = currentPage * this.pagesize;</span><br><span class="line">              this.tempList = [];</span><br><span class="line">              for (; from &lt; to; from++) &#123;</span><br><span class="line">                if (list[from]) &#123;</span><br><span class="line">                  this.tempList.push(list[from]);</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;,</span><br><span class="line"> 9. 为表格添加说明</span><br><span class="line"></span><br><span class="line">  在el-table-column添加：</span><br><span class="line">       :render-header=&quot;renderHeader&quot;</span><br><span class="line">  定义方法：</span><br></pre></td></tr></table></figure>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">    打印出两个组件对象：</span><br><span class="line">	![upload successful](/images/pasted-119.png)</span><br><span class="line">    使用($refs引用)：</span><br><span class="line">        this.$refs.adviceForm.resetFields();</span><br><span class="line"></span><br><span class="line">30. 我们需要重置该页面的原始数据，每个数据进行重写特别麻烦。利用Object.assign 以及vue的数据可以快速重置。 </span><br><span class="line"></span><br><span class="line">		Object.assign(this.$data, this.$options.data())</span><br><span class="line">        </span><br><span class="line">31. 分页实现</span><br><span class="line"></span><br><span class="line">        &lt;div class=&quot;paginationClass&quot;&gt;</span><br><span class="line">          &lt;el-pagination</span><br><span class="line">            @size-change=&quot;handleSizeChange&quot; //切换每页最多展示条数</span><br><span class="line">            @current-change=&quot;handleCurrentChange&quot;//切换页码</span><br><span class="line">            :page-sizes=&quot;[10, 20, 50]&quot;</span><br><span class="line">            :page-size=&quot;pagesize&quot;</span><br><span class="line">            layout=&quot;total, sizes, prev, pager, next, jumper&quot;</span><br><span class="line">            :total=&quot;total&quot;</span><br><span class="line">          &gt;&lt;/el-pagination&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">  方法实现：   </span><br><span class="line">  </span><br><span class="line">         handleSizeChange: function(pagesize) &#123;</span><br><span class="line">            // 每页条数切换</span><br><span class="line">            this.pagesize = pagesize;</span><br><span class="line">            if (pagesize &gt; 10) &#123;</span><br><span class="line">              this.showtablehg = 800;</span><br><span class="line">            &#125;</span><br><span class="line">            this.handleCurrentChange(this.currentPage);</span><br><span class="line">          &#125;,</span><br><span class="line"></span><br><span class="line">         handleCurrentChange: function(currentPage) &#123;</span><br><span class="line">            //页码切换</span><br><span class="line">            this.currentPage = currentPage;</span><br><span class="line">            this.getallbugs(currentPage);后端实现分页逻辑</span><br><span class="line">            // this.currentChangePage(this.bondsAllList, currentPage);</span><br><span class="line"></span><br><span class="line">          &#125;,</span><br><span class="line">          前端实现分页逻辑(将当前页的数据取出给table绑定)：</span><br><span class="line">              currentChangePage(list, currentPage) &#123;</span><br><span class="line">              let from = (currentPage - 1) * this.pagesize;</span><br><span class="line">              let to = currentPage * this.pagesize;</span><br><span class="line">              this.tempList = [];</span><br><span class="line">              for (; from &lt; to; from++) &#123;</span><br><span class="line">                if (list[from]) &#123;</span><br><span class="line">                  this.tempList.push(list[from]);</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">9. 为表格添加说明</span><br><span class="line"></span><br><span class="line">  在el-table-column添加：</span><br><span class="line">       :render-header=&quot;renderHeader&quot;</span><br><span class="line">  定义方法：</span><br></pre></td></tr></table></figure>
 
 <p>renderHeader(h, { column, $index }) {</p>
 <pre><code>return h(
@@ -1163,10 +1473,7 @@ main.js:</p>
   },
   [h(&quot;span&quot;)]
 );</code></pre><p>   },</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">10. 文件下载</span><br><span class="line">	后端Django</span><br></pre></td></tr></table></figure>
-
-<p> file = open(update_file_path, ‘rb’) #update_file_path文件存放位置<br> response = FileResponse(file)<br> response[‘Content-Type’] = ‘application/octet-stream’<br> #file_name下载下来保存的文件名字<br> content_dis = ‘attachment;filename=”‘+file_name+’”‘<br> response[‘Content-Disposition’] = content_dis<br> return response</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">对流文件可使用 Blob对象 和 使用 js-file-download</span><br><span class="line"></span><br><span class="line">发送请求时都要设置 responseType</span><br><span class="line"></span><br><span class="line">以下是完整的一个文件下载请求和处理过程：</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">10. 文件下载</span><br><span class="line"></span><br><span class="line">	后端Django  </span><br><span class="line">    </span><br><span class="line">        file = open(update_file_path, &apos;rb&apos;) #update_file_path文件存放位置</span><br><span class="line">        response = FileResponse(file)</span><br><span class="line">        response[&apos;Content-Type&apos;] = &apos;application/octet-stream&apos;</span><br><span class="line">        #file_name下载下来保存的文件名字</span><br><span class="line">        content_dis = &apos;attachment;filename=&quot;&apos;+file_name+&apos;&quot;&apos;</span><br><span class="line">        response[&apos;Content-Disposition&apos;] = content_dis</span><br><span class="line">        return response</span><br><span class="line"></span><br><span class="line">    对流文件可使用 Blob对象 和 使用 js-file-download</span><br><span class="line"></span><br><span class="line">    发送请求时都要设置 responseType</span><br><span class="line"></span><br><span class="line">    以下是完整的一个文件下载请求和处理过程：</span><br></pre></td></tr></table></figure>
 
 <p> {<br>   var param = this.$qs.stringify(</p>
 <pre><code>{
@@ -1197,14 +1504,12 @@ if (&apos;download&apos; in document.createElement(&apos;a&apos;)) { // 支持a�
 })
 .catch(function(err) {
   console.log(err);
-});</code></pre><p> },<br>```</p>
-<p>参考：<a href="https://segmentfault.com/a/1190000020540788?utm_source=tag-newest" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020540788?utm_source=tag-newest</a> </p>
-<ol start="23">
+});</code></pre><p> },</p>
+<pre><code>
+参考：https://segmentfault.com/a/1190000020540788?utm_source=tag-newest </code></pre></el-form></li>
 <li><p>打开已成型的Django项目路径无法跳转，展示红线条？</p>
-<p>项目打开路径错误，应该打开到项目根路径(非外部路径)</p>
+<p> 项目打开路径错误，应该打开到项目根路径(非外部路径)</p>
 </li>
-</ol>
-</el-form></li>
 </ol>
 
           
@@ -1631,292 +1936,6 @@ report,html：为测试报告，整理性的展示测试用例的运行情况</c
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/cmd批处理命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/12/cmd批处理命令/" itemprop="url">cmd批处理命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-12T21:44:20+08:00">
-                2020-04-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.cnblogs.com/xpwi/p/9626959.html" target="_blank" rel="noopener">https://www.cnblogs.com/xpwi/p/9626959.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/tesseract训练字库/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/12/tesseract训练字库/" itemprop="url">tesseract训练字库</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-12T13:50:29+08:00">
-                2020-04-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="准备条件："><a href="#准备条件：" class="headerlink" title="准备条件："></a>准备条件：</h4><ol>
-<li>tesseract-OCR   exe  我使用的是c5.0</li>
-<li>jdk</li>
-<li>jTessBoxEditor </li>
-</ol>
-<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ol>
-<li><p>单张图片可直接使用如下命令生成box文件：<br>tesseract myfontlab.normal.exp01.png myfontlab.normal.exp01 -l eng+chi_sim  batch.nochop makebox</p>
-<p>【语法】：tesseract [lang].[fontname].exp[num].tif [lang].[fontname].exp[num] batch.nochop makebox<br>【语法】：<br>lang为语言名称，为了不影响本有的语言eng，chi_sim等等，取成别的,比如数字可以是num,中文myfontlab myeng等<br>fontname为你对这门语言某一字体，你可以填任何你记得住的比如 trumpsb，normal;<br>num为序号；<br>在tesseract中，一定要注意格式</p>
-<p>多张图片，需先使用jTessBoxEditor 的train.bat 合并所有图片为一个tif文件然后使用命令生成box文件</p>
-<p>tesseract myfontlab.normal.exp01.tif myfontlab.normal.exp01 -l eng+chi_sim  batch.nochop makebox</p>
-</li>
-<li><p>用jTessBoxEditor 的train.bat打开tif文件，然后根据实际情况修改box文件，去除多余空格，修改识别文字。</p>
-</li>
-<li><p>产生字符特征文件，生成.tr文件。命令<br>单张推荐：<br>tesseract  myfontlab.normal.exp01.png  myfontlab.normal.exp01  nobatch box.train<br>多张推荐：<br>tesseract myfontlab.normal.exp01.tif myfontlab.normal.exp0 nobatch box.train  </p>
-</li>
-<li><p>生成字符集文件，生产unicharset文件。命令<br>unicharset_extractor myfontlab.normal.exp01.box</p>
-</li>
-<li><p>新建一个font_properties文件。注意，文件的名字就是font_properties，它没有.txt后缀。<br>里面内容写入 normal 0 0 0 0 0 表示默认普通字体</p>
-</li>
-<li><p>生成shape文件，生成五个文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shapeclustering -F font_properties -U unicharset myfontlab.normal.exp01.tr</span><br><span class="line"></span><br><span class="line">mftraining -F font_properties -U unicharset -O unicharset myfontlab.normal.exp01.tr</span><br><span class="line">cntraining myfontlab.normal.exp01.tr</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在这五个文件前加上normal.</p>
-</li>
-<li><p>合并五个文件，执行如下命令，会生成目标文件normal.traineddata，<br>combine_tessdata normal.</p>
-</li>
-<li><p>该文件就是训练好的字库。将它复制到你安装的Tesseract程序目录下的“tessdata”目录下即可。</p>
-</li>
-<li><p>验证：tesseract myfontlab.normal.exp01.png out –l normal  查看生成的out.txt文件</p>
-</li>
-</ol>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
-<li>中英文一块识别率很低？使用+连接<br>如： tesseract 05.png 05 -l chi_sim+eng<br>eng+chi_sim效果更好？试了一个案例验证没区别，不知道大数据是不是真的。</li>
-<li>最后有一个识别失败的案例，比如A竟然没有识别出来(box调试的时候已经识别出来了)<br>原因是Box里面A的范围不准确，有两个框，把最外面的删掉，剩余最内部分框框就好了。</li>
-<li>Other case a of A is not in unicharset<br>事实证明这个报错对识别结果未有影响</li>
-<li>语法说明：</li>
-</ol>
-<p>tesseract imagename outputbase [-l lang] [-psm pagesegmode] [configfile…]</p>
-<p>tesseract 图片名 输出文件名 -l 字库文件 -psm pagesegmode 配置文件<br>例如：<br>tesseract test.jpg result -l eng -psm 7 nobatch</p>
-<p>-l eng 表示用英文文字库（默认使用英文。如需要下载中文字库文件，解压后，存放到tessdata目录下去,字库文件扩展名为 .raineddata 简体中文字库文件名为: chi_sim.traineddata，命令为：chi_sim）</p>
-<p>-psm 7 表示告诉tesseract test.jpg图片是一行文本 这个参数可以减少识别错误率. 默认为 3</p>
-<p>configfile 参数值为tessdata\configs 和 tessdata\tessconfigs 目录下的文件名.</p>
-<p>————————————————<br>版权声明：本文为CSDN博主「_Cassie」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/wangyongxia921/article/details/52809079" target="_blank" rel="noopener">https://blog.csdn.net/wangyongxia921/article/details/52809079</a></p>
-<p>参考</p>
-<p><a href="https://blog.csdn.net/qq_31112205/article/details/100159963" target="_blank" rel="noopener">https://blog.csdn.net/qq_31112205/article/details/100159963</a></p>
-<p><a href="https://www.cnblogs.com/wj-1314/p/9454656.html" target="_blank" rel="noopener">https://www.cnblogs.com/wj-1314/p/9454656.html</a></p>
-<p><a href="https://www.cnblogs.com/pyweb/p/11457519.html" target="_blank" rel="noopener">https://www.cnblogs.com/pyweb/p/11457519.html</a>  多样本</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1967,7 +1986,7 @@ report,html：为测试报告，整理性的展示测试用例的运行情况</c
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">97</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

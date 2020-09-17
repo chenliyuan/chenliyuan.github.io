@@ -90,7 +90,8 @@
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190220145321590.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190220182153159.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70">
 <meta property="og:image" content="https://img-blog.csdnimg.cn/20190222121737705.png">
-<meta property="og:updated_time" content="2020-01-28T04:29:49.826Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-143.png">
+<meta property="og:updated_time" content="2020-09-17T13:12:30.542Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django问题记录">
 <meta name="twitter:description" content="环境准备本机之前一直装的是2.7，但是现在3.x已然成为趋势，准备更新3.7    windows:   下载python最新版本逐步进行安装（一定要选中pip）     安装requests，直接pip install requests即可。    Python 下载地址：https://www.python.org/downloads/   Linux(centos 6.4): 参考： htt">
@@ -425,6 +426,10 @@ make install</code></pre><ul>
 </li>
 <li><p>表单提交后不调view接口？<br>表单submit按钮类型写错，应该是submit类型，非button类型。</p>
 </li>
+<li><p>django.db.utils.IntegrityError: (1048, “Column ‘sheet_id’ cannot be null”)</p>
+<p><img src="/images/pasted-143.png" alt="upload successful"></p>
+<p>  找了下数据库把该字段改成自增，并保存成功(切记！)</p>
+</li>
 </ul>
 
       
@@ -539,7 +544,7 @@ make install</code></pre><ul>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">97</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

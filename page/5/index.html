@@ -261,6 +261,315 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/RT本地环境配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/29/RT本地环境配置/" itemprop="url">Robot Framework环境配置和部署</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T21:16:20+08:00">
+                2020-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="安装谷歌浏览器"><a href="#安装谷歌浏览器" class="headerlink" title="安装谷歌浏览器"></a>安装谷歌浏览器</h5><pre><code>在win上安装：现在百度找个可用的chrome包都很难，最后干脆下载了个软件管理，瞬间安装好了。。。
+
+不过要想找历史版本就得海淘碰运气了，本来下载程序依赖79，但是后来79貌似不行了，一直报错，一段时间后还是又升级回了最新80版本</code></pre><ul>
+<li><p>安装chromedriver</p>
+<p><a href="http://chromedriver.chromium.org/downloads" target="_blank" rel="noopener">http://chromedriver.chromium.org/downloads</a><br>或
+<a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">http://chromedriver.storage.googleapis.com/index.html</a></p>
+<p>下载的driver的版本需要和浏览器的版本匹配，解压后放到本机,将文件路径添加至PATH中</p>
+<ol>
+<li><p>将下载的可执行文件移到/usr/local/bin下</p>
+<p>sudo mv chromedriver /usr/local/bin/chromedriver</p>
+</li>
+<li><p>: 修改文件权限</p>
+<p>sudo chmod u+x,o+x /usr/local/bin/chromedriver</p>
+</li>
+<li><p>检查是否安装成功:</p>
+<p> chromedriver –version</p>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="安装本地运行环境依赖库"><a href="#安装本地运行环境依赖库" class="headerlink" title="安装本地运行环境依赖库"></a>安装本地运行环境依赖库</h5><p>  如Python版本：python3.6</p>
+<pre><code>requests==2.22.0
+robotframework==3.1.2
+robotframework-ride==1.7.3.1
+robotframework-seleniumlibrary==3.3.1
+selenium==3.141.0
+xlrd==1.2.0
+Pillow==6.2.1
+
+快速生成requirement.txt的安装文件
+pip freeze &gt; requirements.txt
+安装所需要的文件
+pip install -r requirement.txt</code></pre><h5 id="安装配置IDE–推荐pycharm"><a href="#安装配置IDE–推荐pycharm" class="headerlink" title="安装配置IDE–推荐pycharm"></a>安装配置IDE–推荐pycharm</h5><ul>
+<li><p>安装插件 IntelliBot 、IntelliBot @SeleniumLibrary Patched、Robot Framework support </p>
+</li>
+<li><p>Preferences-Editor-File Types-Robot Feature下添加*.robot类型</p>
+</li>
+<li><p>Tools-External Tools 配置Tool Setting，其中Arguments配置如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--loglevel TRACE -d /Users/liyuan/Documents/Log     $FileName$</span><br><span class="line"></span><br><span class="line">-d /Users/liyuan/Documents/Log --loglevel TRACE -t &quot;$SelectedText$&quot; ./</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-77.png" alt="upload successful"></p>
+<p><img src="/images/pasted-78.png" alt="upload successful"></p>
+</li>
+</ul>
+<h5 id="运行Case"><a href="#运行Case" class="headerlink" title="运行Case"></a>运行Case</h5><p>使用<code>robot</code>命令，jenkins可结合<code>rebot</code>使用</p>
+<pre><code>robot --output original.xml tests                          # first execute all tests
+robot --rerunfailed original.xml --output rerun.xml tests  # then re-execute failing
+rebot --merge original.xml rerun.xml                       # finally merge results</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/RT使用pycharm点击引用失效问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/29/RT使用pycharm点击引用失效问题/" itemprop="url">RT使用pycharm点击引用失效问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T19:09:50+08:00">
+                2020-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="pycharm引用库文件失效问题"><a href="#pycharm引用库文件失效问题" class="headerlink" title="pycharm引用库文件失效问题"></a>pycharm引用库文件失效问题</h5><p>点击引用的库文件应用链接无效，导致输入相应库方法无提示，有以下几种检查办法：</p>
+<ul>
+<li><p>1) 检查以下插件是否已安装</p>
+<p>  IntelliBot、IntelliBot@SeleniumLibrary Patched 、Robot Framework support</p>
+</li>
+<li><p>2) 检查IDE设置</p>
+<p>  如pycharm检查Project Interpreter编译器是否错选，或者没选</p>
+</li>
+<li><p>3) 检查库文件引用是否重复</p>
+</li>
+</ul>
+<p>如通过集成已经继承了的库文件，就不要再引用一遍了</p>
+<ul>
+<li><p>4) 更换intelliBot插件</p>
+<p>出错也可能是因为安装的插件有问题，下载地址：<a href="https://github.com/youwi/intellibot/blob/master/intellibot.jar" target="_blank" rel="noopener">https://github.com/youwi/intellibot/blob/master/intellibot.jar</a><br><a href="https://blog.csdn.net/qq_33783424/article/details/80783092" target="_blank" rel="noopener">https://blog.csdn.net/qq_33783424/article/details/80783092</a></p>
+</li>
+<li><p>5) 检查代码格式</p>
+<p>Keywords 前最好留有空格；</p>
+<p>本次未提交文件提交上去；</p>
+</li>
+<li><p>6) 清零</p>
+<p>  如果以上都无法解决，删除本地代码，重新拉取； 重启电脑试试</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/RobotFramework/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1609,374 +1918,6 @@ maxLineGap：同一方向上两条线段判定为一条线段的最大允许间�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/26/http前端/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/26/http前端/" itemprop="url">http前端</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-26T15:25:31+08:00">
-                2019-10-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="http版本："><a href="#http版本：" class="headerlink" title="http版本："></a>http版本：</h5><pre><code>http1.0:需要使用keep-alive建立长连接（因为创建tcp连接经过三次握手有一定的开销）。从1.1开始默认支持长连接。
-http1.1:支持只发送header、断点续传、host域
-http2.0（基于https）:多路复用、header数据压缩、服务器推送
-http强制缓存：只要不过期就要走缓存，缺点是不能及时更新。
-http协商缓存：没有修改返304状态码，否则200响应结果。</code></pre><h5 id="浏览器输入网址到加载完页面发生了什么？"><a href="#浏览器输入网址到加载完页面发生了什么？" class="headerlink" title="浏览器输入网址到加载完页面发生了什么？"></a>浏览器输入网址到加载完页面发生了什么？</h5><pre><code>1、    查找DNS缓存（浏览器缓存、操作系统缓存、host查看域名IP、运营商的DNS服务器缓存）
-2、    DNS域名解析，查找相应IP（过程是从后面往前递归查找）如com-&gt;baidu-&gt;www
-3、    发起TCP3次握手 建立TCP连接
-4、    发送http请求  
-5、    服务端处理请求    MVC分层
-6、    浏览器接收响应，解析html文件请求静态资源（css/js/imge，若服务器返回304说明请求资源没做修改从本地缓存取即可）
-7、    根据http响应渲染前端页面，构建DOM树
-8、    关闭tcp连接（四次挥手手）</code></pre><p>参考：<a href="https://www.cnblogs.com/zgq123456/articles/11641187.html" target="_blank" rel="noopener">https://www.cnblogs.com/zgq123456/articles/11641187.html</a></p>
-<p>【几个问题】：</p>
-<pre><code>1、http新版本请求除非connection:close时会断开TCP，否则在请求完成之前不会断开
-2、一个TCP连接中可以对应几个http请求？多个
-3、一个TCP连接中可以一起发送多个http请求么？
-在http2.0提供了多路复用（Multiplexing）支持此功能。
-4、为什么有的时候刷新页面不需要重新建立SSL连接
- 因为TCP连接维持的时候，SSL自然也会用以前的
-5、浏览器对同一HOST建议TCP连接到数量有没有限制？
-有 chrome最多建议6个TCP连接。不同浏览器限制不同。</code></pre><h5 id="请求报文的格式"><a href="#请求报文的格式" class="headerlink" title="请求报文的格式"></a>请求报文的格式</h5><p>请求行：url、http协议版本、请求方式<br>请求头：<br>Accept<br>Accept-language<br>Accept-Encoding<br>Cache-Control:<br>Cookie<br>Connection:<br>Content-Type:<br>Content-Length:<br>Host:<br>Referer:<br>User-Agent:</p>
-<p>请求体：数据正文(入参)</p>
-<h4 id="请求方法："><a href="#请求方法：" class="headerlink" title="请求方法："></a>请求方法：</h4><p>  GET POST DELETE PUT HEAD</p>
-<pre><code>DELETE:请求服务端删除指定页面
-PUT：使传入数据取代指定的文档内容
-HEAD：类似GET，只是返回内容里只有报头</code></pre><h5 id="状态码："><a href="#状态码：" class="headerlink" title="状态码："></a>状态码：</h5><pre><code>1xx：标识请求已接受，继续处理
-2xx：成功
-3xx：重定向
-4xx：客户端错误
-5xx：服务端错误
-常用几个：
-302:重定向，比如把http请求都转成https
-400：客户端语法错误
-403：服务器拒绝提供服务
-404：请求资源不存在
-500：服务器内部错误</code></pre><h4 id="cookie和session"><a href="#cookie和session" class="headerlink" title="cookie和session"></a>cookie和session</h4><p>cookie相当于用户身份证，session相当于客户表记录</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/23/shell命令总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/23/shell命令总结/" itemprop="url">shell命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-23T17:18:30+08:00">
-                2019-10-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="shell执行"><a href="#shell执行" class="headerlink" title="shell执行"></a>shell执行</h4><ul>
-<li><p>执行脚本</p>
-<pre><code>./01.sh   需要执行权限  在子shell中执行
-bash 01.sh   不需要执行权限  在子shell中执行
-
-. 01.sh  不需要执行权限  在当前shell中执行
-source 01.sh 不需要执行权限  在当前shell中执行</code></pre></li>
-<li><p>调试脚本</p>
-<pre><code>sh -n 02.sh   验证语法是否有错
-sh -vx 02.sh  查看运行详情</code></pre><p>  若想让代码影响当前shell需要在主shell中执行</p>
-</li>
-<li><p>bg 后台 ，fg 前台</p>
-<p>例如：执行 vi /etc/hosts可以通过ctrl+Z暂停退出，在shell窗口通过fg再返回来</p>
-</li>
-<li><p>cat &lt; /etc/hosts 同 cat  /etc/hosts</p>
-</li>
-<li><p>cat &lt;&lt;EOF 把后面输入的内容给cat作为参数执行</p>
-</li>
-<li><p>cat   &gt;file  &lt;&lt;EOF 将后面输入的内容重定向到file文件中</p>
-</li>
-</ul>
-<h5 id="命令行排序-；-amp"><a href="#命令行排序-；-amp" class="headerlink" title="命令行排序 ；&amp; ||"></a>命令行排序 ；&amp; ||</h5><pre><code>;  无论怎样每条都执行  
-&amp;  上一条为真下条才执行  
-||  上条为假下一条才执行  </code></pre><h4 id="运算总结"><a href="#运算总结" class="headerlink" title="运算总结"></a>运算总结</h4><p>使用let、expr、$(())或$[]进行基本的整数运算，使用bc进行高级的运算，包括小数运算。其中expr命令也能进行整数运算，还能判断参数是否为整数.除此外还有awk</p>
-<pre><code>A=5
-B=6
-C= $[$A+$B]  # 方法 1
-let C=$A+$B     #方法2 :可使用let i++
-C= $(($A+$B)) # 方法 3
-C=`expr $A + $B`   # 方法 4
-其他：
-C=`echo $A+$B | bc` # 方法 5
-awk &apos;BEGIN{print &apos;&quot;$A&quot;&apos;+&apos;&quot;$B&quot;&apos;}&apos;  # 方法 6</code></pre><h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
-<li><p>shell中调用Python程序</p>
-<p>使用相同的标识符比如EOF，其中-为了格式考虑</p>
-<pre><code>#!/usr/bin/bash
-echo &quot;hello shell&quot;
-
-/usr/bin/python &lt;&lt;-EOF
-print(&quot;hello python&quot;)
-EOF</code></pre></li>
-<li><p>变量使用推荐加花括号，如${name}，但定义变量时，变量名不加美元符号！</p>
-</li>
-<li><p>字符串可以用单引号，双引号，也可以不用引号</p>
-</li>
-<li><p>语句中一般不包含分号，空格/tab，以及冒号的标点符号；只在特殊条件下使用。</p>
-<ul>
-<li>分号：只有在代码块都写在一行的时候用分号区分，注意then后面和结束不用分号如if [ “$PS1” ]; then echo test is ok; fi</li>
-</ul>
-<ul>
-<li>冒号：主要用于参数扩展。如echo ${a:-newword}或者{a:=newword}即— word前的“-”可以理解为“没定义，则替换成word”；“+”正相反，可以理解为“有定义，则替换成word”。“?”可以理解为“参数到底定义了没，没定义，把word当错误消息打印出来。”<br>除此获取子字符串可以用${parameter:offset}和${parameter:offset:length}若倒数，则加负号如echo $(var: -5)区别于(var:-5)，后者是没定义则替换成5</li>
-</ul>
-</li>
-<li><p>函数内部使用$n来调用入参</p>
-<pre><code>$0当前脚本名称
-$n 参数名
-$#参数总个数
-$*以一个字符串显示所有参数，与$@同义，前者一个字符串输出，后者N个
-$?上个命令的推出状态或函数的返回值
-$$当前shell进程ID</code></pre></li>
-<li><p>和其他语言不同，调用函数仅使用函数名即可,参数直接空格跟后面，没有括号</p>
-</li>
-<li><p>和其他语言不同，shell语言中0代表true，其他值代表false</p>
-</li>
-<li><p>条件表达式要放在方括号[]之间，并且所有地方都要有空格如[ $a == $b ]<br>==用于数字比较[ $a == $b ] ，=用于字符串比较[ $a = $b]<br>条件表达式中运算符前面都有横杠-</p>
-</li>
-<li><p>f 表示文件(普通)存在<br>条件控制：if 要加then fi 循环控制要加do done</p>
-</li>
-<li><p>引用其他文件： .filename或者source filename</p>
-</li>
-<li><p>字符串运算符：单目-z(长度为0) -n（长度不为0） $（是否为空）</p>
-</li>
-<li><p>命令export作用是使变量可以在子shell中使用，与source类似也有区别。</p>
-</li>
-<li><p>使用nohup command &amp;使程序在后台运行，hohup作用是即使session关闭程序也不中断</p>
-</li>
-<li><p>输入重定向与输出相反，command&lt; filename ，是将本来从键盘获取的输入变成了文件，然后利用command执行该文件</p>
-</li>
-<li><p>追加重定向都是双大于等于号，如&gt;&gt;或&lt;&lt;</p>
-</li>
-<li><p>读取文件read:使用 cat 命令并通过管道将结果直接传送给包含 read 命令的 while 命令。如cat test.txt | while read line<br>大括号的作用：相当于创建了个匿名函数，左括号后必须有空格，右括号前的命令必须有分号。</p>
-</li>
-<li><p>怎样获取文件第k行？ head -k filename|tail -1 其中head/tail -n k与head/tail -k相同<br>或者sed -n ‘kp’ filename</p>
-</li>
-<li><p>egrep除了grep -e的功能外，还可以用扩展表达式egrep “^test|^root” /etc/hosts<br>grep xxx filename  文件中包含xx的行记录</p>
-<pre><code>写程序为用户计算主组数目并显示次数和组名
-
-cat /etc/passwd|cut -d: -f4|sort|uniq -c|while read c g
-do
-{ echo $c; grep :$g: /etc/group|cut -d: -f1;}|xargs -n 2
-done</code></pre></li>
-<li><p>文件描述符0代表标准输入、1代表标准输出、2代表标准错误输出。<br>若错误输出和标准输出都同时重定向到一个位置，使用2&gt;&amp;1如</p>
-<pre><code>ls /usr/share/doc &gt; out.txt 2&gt;&amp;1</code></pre></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2027,7 +1968,7 @@ done</code></pre></li>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">97</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

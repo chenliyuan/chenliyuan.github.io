@@ -86,6 +86,7 @@
 <meta property="og:site_name" content="躲不掉的风">
 <meta property="og:description" content="认识Django Python下有许多款不同的 Web 框架。Django是重量级选手中最有代表性的一位。许多成功的网站和APP都基于Django。  Django是一个开放源代码的Web应用框架，由Python写成。  Django采用了MVC的软件设计模式，即模型M，视图V和控制器C   1. 创建隔离的python环境推荐文章：https://www.cnblogs.com/jasmine-">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/images/pasted-134.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-19.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-20.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-21.png">
@@ -93,11 +94,11 @@
 <meta property="og:image" content="http://yoursite.com/images/pasted-23.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-25.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-24.png">
-<meta property="og:updated_time" content="2020-01-28T04:29:49.826Z">
+<meta property="og:updated_time" content="2020-09-16T13:38:55.057Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django项目实例精讲">
 <meta name="twitter:description" content="认识Django Python下有许多款不同的 Web 框架。Django是重量级选手中最有代表性的一位。许多成功的网站和APP都基于Django。  Django是一个开放源代码的Web应用框架，由Python写成。  Django采用了MVC的软件设计模式，即模型M，视图V和控制器C   1. 创建隔离的python环境推荐文章：https://www.cnblogs.com/jasmine-">
-<meta name="twitter:image" content="http://yoursite.com/images/pasted-19.png">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-134.png">
 
 
 
@@ -372,6 +373,8 @@
 </li>
 <li><p>迁移两步走<br>创建了数据模型，我们最终需要的是定义<strong>数据库</strong>表，所以我们需要迁移：<br>1）python manage.py makemigrations blog  #让 Django 知道我们在我们的模型有一些变更，此时生成了0001_initial.py文件</p>
 <pre><code>python manage.py sqlmigrate blog 0001 #命令可以查看某次迁移的SQL语句。</code></pre><p>2） python manage.py migrate  #将数据库与模型最终同步。</p>
+<p>初始化注意三步走：<a href="https://www.runoob.com/django/django-model.html" target="_blank" rel="noopener">https://www.runoob.com/django/django-model.html</a></p>
+<p><img src="/images/pasted-134.png" alt="upload successful"></p>
 <h4 id="7-站点管理"><a href="#7-站点管理" class="headerlink" title="7. 站点管理"></a>7. 站点管理</h4></li>
 <li><h6 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h6><p>什么是站点？<br>对应的是之前说的admin.py应用。只要启动项目后，打开/admin/路径即可。<br>但是前提是需要创建超级用户（不然也登不进去呀）<br>python manage.py createsuperuser</p>
 </li>
@@ -553,7 +556,7 @@ SyntaxError: invalid syntax</code></li>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">97</span>
+                  <span class="site-state-item-count">99</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
