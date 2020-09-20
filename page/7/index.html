@@ -261,6 +261,416 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/05/性能测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/05/性能测试/" itemprop="url">性能测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-05T22:01:07+08:00">
+                2019-10-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><strong>重要指标</strong></li>
+</ul>
+<p>TPS ：是TransactionsPerSecond的缩写，也就是事务数/秒</p>
+<p>QPS：Queries Per Second意思是“每秒查询率</p>
+<p>区别：  </p>
+<pre><code>tps，即每秒处理事务数，每个事务包括了如下3个过程：a.用户请求服务器
+b.服务器自己的内部处理（包含应用服务器、数据库服务器等）c.服务器返回给用户
+如果每秒能够完成N个这三个过程，tps就是N；
+
+qps，如果是对一个页面请求一次，形成一个tps，但一次页面请求，可能产生多次对服务器的请求（页面上有很多**html资源，比如图片**等），服务器对这些请求，就可计入“qps”之中；
+
+但是，如今的项目基本上都是前后端分离的，性能也分为前端性能和后端性能，通常默认是后端性能，即服务端性能，也就是对服务端接口做压测
+
+如果是对一个接口（单场景）压测，且这个接口内部不会再去请求其它接口，那么tps=qps，否则，tps≠qps
+
+如果是对多个接口（混合场景）压测，不加事务控制器，jmeter会统计每个接口的tps，而混合场景是要测试这个场景的tps，显然这样得不到混合场景的tps，所以，要加了事物控制器，结果才是整个场景的tps</code></pre><p><strong>找到平衡点</strong></p>
+<p>1.尽可能多的做不同并发数下的压测，记录下响应时间（1s以内）和最大tps，当然，服务器端，各个服务器的资源利用率在可接受范围内（每个公司不一样，我们是90%以内）；</p>
+<p>2.然后根据获取到的不同并发下的指标数据（并发数、tps、响应时间），画出上图，关注右侧的交点，即tps下降的地方和响应时间的交点，这个点的tps最大，如果响应时间在1s以内，此时并发数也是比较大的，这个点就可以认为是三个指标都不错的平衡点（当然，我这里把tps放在第一位优先考虑了，这个就看大家最在乎哪个指标了，排个优先级）；如果响应时间大于1s，最佳平衡点就往左找，找到响应时间为1秒的点，此时对应的tps和并发值，就是最佳平衡点。总之，测试采样越多，获取的平衡点就越准确</p>
+<p>参考：<a href="https://mp.weixin.qq.com/s/p_3C7e65v7mwfth3tHUB9A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/p_3C7e65v7mwfth3tHUB9A</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/26/接口测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/26/接口测试/" itemprop="url">接口测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-26T18:22:35+08:00">
+                2019-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>接口测试</strong></p>
+<ul>
+<li><p>业务功能测试</p>
+<p>  正常场景</p>
+<p> 异常场景：重复提交，库存不足,风控失败</p>
+</li>
+<li><p>边界值测试</p>
+<p>  输入/输出参数边界值测试：必选参数、可选参数、无，null，特殊字符<br>参数的顺序，个数，类型，取值范围，字符串长短</p>
+</li>
+<li><p>输入参数组合测试</p>
+</li>
+<li><p>性能测试</p>
+<p>  响应时间、吞吐量。。</p>
+</li>
+<li><p>安全性测试</p>
+<p>  敏感信息是否加密、SQL注入</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/面试准备/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/24/面试准备/" itemprop="url">面试准备</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T20:04:49+08:00">
+                2019-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>*<em>HTTP  *</em>  </p>
+<p>  8种方法 GET POST DELETE PUT<br>HEAD  OPTIONS TRACE CONNECT </p>
+<ol>
+<li>基于TCP/IP的应用层协议  </li>
+<li>基于请求-响应的模式   由客户端发出请求，服务器接收请求后做出响应返回给客户端</li>
+<li>无状态保存<br>对发送的状态不做持久化处理。</li>
+</ol>
+</li>
+<li><p>排序算法</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">def bubbleSort(arr):</span><br><span class="line">    for i in range(1, len(arr)):</span><br><span class="line">        for j in range(0, len(arr)-i):</span><br><span class="line">            if arr[j] &gt; arr[j+1]:</span><br><span class="line">                arr[j], arr[j + 1] = arr[j + 1], arr[j]</span><br><span class="line">    return arr</span><br><span class="line">    </span><br><span class="line">def selectionSort(arr):</span><br><span class="line">    for i in range(len(arr) - 1):</span><br><span class="line">        # 记录最小数的索引</span><br><span class="line">        minIndex = i</span><br><span class="line">        for j in range(i + 1, len(arr)):</span><br><span class="line">            if arr[j] &lt; arr[minIndex]:</span><br><span class="line">                minIndex = j</span><br><span class="line">        # i 不是最小数时，将 i 和最小数进行交换</span><br><span class="line">        if i != minIndex:</span><br><span class="line">            arr[i], arr[minIndex] = arr[minIndex], arr[i]</span><br><span class="line">    return arr</span><br><span class="line"></span><br><span class="line">def insertionSort(arr):</span><br><span class="line">    for i in range(len(arr)):</span><br><span class="line">        preIndex = i-1</span><br><span class="line">        current = arr[i]</span><br><span class="line">        while preIndex &gt;= 0 and arr[preIndex] &gt; current:</span><br><span class="line">            arr[preIndex+1] = arr[preIndex]</span><br><span class="line">            preIndex-=1</span><br><span class="line">        arr[preIndex+1] = current</span><br><span class="line">    return arr</span><br><span class="line">    </span><br><span class="line">#快速排序复杂度nlog(n) 参考：https://blog.csdn.net/weixin_43250623/article/details/88931925    </span><br><span class="line">def quick_sort(li, start, end):</span><br><span class="line">    i=start</span><br><span class="line">    j=end</span><br><span class="line">    pivot=li[start]</span><br><span class="line">    if start&gt;=end:#注意结束条件</span><br><span class="line">        return</span><br><span class="line">    while(i&lt;j):</span><br><span class="line">         print(li,i,j)</span><br><span class="line">         while i&lt;j and li[i]&lt;pivot:#如果加等号pivot值就不换了</span><br><span class="line">             i+=1</span><br><span class="line">         li[j]=li[i]</span><br><span class="line">         while i&lt;j and li[j]&gt;=pivot:#必须加等号，不然遇到等于的情况，不往下走了</span><br><span class="line">             j-=1</span><br><span class="line">         li[i]=li[j]</span><br><span class="line">    li[i]=pivot</span><br><span class="line">    quick_sort(li, start, i-1)</span><br><span class="line">    quick_sort(li, i+1, end)</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]</span><br><span class="line">    quick_sort(alist, 0, len(alist) - 1)</span><br><span class="line">    print(alist)</span><br></pre></td></tr></table></figure>
+
+<p>找出字符串中所有回文：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">str = &quot;casacbc&quot;</span><br><span class="line">li=[]</span><br><span class="line">i = 1  </span><br><span class="line">while (i &lt; len(str)) :</span><br><span class="line">    for start in range(i+1):</span><br><span class="line">        str1 = str[start: i+1]</span><br><span class="line">        if str1 == str1[::-1] and len(str1)&gt;1:</span><br><span class="line">            li.append(str1)</span><br><span class="line">    i += 1</span><br><span class="line">print(li)</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/TensorFlow实践/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1392,480 +1802,11 @@ w3m https://blog.csdn.net/x_xx_xxx_xxxx/article/details/92574331</code></pre><h5
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/Django-admin/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/15/Django-admin/" itemprop="url">Django站点admin</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T15:58:04+08:00">
-                2019-07-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="站点配置"><a href="#站点配置" class="headerlink" title="站点配置:"></a>站点配置:</h4><ol>
-<li><p>配置admin应用，默认已添加</p>
-</li>
-<li><p>创建管理员用户<br>python manage.py createsuperuser</p>
-</li>
-<li><p>汉化：LANGUAGE_CODE = ‘zh-Hans’<br>TIME_ZONE = ‘Asia/Shanghai’</p>
-</li>
-<li><p>注册数据表（模型）admin.py</p>
-<pre><code>from .models import  diffhsy,Runinfo
-#Register your models here.
-admin.site.register(diffhsy)
-admin.site.register(Runinfo)</code></pre></li>
-<li><p>自定义管理页面</p>
-<ol>
-<li><p>在admin.py文件中创建类（继承ModelAdmin）</p>
-</li>
-<li><p>在对应表注册后添加此类：admin.site.register(Batchinfo,biAdmin) #记得加，不然类没引用白写,示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class biAdmin(admin.ModelAdmin):</span><br><span class="line">    list_display = [&apos;pk&apos;,&apos;createtime&apos;,&apos;other&apos;]</span><br><span class="line"></span><br><span class="line">admin.site.register(Batchinfo,biAdmin）</span><br><span class="line">admin.site.register(Diffhsy)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-</li>
-</ol>
-<p>列表页属性：</p>
-<pre><code>list_display=[]   设置显示的字段  
-list_filter=[] 过滤字段  
-search_field=[] 按照某字段搜索  
-list_per_page=int 每几个一页  
-添加/修改页属性  
-field=[]  修改属性先后顺序  
-fieldsets  给属性分组，与field不可同时使用  
-示例：
-
-    fieldsets = [(&quot;condition&quot;, {&quot;fields&quot;: [&apos;servicename&apos;,&apos;rowkey&apos;,&apos;header_online&apos;]}), (&quot;result&quot;,{&quot;fields&quot;:[&apos;diff&apos;,&apos;run_no&apos;]})]</code></pre><p> 在主表里添加数据时，同时也可添加对应的子表数据：</p>
-<pre><code>    class bitchTodf(admin.TabularInline):
-        model = Diffhsy#子表
-        extra = 2
-    class biAdmin(admin.ModelAdmin):#主表
-        inlines = [bitchTodf]
-
-布尔值显示难看？封装函数，然后列表显示时调用
-
-    class BatchinfoAdmin(admin.ModelAdmin):
-        def status(self):
-            if not self.iserror:
-                return &apos;错误&apos;
-            else:
-                return &apos;正确&apos;
-        status.short_description = &apos;状态&apos;#设置页面列名
-        list_display = [&apos;pk&apos;,&apos;servicename&apos;,&apos;rowkey&apos;,status]#引用该函数
-
-执行动作位置问题（删除的那个控件）
-
-    actions_on_bottom = True #执行动作改成下边
-    actions_on_top = False
-
-使用装饰器完成注册（使用模型类）：
-
-    @admin.register(Diffhsy)
-    class DiffhsyAdmin(admin.ModelAdmin):</code></pre><h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><p> 报错：[error] 13838#0: *1475 open() “/var/www/html/newworkbench/static/admin/css/responsive.css” failed<br> 参考：<a href="https://blog.csdn.net/a657941877/article/details/8953233" target="_blank" rel="noopener">https://blog.csdn.net/a657941877/article/details/8953233</a><br> 解决：将admin静态文件拷贝到nginx配置的static路径下。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/Django表单/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/15/Django表单/" itemprop="url">Django表单form</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T15:04:43+08:00">
-                2019-07-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>问题：<br>‘AddForm’ object has no attribute ‘cleaned_data’<br>由于么有调用is_valid，所以没有cleaned_data方法。</p>
-<h5 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h5><ul>
-<li>新建一个 forms.py 文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from django import forms</span><br><span class="line"> </span><br><span class="line">class AddForm(forms.Form):</span><br><span class="line">    a = forms.IntegerField()</span><br><span class="line">    b = forms.IntegerField()</span><br></pre></td></tr></table></figure>
-
-
-<p> 我们的视图函数 views.py 中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#coding:utf-8</span><br><span class="line">from django.shortcuts import render</span><br><span class="line">from django.http import HttpResponse</span><br><span class="line">#引入我们创建的表单类</span><br><span class="line">from .forms import AddForm </span><br><span class="line">def index(request):</span><br><span class="line">    if request.method == &apos;POST&apos;:# 当提交表单时</span><br><span class="line">        form = AddForm(request.POST) # form 包含提交的数据</span><br><span class="line">        if form.is_valid():# 如果提交的数据合法</span><br><span class="line">            a = form.cleaned_data[&apos;a&apos;]</span><br><span class="line">            b = form.cleaned_data[&apos;b&apos;]</span><br><span class="line">            return HttpResponse(str(int(a) + int(b)))</span><br><span class="line"></span><br><span class="line">    else:# 当正常访问时建表单视图</span><br><span class="line">        form = AddForm()</span><br><span class="line">    return render(request, &apos;index.html&apos;, &#123;&apos;form&apos;: form&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>对应的模板文件 index.html</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form method=&apos;post&apos;&gt;</span><br><span class="line">&#123;% csrf_token %&#125;</span><br><span class="line">&#123;&#123; form &#125;&#125;</span><br><span class="line">&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p>表单域同model，有CharField、IntegerField等，具体见官方文档：<br><a href="https://docs.djangoproject.com/en/2.2/ref/forms/fields/" target="_blank" rel="noopener">https://docs.djangoproject.com/en/2.2/ref/forms/fields/</a><br>参考：<a href="https://code.ziqiangxuetang.com/django/django-forms.html" target="_blank" rel="noopener">https://code.ziqiangxuetang.com/django/django-forms.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/Django路由URL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/14/Django路由URL/" itemprop="url">Django路由URL</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-14T09:23:11+08:00">
-                2019-07-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="配置URL"><a href="#配置URL" class="headerlink" title="配置URL"></a>配置URL</h4><ul>
-<li>在myapp中创建urls.py文件，然后建立连接，从project的url中include到myapp中的urls文件<br>  re_path(r’^’,include(‘myapp.urls’))</li>
-</ul>
-<ul>
-<li><p>path函数的第一个参数是URL模式字符串，用于匹配URL<br>第二个参数是用于处理URL请求的视图函数  </p>
-</li>
-<li><p>使用尖括号提取URL中的参数，如<a href="int:year" target="_blank" rel="noopener">int:year</a>  </p>
-</li>
-<li><p>URL模式字符串不需要以/开头  </p>
-</li>
-<li><p>url传参：在Django 2.0版本以后，这里不再使用正则，而是用<br>…/&lt;参数类型:传入函数的形参名&gt;/…如path(r’oldurl/<a href="str:a" target="_blank" rel="noopener">str:a</a>/<a href="str:b" target="_blank" rel="noopener">str:b</a>/‘, views.oldUrl)类型转化器对参数类型进行转换，如：  </p>
-<pre><code>str：除了“/”以外的任意字符串，默认是它  
-int：匹配任意大于0的整数  
-slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_（汉字尝试没成功）</code></pre></li>
-</ul>
-<p>举例： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;articles/2003/&apos;, views.special_case_2003),</span><br><span class="line">    path(&apos;articles/&lt;title&gt;/&apos;, views.year_archive),</span><br><span class="line">    path(&apos;articles/&lt;int:year&gt;/&lt;int:month&gt;/&apos;, views.month_archive),</span><br><span class="line">    path(&apos;articles/&lt;int:year&gt;/&lt;int:month&gt;/&lt;slug:slug&gt;/&apos;, views.article_detail),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-58.png" alt="upload successful"></p>
-<h5 id="【其他】"><a href="#【其他】" class="headerlink" title="【其他】"></a>【其他】</h5><h6 id="urls与path区别"><a href="#urls与path区别" class="headerlink" title="urls与path区别"></a>urls与path区别</h6><p>   在使用Django的时候，多次遇到urls与path，不知道两者有什么区别。下面简单介绍一下两者</p>
-<p>  在django&gt;=2.0的版本，urls.py中的django.conf.urls已经被django.urls所取代。</p>
-<p>  django.urls的用法：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from django.urls import path</span><br><span class="line">from . import view</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;&apos;, view.hello),</span><br><span class="line">    path(&apos;world/&apos;, view.world)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>  其中最大的改变如下： </p>
-<ul>
-<li><p>import urls被import path所取代</p>
-</li>
-<li><p>如果是路径需要在路径的后面加上一个斜杠  /</p>
-<p>旧版本如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from django.conf.urls import url</span><br><span class="line"></span><br><span class="line">from . import view</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(r&apos;^hello$&apos;, view.hello),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>新版本如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from django.urls import path</span><br><span class="line">from . import view</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;hello/&apos;, view.hello),</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h6 id="可变参数就匹配不上-？"><a href="#可变参数就匹配不上-？" class="headerlink" title="可变参数就匹配不上 ？"></a>可变参数就匹配不上 ？</h6><p>Page not found (404)<br>The current path, getpapertextss, didn’t match any of these.<br>最后查跟url没关系，错误信息误导了我，原来是因为Views中从数据库获取数据时为空报了404<br>另外注意：<br>1）正则匹配django2.0需要用re_path<br>2）匹配的url后面有没有‘/’，与配置一致，除非设置中设置了默认加/</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/6/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/8/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1911,7 +1852,7 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">99</span>
+                  <span class="site-state-item-count">102</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
