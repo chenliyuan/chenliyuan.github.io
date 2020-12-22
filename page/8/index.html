@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/Django-admin/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/19/numpy函数总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -280,7 +280,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/15/Django-admin/" itemprop="url">Django站点admin</a></h1>
+                <a class="post-title-link" href="/2019/10/19/numpy函数总结/" itemprop="url">numpy函数总结</a></h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T15:58:04+08:00">
-                2019-07-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-19T21:36:29+08:00">
+                2019-10-19
               </time>
             
 
@@ -332,66 +332,63 @@
       
         
           
-            <h4 id="站点配置"><a href="#站点配置" class="headerlink" title="站点配置:"></a>站点配置:</h4><ol>
-<li><p>配置admin应用，默认已添加</p>
-</li>
-<li><p>创建管理员用户<br>python manage.py createsuperuser</p>
-</li>
-<li><p>汉化：LANGUAGE_CODE = ‘zh-Hans’<br>TIME_ZONE = ‘Asia/Shanghai’</p>
-</li>
-<li><p>注册数据表（模型）admin.py</p>
-<pre><code>from .models import  diffhsy,Runinfo
-#Register your models here.
-admin.site.register(diffhsy)
-admin.site.register(Runinfo)</code></pre></li>
-<li><p>自定义管理页面</p>
-<ol>
-<li><p>在admin.py文件中创建类（继承ModelAdmin）</p>
-</li>
-<li><p>在对应表注册后添加此类：admin.site.register(Batchinfo,biAdmin) #记得加，不然类没引用白写,示例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">class biAdmin(admin.ModelAdmin):</span><br><span class="line">    list_display = [&apos;pk&apos;,&apos;createtime&apos;,&apos;other&apos;]</span><br><span class="line"></span><br><span class="line">admin.site.register(Batchinfo,biAdmin）</span><br><span class="line">admin.site.register(Diffhsy)</span><br></pre></td></tr></table></figure>
+            <p>==DataFrame用法==</p>
+<h3 id="一、类型转换"><a href="#一、类型转换" class="headerlink" title="一、类型转换"></a>一、类型转换</h3><p> Numpy matrices必须是2维的,但是 numpy arrays (ndarrays) 可以是多维的（1D，2D，3D····ND）. Matrix是Array的一个小的分支，包含于Array。所以matrix 拥有array的所有特性。 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">data = DataFrame(np.arange(16).reshape(4,4),index = list(&quot;ABCD&quot;),columns=list(&apos;wxyz&apos;))</span><br><span class="line">a=data.as_matrix() #将dataframe形式的数据框data转化为矩阵a</span><br><span class="line"> </span><br><span class="line">  #将dataframe形式的数据框存储到Excel文件中：</span><br><span class="line">data.to_excel(r&apos;E:\pypractice\Yun\doc\2.xls&apos;, sheet_name=&apos;Sheet1&apos;)      </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; from numpy import *</span><br><span class="line">&gt;&gt;&gt; a1 =[[1,2,3],[4,5,6]] #列表</span><br><span class="line">&gt;&gt;&gt; a1</span><br><span class="line">[[1, 2, 3], [4, 5, 6]]</span><br><span class="line">&gt;&gt;&gt; a2 = array(a1)   #列表 -----&gt; 数组</span><br><span class="line">&gt;&gt;&gt; a2</span><br><span class="line">array([[1, 2, 3],</span><br><span class="line">       [4, 5, 6]])</span><br><span class="line">&gt;&gt;&gt; a3 = np.mat(a1)      #列表 ----&gt; 矩阵</span><br><span class="line">&gt;&gt;&gt; a3</span><br><span class="line">matrix([[1, 2, 3],</span><br><span class="line">        [4, 5, 6]])</span><br><span class="line">&gt;&gt;&gt; a4=a3[:,0:2]   #对矩阵的操作,选取其前两列的数据</span><br><span class="line">&gt;&gt;&gt; a4</span><br><span class="line">matrix([[1, 2],</span><br><span class="line">        [4, 5]])</span><br><span class="line">&gt;&gt;&gt; a5 = a3.tolist()   #矩阵 ---&gt; 列表</span><br><span class="line">&gt;&gt;&gt; a5</span><br><span class="line">[[1, 2, 3], [4, 5, 6]]</span><br><span class="line">&gt;&gt;&gt; a5 == a1</span><br><span class="line">True</span><br><span class="line">&gt;&gt;&gt; a6 = list(a2)   #数组 ---&gt; 列表</span><br><span class="line">&gt;&gt;&gt; a6</span><br><span class="line">[array([1, 2, 3]), array([4, 5, 6])]</span><br><span class="line">&gt;&gt;&gt; a7=a2.tolist() #数组 ---&gt; 列表,内部数组也转换成列表</span><br><span class="line">&gt;&gt;&gt; a7</span><br><span class="line">[[1, 2, 3], [4, 5, 6]]</span><br><span class="line">&gt;&gt;&gt; a8 = array(a3)  #矩阵 ---&gt; 数组</span><br><span class="line">&gt;&gt;&gt; a8</span><br><span class="line">array([[1, 2, 3],</span><br><span class="line">       [4, 5, 6]])</span><br><span class="line">&gt;&gt;&gt; a9 = mat(a2)   #数组 ---&gt; 矩阵</span><br><span class="line">&gt;&gt;&gt; a9</span><br><span class="line">matrix([[1, 2, 3],</span><br><span class="line">        [4, 5, 6]])</span><br><span class="line">&gt;&gt;&gt; ################</span><br><span class="line">&gt;&gt;&gt; #在一维情况下的#矩阵 ---&gt; 数组---&gt; 矩阵结果不同</span><br><span class="line">&gt;&gt;&gt; #在一维情况下的列表 ----&gt; 矩阵 ---&gt; 列表结果不同</span><br><span class="line">&gt;&gt;&gt; a1 =[1,2,3,4,5,6] #列表</span><br><span class="line">&gt;&gt;&gt; a1</span><br><span class="line">[1, 2, 3, 4, 5, 6]</span><br><span class="line">&gt;&gt;&gt; a3 = mat(a1)      #列表 ----&gt; 矩阵</span><br><span class="line">&gt;&gt;&gt; a3</span><br><span class="line">matrix([[1, 2, 3, 4, 5, 6]])</span><br><span class="line">&gt;&gt;&gt; a4 = a3.tolist()  #矩阵 ---&gt; 列表</span><br><span class="line">&gt;&gt;&gt; a4</span><br><span class="line">[[1, 2, 3, 4, 5, 6]]</span><br><span class="line">&gt;&gt;&gt; a4[0]</span><br><span class="line">[1, 2, 3, 4, 5, 6]</span><br><span class="line">&gt;&gt;&gt; a5 = mat(array(a1))   #数组 ---&gt; 矩阵</span><br><span class="line">&gt;&gt;&gt; a5</span><br><span class="line">matrix([[1, 2, 3, 4, 5, 6]])</span><br><span class="line">&gt;&gt;&gt; a6 = array(a5)  #矩阵 ---&gt; 数组</span><br><span class="line">&gt;&gt;&gt; a6</span><br><span class="line">array([[1, 2, 3, 4, 5, 6]])</span><br></pre></td></tr></table></figure>
 
-</li>
-</ol>
-</li>
-</ol>
-<p>列表页属性：</p>
-<pre><code>list_display=[]   设置显示的字段  
-list_filter=[] 过滤字段  
-search_field=[] 按照某字段搜索  
-list_per_page=int 每几个一页  
-添加/修改页属性  
-field=[]  修改属性先后顺序  
-fieldsets  给属性分组，与field不可同时使用  
-示例：
+<h3 id="二、选择对象"><a href="#二、选择对象" class="headerlink" title="二、选择对象"></a>二、选择对象</h3><p>1.选择特定列和行的数据<br>a[‘x’] 那么将会返回columns为x的列，注意这种方式一次只能返回一个列。a.x与a[‘x’]意思一样。</p>
+<p>取行数据，通过切片[]来选择<br>如：a[0:3] 则会返回前三行的数据。</p>
+<p>2.loc是通过标签来选择数据<br>a.loc[‘one’]则会默认表示选取行为’one’的行；</p>
+<p>a.loc[:,[‘a’,’b’] ] 表示选取所有的行以及columns为a,b的列；</p>
+<p>a.loc[[‘one’,’two’],[‘a’,’b’]] 表示选取’one’和’two’这两行以及columns为a,b的列；</p>
+<p>a.loc[‘one’,’a’]与a.loc[[‘one’],[‘a’]]作用是一样的，不过前者只显示对应的值，而后者会显示对应的行和列标签。</p>
+<p>3.iloc则是直接通过位置来选择数据<br>这与通过标签选择类似<br>a.iloc[1:2,1:2] 则会显示第一行第一列的数据;(切片后面的值取不到)</p>
+<p>a.iloc[1:2] 即后面表示列的值没有时，默认选取行位置为1的数据;</p>
+<p>a.iloc[[0,2],[1,2]] 即可以自由选取行位置，和列位置对应的数据。</p>
+<p>原文：<a href="https://blog.csdn.net/tanlangqie/article/details/78659988" target="_blank" rel="noopener">https://blog.csdn.net/tanlangqie/article/details/78659988</a> </p>
+<p>==转置==<br><img src="https://img-blog.csdnimg.cn/20190129142722602.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190129142701422.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>==numpy的array和python中自带的list之间相互转化==</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">a=([3.234,34,3.777,6.33])#a为python的list类型</span><br><span class="line"></span><br><span class="line">np.array(a)#将a转化为numpy的array</span><br><span class="line">array([  3.234,  34.   ,   3.777,   6.33 ])</span><br><span class="line"></span><br><span class="line">a.tolist()#将a转化为python的list</span><br></pre></td></tr></table></figure>
 
-    fieldsets = [(&quot;condition&quot;, {&quot;fields&quot;: [&apos;servicename&apos;,&apos;rowkey&apos;,&apos;header_online&apos;]}), (&quot;result&quot;,{&quot;fields&quot;:[&apos;diff&apos;,&apos;run_no&apos;]})]</code></pre><p> 在主表里添加数据时，同时也可添加对应的子表数据：</p>
-<pre><code>    class bitchTodf(admin.TabularInline):
-        model = Diffhsy#子表
-        extra = 2
-    class biAdmin(admin.ModelAdmin):#主表
-        inlines = [bitchTodf]
+<p>==pandas中利用 .iloc 和 .loc 切片==</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rows = pd.read_csv(&apos;test.csv&apos;)</span><br><span class="line">row_slice = rows.iloc[0:2, 1:3]  # 取rows的0-1行，1-2列的元素</span><br><span class="line">print(row_slice)</span><br></pre></td></tr></table></figure>
 
-布尔值显示难看？封装函数，然后列表显示时调用
+<p><a href="https://blog.csdn.net/qq1483661204/article/details/77587881" target="_blank" rel="noopener">https://blog.csdn.net/qq1483661204/article/details/77587881</a></p>
+<p>==numpy中reshape函数==<br>必须是矩阵格式或者数组格式，才能使用 .reshape(c, -1) 函数， 表示将此矩阵或者数组重组，以 c行d列的形式表示（-1的作用就在此，自动计算d(行或列)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a1=np.ones((3,2))</span><br><span class="line">print(a1.reshape(-1,1))</span><br><span class="line">结果：</span><br><span class="line">[[1.]</span><br><span class="line"> [1.]</span><br><span class="line"> [1.]</span><br><span class="line"> [1.]</span><br><span class="line"> [1.]</span><br><span class="line"> [1.]]</span><br></pre></td></tr></table></figure>
 
-    class BatchinfoAdmin(admin.ModelAdmin):
-        def status(self):
-            if not self.iserror:
-                return &apos;错误&apos;
-            else:
-                return &apos;正确&apos;
-        status.short_description = &apos;状态&apos;#设置页面列名
-        list_display = [&apos;pk&apos;,&apos;servicename&apos;,&apos;rowkey&apos;,status]#引用该函数
+<p>==Python取numpy数组的某几行某几列方法==<br><img src="https://img-blog.csdnimg.cn/20181218180709674.png" alt="在这里插入图片描述"></p>
+<p>正确分析：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">C_A = c[[0,2]]    #先取出想要的行数据</span><br><span class="line">C_A = C_A[:,[2,3]] #再取出要求的列数据</span><br><span class="line">print(C_A) #输出最终结果</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td></tr></table></figure>
 
-执行动作位置问题（删除的那个控件）
+<p>原文：<a href="https://blog.csdn.net/qq_34734303/article/details/80631831" target="_blank" rel="noopener">https://blog.csdn.net/qq_34734303/article/details/80631831</a><br>==stack==</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">np.vstack():在竖直方向上堆叠</span><br><span class="line">np.hstack():在水平方向上平铺</span><br><span class="line"></span><br><span class="line">import numpy as np</span><br><span class="line">arr1=np.array([1,2,3])</span><br><span class="line">arr2=np.array([4,5,6])</span><br><span class="line">print (np.vstack((arr1,arr2)))</span><br><span class="line"> #[[1 2 3]</span><br><span class="line"> #[4 5 6]]</span><br><span class="line">print (np.hstack((arr1,arr2)))</span><br><span class="line">#  [1 2 3 4 5 6]</span><br><span class="line"></span><br><span class="line">a1=np.array([[1,2],[3,4],[5,6]])</span><br><span class="line">a2=np.array([[7,8],[9,10],[11,12]])</span><br><span class="line">print (a1)</span><br><span class="line">print (a2)</span><br><span class="line">print (np.hstack((a1,a2)))</span><br><span class="line"># [[ 1  2  7  8]</span><br><span class="line">#  [ 3  4  9 10]</span><br><span class="line">#  [ 5  6 11 12]]</span><br></pre></td></tr></table></figure>
 
-    actions_on_bottom = True #执行动作改成下边
-    actions_on_top = False
+<p>原文 <a href="https://blog.csdn.net/m0_37393514/article/details/79538748" target="_blank" rel="noopener">https://blog.csdn.net/m0_37393514/article/details/79538748</a><br>==np.random.choice==</p>
+<p>参数意思分别 是从a 中以概率P，随机选择3个, p没有指定的时候相当于是一致的分布</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a1 = np.random.choice(a=5, size=3, replace=False, p=None)</span><br><span class="line">print(a1)</span><br></pre></td></tr></table></figure>
 
-使用装饰器完成注册（使用模型类）：
+<p>非一致的分布，会以多少的概率提出来</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a2 = np.random.choice(a=5, size=3, replace=False, p=[0.2, 0.1, 0.3, 0.4, 0.0])</span><br><span class="line">print(a2)</span><br></pre></td></tr></table></figure>
 
-    @admin.register(Diffhsy)
-    class DiffhsyAdmin(admin.ModelAdmin):</code></pre><h4 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h4><p> 报错：[error] 13838#0: *1475 open() “/var/www/html/newworkbench/static/admin/css/responsive.css” failed<br> 参考：<a href="https://blog.csdn.net/a657941877/article/details/8953233" target="_blank" rel="noopener">https://blog.csdn.net/a657941877/article/details/8953233</a><br> 解决：将admin静态文件拷贝到nginx配置的static路径下。</p>
+<p> replacement 代表的意思是抽样之后还放不放回去，如果是False的话，那么出来的三个数都不一样，如果是<br>True的话， 有可能会出现重复的，因为前面的抽的放回去了</p>
+<hr>
+<p>原文：<a href="https://blog.csdn.net/qfpkzheng/article/details/79061601" target="_blank" rel="noopener">https://blog.csdn.net/qfpkzheng/article/details/79061601</a> </p>
+<p>==numpy添加新的维度：newaxis==</p>
+<pre><code>newaxis放在第几个位置，就会在shape里面看到相应的位置增加了一个维数</code></pre><p><img src="https://img-blog.csdnimg.cn/20181218180609497.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3Nub3d5YmVhcg==,size_16,color_FFFFFF,t_70" alt="è¿™é‡Œå†™å›¾ç‰‡æè¿°"><br>来源：<a href="https://blog.csdn.net/xtingjie/article/details/72510834" target="_blank" rel="noopener">https://blog.csdn.net/xtingjie/article/details/72510834</a><br>==.dot()==<br>一开始看到这个函数的时候，总是把它想成点积，因为dot是点的意思。。。</p>
+<p>后来在经历了dot()和*完全搞混，犯下错误之后，才终于弄明白了。</p>
+<p><em>dot()计算的是我们经常计算的矩阵乘法，设A(2 * 3), B(3 * 4), 那么dot(A, B)就表示两个矩阵相乘，得到的结果是一个2 * 4的矩阵。</em></p>
+<p>而<em>，相当于matlab中的.</em>, 也就是真正的点积，即元素对应相乘。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a = [[1, 0], [0, 1]]</span><br><span class="line">&gt;&gt;&gt; b = [[4, 1], [2, 2]]</span><br><span class="line">&gt;&gt;&gt; np.dot(a, b)</span><br><span class="line">array([[4, 1],</span><br><span class="line">       [2, 2]])</span><br></pre></td></tr></table></figure>
+
+<p>两个向量a = [a1, a2,…, an]和b = [b1, b2,…, bn]的点积定义为：a·b=a1b1+a2b2+……+anbn</p>
+<p>引用：<a href="https://blog.csdn.net/qq_25436597/article/details/78839059" target="_blank" rel="noopener">https://blog.csdn.net/qq_25436597/article/details/78839059</a></p>
+<p>==numpy.concatenate==</p>
+<p>numpy提供了numpy.concatenate((a1,a2,…), axis=0)函数。能够一次完成多个数组的拼接。其中a1,a2,…是数组类型的参数</p>
+<p>示例3：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=np.array([1,2,3])</span><br><span class="line">&gt;&gt;&gt; b=np.array([11,22,33])</span><br><span class="line">&gt;&gt;&gt; c=np.array([44,55,66])</span><br><span class="line">&gt;&gt;&gt; np.concatenate((a,b,c),axis=0)  # 默认情况下，axis=0可以不写</span><br><span class="line">array([ 1,  2,  3, 11, 22, 33, 44, 55, 66]) #对于一维数组拼接，axis的值不影响最后的结果</span><br><span class="line">#多维数组：</span><br><span class="line">&gt;&gt;&gt; a=np.array([[1,2,3],[4,5,6]])</span><br><span class="line">&gt;&gt;&gt; b=np.array([[11,21,31],[7,8,9]])</span><br><span class="line">&gt;&gt;&gt; np.concatenate((a,b),axis=0)</span><br><span class="line">array([[ 1,  2,  3],</span><br><span class="line">       [ 4,  5,  6],</span><br><span class="line">       [11, 21, 31],</span><br><span class="line">       [ 7,  8,  9]])</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; np.concatenate((a,b),axis=1)  #axis=1表示对应行的数组进行拼接</span><br><span class="line">array([[ 1,  2,  3, 11, 21, 31],</span><br><span class="line">       [ 4,  5,  6,  7,  8,  9]])OC](这里写自定义目录标题)</span><br></pre></td></tr></table></figure>
+
+<h4 id="其他函数-np-arange-np-repeat"><a href="#其他函数-np-arange-np-repeat" class="headerlink" title="其他函数 np.arange np.repeat"></a>其他函数 np.arange np.repeat</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line"> </span><br><span class="line">x = np.arange(5)  </span><br><span class="line">print (x)</span><br><span class="line">c=np.array(([1,2],[3,4]))</span><br><span class="line">print (c)</span><br><span class="line">print(np.repeat(c,2))</span><br><span class="line">print(np.repeat(c,2,0))</span><br><span class="line">print(np.repeat(c,2,1))</span><br></pre></td></tr></table></figure>
+
 
           
         
@@ -440,7 +437,7 @@ fieldsets  给属性分组，与field不可同时使用
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/15/Django表单/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/16/jmeter实践笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -459,7 +456,7 @@ fieldsets  给属性分组，与field不可同时使用
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/15/Django表单/" itemprop="url">Django表单form</a></h1>
+                <a class="post-title-link" href="/2019/10/16/jmeter实践笔记/" itemprop="url">jmeter实践笔记</a></h1>
         
 
         <div class="post-meta">
@@ -471,8 +468,8 @@ fieldsets  给属性分组，与field不可同时使用
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-15T15:04:43+08:00">
-                2019-07-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T14:10:29+08:00">
+                2019-10-16
               </time>
             
 
@@ -511,20 +508,13 @@ fieldsets  给属性分组，与field不可同时使用
       
         
           
-            <p>问题：<br>‘AddForm’ object has no attribute ‘cleaned_data’<br>由于么有调用is_valid，所以没有cleaned_data方法。</p>
-<h5 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h5><ul>
-<li>新建一个 forms.py 文件</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from django import forms</span><br><span class="line"> </span><br><span class="line">class AddForm(forms.Form):</span><br><span class="line">    a = forms.IntegerField()</span><br><span class="line">    b = forms.IntegerField()</span><br></pre></td></tr></table></figure>
-
-
-<p> 我们的视图函数 views.py 中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">#coding:utf-8</span><br><span class="line">from django.shortcuts import render</span><br><span class="line">from django.http import HttpResponse</span><br><span class="line">#引入我们创建的表单类</span><br><span class="line">from .forms import AddForm </span><br><span class="line">def index(request):</span><br><span class="line">    if request.method == &apos;POST&apos;:# 当提交表单时</span><br><span class="line">        form = AddForm(request.POST) # form 包含提交的数据</span><br><span class="line">        if form.is_valid():# 如果提交的数据合法</span><br><span class="line">            a = form.cleaned_data[&apos;a&apos;]</span><br><span class="line">            b = form.cleaned_data[&apos;b&apos;]</span><br><span class="line">            return HttpResponse(str(int(a) + int(b)))</span><br><span class="line"></span><br><span class="line">    else:# 当正常访问时建表单视图</span><br><span class="line">        form = AddForm()</span><br><span class="line">    return render(request, &apos;index.html&apos;, &#123;&apos;form&apos;: form&#125;)</span><br></pre></td></tr></table></figure>
-
-<p>对应的模板文件 index.html</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form method=&apos;post&apos;&gt;</span><br><span class="line">&#123;% csrf_token %&#125;</span><br><span class="line">&#123;&#123; form &#125;&#125;</span><br><span class="line">&lt;input type=&quot;submit&quot; value=&quot;提交&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
-
-<p>表单域同model，有CharField、IntegerField等，具体见官方文档：<br><a href="https://docs.djangoproject.com/en/2.2/ref/forms/fields/" target="_blank" rel="noopener">https://docs.djangoproject.com/en/2.2/ref/forms/fields/</a><br>参考：<a href="https://code.ziqiangxuetang.com/django/django-forms.html" target="_blank" rel="noopener">https://code.ziqiangxuetang.com/django/django-forms.html</a></p>
+            <h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><p>安装参考：<a href="https://blog.csdn.net/lovesoo/article/details/78579547" target="_blank" rel="noopener">https://blog.csdn.net/lovesoo/article/details/78579547</a></p>
+<p>线程数：可以理解为并发数，在jmeter中一个线程代表一个用户。</p>
+<p>Ramp-Up Period (in seconds): 多长时间内初始化完这些线程。单位是秒。我这里设置的是10秒启动100个也就是1秒启动10。</p>
+<p>循环次数：如果你要限定循环次数为10次的话，就取消永远前面的那个勾，然后在后面的文本框里面填写10；在这里我们勾上永远，表示如果不停止或者限定时间将会一直执行下去， 是为了方便调度器的调用。一般勾选永远后要在调度器里填写持续时间。</p>
+<p>对于结果和图表，原生三个元件常用：聚合报告、图表结果、响应时间图</p>
+<h4 id="2-插件使用"><a href="#2-插件使用" class="headerlink" title="2.插件使用"></a>2.插件使用</h4><p>第一步：下载jmeter-plugins，<a href="https://jmeter-plugins.org/install/Install/，安装提示将jar包放在jmeter安装目录lib/ext下" target="_blank" rel="noopener">https://jmeter-plugins.org/install/Install/，安装提示将jar包放在jmeter安装目录lib/ext下</a>  </p>
+<p>第二步：jmeter中option-jmeter plugins Manager-Available Plugins-jdbc Standard Set,点击右下角的Apply Changes and Restart JMeter</p>
 
           
         
@@ -573,7 +563,7 @@ fieldsets  给属性分组，与field不可同时使用
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/Django路由URL/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/Django项目实践-Crypto库/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -592,7 +582,7 @@ fieldsets  给属性分组，与field不可同时使用
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/14/Django路由URL/" itemprop="url">Django路由URL</a></h1>
+                <a class="post-title-link" href="/2019/10/07/Django项目实践-Crypto库/" itemprop="url">Crypto模块</a></h1>
         
 
         <div class="post-meta">
@@ -604,8 +594,8 @@ fieldsets  给属性分组，与field不可同时使用
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-14T09:23:11+08:00">
-                2019-07-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-07T17:12:39+08:00">
+                2019-10-07
               </time>
             
 
@@ -644,44 +634,14 @@ fieldsets  给属性分组，与field不可同时使用
       
         
           
-            <h4 id="配置URL"><a href="#配置URL" class="headerlink" title="配置URL"></a>配置URL</h4><ul>
-<li>在myapp中创建urls.py文件，然后建立连接，从project的url中include到myapp中的urls文件<br>  re_path(r’^’,include(‘myapp.urls’))</li>
-</ul>
-<ul>
-<li><p>path函数的第一个参数是URL模式字符串，用于匹配URL<br>第二个参数是用于处理URL请求的视图函数  </p>
-</li>
-<li><p>使用尖括号提取URL中的参数，如<a href="int:year" target="_blank" rel="noopener">int:year</a>  </p>
-</li>
-<li><p>URL模式字符串不需要以/开头  </p>
-</li>
-<li><p>url传参：在Django 2.0版本以后，这里不再使用正则，而是用<br>…/&lt;参数类型:传入函数的形参名&gt;/…如path(r’oldurl/<a href="str:a" target="_blank" rel="noopener">str:a</a>/<a href="str:b" target="_blank" rel="noopener">str:b</a>/‘, views.oldUrl)类型转化器对参数类型进行转换，如：  </p>
-<pre><code>str：除了“/”以外的任意字符串，默认是它  
-int：匹配任意大于0的整数  
-slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_（汉字尝试没成功）</code></pre></li>
-</ul>
-<p>举例： </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;articles/2003/&apos;, views.special_case_2003),</span><br><span class="line">    path(&apos;articles/&lt;title&gt;/&apos;, views.year_archive),</span><br><span class="line">    path(&apos;articles/&lt;int:year&gt;/&lt;int:month&gt;/&apos;, views.month_archive),</span><br><span class="line">    path(&apos;articles/&lt;int:year&gt;/&lt;int:month&gt;/&lt;slug:slug&gt;/&apos;, views.article_detail),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-58.png" alt="upload successful"></p>
-<h5 id="【其他】"><a href="#【其他】" class="headerlink" title="【其他】"></a>【其他】</h5><h6 id="urls与path区别"><a href="#urls与path区别" class="headerlink" title="urls与path区别"></a>urls与path区别</h6><p>   在使用Django的时候，多次遇到urls与path，不知道两者有什么区别。下面简单介绍一下两者</p>
-<p>  在django&gt;=2.0的版本，urls.py中的django.conf.urls已经被django.urls所取代。</p>
-<p>  django.urls的用法：</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from django.urls import path</span><br><span class="line">from . import view</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;&apos;, view.hello),</span><br><span class="line">    path(&apos;world/&apos;, view.world)</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>  其中最大的改变如下： </p>
-<ul>
-<li><p>import urls被import path所取代</p>
-</li>
-<li><p>如果是路径需要在路径的后面加上一个斜杠  /</p>
-<p>旧版本如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from django.conf.urls import url</span><br><span class="line"></span><br><span class="line">from . import view</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    url(r&apos;^hello$&apos;, view.hello),</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>新版本如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from django.urls import path</span><br><span class="line">from . import view</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;hello/&apos;, view.hello),</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h6 id="可变参数就匹配不上-？"><a href="#可变参数就匹配不上-？" class="headerlink" title="可变参数就匹配不上 ？"></a>可变参数就匹配不上 ？</h6><p>Page not found (404)<br>The current path, getpapertextss, didn’t match any of these.<br>最后查跟url没关系，错误信息误导了我，原来是因为Views中从数据库获取数据时为空报了404<br>另外注意：<br>1）正则匹配django2.0需要用re_path<br>2）匹配的url后面有没有‘/’，与配置一致，除非设置中设置了默认加/</p>
+            <p>背景：<br>    由于公司接口有加密解密，自定义接口脚本需要调取Crypto模块，之前用的是php调用python脚本实现的结构体，过于繁琐，打算搭建Django框架实现</p>
+<h2 id="问题一："><a href="#问题一：" class="headerlink" title="问题一："></a>问题一：</h2><p>但是搭建后发现调用Crypto模块经常会报错，主要报错是：<br>from Crypto.Cipher import _AES<br>ImportError: DLL load failed: 找不到指定的模块。<br>这个问题困扰了我很久，原来代码目录<br><img src="https://img-blog.csdnimg.cn/201903111457336.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述
+"></p>
+<p>1、一直认为引用这个模块使用的是目录调用，然后验证路径调用是否正确，怎么验证也没发现什么毛病<br>2、文件里引用当前目录的_AES,最开始以为是AES.py文件本身（单下划线私有变量）；后来知道.pyd文件实际上就是个库文件（DLL），才转移到是引用的_ASE.pyd，但是也没有找出找不到它的理由<br><img src="https://img-blog.csdnimg.cn/20190311150008620.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>解决：<br>后来尝试在原来PHP框架里删除该引用文件，发现依旧可用，于是明确一点：该实现并不依赖该路径，而是与系统安装的pycrypto路径文件有关，但是wondows本地一直有问题，于是直接从当前正在使用PHP linux服务器上调试。做法：删除本地目录（直接用系统的，经之前项目验证系统的没问题，可以用），然后启动Django服务就不报错了，后来又调试了下报错都是些其他的问题了，困扰我两周的问题终于终于落幕了，可以收下心做正事了~~</p>
+<h2 id="问题2："><a href="#问题2：" class="headerlink" title="问题2："></a>问题2：</h2><p>虽然在linux上的这个问题莫名其妙的解决了，但是在台式机win7（py3.7）系统上还是有问题，使用django框架吊起来没有问题，但是直接执行python脚本还是会报一样的错误。忍了一段时间后终于忍不下去了。<br>最开始听人说在linux环境可行，于是在windows下打开git bash确实可行，但是还是会报其他的错，可能是因为版本换了，因为他走的是Anaconda里面的插件，后来干脆还是修复本地的吧<br>1、卸载本地的pycrypto<br>卸载失败提示:Cannot uninstall ‘’. It is a distutils installed project and thus we cannot accurately.<br>解决：直接全局搜索对应文件，具体包括 “package name” 文件夹 和 “package name”.egg-info ，找到后直接删除即可<br>2、重新安装pip install pycrypto<br>直接安装报错，使用源码安装？一样报错<br>error: command ‘C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\<br>x86_amd64\cl.exe’ failed with exit status 2<br>解决：从网上找的经验<br>1）添加VC环境变量，设置用户环境变量，这里划重点！！！是用户环境变量，不是系统环境变量<br>变量名：VCINSTALLDIR<br>（变量值为vs安装路径下的VC，默认是这个）<br>变量值：C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC<br> win+R运行cmd，执行命令set CL=/FI”%VCINSTALLDIR%\INCLUDE\stdint.h” %CL% </p>
+<p>2）安装twisted <a href="https://blog.csdn.net/jiangyunsheng147/article/details/80449556" target="_blank" rel="noopener">https://blog.csdn.net/jiangyunsheng147/article/details/80449556</a></p>
+<p>还会报错warning: GMP or MPIR library not found; Not building Crypto.PublicKey._fastmath.<br>building ‘Crypto.Random.OSRNG.winrandom’ extension<br>error: Unable to find vcvarsall.bat</p>
+<p>3）降低版本3.7–&gt;3.6<br>还是报楼上错误，最后看到有pycrypto-2.6.1.win-amd64-py3.4.exe可行，但是需要3.4.于是降到3.4，刚开始用的exe事32位的不行，后来下了64的果然可以了，搞了一天的环境终于在最后搞定了，也不辜负这一天的工时。<br>插曲：在降低版本的时候，出现了明明已经降到3.4，但是python -V的时候一直仍然显示3.7，后来又是删注册表，又是卸载程序的，我怀疑跟我安装的Anaconda有关系。</p>
 
           
         
@@ -730,7 +690,7 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/Django模板/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/Docker/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -749,7 +709,7 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/14/Django模板/" itemprop="url">Django模板template</a></h1>
+                <a class="post-title-link" href="/2019/10/07/Docker/" itemprop="url">Docker使用篇</a></h1>
         
 
         <div class="post-meta">
@@ -761,8 +721,8 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-14T08:43:07+08:00">
-                2019-07-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-07T16:24:49+08:00">
+                2019-10-07
               </time>
             
 
@@ -801,40 +761,60 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
       
         
           
-            <ol>
-<li><p>模板标签</p>
-<ul>
-<li>循环标签（for标签）<br>这种适合返回的字典值是列表的情况<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%for value in value_list %&#125;</span><br><span class="line">	&#123;&#123;value&#125;&#125;</span><br><span class="line">&#123;%endfor%&#125;</span><br></pre></td></tr></table></figure>
+            <p>参考菜鸟教程 <a href="https://www.runoob.com/docker/docker-tutorial.html" target="_blank" rel="noopener">https://www.runoob.com/docker/docker-tutorial.html</a><br><a href="https://www.cnblogs.com/hellangels333/p/9749905.html" target="_blank" rel="noopener">https://www.cnblogs.com/hellangels333/p/9749905.html</a></p>
+<h4 id="启动docker"><a href="#启动docker" class="headerlink" title="启动docker"></a>启动docker</h4><p> 命令行启动 或点击图标启动app</p>
+<p> $ docker   可查看所有命令</p>
+<p> 比如常用命令：</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ docker version</span><br><span class="line">$ docker info</span><br></pre></td></tr></table></figure>
 
+
+<h4 id="镜像管理"><a href="#镜像管理" class="headerlink" title="镜像管理"></a>镜像管理</h4><ul>
+<li>docker search 命令来搜索镜像</li>
+</ul>
+<p>ps:镜像加速 mac:<a href="http://f971cfe6.m.daocloud.io加入deamon-Registry" target="_blank" rel="noopener">http://f971cfe6.m.daocloud.io加入deamon-Registry</a> mirrors</p>
+<ul>
+<li><p>docker pull  获取新镜像</p>
+<p>注意使用OFFICIAL的官方镜像</p>
+<p>  我们可以从 Docker Hub 网站来搜索镜像，Docker Hub 网址为：<br><a href="https://hub.docker.com/" target="_blank" rel="noopener">https://hub.docker.com/</a></p>
+<p>  使用国内镜像参考地址：<a href="https://www.docker-cn.com/registry-mirror" target="_blank" rel="noopener">https://www.docker-cn.com/registry-mirror</a></p>
+</li>
+<li><p>docker images   //列出本地主机上的镜像 </p>
+<pre><code>REPOSITORY：表示镜像的仓库源
+TAG：镜像的标签(可以理解为不同的版本号)
+IMAGE ID：镜像ID
+CREATED：镜像创建时间</code></pre><p>实例：</p>
+<p>1、docker ps或docker images</p>
+<p>Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?</p>
+<p>原因：未打开docker，启动docker图标，直至展示running</p>
+<p>2、打开后发现需要指定运行目录</p>
+<p>ls查看当前目录结构，选择映射目录<br>再停掉容器：<br>docker stop  362f8b09c8f43517957423b23f5e0d07ffa164864170262ec14150f2ad267<br>再打开的时候加-v 参数</p>
 </li>
 </ul>
-<p>for遍历<br>除了普通列表遍历还可以实现:  </p>
-<ul>
-<li><p>对列表进行翻转</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% for obj in list reversed%&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>循环遍历字典</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%for key ,value in data.items %&#125;</span><br><span class="line">		&#123;&#123;key&#125;&#125;:&#123;&#123;value&#125;&#125;</span><br><span class="line">&#123;%endfor%&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<ul>
-<li>条件控制标签<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  &#123;% if condition1 %&#125;</span><br><span class="line">	...</span><br><span class="line">&#123;% elif condition2 %&#125;</span><br><span class="line">	...</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">	...</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="2">
-<li>过滤器<br>在原来值后面加上过滤的关键字，起到过滤效果<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;somekeyname|upper|first|lower|length&#125;&#125;</span><br><span class="line">常用的过滤器：</span><br><span class="line">capfirst首字母大写</span><br><span class="line">cut：删除指定值，如&#123;&#123;value|cut:&quot;&quot;&#125;&#125;</span><br><span class="line">date:格式化日期，如&#123;&#123;value|date:&quot;D d M Y&quot;&#125;&#125;</span><br><span class="line">default</span><br><span class="line">join拼接如&#123;&#123;value|join:&quot;//&quot;&#125;&#125;</span><br><span class="line">truncatewords 缩短内容长度</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-</li>
-</ol>
-<p>  【问题】  </p>
-<ol>
-<li>表单提交返回后，请求input中填写值不展示？<br>value中设置返回值：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">input type=&quot;text&quot; name=&quot;phone&quot; placeholder=&quot;手机号&quot; value=&#123;&#123; cardno &#125;&#125;&gt;&lt;/td&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
+<h4 id="容器管理"><a href="#容器管理" class="headerlink" title="容器管理"></a>容器管理</h4><p>可通过docker –help 查看所有命令，常用以下几个命令</p>
+<pre><code>$ docker ps  -a  //使用 docker ps 来查看我们正在运行的容器</code></pre><p><img src="https://img-blog.csdnimg.cn/20190514152454652.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<pre><code>docker rm +容器名   //删除容器时，容器必须是停止状态，否则会报错
+docker rm $(docker ps -a -q)
+docker stop +ID 或者名字
+docker start +容器名 //已经停止状态的容器，我们可以使用命令 docker start 来启动。
+docker port +（ID 或者名字）//容器的某个确定端口映射到宿主机的端口号
+docker logs [ID或者名字] //可以查看容器内部的标准输出。  
+docker top +容器名  //查看容器内部运行的进程
+docker inspect +容器名 //查看 Docker 的底层信息。它会返回一个JSON 文件记录着 Docker 容器的配置和状态信息。</code></pre><h4 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h4><p>如果把镜像看成面向对象中的 类 的话，那么容器就是 类 的实例化 对象。</p>
+<h6 id="查看运行帮助："><a href="#查看运行帮助：" class="headerlink" title="查看运行帮助："></a>查看运行帮助：</h6><pre><code>$ sudo docker run --help</code></pre><h6 id="举例：启动-ngnix-容器"><a href="#举例：启动-ngnix-容器" class="headerlink" title="举例：启动 ngnix 容器"></a>举例：启动 ngnix 容器</h6><pre><code>$ sudo docker run --name some-nginx -d -p 8080:80 registry.docker-cn.com/library/nginx
+b5bbf1dfe86a21d641a161c05598c0f4f4d4b32fc8d756b6fdf306295067625f</code></pre><p>-name 指定启动容器的名称为 some-nginx。</p>
+<p>-d 让Docker容器在后台以守护态（Daemonized）形式运行。</p>
+<p>-p 将容器的80端口映射到主机的8080端口</p>
+<p>registry.docker-cn.com/library/nginx 为启动容器的镜像。</p>
+<p>处理过程： <font color="red"><br>浏览器 –&gt; ubuntu(8080) –&gt; Nginx容器(80)</font></p>
+<h6 id="其他参数说明"><a href="#其他参数说明" class="headerlink" title="其他参数说明"></a>其他参数说明</h6><p>  -t （tty）选项让Docker分配一个伪终端（pseudo-tty）并绑定到容器的标准输入上。</p>
+<p>  -i (interactive)则让容器的标准输入保持打开,即保持交互模式。 </p>
+<p>  -v  :   表示需要将本地哪个目录挂载到容器中，格式：-v &lt;宿主机目录&gt;:&lt;容器目录&gt;<br>   eg：<del>/tensorflow:/notebooks/data<br>   将本地的</del>/tensorflow文件夹挂载到新建容器的/notebooks/data下（这样可是实现本地文件和docker文件互通）<br>   tensorflow/tensorflow为指定的镜像，默认标签为latest（即tensorflow/tensorflow:latest）</p>
+<p>   -w  指定其为工作目录</p>
+<pre><code>runoob@runoob:~/python$ docker run  -v $PWD/myapp:/usr/src/myapp  -w /usr/src/myapp python:3.5 python helloworld.py
+    命令说明：
+        -v ：$PWD/myapp:/usr/src/myapp :将主机中当前目录下的myapp挂载到容器的/usr/src/myapp
+        -w ：/usr/src/myapp :指定容器的/usr/src/myapp目录为工作目录
+        python helloworld.py : 使用容器的python命令来执行工作目录中的helloworld.py文件</code></pre>
           
         
       
@@ -882,7 +862,7 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/13/Django视图/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/05/性能测试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -901,7 +881,7 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/13/Django视图/" itemprop="url">Django视图View</a></h1>
+                <a class="post-title-link" href="/2019/10/05/性能测试/" itemprop="url">性能测试</a></h1>
         
 
         <div class="post-meta">
@@ -913,152 +893,8 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-13T21:37:30+08:00">
-                2019-07-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>视图快捷方式shortcut  </p>
-<ul>
-<li><p>常用的是render函数，该函数主要3个参数，第一个参数固定是request,第二个参数是模板文件名，第三个参数是字典类型，其中key就是</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;...&#125;&#125;</span><br></pre></td></tr></table></figure>
-
-<p>中所用的标识符，实际是双括号后返回的是key对应的值。如</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#hello.html#</span><br><span class="line">		&lt;h1&gt;&#123;&#123;hello&#125;&#125;&lt;/h1&gt;</span><br><span class="line">#views.py#</span><br><span class="line">def hello(request):</span><br><span class="line">		values=&#123;&#125;</span><br><span class="line">		values[&quot;hello&quot;]=&quot;hello world!&quot;</span><br><span class="line">		return render(request,&apos;hello.html&apos;,values)</span><br></pre></td></tr></table></figure>
-
-<p>【注】render()与render_to_response()均是django中用来显示模板页面的，但是在django1.3之后，render()便比render_to_response()更加招人待见！最明显的就是前者会自动使用RequestContext，而后者需要coding进去</p>
-</li>
-<li><p>render_to_string 返回字符串</p>
-</li>
-<li><p>redict（to,permanent=False,<em>args,*</em>kwargs）第一个参数常常为模板</p>
-</li>
-<li><p>get_object_or_404 提取数据不存在则抛出异常</p>
-</li>
-<li><p>get_list_or_404使用filter方法提取数据不存在抛出异常<br>最终浏览器测试，显示hello world!  </p>
-</li>
-</ul>
-</li>
-<li><p>HttpRequest对象即我们经常用的request<br>有很多属性和方法，比如body\path\method\encoding\META…<br>我们常用它的属性POST\GET，返回类似字典QueryDict的对象，包含表单中提交的数据。</p>
-<p>```</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Django项目实践偏代码实现/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/12/Django项目实践偏代码实现/" itemprop="url">Django项目实践二(偏代码实现)</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T20:14:56+08:00">
-                2019-07-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-05T22:01:07+08:00">
+                2019-10-05
               </time>
             
 
@@ -1098,46 +934,161 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
         
           
             <ul>
-<li><p>模板前端与后台交互方法 $.getJSON</p>
-<pre><code>$(document).ready(function () {
-    $(&quot;#dl&quot;).click(function () {
-        var sid=$(&quot;#sid&quot;).val();
-        var pid=$(&quot;#pid&quot;).val();
-    $.getJSON(&quot;/download/&quot;,{&apos;sid&apos;:sid,&apos;pid&apos;:pid},)
-    });
-
-    $(&quot;#submit&quot;).click(function () {
-        var sd=$(&quot;#sid&quot;).val();
-        var pd=$(&quot;#pid&quot;).val();
-        $.getJSON(&quot;/getSchedule/&quot;,{&apos;sd&apos;:sd,&apos;pd&apos;:pd},function (ret) {
-            $(&quot;#result&quot;).html(&quot;&quot;);
-           for(var i =0;i&lt;ret.length;i++){
-               $(&apos;#result&apos;).append(ret[i]).append(&quot;&lt;br&gt;&quot;)
-           }
-        })
-    });
-});</code></pre></li>
-<li><p>views返回几种方式<br> return render_to_response(“search.html”)<br> 属于shortcuts模块，常用需要2个参数，第一个是模板如hello.html，第二个是字典，其中字典key就是模板中的变量。<br> return HttpResponse(“success!”)<br> 常用于直接返回字符串</p>
-<ul>
-<li>静态文件的使用<br>settings.py 中两处注意：</li>
+<li><strong>重要指标</strong></li>
 </ul>
+<p>TPS ：是TransactionsPerSecond的缩写，也就是事务数/秒</p>
+<p>QPS：Queries Per Second意思是“每秒查询率</p>
+<p>区别：  </p>
+<pre><code>tps，即每秒处理事务数，每个事务包括了如下3个过程：a.用户请求服务器
+b.服务器自己的内部处理（包含应用服务器、数据库服务器等）c.服务器返回给用户
+如果每秒能够完成N个这三个过程，tps就是N；
+
+qps，如果是对一个页面请求一次，形成一个tps，但一次页面请求，可能产生多次对服务器的请求（页面上有很多**html资源，比如图片**等），服务器对这些请求，就可计入“qps”之中；
+
+但是，如今的项目基本上都是前后端分离的，性能也分为前端性能和后端性能，通常默认是后端性能，即服务端性能，也就是对服务端接口做压测
+
+如果是对一个接口（单场景）压测，且这个接口内部不会再去请求其它接口，那么tps=qps，否则，tps≠qps
+
+如果是对多个接口（混合场景）压测，不加事务控制器，jmeter会统计每个接口的tps，而混合场景是要测试这个场景的tps，显然这样得不到混合场景的tps，所以，要加了事物控制器，结果才是整个场景的tps</code></pre><p><strong>找到平衡点</strong></p>
+<p>1.尽可能多的做不同并发数下的压测，记录下响应时间（1s以内）和最大tps，当然，服务器端，各个服务器的资源利用率在可接受范围内（每个公司不一样，我们是90%以内）；</p>
+<p>2.然后根据获取到的不同并发下的指标数据（并发数、tps、响应时间），画出上图，关注右侧的交点，即tps下降的地方和响应时间的交点，这个点的tps最大，如果响应时间在1s以内，此时并发数也是比较大的，这个点就可以认为是三个指标都不错的平衡点（当然，我这里把tps放在第一位优先考虑了，这个就看大家最在乎哪个指标了，排个优先级）；如果响应时间大于1s，最佳平衡点就往左找，找到响应时间为1秒的点，此时对应的tps和并发值，就是最佳平衡点。总之，测试采样越多，获取的平衡点就越准确</p>
+<p>参考：<a href="https://mp.weixin.qq.com/s/p_3C7e65v7mwfth3tHUB9A" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/p_3C7e65v7mwfth3tHUB9A</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/26/接口测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/26/接口测试/" itemprop="url">接口测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-26T18:22:35+08:00">
+                2019-09-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><strong>接口测试</strong></p>
+<ul>
+<li><p>业务功能测试</p>
+<p>  正常场景</p>
+<p> 异常场景：重复提交，库存不足,风控失败</p>
 </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">-INSTALLED_APPS中 注册了‘django.contrib.staticfiles’，默认生成的文件已注册。 </span><br><span class="line">-指定STATIC_URL 与 STATICFILES_DIRS 的值.</span><br><span class="line"></span><br><span class="line">INSTALLED_APPS=[</span><br><span class="line">    &apos;...&apos;,</span><br><span class="line">    &apos;django.contrib.staticfiles&apos;,</span><br><span class="line">    &apos;...&apos;,</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">STATIC_URL=&apos;/static/&apos;</span><br><span class="line">STATICFILES_DIRS=(BASE_DIR,&apos;static&apos;)</span><br></pre></td></tr></table></figure>
-
-
-<p>*.html中引用（常加在link前）：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load staticfiles %&#125;</span><br><span class="line">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;&#123;% static &apos;css/main.css&apos; %&#125;&quot; /&gt;</span><br><span class="line">...</span><br><span class="line">&#123;% static &apos;/image/test.png&apos; %&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>打开text文件乱码且每次打开的时候会多出一行？</p>
-<p>本地的ct.txt文件保存格式未必是utf-8，所以需要指定编码格式才更准确，使用newline防止在每次写入默认新添加一空行</p>
+<li><p>边界值测试</p>
+<p>  输入/输出参数边界值测试：必选参数、可选参数、无，null，特殊字符<br>参数的顺序，个数，类型，取值范围，字符串长短</p>
 </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">file=open(&quot;templates/ct.txt&quot;,&quot;w&quot;,encoding=&quot;utf-8&quot;, newline=&apos;&apos;)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>表单提交后不调view接口？<br>表单submit按钮类型写错，应该是submit类型，非button类型。</li>
+<li><p>输入参数组合测试</p>
+</li>
+<li><p>性能测试</p>
+<p>  响应时间、吞吐量。。</p>
+</li>
+<li><p>安全性测试</p>
+<p>  敏感信息是否加密、SQL注入</p>
+</li>
 </ul>
 
           
@@ -1187,7 +1138,7 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Django-models/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/面试准备/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -1206,7 +1157,7 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/12/Django-models/" itemprop="url">Django模型models相关</a></h1>
+                <a class="post-title-link" href="/2019/09/24/面试准备/" itemprop="url">面试准备</a></h1>
         
 
         <div class="post-meta">
@@ -1218,8 +1169,8 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T17:45:16+08:00">
-                2019-07-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T20:04:49+08:00">
+                2019-09-24
               </time>
             
 
@@ -1258,197 +1209,153 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
       
         
           
-            <h4 id="创建模型model："><a href="#创建模型model：" class="headerlink" title="创建模型model："></a>创建模型model：</h4><ul>
-<li><p>一个模型对应数据库一个表；继承model.Model类；</p>
-</li>
-<li><p>不需要定义主键，系统自动生成</p>
-</li>
-<li><p>外键关联：</p>
-<pre><code>sgrade=models.ForeignKey(&quot;Grades&quot;) 
-#意思是Grades的主键作为Student sgrade的外键</code></pre></li>
-<li><p>数据库表生成两步走：</p>
-</li>
-</ul>
+            <ul>
+<li><p>*<em>HTTP  *</em>  </p>
+<p>  8种方法 GET POST DELETE PUT<br>HEAD  OPTIONS TRACE CONNECT </p>
 <ol>
-<li>python manage.py makemigrations 创建迁移文件 </li>
-<li>python manage.py migrate</li>
-</ol>
-<ul>
-<li><p>测试数据操作：python manage.py shell</p>
-</li>
-<li><p>添加数据：本质是创建一个模型类的对象;示例:<br>  grade1=Grades()<br>  grade1.gname=”python”<br>  grade1.gtime=datetime(year=2017,month=12,day=17)<br>  grade1.save()  #注意保存</p>
-</li>
-<li><p>查询支持切片,但不支持负数Grades.objects.all()[:10]</p>
-</li>
-<li><p>条件查询：grade1=类名.objects.get(pk=2)#主键查找用关键字pk</p>
-</li>
-<li><p>修改数据：grade1.gname=”python22”   grade1.save()</p>
-</li>
-<li><p>删除数据：grade1.delete()</p>
-</li>
-<li><p>更新数据：update()  返回匹配的行数。唯一的限制是它只能作用在表记录上，不能直接作用在模型object上，返回执行行数。举例： </p>
-<pre><code>&gt;&gt;&gt; Entry.objects.update(blog__name=&apos;foo&apos;) # Won&apos;t work!
-&gt;&gt;&gt;  Entry.objects.filter(blog__id=1).update(comments_on=True) # works!</code></pre><p>   若单个object更新，则跟添加数据方法一致。</p>
-</li>
-<li><p>如果只是检查 Entry 中是否有对象，应该用 Entry.objects.all().exists()</p>
-</li>
-<li><p>推荐用 Entry.objects.count()来查询数量</p>
-</li>
-<li><p>list(es) 可以强行将 QuerySet 变成 列表</p>
-</li>
-<li><p>关联：</p>
-<ol>
-<li>grade1.student_set.all()  #对象名.关联类小写_set.all()<br>#班级grades1里所有的学生</li>
-<li>grade1.student_set.create(…)<br>#创建一条学生新数据 </li>
+<li>基于TCP/IP的应用层协议  </li>
+<li>基于请求-响应的模式   由客户端发出请求，服务器接收请求后做出响应返回给客户端</li>
+<li>无状态保存<br>对发送的状态不做持久化处理。</li>
 </ol>
 </li>
-<li><p>模型类中定义元信息Meta :</p>
-<p>1.db_table定义数据表名，推荐小写，默认是项目表名_类名<br>2.ordering 排序 如ordering[-id] 加负号是倒序</p>
-</li>
-<li><p>自定义Manager类：</p>
-<p>  模型管理器是Django的模型与数据库进行交互的接口，一个模型可以有多个模型管理器。object是manager类的一个对象；</p>
-<p>作用： 向管理器中添加额外的方法；修改管理器返回的原始查询集（重写get_queryset）</p>
+<li><p>排序算法</p>
 </li>
 </ul>
-<pre><code>class diffManager(models.Manager):
-    def get_queryset(self):#重写原函数
-        return super(diffManager,self).get_queryset().filter(isdelete=True)
-    #super参数，第一个是子类类名，第二个一般为self
-class  Diffhsy(models.Model):
-    dfhobj=diffManager() #调用自定义的Manager类，替代Django为模型默认生成的objects模型管理器
- #在view.py中调用自定义模型管理器
- Student.dfhobj.all()</code></pre><ul>
-<li><p>创建对象</p>
-<p>  作用:像数据库中添加数据</p>
-<p>  方法：1. 模型中类中添加方法 2. 在自定义管理器里添加方法。</p>
-<pre><code>class Batchinfo(models.Model):
-    @classmethod
-    def createbatch(cls,time,oth):
-        bt=cls(createtime=time,other=oth)
-    return bt</code></pre></li>
-</ul>
-<h4 id="模型查询方法："><a href="#模型查询方法：" class="headerlink" title="模型查询方法："></a>模型查询方法：</h4><p>  官方接口文档：<a href="https://docs.djangoproject.com/zh-hans/2.1/ref/models/querysets/#filter" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.1/ref/models/querysets/#filter</a></p>
-<p>  自强学院：<a href="https://code.ziqiangxuetang.com/django/django-models.html" target="_blank" rel="noopener">https://code.ziqiangxuetang.com/django/django-models.html</a></p>
-<p>  博客：<a href="https://blog.csdn.net/achieve_success/article/details/90723878" target="_blank" rel="noopener">https://blog.csdn.net/achieve_success/article/details/90723878</a></p>
-<h5 id="返回查询集-多个"><a href="#返回查询集-多个" class="headerlink" title="返回查询集(多个):"></a>返回查询集(多个):</h5><pre><code>filter(键=值，键=值)等价于 filter(键=值).filter(键=值)经过过滤器返回的仍然是查询集；
-可以有多个过滤器链式调用；
-exclude() 过滤掉符合条件的数据
-order_by()
-values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" class="headerlink" title="返回单个对象:"></a>返回单个对象:</h5><pre><code>  get()  1.若没找到符合条件的对象，会引发DoesNotExits异常2.若返回多条，会引发MultipleObjectsReturned异常
-  count()  返回查询集对象的个数
-  first()  返回查询集第一个对象
-  last()   返回查询集最后一个对象
-  exist()  若有数据返回True  #
-        CaseConf.objects.filter(case=&apos;aaaa&apos;).exists()
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">def bubbleSort(arr):</span><br><span class="line">    for i in range(1, len(arr)):</span><br><span class="line">        for j in range(0, len(arr)-i):</span><br><span class="line">            if arr[j] &gt; arr[j+1]:</span><br><span class="line">                arr[j], arr[j + 1] = arr[j + 1], arr[j]</span><br><span class="line">    return arr</span><br><span class="line">    </span><br><span class="line">def selectionSort(arr):</span><br><span class="line">    for i in range(len(arr) - 1):</span><br><span class="line">        # 记录最小数的索引</span><br><span class="line">        minIndex = i</span><br><span class="line">        for j in range(i + 1, len(arr)):</span><br><span class="line">            if arr[j] &lt; arr[minIndex]:</span><br><span class="line">                minIndex = j</span><br><span class="line">        # i 不是最小数时，将 i 和最小数进行交换</span><br><span class="line">        if i != minIndex:</span><br><span class="line">            arr[i], arr[minIndex] = arr[minIndex], arr[i]</span><br><span class="line">    return arr</span><br><span class="line"></span><br><span class="line">def insertionSort(arr):</span><br><span class="line">    for i in range(len(arr)):</span><br><span class="line">        preIndex = i-1</span><br><span class="line">        current = arr[i]</span><br><span class="line">        while preIndex &gt;= 0 and arr[preIndex] &gt; current:</span><br><span class="line">            arr[preIndex+1] = arr[preIndex]</span><br><span class="line">            preIndex-=1</span><br><span class="line">        arr[preIndex+1] = current</span><br><span class="line">    return arr</span><br><span class="line">    </span><br><span class="line">#快速排序复杂度nlog(n) 参考：https://blog.csdn.net/weixin_43250623/article/details/88931925    </span><br><span class="line">def quick_sort(li, start, end):</span><br><span class="line">    i=start</span><br><span class="line">    j=end</span><br><span class="line">    pivot=li[start]</span><br><span class="line">    if start&gt;=end:#注意结束条件</span><br><span class="line">        return</span><br><span class="line">    while(i&lt;j):</span><br><span class="line">         print(li,i,j)</span><br><span class="line">         while i&lt;j and li[i]&lt;pivot:#如果加等号pivot值就不换了</span><br><span class="line">             i+=1</span><br><span class="line">         li[j]=li[i]</span><br><span class="line">         while i&lt;j and li[j]&gt;=pivot:#必须加等号，不然遇到等于的情况，不往下走了</span><br><span class="line">             j-=1</span><br><span class="line">         li[i]=li[j]</span><br><span class="line">    li[i]=pivot</span><br><span class="line">    quick_sort(li, start, i-1)</span><br><span class="line">    quick_sort(li, i+1, end)</span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    alist = [54, 26, 93, 17, 77, 31, 44, 55, 20]</span><br><span class="line">    quick_sort(alist, 0, len(alist) - 1)</span><br><span class="line">    print(alist)</span><br></pre></td></tr></table></figure>
 
-比较运算符:字段名__运算符关键字=值：
-   isnull:Entry.objects.filter(pub_date__isnull=True)
-   in:Entry.objects.filter(headline__in=&apos;abc&apos;)
-   gt/gte/lt/lte
-   date/year/month/day/week/week_day:如pub_date__date=datetime.date(2005, 1, 1)
-区分大小写，若前面加i则不区分：
-  exact/iexact  : Entry.objects.get(id__exact=14)
-  contains/icontains
-  startswith/endswith/istartswith/iendswith
- pk：代表主键
- 聚合函数：aggregate方法：
-    Avg/Count/Max/Min:Student.object.aggregate(Max(&apos;sage&apos;))
-关联查询：
-    Grades.objects.filter(student__scontend__contains(&apos;李爱国&apos;))
- F对象：使用模型的两个属性进行比较
-    from django.db.models import F,Q
-    Student.object.filter(num1__gt=F(&apos;num2&apos;)+20)#F对象也可以进行算术运算
- Q对象：
-    Model.objects.filter(Q(x=1) | Q(y=2))
-    Model.objects.filter(~Q(x=1)) #非，即取反</code></pre><h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><ol>
-<li><p>创建模型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from django.db import models</span><br><span class="line">class ContentTable(models.Model):</span><br><span class="line">    title=models.CharField(default=&quot;&quot;,max_length=50)</span><br><span class="line">    content=models.CharField(default=&quot;&quot;,max_length=1000)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>views.py中使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from wkbenchapp.models import ContentTable</span><br><span class="line">ct = ContentTable.objects.create(title=&quot;标题&quot;, content=&quot;内容&quot;)</span><br><span class="line">value = ContentTable.objects.filter(title=&quot;标题&quot;) #返回QuerySet object类型</span><br><span class="line">for v in value:#其中每个记录v都是个ContentTable object</span><br><span class="line">   print (&quot;v&quot;,v.content)</span><br></pre></td></tr></table></figure>
+<p>找出字符串中所有回文：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">str = &quot;casacbc&quot;</span><br><span class="line">li=[]</span><br><span class="line">i = 1  </span><br><span class="line">while (i &lt; len(str)) :</span><br><span class="line">    for start in range(i+1):</span><br><span class="line">        str1 = str[start: i+1]</span><br><span class="line">        if str1 == str1[::-1] and len(str1)&gt;1:</span><br><span class="line">            li.append(str1)</span><br><span class="line">    i += 1</span><br><span class="line">print(li)</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
 
-<h4 id="QuerySet-API"><a href="#QuerySet-API" class="headerlink" title="QuerySet API"></a>QuerySet API</h4><h4 id="常用字段类型"><a href="#常用字段类型" class="headerlink" title="常用字段类型"></a>常用字段类型</h4></li>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/TensorFlow实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/24/TensorFlow实践/" itemprop="url">TensorFlow实践</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T15:30:42+08:00">
+                2019-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>安装 TensorFlow<br>系统版本：mac 10.12.6 python版本：2.7<br>安装指南：TensorFlow中文社区<br><a href="http://www.tensorfly.cn/tfdoc/get_started/os_setup.html#virtualenv_install" target="_blank" rel="noopener">http://www.tensorfly.cn/tfdoc/get_started/os_setup.html#virtualenv_install</a><br>1）尝试了使用直接安装\homebrew，都会提示错误：</li>
 </ol>
-<pre><code>·AutoField
-    ·一个根据实际ID自动增长的IntegerField，通常不指定如果不指定，一个主键字段将自动添加到模型中
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">There was a problem confirming the ssl certificate: [SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:590) - skipping</span><br></pre></td></tr></table></figure>
 
-·CharField(max_length=字符长度)
-    ·字符串，默认的表单样式是 TextInput
-
-·TextField
-    ·大文本字段，一般超过4000使用，默认的表单控件是Textarea
-
-·IntegerField
-    ·整数
-
-·DecimalField(max_digits=None, decimal_places=None)
-    ·使用python的Decimal实例表示的十进制浮点数
-    ·参数说明
-        ·DecimalField.max_digits
-            ·位数总数
-        ·DecimalField.decimal_places
-            ·小数点后的数字位数
-
-·FloatField
-    ·用Python的float实例来表示的浮点数
-
-·BooleanField
-    ·true/false 字段，此字段的默认表单控制是CheckboxInput
-
-·NullBooleanField
-    ·支持null、true、false三种值
-
-·DateField([auto_now=False, auto_now_add=False]) --- 日期
-    ·使用Python的datetime.date实例表示的日期
-    ·参数说明
-        ·DateField.auto_now(最后更新时间)
-            ·每次保存对象时，自动设置该字段为当前时间，用于&quot;最后一次修改&quot;的时间戳，它总是使用当前日期，默认为false
-        ·DateField.auto_now_add（创建时间）
-            ·当对象第一次被创建时自动设置当前时间，用于创建的时间戳，它总是使用当前日期，默认为false
-    ·说明
-        ·该字段默认对应的表单控件是一个TextInput. 在管理员站点添加了一个JavaScript写的日历控件，和一个“Today&quot;的快捷按钮，包含了一个额外的invalid_date错误消息键
-    ·注意
-        ·auto_now_add, auto_now, and default 这些设置是相互排斥的，他们之间的任何组合将会发生错误的结果
-
-·TimeField                                 ------时间
-    ·使用Python的datetime.time实例表示的时间，参数同DateField
-
-·DateTimeField               -------------------日期+时间
-    ·使用Python的datetime.datetime实例表示的日期和时间，参数同DateField
-
-·FileField
-    ·一个上传文件的字段
-
-·ImageField
-    ·继承了FileField的所有属性和方法，但对上传的对象进行校验，确保它是个有效的image</code></pre><h4 id="字段选项"><a href="#字段选项" class="headerlink" title="字段选项"></a>字段选项</h4><pre><code>·概述
-    ·通过字段选项，可以实现对字段的约束
-    ·在字段对象时通过关键字参数指定
-
-·null
-    ·如果为True，Django 将空值以NULL 存储到数据库中，默认值是 False
-
-·blank
-    ·如果为True，则该字段允许为空白，默认值是 False
-
-·注意
-    ·null是数据库范畴的概念，blank是表单验证证范畴的
-
-·db_column
-    ·字段的名称，如果未指定，则使用属性的名称
-
-·db_index
-    ·若值为 True, 则在表中会为此字段创建索引
-
-·default
-    ·默认值
-
-·primary_key
-    ·若为 True, 则该字段会成为模型的主键字段
-
-·unique
-    ·如果为 True, 这个字段在表中必须有唯一值</code></pre><h4 id="错误调试"><a href="#错误调试" class="headerlink" title="错误调试"></a>错误调试</h4><ol>
-<li>django.db.utils.IntegrityError: UNIQUE constraint failed: wkbenchapp_content.id…<br>migrate更新表的时候不知道怎么回事总是报这个错，怎么改都不行，最后删除migrations里除了初始化外的所有日志，重新从makemigrations来一遍就顺利的好了。</li>
-</ol>
+<p>说是因为python社区已不支持TLS version 1.0 &amp; 1.1，可以通过升级pip实现，但是升级pip还会由于这个问题不能成功，后放弃。但是本机是Python2.7不愿因为安装这个升级python版本，毕竟是几个电脑里唯一一个2.x的版本，希望可以保留。<br>2）使用docker安装<br>参考：<br><a href="https://blog.csdn.net/qq_35624642/article/details/82910641" target="_blank" rel="noopener">https://blog.csdn.net/qq_35624642/article/details/82910641</a><br>报错：<br><img src="https://img-blog.csdnimg.cn/20190322173316121.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>于是试图更改用户名和用户组，查阅各种资料，mac操作用户和用户组跟linux不一样，使用dscl命令<a href="https://www.4455q.com/tech/mac-dscl-user-group-create-delete-append.html" target="_blank" rel="noopener">https://www.4455q.com/tech/mac-dscl-user-group-create-delete-append.html</a><br>查到用户名和用户组id后，使用后：<br><img src="https://img-blog.csdnimg.cn/20190322173457617.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>查看版本和安装路径<br>import tensorflow as tf</p>
+<p>tf.<strong>version</strong></p>
+<p>查询tensorflow安装路径为:</p>
+<p>tf.<strong>path</strong></p>
+<hr>
+<p>docker打开容器运行tensorflow镜像：<br>    <strong>docker run –name xiaolei-tensortflow -it -p 8888:8888 -v ~/tensorflow:/notebooks/data  tensorflow/tensorflow</strong></p>
+<p>docker run 运行镜像，<br>–name 为容器创建别名，<br>-it 保留命令行运行(之后可以输入命令)<br>-p 8888:8888 将本地的8888端口 <a href="http://localhost:8888/" target="_blank" rel="noopener">http://localhost:8888/</a> 映射（对应前面的端口），<br>-v <del>/tensorflow:/notebooks/data 将本地的</del>/tensorflow文件夹挂载到新建容器的/notebooks/data下（这样可是实现本地文件和docker文件互通）<br>tensorflow/tensorflow 为指定的镜像，默认标签为latest（即tensorflow/tensorflow:latest）</p>
 
           
         
@@ -1497,7 +1404,7 @@ values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" c
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/11/几大未解之谜/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/python读取文件的几种方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -1516,7 +1423,7 @@ values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" c
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/11/几大未解之谜/" itemprop="url">出错排查和记录</a></h1>
+                <a class="post-title-link" href="/2019/09/24/python读取文件的几种方式/" itemprop="url">python读取文件的几种方式</a></h1>
         
 
         <div class="post-meta">
@@ -1528,8 +1435,8 @@ values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" c
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-11T20:31:45+08:00">
-                2019-07-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T15:30:42+08:00">
+                2019-09-24
               </time>
             
 
@@ -1568,8 +1475,64 @@ values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" c
       
         
           
-            <p>1、windows使用pycharm运行Django项目时，项目可以运行，但是就是不打印print内容，cmd窗口和ptcharm控制台都一样。<br>原来是加了这句坑爹的原意是解决问题，却没想到引出问题来了，气死。<br>import io<br>sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding=’utf-8’)<br>2、本来是为了解决json转yaml后中文乱码的问题，才引出的问题1，经过调查原来是原来犯过的一个问题<br>没加allow_unicode=True 导致中文转换成unicode</p>
-<pre><code></code></pre>
+            <p>1.python读取文件的几种方式</p>
+<p><strong>read_csv 从文件，url，文件型对象中加载带分隔符的数据。默认分隔符为逗号<br>read_table 从文件，url，文件型对象中加载带分隔符的数据。默认分隔符为制表符（“\t”）<br>read_fwf 读取定宽列格式数据（也就是没有分隔符）<br>read_cliboard 读取剪切板中的数据，可以看做read_table的剪切板。在将网页转换为表格时很有用<br>np.loadtxt()用于从文本加载数据。常用：loadtxt(fname,  delimiter=None)</strong></p>
+<p>2.pandas.read_csv参数整理</p>
+<p>读取CSV（逗号分割）文件到DataFrame<br>也支持文件的部分导入和选择迭代<br>更多帮助参见：<a href="http://pandas.pydata.org/pandas-docs/stable/io.html" target="_blank" rel="noopener">http://pandas.pydata.org/pandas-docs/stable/io.html</a><br>参数：<br>filepath_or_buffer : str，pathlib。str, pathlib.Path, py._path.local.LocalPath or any object with a read() method (such as a file handle or StringIO)<br>可以是URL，可用URL类型包括：http, ftp, s3和文件。对于多文件正在准备中<br>本地文件读取实例：://localhost/path/to/table.csv</p>
+<p>sep : str, default ‘,’<br>指定分隔符。如果不指定参数，则会尝试使用逗号分隔。分隔符长于一个字符并且不是‘\s+’,将使用python的语法分析器。并且忽略数据中的逗号。正则表达式例子：’\r\t’</p>
+<p>delimiter : str, default None<br>定界符，备选分隔符（如果指定该参数，则sep参数失效）</p>
+<p>delim_whitespace : boolean, default False.<br>指定空格(例如’ ‘或者’ ‘)是否作为分隔符使用，等效于设定sep=’\s+’。如果这个参数设定为Ture那么delimiter 参数失效。<br>在新版本0.18.1支持</p>
+<p>header : int or list of ints, default ‘infer’<br>指定行数用来作为列名，数据开始行数。如果文件中没有列名，则默认为0，否则设置为None。如果明确设定header=0 就会替换掉原来存在列名。header参数可以是一个list例如：[0,1,3]，这个list表示将文件中的这些行作为列标题（意味着每一列有多个标题），介于中间的行将被忽略掉（例如本例中的2；本例中的数据1,2,4行将被作为多级标题出现，第3行数据将被丢弃，dataframe的数据从第5行开始。）。<br>注意：如果skip_blank_lines=True 那么header参数忽略注释行和空行，所以header=0表示第一行数据而不是文件的第一行。</p>
+<p>names : array-like, default None<br>用于结果的列名列表，如果数据文件中没有列标题行，就需要执行header=None。默认列表中不能出现重复，除非设定参数mangle_dupe_cols=True。</p>
+<p>index_col : int or sequence or False, default None<br>用作行索引的列编号或者列名，如果给定一个序列则有多个行索引。<br>如果文件不规则，行尾有分隔符，则可以设定index_col=False 来是的pandas不适用第一列作为行索引。</p>
+<p>usecols : array-like, default None<br>返回一个数据子集，该列表中的值必须可以对应到文件中的位置（数字可以对应到指定的列）或者是字符传为文件中的列名。例如：usecols有效参数可能是 [0,1,2]或者是 [‘foo’, ‘bar’, ‘baz’]。使用这个参数可以加快加载速度并降低内存消耗。</p>
+<p>as_recarray : boolean, default False<br>不赞成使用：该参数会在未来版本移除。请使用pd.read_csv(…).to_records()替代。<br>返回一个Numpy的recarray来替代DataFrame。如果该参数设定为True。将会优先squeeze参数使用。并且行索引将不再可用，索引列也将被忽略。</p>
+<p>squeeze : boolean, default False<br>如果文件值包含一列，则返回一个Series</p>
+<p>prefix : str, default None<br>在没有列标题时，给列添加前缀。例如：添加‘X’ 成为 X0, X1, …</p>
+<p>mangle_dupe_cols : boolean, default True<br>重复的列，将‘X’…’X’表示为‘X.0’…’X.N’。如果设定为false则会将所有重名列覆盖。</p>
+<p>dtype : Type name or dict of column -&gt; type, default None<br>每列数据的数据类型。例如 {‘a’: np.float64, ‘b’: np.int32}</p>
+<p>engine : {‘c’, ‘python’}, optional<br>Parser engine to use. The C engine is faster while the python engine is currently more feature-complete.<br>使用的分析引擎。可以选择C或者是python。C引擎快但是Python引擎功能更加完备。</p>
+<p>converters : dict, default None<br>列转换函数的字典。key可以是列名或者列的序号。</p>
+<p>true_values : list, default None<br>Values to consider as True</p>
+<p>false_values : list, default None<br>Values to consider as False</p>
+<p>skipinitialspace : boolean, default False<br>忽略分隔符后的空白（默认为False，即不忽略）.</p>
+<p>skiprows : list-like or integer, default None<br>需要忽略的行数（从文件开始处算起），或需要跳过的行号列表（从0开始）。</p>
+<p>skipfooter : int, default 0<br>从文件尾部开始忽略。 (c引擎不支持)</p>
+<p>skip_footer : int, default 0<br>不推荐使用：建议使用skipfooter ，功能一样。</p>
+<p>nrows : int, default None<br>需要读取的行数（从文件头开始算起）。</p>
+<p>na_values : scalar, str, list-like, or dict, default None<br>一组用于替换NA/NaN的值。如果传参，需要制定特定列的空值。默认为‘1.#IND’, ‘1.#QNAN’, ‘N/A’, ‘NA’, ‘NULL’, ‘NaN’, ‘nan’`.</p>
+<p>keep_default_na : bool, default True<br>如果指定na_values参数，并且keep_default_na=False，那么默认的NaN将被覆盖，否则添加。</p>
+<p>na_filter : boolean, default True<br>是否检查丢失值（空字符串或者是空值）。对于大文件来说数据集中没有空值，设定na_filter=False可以提升读取速度。</p>
+<p>verbose : boolean, default False<br>是否打印各种解析器的输出信息，例如：“非数值列中缺失值的数量”等。</p>
+<p>skip_blank_lines : boolean, default True<br>如果为True，则跳过空行；否则记为NaN。</p>
+<p>parse_dates : boolean or list of ints or names or list of lists or dict, default False<br>boolean. True -&gt; 解析索引<br>list of ints or names. e.g. If [1, 2, 3] -&gt; 解析1,2,3列的值作为独立的日期列；<br>list of lists. e.g. If [[1, 3]] -&gt; 合并1,3列作为一个日期列使用<br>dict, e.g. {‘foo’ : [1, 3]} -&gt; 将1,3列合并，并给合并后的列起名为”foo”</p>
+<p>infer_datetime_format : boolean, default False<br>如果设定为True并且parse_dates 可用，那么pandas将尝试转换为日期类型，如果可以转换，转换方法并解析。在某些情况下会快5~10倍。</p>
+<p>keep_date_col : boolean, default False<br>如果连接多列解析日期，则保持参与连接的列。默认为False。</p>
+<p>date_parser : function, default None<br>用于解析日期的函数，默认使用dateutil.parser.parser来做转换。Pandas尝试使用三种不同的方式解析，如果遇到问题则使用下一种方式。<br>1.使用一个或者多个arrays（由parse_dates指定）作为参数；<br>2.连接指定多列字符串作为一个列作为参数；<br>3.每行调用一次date_parser函数来解析一个或者多个字符串（由parse_dates指定）作为参数。</p>
+<p>dayfirst : boolean, default False<br>DD/MM格式的日期类型</p>
+<p>iterator : boolean, default False<br>返回一个TextFileReader 对象，以便逐块处理文件。</p>
+<p>chunksize : int, default None<br>文件块的大小， See IO Tools docs for more informationon iterator and chunksize.</p>
+<p>compression : {‘infer’, ‘gzip’, ‘bz2’, ‘zip’, ‘xz’, None}, default ‘infer’<br>直接使用磁盘上的压缩文件。如果使用infer参数，则使用 gzip, bz2, zip或者解压文件名中以‘.gz’, ‘.bz2’, ‘.zip’, or ‘xz’这些为后缀的文件，否则不解压。如果使用zip，那么ZIP包中国必须只包含一个文件。设置为None则不解压。<br>新版本0.18.1版本支持zip和xz解压</p>
+<p>thousands : str, default None<br>千分位分割符，如“，”或者“.”</p>
+<p>decimal : str, default ‘.’<br>字符中的小数点 (例如：欧洲数据使用’，‘).</p>
+<p>float_precision : string, default None<br>Specifies which converter the C engine should use for floating-point values. The options are None for the ordinary converter, high for the high-precision converter, and round_trip for the round-trip converter.<br>指定</p>
+<p>lineterminator : str (length 1), default None<br>行分割符，只在C解析器下使用。</p>
+<p>quotechar : str (length 1), optional<br>引号，用作标识开始和解释的字符，引号内的分割符将被忽略。</p>
+<p>quoting : int or csv.QUOTE_* instance, default 0<br>控制csv中的引号常量。可选 QUOTE_MINIMAL (0), QUOTE_ALL (1), QUOTE_NONNUMERIC (2) or QUOTE_NONE (3)</p>
+<p>doublequote : boolean, default True<br>双引号，当单引号已经被定义，并且quoting 参数不是QUOTE_NONE的时候，使用双引号表示引号内的元素作为一个元素使用。</p>
+<p>escapechar : str (length 1), default None<br>当quoting 为QUOTE_NONE时，指定一个字符使的不受分隔符限值。</p>
+<p>comment : str, default None<br>标识着多余的行不被解析。如果该字符出现在行首，这一行将被全部忽略。这个参数只能是一个字符，空行（就像skip_blank_lines=True）注释行被header和skiprows忽略一样。例如如果指定comment=’#’ 解析‘#empty\na,b,c\n1,2,3’ 以header=0 那么返回结果将是以’a,b,c’作为header。</p>
+<p>encoding : str, default None<br>指定字符集类型，通常指定为’utf-8’. List of Python standard encodings</p>
+<p>dialect : str or csv.Dialect instance, default None<br>如果没有指定特定的语言，如果sep大于一个字符则忽略。具体查看csv.Dialect 文档</p>
+<p>tupleize_cols : boolean, default False<br>Leave a list of tuples on columns as is (default is to convert to a Multi Index on the columns)</p>
+<p>error_bad_lines : boolean, default True<br>如果一行包含太多的列，那么默认不会返回DataFrame ，如果设置成false，那么会将改行剔除（只能在C解析器下使用）。</p>
+<p>warn_bad_lines : boolean, default True<br>如果error_bad_lines =False，并且warn_bad_lines =True 那么所有的“bad lines”将会被输出（只能在C解析器下使用）。</p>
+<p>low_memory : boolean, default True<br>分块加载到内存，再低内存消耗中解析。但是可能出现类型混淆。确保类型不被混淆需要设置为False。或者使用dtype 参数指定类型。注意使用chunksize 或者iterator 参数分块读入会将整个文件读入到一个Dataframe，而忽略类型（只能在C解析器中有效）</p>
+<p>buffer_lines : int, default None<br>不推荐使用，这个参数将会在未来版本移除，因为他的值在解析器中不推荐使用</p>
+<p>compact_ints : boolean, default False<br>不推荐使用，这个参数将会在未来版本移除<br>如果设置compact_ints=True ，那么任何有整数类型构成的列将被按照最小的整数类型存储，是否有符号将取决于use_unsigned 参数</p>
+<p>use_unsigned : boolean, default False<br>不推荐使用：这个参数将会在未来版本移除<br>如果整数列被压缩(i.e. compact_ints=True)，指定被压缩的列是有符号还是无符号的。<br>memory_map : boolean, default False<br>如果使用的文件在内存内，那么直接map文件使用。使用这种方式可以避免文件再次进行IO操作。</p>
+<p>参考博文：<br><a href="https://www.cnblogs.com/datablog/p/6127000.html" target="_blank" rel="noopener">https://www.cnblogs.com/datablog/p/6127000.html</a><br><a href="https://www.cnblogs.com/heitaoq/p/7994842.html" target="_blank" rel="noopener">https://www.cnblogs.com/heitaoq/p/7994842.html</a></p>
+
           
         
       
@@ -1617,7 +1580,7 @@ values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" c
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/一行python命令让手机读取电脑文件/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/使用nc命令传输数据/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -1636,7 +1599,7 @@ values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" c
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/07/02/一行python命令让手机读取电脑文件/" itemprop="url">一行python命令让手机读取电脑文件</a></h1>
+                <a class="post-title-link" href="/2019/09/24/使用nc命令传输数据/" itemprop="url">使用nc命令传输数据</a></h1>
         
 
         <div class="post-meta">
@@ -1648,8 +1611,8 @@ values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" c
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-02T20:55:58+08:00">
-                2019-07-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T15:30:42+08:00">
+                2019-09-24
               </time>
             
 
@@ -1688,131 +1651,14 @@ values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" c
       
         
           
-            <p><a href="https://blog.csdn.net/why19940926/article/details/62054757" target="_blank" rel="noopener">https://blog.csdn.net/why19940926/article/details/62054757</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">E:\workspace\newworkbench\static&gt;python -m http.server 8000</span><br><span class="line">Serving HTTP on 0.0.0.0 port 8000 ...</span><br><span class="line">10.160.84.95 - - [02/Jul/2019 20:41:29] &quot;GET /app.jpg HTTP/1.1&quot; 200 -</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/26/Apache记录/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/26/Apache记录/" itemprop="url">Apache记录</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-26T13:16:54+08:00">
-                2019-06-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>service httpd status<br>service httpd start/restart<br>service httpd  stop</p>
-<p>查找httpd.conf配置文件的存放路径<br>find /etc/httpd/  -name *conf</p>
-<p><img src="%5Cimages%5Cpasted-54.png" alt="upload successful"></p>
-<p>更改端口号，在查找到的httpd.conf文件里找到Listen<br>可以看到默认是80，修改成你想换的不用端口就好啦，查询端口是否占用：<br>lsof -i :8080</p>
-<p>然后原来的php网址在原来ip后加上8080端口就可以正常访问啦</p>
+            <p>原文：<a href="https://www.cnblogs.com/nmap/p/6148306.html" target="_blank" rel="noopener">https://www.cnblogs.com/nmap/p/6148306.html</a><br>    nc是netcat的简写，有着网络界的瑞士军刀美誉。因为它短小精悍、功能实用，被设计为一个简单、可靠的网络工具</p>
+<h2 id="使用ncp命令传送数据"><a href="#使用ncp命令传送数据" class="headerlink" title="使用ncp命令传送数据"></a>使用ncp命令传送数据</h2><p>需注意操作次序，receiver先侦听端口，sender向receiver所在机器的该端口发送数据。<br>步骤一：在接收端B侦听端口数据，并将数据写到file里<br>nc -l port &gt;file<br><img src="https://img-blog.csdnimg.cn/20190128143512804.png" alt="在接收端侦听端口数据，并将数据写到file里"><br>步骤二：在发送端A往接收端B的指定端口发送数据，把文件发送过去<br>nc ip port &lt; somefile<br>nc 10.0.1.162 9995 &lt; somefile<br><img src="https://img-blog.csdnimg.cn/20190128143444169.png" alt="在这里插入图片描述"></p>
+<h2 id="安装nc"><a href="#安装nc" class="headerlink" title="安装nc"></a>安装nc</h2><p>1、先将已安装的nc删除</p>
+<p>yum erase nc</p>
+<p>2.下载较低版本的nc的.rpm文件</p>
+<pre><code>wget   http://vault.centos.org/6.6/os/x86_64/Packages/nc-1.84-22.el6.x86_64.rpm</code></pre><p>3.安装.rpm文件</p>
+<p>rpm   -iUv    nc-1.84-22.el6.x86_64.rpm</p>
+<p>原文：<a href="https://blog.csdn.net/yctccg/article/details/52218055" target="_blank" rel="noopener">https://blog.csdn.net/yctccg/article/details/52218055</a> </p>
 
           
         
@@ -1852,7 +1698,7 @@ values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" c
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1898,7 +1744,7 @@ values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" c
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">116</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/DjangoURL转换器使用/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/22/http缓存/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -280,7 +280,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/09/19/DjangoURL转换器使用/" itemprop="url">DjangoURL转换器使用</a></h1>
+                <a class="post-title-link" href="/2020/12/22/http缓存/" itemprop="url">http缓存分享汇总</a></h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-19T19:22:47+08:00">
-                2020-09-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-22T11:43:21+08:00">
+                2020-12-22
               </time>
             
 
@@ -332,15 +332,91 @@
       
         
           
-            <p><a href="https://www.cnblogs.com/zheng-weimin/p/10148771.html" target="_blank" rel="noopener">https://www.cnblogs.com/zheng-weimin/p/10148771.html</a></p>
-<h5 id="1-实例"><a href="#1-实例" class="headerlink" title="1. 实例"></a>1. 实例</h5><p>第一步：在url中定义，具体支持类型见如上链接</p>
-<pre><code>path(&apos;mysheets/&lt;int:myid&gt;/&apos;,get_mysheets)</code></pre><p>第二步：view中接收参数，这里需要注意位置和名称的一致性。</p>
-<pre><code>def  get_mysheets(request,myid):
-     print(&apos;我获取到的参数是&apos;,myid)</code></pre><h6 id="2-常用类型"><a href="#2-常用类型" class="headerlink" title="2. 常用类型"></a>2. 常用类型</h6><pre><code>str：非空的字符串类型。默认的转换器。但是不能包含斜杠；
-int：匹配任意的零或者正数的整形。到视图函数中就是一个int类型；
-slug：由英文中的横杠 - ，或者下划线 _ 连接英文字符或者数字而成的字符串；
-uuid：匹配 uuid 字符串；
-path：匹配非空的英文字符串，可以包含斜杠；</code></pre>
+            <h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>Web 缓存是指一个 Web 资源（如 html 页面，图片，js，数据等）存在于 Web 服务器和客户端（浏览器）之间的副本。<br>缓存会根据进来的请求保存输出内容的副本；当下一个请求来到的时候，如果是相同的 URL，缓存会根据缓存机制决定是直接使用副本响应访问请求，还是向源服务器再次发送请求。</p>
+<h5 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h5><p><img src="/images/pasted-156.png" alt="upload successful"></p>
+<h5 id="为什么使用缓存"><a href="#为什么使用缓存" class="headerlink" title="为什么使用缓存"></a>为什么使用缓存</h5><pre><code>减少网络延迟：可以明显加快页面打开速度，达到更好的用户体验。
+
+减少网络带宽消耗：当web缓存副本被使用时，只会产生极小的网络流量，可以有效降低运营成本。
+
+降低服务器压力：给网络资源设定有效期之后，用户可以重复使用本地缓存，减少对源服务器的请求，简介降低了对服务器的压力，同时搜索引擎的爬虫机器人也能根据过期机制降低爬取的频率，也能有效降低服务器压力。</code></pre><h5 id="缓存区域"><a href="#缓存区域" class="headerlink" title="缓存区域"></a>缓存区域</h5><pre><code>from memory cache：快速读取、时效性、js/图片
+from disk cache：比较慢、css文件</code></pre><h5 id="主要头部字段"><a href="#主要头部字段" class="headerlink" title="主要头部字段"></a>主要头部字段</h5><p>  <img src="/images/pasted-160.png" alt="upload successful"></p>
+<pre><code>Pragma 只有一个属性值，就是 no-cache ，效果和 Cache-Control 中的 no-cache 一致，不使用强缓存，需要与服务器验证缓存是否新鲜，在 3 个头部属性中的优先级最高。（已废弃）
+Expires 的值是一个 HTTP 日期，在浏览器发起请求时，会根据系统时间和 Expires 的值进行比较，如果系统时间超过了 Expires 的值，缓存失效。
+Cache-Control：
+max-age：单位是秒，缓存时间计算的方式是距离发起的时间的秒数，超过间隔的秒数缓存失效
+no-cache：不使用强缓存，需要与服务器验证缓存是否新鲜
+no-store：禁止使用缓存（包括协商缓存），每次都向服务器请求最新的资源
+private：专用于个人的缓存，中间代理、CDN 等不能缓存此响应
+public：响应可以被中间代理、CDN 等缓存</code></pre><p>有了Last-Modified为什么还需要Etag？</p>
+<pre><code>Last-Modified的值单位为秒。如果服务资源在1秒内发生多次变更，那服务器通过秒级对比就没办法发现文件是否已经变更。
+一些特殊场景下，有些资源会被定时更新或者修改，但是其内容并未发生改变，而最后修改时间却在变化，导致客户端缓存定期失效，没有达到使用缓存的目的。
+服务器可能因为一些其他原因，其时间没有与代理服务器或客户端时间保持一致，因时间偏差，从而导致缓存失效。</code></pre><p>有了Etag为什么还需要Last-Modified？</p>
+<pre><code>Etag的值是服务器计算出的一串hash值，如果计算过程较复杂，比较消耗性能，那使用Last-Modified会比较合适
+如果获取某些文件的最后修改时间比较容易，而文件的变更频率也不高，那无疑使用Last-Modified更合适</code></pre><h5 id="缓存流程"><a href="#缓存流程" class="headerlink" title="缓存流程"></a>缓存流程</h5><p>  强缓存：不会向服务器发送请求，直接从缓存中读取资源，在chrome控制台的network选项中可以看到该请求返回200的状态码;</p>
+<p>  协商缓存：向服务器发送请求，服务器会根据这个请求的request header的一些参数来判断是否命中协商缓存，如果命中，则返回304状态码并带上新的response header通知浏览器从缓存中读取资源；</p>
+<p>两者的共同点是，都是从客户端缓存中读取资源；区别是强缓存不会发请求，协商缓存会发请求。</p>
+<p><img src="/images/pasted-186.png" alt="upload successful"></p>
+<p><img src="/images/pasted-187.png" alt="upload successful"></p>
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><p>nginx配置添加响应头？</p>
+<p>response header一般都是以key：value的形式，例如</p>
+<pre><code>add_header Cache-Control no-store</code></pre><p>频繁变动的资源：</p>
+<pre><code>完全不缓存：no-store
+协商缓存：no-cache；配合协商缓存</code></pre><p>不经常变动的资源和文件：</p>
+<pre><code>css\js\图片文件资源可以设置一个较长的缓存有效期；
+  只有当文件名变化的时候才更新</code></pre><h5 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h5><p>问题一：  同时在nginx和Server端添加缓存标识，为何Server端没有生效？</p>
+<p><img src="/images/pasted-179.png" alt="upload successful"><br>原来：<br><img src="/images/pasted-180.png" alt="upload successful"><br>修改后<br><img src="/images/pasted-181.png" alt="upload successful"></p>
+<p>问题二：当在Nginx和Server端都配置缓存，是否都会被带上？最终的缓存取的哪一方？</p>
+<p><img src="/images/pasted-183.png" alt="upload successful"></p>
+<p>问题三：接口返回是否可以缓存？可以。</p>
+<h5 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h5><p>cache.html</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;link rel=&quot;icon&quot; href=&quot;data:;base64,=&quot;&gt;
+  &lt;meta http-equiv=&quot;Pragma&quot; content=&quot;no-cache&quot; /&gt;
+  &lt;title&gt;cache&lt;/title&gt;
+  &lt;script src=&quot;/cache.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;cache&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>cache.js</p>
+<pre><code>let http = require(&apos;http&apos;),
+fs = require(&apos;fs&apos;),
+path = require(&apos;path&apos;),
+url = require(&quot;url&quot;)
+http.createServer((req,res)=&gt;{
+  let pathname = __dirname + url.parse(req.url).pathname; // 获取文件路径
+  let statusCode = 200 // 响应头状态码
+  let extname = path.extname(pathname) // 获取文件扩展名
+  let headType = &apos;text/html&apos; // 内容类型
+  if( extname){
+    switch(extname){
+      case &apos;.html&apos;:
+       headType = &apos;text/html&apos;
+      break;
+      case &apos;.js&apos;:
+        headType = &apos;text/javascript&apos;
+      break;
+    }
+  }
+  fs.readFile(pathname, function (err, data) {
+    res.writeHead(statusCode, {
+      &apos;Content-Type&apos;: headType,
+      // &apos;Expires&apos;:new Date(Date.now() + 3000).toUTCString()
+      // &apos;Cache-Control&apos;:&apos;max-age=10&apos;,
+      // &apos;Pragma&apos;:&apos;no-cache&apos;,
+
+      &apos;Cache-Control&apos;:&apos;no-store&apos;,
+      // &apos;Cache-Control&apos;:&apos;no-cache&apos;
+    });
+    res.end(data);
+  });
+}).listen(3000)
+
+console.log(&quot;Server running at http://127.0.0.1:3000/&quot;);</code></pre>
           
         
       
@@ -388,7 +464,7 @@ path：匹配非空的英文字符串，可以包含斜杠；</code></pre>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/Django模型models字段/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/27/keep-alive/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -407,7 +483,7 @@ path：匹配非空的英文字符串，可以包含斜杠；</code></pre>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/09/19/Django模型models字段/" itemprop="url">Django模型models字段</a></h1>
+                <a class="post-title-link" href="/2020/11/27/keep-alive/" itemprop="url">keep alive</a></h1>
         
 
         <div class="post-meta">
@@ -419,8 +495,8 @@ path：匹配非空的英文字符串，可以包含斜杠；</code></pre>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-19T18:08:39+08:00">
-                2020-09-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-27T18:09:30+08:00">
+                2020-11-27
               </time>
             
 
@@ -459,281 +535,7 @@ path：匹配非空的英文字符串，可以包含斜杠；</code></pre>
       
         
           
-            <p>全全的好文 ：<a href="https://www.jb51.net/article/186742.htm" target="_blank" rel="noopener">https://www.jb51.net/article/186742.htm</a></p>
-<h5 id="常见的FieldType数据库字段类型"><a href="#常见的FieldType数据库字段类型" class="headerlink" title="常见的FieldType数据库字段类型"></a>常见的FieldType数据库字段类型</h5><p>1、AutoField：自增Field域，自动增加的一个数据库字段类型，例如id字段就可以使用该数据类型，参数中必须填入primary_key=True</p>
-<p>2、BigAutoField：和AutoField相同，只是比AutoField要大，参数中必须填入primary_key=True</p>
-<p>3、BigIntegerField：大整型，只要用于存储整型的数据</p>
-<p>4、BinaryField：主要是存储原始的二进制数据</p>
-<p>5、BooleanField：主要是存储布尔类型的数据，0和1</p>
-<p>6、CharField：主要存储字符串的数据类型</p>
-<p>7、DateField：主要存储日期类型的数据类型，日期格式为YYYY-MM-DD</p>
-<p>8、DateTimeField：主要存储时间相关的数据类型，格式为YYYY-MM-DD HH:MM:[ss[.uuuuuu]][TZ]</p>
-<p>注意：DateField与DateTimeField有两个属性，配置auto_now_add=True，创建数据记录的时候会把当前时间添加到数据库，配置auto_now=True，每次更新数据记录的时候都会更新该字段</p>
-<p>9、DecimalField：主要存储固定精度的十进制数据</p>
-<h5 id="【问题】"><a href="#【问题】" class="headerlink" title="【问题】"></a>【问题】</h5><p> 数据存库的时候，提示类似如下问题<br>Exception Value: (1048, “Column ‘sheet_id’ cannot be null”)</p>
-<p>【原因/解决】创建自增字段的时候字段使用错误，应该使用AutoField字段</p>
-<h5 id="AutoField"><a href="#AutoField" class="headerlink" title="AutoField"></a>AutoField</h5><p>Django默认的行为就像这样</p>
-<pre><code>class TestModel(models.Model):
-id = models.AutoField(primary_key=True) </code></pre><p>若手动增加AutoField列，注意添加主键</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/Django外键使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/19/Django外键使用/" itemprop="url">Django外键使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-19T17:45:39+08:00">
-                2020-09-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="外键定义"><a href="#外键定义" class="headerlink" title="外键定义"></a>外键定义</h4><p><a href="https://blog.csdn.net/hpu_yly_bj/article/details/78939748" target="_blank" rel="noopener">https://blog.csdn.net/hpu_yly_bj/article/details/78939748</a></p>
-<pre><code>class Person(models.Model);
-name = models.CharField(&apos;作者姓名&apos;, max_length=10)
-age = models.IntegerField(&apos;作者年龄&apos;)
-
-class Book(models.Model):
-person = models.ForeignKey(Person, related_name=&apos;person_book&apos;，on_delete=models.CASCADE)
-title = models.CharField(&apos;书籍名称&apos;, max_length=10)
-pubtime = models.DateField(&apos;出版时间&apos;)</code></pre><p>  <strong>on_delete</strong></p>
-<pre><code>on_delete=models.CASCADE, # 删除关联数据,与之关联也删除</code></pre><p>   其他 <a href="https://www.jianshu.com/p/6240ed7dd3ea" target="_blank" rel="noopener">https://www.jianshu.com/p/6240ed7dd3ea</a></p>
-<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><h5 id="主表查询字表"><a href="#主表查询字表" class="headerlink" title="主表查询字表"></a>主表查询字表</h5><pre><code>book = person.book_set.all() #默认机制属性，即字表后加set
-若设置了related_name，则还可以：
-book = person.person_book.all()</code></pre><h5 id="子表查主表"><a href="#子表查主表" class="headerlink" title="子表查主表"></a>子表查主表</h5><pre><code>p = book.person</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/17/QS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/17/QS/" itemprop="url">QS</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-17T17:52:46+08:00">
-                2020-09-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>qs可通过npm install qs命令进行安装，是一个npm仓库所管理的包。</p>
-<h6 id="为什么用到qs？"><a href="#为什么用到qs？" class="headerlink" title="为什么用到qs？"></a>为什么用到qs？</h6><p>qs可以解决数组类型的参数。</p>
-<p>具体参考：<a href="https://www.jianshu.com/p/89716216edc2" target="_blank" rel="noopener">https://www.jianshu.com/p/89716216edc2</a></p>
-<h6 id="qs-stringify和JSON-stringify的使用和区别"><a href="#qs-stringify和JSON-stringify的使用和区别" class="headerlink" title="qs.stringify和JSON.stringify的使用和区别"></a>qs.stringify和JSON.stringify的使用和区别</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">qs.stringify(&#123; a: [1, 2, 3] &#125;, &#123; indices: false &#125;);</span><br><span class="line">//  &apos;a=1&amp;a=2&amp;a=3&apos;</span><br></pre></td></tr></table></figure>
-
-<p>【共同点】都是转化成字符串</p>
-<p>【不同点】qs.stringify() 将对象 序列化成以&amp;进行拼接的字符串；而JSON.stringify是转换成json字符串</p>
-<p><img src="/images/pasted-137.png" alt="upload successful"></p>
-<p>参考：<a href="https://www.cnblogs.com/web1/p/8659398.html" target="_blank" rel="noopener">https://www.cnblogs.com/web1/p/8659398.html</a></p>
+            <p><a href="https://zhuanlan.zhihu.com/p/48628352" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/48628352</a></p>
 
           
         
@@ -782,7 +584,7 @@ book = person.person_book.all()</code></pre><h5 id="子表查主表"><a href="#�
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/17/axios-delete等http请求/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/24/nginx添加多个vue项目配置实例/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -801,7 +603,7 @@ book = person.person_book.all()</code></pre><h5 id="子表查主表"><a href="#�
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/09/17/axios-delete等http请求/" itemprop="url">axios delete等http请求</a></h1>
+                <a class="post-title-link" href="/2020/11/24/nginx添加多个vue项目配置实例/" itemprop="url">nginx添加多个vue项目配置实例</a></h1>
         
 
         <div class="post-meta">
@@ -813,8 +615,8 @@ book = person.person_book.all()</code></pre><h5 id="子表查主表"><a href="#�
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-17T17:10:14+08:00">
-                2020-09-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-24T18:40:32+08:00">
+                2020-11-24
               </time>
             
 
@@ -853,755 +655,920 @@ book = person.person_book.all()</code></pre><h5 id="子表查主表"><a href="#�
       
         
           
-            <h5 id="axios-delete的时候报Method-Not-Allowed-405？"><a href="#axios-delete的时候报Method-Not-Allowed-405？" class="headerlink" title="axios delete的时候报Method Not Allowed  405？"></a>axios delete的时候报Method Not Allowed  405？</h5><p>参考：<a href="https://www.jianshu.com/p/85a0bb9436d0" target="_blank" rel="noopener">https://www.jianshu.com/p/85a0bb9436d0</a></p>
-<h6 id="1-params-接url-amp-data"><a href="#1-params-接url-amp-data" class="headerlink" title="1. params(接url)&amp;data"></a>1. params(接url)&amp;data</h6><p>查看源码可知axios传参分别如下,即post第二个参数直接传数据对象即可，但是get需要再包一层。</p>
-<p>若使用Params则会变成&amp;连接的形式在url上请求，若使用data则在body中传</p>
-<p><img src="/images/pasted-135.png" alt="upload successful"></p>
-<p>其中delete与Post不同，参数格式为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">axios.delete(&#123;</span><br><span class="line">            url: &apos;http://localhost:3000/todos&apos;,</span><br><span class="line">            data: &#123;</span><br><span class="line">                &quot;id&quot;: &quot;a&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">            .then(function (response) &#123;</span><br><span class="line">                console.log(response);</span><br><span class="line">            &#125;)</span><br><span class="line">            .catch(function (response) &#123;</span><br><span class="line">                console.log(response);</span><br><span class="line">            &#125;);</span><br></pre></td></tr></table></figure>
+            <ol>
+<li>环境：本地mac\nginx</li>
+</ol>
+<p>项目配置</p>
+<ol>
+<li><p>index.html文件修改<br> 添加 <meta base="/子目录名/"></p>
+</li>
+<li><p>config/index.js文件修改<br> 修改 assetsPublicPath: ‘/子目录名/‘</p>
+</li>
+</ol>
+<p>3.src/router/index.js文件修改<br>    添加 base: ‘/子目录名/‘</p>
+<p>nginx配置：<br>       location /v2{<br>    alias  /Users/liyuanchen/Documents/workspace/adu_dist/v2;<br>    index index.html;<br>    try_files $uri $uri/ /v2/index.html;<br> }</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
 
 
-<h6 id="2-url直接拼"><a href="#2-url直接拼" class="headerlink" title="2. url直接拼"></a>2. url直接拼</h6> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">axios.delete(&apos;http://localhost:3000/todos/&apos; + id).then(function (res) &#123;</span><br><span class="line">        console.log(res);</span><br><span class="line">    &#125;).catch(function (err) &#123;</span><br><span class="line">         console.log(err)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/20/js常见问题和总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/20/js常见问题和总结/" itemprop="url">js常见问题和总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-20T15:07:09+08:00">
+                2020-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>a=[1,2]
+a.indexOf(&quot;All&quot;)?1:2//返回1</code></pre><p>1：通过从列表查找某元素的Index来判断元素是否存在正确<br>2：三目运算，若正确则会取第一项，否则取第二项<br>3：问题在于：a.indexOf(“All”)返回的是-1，而js不会当成false逻辑处理，所以需要改成</p>
+<pre><code>a.indexOf(&quot;All&quot;)&lt;0?1:2//返回2</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
 
 
+    
+      
 
-<h5 id="关于请求方式"><a href="#关于请求方式" class="headerlink" title="关于请求方式"></a>关于请求方式</h5><p> <a href="https://blog.csdn.net/kjssjj12/article/details/106410399?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param" target="_blank" rel="noopener">https://blog.csdn.net/kjssjj12/article/details/106410399?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param</a></p>
-<p><img src="/images/pasted-136.png" alt="upload successful"></p>
-<p><a href="https://blog.csdn.net/jiangcs520/article/details/70141901/" target="_blank" rel="noopener">https://blog.csdn.net/jiangcs520/article/details/70141901/</a></p>
-<h6 id="content-type"><a href="#content-type" class="headerlink" title="content-type"></a>content-type</h6><p>作用：告诉服务端传递的内容是什么格式，如何接收。常用三个application/json’,’application/x-www-form-urlencoded’,’multipart/form-data’</p>
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/19/router/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/19/router/" itemprop="url">router</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-19T15:23:08+08:00">
+                2020-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p> <a href="https://blog.csdn.net/qq_35432904/article/details/91552845" target="_blank" rel="noopener">https://blog.csdn.net/qq_35432904/article/details/91552845</a></p>
+<pre><code>{
+   path: &apos;/detail/:id/&apos;,
+   name: &quot;detail&quot;,
+   component: detail//这个details是传进来的组件名称
+ }
+
+使用： 
+方法1：&lt;router-link :to=&quot;{ name: &apos;details&apos;, params: { id: 123 }}&quot;&gt;点击按钮&lt;/router-link&gt;
+方法2：this.$router.push({name:&apos;details&apos;,params:{id:123}})
+页面url显示结果是：http://localhost:8081/#/details/123</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/16/refs实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/16/refs实践/" itemprop="url">refs实践</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-16T14:52:55+08:00">
+                2020-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、弹窗中直接在created中调用refs赋值报错，但是可以加载Opened回调函数中：</p>
+<pre><code>&lt;el-dialog :visible.sync=&quot;dialogVisible&quot; @open=&quot;getProjectDetail&quot;&gt;</code></pre><p>   <img src="/images/pasted-154.png" alt="upload successful">  </p>
+<p>2、此时在created的调用函数中竟然生效了？猜测是因为1中是dialog需要通过布尔值控制展示，所以不行<br>        created() {<br>        this.getDetail();<br>        }</p>
+<p> <img src="/images/pasted-155.png" alt="upload successful"> </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/18/Word使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/10/18/Word使用/" itemprop="url">Word使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-18T11:51:12+08:00">
+                2020-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、空白页删除</p>
 <ul>
-<li><p>’application/json’</p>
-<p>传递的是一个json对象，并不是直接丢一个对象过去，需要进行序列化，JSON.stringify(data);</p>
+<li>视图-草稿，可以显示分节符(下一页)</li>
+<li>选中某分节符，mac下fn+delete删除</li>
+</ul>
+<p>2、删除页眉的下划线和回车符，亲测有效，注意找到页眉的样式。</p>
+<p><a href="https://jingyan.baidu.com/article/fc07f989a7b3df12ffe51981.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/fc07f989a7b3df12ffe51981.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/14/分享/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/10/14/分享/" itemprop="url">分享总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-14T15:12:00+08:00">
+                2020-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>Cpython 解释器</p>
+</li>
+<li><p>python 运行原理</p>
+<p>解释成字节码</p>
+<p><img src="/images/pasted-153.png" alt="upload successful"></p>
+<p>字节码插庄<br>栈  堆</p>
+</li>
+<li><p>python 垃圾回收机制是什么</p>
+<p>引用计数</p>
+</li>
+<li><p>如果b=a的话，为什么会有安全问题？</p>
+<p>  因为多个同时进行，引用计数可能会减少</p>
+<p>  如a本身计数是1</p>
+<pre><code>  b=a   //计数是2
+b=a   //本来应该是3，但是同时进行也成了2</code></pre><p> 导致引用计数错误，删除2个后，本来需要存在的却被回收了。      </p>
+</li>
+<li><p>GIL锁</p>
+<p>在IO/100字节码/5ms的时候释放锁，供其他线程调用。</p>
+</li>
+<li><p>实例显示python多线程只占用一个CPU，而java多线程n个线程占用n个cpu.</p>
+</li>
+<li><p>celert默认多进程使用，跟自己写多进程一样。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/14/element-导航高亮问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/10/14/element-导航高亮问题/" itemprop="url">element 导航高亮问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-14T11:46:29+08:00">
+                2020-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h6 id="问题1：刷新页面的时候高亮不见"><a href="#问题1：刷新页面的时候高亮不见" class="headerlink" title="问题1：刷新页面的时候高亮不见"></a>问题1：刷新页面的时候高亮不见</h6><p>设置router模式（启用该模式会在激活导航时以 index 作为 path 进行路由跳转），即Index和path可以一致的，通过获取当前路由的path来定义当前active Index</p>
+<pre><code>this.activeIndex=this.$route.path;//path</code></pre><h6 id="问题2：切换导航条，上一个高亮依旧存在"><a href="#问题2：切换导航条，上一个高亮依旧存在" class="headerlink" title="问题2：切换导航条，上一个高亮依旧存在"></a>问题2：切换导航条，上一个高亮依旧存在</h6><p>解决：</p>
+<p> 通过条用select事件来重新定义activeindex的值</p>
+<pre><code>@select=&quot;handleSelect&quot;</code></pre><p>处理：</p>
+<pre><code> handleSelect(index, index_path) {
+  this.activeIndex=index;
+}</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/11/vuex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/10/11/vuex/" itemprop="url">vuex</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-11T08:36:47+08:00">
+                2020-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>五大将</p>
+</li>
+<li><p>state 定义变量</p>
+<p>  mapstate:为了减少重复变量的定义,列表或对象声明调用</p>
+</li>
+<li><p>gettters:定义list等方法</p>
+</li>
+<li><p>mutation：修改状态值（注意不可以直接修改）需要定义mutation，在这里不要操作异步数据。<br>  在app.vue中提交</p>
+</li>
+<li><p>actions：类似mutation,但不是直接修改状态，提交mutation.</p>
+<p>  在app.vue中提交</p>
 </li>
 </ul>
-<p><img src="/images/pasted-138.png" alt="upload successful"></p>
-<ul>
-<li><p>application/x-www-form-urlencoded</p>
-<p>若使用params</p>
-<p><img src="/images/pasted-142.png" alt="upload successful"></p>
-<p>否则是这样的</p>
-<p><img src="/images/pasted-139.png" alt="upload successful"></p>
-</li>
-</ul>
 
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/14/MAC配置安卓环境sdk/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/14/MAC配置安卓环境sdk/" itemprop="url">Cordova环境安装mac</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-14T20:37:11+08:00">
-                2020-09-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>win版可参考：<a href="https://shifu-yan.github.io/2020/06/28/%E4%BD%BF%E7%94%A8Cordova%E5%B0%86H5-vue-%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E5%8D%93apk/" target="_blank" rel="noopener">https://shifu-yan.github.io/2020/06/28/%E4%BD%BF%E7%94%A8Cordova%E5%B0%86H5-vue-%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E5%8D%93apk/</a></p>
-<h6 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h6><p>要1.8版本的</p>
-<p>可以先看看这个路径下是否有，有的话直接切就行了</p>
-<p>/Library/Java/JavaVirtualMachines/</p>
-<p><img src="/images/pasted-132.png" alt="upload successful"></p>
-<p>可以参考：<a href="https://blog.csdn.net/liuxy_236/article/details/90381408" target="_blank" rel="noopener">https://blog.csdn.net/liuxy_236/article/details/90381408</a></p>
-<h6 id="安装cordova"><a href="#安装cordova" class="headerlink" title="安装cordova"></a>安装cordova</h6><pre><code>npm install -g cordova</code></pre><h6 id="安卓SDK"><a href="#安卓SDK" class="headerlink" title="安卓SDK"></a>安卓SDK</h6><ol>
-<li><p>打开官网（<a href="https://www.androiddevtools.cn/）-Android" target="_blank" rel="noopener">https://www.androiddevtools.cn/）-Android</a> SDK工具–SDK Tools下载对应sdk  zip包</p>
-</li>
-<li><p>下载后解压</p>
-</li>
-<li><p>打开终端，输入</p>
-<pre><code>vim ~/.bash_profile        </code></pre></li>
-<li><p>添加如下</p>
-<p> export ANDROID_HOME=/Users/shmaur/android-sdk-macosx  //这里为 sdk 路径地址<br> export PATH=$PATH:$ANDROID_HOME/tools<br> export PATH=$PATH:$ANDROID_HOME/platform-tools</p>
-</li>
-<li><p>每次编辑完 .bash_profile 文件后必须要进行：</p>
-<pre><code>source .bash_profile //更新环境变量配置，不更新则不会使配置生效</code></pre></li>
-<li><p>配置好后可以查看一下是否成功：</p>
-<pre><code>echo $PATH</code></pre></li>
-</ol>
-<p>【问题】在tools路径下点击android或者终端./android sdk打不开manager 会报错</p>
-<p>  继续在官网手动下载包发对应目录：</p>
-<pre><code>下载SDK Platform-Tools
-下载Build-Tools
-下载SDK </code></pre><p><img src="/images/pasted-133.png" alt="upload successful"></p>
-<h6 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h6><pre><code>brew install gradle</code></pre><p>  直接安装即可，报错信息不影响</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/11/Vue-Django跨域问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/11/Vue-Django跨域问题/" itemprop="url">Vue+Django跨域问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-11T18:42:29+08:00">
-                2020-09-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="Django跨域问题解决"><a href="#Django跨域问题解决" class="headerlink" title="Django跨域问题解决"></a>Django跨域问题解决</h5><p>由于请求本地服务另外端口号导致的跨域问题，可参考<br><a href="https://www.cnblogs.com/wasbg/p/10973880.html" target="_blank" rel="noopener">https://www.cnblogs.com/wasbg/p/10973880.html</a><br><a href="https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：" target="_blank" rel="noopener">https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：</a></p>
-<h6 id="前端解决："><a href="#前端解决：" class="headerlink" title="前端解决："></a>前端解决：</h6><pre><code>config/index.js(前提去掉Axios.defaults.baseURL)
-    proxyTable: {
-        &apos;/&apos;: {
-            target: &apos;http://127.0.0.1:8000/&apos;, //后端接口地址
-            changeOrigin: true, //是否允许跨越
-            pathRewrite: {
-                &apos;^/&apos;: &apos;/&apos;, //重写,
-            }
-        }
-    },</code></pre><h6 id="后端解决"><a href="#后端解决" class="headerlink" title="后端解决"></a>后端解决</h6><pre><code>pip install django-cors-headers   
-
- setting中设置：
-
-  1. &apos;corsheaders.middleware.CorsMiddleware&apos; # 新加的插件位置最好放在CommonMiddleware之前
-
-  2. INSTALLED_APPS中添加
-  &apos;corsheaders&apos;,    
-  3. setting文件里新增
-
-  CORS_ORIGIN_ALLOW_ALL = True   //新增   
-  CORS_ALLOW_CREDENTIALS = True  //新增</code></pre><ol>
-<li><p>设置了axios.defaults.baseURL会跳过代理</p>
-</li>
-<li><p>浏览器是禁止跨域的，会检查origin是否同源,若非同源则禁止。</p>
-<p> 但是服务端不禁止，在本地运行npm run dev等命令时实际上是用node运行了一个服务器，因此proxyTable实际上是将请求发给自己的服务器，再由服务器转发给后台服务器，做了亦曾代理，因为不会出现跨域问题。</p>
-</li>
-</ol>
-<p>【问题】<br>[HPM] Error occurred while trying to proxy request /api/logout/ from localhost:8088 to 127.0.0.1:8000/ (EHOSTUNREACH) (<a href="https://nodejs.org/api/errors.html#errors_common_system_errors" target="_blank" rel="noopener">https://nodejs.org/api/errors.html#errors_common_system_errors</a>)</p>
-<p>解决：</p>
-<p>解决了原来一个warning错后重启了前端服务，服务自动更换了个新的端口，就好了！</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/17/Sonarque/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/08/17/Sonarque/" itemprop="url">Sonarque</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-17T11:21:26+08:00">
-                2020-08-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="/images/pasted-126.png" alt="upload successful"></p>
-<h3 id="理论和安装准备"><a href="#理论和安装准备" class="headerlink" title="理论和安装准备"></a>理论和安装准备</h3><h6 id="sonarque对js的安全检查"><a href="#sonarque对js的安全检查" class="headerlink" title="sonarque对js的安全检查"></a>sonarque对js的安全检查</h6><p>导致漏洞：</p>
-<pre><code>1、凭据允许访问敏感组件，例如数据库，文件存储，API或服务。 
-2、标准输入
-3、使用命令行
-4、使用套接字
-5、Xpath注入    
-原因： 就是XPath解析器本身对URL、表单中提交的代码内容未做严格限制，导致恶意代码可以直接解析执行。
-举例：如
-   //users/user[loginID/text()=’abc’ and password/text()=’test123’] 中
-   注入：/users/user[LoginID/text()=&apos;&apos;or 1=1 and password/text()=&apos;&apos;or 1=1]。
-6、散列数据(哈希)
-7、加密数据
-8、正则表达式敏感  * + {
-9、跨文档消息传递
-10、随机数生成器
-11、SQL查询
-12、动态执行代码 (硬编码)
-let func = Function（&apos;obj&apos;+ propName）; //敏感
-13、使用OS命令时使用Shell解释器
-14、跨域资源共享
-15、Cookie</code></pre><h6 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h6><pre><code>硬编码：就是将数据直接写入到代码中进行编译开发
-软编码：则是将数据与源代码解耦
-硬编码就是什么都在你的程序代码里面写死了，你想稍微修改一下效果，都得修改你的代码。
-举个例子：举个例子，比如说你做个软件，他有菜单栏，你如果把菜单的标题全部写在代码里，那如果现在要换英文的，你就不得不改变代码。
-现在换一种方式，你把菜单标题全部写在一个文本里，比如叫title.txt，现在你要英文，那么只要把title.txt里面相对应的值换成英文就可以了。
-不用在去该代码本身。</code></pre><h6 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h6><ol>
-<li><p>安装mysql</p>
-<p>报错 org.sonar.process.MessageException: Unsupported JDBC driver provider: mysql</p>
-</li>
-</ol>
-<p> ** SonarQube 7.9以上版本已不再支持mysql**</p>
-<ol start="2">
-<li><p>安装PostgreSQL </p>
-<p><a href="https://www.cnblogs.com/sea-stream/p/11197603.html" target="_blank" rel="noopener">https://www.cnblogs.com/sea-stream/p/11197603.html</a></p>
-<p>如何配置sonar.properties</p>
-<p><a href="https://www.cnblogs.com/Simple-Small/archive/2020/05/13/12882948.html" target="_blank" rel="noopener">https://www.cnblogs.com/Simple-Small/archive/2020/05/13/12882948.html</a>    </p>
-</li>
-<li><p>通过命令扫描：<br><img src="/images/pasted-129.png" alt="upload successful"></p>
-</li>
-<li><p>中文插件</p>
-<p>SonarQube默认为英文，我们可以安装SonarQube提供提供了中文插件，以便更好地熟悉使用。</p>
-<p>github地址：</p>
-<p><a href="https://github.com/SonarQubeCommunity/sonar-l10n-zh" target="_blank" rel="noopener">https://github.com/SonarQubeCommunity/sonar-l10n-zh</a></p>
-<p>找到对应的released版本jar包下载后，放入sonar目录如下后重启</p>
-<pre><code>sonarqube-6.5/extensions/plugins</code></pre></li>
-</ol>
-<h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><h6 id="运行sonar"><a href="#运行sonar" class="headerlink" title="运行sonar"></a>运行sonar</h6><p>官网下载zip报(或者百度云)</p>
-<ul>
-<li><p>解压后相关命令</p>
-<pre><code>sh sonarqube-8.3.1.34397/bin/macosx-universal-64/sonar.sh  console
-
-tail -f /Users/liyuanchen/Documents/sonarqube-8.3.1.34397/logs/sonar.log
-
-打开本地9000端口即可</code></pre></li>
-<li><p>扫描项目</p>
-<p> <img src="/images/pasted-130.png" alt="upload successful"></p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/13/静态代码扫描/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/08/13/静态代码扫描/" itemprop="url">静态代码扫描</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-13T15:22:40+08:00">
-                2020-08-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Eslint"><a href="#Eslint" class="headerlink" title="Eslint"></a>Eslint</h3><p>ESLint 是用来检查我们写的 JavaScript代码是否满足指定规则的静态代码检查工具。</p>
-<p>用途：</p>
-<p>1、审查代码是否符合编码规范和统一的代码风格；<br>2、审查代码是否存在语法错误；<br><a href="https://zhuanlan.zhihu.com/p/81541854" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/81541854</a></p>
-<h5 id="rules"><a href="#rules" class="headerlink" title="rules"></a>rules</h5><p>验证规则是写在 .eslintrc 文件中的 rules 下面的，配置一条验证规则，这么写规则名，值可以是以下几种:</p>
-<p>1)、off 或 0：表示不验证规则。<br>2)、warn 或 1：表示验证规则，当不满足时，给警告。<br>3)、error 或 2 ：表示验证规则，不满足时报错。<br>4)、如果规则有参数，则这么写<br>规则名: 【值, 参数1, 参数2…】 </p>
-<p>链接：<a href="https://www.jianshu.com/p/04256932d5e5" target="_blank" rel="noopener">https://www.jianshu.com/p/04256932d5e5</a></p>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/17/单页面应用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/17/单页面应用/" itemprop="url">单页面应用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-17T21:06:53+08:00">
-                2020-07-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
           
         
       
@@ -1640,7 +1607,7 @@ tail -f /Users/liyuanchen/Documents/sonarqube-8.3.1.34397/logs/sonar.log
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1686,7 +1653,7 @@ tail -f /Users/liyuanchen/Documents/sonarqube-8.3.1.34397/logs/sonar.log
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">116</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

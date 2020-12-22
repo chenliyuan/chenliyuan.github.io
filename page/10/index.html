@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/git篇/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/12/Django-models/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -280,7 +280,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/07/git篇/" itemprop="url">git使用篇</a></h1>
+                <a class="post-title-link" href="/2019/07/12/Django-models/" itemprop="url">Django模型models相关</a></h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-07T16:19:32+08:00">
-                2018-10-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-12T17:45:16+08:00">
+                2019-07-12
               </time>
             
 
@@ -332,1135 +332,196 @@
       
         
           
-            <p>git命令基础操作这篇文章很清楚：<a href="https://www.cnblogs.com/tocy/p/git-command-line-manual.html" target="_blank" rel="noopener">https://www.cnblogs.com/tocy/p/git-command-line-manual.html</a></p>
-<h4 id="分支合并到master"><a href="#分支合并到master" class="headerlink" title="分支合并到master"></a>分支合并到master</h4><p><a href="https://blog.csdn.net/boysky0015/article/details/78185879/" target="_blank" rel="noopener">https://blog.csdn.net/boysky0015/article/details/78185879/</a></p>
-<h4 id="创建分支并上传"><a href="#创建分支并上传" class="headerlink" title="创建分支并上传"></a>创建分支并上传</h4><p>1.创建本地分支dev</p>
-<pre><code>git branch dev </code></pre><p>(也可以在gitlab上手动添加后checkout)</p>
-<p>2.切换到分支dev</p>
-<pre><code>git checkout dev</code></pre><p>3.查看远程分支</p>
-<pre><code>git branch -a</code></pre><p>4.将代码暂存在本地</p>
-<pre><code>git add .</code></pre><p>5.给暂存在本地的代码打个tag</p>
-<pre><code>git commit -am &quot;first commit&quot;</code></pre><p>6.将本地代码推送到远程指定分支</p>
-<pre><code>git push origin &lt;指定的分支名&gt;</code></pre><p>7.从远程指定分支上拉取代码</p>
-<pre><code>git clone -b  &lt;指定分支名&gt;  &lt;ssh或者http地址&gt; </code></pre><ol start="8">
-<li><p>删除远程分支</p>
-<p> git push origin –delete [branch_name]</p>
+            <h4 id="创建模型model："><a href="#创建模型model：" class="headerlink" title="创建模型model："></a>创建模型model：</h4><ul>
+<li><p>一个模型对应数据库一个表；继承model.Model类；</p>
 </li>
-</ol>
-<p>链接：<a href="https://www.jianshu.com/p/801d00b15624" target="_blank" rel="noopener">https://www.jianshu.com/p/801d00b15624</a></p>
-<p>拉取新分支</p>
-<pre><code>git checkout  -b new_camp //创建并跳转到new_camp新分支名
-(或你用两步代替：git  branch +新分支名，git  checkout +新的分支名)</code></pre><h2 id="常见出错和问题"><a href="#常见出错和问题" class="headerlink" title="常见出错和问题"></a>常见出错和问题</h2><h6 id="1-出现error-The-following-untracked-working-tree-files-would-be-overwritten-by-checkout"><a href="#1-出现error-The-following-untracked-working-tree-files-would-be-overwritten-by-checkout" class="headerlink" title="1.  出现error: The following untracked working tree files would be overwritten by checkout"></a>1.  出现error: The following untracked working tree files would be overwritten by checkout</h6><p>解决： $ git clean -d -fx “”<br>参考   <a href="http://blog.chinaunix.net/uid-23366077-id-3581375.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-23366077-id-3581375.html</a></p>
-<h6 id="2-Git冲突：commit-your-changes-or-stash-them-before-you-can-merge-解决办法"><a href="#2-Git冲突：commit-your-changes-or-stash-them-before-you-can-merge-解决办法" class="headerlink" title="2. Git冲突：commit your changes or stash them before you can merge. 解决办法"></a>2. Git冲突：commit your changes or stash them before you can merge. 解决办法</h6><p>出现这个问题的原因是其他人修改了xxx.php并提交到版本库中去了，而你本地也修改了xxx.php，这时候你进行git pull操作就好出现冲突了，解决方法，在上面的提示中也说的很明确了。<br><a href="https://www.cnblogs.com/wenlj/p/5866356.html" target="_blank" rel="noopener">https://www.cnblogs.com/wenlj/p/5866356.html</a><br>1）直接commit本地的修改 —-也一般不用这种方法<br>2）通过git stash  —- 通常用这种方法</p>
-<pre><code>git stash
-git pull
-git stash pop</code></pre><p>通过git stash将工作区恢复到上次提交的内容，同时备份本地所做的修改，之后就可以正常git pull了，git pull完成后，执行git stash pop将之前本地做的修改应用到当前工作区。</p>
-<h6 id="3-github多人协作"><a href="#3-github多人协作" class="headerlink" title="3. github多人协作"></a>3. github多人协作</h6><p>1、创建组织–创建库，创建Team(邀请成员，设置每人owner权限，保证每人都可写)</p>
-<p>参考：<a href="https://www.cnblogs.com/zhaoyanjun/p/5882784.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhaoyanjun/p/5882784.html</a></p>
-<h6 id="4-为GitLab帐号添加SSH-keys并连接GitLab"><a href="#4-为GitLab帐号添加SSH-keys并连接GitLab" class="headerlink" title="4.为GitLab帐号添加SSH keys并连接GitLab"></a>4.为GitLab帐号添加SSH keys并连接GitLab</h6><p><a href="https://blog.csdn.net/qq_21916259/article/details/81000723" target="_blank" rel="noopener">https://blog.csdn.net/qq_21916259/article/details/81000723</a><br>密匙生成成功之后，复制 .ssh目录下的id_rsa.pub文件中的密匙，添加gitLab上后就可以使用git clone …了<br>可以设置多个设备的秘钥，实现多设备共享。</p>
-<h6 id="5-删除内容"><a href="#5-删除内容" class="headerlink" title="5. 删除内容"></a>5. 删除内容</h6>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git rm test.txt</span><br><span class="line">rm &apos;test.txt&apos;</span><br><span class="line"></span><br><span class="line">$ git commit -m &quot;remove test.txt&quot;</span><br><span class="line">[master d46f35e] remove test.txt</span><br><span class="line"> 1 file changed, 1 deletion(-)</span><br><span class="line"> delete mode 100644 test.txt</span><br></pre></td></tr></table></figure>
-
-<h6 id="6-git提交代码时，出现这个错误“error-The-requested-URL-returned-error-403-Forbidden-while-accessing-https”"><a href="#6-git提交代码时，出现这个错误“error-The-requested-URL-returned-error-403-Forbidden-while-accessing-https”" class="headerlink" title="6. git提交代码时，出现这个错误“error: The requested URL returned error: 403 Forbidden while accessing https”"></a>6. git提交代码时，出现这个错误“error: The requested URL returned error: 403 Forbidden while accessing https”</h6><p>   解决：编辑.git目录下的config文件即可。</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">vim .git/config</span><br><span class="line">#修改对于的配置</span><br><span class="line">#原来的url = https://github.com/elitecodegroovy/PhoenixC.git</span><br><span class="line"></span><br><span class="line">url = https://elitecodegroovy@github.com/elitecodegroovy/PhoenixC.git</span><br></pre></td></tr></table></figure>
-
-<h6 id="7-git别人提交的时候冲突了，需要回退到之前某版本"><a href="#7-git别人提交的时候冲突了，需要回退到之前某版本" class="headerlink" title="7. git别人提交的时候冲突了，需要回退到之前某版本"></a>7. git别人提交的时候冲突了，需要回退到之前某版本</h6><p>   首先要git pull 否则直接按照以下的操作，最后还会提示pull</p>
+<li><p>不需要定义主键，系统自动生成</p>
+</li>
+<li><p>外键关联：</p>
+<pre><code>sgrade=models.ForeignKey(&quot;Grades&quot;) 
+#意思是Grades的主键作为Student sgrade的外键</code></pre></li>
+<li><p>数据库表生成两步走：</p>
+</li>
+</ul>
 <ol>
-<li><p>查找历史版本<br>  使用git log命令查看所有的历史版本，获取你git的某个历史版本的id</p>
-<p>  假设查到历史版本的id是fae6966548e3ae76cfa7f38a461c438cf75ba965。</p>
-</li>
-<li><p>恢复到历史版本<br>   $ git reset –hard fae6966548e3ae76cfa7f38a461c438cf75ba965</p>
-</li>
-<li><p>把修改推到远程服务器</p>
-<pre><code>$ git push -f -u origin master  </code></pre><p>出错：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">remote: GitLab: You are not allowed to force push code to a protected branch on this project.</span><br><span class="line">To git.17usoft.com:app_test/doc.git</span><br><span class="line"> ! [remote rejected] master -&gt; master (pre-receive hook declined)</span><br><span class="line">error: failed to push some refs to &apos;git@git.17usoft.com:app_test/doc.git&apos;</span><br></pre></td></tr></table></figure>
-
-</li>
+<li>python manage.py makemigrations 创建迁移文件 </li>
+<li>python manage.py migrate</li>
 </ol>
-<p>原因：一般默认会开启保护模式，保护模式下不允许任何人push<br><img src="https://img-blog.csdnimg.cn/2019041712030931.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>解决：去掉保护模式<br><img src="https://img-blog.csdnimg.cn/20190417120340626.png" alt="在这里插入图片描述"></p>
-<h6 id="8-GIT-warning-LF-will-be-replaced-by-CRLF问题解决方法"><a href="#8-GIT-warning-LF-will-be-replaced-by-CRLF问题解决方法" class="headerlink" title="8. [GIT] warning: LF will be replaced by CRLF问题解决方法"></a>8. [GIT] warning: LF will be replaced by CRLF问题解决方法</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git config --global core.autocrlf false</span><br></pre></td></tr></table></figure>
-
-<h6 id="9-由于某配置项错误配置导致push失败，解决：删除配置项目"><a href="#9-由于某配置项错误配置导致push失败，解决：删除配置项目" class="headerlink" title="9. 由于某配置项错误配置导致push失败，解决：删除配置项目"></a>9. 由于某配置项错误配置导致push失败，解决：删除配置项目</h6><pre><code>1) git config --list 或者git config -l查看配置项
-2) git  config --global unset +配置项全名</code></pre><h6 id="10-、git-分支拉取"><a href="#10-、git-分支拉取" class="headerlink" title="10. 、git 分支拉取"></a>10. 、git 分支拉取</h6><p>   <a href="https://blog.51cto.com/13893093/2175764?source=dra" target="_blank" rel="noopener">https://blog.51cto.com/13893093/2175764?source=dra</a></p>
+<ul>
+<li><p>测试数据操作：python manage.py shell</p>
+</li>
+<li><p>添加数据：本质是创建一个模型类的对象;示例:<br>  grade1=Grades()<br>  grade1.gname=”python”<br>  grade1.gtime=datetime(year=2017,month=12,day=17)<br>  grade1.save()  #注意保存</p>
+</li>
+<li><p>查询支持切片,但不支持负数Grades.objects.all()[:10]</p>
+</li>
+<li><p>条件查询：grade1=类名.objects.get(pk=2)#主键查找用关键字pk</p>
+</li>
+<li><p>修改数据：grade1.gname=”python22”   grade1.save()</p>
+</li>
+<li><p>删除数据：grade1.delete()</p>
+</li>
+<li><p>更新数据：update()  返回匹配的行数。唯一的限制是它只能作用在表记录上，不能直接作用在模型object上，返回执行行数。举例： </p>
+<pre><code>&gt;&gt;&gt; Entry.objects.update(blog__name=&apos;foo&apos;) # Won&apos;t work!
+&gt;&gt;&gt;  Entry.objects.filter(blog__id=1).update(comments_on=True) # works!</code></pre><p>   若单个object更新，则跟添加数据方法一致。</p>
+</li>
+<li><p>如果只是检查 Entry 中是否有对象，应该用 Entry.objects.all().exists()</p>
+</li>
+<li><p>推荐用 Entry.objects.count()来查询数量</p>
+</li>
+<li><p>list(es) 可以强行将 QuerySet 变成 列表</p>
+</li>
+<li><p>关联：</p>
 <ol>
-<li>查看本地分支<br>$ git branch</li>
-<li>查看远程分支<br>$ git branch -r</li>
-<li>查看所有分支<br>$ git branch -a</li>
-<li>拉取远程分支<br>新建一个空文件<br>初始化 git init<br>自己要与origin master建立连接（下划线远程仓库链接）<br>git remote add origin <a href="http://192.168.9.10:8888/root/game-of-life.git" target="_blank" rel="noopener">http://192.168.9.10:8888/root/game-of-life.git</a><br>把远程分支拉到本地（game-of-live-first_branch为远程仓库的分支名）<br>git fetch origin game-of-live-first_branch<br>在本地创建分支game-of-live-first_branch并切换到该分支<br>git checkout -b game-of-live-first_branch origin/game-of-live-first_branch<br>把game-of-live-first_branch远程分支上的内容都拉取到本地<br>git pull origin game-of-live-first_branch</li>
+<li>grade1.student_set.all()  #对象名.关联类小写_set.all()<br>#班级grades1里所有的学生</li>
+<li>grade1.student_set.create(…)<br>#创建一条学生新数据 </li>
 </ol>
-<h6 id="11-You-are-in-‘detached-HEAD’-state"><a href="#11-You-are-in-‘detached-HEAD’-state" class="headerlink" title="11.  You are in ‘detached HEAD’ state."></a>11.  You are in ‘detached HEAD’ state.</h6><p>You can look around, make experimental changes and commit them, and you can discard any commits you make in this state without impacting any branches by performing another checkout.</p>
-<p>解决：git checkout master</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">LiyuandeMacBook-Pro:scqa_ui_auto_platform_projects liyuanchen$ git checkout master</span><br><span class="line">Already on &apos;master&apos;</span><br><span class="line">Your branch is up to date with &apos;origin/master&apos;.</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/Python--类成员学习/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/07/Python--类成员学习/" itemprop="url">Python--类成员</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-10-07T09:55:11+08:00">
-                2018-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><img src="https://img-blog.csdnimg.cn/20190218115154175.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">#!/usr/bin/python</span><br><span class="line"># -*- coding: UTF-8 -*-</span><br><span class="line">class Foo():</span><br><span class="line">    #静态字段</span><br><span class="line">    country=&quot;公有静态字段&quot;</span><br><span class="line">    __name=&quot;私有静态字段&quot;#带有__开头属于私有</span><br><span class="line">    def __init__(self):</span><br><span class="line">    #普通字段</span><br><span class="line">        print (self.country)</span><br><span class="line">        print ( self.__name)#类内部可以访问私有</span><br><span class="line">    @staticmethod</span><br><span class="line">    def static_func():</span><br><span class="line">        &quot;&quot;&quot;定义静态方法，无默认参数&quot;&quot;&quot;</span><br><span class="line">        print (&apos;这个是静态方法&apos;)</span><br><span class="line">    @classmethod</span><br><span class="line">    def  class_func(cls):</span><br><span class="line">        print(&quot;这个是类方法&quot;)</span><br><span class="line">    def ord_func(self):</span><br><span class="line">        &quot;&quot;&quot;定义普通方法，至少有一个self参数&quot;&quot;&quot;</span><br><span class="line">        print(&quot;这个是普通方法&quot;)</span><br><span class="line">    @property</span><br><span class="line">    def price(self):</span><br><span class="line">        &quot;&quot;&quot;定义一个属性，有返回&quot;&quot;&quot;</span><br><span class="line">        return &quot;cheap&quot;</span><br><span class="line">class Foo_son(Foo):</span><br><span class="line">    def showcountry(self):</span><br><span class="line">        print (self.country)</span><br><span class="line">    def showname(self):</span><br><span class="line">        print (self.__name)</span><br><span class="line">Foo.static_func()#调用静态方法</span><br><span class="line">Foo.class_func()#调用类方法</span><br><span class="line">f=Foo()</span><br><span class="line">f.ord_func()#调用普通方法</span><br><span class="line">f.price#调用属性</span><br><span class="line">###################################################</span><br><span class="line">Foo.country #类可以访问公有字段</span><br><span class="line">f.country #对象可以访问公有字段</span><br><span class="line">#f.__name #错误，私有字段，类无法访问，只能；类内部使用</span><br><span class="line">####################################################</span><br><span class="line">f1=Foo_son()#创建派生类对象</span><br><span class="line">f1.showcountry()#派生类可以访问公有字段</span><br><span class="line">#f1.showname()# 错误,派生类无法访问私有字段</span><br></pre></td></tr></table></figure>
-
-<p>*<em>私有属性是否可以被外部访问？ *</em></p>
-<p>可以，但是需要使用_ClassName_methodName的形式如._Person__country(前面一条下划线，后面两条)</p>
-<pre><code>class Person(object):
-    __country = &apos;China&apos; #私有属性
-    def __init__(self,name,age):
-        self.__query()
-    def __query(self):
-         print(&quot;country:%s&quot; % self.__country)
-
-gf = Person(&apos;林小花&apos;,18)
-print(gf.__country)#报错，不能直接访问
-
-gf.__country = &apos;America&apos; #非原来的私有属性，另外一个新字段了
-print(gf.__country)
-print(gf._Person__country)#原来字段没有变
-
-gf._Person__country = &apos;America2&apos; #使用类名可以访问私有属性
-print(gf.__country)
-print(gf._Person__country)#被改变成America2</code></pre><p> <strong>类方法和静态方法</strong></p>
-<p> 类方法：将类本身作为对象进行操作的方法，第一个参数是cls，代表当前类对象，使用装饰器@classmethod。</p>
-<p> 静态方法:是个独立的单纯的函数，不含有类或实例的任何属性和方法。</p>
-<p> <strong>类变量和实例变量定义</strong></p>
-<p>在类中声明的变量我们称之为类变量[静态成员变量]，</p>
-<p>在init()函数中声明的变量并且绑定在实例上的变量我们称之为成员变量[实例变量]。</p>
-<p>类变量直接可以通过类名来调用。</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">class Dog:</span><br><span class="line"></span><br><span class="line">   kind = &apos;canine&apos;         # class variable shared by all instances</span><br><span class="line"></span><br><span class="line">   def __init__(self, name):</span><br><span class="line">       self.name = name    # instance variable unique to each instance</span><br></pre></td></tr></table></figure>
-
-<p><strong>类方法与成员方法</strong></p>
-<p>类方法：使用类名来调用的方法</p>
-<p>成员方法：使用对象来调用的方法</p>
-<p>参考：<a href="https://www.jb51.net/article/159611.htm" target="_blank" rel="noopener">https://www.jb51.net/article/159611.htm</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/25/python学习笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/25/python学习笔记/" itemprop="url">python3 HTTP请求</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-25T17:29:18+08:00">
-                2018-09-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>利用python作HTTP请求，主要分为以下两种方法</p>
-<ol>
-<li><p>** 使用urllib  **</p>
-<p>在Python 3以后的版本中，urllib2这个模块已经不单独存在（也就是说当你import urllib2时，系统提示你没这个模块），urllib2被合并到了urllib中，叫做urllib.request 和 urllib.error 。</p>
-<p>urllib整个模块分为urllib.request, urllib.parse, urllib.error。</p>
-<p>例：<br>其中urllib2.urlopen()变成了urllib.request.urlopen()<br>urllib2.Request()变成了urllib.request.Request()<br>官网地址：<br><a href="https://docs.python.org/3.5/library/urllib.html" target="_blank" rel="noopener">https://docs.python.org/3.5/library/urllib.html</a></p>
 </li>
+<li><p>模型类中定义元信息Meta :</p>
+<p>1.db_table定义数据表名，推荐小写，默认是项目表名_类名<br>2.ordering 排序 如ordering[-id] 加负号是倒序</p>
+</li>
+<li><p>自定义Manager类：</p>
+<p>  模型管理器是Django的模型与数据库进行交互的接口，一个模型可以有多个模型管理器。object是manager类的一个对象；</p>
+<p>作用： 向管理器中添加额外的方法；修改管理器返回的原始查询集（重写get_queryset）</p>
+</li>
+</ul>
+<pre><code>class diffManager(models.Manager):
+    def get_queryset(self):#重写原函数
+        return super(diffManager,self).get_queryset().filter(isdelete=True)
+    #super参数，第一个是子类类名，第二个一般为self
+class  Diffhsy(models.Model):
+    dfhobj=diffManager() #调用自定义的Manager类，替代Django为模型默认生成的objects模型管理器
+ #在view.py中调用自定义模型管理器
+ Student.dfhobj.all()</code></pre><ul>
+<li><p>创建对象</p>
+<p>  作用:像数据库中添加数据</p>
+<p>  方法：1. 模型中类中添加方法 2. 在自定义管理器里添加方法。</p>
+<pre><code>class Batchinfo(models.Model):
+    @classmethod
+    def createbatch(cls,time,oth):
+        bt=cls(createtime=time,other=oth)
+    return bt</code></pre></li>
+</ul>
+<h4 id="模型查询方法："><a href="#模型查询方法：" class="headerlink" title="模型查询方法："></a>模型查询方法：</h4><p>  官方接口文档：<a href="https://docs.djangoproject.com/zh-hans/2.1/ref/models/querysets/#filter" target="_blank" rel="noopener">https://docs.djangoproject.com/zh-hans/2.1/ref/models/querysets/#filter</a></p>
+<p>  自强学院：<a href="https://code.ziqiangxuetang.com/django/django-models.html" target="_blank" rel="noopener">https://code.ziqiangxuetang.com/django/django-models.html</a></p>
+<p>  博客：<a href="https://blog.csdn.net/achieve_success/article/details/90723878" target="_blank" rel="noopener">https://blog.csdn.net/achieve_success/article/details/90723878</a></p>
+<h5 id="返回查询集-多个"><a href="#返回查询集-多个" class="headerlink" title="返回查询集(多个):"></a>返回查询集(多个):</h5><pre><code>filter(键=值，键=值)等价于 filter(键=值).filter(键=值)经过过滤器返回的仍然是查询集；
+可以有多个过滤器链式调用；
+exclude() 过滤掉符合条件的数据
+order_by()
+values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" class="headerlink" title="返回单个对象:"></a>返回单个对象:</h5><pre><code>  get()  1.若没找到符合条件的对象，会引发DoesNotExits异常2.若返回多条，会引发MultipleObjectsReturned异常
+  count()  返回查询集对象的个数
+  first()  返回查询集第一个对象
+  last()   返回查询集最后一个对象
+  exist()  若有数据返回True  #
+        CaseConf.objects.filter(case=&apos;aaaa&apos;).exists()
+
+比较运算符:字段名__运算符关键字=值：
+   isnull:Entry.objects.filter(pub_date__isnull=True)
+   in:Entry.objects.filter(headline__in=&apos;abc&apos;)
+   gt/gte/lt/lte
+   date/year/month/day/week/week_day:如pub_date__date=datetime.date(2005, 1, 1)
+区分大小写，若前面加i则不区分：
+  exact/iexact  : Entry.objects.get(id__exact=14)
+  contains/icontains
+  startswith/endswith/istartswith/iendswith
+ pk：代表主键
+ 聚合函数：aggregate方法：
+    Avg/Count/Max/Min:Student.object.aggregate(Max(&apos;sage&apos;))
+关联查询：
+    Grades.objects.filter(student__scontend__contains(&apos;李爱国&apos;))
+ F对象：使用模型的两个属性进行比较
+    from django.db.models import F,Q
+    Student.object.filter(num1__gt=F(&apos;num2&apos;)+20)#F对象也可以进行算术运算
+ Q对象：
+    Model.objects.filter(Q(x=1) | Q(y=2))
+    Model.objects.filter(~Q(x=1)) #非，即取反</code></pre><h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><ol>
+<li><p>创建模型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">from django.db import models</span><br><span class="line">class ContentTable(models.Model):</span><br><span class="line">    title=models.CharField(default=&quot;&quot;,max_length=50)</span><br><span class="line">    content=models.CharField(default=&quot;&quot;,max_length=1000)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>views.py中使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from wkbenchapp.models import ContentTable</span><br><span class="line">ct = ContentTable.objects.create(title=&quot;标题&quot;, content=&quot;内容&quot;)</span><br><span class="line">value = ContentTable.objects.filter(title=&quot;标题&quot;) #返回QuerySet object类型</span><br><span class="line">for v in value:#其中每个记录v都是个ContentTable object</span><br><span class="line">   print (&quot;v&quot;,v.content)</span><br></pre></td></tr></table></figure>
+
+<h4 id="QuerySet-API"><a href="#QuerySet-API" class="headerlink" title="QuerySet API"></a>QuerySet API</h4><h4 id="常用字段类型"><a href="#常用字段类型" class="headerlink" title="常用字段类型"></a>常用字段类型</h4></li>
 </ol>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"># coding:utf-8</span><br><span class="line">from urllib import request</span><br><span class="line">from urllib import parse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">url = &quot;http://10.1.2.151/ctower-mall-c/sys/login/login.do&quot;</span><br><span class="line">data = &#123;&quot;id&quot;:&quot;wdb&quot;,&quot;pwd&quot;:&quot;wdb&quot;&#125;</span><br><span class="line"></span><br><span class="line">params=&quot;?&quot;</span><br><span class="line">for key in data:</span><br><span class="line">    params = params + key + &quot;=&quot; + data[key] + &quot;&amp;&quot;</span><br><span class="line">print(&quot;Get方法参数：&quot;+params)</span><br><span class="line"></span><br><span class="line">headers = &#123;</span><br><span class="line">    #heard部分直接通过chrome部分request header部分</span><br><span class="line">    &apos;Accept&apos;:&apos;application/json, text/plain, */*&apos;,</span><br><span class="line">    &apos;Accept-Encoding&apos;:&apos;gzip, deflate&apos;,</span><br><span class="line">    &apos;Accept-Language&apos;:&apos;zh-CN,zh;q=0.8&apos;,</span><br><span class="line">    &apos;Connection&apos;:&apos;keep-alive&apos;,</span><br><span class="line">    &apos;Content-Length&apos;:&apos;14&apos;, #get方式提交的数据长度，如果是post方式，转成get方式：【id=wdb&amp;pwd=wdb】</span><br><span class="line">    &apos;Content-Type&apos;:&apos;application/x-www-form-urlencoded&apos;,</span><br><span class="line">    &apos;Referer&apos;:&apos;http://10.1.2.151/&apos;,</span><br><span class="line">    &apos;User-Agent&apos;:&apos;Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.23 Mobile Safari/537.36&apos;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">data = parse.urlencode(data).encode(&apos;utf-8&apos;)</span><br><span class="line">req = request.Request(url, headers=headers, data=data)  #POST方法</span><br><span class="line">#req = request.Request(url+params)  # GET方法</span><br><span class="line">page = request.urlopen(req).read()</span><br><span class="line">page = page.decode(&apos;utf-8&apos;)</span><br></pre></td></tr></table></figure>
+<pre><code>·AutoField
+    ·一个根据实际ID自动增长的IntegerField，通常不指定如果不指定，一个主键字段将自动添加到模型中
 
-<p>  【报错】<br>  python3 raise HTTPError(req.full_url, code, msg, hdrs, fp) urllib.error.HTTPError: HTTP Error 403: Forbid<br>  1.分析:</p>
-<p>  如果用 urllib.request.urlopen 方式打开一个URL,服务器端只会收到一个单纯的对于该页面访问的请求,但是服务器并不知道发送这个请求使用的浏览器,操作系统,硬件平台等信息,而缺失这些信息的请求往往都是非正常的访问,例如爬虫.<br>  有些网站验证请求信息中的UserAgent(它的信息包括硬件平台、系统软件、应用软件和用户个人偏好),如果UserAgent存在异常或者是不存在,那么这次请求将会被拒绝(如上错误信息所示)<br>  所以可以尝试在请求中加入UserAgent的信息<br>  方案:<br>  对于Python 3.x来说,在请求中添加UserAgent的信息非常简单,代码如下:<br>  可以在请求加上头信息，伪装成浏览器访问User-Agent,具体的信息可以通过火狐的FireBug插件查询<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">headers = &#123;&apos;User-Agent&apos;:&apos;Mozilla/5.0 (Windows NT 6.1; WOW64; rv:23.0) Gecko/20100101 Firefox/23.0&apos;&#125;  </span><br><span class="line">req = request.Request(url=chaper_url, headers=headers)  </span><br><span class="line">page  = request.urlopen(req).read()</span><br></pre></td></tr></table></figure></p>
-<p>   但是没有解决问题，我用的python3.4不知道是不是不支持，于是改用requests</p>
-<ol start="2">
-<li>urllib.quote  </li>
-</ol>
-<p>参考：<a href="https://www.cnblogs.com/lyxdw/p/9935137.html" target="_blank" rel="noopener">https://www.cnblogs.com/lyxdw/p/9935137.html</a><br>最近在抓请求有个这样的get参数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%22pageIndex%22:0,%22pageSize%22:50,%22preference%22:%221563432582190%22,%22from%22:0%7D</span><br></pre></td></tr></table></figure>
+·CharField(max_length=字符长度)
+    ·字符串，默认的表单样式是 TextInput
 
-<p>本来以为用urllib的urlencode结果死活不行，最后发现应该直接用quote。<br>再观察得知其中:/,这几个特殊字符没有转，所以safe中需要忽略处理。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">param=&apos;&#123;&quot;condition&quot;:&#123;&quot;servicename&quot;:&quot;/hotel/someinterface_POST&quot;&#125;,&quot;startTime&quot;:1563431682190,&quot;endTime&quot;:1563432582190,&quot;pageIndex&quot;:0,&quot;pageSize&quot;:50,&quot;preference&quot;:&quot;1563432582190&quot;,&quot;from&quot;:0&#125;)&apos;</span><br><span class="line">param=parse.quote(param.encode(&apos;utf-8&apos;),,safe=&apos;:/,&apos;)</span><br><span class="line">print (param)</span><br></pre></td></tr></table></figure>
+·TextField
+    ·大文本字段，一般超过4000使用，默认的表单控件是Textarea
 
-<p>quote 和 urlencode 的区别:urlencode 需要用字典  quote单个字符就行了，因为quote只需要字符串就行了    </p>
-<p>quote和quote_plus的区别：前者默认safe=’/‘；后者会将“空格”转换成“加号”，默认safe为空。</p>
-<ol start="2">
-<li><p>requests模块 </p>
-<p>参考<br><a href="https://blog.csdn.net/xuezhangjun0121/article/details/82024075" target="_blank" rel="noopener">https://blog.csdn.net/xuezhangjun0121/article/details/82024075</a><br>因为传入的参数是以json形式传入所以headers={‘Content-Type’:’application/json’}</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">url=&quot;http://127.0.0.1:5555/member/grade/query&quot;</span><br><span class="line">r=requests.post(url,headers=&#123;&apos;Content-Type&apos;:&apos;application/json&apos;&#125;,data=json.dumps(params))</span><br><span class="line">print (r.text)</span><br></pre></td></tr></table></figure>
+·IntegerField
+    ·整数
 
-</li>
-</ol>
-<p>或</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; payload = &#123;&apos;key1&apos;: &apos;value1&apos;, &apos;key2&apos;: [&apos;value2&apos;, &apos;value3&apos;]&#125;</span><br><span class="line">&gt;&gt;&gt; r = requests.get(&apos;http://httpbin.org/get&apos;, params=payload)</span><br><span class="line">&gt;&gt;&gt; print(r.url)</span><br><span class="line">http://httpbin.org/get?key1=value1&amp;key2=value2&amp;key2=value3#已被正确编码</span><br></pre></td></tr></table></figure>
+·DecimalField(max_digits=None, decimal_places=None)
+    ·使用python的Decimal实例表示的十进制浮点数
+    ·参数说明
+        ·DecimalField.max_digits
+            ·位数总数
+        ·DecimalField.decimal_places
+            ·小数点后的数字位数
 
-<p>返回：   </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">r.encoding                       #获取当前的编码</span><br><span class="line">r.encoding = &apos;utf-8&apos;             #设置编码</span><br><span class="line">r.text                           #以encoding解析返回内容。字符串方式的响应体，会自动根据响应头部的字符编码进行解码。</span><br><span class="line">r.content                        #以字节形式（二进制）返回。字节方式的响应体，会自动为你解码 gzip 和 deflate 压缩。</span><br><span class="line"></span><br><span class="line">r.headers                        #以字典对象存储服务器响应头，但是这个字典比较特殊，字典键不区分大小写，若键不存在则返回None</span><br><span class="line"></span><br><span class="line">r.status_code                     #响应状态码</span><br><span class="line">r.raw                             #返回原始响应体，也就是 urllib 的 response 对象，使用 r.raw.read()   </span><br><span class="line">r.ok                              # 查看r.ok的布尔值便可以知道是否登陆成功</span><br><span class="line"> #*特殊方法*#</span><br><span class="line">r.json()                         #Requests中内置的JSON解码器，以json形式返回,前提返回的内容确保是json格式的，不然解析出错会抛异常</span><br><span class="line">r.raise_for_status()             #失败请求(非200响应)抛出异常</span><br></pre></td></tr></table></figure>
+·FloatField
+    ·用Python的float实例来表示的浮点数
 
-<p>待总结：<a href="https://2.python-requests.org//zh_CN/latest/user/quickstart.html" target="_blank" rel="noopener">https://2.python-requests.org//zh_CN/latest/user/quickstart.html</a></p>
+·BooleanField
+    ·true/false 字段，此字段的默认表单控制是CheckboxInput
 
-          
-        
-      
-    </div>
-    
-    
-    
+·NullBooleanField
+    ·支持null、true、false三种值
 
-    
+·DateField([auto_now=False, auto_now_add=False]) --- 日期
+    ·使用Python的datetime.date实例表示的日期
+    ·参数说明
+        ·DateField.auto_now(最后更新时间)
+            ·每次保存对象时，自动设置该字段为当前时间，用于&quot;最后一次修改&quot;的时间戳，它总是使用当前日期，默认为false
+        ·DateField.auto_now_add（创建时间）
+            ·当对象第一次被创建时自动设置当前时间，用于创建的时间戳，它总是使用当前日期，默认为false
+    ·说明
+        ·该字段默认对应的表单控件是一个TextInput. 在管理员站点添加了一个JavaScript写的日历控件，和一个“Today&quot;的快捷按钮，包含了一个额外的invalid_date错误消息键
+    ·注意
+        ·auto_now_add, auto_now, and default 这些设置是相互排斥的，他们之间的任何组合将会发生错误的结果
 
-    
+·TimeField                                 ------时间
+    ·使用Python的datetime.time实例表示的时间，参数同DateField
 
-    
+·DateTimeField               -------------------日期+时间
+    ·使用Python的datetime.datetime实例表示的日期和时间，参数同DateField
 
-    <footer class="post-footer">
-      
+·FileField
+    ·一个上传文件的字段
 
-      
+·ImageField
+    ·继承了FileField的所有属性和方法，但对上传的对象进行校验，确保它是个有效的image</code></pre><h4 id="字段选项"><a href="#字段选项" class="headerlink" title="字段选项"></a>字段选项</h4><pre><code>·概述
+    ·通过字段选项，可以实现对字段的约束
+    ·在字段对象时通过关键字参数指定
 
-      
+·null
+    ·如果为True，Django 将空值以NULL 存储到数据库中，默认值是 False
 
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
+·blank
+    ·如果为True，则该字段允许为空白，默认值是 False
 
+·注意
+    ·null是数据库范畴的概念，blank是表单验证证范畴的
 
-    
-      
+·db_column
+    ·字段的名称，如果未指定，则使用属性的名称
 
-  
+·db_index
+    ·若值为 True, 则在表中会为此字段创建索引
 
-  
-  
-  
+·default
+    ·默认值
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/24/selenium/">
+·primary_key
+    ·若为 True, 则该字段会成为模型的主键字段
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/24/selenium/" itemprop="url">selenium实现web自动化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-24T23:27:30+08:00">
-                2018-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="web自动化"><a href="#web自动化" class="headerlink" title="web自动化"></a>web自动化</h4><ul>
-<li><p>pom模式：pageobjectmodel我理解是底层逻辑用例的分层</p>
-<pre><code>1.底层封装：即driver层的封装如常用的定位元素方法、输入、键盘鼠标、切换frame以及测试报告HTMLTestRunner模板等
-
-2.page层：根据页面，写页面测试用例如输入登录名，输入密码，点击登录，获取信息后断言
-
-3.用例层：利用unittest框架，结合page页面功能结合生成一条条case
-继承TestCase基类创建用例，方法名均以test开头</code></pre></li>
-<li><p>每个测试的关键是：调用assertEqual()来检查预期的输出；assertTure或assertFalse()来验证一个条件，调用assertRaise()抛出特定异常。从而产生最终结果报告。</p>
-</li>
-<li><p>unittest.main()提供了一个命令行接口</p>
-</li>
-<li><p>setUp()方法前置方法，teatDown()方法用于最后的清理工作。每个测试用例(方法)运行时这两个方法以及<strong>init</strong>()都会被调用一次，setUpclass()和tearDownClass()在所有用例执行前后分别执行。 </p>
-</li>
-<li><p>跳过测试：@unittest.skip(reason)</p>
-<p>跳过被此装饰器装饰的测试。 reason 为测试被跳过的原因。</p>
-</li>
-</ul>
-<h4 id="1-环境搭建"><a href="#1-环境搭建" class="headerlink" title="1.环境搭建"></a>1.环境搭建</h4><p>安装python环境，使用</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install selenium  </span><br><span class="line">pip show selenium   #验证</span><br></pre></td></tr></table></figure>
-
-<p>下载对应浏览器版本驱动 <a href="http://npm.taobao.org/，" target="_blank" rel="noopener">http://npm.taobao.org/，</a><br>配置该驱动（可执行文件）到环境变量。完成后执行代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#coding=utf-8 </span><br><span class="line">from selenium import webdriver</span><br><span class="line">driver = webdriver.Chrome() </span><br><span class="line">driver.get(&quot;http://www.baidu.com&quot;)</span><br><span class="line">driver.find_element_by_id(&quot;kw&quot;).send_keys(&quot;Selenium2&quot;) </span><br><span class="line">driver.find_element_by_id(&quot;su&quot;).click() </span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
-
-<p>若正常运行则成功。  </p>
-<h4 id="2-主要语法"><a href="#2-主要语法" class="headerlink" title="2.主要语法"></a>2.主要语法</h4><h5 id="2-1-定位页面元素的方法"><a href="#2-1-定位页面元素的方法" class="headerlink" title="2.1  定位页面元素的方法"></a>2.1  定位页面元素的方法</h5><pre><code>find_element_by_id() 通过元素的id来查找元素
-find_element_by_name() – 通过元素的name来查找元素
-find_element_by_class_name() – 通过class 来查找
-find_element_by_tag_name() – 通过元素的类型来查找，一般不用这种方式
-find_element_by_link_text() – 通过链接地址来查找元素
-
-find_element_by_partial_link_text()
-find_element_by_xpath() – 通过xpath来查找元素
-find_element_by_css_selector() – 通过css样式来查找元素</code></pre><p> 若需定位一组元素:</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> #coding=utf-8 </span><br><span class="line"> from selenium import webdriver </span><br><span class="line"> import os</span><br><span class="line">driver = webdriver.Firefox() </span><br><span class="line">file_path = &apos;file:///&apos; + os.path.abspath(&apos;checkbox.html&apos;) </span><br><span class="line">driver.get(file_path)</span><br><span class="line">#通过XPath找到type=checkbox的元素 </span><br><span class="line">#checkboxes = driver.find_elements_by_xpath(&quot;//input[@type=&apos;checkbox&apos;]&quot;)</span><br><span class="line">#通过CSS找到type=checkbox的元素 </span><br><span class="line">checkboxes = driver.find_elements_by_css_selector(&apos;input[type=checkbox]&apos;) </span><br><span class="line">for checkbox in checkboxes: </span><br><span class="line">	checkbox.click()</span><br><span class="line"># 打印当前页面上type为checkbox的个数 </span><br><span class="line">print len(checkboxes)</span><br><span class="line"># 把页面上最后1个checkbox的勾给去掉 driver.find_elements_by_css_selector(&apos;input[type=checkbox]&apos;).pop().click()</span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
-
-<p>【注意点】  </p>
-<ol>
-<li>查找元素的两种方式对比   </li>
-<li>pop使用，pop(1)是第二个</li>
-</ol>
-<h5 id="2-2-元素常用操作"><a href="#2-2-元素常用操作" class="headerlink" title="2.2  元素常用操作"></a>2.2  元素常用操作</h5><pre><code>clear() – 清除元素内容，一般是清除输入框中的数据
-send_keys() – 在元素中模拟按键输入
-click() – 点击元素
-submit()  -- 提交表单</code></pre><h5 id="2-3-获取元素信息"><a href="#2-3-获取元素信息" class="headerlink" title="2.3 获取元素信息"></a>2.3 获取元素信息</h5><pre><code>size：元素的大小
-text：元素内文本
-
-is_displayed( )  ：元素是否可见
-is_enabled()： 元素是否可用（一般用于判断按钮是否置灰）
-is_selected( ) ： 元素是否被选中（一般用于表单中的单选框和复选框）
-get_attribute ( ) ： 元素的属性（可以获取到所选标签内的属性信息）</code></pre><h5 id="2-4-浏览器操作和属性"><a href="#2-4-浏览器操作和属性" class="headerlink" title="2.4 浏览器操作和属性"></a>2.4 浏览器操作和属性</h5><pre><code>操作方法：    
-back（） 返回上一个页面
-forward（）进入下一个页面
-close（）关闭当前标签页
-quit（）关闭浏览器
-set_window_size(480,800) 设置浏览器大小（传参输入浏览器长、宽）
-maximize_window()  最大化浏览器
-refresh()  刷新页面
-
-属性：
-  current_url :当前页面的URL路径
-  title：当前页面的title名称
-  name：当前浏览器名称
-  page_source：当前html页面源码</code></pre><p><img src="%5Cimages%5Cpasted-71.png" alt="upload successful"><br>参考：<a href="https://blog.csdn.net/CCGGAAG/article/details/75309315" target="_blank" rel="noopener">https://blog.csdn.net/CCGGAAG/article/details/75309315</a></p>
-<h5 id="2-4-鼠标事件-ActionChains"><a href="#2-4-鼠标事件-ActionChains" class="headerlink" title="2.4 鼠标事件  ActionChains"></a>2.4 鼠标事件  ActionChains</h5><p>使用前引入模块：from selenium.webdriver.common.action_chains import ActionChains</p>
-<pre><code>ActionChains 类提供的鼠标操作的常用方法：
- perform() 执行所有 ActionChains 中存储的行为  
- context_click() 右击 
- double_click() 双击 
- drag_and_drop() 拖动 
- move_to_element() 鼠标悬停</code></pre><p>举例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#引入ActionChains类 from selenium.webdriver.common.action_chains import ActionChains</span><br><span class="line">...</span><br><span class="line">#定位到要右击的元素 </span><br><span class="line">right_click =driver.find_element_by_id(&quot;xx&quot;) #对定位到的元素执行鼠标右键操作 </span><br><span class="line">ActionChains(driver).context_click(right_click).perform()</span><br></pre></td></tr></table></figure>
-
-<h5 id="2-5-键盘事件"><a href="#2-5-键盘事件" class="headerlink" title="2.5 键盘事件"></a>2.5 键盘事件</h5><p>   引入模块 from selenium.webdriver.common.keys import Keys</p>
-<pre><code>fromselenium.webdriver.common.keys importKeys
-在使用键盘按键方法前需要先导入 keys 类包。
-下面经常使用到的键盘操作：
-send_keys(Keys.BACK_SPACE) 删除键（BackSpace）
-send_keys(Keys.SPACE) 空格键(Space)
-send_keys(Keys.TAB) 制表键(Tab)
-send_keys(Keys.ESCAPE) 回退键（Esc）
-send_keys(Keys.ENTER) 回车键（Enter）
-《Selenium2Python 自动化测试实战》样张
-81
-send_keys(Keys.CONTROL,&apos;a&apos;) 全选（Ctrl+A）
-send_keys(Keys.CONTROL,&apos;c&apos;) 复制（Ctrl+C）
-send_keys(Keys.CONTROL,&apos;x&apos;) 剪切（Ctrl+X）
-send_keys(Keys.CONTROL,&apos;v&apos;) 粘贴（Ctrl+V）
-send_keys(Keys.F1) 键盘 F1
-……
-send_keys(Keys.F12) 键盘 F12</code></pre><h5 id="2-6-切换frame"><a href="#2-6-切换frame" class="headerlink" title="2.6 切换frame"></a>2.6 切换frame</h5><ul>
-<li><p>切换到一个frame中</p>
-<pre><code>switch_to_frame(frame_reference)
-
-其中frame_reference：id、name、element(定位的某个元素)、索引</code></pre></li>
-</ul>
-<p>常用实例 ：   </p>
-<pre><code># 定位父类层级iframe
-ele_framest = driver.find_element_by_css_selector(&quot;#result &gt; iframe&quot;)
-# 切换到父类层级iframe-通过元素切换
-driver.switch_to_frame(ele_framest)
-或
- driver.switch_to_frame(1)</code></pre><ul>
-<li><p>切换到主界面</p>
-<pre><code>switch_to_default_content()：</code></pre><p>  注：driver.switch_to_frame(None)等同于driver.switch_to_default_content()</p>
-<h4 id="2-7-下拉框"><a href="#2-7-下拉框" class="headerlink" title="2.7 下拉框"></a>2.7 下拉框</h4><p>需引用：from selenium.webdriver.support.ui import Select</p>
-</li>
-</ul>
-<p><img src="%5Cimages%5Cpasted-72.png" alt="upload successful"></p>
-<p>select包内的方法详解</p>
-<p>1.获取option元素</p>
-<pre><code>options：获取包含select下拉框内所有option项element的列表
-
-all_selected_options: 获取当前选中项element的列表
-
-first_selected_option:获取所有下拉选项中的第一个选项的element（或者获取当前选中的这一项）</code></pre><p>2.选择option</p>
-<pre><code>select_by_value(values)：选择option标签中value属性为：values的选项
-
-select_by_index(index_number)：选择索引为index_number的选项（索引从0开始）
-
-select_by_visible_text(text)：选择option选项内容为：text的选项</code></pre><p>3.复选select的情况（select标签中，multiple=”multiple”时，即可多选的select选择框）</p>
-<pre><code>deselect_all: 取消所有已选择的选项
-
-deselect_by_value(values):取消选择option标签中value属性为：values的选项
-
-deselect_by_index(index_number)：取消选择索引为index_number的选项（索引从0开始）
-
-deselect_by_visible_text(text)：取消选择option选项内容为：text的选项</code></pre><p>实例片段：</p>
-<pre><code>options=Select(ele_select).options #定位select元素
-for option in options:
-    print(option.text)
-Select(ele_select).select_by_value(&quot;2&quot;) #选择值是2的项
-sleep(1)
-first_selected_option=Select(ele_select).first_selected_option
-print(first_selected_option.text)#输出第一个选中项文案</code></pre><h5 id="2-8-等待"><a href="#2-8-等待" class="headerlink" title="2.8 等待"></a>2.8 等待</h5><p>具体参考原文：<a href="https://blog.csdn.net/CCGGAAG/article/details/86763952" target="_blank" rel="noopener">https://blog.csdn.net/CCGGAAG/article/details/86763952</a></p>
-<ul>
-<li><p>sleep是强制等待   </p>
-</li>
-<li><p>implicitly_wait()隐形等待 也称为全局等待 </p>
-<p>隐形等待是设置了一个最长等待时间，如果在规定时间内网页加载完成，则执行下一步，否则一直等到时间截止，然后执行下一步。注意这里有一个弊端，那就是程序会一直等待整个页面加载完成，也就是一般情况下你看到浏览器标签栏那个小圈不再转，才会执行下一步</p>
-<pre><code>driver.implicitly_wait(30)  # 隐性等待，最长等30秒</code></pre></li>
-</ul>
-<ul>
-<li><p>WebDriverWait() 显示等待 </p>
-<p>满足条件后继续执行，否则在设置时间过后抛出异常，一般由 until()（或 until_not()）方法配合使用。具体格式如下： </p>
-<pre><code>WebDriverWait(driver, timeout, poll_frequency=POLL_FREQUENCY, ignored_exceptions=None)</code></pre><ul>
-<li><p>driver 所创建的浏览器driver</p>
-</li>
-<li><p>timeout 最长时间长度（默认单位：秒）</p>
-</li>
-<li><p>poll_frequency 间隔检测时长（每）默认0.5秒</p>
-</li>
-<li><p>ignored_exceptions  方法调用中忽略的异常，默认只抛出：找不到元素的异常</p>
-</li>
-</ul>
-<p>大部分返回True/False，极少数返回元素:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#需导入库</span><br><span class="line">from selenium.webdriver.support.ui import WebDriverWait</span><br><span class="line">...</span><br><span class="line">#部分关于元素定位的判断返回类型为：元素</span><br><span class="line">assert_ele = WebDriverWait(driver, 15, 0.5).until(Expect.presence_of_element_located((&quot;id&quot;, &quot;wd1&quot;)))</span><br><span class="line">print(&quot;返回类型 %s&quot; % assert_ele)</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h4 id="2-9-until-until-not"><a href="#2-9-until-until-not" class="headerlink" title="2.9 until / until_not"></a>2.9 until / until_not</h4><p>直到调用的方法返回值为True</p>
-<p>until(method, message=’’)</p>
-<ul>
-<li>method：expected_conditions库中定义的方法</li>
-<li>message ：自定义报错信息<br>直到调用的方法返回值为False</li>
-</ul>
-<p>until_not(method, message=’’)</p>
-<ul>
-<li>method：expected_conditions库中定义的方法</li>
-<li>message ：自定义报错信息</li>
-</ul>
-<h4 id="2-10-expected-conditions库title-is-title"><a href="#2-10-expected-conditions库title-is-title" class="headerlink" title="2.10 expected_conditions库title_is(title)"></a>2.10 expected_conditions库title_is(title)</h4><pre><code>title：期望的页面标题
-判断当前页面标题是否包含title
-title_contains(title)
-
-title：期望的页面标题
-判断此定位的元素是否存在
-presence_of_element_located(locator)
-
-locator：元素的定位信息
-判断页面网址中是否包含url
-url_contains(url)
-
-url：期望的页面网址
-判断页面网址是否为url
-url_to_be(url)
-
-url：期望的页面网址
-判断页面网址不是url
-url_changes(url)
-
-url：期望的页面网址
-判断此定位的元素是否可见
-visibility_of_element_located(locator)
-
-locator：元素的定位信息
-判断此元素是否可见
-visibility_of(element)
-
-element：所获得的元素
-判断此定位的一组元素是否至少存在一个
-presence_of_all_elements_located(locator)
-
-locator：元素的定位信息
-判断此定位的一组元素至少有一个可见
-visibility_of_any_elements_located(locator)
-
-locator：元素的定位信息
-判断此定位的一组元素全部可见
-visibility_of_all_elements_located(locator)
-
-locator：元素的定位信息
-判断此定位中是否包含text_的内容
-text_to_be_present_in_element(locator, text_)
-
-locator：元素的定位信息
-text_：期望的文本信息
-判断此定位中的value属性中是否包含text_的内容
-text_to_be_present_in_element_value(locator, text_)
-
-locator：元素的定位信息
-text_：期望的文本信息
-判断定位的元素是否为frame，并直接切换到这个frame中
-frame_to_be_available_and_switch_to_it(locator)
-
-locator：元素的定位信息
-判断定位的元素是否不可见
-invisibility_of_element_located(locator)
-
-locator：元素的定位信息
-判断此元素是否不可见
-invisibility_of_element(element)
-
-element：所获得的元素
-判断所定位的元素是否可见且可点击
-element_to_be_clickable(locator)
-
-locator：元素的定位信息
-判断此元素是否不可用
-staleness_of(element)
-
-element：所获得的元素
-判断该元素是否被选中
-element_to_be_selected(element)
-
-element：所获得的元素
-判断定位的元素是否被选中
-element_located_to_be_selected(locator)
-
-locator：元素的定位信息
-判断该元素被选中状态是否和期望状态相同
-element_selection_state_to_be(element,Boolean)
-
-element：所获得的元素
-Boolean：期望的状态（True/False）
-判断定位的元素被选中状态是否和期望状态相同
-element_located_selection_state_to_be(locator,Boolean)
-
-locator：元素的定位信息
-Boolean：期望的状态（True/False）
-判断当前浏览器页签数量是否为num
-number_of_windows_to_be(num)
-
-num：期望的页签数量
-判断此handles页签不是唯一打开的页签
-new_window_is_opened(handles)
-
-handles：页签
-判断是否会出现alert窗口警报
-alert_is_present()</code></pre><p> 示例：</p>
-<pre><code> # WebDriverWait大部分方法返回类型为True\False
-assert_judge = WebDriverWait(driver, 15, 0.5).until_not(Expect.title_is(&quot;网易&quot;))
-print(&quot;返回类型 %s&quot; % assert_judge)
-
-# 判断失败后会报错
-assert_judge = WebDriverWait(driver, 5, 0.5).until(Expect.title_is(&quot;网易&quot;), &quot;错误信息：网页标题不是网易&quot;)</code></pre><ul>
-<li><p>截图</p>
-<pre><code>except : 
-    driver.get_screenshot_as_file(&quot;D:\\baidu_error.jpg&quot;) </code></pre></li>
-<li><p>基础api汇总</p>
-<pre><code>#导入selenium
-from selenium import webdriver
-#创建chrome驱动实例,打开浏览器
-driver=webdriver.Chrome()
-#浏览器最大化
-driver.maximize_window()
-#浏览器最小化
-driver.minimize_window()
-#获取浏览器当前窗口大小
-size=driver.get_window_size()
-#设置浏览器窗口大小
-driver.set_window_size(400,400)
-#打开指定网页
-driver.get(&quot;http://www.so.com&quot;)
-#获取当前页面的链接地址
-url=driver.current_url
-driver.get(&quot;http://baike.so.com&quot;)
-#后退
-driver.back()
-#前进
-driver.forward()
-#浏览器退出
-driver.close()
-driver.quit()
-#截图
-driver.get_screenshot_as_png()
-driver.get_screenshot_as_base64()
-driver.get_screenshot_as_file(&quot;filename&quot;)
-driver.save_screenshot(&quot;filename&quot;)
-#切换到当前被操作元素
-ele=driver.switch_to.active_element
-#切换alert、confirm、prompt框
-alert = driver.switch_to.alert
-#切换到默认页面
-driver.switch_to.default_content()
-#切换iframe
-driver.switch_to.frame(&apos;frame_name&apos;)
-driver.switch_to.frame(1)
-driver.switch_to.frame(driver.find_elements_by_tag_name(&quot;iframe&quot;)[0])
-driver.switch_to.parent_frame()
-#获取浏览器所有句柄
-handles=driver.window_handles
-#获取当前句柄
-current_handle=driver.current_window_handle
-driver.switch_to.window()
-#执行js脚本
-driver.execute_script(&apos;script&apos;)</code></pre></li>
-<li><p>什么是Page Object模型</p>
-<p>创建一个PO模型对应创建页面上一个应用，该页面上的操作和熟悉可以基于这个模型创建对应的页面模型，这样可以减少代码冗余，增强代码的可读性和可维护性。</p>
-</li>
-</ul>
-<h4 id="3-常见问题"><a href="#3-常见问题" class="headerlink" title="3. 常见问题"></a>3. 常见问题</h4><h6 id="3-1-定位元素时候报错or无法正确定位？"><a href="#3-1-定位元素时候报错or无法正确定位？" class="headerlink" title="3.1. 定位元素时候报错or无法正确定位？"></a>3.1. 定位元素时候报错or无法正确定位？</h6><p>解决：</p>
-<ul>
-<li><p>由于新页面没加载出来导致元素定位不到，可以加等待时间，推荐用try catch添加隐式等待。</p>
-</li>
-<li><p>查看元素外边是否被frame包围，若有则先切换到该frame下再定位元素</p>
-<h6 id="3-2-css定位class元素报错？"><a href="#3-2-css定位class元素报错？" class="headerlink" title="3.2. css定位class元素报错？"></a>3.2. css定位class元素报错？</h6><p>需要注意的是：如果 class属性值 里带空格，用.来代替空格(下例中第二个点)</p>
-<pre><code>driver.find_element_by_css_selector(&quot;.search-btn.tjclick&quot;).click()</code></pre><h6 id="3-3-element-click-intercepted-Element-…-is-not-clickable-at-point-453-328-Other-element-would-receive-the-click-……"><a href="#3-3-element-click-intercepted-Element-…-is-not-clickable-at-point-453-328-Other-element-would-receive-the-click-……" class="headerlink" title="3.3. element click intercepted: Element … is not clickable at point (453, 328). Other element would receive the click: ……"></a>3.3. element click intercepted: Element <span class="textC">…</span> is not clickable at point (453, 328). Other element would receive the click: ……</h6><p>意思是有其他的元素掩盖了需要点击的元素<br>解决：</p>
-<pre><code>element = driver.find_element_by_css(&apos;div[class*=&quot;loadingWhiteBox&quot;]&apos;)
-driver.execute_script(&quot;arguments[0].click();&quot;, element)
-
-element = driver.find_element_by_css(&apos;div[class*=&quot;loadingWhiteBox&quot;]&apos;)
-webdriver.ActionChains(driver).move_to_element(element ).click(element ).perform()</code></pre></li>
-</ul>
-<p>原文链接：<a href="https://blog.csdn.net/WanYu_Lss/article/details/84137519" target="_blank" rel="noopener">https://blog.csdn.net/WanYu_Lss/article/details/84137519</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Vim命令及常见问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/16/Vim命令及常见问题/" itemprop="url">Vim命令及常见问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-16T20:55:46+08:00">
-                2018-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。</p>
-<h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><ol>
-<li><p>光标定位移动</p>
-<pre><code>hjkl 上下左右移动
-0$  行首尾
-gg G   文首尾
-3G 进入第三行
-/string (n N 可以循环的) 快速定位到某一行 /^d   按照行搜索（注意）
-/txt$
-n&lt;space&gt;  :按下数字后再按空格键，光标会向右移动这一行的 n 个字符</code></pre></li>
-<li><p>文本编辑(少量)</p>
-<pre><code>复制 yy 3yy ygg(复制到行首) yG(复制到行尾) 
-删除 dd 3dd dgg(删除到行首) dG(删除到行尾) 
-粘贴 删除光标所在的字符
-x 删除光标后的字符
-D 删除这行光标后的所有字符
-r 可以用来修改一个字符
-u 撤销
-CTRL+r 反撤销</code></pre></li>
-<li><p>进入其它模式   </p>
-<pre><code>i 进入插入模式  当前字符前
-o 进入插入模式  另起一行
-A 进入插入模式  本行最后面</code></pre></li>
-</ol>
-<ul>
-<li><p>可视化模式</p>
-<pre><code>V   进可视块模式
-ctrl+v  进可视行模式
-R进替换模式
-
-块插入（在指定快前加入字符） 选择快，I 在块前插入字符，按esc一会就实现
-块替换：选择快，r输入替换的字符
-块删除：选择块，d|x
-块赋值，选择块，y</code></pre><p>   例子：多行剪切和粘贴</p>
-<pre><code>定位鼠标到剪切的开始位置
-输入v键开始选择剪切的字符，或者V键是为了选择 整行
-移动方向键到结束的地方
-d键是剪切，y键是复制  x是删除
-移动鼠标到粘贴的位置
-输入P是在鼠标位置前粘贴，输入p键是在鼠标的位置后粘贴</code></pre></li>
-<li><p>扩展命令模式</p>
-<ul>
-<li><p>保存退出</p>
-<pre><code>:10 进入第10行
-:w 保存
-:q 退出
-:wq 保存并退出 :w! 强制保存
-:q! 不保存并退出 :wq! 强制保存退出
-选择块，r 输入替换的字符 选择块，d | x
-选择块，y
-:x
-保存并退出 ZZ</code></pre></li>
-<li><p>查找替换</p>
-<pre><code>:范围 s/old/new/选项
-:1,5 s/root/yang/
-:5,$ s/root/yang/ :1,$ s/root/yang/g
-:% s#/dev/sda#/var/ccc#g :,8 s/root/yang/
-:4,9 s/^#// :5,10 s/.*/#&amp;/
-=
-
-从1-5行的root 替换为yang
-$表示最后一行
-:% s/root/yang/g %表示全文 g表示全局
-从当前行到第8行 4-9行的开头#替换为空</code></pre></li>
-<li><p>读入文件/写文件(另存为) :w</p>
-<pre><code>:w /tmp/aaa.txt 另存为
-:1,3 w /tmp/2.txt 
-:r /etc/hosts
-:5 r /etc/hosts</code></pre></li>
-<li><p>设置环境 临时设置:</p>
-<pre><code>:set nu    设置行号
-:set ic   ignore case不区分大小写
-:set ai    auto indent 自动缩进
-:set list   显示控制字符 
-:set nonu   取消操作
-:set noic   取消操作</code></pre></li>
-<li><p>永久的环境:</p>
-<pre><code>/etc/vimrc ~/.vimrc 修改vim环境配置文件 影响所有系统用户
-# vim ~/.vimrc 影响某一个用户</code></pre></li>
-<li><p>其他</p>
-<pre><code>  # vim -O /etc/hosts /etc/hostname ^ww切换   :qall退出
-# cp /etc/hosts hosts1
-# vimdiff /etc/hosts hosts1</code></pre></li>
-</ul>
-</li>
-</ul>
-<h5 id="详细命令"><a href="#详细命令" class="headerlink" title="详细命令"></a>详细命令</h5><p>一、光标控制命令</p>
-<pre><code>命令                   移动
- k                   向上移一行
- j                   向下移一行
- h                   向左移一个字符
- l                   向右移一个字符
- gg                  移到文件的首行
- G                   移到文件的末行    
- H                   移到屏幕的第一行
- w                   移到下一个字的开头
- W                   移到下一个字的开头，忽略标点符号
- e                   移到下一个字的结尾
- E                   移到下一个字的结尾，忽略标点符号
- ^                   移到当前行首
- $                   移到当前行尾
- {                   移到上一段开头
- }                   移到上一段结尾
- Enter               移到下一行行首</code></pre><p>二、在 vim 中添加文本</p>
-<pre><code>命令                   插入
- i                   在光标前插入文本
- I                   在当前行首插入文本
- a                   在光标后插入文本
- A                   在当前行末插入文本
- o                   在当前行的下边插入新行
- O                   在当前行的上边插入新行
- s                   删除光标所在处字符，并进入插入模式
- S                   删除光标所在的行，并进入插入模式
- :r filename         读入指定文件内容，并插在当前行后
- :nr file            读入文件 file 内容，并插在第 n 行后
- Esc                 回到命令模式</code></pre><p>三、在 vim 中删除文本</p>
-<pre><code>命令                   删除
- x                   删除光标处的字符
- db                  删除光标前面的字
- dw                  删至下一个字的开头
- dd                  删除整行
- :n,md               从第 m 行开始往前删除 n 行
- d$                  从光标处删除到行尾
- d^                  从光标处删除到行首</code></pre><p>四、在 vim 中查找与替换</p>
-<pre><code>  命令                  查找与替换
- /target               在文件中向前查找 target
- ?target               在文件中向后查找 target
-   n                    查找下一个
-   N                    查找上一个
-:set ic                查找时忽略大小写
-:set noic              查找时对大小写敏感
-  %s/text1/text2/g         在整个文件中查找text1并且替换为text2</code></pre><p>【注】其中s是查找search的意思，%是全文所有行，g全局即所有列</p>
-<p>五、在 vim 中复制文本</p>
-<pre><code>命令                      复制
- yy                   复制当前行
- nyy                  从当前开始复制n行
-  p                   粘贴至光标前
-  P                   粘贴至光标后
-  u                   撤消上一次修改
-  U                   撤消所有修改</code></pre><p>六、保存与退出vim</p>
-<pre><code>命令                      保存或退出
- :w                   保存文件但不退出
- :w file              将修改保存在 file 中但不退出
-:wq 或 ZZ 或 :x         保存文件并退出
-   :q!                  不保存文件,强制退出
-   :e!                   放弃所有修改，从上次保存文件开始再编辑</code></pre><p>七、其他选项</p>
-<pre><code> 选项                      作用
- :set all             查看所有选项
- :set nu              设置行号
- :set showmode        显示是输入模式还是替换模式
- :set ts=4            为文本输入设置 tab stops
- :set nonumber        取消显示行数
-：set number  显示行数
- :.=                  查看当前行的行号
- :=                   查看总行数
- ctrl+g             显示文件名、当前的行号、文件的总行数和文件位置的百分比</code></pre><p>这篇文章主要介绍了linux中快速清空文件内容的几种方法,需要的朋友可以参考下</p>
-<pre><code>$ : &gt; filename 
-$ &gt; filename 
-$ echo &quot;&quot; &gt; filename 
-$ echo &gt; filename 
-$ cat /dev/null &gt; filename</code></pre><hr>
-<p>【多行注释】</p>
-<ol>
-<li><p>进入命令行模式，按ctrl + v进入 visual block模式，然后按j, 或者k选中多行，把需要注释的行标记起来</p>
-</li>
-<li><p>按大写字母I，再插入注释符，例如//</p>
-</li>
-<li><p>按esc键就会全部注释了</p>
-</li>
-</ol>
-<p>【取消多行注释】</p>
-<ol>
-<li><p>进入命令行模式，按ctrl + v进入 visual block模式，按字母l横向选中列的个数，例如 // 需要选中2列</p>
-</li>
-<li><p>按字母j，或者k选中注释符号</p>
-</li>
-<li><p>按d键就可全部取消注释</p>
-</li>
+·unique
+    ·如果为 True, 这个字段在表中必须有唯一值</code></pre><h4 id="错误调试"><a href="#错误调试" class="headerlink" title="错误调试"></a>错误调试</h4><ol>
+<li>django.db.utils.IntegrityError: UNIQUE constraint failed: wkbenchapp_content.id…<br>migrate更新表的时候不知道怎么回事总是报这个错，怎么改都不行，最后删除migrations里除了初始化外的所有日志，重新从makemigrations来一遍就顺利的好了。</li>
 </ol>
 
           
@@ -1510,7 +571,7 @@ $ cat /dev/null &gt; filename</code></pre><hr>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Linux命令篇/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/11/几大未解之谜/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -1529,7 +590,7 @@ $ cat /dev/null &gt; filename</code></pre><hr>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/16/Linux命令篇/" itemprop="url">Android命令篇</a></h1>
+                <a class="post-title-link" href="/2019/07/11/几大未解之谜/" itemprop="url">出错排查和记录</a></h1>
         
 
         <div class="post-meta">
@@ -1541,8 +602,8 @@ $ cat /dev/null &gt; filename</code></pre><hr>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-16T17:30:00+08:00">
-                2018-09-16
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-11T20:31:45+08:00">
+                2019-07-11
               </time>
             
 
@@ -1581,8 +642,449 @@ $ cat /dev/null &gt; filename</code></pre><hr>
       
         
           
-            <ul>
-<li>adb shell pm   <a href="https://www.cnblogs.com/FlyToDream/p/10419755.html" target="_blank" rel="noopener">https://www.cnblogs.com/FlyToDream/p/10419755.html</a><br>adb pm  enable com.android.systemui</li>
+            <p>1、windows使用pycharm运行Django项目时，项目可以运行，但是就是不打印print内容，cmd窗口和ptcharm控制台都一样。<br>原来是加了这句坑爹的原意是解决问题，却没想到引出问题来了，气死。<br>import io<br>sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding=’utf-8’)<br>2、本来是为了解决json转yaml后中文乱码的问题，才引出的问题1，经过调查原来是原来犯过的一个问题<br>没加allow_unicode=True 导致中文转换成unicode</p>
+<pre><code></code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/02/一行python命令让手机读取电脑文件/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/07/02/一行python命令让手机读取电脑文件/" itemprop="url">一行python命令让手机读取电脑文件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-02T20:55:58+08:00">
+                2019-07-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://blog.csdn.net/why19940926/article/details/62054757" target="_blank" rel="noopener">https://blog.csdn.net/why19940926/article/details/62054757</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">E:\workspace\newworkbench\static&gt;python -m http.server 8000</span><br><span class="line">Serving HTTP on 0.0.0.0 port 8000 ...</span><br><span class="line">10.160.84.95 - - [02/Jul/2019 20:41:29] &quot;GET /app.jpg HTTP/1.1&quot; 200 -</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/26/Apache记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/26/Apache记录/" itemprop="url">Apache记录</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-26T13:16:54+08:00">
+                2019-06-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>service httpd status<br>service httpd start/restart<br>service httpd  stop</p>
+<p>查找httpd.conf配置文件的存放路径<br>find /etc/httpd/  -name *conf</p>
+<p><img src="%5Cimages%5Cpasted-54.png" alt="upload successful"></p>
+<p>更改端口号，在查找到的httpd.conf文件里找到Listen<br>可以看到默认是80，修改成你想换的不用端口就好啦，查询端口是否占用：<br>lsof -i :8080</p>
+<p>然后原来的php网址在原来ip后加上8080端口就可以正常访问啦</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/25/ceshi/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/25/ceshi/" itemprop="url">Django+uwsgi+supervisor+nginx环境部署</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-25T20:10:48+08:00">
+                2019-06-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="理论知识"><a href="#理论知识" class="headerlink" title="理论知识"></a>理论知识</h1><ol>
+<li><p>Apache<br>Apache是世界使用排名第一的Web服务器软件。它可以运行在几乎所有广泛使用的计算机平台上，由于其跨平台和安全性被广泛使用，是最流行的Web服务器端软件之一。版本查看：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@tv6-hotelqa-newhotel-17 ~]# apachectl -v</span><br><span class="line">Server version: Apache/2.2.15 (Unix)</span><br><span class="line">Server built:   Oct 19 2017 16:43:38</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>FQDN 是Fully Qualified Domain Name的简写，意思是完整的域名。 </p>
+<p>FQDN=主机名（hostname）+域后缀<br>如 主机名是 fanyi 域名是 baidu.com<br>FQDN= fanyi.baidu.com<br>如何查看主机名？<br>设置主机名： vi /etc/hostname<br>第一个字段是该主机的IP地址, 第二个和第三个字段是你希望设置的主机名,最后是刚刚设置的FQDN（这两个顺序应该没关系）:<br><img src="%5Cimages%5Cpasted-45.png" alt="upload successful"><br>hostname -F /etc/hostname更新主机名<br>hostname -f看到主机名  </p>
+</li>
+</ol>
+<ul>
+<li><p>路径</p>
+<p>centos6x  nginx默认一般在/etc/nginx路径下<br>httpd.conf 一般在/etc/httpd 文件夹下的子文件里 使用 (find  +地址 -name  +名称)查找即可</p>
+</li>
+<li><p><strong>流程</strong><br>1、    首先客户端请求服务资源，<br>2、    nginx作为直接对外的服务接口,接收到客户端发送过来的http请求,会解包、分析，<br>3、    如果是静态文件请求就根据nginx配置的静态文件目录，返回请求的资源，<br>4、    如果是动态的请求,nginx就通过配置文件,将请求传递给uWSGI；uWSGI 将接收到的包进行处理，并转发给wsgi，<br>5、    wsgi根据请求调用django工程的某个文件或函数，处理完后django将返回值交给wsgi，<br>6、    wsgi将返回值进行打包，转发给uWSGI，<br>7、    uWSGI接收后转发给nginx,nginx最终将返回值返回给客户端(如浏览器)。</p>
+</li>
+<li><p><strong>MVT架构图</strong></p>
+</li>
+</ul>
+<p><img src="%5Cimages%5Cpasted-69.png" alt="upload successful"></p>
+<h1 id="搭建过程"><a href="#搭建过程" class="headerlink" title="搭建过程"></a>搭建过程</h1><p>最后决定使用 nginx + uwsgi socket 的方式来部署 Django，因为听说是比 Apache mod_wsgi 要复杂一些，但这是目前主流的方法。<br>环境：Centos6<br>参考：<a href="https://code.ziqiangxuetang.com/django/django-nginx-deploy.html" target="_blank" rel="noopener">https://code.ziqiangxuetang.com/django/django-nginx-deploy.html</a><br>其他：<a href="https://www.jianshu.com/p/36ef6557c910" target="_blank" rel="noopener">https://www.jianshu.com/p/36ef6557c910</a>  </p>
+<p>1、安装nginx<br>sudo yum install epel-release<br>sudo yum install python-devel nginx<br>ps -e | grep nginx查看是否已经启动了nginx<br>nginx -t 检查语法<br>nginx -s reload<br>nginx -c /etc/nginx/nginx.conf<br>nginx -V 版本</p>
+<p>2、安装 supervisor, 一个专门用来管理进程的工具，我们用它来管理 uwsgi 进程<br>sudo pip install supervisor</p>
+<p>3、将 SELinux 设置为宽容模式，方便调试：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo setenforce 0  </span><br><span class="line">service iptables stop</span><br></pre></td></tr></table></figure>
+
+<p>getenforce 或者sestatus -v可以查防火墙状态   </p>
+<p><img src="%5Cimages%5Cpasted-34.png" alt="upload successful"><br>4、安装 uwsgi<br>sudo pip install uwsgi –upgrade</p>
+<p>5、使用 uwsgi 运行项目<br>uwsgi –http :8001 –chdir /var/www/html/newworkbench/pycharmpj –home=/path/to/env –module project.wsgi<br>这样就可以跑了，–home 指定virtualenv 路径，如果没有可以去掉。project.wsgi 指的是 project/wsgi.py 文件</p>
+<p><img src="%5Cimages%5Cpasted-37.png" alt="upload successful"></p>
+<p>6、使用supervisor来管理进程<br>安装 supervisor 软件包    (sudo) pip install supervisor<br>7、 新建一个 uwsgi.ini 编辑：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[uwsgi]</span><br><span class="line">socket =/tmp2/pycharmpj.sock</span><br><span class="line">chdir =  /var/www/html/newworkbench</span><br><span class="line">wsgi-file = pycharmpj/wsgi.py</span><br><span class="line">touch-reload = /var/www/html/reload</span><br><span class="line">processes = 2</span><br><span class="line">threads = 4</span><br><span class="line">chmod-socket = 664</span><br><span class="line">#chown-socket = tu:www-data</span><br><span class="line">vacuum = true#//退出、重启时清理文件</span><br></pre></td></tr></table></figure>
+
+<p>在根目录/下新建tmp2替代原来的tmp(tmp目录可能找不到)<br>编辑 supervisor.conf，将原来的tmp目录都改成tmp2，然后在最底部添加（每一行前面不要有空格，防止报错）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[program:nwk]</span><br><span class="line">command=uwsgi --ini   /var/www/html/uwsgi.ini</span><br><span class="line">directory=/var/www/html/newworkbench/pycharmpj</span><br><span class="line">startsecs=0</span><br><span class="line">stopwaitsecs=0</span><br><span class="line">autostart=true</span><br><span class="line">autorestart=true</span><br></pre></td></tr></table></figure>
+
+<p>启动 supervisor</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">(sudo) supervisord -c /etc/supervisord.conf 重启 zqxt 程序（项目）：</span><br><span class="line">(sudo) supervisorctl -c /etc/supervisord.conf restart zqxt#启动，停止，或重启 supervisor 管理的某个程序 或 所有程序：</span><br><span class="line">(sudo) supervisorctl -c /etc/supervisord.conf [start|stop|restart] [program-name|all]</span><br><span class="line">ps -ef | grep supervisord #查看状态</span><br></pre></td></tr></table></figure>
+
+<p>重启后提示unix:///tmp2/supervisor.sock no such file？原因是没有启动过，何谈重启，需要先启动：<br><img src="%5Cimages%5Cpasted-44.png" alt="upload successful"></p>
+<p>8、出现问题：重启的时候报错</p>
+<p><img src="%5Cimages%5Cpasted-41.png" alt="upload successful"><br>解决过程：<br>1）将socket目录改为原tmp同路径（怕因为是这个路径太长的缘故）<br>2）将touch-reload和uwsgi.ini路径都直接放在了/var里<br>都没解决，最后想到应该学会灵活的解决问题，于是从报错文件开始抓起，打开文件锁定代码后打印分别打印出self.socketfile和源头serverurl，发现从serverurl就错了（打印编辑时用到vim里查看空格问题，如后文记录）<br><img src="%5Cimages%5Cpasted-43.png" alt="upload successful"><br>本来还以为是系统定义的serverurl有问题，后来查看cat /etc/supervisord.conf，发现这里不知道什么时候多出来的这些东西。<br><img src="%5Cimages%5Cpasted-40.png" alt="upload successful"></p>
+<p>9、 配置ng后测试不ok，待续<br>nginx  conf文件配置错误？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@tv6-hotelqa-xxxxx-17 newworkbench]# nginx  -s reload</span><br><span class="line">nginx: [error] invalid PID number &quot;&quot; in &quot;/var/run/nginx.pid&quot;</span><br></pre></td></tr></table></figure>
+
+<p>查知先nginx -c，但</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@tv6-hotelqa-xxxxx-17 newworkbench]# nginx -c /etc/nginx/nginx.conf</span><br><span class="line">nginx: [emerg] bind() to 0.0.0.0:80 failed (98: Address already in use</span><br></pre></td></tr></table></figure>
+
+<p>定位过程：</p>
+<ul>
+<li><p>使用service iptables status 查看防火墙的状态，果是开启的状态就使用service iptables stop来关闭。</p>
+</li>
+<li><p>查看占用进程</p>
+<p>1.先使用ps -e | grep nginx查看是否已经启动了nginx</p>
+<p>2.如果没有的话则按照提示，查看0.0.0.0:80端口谁占用了，使用netstat -ltunp（或 lsof -i :80）命令，可以看到</p>
+<p>可以看到0.0.0.0:80端口被httpd这个进程占用了（也就是apcache占用），杀掉重复进程</p>
+<p> <img src="%5Cimages%5Cpasted-46.png" alt="upload successful"><br>本来不想通过杀进程的方式来解决的，因为有个进程不太了解，怕误删，但是后来没有找到突破口，反正是测试机就暂时杀掉吧，后来发现这个进程跟我启动nginx相关，只要启动这个进程就有，所以就不管啦，把其他占用端口的httpd都杀掉果然奇迹般的好了。</p>
+</li>
+</ul>
+<p><img src="%5Cimages%5Cpasted-47.png" alt="upload successful"></p>
+<p><img src="%5Cimages%5Cpasted-48.png" alt="upload successful"><br>lsof -i :80 | grep httpd |grep -v grep |xargs kill -9<br>其中grep -v grep是去掉grep查找的进程，xargs意思是将前面获取到的进程作为后面的参数kill掉</p>
+<p>10、运行时出错：  ** Nginx的Permission denied错误**  </p>
+<ul>
+<li><p>把user选项从nginx改成root<a href="https://www.cnblogs.com/zhangqunshi/p/6654866.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhangqunshi/p/6654866.html</a><br>还是不行？</p>
+</li>
+<li><p>创建属于nginx组另外用户www-data:<br><img src="%5Cimages%5Cpasted-49.png" alt="upload successful">最后还是不行</p>
+</li>
+<li><p>创建一样的用户组和用户名<br>打算重新整理权限和路径，把pycharmpj.sock和reload、uwsgi.ini都放在了项目目录里，并且赋予了项目目录一个新用户组和权限（其中pycharmpj.sock权限最大，忘了自己给的还是uwsgi.ini生的效），当然相应的更改引用文件路径。最后在nginx里配置的user使用root</p>
+<p><img src="%5Cimages%5Cpasted-53.png" alt="upload successful"><br>出现的问题：<br>【pycharmpj.sock出不来？】<br>这个文件是执行uwsgi命令自动生成的，而supervisor是用来管理它的，重启它就行啦，步骤：<br>1)停止 supervisorctl -c /etc/supervisord.conf stop all<br>查看ps -ef | grep supervisord若有重复，删除重复<br><img src="%5Cimages%5Cpasted-51.png" alt="upload successful"><br>2)清空（原路径tmp2下）用来存放supervisor.sock的文件夹<br>3)重启supervisor ：supervisorctl -c /etc/supervisord.conf restart  nwk<br>可见pycharmpj.sock和tmp2下的supervisor.sock等文件都出来了。</p>
+<p>【nginx -t语法检测失败报错?】<br>nginx: [emerg] invalid host in upstream “/var/www/html/newworkbench/pycharmpj.sock” in /etc/nginx/conf.d/nwk.conf:15<br>解决：原因是在这少加了unix，真是一点都不能差啊<br><img src="%5Cimages%5Cpasted-52.png" alt="upload successful"></p>
+</li>
+</ul>
+<p>11、终于出来Django的页面啦，虽然还是有错。<br>    You’re seeing this error because you have DEBUG = True in your Django settings file. Change that to False, and Django will display a standard 404 page.<br>    于是按照提示把setting文件改了，但是该页面无动于衷，还是报这个加上<br>    The current path, myworkbench/links.php, didn’t match any of these.<br>    后来醒悟到是我没有加路由，加上了之后果然出现啦，太开心啦<br>12、但是静态页面还没出来，需要配置一下。<br>刚开始稍微饶了一点弯路，不过还好，最后解决很简单，更改nginx配置文件增加，重启下nginx后就好了：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">location /static &#123;</span><br><span class="line">       alias  /var/www/html/newworkbench/static;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>13、更改Django下路由url.py，更改链接后重启supervisorctl即生效。（记得改一个链接的时候要把所有它下一级的url都改全，否则部分还是会报错）。<br>14、static文件访问不了？<br><img src="%5Cimages%5Cpasted-55.png" alt="upload successful"><br>原因：原来动了setting里设置静态文件的路径，多了个斜杠，去掉还原就好了。<br><img src="%5Cimages%5Cpasted-56.png" alt="upload successful"><br>15、关于部署   </p>
+<ul>
+<li><p>. 直接覆盖安装相关文件或文件夹，更改所属人为已设角色和用户(后台登录后报500错误就是这个原因);再重新启动服务即可（setting文件debug:false）。<br>supervisorctl -c /etc/supervisord.conf restart nwk</p>
+</li>
+<li><p>数据库被覆盖？<br>尝试不覆盖migrations文件夹</p>
+</li>
 </ul>
 
           
@@ -1632,7 +1134,7 @@ $ cat /dev/null &gt; filename</code></pre><hr>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/09/Django项目实例精讲/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/16/mysql数据库/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -1651,7 +1153,7 @@ $ cat /dev/null &gt; filename</code></pre><hr>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/09/09/Django项目实例精讲/" itemprop="url">Django项目实例精讲</a></h1>
+                <a class="post-title-link" href="/2019/06/16/mysql数据库/" itemprop="url">mysql数据库</a></h1>
         
 
         <div class="post-meta">
@@ -1663,8 +1165,8 @@ $ cat /dev/null &gt; filename</code></pre><hr>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-09T22:16:15+08:00">
-                2018-09-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-16T12:36:57+08:00">
+                2019-06-16
               </time>
             
 
@@ -1703,109 +1205,169 @@ $ cat /dev/null &gt; filename</code></pre><hr>
       
         
           
-            <h4 id="认识Django"><a href="#认识Django" class="headerlink" title="认识Django"></a>认识Django</h4><ol>
-<li><p>Python下有许多款不同的 Web 框架。Django是<strong>重量级</strong>选手中最有代表性的一位。许多成功的网站和APP都基于Django。</p>
-</li>
-<li><p>Django是一个<strong>开放源代码</strong>的Web应用框架，由<strong>Python</strong>写成。</p>
-</li>
-<li><p>Django采用了MVC的软件设计模式，即模型M，视图V和控制器C</p>
+            <h5 id="linux安装mysql"><a href="#linux安装mysql" class="headerlink" title="linux安装mysql"></a>linux安装mysql</h5><p>使用pymysql的时候创建表不成功，提示连不到，于是才意识到本机没有安装Mysql服务，步骤：</p>
+<pre><code>1、下载https://dev.mysql.com/downloads/mysql/
+2、安装的时候设置root密码  
+3、设置环境变量  
+打开终端,根目录：open .bash_profile 
+直接输入如下语句：export PATH=${PATH}:/usr/local/mysql/bin
+4、终端登录  mysql -u root -p   
+5、手动创建数据库 语句参考https://www.cnblogs.com/zhuyongzhe/p/7686105.html   
+6、执行创建表操作（本地写的create.py-连数据库和创建表操作）  
+执行后提示Warning: (3719, &quot;&apos;utf8&apos; is currently an alias for the character set UTF8MB3, but will be an alias for UTF8MB4 in a future release. Please consider using UTF8MB4 in order to be unambiguous.&quot;)
+  result = self._query(query)
+忽略即可，表已创建完毕</code></pre><h5 id="mac安装mysql"><a href="#mac安装mysql" class="headerlink" title="mac安装mysql"></a>mac安装mysql</h5><ol>
+<li><p>安装Mysql前，需要先把之前的文件清理干净（如果第一次安装，此步骤可忽略）</p>
+<pre><code>执行下列命令
+sudo rm /usr/local/mysql
+sudo rm -rf /usr/local/mysql*
+sudo rm -rf /Library/StartupItems/MySQLCOM
+sudo rm -rf /Library/PreferencePanes/My*
+rm -rf ~/Library/PreferencePanes/My*
+sudo rm -rf /Library/Receipts/mysql*
+sudo rm -rf /Library/Receipts/MySQL*
+sudo rm -rf /var/db/receipts/com.mysq</code></pre></li>
+<li><p>下载的安装版本需要macos与对应版本对应</p>
+<p><a href="https://downloads.mysql.com/archives/community/" target="_blank" rel="noopener">https://downloads.mysql.com/archives/community/</a></p>
+<p><img src="/images/pasted-127.png" alt="upload successful"></p>
 </li>
 </ol>
-<h4 id="1-创建隔离的python环境"><a href="#1-创建隔离的python环境" class="headerlink" title="1. 创建隔离的python环境"></a>1. 创建隔离的python环境</h4><p>推荐文章：<a href="https://www.cnblogs.com/jasmine-Jobs/p/7045016.html" target="_blank" rel="noopener">https://www.cnblogs.com/jasmine-Jobs/p/7045016.html</a></p>
+<p> <img src="/images/pasted-128.png" alt="upload successful"><br>    此步骤需要设置密码，最好复制上去，以防输错</p>
+<ol start="3">
+<li><p>报错：使用记忆中设置的密码不正确(第一次OK的)</p>
+<p>Can’t connect to local MySQL server through socket ‘/var/lib/mysql/mysql.sock’ (2)</p>
+<p> ERROR 1045 (28000): Access denied for user ‘root’@’localhost’ (using password: YES)</p>
+<p>方法：卸载，重新下载符合mac版本的mysql版本重新安装</p>
+</li>
+</ol>
+<h4 id="数据库创建满足三大范式"><a href="#数据库创建满足三大范式" class="headerlink" title="数据库创建满足三大范式"></a>数据库创建满足三大范式</h4><h6 id="1-原子性"><a href="#1-原子性" class="headerlink" title="1.原子性"></a>1.原子性</h6><p>不可再拆分</p>
+<h6 id="2-主键与其他列相关联"><a href="#2-主键与其他列相关联" class="headerlink" title="2.主键与其他列相关联"></a>2.主键与其他列相关联</h6><p>与主键无关的列需要去掉</p>
+<h6 id="3-主键与其他列直接相关联"><a href="#3-主键与其他列直接相关联" class="headerlink" title="3.主键与其他列直接相关联"></a>3.主键与其他列直接相关联</h6><p>若间接相关不可以，可拆分成两个表</p>
+<p>参考：<a href="https://blog.csdn.net/kenhins/article/details/51084815" target="_blank" rel="noopener">https://blog.csdn.net/kenhins/article/details/51084815</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/Django实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/15/Django实践/" itemprop="url">TensorFlow实践</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-15T18:19:23+08:00">
+                2019-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>创建隔离的python环境</li>
+</ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pip install virtualenv #安装</span><br><span class="line">virtualenv my_env#创建目录</span><br><span class="line">which python3  #找到python3目录</span><br><span class="line">virtualenv my_env -p /Library/Frameworks/Python.framework/Versions/3.7/bin/python3 </span><br><span class="line">#将python3作为解释器</span><br><span class="line">source my_env/bin/activate  #激活，开始使用</span><br><span class="line">deactivate 退出</span><br></pre></td></tr></table></figure>
 
-<h4 id="2-安装Django"><a href="#2-安装Django" class="headerlink" title="2. 安装Django"></a>2. 安装Django</h4><p> pip install Django==2.0.5</p>
-<h4 id="3-创建项目"><a href="#3-创建项目" class="headerlink" title="3. 创建项目"></a>3. 创建项目</h4><p>  Django-admin startproject mysite<br>    mysite/项目结构：<br>        manage.py<br>        mysite/<br>              &nbsp;<em>&nbsp;<strong>init</strong>.py<br>              &nbsp;</em>&nbsp;<em>setting.py<br>             &nbsp;</em> &nbsp;<em>url.py<br>              &nbsp;</em>&nbsp;_wsgi.py<br>python manage.py migrate  #通过数据库迁移，初始状态下的应用程序表将在数据库中被创建。<br>创建完成后，根目录里应该多了个db.sqlite3</p>
-<h4 id="4-运行开发服务器"><a href="#4-运行开发服务器" class="headerlink" title="4.  运行开发服务器"></a>4.  运行开发服务器</h4><pre><code>python manage.py runserver
-
-- 认识项目设置setting.py
-    DEBUG在生产环境下应该置为False.
- - 项目和应用程序
- “项目”我理解为所有应用程序基于某些设置项的安装结果。
- “应用程序”（即app，也就是下文中的blog）是模型+试图+模板+url 的组合
- 应用程序与框架进行交互，提供特定的功能。</code></pre><h4 id="5-创建应用程序"><a href="#5-创建应用程序" class="headerlink" title="5.  创建应用程序"></a>5.  创建应用程序</h4><p> 继续在虚拟环境里执行 python manage.py  startapp blog<br>此时多了个blog/目录 和下面文件如下：<br>admin.py 可在该文件中注册模型<br>app.py 包含了blog这个应用程序主要配置内容（之后在激活app时候用到）<br>migrations包含了应用程序(app)的数据库迁移。迁移可以使Django跟踪模块 变化内容，并相应的同步数据库。<br>model.py 包含了应用程序的数据模型，但是也可以被置空。<br>test.py 用来测试的<br>views.py包含逻辑内容  </p>
-<h4 id="6-数据模型"><a href="#6-数据模型" class="headerlink" title="6. 数据模型"></a>6. 数据模型</h4><p> 每个模型是一个python类，为django.db.models.Model的子类，每个属性视为数据库的一个字段。  </p>
-<ul>
-<li>创建model.py文件中的数据表（即各python类）</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from django.db import models</span><br><span class="line">from django.utils import timezone</span><br><span class="line">from  django.contrib.auth.models import User</span><br><span class="line"># Create your models here.</span><br><span class="line"></span><br><span class="line">class Post(models.Model):</span><br><span class="line">    STATUS_CHOICE=((&apos;draft&apos;,&apos;Draft&apos;),(&apos;published&apos;,&apos;Published&apos;))</span><br><span class="line">    title=models.CharField(max_length=250)</span><br><span class="line">    slug=models.SlugField(max_length=250,unique_for_date=&apos;publish&apos;)</span><br><span class="line">    author=models.ForeignKey(User,on_delete=models.CASCADE,related_name=&apos;blog_posts&apos;,default=&quot;&quot;)</span><br><span class="line">    body=models.TextField(default=&quot;&quot;)</span><br><span class="line">    publish=models.DateTimeField(default=timezone.now)</span><br><span class="line">    created=models.DateTimeField(auto_now_add=True)</span><br><span class="line">    #auto_now_add=True：实例在第一次保存的时候自动保存当前时间，不能手动修改(但相对于auto_now，auto_now_add下次是可以的)。</span><br><span class="line">    status=models.CharField(max_length=10,choices=STATUS_CHOICE,default=&apos;draft&apos;)</span><br><span class="line">    class Meta:</span><br><span class="line">        ordering=(&apos;-publish&apos;,)</span><br><span class="line">    def __str__(self):</span><br><span class="line">        return self.title</span><br></pre></td></tr></table></figure>
-
-<p>其中ForeignKey 的用法，待总结。。</p>
-<ul>
-<li><p>为了使Django跟踪应用程序并针对模型创建数据表，我们需要激活：<br>&nbsp; &nbsp;编辑setting.py文件，像INSTALLED_APPS设置中加入app.py中所用到的类BlogConfig。格式为’blog.apps.BlogConfig’（若使用pycharm等IDE可能会给自动创建，可省略此步）</p>
-</li>
-<li><p>迁移两步走<br>创建了数据模型，我们最终需要的是定义<strong>数据库</strong>表，所以我们需要迁移：<br>1）python manage.py makemigrations blog  #让 Django 知道我们在我们的模型有一些变更，此时生成了0001_initial.py文件</p>
-<pre><code>python manage.py sqlmigrate blog 0001 #命令可以查看某次迁移的SQL语句。</code></pre><p>2） python manage.py migrate  #将数据库与模型最终同步。</p>
-<p>初始化注意三步走：<a href="https://www.runoob.com/django/django-model.html" target="_blank" rel="noopener">https://www.runoob.com/django/django-model.html</a></p>
-<p><img src="/images/pasted-134.png" alt="upload successful"></p>
-<h4 id="7-站点管理"><a href="#7-站点管理" class="headerlink" title="7. 站点管理"></a>7. 站点管理</h4></li>
-<li><h6 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h6><p>什么是站点？<br>对应的是之前说的admin.py应用。只要启动项目后，打开/admin/路径即可。<br>但是前提是需要创建超级用户（不然也登不进去呀）<br>python manage.py createsuperuser</p>
-</li>
-<li><h5 id="向站点添加模型"><a href="#向站点添加模型" class="headerlink" title="向站点添加模型"></a>向站点添加模型</h5><p>重点来啦<del>~</del> 怎么把模型添加到站点，以后方便我们维护呢？<br>编辑admin.py文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from django.contrib import admin</span><br><span class="line">from .models import Post.</span><br><span class="line">admin.site.register(Post)  # 注册模型</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>之后打开站点就可以看到我们的模型啦，打开后就可以进行维护啦</p>
-<h4 id="8-定制模型的显示方式"><a href="#8-定制模型的显示方式" class="headerlink" title="8.  定制模型的显示方式"></a>8.  定制模型的显示方式</h4><p>待整理</p>
-<h4 id="9-QuerySet和管理器"><a href="#9-QuerySet和管理器" class="headerlink" title="9. QuerySet和管理器"></a>9. QuerySet和管理器</h4><ul>
-<li><h6 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h6><p>方法一：两步走</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">post=Post(title=&quot;tile&quot;,slug=&quot;sss&quot;,body=&quot;post body&quot;,suthor=user)</span><br><span class="line">#未插入到数据库</span><br><span class="line">post.save()</span><br><span class="line">#真正执行Insert操作</span><br></pre></td></tr></table></figure>
-
-<p>方法二：一步到位<br>创建对象，并将其持久化至数据库中</p>
-</li>
-</ul>
-<p><code>Post.objects.create(title=&quot;tile&quot;,slug=&quot;sss&quot;,body=&quot;post body&quot;,suthor=user)</code></p>
-<ul>
-<li><h6 id="更新对象"><a href="#更新对象" class="headerlink" title="更新对象"></a>更新对象</h6>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">	post.title=&quot;new title&quot;</span><br><span class="line">post.save()</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><h6 id="获取对象"><a href="#获取对象" class="headerlink" title="获取对象"></a>获取对象</h6>Django默认管理器objects。通过该管理器得到一个QuerySet对象,常用的方法有<br>Post.objects.all()<br>Post.objects.get(username=’admin’)<br>Post.objects.filter(publish__year=2017)<br>Post.objects.exclude(publish__year=2017)#排除<br>Post.objects.order_by(‘title’)默认升序，降序改为’-title’</li>
-</ul>
-<p>其他方法可参考官网：<a href="https://docs.djangoproject.com/en/2.0/ref/models" target="_blank" rel="noopener">https://docs.djangoproject.com/en/2.0/ref/models</a></p>
-</li>
-<li><h6 id="删除对象"><a href="#删除对象" class="headerlink" title="删除对象"></a>删除对象</h6><p>post=Post.objects.get(username=’admin’)<br>post.delete()</p>
-<h4 id="10-创建视图"><a href="#10-创建视图" class="headerlink" title="10. 创建视图"></a>10. 创建视图</h4></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from django.shortcuts import render,get_object_or_404</span><br><span class="line">#get_object_or_404 若结果不存在则抛出404异常</span><br><span class="line"></span><br><span class="line">from .models import Post</span><br><span class="line"></span><br><span class="line">def blog_list(request):</span><br><span class="line">    post_result=Post.objects.all()</span><br><span class="line">    return  render(request,&apos;post/list.html&apos;,&#123;&apos;post_value&apos;:post_result&#125;)</span><br><span class="line">    #这里返回的字段中的Key即post_value用于在模板中引用</span><br><span class="line">def blog_detail(request,year,month,day,slug):</span><br><span class="line">    post_result=get_object_or_404(Post,slug=slug,publish__year=year,publish__month=month,publish__day=day)</span><br><span class="line">    return  render(request,&apos;post/detail.html&apos;,&#123;&apos;post_value&apos;:post_result&#125;)</span><br></pre></td></tr></table></figure>
-
-<h4 id="11-URL"><a href="#11-URL" class="headerlink" title="11. URL"></a>11. URL</h4><p>这里分为两部分（当然也可以直接在项目url中一步到位，但是在有多个APP的情况下结构清晰，推荐两步）：<br>第一步：创建应用程序的url ：<br>blog/urls.py:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">from django.urls import path</span><br><span class="line">from . import  views</span><br><span class="line"></span><br><span class="line">app_name=&apos;blog&apos;  #本url的命名空间，被引用时使用</span><br><span class="line"></span><br><span class="line">urlpatterns=[</span><br><span class="line">    path(&apos;&apos;,views.blog_list,name=&apos;list_name&apos;),</span><br><span class="line">    path(&apos;&lt;int:year&gt;/&lt;int:month&gt;/&lt;int:day&gt;/&lt;slug:slug&gt;/&apos;,views.blog_detail,name=&apos;detail_name&apos;)</span><br><span class="line">#路径中变量由上一级传参，动态</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>项目urls.py:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">from django.contrib import admin</span><br><span class="line">from django.urls import path,include</span><br><span class="line"></span><br><span class="line">urlpatterns = [</span><br><span class="line">    path(&apos;admin/&apos;, admin.site.urls),</span><br><span class="line">    path(&apos;post/&apos;,include(&apos;blog.urls&apos;,namespace=&apos;blog&apos;))#引用用应用程序，使用命名空间</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
-
-<p>为了获取url路径需要使用reverse方法，在models.py中添加此函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def get_absolute_url(self):</span><br><span class="line">    return reverse(&apos;blog:detail_name&apos;,args=[self.publish.year,self.publish.month,self.publish.day ,self.slug])</span><br></pre></td></tr></table></figure>
-
-<h4 id="12-创建模板文件"><a href="#12-创建模板文件" class="headerlink" title="12. 创建模板文件"></a>12. 创建模板文件</h4><p>一个基文件base.html和两个继承文件，目录：<br>base.html<br>post/<br>&nbsp;&nbsp;&nbsp;list.html<br>&nbsp;&nbsp;&nbsp;detail.html<br>base.html:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&#123;% load static %&#125;  # 加载静态文件</span><br><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html lang=&quot;en&quot;&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</span><br><span class="line">    &lt;title&gt;&#123;% block title %&#125;&#123;% endblock %&#125;&lt;/title&gt;</span><br><span class="line">    &lt;link href=&quot;&#123;% static &quot;css/blog.css&quot; %&#125;&quot; rel=&quot;stylesheet&quot;&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div id=&quot;content&quot;&gt;</span><br><span class="line">    &#123;% block content %&#125;</span><br><span class="line">    &#123;% endblock %&#125;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;div id=&quot;sidebar&quot;&gt;</span><br><span class="line">    &lt;h2&gt;My base blog&lt;/h2&gt;</span><br><span class="line">    &lt;p&gt;this is my base blog;&lt;/p&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
-
-<p>list.html：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends &quot;base.html&quot; %&#125;  #继承</span><br><span class="line">&#123;% block title %&#125;My Blog&#123;% endblock %&#125;</span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line">&lt;h1&gt;MY BLOG FOR LIST&lt;/h1&gt;</span><br><span class="line">    &#123;% for p in post_value %&#125;</span><br><span class="line">    &lt;h2&gt;</span><br><span class="line">    &lt;a href=&quot;&#123;&#123; p.get_absolute_url&#125;&#125;&quot;&gt;  #使用此方法获取url</span><br><span class="line">        &#123;&#123; p.title&#125;&#125;&lt;/a&gt;</span><br><span class="line">    &lt;/h2&gt;</span><br><span class="line"></span><br><span class="line">    &lt;p class=&quot;date&quot;&gt;Published&#123;&#123; p.publish &#125;&#125;by &#123;&#123; p.author &#125;&#125;&lt;/p&gt;</span><br><span class="line">    &#123;&#123; p.body|truncatewords:30|linebreaks &#125;&#125;</span><br><span class="line">    &#123;% endfor %&#125;</span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
-
-<p>detail.html:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;% extends &quot;base.html&quot; %&#125;</span><br><span class="line">&#123;% block title %&#125;&#123;&#123;post.title&#125;&#125;&#123;% endblock %&#125;</span><br><span class="line">&#123;% block content %&#125;</span><br><span class="line">    &lt;h1&gt;&#123;&#123;post_value.title&#125;&#125;&lt;/h1&gt;</span><br><span class="line">    &lt;p id =&quot;date&quot;&gt;</span><br><span class="line">    published &#123;&#123; post_value.publish&#125;&#125;by&#123;&#123; post_value.author &#125;&#125;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line">    &#123;&#123; post_value.body|linebreaks &#125;&#125;</span><br><span class="line">&#123;% endblock %&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="【问题汇总】："><a href="#【问题汇总】：" class="headerlink" title="【问题汇总】："></a>【问题汇总】：</h2><ul>
-<li>[1 ]  <code>File &quot;manage.py&quot;, line 14
-) from exc
-^
-SyntaxError: invalid syntax</code></li>
-</ul>
-<p>解决：使用virtualenv来做环境，更改pycharm中设置的编译器地址。</p>
-<ul>
-<li><p>[ 2] <code>You are trying to add a non-nullable field &#39;author&#39; to post without a default; we can&#39;t do that (the database needs something to populate existing rows)</code><br>解决：在每个报错字段的后面加一个default=””即可</p>
-</li>
-<li><p>[ 3]<code>blog.Post.created: (fields.E160) The options auto_now, auto_now_add, and default are mutually exclusive. Only one of these options may be present</code><br>经过：因为后面追加上默认值default=timezone.now，提示auto_now_add=Ture与其不能共存，在网上一时也没找到更加合适的办法<br>解决：第一次就只加默认值，指定两步迁移到数据库表；之后去掉default再次修改为auto_now_add=Ture，迁移成功。其中：<br>DateTimeField、DateField和TimeField三种类型可以用来创建日期字段，其值分别对应着datetime()、date()、time()三中对象。这三个field有着相同的参数auto_now和auto_now_add，</p>
-</li>
-</ul>
-<p>-[ 4]pycharm添加env python编译环境</p>
-<p>setting-project中可添加和删除编译环境选项<br><img src="/images/pasted-19.png" alt="upload successful"><br>使用Pycharm给其配置编译器,提示pycharm配置虚拟环境    Envirement  location directory is not empty<br>解决办法：将原来的代码里错误环境的目录找到，然后将venv删掉，再重新进来进行如下配置就没问题了<br><img src="/images/pasted-20.png" alt="upload successful"></p>
-<p>配置完成后，还是不对<br><img src="/images/pasted-21.png" alt="upload successful"></p>
-<p><img src="/images/pasted-22.png" alt="upload successful"><br>换成下面的Existing environment成功<br><img src="/images/pasted-23.png" alt="upload successful"><br>配置项目，编译器改成刚才Pycharm设置好的那个</p>
-<p><img src="/images/pasted-25.png" alt="upload successful"></p>
-<p><img src="/images/pasted-24.png" alt="upload successful"></p>
 
           
         
@@ -1854,7 +1416,7 @@ SyntaxError: invalid syntax</code></li>
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/awk知识点汇总/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/Flask框架学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -1873,7 +1435,7 @@ SyntaxError: invalid syntax</code></li>
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/22/awk知识点汇总/" itemprop="url">awk知识点汇总</a></h1>
+                <a class="post-title-link" href="/2019/06/15/Flask框架学习/" itemprop="url">Flask+Django框架学习</a></h1>
         
 
         <div class="post-meta">
@@ -1885,8 +1447,8 @@ SyntaxError: invalid syntax</code></li>
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-22T15:23:35+08:00">
-                2018-08-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-15T17:50:33+08:00">
+                2019-06-15
               </time>
             
 
@@ -1925,190 +1487,15 @@ SyntaxError: invalid syntax</code></li>
       
         
           
-            <p>参考原文：<a href="https://blog.csdn.net/liang5603/article/details/80855426" target="_blank" rel="noopener">https://blog.csdn.net/liang5603/article/details/80855426</a></p>
-<p>grep sed awk 被称为linux中的“三剑客”<br>grep更适合单纯的查找或匹配文本<br>sed更适合编辑匹配到的文本<br>awk更适合格式化文本，对文本进行较复杂格式处理</p>
-<h5 id="awk语法："><a href="#awk语法：" class="headerlink" title="awk语法："></a>awk语法：</h5><pre><code>awk [options] &apos;commands&apos; filenames
+            <p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">app=Flask(__name__)</span><br><span class="line"></span><br><span class="line">@app.route(&apos;/&apos;)</span><br><span class="line">def hello_world():</span><br><span class="line">	return &quot;hello_world&quot;</span><br><span class="line">if __name==&apos;__main__&apos;:</span><br><span class="line">	app.run()</span><br></pre></td></tr></table></figure>
 
-- options:-F 定义输入字段分隔符，默认的分隔符是空格或制表符(tab)
-- command:
-
-    BEGIN{} {} END{}
-    行处理前 行处理 行处理后</code></pre><p>  例：      </p>
-<pre><code>$ awk &apos;BEGIN{print &quot;begin:&quot;1/2}{print &quot;ok&quot;}END{print&quot;--ending-&quot;}&apos; vimtest.txt 
-begin:0.5
-ok
-ok
---ending-    </code></pre><h5 id="awk执行原理"><a href="#awk执行原理" class="headerlink" title="awk执行原理"></a>awk执行原理</h5><ol>
-<li>awk 使用一行作为输入，并将这一行赋给内部变量$0，每一行也可称为一个记录，以换行符结束</li>
-</ol>
-<ul>
-<li>(2)然后，行被: (默认为空格或制表符)分解成字段(或域)，每个字段存储在已编号的变量中，从$1 开始，最多达 100 个字段</li>
-<li>(3)awk 如何知道用空格来分隔字段的呢? 因为有一个内部变量 FS 来确定字段分隔符。初始 时，FS 赋为空格</li>
-<li>(4)awk 打印字段时，将以设置的方法使用 print 函数打印，打印时逗号映射为OFS默认为空格</li>
-</ul>
-<h5 id="字段解释"><a href="#字段解释" class="headerlink" title="字段解释"></a>字段解释</h5><pre><code>$0: awk 变量$0 保存当前记录的内容 # awk -F: &apos;{print $0}&apos; /etc/passwd
-NR: The total number of input records seen so far. # awk -F: &apos;{print NR, $0}&apos; /etc/passwd /etc/hosts  （序号值）
-FNR: The input record number in the current input file # awk -F: &apos;{print FNR, $0}&apos; /etc/passwd /etc/hosts
-NF: 保存记录的字段数，$1,$2...$100 # awk -F: &apos;{print $0,NF}&apos; /etc/passwd
-$NF:因为NF是数字，这个就是最大数的变量值即最后一个字段值
-FS: 输入字段分隔符，默认空格 # awk -F: &apos;/alice/{print $1, $3}&apos; /etc/passwd
-# awk -F&apos;[ :\t]&apos; &apos;{print $1,$2,$3}&apos; /etc/passwd
-# awk &apos;BEGIN{FS=&quot;:&quot;} {print $1,$3}&apos; /etc/passwd
-OFS: 输出字段分隔符 # awk -F: &apos;/alice/{print $1,$2,$3,$4}&apos; /etc/passwd
-# awk &apos;BEGIN{FS=&quot;:&quot;; OFS=&quot;+++&quot;} /^root/{print $1,$2,$3,$4}&apos; /etc/passwd
-RS The input record separator, by default a newline. # awk -F: &apos;BEGIN{RS=&quot; &quot;} {print $0}&apos; a.txt
-ORS The output record separator, by default a newline. # awk -F: &apos;BEGIN{ORS=&quot;&quot;} {print $0}&apos; passwd</code></pre><ul>
-<li><p>awk是<strong>逐行</strong>处理的，处理完一行再处理下一行，默认以“换行符”为标记，识别每一行。   </p>
-</li>
-<li><p><strong>awk可用于拼接</strong>。被拼接字符串用双引号括起来 如：awk’{print “column1:”$1,”column2:”$2}’,注意$1这种内置变了不能使用双引号，否则被当做普通文本输出。</p>
-</li>
-<li><p><strong>awk变量</strong>: 分为<strong>内置变量</strong>和自定义变量</p>
-</li>
-<li><p><strong>过滤操作</strong> ：结合运算符在action中判断如awk ‘$1&gt;20’ log.txt 输出第一列值大于2的记录</p>
-</li>
-</ul>
-<blockquote>
-<p>细心如你一定注意到了一个细节，就是在打印 $0 , $1, $2 这些内置变量的时候，都有使用到”$”符号，但是在调用 NR , NF 这些内置变量的时候，就没有使用”$”，如果你有点不习惯，那么可能是因为你已经习惯了使用bash的语法去使用变量，在bash中，我们在引用变量时，都会使用$符进行引用，但是在awk中，只有在引用$0、$1等内置变量的值的时候才会用到”$”,引用其他变量时，不管是内置变量，还是自定义变量，都不使用”$”,而是直接使用变量名。</p>
-</blockquote>
-<h6 id="匹配记录"><a href="#匹配记录" class="headerlink" title="匹配记录"></a>匹配记录</h6><pre><code># awk -F: &apos;$1 ~ /^alice/&apos; /etc/passwd
-# awk -F: &apos;$NF !~ /bash$/&apos; /etc/passwd</code></pre><h6 id="比较表达式"><a href="#比较表达式" class="headerlink" title="比较表达式"></a>比较表达式</h6><p>条件表达式</p>
-<pre><code># awk -F: &apos;$3&gt;300 {print $0}&apos; /etc/passwd
-# awk -F: &apos;{ if($3&gt;300) print $0 }&apos; /etc/passwd
-# awk -F: &apos;{ if($3&gt;300) {print $0} }&apos; /etc/passwd
-# awk -F: &apos;{ if($3&gt;300) {print $3} else{print $1} }&apos; /etc/passwd</code></pre><p>算数运算</p>
-<pre><code># awk -F: &apos;$3 * 10 &gt; 500&apos; /etc/passwd
-# awk -F: &apos;{ if($3*10&gt;500){print $0} }&apos; /etc/passwd</code></pre><p>逻辑运算</p>
-<pre><code># awk -F: &apos;$1~/root/ &amp;&amp; $3&lt;=15&apos; /etc/passwd # awk -F: &apos;$1~/root/ || $3&lt;=15&apos; /etc/passwd
-# awk -F: &apos;!($1~/root/ || $3&lt;=15)&apos; /etc/passwd</code></pre><h6 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h6><pre><code>awk -F: &apos;{if($3==0){i++} else if($3&gt;999){k++} else{j++}} END{print i; print k; print j}&apos; /etc/passwd
-
-[root@tianyun ~]# awk -F: &apos;{i=1; while(i&lt;=10) {print $0; i++}}&apos; /etc/passwd //将每行打印 10 次
-
-[root@tianyun ~]# awk -F: &apos;{ for(i=1;i&lt;=10;i++) {print $0} }&apos; /etc/passwd //将每行打印 10 次</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/12/常用的web服务器/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/08/12/常用的web服务器/" itemprop="url">常用的web服务器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-12T19:45:21+08:00">
-                2018-08-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>参考：<a href="http://www.coozhi.com/youxishuma/g4/63698.html" target="_blank" rel="noopener">http://www.coozhi.com/youxishuma/g4/63698.html</a></p>
-<ol>
-<li>Apache<br>也被叫做httpd服务器，是目前使用<strong>最广泛的</strong>web服务器。<br>优点：小巧，灵活，可扩展，稳定<br>缺点：软件开源，漏洞易被发现</li>
-<li>Nginx<br>是<strong>Linux</strong>平台下优秀的web服务器.不仅是HTTP服务器而且也是负载均衡的反向代理。<br>优点：压缩率高，支持负载均衡，<strong>速度快</strong></li>
-<li>IIS<br>IIS是微软平台的web服务器，是针对windows平台的服务器。和NET非常搭配<br>优点：安装配置简单，学起来容易<br>缺点：平台适用性单一，安全性有待提高</li>
-<li>Tomcat<br>免费，深受java开发者喜爱。<br>优点：简单易掌握，部署容易，应用广泛<br>缺点：扩展性不强，可配置性弱，大并发能力不强</li>
-</ol>
+<p>环境：mac 10.12.6  pycharm +Flask</p>
+<p>【问题1】找不到项目的Flask配置位置？debug模式怎么一直是off，即使run后面添加了debug=True？</p>
+<p>Flask配置：点击项目名，在如下位置编辑</p>
+<p><img src="/images/pasted-26.png" alt="upload successful"></p>
+<p><img src="/images/pasted-27.png" alt="upload successful"></p>
+<p>【问题2】执行创建数据库表的操作时提示Mysql Error 2003: Can’t connect to MySQL server on ‘127.0.0.1’ ([Errno 61] Connection refused)<br><img src="/images/pasted-28.png" alt="upload successful"><br>解决：没有安装Mysql服务，于是下载安装，具体见mysql那一篇</p>
 
           
         
@@ -2157,7 +1544,7 @@ ORS The output record separator, by default a newline. # awk -F: &apos;BEGIN{ORS
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/python语法/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/tensorflow环境安装实践2/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -2176,7 +1563,7 @@ ORS The output record separator, by default a newline. # awk -F: &apos;BEGIN{ORS
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/08/09/python语法/" itemprop="url">语法_python3记录</a></h1>
+                <a class="post-title-link" href="/2019/06/15/tensorflow环境安装实践2/" itemprop="url">tensorflow环境安装实践2</a></h1>
         
 
         <div class="post-meta">
@@ -2188,8 +1575,8 @@ ORS The output record separator, by default a newline. # awk -F: &apos;BEGIN{ORS
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-09T17:29:00+08:00">
-                2018-08-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-15T17:03:19+08:00">
+                2019-06-15
               </time>
             
 
@@ -2228,317 +1615,132 @@ ORS The output record separator, by default a newline. # awk -F: &apos;BEGIN{ORS
       
         
           
-            <h4 id="矩阵乘法"><a href="#矩阵乘法" class="headerlink" title="矩阵乘法"></a>矩阵乘法</h4><p>分为两种方式</p>
-<p>1.np.dot(A,B)</p>
-<ul>
-<li>对于多维矩阵，计算真正意义上的矩阵乘积(数学线性运算)</li>
-<li>对于一维矩阵，计算内积</li>
-</ul>
-<p>2.np.multiply()或*</p>
-<p>实现对应元素直接相乘，即mn和m<em>n相乘得到的还是m</em>n的矩阵</p>
-<p><a href="https://www.cnblogs.com/hezhiyao/p/8177832.html" target="_blank" rel="noopener">https://www.cnblogs.com/hezhiyao/p/8177832.html</a></p>
-<pre><code>import numpy as np
-xx =np.array([[-1, 0, 1],[-2, 0, 2]])
-yy =np.array([[-1, 0, 1],[-2, 0, 2]])
-rt=xx*yy
-count=sum(rt) #每列相加
-print(rt)
-print(count)
-print(sum(count))
+            <p>由于之前是在本机的python2.7基础上安装的本次希望安装个基于3.x的，为了兼容其他同学的环境代码。<br>方案：使用虚拟隔离环境构建<br>问题1：在本机安装py3.7的包，然后在已经有的virtualenv（之前在py2.7下安装的）下链接此pyh环境提示：<br>New python executable in /Users/cly/Documents/my_env/bin/python3  </p>
+<p>没办法解决，愤然上课去，下课后心平气和的重新用新装的pip3.7重新装了一遍virtualenv，这个问题解决:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MacBook-Pro:bin cly$ pip3 install -U virtualenv</span><br><span class="line">MacBook-Pro:workspace cly$ virtualenv -p /Library/Frameworks/Python.framework/Versions/3.7/bin/python3  my_env</span><br><span class="line">MacBook-Pro:workspace cly$ source my_env/bin/activate  #激活，开始使用</span><br><span class="line">(my_env)MacBook-Pro:workspace cly$ python -V#注意目录前面出现(my_env)</span><br><span class="line">Python 3.7.3</span><br><span class="line">(my_env)MacBook-Pro:workspace cly$ ：deactivate 退出</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
 
-返回值
-[[1 0 1]
-[4 0 4]]
+    
 
-[5 0 5]
-10</code></pre><h4 id="字符串判定"><a href="#字符串判定" class="headerlink" title="字符串判定"></a>字符串判定</h4><pre><code>isalnum()数字或字母
-isalpha()字母
-isdigit()数字
-isupper()大写
-istitle()首字母大写
-isspace()所有字母都是空白字符、\t、\n、\r</code></pre><h4 id="max函数"><a href="#max函数" class="headerlink" title="max函数"></a>max函数</h4><p>1)除了数值类型，字符串取字母表最靠后的字母</p>
-<p>2）可以添加参数key，指定方法，入参即为比较的元素</p>
-<pre><code>sample=[40,53,12,5,5,9,9]
-print(max(set(sample), key=sample.count))</code></pre><h4 id="yield和斐波那契数列"><a href="#yield和斐波那契数列" class="headerlink" title="yield和斐波那契数列"></a>yield和斐波那契数列</h4><p>比如爬楼梯和生兔子问题都是斐波那契数列问题。我的理解比如爬楼梯要么从下两层爬上来，要么就是从下1层爬上来，一共两种方式，肯定就是这两种方法的总和，兔子问题需要推出来符合斐波那契数列数列规律。</p>
-<pre><code>def fab(max):
-a,b,n=0,1,0
-while(n&lt;max):
-    yield b
-    print(&quot;aaa&quot;)
-    a,b=b,a+b
-    n+=1
-f=fab(5)
-print(f.__next__())#1
-print(f.__next__())#aaa 1
-print(f.__next__())#aaa 2</code></pre><p> yield：返回值b；每次调用<strong>next</strong>()的时候执行到此关键字处。下次<strong>next</strong>()再继续执行yeild后面的语句。</p>
-<p> 因为是迭代器，所以可以改成遍历获取：</p>
-<pre><code>for i in fab(5):
-   print (i)</code></pre><p> 对于斐波那契数列还可以使用装饰器进行优化：</p>
-<pre><code> def cache(fun):
-    fibdict = {}
-    print (&quot;cache begin..&quot;)
-    def wrapper(n):
+    
 
-        if n in fibdict:
-            return fibdict[n]
-        fibdict[n]=fun(n)
-        return fibdict[n]
-    return wrapper
-@cache
-def fib(n):
-    return 1 if n &lt;2 else fib(n-1)+fib(n-2)
+    
 
-print(fib(7))</code></pre><h4 id="re-search和re-match"><a href="#re-search和re-match" class="headerlink" title="re.search和re.match"></a>re.search和re.match</h4><p>前者从整个字符串中寻找一个匹配，后者只匹配字符串的开始。</p>
-<pre><code>import re
-a=&quot;worldhellodfddjhello&quot;
-print(re.match(&quot;hello&quot;,a).group())#None
-print(re.search(&quot;hello&quot;,a).group())#hello</code></pre><h4 id="dict-fromkeys-seq-value"><a href="#dict-fromkeys-seq-value" class="headerlink" title="dict.fromkeys(seq,value)"></a>dict.fromkeys(seq,value)</h4><p>或{}.fromkeys(seq,value)</p>
-<p>取序列元素作为key，value作为默认值(无value就是None)</p>
-<p>【注意】：这个方法因为是创建字典，所以会自动去重</p>
-<pre><code>a = [1,5,5,7]
-print(dict.fromkeys(a,&quot;defaultvalue&quot;))
+    <footer class="post-footer">
+      
 
-#输出
-{1: &apos;defaultvalue&apos;, 5: &apos;defaultvalue&apos;, 7: &apos;defaultvalue&apos;}
+      
 
- list({}.fromkeys(plist).keys())</code></pre><h4 id="文件读取"><a href="#文件读取" class="headerlink" title="文件读取"></a>文件读取</h4><pre><code>read():读取整个文件，内容为字符串
-readline()：返回下一行，内容为字符串；
-readlines():返回list,保存有每行的数据。</code></pre><h4 id="下划线命名"><a href="#下划线命名" class="headerlink" title="下划线命名"></a>下划线命名</h4><p>python中主要存在四种命名方式：</p>
-<p>1、object #无下划线：公用方法</p>
-<p>2、_object #单下划线：半保护</p>
-<pre><code>被看作是“protect”，意思是只有类对象和子类对象自己能访问到这些变量，
- 在模块或类外不可以使用，不能用’from module import *’导入。
-__object 是为了避免与子类的方法名称冲突， 对于该标识符描述的方法，父
-类的方法不能轻易地被子类的方法覆盖，他们的名字实际上是_classname__methodname。</code></pre><p>3、__object  #双下划线：全私有，全保护</p>
-<pre><code>私有成员“private”，意思是只有类对象自己能访问，连子类对象也不能访问到这个数据，不能用’from module import *’导入。</code></pre><p>4、_ _ object_ _     #前后都有双下划线：内建方法，用户不要这样定义</p>
-<h4 id="jsonpath模块"><a href="#jsonpath模块" class="headerlink" title="jsonpath模块"></a>jsonpath模块</h4><p>安装pip install jsonpath</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">from jsonpath import jsonpath</span><br><span class="line"></span><br><span class="line">testdict=&#123;</span><br><span class="line">    &quot;config&quot;: &#123;</span><br><span class="line">        &quot;host_huidu&quot;: &quot;10.39.34.70:8080&quot;,</span><br><span class="line">    &#125;,</span><br><span class="line">    &quot;name&quot;: &quot;hotel&quot;,</span><br><span class="line">    &quot;groups&quot;: &#123;</span><br><span class="line">        &quot;order&quot; : [</span><br><span class="line">            &quot;/hotel/getHomepageOrderList&quot;,</span><br><span class="line">            &quot;/myelong/getHotelOrder&quot;,</span><br><span class="line">            &quot;/myelong/getHotellist&quot;</span><br><span class="line">        ]        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">ret=jsonpath(testdict,&quot;$.name&quot;)</span><br><span class="line">ret=jsonpath(testdict,&quot;$.groups.order[1]&quot;)</span><br><span class="line">ret=jsonpath(testdict,&quot;$..order[1:3]&quot;)</span><br><span class="line">print(ret)</span><br></pre></td></tr></table></figure>
+      
 
-<h4 id="单例（Singleton）"><a href="#单例（Singleton）" class="headerlink" title="单例（Singleton）"></a>单例（Singleton）</h4><p>单例是一种设计模式，应用该模式的类只会生成一个实例</p>
-<p>在 Python 中，我们可以用多种方法来实现单例模式：</p>
-<ul>
-<li><p>使用模块</p>
-</li>
-<li><p>使用 <strong>new</strong></p>
-</li>
-<li><p>使用装饰器（decorator）</p>
-</li>
-<li><p>使用元类（metaclass）</p>
-</li>
-</ul>
-<p>重写new函数：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 实例化一个单例</span><br><span class="line">class Singleton():</span><br><span class="line">    __instance = None</span><br><span class="line"> </span><br><span class="line">    def __new__(cls, age, name):</span><br><span class="line">        #如果类属性__instance的值为None，</span><br><span class="line">        #那么就创建一个对象，并且赋值为这个对象的引用，保证下次调用这个方法时</span><br><span class="line">        #能够知道之前已经创建过对象了，这样就保证了只有1个对象</span><br><span class="line">        if not cls.__instance:</span><br><span class="line">            cls.__instance = super().__new__(cls)</span><br><span class="line">        return cls.__instance</span><br><span class="line"> </span><br><span class="line">a = Singleton(18, &quot;dongGe&quot;)</span><br><span class="line">b = Singleton(8, &quot;dongGe&quot;)</span><br><span class="line"> </span><br><span class="line">print(id(a))</span><br><span class="line">print(id(b))</span><br></pre></td></tr></table></figure>
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
 
-<p>【注】 区别:cls是类本身的一个对象,self是类实例的一个对象</p>
-<p>参考：<a href="https://segmentfault.com/a/1190000008141049" target="_blank" rel="noopener">https://segmentfault.com/a/1190000008141049</a></p>
-<h4 id="python-赋值-深拷贝-浅拷贝"><a href="#python-赋值-深拷贝-浅拷贝" class="headerlink" title="python 赋值 深拷贝    浅拷贝"></a>python 赋值 深拷贝    浅拷贝</h4><pre><code>浅拷贝：即引用，共用一个地址，互相受影响。  
-深拷贝：完全独立的地址，互相不受影响。  
-赋值：字典，列表等对象赋值相当于浅拷贝，而int,str,float,bool在值改变后新增了内存地址存放新值，与原来不共用一个地址，相当于深拷贝。  </code></pre><p>一般默认是浅拷贝，有速度快，占用内存小等特点</p>
-<h4 id="yaml模块"><a href="#yaml模块" class="headerlink" title="yaml模块"></a>yaml模块</h4><ol>
-<li>安装：pip install pyyaml  </li>
-</ol>
-<p>  *<em>语法 *</em>：  </p>
-<ol>
-<li><p>大小写敏感 </p>
-</li>
-<li><p>使用缩进表示层级关系</p>
-</li>
-<li><p>缩进时不允许使用Tab，只允许使用空格</p>
-</li>
-<li><p>缩进的空格数目不重要，只要相同层级的元素左对齐即可</p>
-</li>
-<li><p>‘#’表示注释，从它开始到行尾都被忽略</p>
-<p>yaml模块常用的两个方法时yaml.load和yaml.dump</p>
-<ol start="2">
-<li>yaml.load<br>返回一个对象dict</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">import yaml</span><br><span class="line">f = open(r&apos;E:\AutomaticTest\Test_Framework\config\config.yml&apos;)</span><br><span class="line">y = yaml.load(f)</span><br><span class="line">print (y)</span><br></pre></td></tr></table></figure>
 
-<ol start="3">
-<li><p>yaml.dump 将一个python对象生成为yaml文档,除此还有safe_dump等<br>若有中文，必须添加<strong>allow_unicode</strong>参数<br>第二个参数，是要写进的文件</p>
-<p> dump(data, stream=None, Dumper=Dumper,<br>   default_style=None,<br>   default_flow_style=None,<br>   encoding=’utf-8’, # encoding=None (Python 3)<br>   explicit_start=None,<br>   explicit_end=None,<br>   version=None,<br>   tags=None,<br>   canonical=None,<br>   indent=None,<br>   width=None,<br>   allow_unicode=None,<br>   line_break=None)<br> dump_all(data, stream=None, Dumper=Dumper, …)  </p>
-<p> safe_dump(data, stream=None, …)  </p>
-<p> safe_dump_all(data, stream=None, …)  </p>
-</li>
-</ol>
-</li>
-</ol>
-<p>举例：<br>      import yaml<br>      with open(‘abc.conf’,’w’)as f:<br>         yaml.dump(self.config, f, default_flow_style=False,<br>         indent=2, allow_unicode=True)<br>      <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JSON转YAML</span><br></pre></td></tr></table></figure></p>
-<pre><code>import json,yaml
-str = &apos;{ &quot;foo&quot;: &quot;bar&quot; }&apos;
-data = json.loads(str)
-yml = yaml.safe_dump(data,allow_unicode=True)
-print(yml)</code></pre><p>  参考：<a href="http://www.361way.com/python-pyyaml-module/4271.html" target="_blank" rel="noopener">http://www.361way.com/python-pyyaml-module/4271.html</a><br>  参考：<a href="https://www.cnblogs.com/klb561/p/9326677.html" target="_blank" rel="noopener">https://www.cnblogs.com/klb561/p/9326677.html</a></p>
-<h4 id="json模块"><a href="#json模块" class="headerlink" title="json模块"></a>json模块</h4><ol>
-<li><p>json.dumps[卸载掉对象]   </p>
-<p> 把一个Python对象编码转换成—&gt;json<strong>字符串</strong></p>
-</li>
-<li><p>json.loads[装上对象]    </p>
-<p>   把json字符串解码转换成—&gt;python<strong>对象dict</strong></p>
-<p>   其中 json 有下面三种样式：</p>
-<p> 字典样式 ‘{“name”:”gzj”, “age”:”23”, “sex”:”man”}’<br> 列表样式 ‘[“gzj”, 23, “man”]’<br> 字典和列表相互嵌套的样式 “””[“gzj”, “{‘age’:’23’}”]”””<br> 特别注意 JSON 字符串中的内容用双引号，而非单引号。</p>
-</li>
-<li><p>json.dump和json.load均是针对文件的。<br>json.dump<br>我理解为两个动作，一个动作是将”obj“转换为JSON格式的字符串，还有一个动作是将字符串写入到文件中</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = &#123;&quot;name&quot;:&quot;Tom&quot;, &quot;age&quot;:23&#125;</span><br><span class="line">with open(&quot;test.json&quot;, &quot;w&quot;, encoding=&apos;utf-8&apos;) as f:</span><br><span class="line">  ... # Parameter sort_keys    是否按照字母排序</span><br><span class="line">   ... # Parameter indent       缩进的空格数</span><br><span class="line">   ... # Parameter separators   分割符号形式</span><br><span class="line">     json.dump(a,f,indent=4) </span><br><span class="line">   # indent 超级好用，格式化保存字典，默认为None，小于0为零个空格</span><br><span class="line">   # f.write(json.dumps(a, indent=4))</span><br><span class="line">   # 和上面的效果一样！！！</span><br></pre></td></tr></table></figure>
+    
+      
 
-<p>json.load<br>一个动作是将一个包含JSON格式数据从文件中取出来，还有一个动作是将其序列化为一个python对象dict</p>
-<p><strong>当打开文件的时候，注意加上encoding否则会因为中文报错！</strong></p>
-<p>import json<br>with open(“test.json”, “r”, encoding=’utf-8’) as f:<br>   aa = json.loads(f.read())<br>   f.seek(0)<br>   bb = json.load(f)    # 与 json.loads(f.read())</p>
-</li>
-</ol>
-<h4 id="encode-和decode"><a href="#encode-和decode" class="headerlink" title="encode 和decode"></a>encode 和decode</h4><p>这里只说python3,不谈python2</p>
-<pre><code>- 字符串通过编码转换为字节码，字节码通过解码转换为字符串   </code></pre><p>   str（unicode）—&gt;(encode)—&gt;bytes，bytes—&gt;(decode)—&gt;str </p>
-<p>   python3默认编码是unicode编码，非utf8,需要经过encode才可能到utf8.</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name=&quot;小明&quot;   #类型：&lt;class &apos;str&apos;&gt;</span><br><span class="line">name1=name.encode(&quot;utf-8&quot;)  #加密输出：b&apos;\xe5\xb0\x8f\xe6\x98\x8e&apos;</span><br><span class="line">name2=name1.decode(&quot;utf-8&quot;) #解密还原：&apos;小明&apos;</span><br></pre></td></tr></table></figure>
+  
 
-<p>   u’\u7b80’ 是unicode, ‘\xe7\xae\x80’是byte , byte和unicode之间一一对应, 可以相互转换, 转换规则如下:<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt;b&apos;\xe7\xae\x80&apos;.decode(&apos;utf-8&apos;)   #字节转unicode（str）</span><br><span class="line">&apos;简&apos;</span><br><span class="line">&gt;&gt;&gt;u&apos;\u7b80&apos;.encode(&apos;utf-8&apos;)    #unicode转字节</span><br><span class="line">b&apos;\xe7\xae\x80&apos;</span><br></pre></td></tr></table></figure></p>
-<p>   参考：<a href="https://www.jianshu.com/p/4ced2bbc9334" target="_blank" rel="noopener">https://www.jianshu.com/p/4ced2bbc9334</a><br>   <a href="https://blog.csdn.net/qq_29053519/article/details/79170519" target="_blank" rel="noopener">https://blog.csdn.net/qq_29053519/article/details/79170519</a></p>
-<h4 id="装饰器和闭包"><a href="#装饰器和闭包" class="headerlink" title="装饰器和闭包"></a>装饰器和闭包</h4><p>  自定义装饰器，常用作打日志和运行时间</p>
-<pre><code>import time
-def logger(func):
-    #如果原函数有参数，那闭包函数必须保持参数个数一致
-    def mywrapper(x,y):#将函数外面包一层
-        print(x,y)#添加的额外功能,打印日志(1,2)
-        t1=time.time()
-        func(x,y)#原函数add(a,b)
-        t2=time.time()
-        cost=t2-t1#额外功能：计算时间
-        print(&quot;共计花费时间{}&quot;.format(cost))
-    return mywrapper
+  
+  
+  
 
-@logger
-def add(a,b):
-    print(&quot;a+b={}&quot;.format(a+b))
-    time.sleep(1)
-add(1,2) #相当于logger(add)</code></pre><p>  装饰器属于闭包函数：什么是闭包函数？</p>
-<h5 id="闭包函数"><a href="#闭包函数" class="headerlink" title="闭包函数"></a>闭包函数</h5><pre><code>1.函数内部定义的函数  
-2.包含对外部变量而非全局变量的引用，如：
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/09/tensorflow学习实践二/">
 
-def outer():
-    x = 1
-    def inner():
-      print(&quot;x=%s&quot; %x)
-      print(&quot;inner func excuted&quot;)
-    inner()#也可以return
-  print(&quot;outer func excuted&quot;)
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
 
-outer()
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
 
-#####输出结果#########
-x=1
-inner func excuted
-outer func excuted</code></pre><p>   闭包函数,它必须包含自己的函数以及一个外部变量才能真正称得上是一个闭包函数。如果没有一个外部变量与其绑定,那么這个函数不能算得上是闭包函数.</p>
-<p>   有了以上基础,对于装饰器就好理解了. </p>
-<h5 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a>装饰器</h5><p>   外部函数传入被装饰函数名，内部函数返回装饰函数名。</p>
-<pre><code>  特点：  
-     1.不修改被装饰函数的调用方式   
-     2.不修改被装饰函数的源代码
+    
+      <header class="post-header">
 
-import time
-import random
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/09/tensorflow学习实践二/" itemprop="url">tensorflow学习实践二</a></h1>
+        
 
-def timmer(func):
-    def wrapper():
-        start_time = time.time()
-        func()
-        stop_time=time.time()
-        print(&apos;run time is %s&apos; %(stop_time-start_time))
-    return wrapper
-def auth(func):
-    def deco():
-        name=input(&apos;name: &apos;)
-        password=input(&apos;password: &apos;)
-        if name == &apos;egon&apos; and password == &apos;123&apos;:
-            print(&apos;login successful&apos;)
-            func() #wrapper()
-        else:
-            print(&apos;login err&apos;)
-    return deco
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-09T17:31:43+08:00">
+                2019-06-09
+              </time>
+            
 
-@auth   # index = auth(timmer(index))                 
-@timmer # index = timmer(index)
-def index():
+            
 
-  time.sleep(3)
-  print(&apos;welecome to index page&apos;)
-index()</code></pre><p>   如果有多个引用如上面的@auth,@timmer,顺序是从下至上。</p>
-<p>   参考：<a href="https://www.cnblogs.com/huchong/p/7725564.html#_label1" target="_blank" rel="noopener">https://www.cnblogs.com/huchong/p/7725564.html#_label1</a></p>
-<h4 id="格式化"><a href="#格式化" class="headerlink" title="格式化"></a>格式化</h4><pre><code>https://www.cnblogs.com/lvcm/p/8859225.html这篇文章总结的很好</code></pre><h4 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h4><p> python3常用的两个模块为：</p>
-<ul>
-<li>_thread</li>
-<li>threading(推荐使用)</li>
-</ul>
-<p>线程中参数传递方法：</p>
-<pre><code>1、仅使用元组传递初始化
-    threading.Thread(target=song,args=(1,2,3)).start()
-2、仅使用字典传递 threading.Thread(target=方法名, kwargs={&quot;参数名&quot;: 参数1, &quot;参数名&quot;: 参数2, ...})
+            
+          </span>
 
-threading.Thread(target=song,kwargs={&quot;a&quot;:1,&quot;c&quot;:3,&quot;b&quot;:2}).start() #参数顺序可以变
-3、混合使用元组和字典 threading.Thread(target=方法名，args=（参数1, 参数2, ...）, kwargs={&quot;参数名&quot;: 参数1,&quot;参数名&quot;: 参数2, ...})
+          
 
-threading.Thread(target=song,args=(1,),kwargs={&quot;c&quot;:3,&quot;b&quot;:2}).start()</code></pre><p>   主要参数：</p>
-<pre><code>target表示调用对象 , 即子进程要执行的任务  
-args表示调用对象的位置参数,元组类型。  </code></pre><p>  方法介绍：    </p>
-<pre><code>p.start() : 启动进程,并调用子进程中的p.run ()  
-p.is_alive () : 如果p仍然运行 , 返回True</code></pre><p>threading参考：<a href="https://www.jb51.net/article/161728.htm" target="_blank" rel="noopener">https://www.jb51.net/article/161728.htm</a></p>
-<h4 id="处理小数"><a href="#处理小数" class="headerlink" title="处理小数"></a>处理小数</h4><p>参考：<a href="https://www.jb51.net/article/102248.htm" target="_blank" rel="noopener">https://www.jb51.net/article/102248.htm</a></p>
-<ul>
-<li><p>向下取整 int()</p>
-</li>
-<li><p>四舍五入 round()</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; round(3.25); round(4.85)</span><br><span class="line">3.0</span><br><span class="line">5.0</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>向上取整 ceil()</p>
-</li>
-<li><p>分别取整数部分和小数部分</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import math</span><br><span class="line">&gt;&gt;&gt; math.modf(3.25)</span><br><span class="line">(0.25, 3.0)</span><br><span class="line">&gt;&gt;&gt; math.modf(4.2)</span><br><span class="line">(0.20000000000000018, 4.0)</span><br><span class="line">&gt;&gt;&gt;b = math.modf(123.34)#分开两部分</span><br><span class="line">&gt;&gt;&gt;print(b)                </span><br><span class="line">&gt;&gt;&gt;print(&apos;%.2f&apos; % b[0]) #保留两位小数0.34</span><br></pre></td></tr></table></figure>
+          
+            
+          
 
-</li>
-</ul>
-<h4 id="string模块"><a href="#string模块" class="headerlink" title="string模块"></a>string模块</h4><pre><code>import string
-string.ascii_lowercase  #打印所有的小写字母
-string.ascii_uppercase  #打印所有的大写字母
-string.ascii_letters #打印所有的大小写字母
-string.digits  #打印0-9的数字
-string.punctuation  #打印所有的特殊字符
+          
+          
 
-string.hexdigits #打印十六进制的字符
-string.printable  #打印所有的大小写，数字，特殊字符</code></pre><h4 id="hashlib模块"><a href="#hashlib模块" class="headerlink" title="hashlib模块"></a>hashlib模块</h4><pre><code>python的hashlib库的md5摘要是不可反解的，非常安全
+          
 
-  hash.update(arg)
-  更新hash对象。连续的调用该方法相当于连续的追加更新。例如m.update(a); m.update(b)相当于m.update(a+b)。  
-  hash.digest() 返回摘要，作为二进制数据字符串值,  
-  hash.hexdigest() 返回摘要，作为十六进制数据字符串值,  
-  hash.copy() 复制  </code></pre><p>示例：加盐</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">def my_md5(s:str,salt=None):</span><br><span class="line">s=str(s)</span><br><span class="line">if salt:</span><br><span class="line">  s=s+salt</span><br><span class="line">m=hashlib.md5(s.encode())</span><br><span class="line">return m.hexdigest()</span><br></pre></td></tr></table></figure>
+          
 
-<p> 或</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> import hashlib</span><br><span class="line">obj=hashlib.md5(b&apos;12334&apos;)                #实例化md5的时候可以给传个参数，这叫加盐</span><br><span class="line">obj.update(&quot;admin&quot;.encode(&quot;utf-8&quot;))      #是再加密的时候传入自己的一块字节，</span><br><span class="line">secret=obj.hexdigest()</span><br><span class="line">print(secret)</span><br></pre></td></tr></table></figure>
+          
 
-<h4 id="局部变量和全局变量"><a href="#局部变量和全局变量" class="headerlink" title="局部变量和全局变量"></a>局部变量和全局变量</h4><h6 id="列表-字典-集合-类-—-局部变量可以改全局变量，除了整数和字符串"><a href="#列表-字典-集合-类-—-局部变量可以改全局变量，除了整数和字符串" class="headerlink" title="列表 字典 集合 类 —-局部变量可以改全局变量，除了整数和字符串"></a>列表 字典 集合 类 —-局部变量可以改全局变量，除了整数和字符串</h6>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">d = &#123;&#125;</span><br><span class="line">def test():</span><br><span class="line">    d[&apos;url&apos;]=&apos;https://www.cnblogs.com/uncleyong/p/10530261.html&apos;</span><br><span class="line">def test2():</span><br><span class="line">    d[&apos;url&apos;]=&apos;https://www.cnblogs.com/uncleyong/&apos;</span><br><span class="line">test()</span><br><span class="line">test2()</span><br><span class="line">print(d)</span><br><span class="line">#&#123;&apos;url&apos;: &apos;https://www.cnblogs.com/uncleyong/&apos;&#125;</span><br></pre></td></tr></table></figure>
+        </div>
+      </header>
+    
 
-<p>但是如果重新创建则不是一回事</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">info =&#123;&apos;age&apos;:18,  &apos;url&apos;:&apos;https://www.cnblogs.com/uncleyong/p/10530261.html&apos;&#125;</span><br><span class="line">def test():</span><br><span class="line">    #重新创建了一个区别全局info的变量（地址变了，可用id函数验证）		</span><br><span class="line">    info=&#123;&#125;</span><br><span class="line">    info[&apos;name&apos;] = &apos;qzcsbj&apos;</span><br><span class="line">test()</span><br><span class="line">print(info)</span><br><span class="line">#&#123;&apos;age&apos;: 18, &apos;url&apos;: &apos;https://www.cnblogs.com/uncleyong/p/10530261.html&apos;&#125;</span><br></pre></td></tr></table></figure>
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
-<h6 id="global"><a href="#global" class="headerlink" title="global"></a>global</h6><p>  global需要在局部变量定义之前声明，否则报错</p>
-<pre><code>res = None
-def calc(a,b):
-    res = 0
-    global res
-    res = a+b
-calc(1,2)
-print(res)
-#报错:SyntaxError: name &apos;res&apos; is assigned to before global declaration</code></pre><p>　　</p>
-<h4 id="random模块"><a href="#random模块" class="headerlink" title="random模块"></a>random模块</h4><p> random中的一些重要函数的用法：</p>
-<pre><code>random.random()函数是这个模块中最常用的方法了，它会生成一个随机的浮点数，范围是在0.0~1.0之间。
+      
+      
 
-random.uniform()正好弥补了上面函数的不足，它可以设定浮点数的范围，一个是上限，一个是下限。
+      
+        
+          
+            <h4 id="可视化利器tensorboard"><a href="#可视化利器tensorboard" class="headerlink" title="可视化利器tensorboard"></a>可视化利器tensorboard</h4><p>待续  </p>
+<h4 id="matplotlib"><a href="#matplotlib" class="headerlink" title="matplotlib"></a>matplotlib</h4><p>=matrix + plot  +library<br>常用子包<strong>pyplot</strong><br><a href="https://matplotlib.org" target="_blank" rel="noopener">https://matplotlib.org</a></p>
+<p><img src="/images/pasted-15.png" alt="upload successful"></p>
+<p><img src="/images/pasted-16.png" alt="upload successful"></p>
 
-random.randint()随机生一个整数int类型，可以指定这个整数的范围，同样有上限和下限值，如random.randint（0，4）包括0和4中的随机整数。
-
-random.choice()可以从任何序列，比如list列表中，选取一个随机的元素返回，可以用于字符串、列表、元组等。
-
-random.sample()可以从指定的序列中，随机的截取指定长度的片断，不作原地修改。</code></pre>
           
         
       
@@ -2577,7 +1779,7 @@ random.sample()可以从指定的序列中，随机的截取指定长度的片�
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/9/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><span class="page-number current">10</span><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/11/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2623,7 +1825,7 @@ random.sample()可以从指定的序列中，随机的截取指定长度的片�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">116</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -86,10 +86,12 @@
 <meta property="og:site_name" content="躲不掉的风">
 <meta property="og:description" content="echarts及option配置应用 import echarts from &amp;apos;echarts&amp;apos;; Vue.prototype.$echarts = echarts;  import { bar_option, pie_option, line_bugrate_option } from &amp;apos;@/components/chart_options/echart_opti">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-03T03:20:46.941Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-151.png">
+<meta property="og:updated_time" content="2020-10-01T00:53:25.193Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="echarts使用小记">
 <meta name="twitter:description" content="echarts及option配置应用 import echarts from &amp;apos;echarts&amp;apos;; Vue.prototype.$echarts = echarts;  import { bar_option, pie_option, line_bugrate_option } from &amp;apos;@/components/chart_options/echart_opti">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-151.png">
 
 
 
@@ -386,9 +388,32 @@ normal:{
 <li><p>常用功能</p>
 <p> minInterval: 1//在横轴和纵轴添加可限制刻度最小间隔，避免出现小数<br> selector:legend中设置选中规则<br> barMaxWidth: ‘50’,  //现在柱子宽度，避免在极限的时候展示粗细情况</p>
 </li>
-<li><p>纵轴标记线–markline</p>
+<li><p>纵轴标记线–markline 标记点–markpoint</p>
+</li>
+<li><p>图像链接跳转重复打开多个浏览器tab</p>
+<p>1 使用windows.open 容易出现重复打开窗口的情况；若确保每次都为其提供相同的窗口名称可解决，由于项目中窗口名称不太好取，就采用了下面的方式</p>
+<pre><code>export function openNewurl(url) {
+  var newA = document.createElement(&quot;a&quot;);
+  newA.id = &apos;gg&apos;
+  newA.target = &apos;_blank&apos;;
+  newA.href = url;
+  document.body.appendChild(newA);
+  newA.click();
+  document.body.removeChild(newA);
+}</code></pre><p>2 但是还有重复的情况，排查知进行了多次click事件，原因是进行了重复绑定，需要进行解绑，进行off</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chart.off(&apos;click&apos;);</span><br><span class="line">chart.on(&apos;click&apos;, doSomething);</span><br></pre></td></tr></table></figure>
+
+<p>   参考：<a href="https://github.com/apache/incubator-echarts/issues/6089" target="_blank" rel="noopener">https://github.com/apache/incubator-echarts/issues/6089</a></p>
 </li>
 </ol>
+<ul>
+<li><p>横轴坐标重复</p>
+<p>axiosLable中的interval设置为0</p>
+<p><img src="/images/pasted-151.png" alt="upload successful"></p>
+</li>
+<li><p>底部区域展示不全</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grid: &#123;</span><br><span class="line">           bottom: &quot;30%&quot;</span><br><span class="line">         &#125;,</span><br></pre></td></tr></table></figure></li>
+</ul>
 
       
     </div>
@@ -493,7 +518,7 @@ normal:{
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">116</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

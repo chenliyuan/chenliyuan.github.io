@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="躲不掉的风">
 <meta property="og:description" content="以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。 常用命令 光标定位移动 hjkl 上下左右移动 0$  行首尾 gg G   文首尾 3G 进入第三行 /string (n N 可以循环的) 快速定位到某一行 /^d   按照行搜索（注意） /txt$ n&amp;lt;space&amp;gt;  :按下数字后再按空格键，光标会向右移动这一行的 n 个字符 文本编辑(少量)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-27T02:38:38.497Z">
+<meta property="og:updated_time" content="2020-10-18T09:55:27.393Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vim命令及常见问题">
 <meta name="twitter:description" content="以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。 常用命令 光标定位移动 hjkl 上下左右移动 0$  行首尾 gg G   文首尾 3G 进入第三行 /string (n N 可以循环的) 快速定位到某一行 /^d   按照行搜索（注意） /txt$ n&amp;lt;space&amp;gt;  :按下数字后再按空格键，光标会向右移动这一行的 n 个字符 文本编辑(少量)">
@@ -503,9 +503,9 @@ $ cat /dev/null &gt; filename</code></pre><hr>
 </ol>
 <p>【取消多行注释】</p>
 <ol>
-<li><p>进入命令行模式，按ctrl + v进入 visual block模式，按字母l横向选中列的个数，例如 // 需要选中2列</p>
+<li><p>进入命令行模式，按ctrl + v（一定加ctrl）进入 visual block模式</p>
 </li>
-<li><p>按字母j，或者k选中注释符号</p>
+<li><p>选中所有列的第一列即注释符号</p>
 </li>
 <li><p>按d键就可全部取消注释</p>
 </li>
@@ -623,7 +623,7 @@ $ cat /dev/null &gt; filename</code></pre><hr>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">116</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

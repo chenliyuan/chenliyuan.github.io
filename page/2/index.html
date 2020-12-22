@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/15/cdn和p2p/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/24/Vue结构搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -280,7 +280,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/15/cdn和p2p/" itemprop="url">cdn和p2p</a></h1>
+                <a class="post-title-link" href="/2020/09/24/Vue结构搭建/" itemprop="url">Vue项目架构搭建</a></h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-15T11:25:27+08:00">
-                2020-07-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-24T17:39:58+08:00">
+                2020-09-24
               </time>
             
 
@@ -332,15 +332,9 @@
       
         
           
-            <p>老大：你们知道cdn么？</p>
-<h6 id="cdn"><a href="#cdn" class="headerlink" title="cdn"></a>cdn</h6><p>全称是Content Delivery Network，即内容分发网络。</p>
-<p>通俗解释：麦当劳总部发布新产品，全世界各个分店都收到了新产品，用户可以就近想用。</p>
-<p>关键词： 网络分发  缓存 边缘服务器</p>
-<p>建立连接快：直接去连最近的边缘服务器</p>
-<h6 id="p2p"><a href="#p2p" class="headerlink" title="p2p"></a>p2p</h6><p>每个用户都可作为服务器，向他人共享资源。在下载的同时也可能在上传共享资源</p>
-<p>建立连接慢：需要找附近可建立连接的邻居站点，但是质量良莠不齐，有的可能是重复的资源，有的可能已经关闭了。</p>
-<h6 id="p2sp"><a href="#p2sp" class="headerlink" title="p2sp:"></a>p2sp:</h6><p>一旦连接建立起来，同时可以从cdn,其他邻居都各服务器、多个cdn地址去下载</p>
-<p>参考：<a href="https://blog.csdn.net/dianliang01/article/details/80591236?locationNum=10&amp;fps=1" target="_blank" rel="noopener">https://blog.csdn.net/dianliang01/article/details/80591236?locationNum=10&amp;fps=1</a></p>
+            <p>数据流向和路由跳转如下<br><img src="/images/pasted-149.png" alt="upload successful"></p>
+<p>【原因】拆分成index和login两部分主要原因是login页面不使用与各个其他模块相同的页面设计部分。</p>
+<p>【方式】主要通过留 <router-view>口子，通过路由跳转来实现<br>嵌套功能</router-view></p>
 
           
         
@@ -389,7 +383,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/10/抠根问底/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/23/axios-get传递数组/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -408,7 +402,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/10/抠根问底/" itemprop="url">抠根问底</a></h1>
+                <a class="post-title-link" href="/2020/09/23/axios-get传递数组/" itemprop="url">axios get和post传递数组</a></h1>
         
 
         <div class="post-meta">
@@ -420,8 +414,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-10T10:44:35+08:00">
-                2020-07-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-23T11:08:02+08:00">
+                2020-09-23
               </time>
             
 
@@ -460,24 +454,299 @@
       
         
           
-            <h5 id="switch和-if-else的区别"><a href="#switch和-if-else的区别" class="headerlink" title="switch和 if else的区别"></a>switch和 if else的区别</h5><ol>
-<li><p>switch生成调表以空间替换时间（生成跳表）</p>
-</li>
-<li><p>switch表达式生成一次(其实就是一个常量)，ifelse每次都要重新生成，放入寄存器</p>
-<p>PS:  跳表：用于指示实际case分支的地址的</p>
-<p>以下是我的理解:</p>
-<pre><code>switch(no):
-case 8：
-...
-case 90:
-...
-case 3:
-...
-default:...</code></pre><p><img src="/images/pasted-122.png" alt="upload successful"></p>
-<p>生成一个分支+1长度的数组，索引值对应的分支值。</p>
-<p>根据变量值no，获取数组该no索引对应的地址–&gt;跳转到该地址执行该分支代码</p>
-</li>
-</ol>
+            <h6 id="格式化数组参数的三种方法：https-www-cnblogs-com-boshow-p-13432156-html"><a href="#格式化数组参数的三种方法：https-www-cnblogs-com-boshow-p-13432156-html" class="headerlink" title="格式化数组参数的三种方法：https://www.cnblogs.com/boshow/p/13432156.html"></a>格式化数组参数的三种方法：<a href="https://www.cnblogs.com/boshow/p/13432156.html" target="_blank" rel="noopener">https://www.cnblogs.com/boshow/p/13432156.html</a></h6><pre><code>qs.stringify({ a: [&apos;b&apos;, &apos;c&apos;] }, { arrayFormat: &apos;indices&apos; })
+// &apos;a[0]=b&amp;a[1]=c&apos;
+qs.stringify({ a: [&apos;b&apos;, &apos;c&apos;] }, { arrayFormat: &apos;brackets&apos; })
+// &apos;a[]=b&amp;a[]=c&apos;
+qs.stringify({ a: [&apos;b&apos;, &apos;c&apos;] }, { arrayFormat: &apos;repeat&apos; })
+// &apos;a=b&amp;a=c&apos;</code></pre><h6 id="get传参"><a href="#get传参" class="headerlink" title="get传参"></a>get传参</h6><p> 更改get默认序列变化格式</p>
+<pre><code> export function get(url, params) {
+    console.log(&apos;getArray&apos;, params, QS.stringify(params, { arrayFormat: &apos;repeat&apos; }))
+    return new Promise((resolve, reject) =&gt; {
+        Axios.get(url, {
+                params: params,
+                paramsSerializer: function(params) {
+                    return QS.stringify(params, { arrayFormat: &apos;repeat&apos; })
+                }
+            }).then(res =&gt; {
+                resolve(res.data);
+            })
+            .catch(err =&gt; {
+                reject(err)
+            })
+    });
+}</code></pre><h6 id="post传参"><a href="#post传参" class="headerlink" title="post传参"></a>post传参</h6><pre><code>export function post(url, params, q) {
+    return new Promise((resolve, reject) =&gt; {
+        Axios.post(url, QS.stringify(params, { indices: false }), q)
+            .then(res =&gt; {
+                resolve(res.data);
+            })
+            .catch(err =&gt; {
+                reject(err.data)
+            })
+    });
+};</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/DjangoURL转换器使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/19/DjangoURL转换器使用/" itemprop="url">DjangoURL转换器使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-19T19:22:47+08:00">
+                2020-09-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.cnblogs.com/zheng-weimin/p/10148771.html" target="_blank" rel="noopener">https://www.cnblogs.com/zheng-weimin/p/10148771.html</a></p>
+<h5 id="1-实例"><a href="#1-实例" class="headerlink" title="1. 实例"></a>1. 实例</h5><p>第一步：在url中定义，具体支持类型见如上链接</p>
+<pre><code>path(&apos;mysheets/&lt;int:myid&gt;/&apos;,get_mysheets)</code></pre><p>第二步：view中接收参数，这里需要注意位置和名称的一致性。</p>
+<pre><code>def  get_mysheets(request,myid):
+     print(&apos;我获取到的参数是&apos;,myid)</code></pre><h6 id="2-常用类型"><a href="#2-常用类型" class="headerlink" title="2. 常用类型"></a>2. 常用类型</h6><pre><code>str：非空的字符串类型。默认的转换器。但是不能包含斜杠；
+int：匹配任意的零或者正数的整形。到视图函数中就是一个int类型；
+slug：由英文中的横杠 - ，或者下划线 _ 连接英文字符或者数字而成的字符串；
+uuid：匹配 uuid 字符串；
+path：匹配非空的英文字符串，可以包含斜杠；</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/Django模型models字段/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/19/Django模型models字段/" itemprop="url">Django模型models字段</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-19T18:08:39+08:00">
+                2020-09-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>全全的好文 ：<a href="https://www.jb51.net/article/186742.htm" target="_blank" rel="noopener">https://www.jb51.net/article/186742.htm</a></p>
+<h5 id="常见的FieldType数据库字段类型"><a href="#常见的FieldType数据库字段类型" class="headerlink" title="常见的FieldType数据库字段类型"></a>常见的FieldType数据库字段类型</h5><p>1、AutoField：自增Field域，自动增加的一个数据库字段类型，例如id字段就可以使用该数据类型，参数中必须填入primary_key=True</p>
+<p>2、BigAutoField：和AutoField相同，只是比AutoField要大，参数中必须填入primary_key=True</p>
+<p>3、BigIntegerField：大整型，只要用于存储整型的数据</p>
+<p>4、BinaryField：主要是存储原始的二进制数据</p>
+<p>5、BooleanField：主要是存储布尔类型的数据，0和1</p>
+<p>6、CharField：主要存储字符串的数据类型</p>
+<p>7、DateField：主要存储日期类型的数据类型，日期格式为YYYY-MM-DD</p>
+<p>8、DateTimeField：主要存储时间相关的数据类型，格式为YYYY-MM-DD HH:MM:[ss[.uuuuuu]][TZ]</p>
+<p>注意：DateField与DateTimeField有两个属性，配置auto_now_add=True，创建数据记录的时候会把当前时间添加到数据库，配置auto_now=True，每次更新数据记录的时候都会更新该字段</p>
+<p>9、DecimalField：主要存储固定精度的十进制数据</p>
+<h5 id="【问题】"><a href="#【问题】" class="headerlink" title="【问题】"></a>【问题】</h5><p> 数据存库的时候，提示类似如下问题<br>Exception Value: (1048, “Column ‘sheet_id’ cannot be null”)</p>
+<p>【原因/解决】创建自增字段的时候字段使用错误，应该使用AutoField字段</p>
+<h5 id="AutoField"><a href="#AutoField" class="headerlink" title="AutoField"></a>AutoField</h5><p>Django默认的行为就像这样</p>
+<pre><code>class TestModel(models.Model):
+id = models.AutoField(primary_key=True) </code></pre><p>若手动增加AutoField列，注意添加主键</p>
 
           
         
@@ -526,7 +795,7 @@ default:...</code></pre><p><img src="/images/pasted-122.png" alt="upload success
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/09/Vue语法小记/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/Django外键使用/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -545,7 +814,7 @@ default:...</code></pre><p><img src="/images/pasted-122.png" alt="upload success
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/07/09/Vue语法小记/" itemprop="url">Vue语法小记</a></h1>
+                <a class="post-title-link" href="/2020/09/19/Django外键使用/" itemprop="url">Django外键使用</a></h1>
         
 
         <div class="post-meta">
@@ -557,8 +826,8 @@ default:...</code></pre><p><img src="/images/pasted-122.png" alt="upload success
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-09T17:39:56+08:00">
-                2020-07-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-19T17:45:39+08:00">
+                2020-09-19
               </time>
             
 
@@ -597,936 +866,295 @@ default:...</code></pre><p><img src="/images/pasted-122.png" alt="upload success
       
         
           
-            <ul>
-<li><p>命名规范：</p>
-<p>项目文件夹命名都是 kebab-case命名</p>
-<p>属于components文件夹下的子文件夹，使用大写字母开头的PascalBase风格</p>
-<ol>
-<li>全局通用的组件放在 /src/components下</li>
-<li>其他业务页面中的组件，放在各自页面下的 ./components文件夹下</li>
-<li>每个components文件夹下最多只有一层文件夹，且文件夹名称为组件的名称，文件夹下必须有index.vue或 index.js，其他.vue文件统一大写开头（Pascal case），components下的子文件夹名称统一大写开头（PascalCase）</li>
-</ol>
-</li>
-</ul>
+            <h4 id="外键定义"><a href="#外键定义" class="headerlink" title="外键定义"></a>外键定义</h4><p><a href="https://blog.csdn.net/hpu_yly_bj/article/details/78939748" target="_blank" rel="noopener">https://blog.csdn.net/hpu_yly_bj/article/details/78939748</a></p>
+<pre><code>class Person(models.Model);
+name = models.CharField(&apos;作者姓名&apos;, max_length=10)
+age = models.IntegerField(&apos;作者年龄&apos;)
+
+class Book(models.Model):
+person = models.ForeignKey(Person, related_name=&apos;person_book&apos;，on_delete=models.CASCADE)
+title = models.CharField(&apos;书籍名称&apos;, max_length=10)
+pubtime = models.DateField(&apos;出版时间&apos;)</code></pre><p>  <strong>on_delete</strong></p>
+<pre><code>on_delete=models.CASCADE, # 删除关联数据,与之关联也删除</code></pre><p>   其他 <a href="https://www.jianshu.com/p/6240ed7dd3ea" target="_blank" rel="noopener">https://www.jianshu.com/p/6240ed7dd3ea</a></p>
+<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><h5 id="主表查询字表"><a href="#主表查询字表" class="headerlink" title="主表查询字表"></a>主表查询字表</h5><pre><code>book = person.book_set.all() #默认机制属性，即字表后加set
+若设置了related_name，则还可以：
+book = person.person_book.all()</code></pre><h5 id="子表查主表"><a href="#子表查主表" class="headerlink" title="子表查主表"></a>子表查主表</h5><pre><code>p = book.person</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/17/QS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/17/QS/" itemprop="url">QS</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-17T17:52:46+08:00">
+                2020-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>qs可通过npm install qs命令进行安装，是一个npm仓库所管理的包。</p>
+<h6 id="为什么用到qs？"><a href="#为什么用到qs？" class="headerlink" title="为什么用到qs？"></a>为什么用到qs？</h6><p>qs可以解决数组类型的参数。</p>
+<p>具体参考：<a href="https://www.jianshu.com/p/89716216edc2" target="_blank" rel="noopener">https://www.jianshu.com/p/89716216edc2</a></p>
+<h6 id="qs-stringify和JSON-stringify的使用和区别"><a href="#qs-stringify和JSON-stringify的使用和区别" class="headerlink" title="qs.stringify和JSON.stringify的使用和区别"></a>qs.stringify和JSON.stringify的使用和区别</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">qs.stringify(&#123; a: [1, 2, 3] &#125;, &#123; indices: false &#125;);</span><br><span class="line">//  &apos;a=1&amp;a=2&amp;a=3&apos;</span><br></pre></td></tr></table></figure>
+
+<p>【共同点】都是转化成字符串</p>
+<p>【不同点】qs.stringify() 将对象 序列化成以&amp;进行拼接的字符串；而JSON.stringify是转换成json字符串</p>
+<p><img src="/images/pasted-137.png" alt="upload successful"></p>
+<p>参考：<a href="https://www.cnblogs.com/web1/p/8659398.html" target="_blank" rel="noopener">https://www.cnblogs.com/web1/p/8659398.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/17/axios-delete等http请求/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/17/axios-delete等http请求/" itemprop="url">axios delete等http请求</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-17T17:10:14+08:00">
+                2020-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="axios-delete的时候报Method-Not-Allowed-405？"><a href="#axios-delete的时候报Method-Not-Allowed-405？" class="headerlink" title="axios delete的时候报Method Not Allowed  405？"></a>axios delete的时候报Method Not Allowed  405？</h5><p>参考：<a href="https://www.jianshu.com/p/85a0bb9436d0" target="_blank" rel="noopener">https://www.jianshu.com/p/85a0bb9436d0</a></p>
+<h6 id="1-params-接url-amp-data"><a href="#1-params-接url-amp-data" class="headerlink" title="1. params(接url)&amp;data"></a>1. params(接url)&amp;data</h6><p>查看源码可知axios传参分别如下,即post第二个参数直接传数据对象即可，但是get需要再包一层。</p>
+<p>若使用Params则会变成&amp;连接的形式在url上请求，若使用data则在body中传</p>
+<p><img src="/images/pasted-135.png" alt="upload successful"></p>
+<p>其中delete与Post不同，参数格式为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">axios.delete(&#123;</span><br><span class="line">            url: &apos;http://localhost:3000/todos&apos;,</span><br><span class="line">            data: &#123;</span><br><span class="line">                &quot;id&quot;: &quot;a&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">            .then(function (response) &#123;</span><br><span class="line">                console.log(response);</span><br><span class="line">            &#125;)</span><br><span class="line">            .catch(function (response) &#123;</span><br><span class="line">                console.log(response);</span><br><span class="line">            &#125;);</span><br></pre></td></tr></table></figure>
+
+
+<h6 id="2-url直接拼"><a href="#2-url直接拼" class="headerlink" title="2. url直接拼"></a>2. url直接拼</h6> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">axios.delete(&apos;http://localhost:3000/todos/&apos; + id).then(function (res) &#123;</span><br><span class="line">        console.log(res);</span><br><span class="line">    &#125;).catch(function (err) &#123;</span><br><span class="line">         console.log(err)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="关于请求方式"><a href="#关于请求方式" class="headerlink" title="关于请求方式"></a>关于请求方式</h5><p> <a href="https://blog.csdn.net/kjssjj12/article/details/106410399?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param" target="_blank" rel="noopener">https://blog.csdn.net/kjssjj12/article/details/106410399?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param</a></p>
+<p><img src="/images/pasted-136.png" alt="upload successful"></p>
+<p><a href="https://blog.csdn.net/jiangcs520/article/details/70141901/" target="_blank" rel="noopener">https://blog.csdn.net/jiangcs520/article/details/70141901/</a></p>
+<h6 id="content-type"><a href="#content-type" class="headerlink" title="content-type"></a>content-type</h6><p>作用：告诉服务端传递的内容是什么格式，如何接收。常用三个application/json’,’application/x-www-form-urlencoded’,’multipart/form-data’</p>
 <ul>
-<li><p>event和method的区别?</p>
-<p>method，可以在程序中直接调用对象的方法, obj.method();</p>
-<p>event 是在事件发生时的处理函数，通过监听事件的方式来设置</p>
+<li><p>’application/json’</p>
+<p>传递的是一个json对象，并不是直接丢一个对象过去，需要进行序列化，JSON.stringify(data);</p>
 </li>
-<li><p>路由:使用router-link :to 参数值使用this.xxx传参失败。最后使用Push操作解决</p>
-<p> <strong>和name配对的是params，和path配对的是query</strong></p>
-<p> query和params的区别，query相当于get请求，在页面跳转的时候，可以在地址栏看到请求参数，然而params则相当于post请求，参数不会在地址栏中显示。</p>
-<p> <a href="https://www.cnblogs.com/liweiz/p/10519629.html" target="_blank" rel="noopener">https://www.cnblogs.com/liweiz/p/10519629.html</a></p>
-<pre><code>1.命名路由搭配params，刷新页面参数会丢失
-2.查询参数搭配query，刷新页面数据不会丢失
-3.接受参数使用this.$route后面就是搭配路由的名称就能获取到参数的值(如this.$route.query.xxx)</code></pre></li>
-<li><p>main.js和routers文件重复import所有组件</p>
-<p>  封装一个文件调用</p>
-<p><a href="https://blog.csdn.net/yang295242361/article/details/104960383/" target="_blank" rel="noopener">https://blog.csdn.net/yang295242361/article/details/104960383/</a></p>
-</li>
-<li><p>关于VUE中 import 、 export 和 export default</p>
-<p>  <a href="https://www.cnblogs.com/Ryan777/p/10769661.html" target="_blank" rel="noopener">https://www.cnblogs.com/Ryan777/p/10769661.html</a></p>
-<pre><code>1. export default 
-    在一个js文件中只能有一个
-    引用的时候可以自定义名称
-2. export 
-   在一个js文件中可以有多个
-   引用时候需要加上{} import { getList } from ‘./a.js’;
-
-其他:import引用依赖包不需要相对路径，但是引用自己的文件需要相对路径</code></pre></li>
 </ul>
+<p><img src="/images/pasted-138.png" alt="upload successful"></p>
 <ul>
-<li><p>bus总线传值</p>
-<pre><code>bus.$emit(&apos;Click&apos;, {
-    id: id,
-    num:num
-    })
-
-this.$EventBus.$on(&apos;uploading&apos;, val=&gt;{
-    console.log(val)       //打印出来 val ：sure
- })</code></pre></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/elementui使用小记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/24/elementui使用小记/" itemprop="url">elementui使用小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-24T11:26:36+08:00">
-                2020-06-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>需求：表格上拉加载刷新</p>
-<p>尝试单独使用InfiniteScroll 无限滚动 解决，但是一直存在两个问题</p>
-<ol>
-<li>每次重复执行3次</li>
-<li>第二次上拉时不加载</li>
-</ol>
-<p>猜测由于表格特定格式单纯使用InfiniteScroll 受限</p>
-<p>【解决】使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   参考：https://zhuanlan.zhihu.com/p/114965548</span><br><span class="line">2. 在加载树形数据懒加载的时候报错 ```if there&apos;s nested data,rowKey is required</span><br></pre></td></tr></table></figure></p>
-<p> 原因：原来使用懒加载，table数据中没有children字段，但是现在新增了这个字段。</p>
-<p>因此满足了懒加载的第一种策略：即使我根本没有设置第一项(第一项指的是子元素字段，第二项懒加载的时候使用字段)<br><code>:tree-props=&quot;{children: &#39;children&#39;, hasChildren: &#39;hasChildren&#39;}&quot;&gt;</code></p>
-<p>这样直接加载子项目的时候，发现我子项目里缺少id,因此报如上错</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/echarts使用小记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/22/echarts使用小记/" itemprop="url">echarts使用小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-22T14:12:45+08:00">
-                2020-06-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>echarts及option配置应用</p>
-<pre><code>import echarts from &apos;echarts&apos;;
-Vue.prototype.$echarts = echarts;
-
-import { bar_option, pie_option, line_bugrate_option } from &apos;@/components/chart_options/echart_options.js&apos;;
-Vue.prototype.$echartoptions = { bar_option, line_bugrate_option, pie_option };
-使用
-myChart.setOption(this.$echartoptions.line_bugrate_option);</code></pre></li>
-<li><p>echarts的option内赋值，紧接着在外面值就为空了？</p>
-<p> this和that的问题，option内的this指的是option本身，非本组件</p>
-</li>
-<li><p>如何限制柱形图的条状宽度(竖着)？</p>
-<p>barMaxWidth barMinWidth</p>
-</li>
-<li><p>echarts饼图提示线长度设置</p>
-<pre><code>labelLine:{
-normal:{
-    length:1,//第一段，紧跟饼图
-    length2:6//第二段，距离最远
-}</code></pre><p>   },<br>echarts icon图标格式只支持两种，dataURI和path://</p>
-<p>对于多个path构成的矢量图，可采用dataURL方式，在线很方便转换。</p>
-</li>
-<li><p>Echarts图表重复问题</p>
-<p> 除了数据源需要重置外，echarts需要重置myChart.clear();</p>
-</li>
-<li><p>区分横轴不同文案展示，在xAxis下设置axisLabel：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">axisLabel= &#123;</span><br><span class="line">         formatter: function(value, index) &#123;</span><br><span class="line">           if (value.search(&quot;QA&quot;) != -1) return &quot;&#123;a|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           else if (value.search(&quot;BE&quot;) != -1) &#123;</span><br><span class="line">             return &quot;&#123;b|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           &#125; else &#123;</span><br><span class="line">             return &quot;&#123;c|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;,</span><br><span class="line">         rich: &#123;</span><br><span class="line">           a: &#123;</span><br><span class="line">             color: &quot;red&quot;,</span><br><span class="line">             height: 40,</span><br><span class="line">             fontWeight: &quot;bold&quot;,</span><br><span class="line">           &#125;,</span><br><span class="line">           b: &#123;</span><br><span class="line">             color: &quot;blue&quot;,</span><br><span class="line">             height: 40,</span><br><span class="line">             fontWeight: &quot;bold&quot;,</span><br><span class="line"></span><br><span class="line">           &#125;,</span><br><span class="line">           c: &#123;</span><br><span class="line">             color: &quot;green&quot;,</span><br><span class="line">              height: 40,</span><br><span class="line"></span><br><span class="line">             fontWeight: &quot;bold&quot;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;</span><br><span class="line">       </span><br><span class="line">     &#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自定义提示窗口</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">toolbox: &#123;</span><br><span class="line">      feature: &#123;</span><br><span class="line">        myTool2: &#123;</span><br><span class="line">          show: true, //是否显示</span><br><span class="line">          title: &quot;近半年趋势分析&quot;, //鼠标移动上去显示的文字     &quot;image://data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAFHklEQVRoQ+1Ze0xbVRj/fS2&quot;,</span><br><span class="line">          onclick: function() &#123;</span><br><span class="line">            that.piechartname = chartname;</span><br><span class="line">            that.titlename = &quot;近6个月&quot; + title + &quot;趋势图&quot;;</span><br><span class="line">            that.dialogVisible = true;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>为图标添加自定义图标，点击后弹出说明文案，且可换行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">myTool1: &#123;</span><br><span class="line">      show: showmytools1, //是否显示</span><br><span class="line">      title: &quot;信息说明&quot;, //鼠标移动上去显示的文字</span><br><span class="line">      ...</span><br><span class="line">      onclick: function() &#123;</span><br><span class="line">        that.$confirm(h(&quot;div&quot;, null, msgli), headtitle, &#123;</span><br><span class="line">          showConfirmButton: false,</span><br><span class="line">          showCancelButton: false,</span><br><span class="line">          type: &quot;info&quot;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中文案的处理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">let msgli = [];//最终的显示文本</span><br><span class="line">let h = this.$createElement;</span><br><span class="line">let causeText = [];</span><br><span class="line">let headtitle = title + &quot;说明&quot;;</span><br><span class="line">switch (chartname) &#123;</span><br><span class="line">  case &quot;bug_role&quot;:</span><br><span class="line">    causeText = [</span><br><span class="line">      &quot;根据角色分析Bug分布情况，主要包括QA、FE、BE、PM&quot;,</span><br><span class="line">      &quot;QA: 取QA字段&quot;</span><br><span class="line">    ];</span><br><span class="line">    for (const i in causeText) &#123;</span><br><span class="line">      msgli.push(h(&quot;p&quot;, null, causeText[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    showmytools1 = true;//控制是否展示</span><br><span class="line">    break;</span><br></pre></td></tr></table></figure>
-
-<p>另外一种方式:使用el-dialog</p>
-<p>先定义一个el-dialog</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    &lt;el-dialog :title=&quot;direction_title&quot; :visible.sync=&quot;noteVisible&quot; width=&quot;25%&quot; </span><br><span class="line">top=&quot;15%&quot;  :show-close=&quot;false&quot;&gt;</span><br><span class="line">  &lt;div v-html=&quot;direction_content&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/el-dialog&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在onclick自定义事件中:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">that.direction_title = title + &quot;说明&quot;;//在option中使用that</span><br><span class="line">switch (chartname) &#123;</span><br><span class="line">	case &quot;bug_role&quot;:</span><br><span class="line">        that.direction_content =&quot;&lt;span&gt;说明文字1&lt;/span&gt;&quot; //需要在click事件中赋值，否则出错</span><br><span class="line">        ....</span><br><span class="line">     &#125;</span><br><span class="line">that.noteVisible = true;//控制显示el-dialog</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自定义的说明图标点击后文字this.direction_content展示的是最后一个饼图的数据？</p>
-<p> 【解决】</p>
-<ul>
-<li>在Onlick的时候再赋值 (尤其针对这种全局共享的语法糖)    </li>
-<li>在内部引用，使用that定义</li>
-</ul>
-</li>
-<li><p>常用功能</p>
-<p> minInterval: 1//在横轴和纵轴添加可限制刻度最小间隔，避免出现小数<br> selector:legend中设置选中规则<br> barMaxWidth: ‘50’,  //现在柱子宽度，避免在极限的时候展示粗细情况</p>
-</li>
-<li><p>纵轴标记线–markline</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/CSS使用小记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/22/CSS使用小记/" itemprop="url">CSS使用小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-22T11:25:20+08:00">
-                2020-06-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>box-shadow 参数(除了color其他单位都是px)</p>
-<pre><code>h-shadow    必需的。水平阴影的位置。允许负值
-v-shadow    必需的。垂直阴影的位置。允许负值
-blur    可选。模糊距离
-spread    可选。阴影的大小
-color    可选。阴影的颜色
-inset</code></pre><p>前两项横竖方向决定了投影方向</p>
-<p>blur 值越大阴影越模糊</p>
-<p>spread值越大范围越大</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow:10px 10px 5px 20px #ee4d2d</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-116.png" alt="upload successful">  </p>
-<p>加inset效果：</p>
-<p><img src="/images/pasted-117.png" alt="upload successful"></p>
-</li>
-<li><p>padding 设置方向，逆时针（即上 右 下 左）</p>
-<p><img src="/images/pasted-115.png" alt="upload successful"></p>
-<p>若有三项，则上，左右，下；若只有两项，则是上下、左右；一项是所有</p>
-<p>margin同理</p>
-</li>
-<li><p>align和text-align的区别<br>align直接写在是div的属性 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div align=&quot;center&quot;&gt; </span><br><span class="line">This is some text! </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>text-align则是Css的属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;text-align:center&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="4">
-<li><p>布局<br>footer如何保持始终在最底部？<a href="https://blog.csdn.net/m0_38099607/article/details/71598423" target="_blank" rel="noopener">https://blog.csdn.net/m0_38099607/article/details/71598423</a></p>
-<p> 父级：</p>
-<pre><code>#container{
-/*保证footer是相对于container位置绝对定位*/
-position:relative;  
-width:100%;
-min-height:100%; 
-/*设置padding-bottom值大于等于footer的height值，以保证main的内容能够全部显示出来而不被footer遮盖；*/  
-padding-bottom: 100px;  
-box-sizing: border-box;</code></pre><p> }</p>
-<p> footer要绝对位置        </p>
-<pre><code>footer{
-width: 100%;
-height:100px;   /* footer的高度一定要是固定值*/ 
-position:absolute;
-bottom:0px;
-left:0px;
-background: #333;</code></pre><p> }</p>
-<p>使得全局撑足屏幕？</p>
-<p>html文件中添加，使用的container100%才生效</p>
-<pre><code>&lt;style type=&quot;text/css&quot;&gt;
-   html,
-   body {
-       height: 100%;
-   }
-
-   body {
-       margin: 0;
-   }</code></pre><p>   </p>
-</li>
-<li><p>div居中</p>
-<p>内部div需要添加</p>
-<pre><code>margin:0 auto</code></pre></li>
-</ol>
-<p>6.display:inline是什么意思?</p>
-<p>  <a href="https://zhidao.baidu.com/question/406681161.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/406681161.html</a></p>
-<p>  css的一个样式:</p>
-<pre><code>inline表示按照内联模式显示，它会和周围的元素在一行。
-
-如果是display:block，它会和周围的元素不在一行，自己单独一行。</code></pre><p>  什么是内联元素？</p>
-<pre><code>内联元素与其他元素会在一行，不会导致换行</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/19/nginx知识小记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/19/nginx知识小记/" itemprop="url">nginx使用小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-19T10:38:15+08:00">
-                2020-06-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>常用命令：</p>
-<pre><code>nginx -s stop   直接干掉服务
-start nginx     启动服务
-nginx -s quit         优雅停止nginx，有连接时会等连接请求完成再杀死worker进程  
- nginx -s reload     优雅重启，并重新载入配置文件nginx.conf
- nginx -s reopen     重新打开日志文件，一般用于切割日志
- nginx -v            查看版本  
- nginx -t            检查nginx的配置文件
- nginx -h            查看帮助信息
- nginx -V       详细版本信息，包括编译参数 
- nginx  -c filename  指定配置文件</code></pre></li>
-<li><p>查找和安装：</p>
-<pre><code>sudo apt-get install nginx
-cd /etc/nginx/conf.d
-查找
-find / -name nginx.conf   2&gt;/dev/null</code></pre></li>
-<li><p>没有root权限？</p>
-<p> 以非root权限安装nginx及运行:<br> <a href="https://www.cnblogs.com/xmaples/p/5836818.html" target="_blank" rel="noopener">https://www.cnblogs.com/xmaples/p/5836818.html</a></p>
-<p> 测试<br> pgrep -a nginx<br> nginx -c /home/ld-sgdev/liyuan_chen/nginx.conf<br> 验证<br> curl localhost:8080<br> 使用命令：<br> lsof -i :8080</p>
-</li>
-<li><p>修改nginx重启后未生效？<br> 很多进程需要逐一杀除</p>
-<p> ps -ef|grep nginx|awk ‘{print $2}’|xargs kill -9</p>
-</li>
-<li><p>nginx: [error] open() “/usr/local/var/run/nginx.pid” failed (2: No such file or directory)</p>
-<p> 直接启动命令nginx(非重启)，重新生成nginx.pid就可以了：</p>
-</li>
-<li><p>Mixed Content: The page at ‘xxx’ was loaded over HTTPS, but requested an insecure resource ‘xxx’.</p>
-<p>【解决】添加：<code>&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;upgrade-insecure-requests&quot;&gt;</code></p>
-</li>
-<li><p>mac 使用brew安装后默认地址：</p>
-<p>/usr/local/etc/nginx/nginx.conf </p>
-<p>默认端口占用8080</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/18/JS语法汇总/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/18/JS语法汇总/" itemprop="url">JS语法使用小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-18T18:09:11+08:00">
-                2020-06-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>js数组操作方法以及es6新增方法:<a href="https://www.cnblogs.com/Ky-Thompson23/p/12408795.html" target="_blank" rel="noopener">https://www.cnblogs.com/Ky-Thompson23/p/12408795.html</a></p>
-<ol>
-<li><p>JS合并两个数组 </p>
-<p>apply会改变原数组的值</p>
-<pre><code>a.push.apply(a,[4,5,6]);  </code></pre><p>concat不会改变原数组的值</p>
-<pre><code>arr1 = [1,2];
-arr2 = [&quot;aa&quot;,&quot;as&quot;];
-console.log(arr1.concat(arr2));//[1, 2, &quot;aa&quot;, &quot;as&quot;]</code></pre></li>
-<li><p>删除数组某项    </p>
-<p> splice(index,len,[item]) 注释：该方法会改变原始数组。<br> index:数组开始下标 </p>
-<p> len: 替换/删除的长度</p>
-<p> item:替换的值，删除操作的话 item为空</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;]; </span><br><span class="line">arr.splice(1,1); </span><br><span class="line">console.log(arr); </span><br><span class="line">//[&apos;a&apos;,&apos;c&apos;,&apos;d&apos;];</span><br></pre></td></tr></table></figure>
-
-<p> 删除某值元素</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=[1,2,3]</span><br><span class="line">a.splice(a.indexOf(2),1)// [1,3]</span><br></pre></td></tr></table></figure>
-
-<p> 参考 <a href="https://www.jb51.net/article/134312.htm" target="_blank" rel="noopener">https://www.jb51.net/article/134312.htm</a></p>
-<p>添加 —- len设置为0，item为添加的值 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> var arr = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;]; </span><br><span class="line">arr.splice(1,0,&apos;ttt&apos;); </span><br><span class="line">console.log(arr); </span><br><span class="line">//[&apos;a&apos;,&apos;ttt&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;] 表示在下标为1处添加一项&apos;ttt&apos;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>JS 排序功能  sort()</p>
-<ul>
-<li><p>【原理】当数组长度&lt;=10的时候，采用插入排序；&gt;10的时候，采用快排。(当数据量很小的时候，插入排序效率优于快排)</p>
-<p>对于长度大于1000的数组，采用的是快排与插入排序混合的方式进行排序的.</p>
-</li>
-<li><p>array.sort(fun)；参数fun可选，规定排序顺序。默认字母排序</p>
-<p>示例：<br> var arr3 = [30,10,111,35,1899,50,45];<br> arr3.sort(function(a,b){<br>  return a - b;<br> })<br> console.log(arr3);//输出 [10, 30, 35, 45, 50, 111, 1899]</p>
-<p>多属性判断排序(在project&amp;role相同的情况下才排序)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> export function compare(property, index, type) &#123;</span><br><span class="line"> return function(a, b) &#123;</span><br><span class="line">        if (a.project == b.project &amp;&amp; a.role == b.role) &#123;</span><br><span class="line">            var value1 = a[property][index];</span><br><span class="line">            var value2 = b[property][index];</span><br><span class="line">            if (type == &quot;ascending&quot;) &#123;</span><br><span class="line">                return value1 - value2;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return value2 - value1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+<li><p>application/x-www-form-urlencoded</p>
+<p>若使用params</p>
+<p><img src="/images/pasted-142.png" alt="upload successful"></p>
+<p>否则是这样的</p>
+<p><img src="/images/pasted-139.png" alt="upload successful"></p>
 </li>
 </ul>
-</li>
-</ol>
-<pre><code>具体可参考：https://www.cnblogs.com/lyc10/p/11348419.html</code></pre><ol start="3">
-<li><p>filter()函数</p>
-<p> 和map()类似，Array的filter()也接收一个函数。和map()不同的是，filter()把传入的函数依次作用于每个元素，然后根据返回值是true还是false决定保留还是丢弃该元素。</p>
-<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
-        var arr = [0,1,2,3,4,5,1,4,0];
-        var arr_filter = arr.filter(function(x){
-            return x%2 == 0;/* 筛选偶数 */ 
-        })
-        console.log(arr_filter)
-    &lt;/script&gt;</code></pre><p> 参考：<a href="https://www.cnblogs.com/jianxian/p/10582683.html" target="_blank" rel="noopener">https://www.cnblogs.com/jianxian/p/10582683.html</a></p>
-<p> 推荐：<a href="https://www.cnblogs.com/saifei/p/9043821.html" target="_blank" rel="noopener">https://www.cnblogs.com/saifei/p/9043821.html</a></p>
-<pre><code>var summary = origin_outline
-  .replace(/&lt;\/p&gt;/g, &quot;&quot;)
-  .split(&quot;&lt;p&gt;&quot;)
-  .filter(function(s) {
-    return s &amp;&amp; s.trim();
-  })
-  .map(function(m) {
-    return m.trim();
-  });</code></pre></li>
-<li><p>ES箭头函数</p>
-<p>基本形式：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let sum = (num1,num2) =&gt; num1 + num2;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="8">
-<li><p>引用类型和值类型</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let  tmp=this.a;   //this.a=[&#123;pj:&apos;listing&apos;&#125;&#125;]</span><br><span class="line">console.log(&quot;初始化的值：&quot;,tmp,this.a);</span><br><span class="line">tmp[&apos;aa&apos;]=111</span><br></pre></td></tr></table></figure>
-
-<p> 此段代码在console.log中返回：[{pj:’listing’,aa:111}}]  [{pj:’listing’,aa:111}}]</p>
-<p> 问题：<br> 1：为何tmp在打印的时候值已经变化？难道先执行下面再执行上面？<br> 2：为何tmp变化会引发a值的变化</p>
-<p> 解答：</p>
-<ol>
-<li><p><img src="/images/pasted-120.png" alt="upload successful"><br>如下代码片段</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var json = &#123;a:1,b:2&#125; </span><br><span class="line">console.log(json.a)//打印出来是3，不是1</span><br><span class="line">json.a = 3;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>赋值操作其实引用的都是同一块地址内容，所以一个改动会影响另一个取值的变化</p>
-<p>这里使用深拷贝解决<br>深浅拷贝：<a href="https://www.cnblogs.com/panrui1994/p/9378696.html" target="_blank" rel="noopener">https://www.cnblogs.com/panrui1994/p/9378696.html</a></p>
-</li>
-</ol>
-<p> <strong>深拷贝方法1</strong>: Object.assign(target, …sources)  对象</p>
-<p> 【注】assign方式用于对象方可实现深拷贝，[]不可以，因为内部若有对象，其对象依旧是引用类型可以变化)</p>
-<p> <strong>深拷贝方法2</strong>: JSON.parse(JSON.stringify(obj))</p>
-<p> 最终使用JSON.parse实现(JSON.stringify(obj)就是把对象转成字符串，然后JSON.parse就是把字符串再变为对象，那就完全是一个新的对象了，所有的东西都是新的</p>
-</li>
-<li><p>console.log的常用语法</p>
-<ul>
-<li>console.table，格式化表格</li>
-<li>统计代码执行时间<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.time(&apos;统计时间&apos;)</span><br><span class="line">for(var i = 0; i &lt; 999 ;i++)&#123;&#125;</span><br><span class="line">console.timeEnd(&apos;统计时间&apos;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>数组对象筛选</p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8. 对象列表排重</span><br></pre></td></tr></table></figure>
-
-<p>  function unique(arr,field){</p>
-<pre><code>var map = {};
-var res = [];
-for (var i = 0; i &lt; arr.length; i++) {
-    if (!map[arr[i][field]]) {
-        map[arr[i][field]]=1;//巧妙利用对象键值唯一性判重
-        res.push(arr[i]);
-    }
-}
- return res;</code></pre>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  原文链接：https://blog.csdn.net/qq_36949713/java/article/details/81942370</span><br><span class="line">  </span><br><span class="line">10. JS Base64转码</span><br></pre></td></tr></table></figure>
-
-</li>
-</ol>
-<p>let Base64 = {<br>    encode(str) {<br>        // first we use encodeURIComponent to get percent-encoded UTF-8,<br>        // then we convert the percent encodings into raw bytes which<br>        // can be fed into btoa.<br>        return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,<br>            function toSolidBytes(match, p1) {<br>                return String.fromCharCode(‘0x’ + p1);<br>            }));<br>    },<br>    decode(str) {<br>        // Going backwards: from bytestream, to percent-encoding, to original string.<br>        return decodeURIComponent(atob(str).split(‘’).map(function(c) {<br>            return ‘%’ + (‘00’ + c.charCodeAt(0).toString(16)).slice(-2);<br>        }).join(‘’));<br>    }<br>};<br>```
-对于json数据，先转换成字符串<br>Base64.encode(JSON.stringify(this.result))</p>
 
           
         
@@ -1575,7 +1203,7 @@ for (var i = 0; i &lt; arr.length; i++) {
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/vue线上部署和维护/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/15/Vue报错/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -1594,7 +1222,7 @@ for (var i = 0; i &lt; arr.length; i++) {
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/06/09/vue线上部署和维护/" itemprop="url">vue线上部署和维护</a></h1>
+                <a class="post-title-link" href="/2020/09/15/Vue报错/" itemprop="url">Vue报错</a></h1>
         
 
         <div class="post-meta">
@@ -1606,8 +1234,8 @@ for (var i = 0; i &lt; arr.length; i++) {
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-09T11:55:38+08:00">
-                2020-06-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-15T15:09:06+08:00">
+                2020-09-15
               </time>
             
 
@@ -1646,305 +1274,336 @@ for (var i = 0; i &lt; arr.length; i++) {
       
         
           
-            <h6 id="同步上线文件http-server"><a href="#同步上线文件http-server" class="headerlink" title="同步上线文件http.server"></a>同步上线文件http.server</h6><pre><code>简单办法：启动本地服务：
+            <h6 id="Missing-required-prop-“value”"><a href="#Missing-required-prop-“value”" class="headerlink" title="Missing required prop: “value”"></a>Missing required prop: “value”</h6><p>select组件中 v-model前面加了冒号</p>
+<h6 id="Error-in-render-“TypeError-Cannot-read-property-‘oprations’-of-undefined”"><a href="#Error-in-render-“TypeError-Cannot-read-property-‘oprations’-of-undefined”" class="headerlink" title="Error in render: “TypeError: Cannot read property ‘oprations’ of undefined”"></a>Error in render: “TypeError: Cannot read property ‘oprations’ of undefined”</h6><p>【经过】父组件向子组件传递多个参数太不方便，于是整合成一个Object传过去，但是却报如上错误。<br>实际上功能并未受到影响。<br>【解决】由于初始化render的时候该对象还未取到，为了避免这样的错误，可以在该DOM上加v-if判断</p>
+<p><img src="/images/pasted-148.png" alt="upload successful"></p>
+<h6 id="Invalid-prop-type-check-failed-for-prop-“width”-Expected-Number-with-value-230-got-String-with-value-“230”"><a href="#Invalid-prop-type-check-failed-for-prop-“width”-Expected-Number-with-value-230-got-String-with-value-“230”" class="headerlink" title="Invalid prop: type check failed for prop “width”. Expected Number with value 230, got String with value “230”."></a>Invalid prop: type check failed for prop “width”. Expected Number with value 230, got String with value “230”.</h6><p>解决：改成绑定</p>
+<p><img src="/images/pasted-150.png" alt="upload successful"></p>
 
-  python3 -m http.server 8000（python3）
-  curl -O  http://10.12.169.57:8000/dist.tar.gz</code></pre><h6 id="CSS文件不生效问题："><a href="#CSS文件不生效问题：" class="headerlink" title="CSS文件不生效问题："></a>CSS文件不生效问题：</h6><p>解决：1.  设置一些配置信息？—–依旧未生效<br><a href="https://www.jb51.net/article/174089.htm" target="_blank" rel="noopener">https://www.jb51.net/article/174089.htm</a></p>
-<h6 id="域名配置"><a href="#域名配置" class="headerlink" title="域名配置"></a>域名配置</h6><pre><code>netstat -nltp 查看
+          
+        
+      
+    </div>
+    
+    
+    
 
-切换至root  :sudo su root</code></pre><h6 id="引用的css样式文件大部分没有生效？"><a href="#引用的css样式文件大部分没有生效？" class="headerlink" title="引用的css样式文件大部分没有生效？"></a>引用的css样式文件大部分没有生效？</h6><p>  【解决】</p>
-<ol>
-<li><p>一共三种引用方式，在main.js\index.html\app.vue中引入。<br>其中app中引入:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  @import &apos;./../static/css/global.css&apos;; /*引入公共样式*/</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+    
 
-<p>参考： <a href="https://blog.csdn.net/HY_358116732/article/details/82219387" target="_blank" rel="noopener">https://blog.csdn.net/HY_358116732/article/details/82219387</a></p>
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/14/MAC配置安卓环境sdk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/14/MAC配置安卓环境sdk/" itemprop="url">Cordova环境安装mac</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-14T20:37:11+08:00">
+                2020-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>win版可参考：<a href="https://shifu-yan.github.io/2020/06/28/%E4%BD%BF%E7%94%A8Cordova%E5%B0%86H5-vue-%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E5%8D%93apk/" target="_blank" rel="noopener">https://shifu-yan.github.io/2020/06/28/%E4%BD%BF%E7%94%A8Cordova%E5%B0%86H5-vue-%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E5%8D%93apk/</a></p>
+<h6 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h6><p>要1.8版本的</p>
+<p>可以先看看这个路径下是否有，有的话直接切就行了</p>
+<p>/Library/Java/JavaVirtualMachines/</p>
+<p><img src="/images/pasted-132.png" alt="upload successful"></p>
+<p>可以参考：<a href="https://blog.csdn.net/liuxy_236/article/details/90381408" target="_blank" rel="noopener">https://blog.csdn.net/liuxy_236/article/details/90381408</a></p>
+<h6 id="安装cordova"><a href="#安装cordova" class="headerlink" title="安装cordova"></a>安装cordova</h6><pre><code>npm install -g cordova</code></pre><h6 id="安卓SDK"><a href="#安卓SDK" class="headerlink" title="安卓SDK"></a>安卓SDK</h6><ol>
+<li><p>打开官网（<a href="https://www.androiddevtools.cn/）-Android" target="_blank" rel="noopener">https://www.androiddevtools.cn/）-Android</a> SDK工具–SDK Tools下载对应sdk  zip包</p>
 </li>
-<li><p>将element-ui的引用提到最最前面</p>
-<p>因为引用的css样式是针对此ui进行的覆盖修改，所以需要在其后面引用，才起到覆盖的作用。</p>
+<li><p>下载后解压</p>
+</li>
+<li><p>打开终端，输入</p>
+<pre><code>vim ~/.bash_profile        </code></pre></li>
+<li><p>添加如下</p>
+<p> export ANDROID_HOME=/Users/shmaur/android-sdk-macosx  //这里为 sdk 路径地址<br> export PATH=$PATH:$ANDROID_HOME/tools<br> export PATH=$PATH:$ANDROID_HOME/platform-tools</p>
+</li>
+<li><p>每次编辑完 .bash_profile 文件后必须要进行：</p>
+<pre><code>source .bash_profile //更新环境变量配置，不更新则不会使配置生效</code></pre></li>
+<li><p>配置好后可以查看一下是否成功：</p>
+<pre><code>echo $PATH</code></pre></li>
+</ol>
+<p>【问题】在tools路径下点击android或者终端./android sdk打不开manager 会报错</p>
+<p>  继续在官网手动下载包发对应目录：</p>
+<pre><code>下载SDK Platform-Tools
+下载Build-Tools
+下载SDK </code></pre><p><img src="/images/pasted-133.png" alt="upload successful"></p>
+<h6 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h6><pre><code>brew install gradle</code></pre><p>  直接安装即可，报错信息不影响</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/11/Vue-Django跨域问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/11/Vue-Django跨域问题/" itemprop="url">Vue+Django跨域问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-11T18:42:29+08:00">
+                2020-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="Django跨域问题解决"><a href="#Django跨域问题解决" class="headerlink" title="Django跨域问题解决"></a>Django跨域问题解决</h5><p>由于请求本地服务另外端口号导致的跨域问题，可参考<br><a href="https://www.cnblogs.com/wasbg/p/10973880.html" target="_blank" rel="noopener">https://www.cnblogs.com/wasbg/p/10973880.html</a><br><a href="https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：" target="_blank" rel="noopener">https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：</a></p>
+<h6 id="前端解决："><a href="#前端解决：" class="headerlink" title="前端解决："></a>前端解决：</h6><pre><code>config/index.js(前提去掉Axios.defaults.baseURL)
+    proxyTable: {
+        &apos;/&apos;: {
+            target: &apos;http://127.0.0.1:8000/&apos;, //后端接口地址
+            changeOrigin: true, //是否允许跨越
+            pathRewrite: {
+                &apos;^/&apos;: &apos;/&apos;, //重写,
+            }
+        }
+    },</code></pre><ol>
+<li><p>设置了axios.defaults.baseURL会跳过代理,所以需要注释掉baseURL</p>
+</li>
+<li><p>浏览器是禁止跨域的，会检查origin是否同源,若非同源则禁止。但是服务端不禁止，在本地运行npm run dev等命令时实际上是用node运行了一个服务器，因此proxyTable实际上是将请求发给自己的服务器，再由服务器转发给后台服务器，做了亦曾代理，因为不会出现跨域问题。</p>
+<p>proxy 的工作机制是：你依然请求本地地址，即使你 npm run dev 跑起来的东西并没有任何接口能力，而 Webpack 后台会将所有指定的请求转发到 target 对应的地址上。这个转发的过程发生在服务端（也就是 webpack-dev-server），所以你的浏览器是不知道的。</p>
+<h6 id="后端解决"><a href="#后端解决" class="headerlink" title="后端解决"></a>后端解决</h6><p> pip install django-cors-headers   </p>
+<p>  setting中设置：</p>
+<ol>
+<li><p>‘corsheaders.middleware.CorsMiddleware’ # 新加的插件位置最好放在CommonMiddleware之前</p>
+</li>
+<li><p>INSTALLED_APPS中添加<br>‘corsheaders’,    </p>
+</li>
+<li><p>setting文件里新增</p>
+<p>CORS_ORIGIN_ALLOW_ALL = True   //新增<br>CORS_ALLOW_CREDENTIALS = True  //新增</p>
 </li>
 </ol>
-<h6 id="传文件使用-gitlab一致报错"><a href="#传文件使用-gitlab一致报错" class="headerlink" title="传文件使用 gitlab一致报错"></a>传文件使用 gitlab一致报错</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added &apos;gitlab.com,172.65.251.78&apos; (ECDSA) to the list of known hosts.</span><br><span class="line">Permission denied (publickey).</span><br></pre></td></tr></table></figure>
-
-<p>ping一下gitlab.com获取ip,然后设置host对应gitlab.com</p>
-<h6 id="上线步骤："><a href="#上线步骤：" class="headerlink" title="上线步骤："></a>上线步骤：</h6><pre><code>更改google认证，改成线上id
-本地和git上：清除dist文件
-npm run build pro
-生成dist文件拷贝到git文件(同步使用)
-git add .
-git commit -m &quot;update&quot;
-git push
-服务端git pull</code></pre><h6 id="浏览器缓存问题"><a href="#浏览器缓存问题" class="headerlink" title="浏览器缓存问题"></a>浏览器缓存问题</h6><ul>
-<li><p>(1) nginx配置修改</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add_header Cache-Control &quot;no-cache, no-store&quot;;</span><br><span class="line">add_header Pragma no-cache;//http 1.0旧版本</span><br></pre></td></tr></table></figure>
-
-<p>  no-cache, no-store选择一个即可</p>
-<p>  no-cache浏览器会缓存，但刷新页面或者重新打开时 会请求服务器，服务器可以响应304，如果文件有改动就会响应200</p>
-<p>no-store浏览器不缓存，刷新页面需要重新下载页面</p>
-<p>Nginx下关于缓存控制字段cache-control的配置说明:<br><a href="https://www.cnblogs.com/kevingrace/p/10459429.html" target="_blank" rel="noopener">https://www.cnblogs.com/kevingrace/p/10459429.html</a></p>
 </li>
-<li><p>(2) 修改文件 webpack .prod.conf.js,使用时间戳动态定义版本号</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const Version = new Date().getTime();</span><br><span class="line">...</span><br><span class="line">filename: utils.assetsPath(&apos;js/[name].[chunkhash]._&apos; + Version + &apos;.js&apos;),</span><br><span class="line">...</span><br><span class="line">filename: utils.assetsPath(&apos;css/[name].[contenthash]._&apos; + Version + &apos;.css&apos;),</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<p> 但是后来经过实践证明，只需要配置nginx即可，每次刷新即可更新。猜测</p>
-<ol>
-<li>每次html不取缓存，拿到的js都是实际服务器文件</li>
-<li>脚手架本身使用hash生成js和css文件，会根据改动更新文件名</li>
 </ol>
-<h6 id="http和https实际上是跨域问题！！！"><a href="#http和https实际上是跨域问题！！！" class="headerlink" title="http和https实际上是跨域问题！！！"></a>http和https实际上是跨域问题！！！</h6><p>  本地调试如果不设置会默认Https访问，但是服务端只能接收http协议，所以需要处理<br>  config/index.js:</p>
-<pre><code>proxyTable: {
+<p>【问题】<br>[HPM] Error occurred while trying to proxy request /api/logout/ from localhost:8088 to 127.0.0.1:8000/ (EHOSTUNREACH) (<a href="https://nodejs.org/api/errors.html#errors_common_system_errors" target="_blank" rel="noopener">https://nodejs.org/api/errors.html#errors_common_system_errors</a>)</p>
+<p>解决了原来一个warning错后重启了前端服务，服务自动更换了个新的端口，就好了！</p>
+<p>【问题2】解决：设置前端代理后，请求后端服务依旧报404</p>
+<p>【详细描述】由于所有接口有前缀measurement，在跨域之前使用baseURL设置成Axios.defaults.baseURL = ‘<a href="http://http://10.12.168.11:8000/measurement" target="_blank" rel="noopener">http://http://10.12.168.11:8000/measurement</a></p>
+<p>后来改成跨域使用proxy试了几种办法：</p>
+<pre><code>由于请求接口本身并没有measurement，所以这样是错误的。
+   proxyTable: {
     &apos;/measurement&apos;: {
-        target: &apos;http://10.12.170.210:8000&apos;, //后端接口地址
+        target: &apos;http://10.12.168.11:8000&apos;, //后端接口地址
         changeOrigin: true, //是否允许跨越
         pathRewrite: {
             &apos;^/measurement&apos;: &apos;/measurement&apos;, //重写,
         }
     }
-},</code></pre><p>和
-main.js:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.baseURL = &apos;/measurement&apos;</span><br></pre></td></tr></table></figure>
-
-<h6 id="vue-elementUI打包后elmentui自带图标失效问题"><a href="#vue-elementUI打包后elmentui自带图标失效问题" class="headerlink" title="vue+elementUI打包后elmentui自带图标失效问题"></a>vue+elementUI打包后elmentui自带图标失效问题</h6><p>原文：<a href="https://blog.csdn.net/qq_37827221/article/details/100707748https://blog.csdn.net/qq_37827221/article/details/100707748" target="_blank" rel="noopener">https://blog.csdn.net/qq_37827221/article/details/100707748https://blog.csdn.net/qq_37827221/article/details/100707748</a><br>【问题】elmentui自带图标失效，本地打prod包就没有问题，一旦把相同的文件放在服务器就不对了</p>
-<p><img src="/images/pasted-124.png" alt="upload successful"><br>【原因】通过本地文件上传git后，再服务端拉取git代码的方式部署</p>
-<p>  但是由于git冲突(具体为啥不清楚)导致拉取git文件不全，没有拉取到font文件夹内容</p>
-<p>  【解决】删除文件，重新git clone到服务器端，保证代码统一</p>
-<p><img src="/images/pasted-125.png" alt="upload successful"></p>
-<h6 id="生产环境排序功能失效"><a href="#生产环境排序功能失效" class="headerlink" title="生产环境排序功能失效"></a>生产环境排序功能失效</h6><p>【原因】为了屏蔽线上log,在webpack.pro.config中新增了限制字段 </p>
-<pre><code>new UglifyJsPlugin({
-    uglifyOptions: {
-        compress: {
-            warnings: false,
-            // drop_debugger: true, //新增
-            // drop_console: true, //新增
+ 这个很奇怪，竟然也没行
+    proxyTable: {
+    &apos;/&apos;: {
+        target: &apos;http://10.12.168.11:8000&apos;, //后端接口地址
+        changeOrigin: true, //是否允许跨越
+        pathRewrite: {
+            &apos;^/&apos;: &apos;/measurement&apos;, //重写,
         }
-    },</code></pre><p>本身这个没有问题，但是排序的部分使用了log打印的方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(val.sort(this.$compareInGroup(this.sortkey, 0, this.order)));</span><br></pre></td></tr></table></figure>
-
-<p>【解决】去掉console.log即可</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/07/vue-Django项目实践/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/07/vue-Django项目实践/" itemprop="url">vue+Django项目实践问题汇总</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-07T20:42:35+08:00">
-                2020-06-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol start="3">
-<li><p>接口报403  500 ?</p>
-<p>request.POST.get改成使用字典格式再用get获取<br>返回值是非json格式，在里的对象是键值对，不能缺少键值</p>
-</li>
-<li><p>生命周期中调用方法，因为是方法后面别忘了加()</p>
-<pre><code>this.getallbugs();</code></pre></li>
-<li><p>修改文件夹和文件名称后找不到？</p>
-<p> 把这修改的文件夹删除掉，重新新建了个文件夹</p>
-</li>
-<li><p>vue 父子组件的生命周期顺序：加载渲染顺序</p>
-<p> 父beforeCreate-&gt;父created-&gt;父beforeMount-&gt;子beforeCreate-&gt;子created-&gt;子beforeMount-&gt;子mounted-&gt;父mount</p>
-</li>
-<li><p>vue中created和mounted的区别</p>
-<p>created：在模板渲染成html前调用，即通常<strong>初始化某些属性值</strong>，然后再渲染成视图。<br>mounted：在模板渲染成html后调用，通常是初始化页面完成后，再对html的<strong>dom节点</strong>进行一些需要的操作。</p>
-</li>
-<li><p>axios post传递参数，使用$qs处理</p>
-<p> <a href="https://www.cnblogs.com/oukele/p/12670757.html" target="_blank" rel="noopener">https://www.cnblogs.com/oukele/p/12670757.html</a><br> axios post传递数组数据？<br> 通过indices参数，后台接收使用request.POST.getlist()方法接收<br> mains中设置</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.headers.post[&apos;Content-Type&apos;] = &apos;application/x-www-form-urlencoded&apos;</span><br></pre></td></tr></table></figure>
-
-<p> 传递参数时：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">    (&#123;    </span><br><span class="line">    &apos;selecteddate&apos;:searchResult.date,</span><br><span class="line">    &apos;selectedbus&apos;:searchResult.bus</span><br><span class="line">   &#125;, &#123; indices: false &#125;);</span><br><span class="line">    ``` </span><br><span class="line">10. 嵌套路由跳转失败？</span><br><span class="line"></span><br><span class="line">   children挂载到了错误的节点上。</span><br><span class="line">11. 渲染chart图标报错？</span><br><span class="line"></span><br><span class="line">  在created调用，此时div还没有出来，无法在其基础上加载图片。改成mounted</span><br><span class="line">  </span><br><span class="line">12. 如何修改ui-element样式？</span><br><span class="line"></span><br><span class="line">    通过查看元素找到原有样式，再针对性进行修改。       </span><br><span class="line"></span><br><span class="line">14. 子组件传已选择项和所有项目，主组件全部接收后判断如果已选选项为空则取所有项，否则取已选选项</span><br><span class="line"></span><br><span class="line"> ![upload successful](/images/pasted-114.png)</span><br><span class="line"> </span><br><span class="line">16. 不可以直接绑定由props父组件传递过来的值，否则会报错</span><br><span class="line"></span><br><span class="line">  [Vue warn]: Avoid mutating a prop directly since the value will be overwritten whenever the parent component re-renders. Instead, use a data or computed property based on the prop&apos;s value. Prop being mutated: &quot;project&quot;</span><br><span class="line"></span><br><span class="line">17. props报错</span><br><span class="line"> Invalid prop: type check failed for prop &quot;value&quot;. Expected String, Number, got Array </span><br><span class="line"> </span><br><span class="line">  【解决】通过将定义的字符串类型转换成列表类型(定义的data属性原被定义成字符串了，所以报错)</span><br><span class="line"></span><br><span class="line">18. 多选和单选使用同一个控件控制   </span><br><span class="line">【解决】</span><br><span class="line"></span><br><span class="line">   -  写两份下拉框，使用v-show控制multiple属性(控制是否多选)</span><br><span class="line"></span><br><span class="line">   -  多选和单选的绑定类型不一样，多选需是list，单选是字符串。然后通过判断来选择（出过错）</span><br><span class="line"></span><br><span class="line">20. 引入的css样式没有生效？</span><br><span class="line"></span><br><span class="line">  在main.js中引用未全部生效(局部生效，仅限于)，在app.vue中引用集体生效了</span><br><span class="line">  https://blog.csdn.net/HY_358116732/article/details/82219387</span><br><span class="line"></span><br><span class="line">   即在app.vue中引入</span><br></pre></td></tr></table></figure>
-
-<style>
-@import './../static/css/global.css'; /*引入公共样式*/
-</style>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">23. Vue中使用svg  </span><br><span class="line"></span><br><span class="line">  https://zhuanlan.zhihu.com/p/67325098?1=1  </span><br><span class="line"></span><br><span class="line">26.  html的link设置浏览器图标，如果不更换正确的图标原缓存很难清除掉，所以说如果新的图标没生效可能就是没设置对</span><br><span class="line"></span><br><span class="line">	方法： 设置favicon.ico在static路径(图标有现成的话可以把别人下载下来己用哦)</span><br><span class="line">    </span><br><span class="line">28. ref和refs</span><br><span class="line"></span><br><span class="line">    ref 被用来给DOM元素或子组件注册引用信息。引用信息会根据父组件的 $refs 对象进行注册。</span><br><span class="line">    </span><br><span class="line">    如果在普通的DOM元素上使用，引用信息就是元素; </span><br><span class="line">    </span><br><span class="line">    如果用在子组件上，引用信息就是组件实例,添加两个组件ref</span><br></pre></td></tr></table></figure>
-
- <el-form :model="form" label-position="right" :rules="rules" ref="adviceForm">
-
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">    打印出两个组件对象：</span><br><span class="line">	![upload successful](/images/pasted-119.png)</span><br><span class="line">    使用($refs引用)：</span><br><span class="line">        this.$refs.adviceForm.resetFields();</span><br><span class="line"></span><br><span class="line">30. 我们需要重置该页面的原始数据，每个数据进行重写特别麻烦。利用Object.assign 以及vue的数据可以快速重置。 </span><br><span class="line"></span><br><span class="line">		Object.assign(this.$data, this.$options.data())</span><br><span class="line">        </span><br><span class="line">31. 分页实现</span><br><span class="line"></span><br><span class="line">        &lt;div class=&quot;paginationClass&quot;&gt;</span><br><span class="line">          &lt;el-pagination</span><br><span class="line">            @size-change=&quot;handleSizeChange&quot; //切换每页最多展示条数</span><br><span class="line">            @current-change=&quot;handleCurrentChange&quot;//切换页码</span><br><span class="line">            :page-sizes=&quot;[10, 20, 50]&quot;</span><br><span class="line">            :page-size=&quot;pagesize&quot;</span><br><span class="line">            layout=&quot;total, sizes, prev, pager, next, jumper&quot;</span><br><span class="line">            :total=&quot;total&quot;</span><br><span class="line">          &gt;&lt;/el-pagination&gt;</span><br><span class="line">        &lt;/div&gt;</span><br><span class="line">  方法实现：   </span><br><span class="line">  </span><br><span class="line">         handleSizeChange: function(pagesize) &#123;</span><br><span class="line">            // 每页条数切换</span><br><span class="line">            this.pagesize = pagesize;</span><br><span class="line">            if (pagesize &gt; 10) &#123;</span><br><span class="line">              this.showtablehg = 800;</span><br><span class="line">            &#125;</span><br><span class="line">            this.handleCurrentChange(this.currentPage);</span><br><span class="line">          &#125;,</span><br><span class="line"></span><br><span class="line">         handleCurrentChange: function(currentPage) &#123;</span><br><span class="line">            //页码切换</span><br><span class="line">            this.currentPage = currentPage;</span><br><span class="line">            this.getallbugs(currentPage);后端实现分页逻辑</span><br><span class="line">            // this.currentChangePage(this.bondsAllList, currentPage);</span><br><span class="line"></span><br><span class="line">          &#125;,</span><br><span class="line">          前端实现分页逻辑(将当前页的数据取出给table绑定)：</span><br><span class="line">              currentChangePage(list, currentPage) &#123;</span><br><span class="line">              let from = (currentPage - 1) * this.pagesize;</span><br><span class="line">              let to = currentPage * this.pagesize;</span><br><span class="line">              this.tempList = [];</span><br><span class="line">              for (; from &lt; to; from++) &#123;</span><br><span class="line">                if (list[from]) &#123;</span><br><span class="line">                  this.tempList.push(list[from]);</span><br><span class="line">                &#125;</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;,</span><br><span class="line">9. 为表格添加说明</span><br><span class="line"></span><br><span class="line">  在el-table-column添加：</span><br><span class="line">       :render-header=&quot;renderHeader&quot;</span><br><span class="line">  定义方法：</span><br></pre></td></tr></table></figure>
-
-<p>renderHeader(h, { column, $index }) {</p>
-<pre><code>return h(
-  &quot;el-tooltip&quot;, //  标签的名称
-  {
-    props: {
-      //标签的参数　通过不同的标签 显示不同的文字
-      content: (function() {
-        //如何拿到 label的文字？？ 通过column.label来拿
-        let property = column.property;
-        switch (property) {
-          case &quot;live_bugs&quot;:
-            return &apos;我是提示文字live_bugs&apos;;
-            break;
-          case &quot;提示2&quot;:
-            return &quot;提示文字2&quot;;
-            break;
-          case &quot;提示3&quot;:
-            return &quot;提示文字3&quot;;
-            break;
-        }
-      })(),
-      placement: &quot;top&quot;
-      // effect: &quot;light&quot;,  //  默认为黑色主题
-    },
-    ///下面的意思是往el-tooltip　标签里面添加内容　column.label（拿到自己定义的显示内容：　拦截状态　）
-    domProps: {
-      innerHTML:
-        column.label +
-        &apos;&lt;i class=&quot;el-icon-question&quot; style=&quot;margin-left:3px;font-size:15px;&quot;/&gt;&apos;
     }
-  },
-  [h(&quot;span&quot;)]
-);</code></pre><p>   },</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">  </span><br><span class="line">10. 文件下载</span><br><span class="line"></span><br><span class="line">	后端Django  </span><br><span class="line">    </span><br><span class="line">        file = open(update_file_path, &apos;rb&apos;) #update_file_path文件存放位置</span><br><span class="line">        response = FileResponse(file)</span><br><span class="line">        response[&apos;Content-Type&apos;] = &apos;application/octet-stream&apos;</span><br><span class="line">        #file_name下载下来保存的文件名字</span><br><span class="line">        content_dis = &apos;attachment;filename=&quot;&apos;+file_name+&apos;&quot;&apos;</span><br><span class="line">        response[&apos;Content-Disposition&apos;] = content_dis</span><br><span class="line">        return response</span><br><span class="line"></span><br><span class="line">    对流文件可使用 Blob对象 和 使用 js-file-download</span><br><span class="line"></span><br><span class="line">    发送请求时都要设置 responseType</span><br><span class="line"></span><br><span class="line">    以下是完整的一个文件下载请求和处理过程：</span><br></pre></td></tr></table></figure>
-
-<p> {<br>   var param = this.$qs.stringify(</p>
-<pre><code>{
-  sub_project: this.selectedsubproject,
-  src: this.selectedsrc,
-  version: this.selectedversion
-},
-{ indices: false }</code></pre><p>   );<br>   this.$axios</p>
-<pre><code>.post(&quot;version/task/detail/export/&quot;, param,{responseType: &apos;blob&apos;})
-.then(res =&gt; {
-
-const content = res.data
-const blob = new Blob([content]) // 构造一个blob对象来处理数据
-const fileName = &apos;test.xlsx&apos; // 导出文件名
-
-if (&apos;download&apos; in document.createElement(&apos;a&apos;)) { // 支持a标签download的浏览器
-  const link = document.createElement(&apos;a&apos;) // 创建a标签
-  link.download = fileName // a标签添加属性
-  link.style.display = &apos;none&apos;
-  link.href = URL.createObjectURL(blob)
-  document.body.appendChild(link)
-  link.click() // 执行下载
-  URL.revokeObjectURL(link.href) // 释放url
-  document.body.removeChild(link) // 释放标签
-} else { // 其他浏览器
-  navigator.msSaveBlob(blob, fileName)
-}
-})
-.catch(function(err) {
-  console.log(err);
-});</code></pre><p> },</p>
-<pre><code>
-参考：https://segmentfault.com/a/1190000020540788?utm_source=tag-newest </code></pre></el-form></li>
-<li><p>打开已成型的Django项目路径无法跳转，展示红线条？</p>
-<p> 项目打开路径错误，应该打开到项目根路径(非外部路径)</p>
-</li>
-</ol>
-
+最后还在链接上面添加的前缀 
+proxyTable: {
+    &apos;/&apos;: {
+        target: &apos;http://10.12.168.11:8000/measurement&apos;, //后端接口地址
+        changeOrigin: true, //是否允许跨越
+        pathRewrite: {
+            &apos;^/&apos;: &apos;/&apos;, //重写,
+        }
+    }</code></pre>
           
         
       
@@ -1983,7 +1642,7 @@ if (&apos;download&apos; in document.createElement(&apos;a&apos;)) { // 支持a�
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2029,7 +1688,7 @@ if (&apos;download&apos; in document.createElement(&apos;a&apos;)) { // 支持a�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">116</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

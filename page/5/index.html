@@ -261,7 +261,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/01/RT运行命令/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/22/图像处理坐标/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -280,7 +280,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/02/01/RT运行命令/" itemprop="url">RT运行命令</a></h1>
+                <a class="post-title-link" href="/2020/03/22/图像处理坐标/" itemprop="url">图像处理坐标</a></h1>
         
 
         <div class="post-meta">
@@ -292,8 +292,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-01T20:20:11+08:00">
-                2020-02-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-22T10:45:48+08:00">
+                2020-03-22
               </time>
             
 
@@ -332,202 +332,17 @@
       
         
           
-            <h5 id="robot命令"><a href="#robot命令" class="headerlink" title="robot命令"></a>robot命令</h5><p>使用1：运行程序并生成报告</p>
-<pre><code>robot -d Output --loglevel TRACE -v env:$env -v HUB:$hub -i $area SellerCenterUI/TestCase/06Wallet/</code></pre><p>使用2：重新运行失败的case</p>
-<pre><code>robot -d Output --rerunfailed Output/output.xml --output rerun.xml --loglevel TRACE -v env:$env -v HUB:$hub  -i $area SellerCenterUI/TestCase/01Login/</code></pre><p>据robot –help可知</p>
-<pre><code>-d  --outputdir dir       Where to create output files. The default is the directory where tests are run from and the given path   is considered relative to that unless it is absolute.即指定生成报告的文件
--L --loglevel level      Threshold level for logging. Available levels: TRACE,DEBUG, INFO (default), WARN, NONE (no logging).
- -i --include tag * 
- -v --variable name:value *      Set variables in the test data. Only scalar variables with string value are supported and name is given without `${}`.
-  -R --rerunfailed output       Select failed tests from an earlier output file</code></pre><h5 id="rebot命令"><a href="#rebot命令" class="headerlink" title="rebot命令"></a>rebot命令</h5><p>使用：合并报告</p>
-<pre><code>/usr/local/python3/bin/rebot -d Output --output output.xml --merge Output/output.xml Output/rerun.xml</code></pre><p>   使用rebot –help可知</p>
-<pre><code>-o --output file         XML output file. Not created unless this option is specified. Given path, similarly as paths given to --log, --report and --xunit, is relative to --outputdir unless given as an absolute path.
--R --merge               When combining results, merge outputs together Example: rebot --merge orig.xml rerun.xml</code></pre><p>  最终根据xml文件生成Log和Report文件（个人理解）</p>
-<pre><code>Output:  /var/lib/jenkins/workspace/Staging/login for th/Output/output.xml
-Log:     /var/lib/jenkins/workspace/Staging/login for th/Output/log.html
-Report:  /var/lib/jenkins/workspace/Staging/login for th/Output/report.html</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
+            <p>如何画矩形：<a href="https://www.cnblogs.com/ivy-blogs/p/10628189.html" target="_blank" rel="noopener">https://www.cnblogs.com/ivy-blogs/p/10628189.html</a></p>
+<pre><code>image_path = &apos;&apos;
+image = cv2.imread(image_path)
+first_point = (100, 100)
+last_point = (100, 100)
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/31/Selenium下Docker使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/31/Selenium下Docker使用/" itemprop="url">Selenium&Docker使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-31T22:15:05+08:00">
-                2020-01-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="Docker-API"><a href="#Docker-API" class="headerlink" title="Docker  API"></a>Docker  API</h4><p>原文：<a href="https://www.missshi.cn/api/view/blog/5a63285f0a745f6335000008" target="_blank" rel="noopener">https://www.missshi.cn/api/view/blog/5a63285f0a745f6335000008</a></p>
-<p>在Docker的生态系统中，存在下列三种API：</p>
-<ol>
-<li><p>Reistry API：与存储Docker镜像的Registry相关的功能。</p>
-</li>
-<li><p>Docker Hub API：与Docker Hub相关的功能</p>
-</li>
-<li><p>** Docker Remote API：与Docker守护进程相关的功能**</p>
-</li>
-</ol>
-<h4 id="Docker-Remote-API"><a href="#Docker-Remote-API" class="headerlink" title="Docker Remote API"></a>Docker Remote API</h4><p>  以下可以得到类似的docker info时的JSON格式的数据</p>
-<pre><code>curl http://10.129.144.66:2375/info</code></pre><p>  调用/images/json接口可以获取<strong>镜像</strong>列表：</p>
-<pre><code>curl http://example.com:2375/images/json | python -mjson.tool</code></pre><p>  调用/containers/json接口可以获取正在运行中的<strong>容器</strong>列表：</p>
-<pre><code>curl http://example.com:2375/containers/json | python -mjson.tool</code></pre><p>  其中python -mjson.tool可以将JSON数据格式化显示。</p>
-<h4 id="Python调用Docker-API"><a href="#Python调用Docker-API" class="headerlink" title="Python调用Docker API"></a>Python调用Docker API</h4><p>对于原生Docker Remote API而言，虽然功能很强大，但是使用起来并不是十分的方便。</p>
-<p>为了简化Docker Remote API的使用，Python针对Docker API进行了封装，提供了一套完整的Python第三方库：docker，专门用于操作调用Docker服务。</p>
-<p>可通过pip安装</p>
-<pre><code>pip install docker</code></pre><p>创建一个docker_api.py的文件，修改文件内容如下：</p>
-<pre><code>import docker
-client = docker.DockerClient(base_url=&apos;tcp://example.com:2375&apos;, version=&quot;auto&quot;)
-client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></pre><p>client.containers.run相当于docker run，参数ports字典类型，端口映射 {8000: 80}表示容器的8000端口映射到宿主机的80端口</p>
-<p>对于client.containers.run的函数的返回值，当detach=False时，返回值是运行过程中的日志，而当detach=True时，返回值是<strong>Container对象</strong>。</p>
-<h4 id="Selenium-Grid"><a href="#Selenium-Grid" class="headerlink" title="Selenium Grid"></a>Selenium Grid</h4><p>  本文参考 <a href="https://www.cnblogs.com/hellangels333/p/9749905.html" target="_blank" rel="noopener">https://www.cnblogs.com/hellangels333/p/9749905.html</a><br>  <a href="https://www.cnblogs.com/nanaheidebk/p/10109013.html" target="_blank" rel="noopener">https://www.cnblogs.com/nanaheidebk/p/10109013.html</a></p>
-<p>  具体可看原文，原文更加详细，以下为部分摘录：</p>
-<p>  这里主要针对的是 Selenium Grid，它用于分布式自动化测试，就是一套Selenium 代码可在不同的环境上运行。刚好，Docker可快速的创建各种环境。</p>
-<h6 id="Selenium-Grid-有两个概念"><a href="#Selenium-Grid-有两个概念" class="headerlink" title="Selenium Grid 有两个概念"></a>Selenium Grid 有两个概念</h6><ul>
-<li><p>hub ：主节点，你可以看作 “北京总公司的测试经理”。</p>
-</li>
-<li><p>node：分支节点，你可以看作 “北京总公司的测试小兵A” 和 “上海分公司的测试小兵B”，还有 “深圳分公司的测试小兵C” …。</p>
-<p>也就是说在Selenium Grid中只能有一个主hub，但可以在本地或远程建立 N 多个分支node，测试脚本指向主hub，由主hub 分配给本地/远程node 运行测试用例。node有两种，一个是firefox，一个chrome。   </p>
-<p>  hub：selenium/hub<br>  node：selenium/node-firefox ， selenium/node-chrome  </p>
-</li>
-</ul>
-<h6 id="docker-selenium-环境安装"><a href="#docker-selenium-环境安装" class="headerlink" title="docker selenium 环境安装"></a>docker selenium 环境安装</h6><ol>
-<li><p>下载主hub镜像（北京总公司的测试经理）</p>
-<pre><code>$ sudo docker pull selenium/hub</code></pre></li>
-<li><p>下载主node chrome 镜像（上海分公司的测试小兵B）</p>
-<pre><code>$ sudo docker pull selenium/node-chrome</code></pre></li>
-<li><p>启动主hub容器</p>
-<pre><code>$ sudo docker run -d -P --name selenium-hub selenium/hub</code></pre><p>  -P 表示 Docker 会随机映射一个 49000~49900 的端口到内部容器开放的网络端口。<br> -d 表示在后台运行<br> -name  命名<br> selenium/hub：运行的镜像名称  </p>
-</li>
-<li><p>启动分支node chrome 容器</p>
-<pre><code>$ sudo docker run -d --link selenium-hub:hub selenium/node-chrome</code></pre><p> –link 通过 link 关联 selenium-hub 容器，并为其设置了别名hub，链接别名是selenium-hub的容器(即上面启动的容器)     </p>
-</li>
-<li><p>查看容器</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  LiyuanChendeMacBook-Pro:~ liyuanchen$ docker ps</span><br><span class="line">CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                     NAMES</span><br><span class="line">e96d18013f73        selenium/node-chrome   &quot;/opt/bin/entry_poin…&quot;   4 seconds ago       Up 3 seconds                                  eager_sammet</span><br><span class="line">b9449483ccb5        selenium/hub           &quot;/opt/bin/entry_poin…&quot;   2 minutes ago       Up 2 minutes        0.0.0.0:32768-&gt;4444/tcp   selenium-hub                             eloquent_gates</span><br></pre></td></tr></table></figure>
-
-<p>Selenium/hub 容器的端口号为 4444，而对Ubuntu映射的端口为 32768，前面通过 -P 参数自动分配。</p>
-<p>工作原理：</p>
-<p> <font color="red">selenium Grid脚本 -&gt; ubuntu(32768) -&gt; Hub容器(4444) -&gt; Node Chrome 容器</font></p>
-<p>最终得到可使用的hub链接是：<a href="http://127.0.0.1:32768/wd/hub" target="_blank" rel="noopener">http://127.0.0.1:32768/wd/hub</a></p>
-<h6 id="本地实践"><a href="#本地实践" class="headerlink" title="本地实践"></a>本地实践</h6><ol>
-<li><p>启动主hub容器，获取端口号（按照如上命令）</p>
-</li>
-<li><p>启动分支node chrome 容器（按照如上命令）</p>
-</li>
-<li><p>使用HUB执行RT命令运行robot命令</p>
-<pre><code>robot -d Output --loglevel TRACE -v env:staging -v area:sg  -v HUB:http://127.0.0.1:32769/wd/hub   -i all -i sg  SellerCenterUI/TestCase/03HomePage/</code></pre></li>
-</ol>
-<p>若改成使用 Remote API 启动容器呢？</p>
-</li>
-</ol>
-<h6 id="Docker-SDK-for-Python"><a href="#Docker-SDK-for-Python" class="headerlink" title="Docker SDK for Python"></a>Docker SDK for Python</h6><p>官方文档：<a href="https://docker-py.readthedocs.io/en/stable/index.html" target="_blank" rel="noopener">https://docker-py.readthedocs.io/en/stable/index.html</a></p>
-<p>众所周知，Docker向外界提供了一个API来管理其中的资源。这个API可以是socket文件形式的（一般也是默认的，在/var/run/docker.sock中），也可以是TCP形式的,本次项目使用的TCP方式定义</p>
+cv2.rectangle(image, first_point, last_point, (0, 255, 0), 2)
+cv2.imwrite(image_path, image)</code></pre><p>first_point和last_point都是矩形在图片的像素坐标位置，且坐标位置为int整型。</p>
+<p>** first_point为矩形左上角的坐标位置**</p>
+<p>** last_point为矩形右下角的坐标位置**</p>
+<p>该两点的存在刚好能够组成一个矩形</p>
 
           
         
@@ -576,7 +391,7 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/元素定位问题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/21/mac下python3-tesseract-pytesseract-的安装与调试/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -595,7 +410,7 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/29/元素定位问题/" itemprop="url">RT定位元素问题</a></h1>
+                <a class="post-title-link" href="/2020/03/21/mac下python3-tesseract-pytesseract-的安装与调试/" itemprop="url"> tesseract 的环境安装</a></h1>
         
 
         <div class="post-meta">
@@ -607,8 +422,8 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T21:49:53+08:00">
-                2020-01-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-21T12:15:51+08:00">
+                2020-03-21
               </time>
             
 
@@ -647,91 +462,44 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
       
         
           
-            <p>【问题】各种找不到元素</p>
-<h6 id="语法问题-低级错误导致高级提醒"><a href="#语法问题-低级错误导致高级提醒" class="headerlink" title="语法问题-低级错误导致高级提醒"></a>语法问题-低级错误导致高级提醒</h6><ol>
-<li><p>元素名称错误，比如后面少了对应右括号 ）</p>
-</li>
-<li><p>元素本身就不存在，比如调试元素在所在环境中不存在，然而编写代码定位的时候使用的是线上环境账号，其具有该元素，造成元素找不到</p>
-</li>
-<li><p>元素前面未加css=或者xpath=类型名称</p>
-</li>
-<li><p>css父子关系之间不用空格，用点来替代；祖辈关系使用单个空格</p>
-</li>
-<li><p>TypeError: Failed to execute ‘evaluate’ on ‘Document’: The result is not a node set, and therefore cannot be converted to the desired type.</p>
-<p> 原因：多写了个xpath</p>
-<pre><code>xpath=xpath=//div/ul  </code></pre></li>
-</ol>
-<h6 id="其他报错信息"><a href="#其他报错信息" class="headerlink" title="其他报错信息"></a>其他报错信息</h6><p>【解决原则】 判断元素存在后再操作；使用get webelements或者status等待判断</p>
-<ol>
-<li><p>元素不在屏幕可视范围内导致找不到元素。可使用滚动查找元素：</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecuteJavascriptdocument.documentElement.scrollTop=10000</span><br></pre></td></tr></table></figure>
-
-<p> scroll element into view  ${locator}貌似不好用</p>
-</li>
-<li><p>AttributeError: ‘list’ object has no attribute ‘startswith’？<br> 也是因为没有找到元素报的错，要保证元素存在的时候再进行操作</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;obj&#125;    GetWebElements    $&#123;homepage_ele&#125;[button_proceed]</span><br><span class="line">Runkeywordif    $&#123;obj&#125;  click element    $&#123;obj&#125;</span><br></pre></td></tr></table></figure>
-
-<p> click element后面的按钮元素多次被我写成了对象，会报这个错</p>
-</li>
-<li><p>is not clickable at point (1435, 107). Other element would receive the click: &lt;div class=”shopee-modal__container”</p>
-<p>确实是被其他元素遮挡住了</p>
-</li>
-<li><p>StaleElementReferenceException: Message: stale element reference: element is not attached to the page document</p>
-<p> 很多时候sleep一下就好了</p>
-</li>
-<li><p>一个查了很久的问题，有个场景，进入链接后如果有密码框则点击按钮，但是第一个链接执行之后第二个链接依旧检测到有密码框于是就开始找按钮（实际没有）</p>
-<p> 本来以为是变量第二次赋值的时候有第一次的缓存，但是重新设置${None}后依旧无效。</p>
-<p> 原因：第二个link页面没有展示密码框但是元素中却能搜索到这个css元素值。</p>
-</li>
-<li><p>元素一直定位不到，本地机器可以。但是实际看页面上是展示出该元素的</p>
+            <h6 id="windows-10-安装"><a href="#windows-10-安装" class="headerlink" title="windows 10 安装:"></a>windows 10 安装:</h6><p>第一步在虚拟环境或者正式环境pip安装：</p>
+<pre><code>pip install pytesseract
+ pip install pillow</code></pre><p>第二步 安装Tesseract-OCR    </p>
 <ul>
-<li><p>后来找人查了很久，还是最后查出还是之前我怀疑过的一个问题，就是侧边栏的链接父元素class会变化，后来由开发得知是根据高度来判断的，后来兼容使用模糊匹配xpath=//ul[contains(@class, ‘sidebar’)]//a[contains(text(),”{}”)]</p>
+<li><p>下载安装包官网：<br>注意版本之前由于使用3.0.2一直报错，后来换成5.0才好</p>
+<p>  <a href="https://github.com/UB-Mannheim/tesseract/wiki" target="_blank" rel="noopener">https://github.com/UB-Mannheim/tesseract/wiki</a><br>一路安装时可选择下语言包</p>
 </li>
-<li><p>但是有时候按照文本查找的元素类型会变化</p>
+<li><p>系统环境Path变量配置：</p>
+<p>  <img src="%5Cimages%5Cpasted-106.png" alt="upload successful"></p>
+<p>  <a href="https://www.cnblogs.com/chenshengkai/p/11318272.html" target="_blank" rel="noopener">https://www.cnblogs.com/chenshengkai/p/11318272.html</a></p>
+<p>  验证： </p>
+<pre><code>tesseract --version</code></pre></li>
+<li><p>在python文件下搜索pytesseract.py文件并修改路径：<br>tesseract_cmd = ‘C:\Program Files\Tesseract-OCR\tesseract.exe’</p>
 </li>
 </ul>
-<p>如在测试环境是这样的：</p>
-<p><img src="/images/pasted-96.png" alt="upload successful"></p>
-<p>但是在预发环境确是这样：</p>
-<p><img src="/images/pasted-95.png" alt="upload successful"></p>
-<p>解决办法还是找到共同点，获取公共元素进行定位如href：</p>
-<pre><code>//ul[contains(@class, &apos;sidebar&apos;)]//a[@href=&apos;/portal/finance/income&apos;]</code></pre></li>
-<li><p>相较上面还有更狠的，不仅环境不同元素取值不同，而且同一个元素会变化</p>
-<p>思路：</p>
-<ol>
-<li><p>根据环境设置元素模板，封装公共方法</p>
+<p><img src="%5Cimages%5Cpasted-104.png" alt="upload successful"></p>
+<p>   参考<br>   <a href="https://www.cnblogs.com/chenshengkai/p/11318387.html" target="_blank" rel="noopener">https://www.cnblogs.com/chenshengkai/p/11318387.html</a><br>    <a href="https://blog.csdn.net/qq_38161040/article/details/90649497" target="_blank" rel="noopener">https://blog.csdn.net/qq_38161040/article/details/90649497</a></p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pytesseract</span><br><span class="line">from PIL import Image</span><br><span class="line"></span><br><span class="line">image = Image.open(&quot;data/enzh.png&quot;)</span><br><span class="line">code = pytesseract.image_to_string(image,lang=&apos;chi_sim&apos;)</span><br><span class="line">print(code)</span><br></pre></td></tr></table></figure>
+
+<h6 id="mac安装"><a href="#mac安装" class="headerlink" title="mac安装"></a>mac安装</h6><ol>
+<li><p>pip install pytesseract<br>pip install tesseract  </p>
+<p>之后运行demo一直报这个错：</p>
+<p>NotADirectoryError: [Errno 20] Not a directory: ‘tesseract’</p>
+<p>后来看到帖子说mac必须得用brew安装才行(救星)，又重新安装了一次，果然成功了</p>
+<p>brew install tesseract</p>
+<p>参考： <a href="https://blog.csdn.net/weixin_38246633/article/details/82993678" target="_blank" rel="noopener">https://blog.csdn.net/weixin_38246633/article/details/82993678</a></p>
 </li>
-<li><p>使用或来判断(之前一直没找到或怎么用)</p>
+<li><p>紧接着又报错：</p>
+<pre><code>pytesseract.pytesseract.TesseractError: (1, &apos;Error opening data file /usr/local/share/tessdata/chi_sim.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your &quot;tessdata&quot; directory. Failed loading language \&apos;chi_sim\&apos; Tesseract couldn\&apos;t load any languages! Could not initialize tesseract.&apos;)</code></pre><p>感谢文章：<br>   <a href="https://blog.csdn.net/magicianofcodes/article/details/79401622" target="_blank" rel="noopener">https://blog.csdn.net/magicianofcodes/article/details/79401622</a></p>
+<p> 即根据错误提示：</p>
+<p>1）.  需要设置环境变量    </p>
+<pre><code>export TESSDATA_PREFIX=/usr/local/Cellar/tesseract/3.05.01/share/tessdata
+export PATH=$PATH:$TESSDATA_PREFIX</code></pre><p>2）. 下载语言包</p>
+<p> <a href="https://github.com/tesseract-ocr/tessdata" target="_blank" rel="noopener">https://github.com/tesseract-ocr/tessdata</a></p>
+<p>下载相应缺少的语言包(这里是chi_sim)，然后放在/usr/local/Cellar/tesseract/3.05.01/share/tessdata之下</p>
+<p>至此，成功 ~</p>
 </li>
 </ol>
-<p>变化前：  <img src="/images/pasted-98.png" alt="upload successful"></p>
-<p>变化后：  <img src="/images/pasted-100.png" alt="upload successful"></p>
-<p>即在sidebar-container的div和ul之间总变化一个div,最后使用或限制class属性：</p>
-<pre><code>//div[@class=&apos;sidebar&apos; or contains(@class, &apos;sidebar-fixed&apos;)]//span[contains(text(),”xxx“)]/..    </code></pre></li>
-<li><p>同一个页面元素有时候路径不同，需要综合不同情况时的共同点，来取该元素的值。<br>比如my wallet链接。有时候是a有时候是div有时候span，可以考虑使用模糊匹配</p>
-</li>
-<li><p>JavascriptException: Message: javascript error: Failed to execute ‘elementsFromPoint’ on ‘Document’: The provided double value is non-finite.</p>
-<pre><code>scroll element into view  css=.multiple-level-items &gt; li:nth-of-type(1)</code></pre><p>原因：取消使用scroll element into view关键字 </p>
-</li>
-<li><p>不包含元素</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xpath=//span[not(contains(text(),&apos;Women Clothes&apos;))]</span><br><span class="line">xpath=//div[@class=&apos;btn-wrap-right&apos;][not(contains(@style,&apos;display&apos;))]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用preceding-sibling\following-sibling\ancestor</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xpath=//label[@class=&apos;shopee-radio&apos;]/span[contains(text(),&apos;&#123;&#125;&apos;)]/preceding-sibling::span</span><br><span class="line"></span><br><span class="line">xpath=//span[contains(text(), &apos;$&#123;image_name&#125;&apos;)]/ancestor::li//label</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>页面加载时间不确定，除了固定等待如何判断何时校验元素出现？ </p>
-<p>抓取loading元素，判断该元素何时不在即可</p>
-</li>
-<li><p>浮层上面的元素怎么定位(直接去取的话，与元素定位无法实现同步)</p>
-<p> 右键点击浮层上的元素，点击‘检查’，即可定位到该元素位置，可用console进行调试</p>
-</li>
-<li><p>svg 突然click失败了，之前还是好的，改成该元素上面的i也不行。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ElementClickInterceptedException: Message: element click intercepted: Element &lt;i class=&quot;shopee-icon shopee-table__sort-icon up&quot;&gt;...&lt;/i&gt; is not clickable at point (1098, 441). Other element would receive the click: &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 16 16&quot;&gt; &lt;/svg&gt; (Session info: chrome=79.0.3945.117)</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<p>  解决:该用press keys最终实现了该功能<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">press keys    $&#123;mediaspace_ele&#125;[button_storage_up]    RETURN</span><br></pre></td></tr></table></figure></p>
 
           
         
@@ -780,7 +548,7 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/RT本地环境配置/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/conda/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -799,7 +567,7 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/29/RT本地环境配置/" itemprop="url">Robot Framework环境配置和部署</a></h1>
+                <a class="post-title-link" href="/2020/03/18/conda/" itemprop="url">Anaconda  conda使用</a></h1>
         
 
         <div class="post-meta">
@@ -811,8 +579,8 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T21:16:20+08:00">
-                2020-01-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-18T18:28:58+08:00">
+                2020-03-18
               </time>
             
 
@@ -851,54 +619,40 @@ client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></
       
         
           
-            <h5 id="安装谷歌浏览器"><a href="#安装谷歌浏览器" class="headerlink" title="安装谷歌浏览器"></a>安装谷歌浏览器</h5><pre><code>在win上安装：现在百度找个可用的chrome包都很难，最后干脆下载了个软件管理，瞬间安装好了。。。
-
-不过要想找历史版本就得海淘碰运气了，本来下载程序依赖79，但是后来79貌似不行了，一直报错，一段时间后还是又升级回了最新80版本</code></pre><ul>
-<li><p>安装chromedriver</p>
-<p><a href="http://chromedriver.chromium.org/downloads" target="_blank" rel="noopener">http://chromedriver.chromium.org/downloads</a><br>或
-<a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">http://chromedriver.storage.googleapis.com/index.html</a></p>
-<p>下载的driver的版本需要和浏览器的版本匹配，解压后放到本机,将文件路径添加至PATH中</p>
-<ol>
-<li><p>将下载的可执行文件移到/usr/local/bin下</p>
-<p>sudo mv chromedriver /usr/local/bin/chromedriver</p>
+            <h5 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h5><ul>
+<li><p>环境 mac ：官网下载sh包，</p>
+<p> sh   Miniconda3-latest-MacOSX-x86_64.sh</p>
+<p>安装后去/xxx/miniconda3/bin下执行 </p>
+<p> .  activate</p>
 </li>
-<li><p>: 修改文件权限</p>
-<p>sudo chmod u+x,o+x /usr/local/bin/chromedriver</p>
-</li>
-<li><p>检查是否安装成功:</p>
-<p> chromedriver –version</p>
-</li>
-</ol>
+<li><p>windows安装</p>
+<p>下载： <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
 </li>
 </ul>
-<h5 id="安装本地运行环境依赖库"><a href="#安装本地运行环境依赖库" class="headerlink" title="安装本地运行环境依赖库"></a>安装本地运行环境依赖库</h5><p>  如Python版本：python3.6</p>
-<pre><code>requests==2.22.0
-robotframework==3.1.2
-robotframework-ride==1.7.3.1
-robotframework-seleniumlibrary==3.3.1
-selenium==3.141.0
-xlrd==1.2.0
-Pillow==6.2.1
-
-快速生成requirement.txt的安装文件
-pip freeze &gt; requirements.txt
-安装所需要的文件
-pip install -r requirement.txt</code></pre><h5 id="安装配置IDE–推荐pycharm"><a href="#安装配置IDE–推荐pycharm" class="headerlink" title="安装配置IDE–推荐pycharm"></a>安装配置IDE–推荐pycharm</h5><ul>
-<li><p>安装插件 IntelliBot 、IntelliBot @SeleniumLibrary Patched、Robot Framework support </p>
-</li>
-<li><p>Preferences-Editor-File Types-Robot Feature下添加*.robot类型</p>
-</li>
-<li><p>Tools-External Tools 配置Tool Setting，其中Arguments配置如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--loglevel TRACE -d /Users/liyuan/Documents/Log     $FileName$</span><br><span class="line"></span><br><span class="line">-d /Users/liyuan/Documents/Log --loglevel TRACE -t &quot;$SelectedText$&quot; ./</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-77.png" alt="upload successful"></p>
-<p><img src="/images/pasted-78.png" alt="upload successful"></p>
+<h4 id="2、conda命令"><a href="#2、conda命令" class="headerlink" title="2、conda命令"></a>2、conda命令</h4><pre><code>conda #可查帮助信息
+conda info -e
+source activate deeplearning   #进入我们的虚拟环境其中deeplearning是名称
+  #退出虚拟环境
+conda remove -n deeplearning --all
+conda list 查看已安装软件
+conda available packages
+conda search source deactivategatk
+conda install gatk
+ which gatk  查看软件安装位置
+conda update gatk  升级软件
+conda remove gatk  卸载指定软件
+conda env list  环境列表，星号代表当前环境
+activate learn  切换到learn环境
+activate // 切换到base环境
+conda create -n learn python=3 // 创建一个名为learn的环境并指定python版本为3(的最新版本)
+conda remove -n learn --all // 删除learn环境及下属所有包</code></pre><p>  虚拟环境的使用：</p>
+<p>  <img src="/images/pasted-93.png" alt="upload successful"></p>
+<h4 id="3、问题"><a href="#3、问题" class="headerlink" title="3、问题"></a>3、问题</h4><ul>
+<li><p>【Anaconda】关于conda使用环境未被激活的问题</p>
+<pre><code>由powershell改成使用cmd</code></pre><p>  参考：<a href="https://www.cnblogs.com/happyamyhope/p/11547134.html" target="_blank" rel="noopener">https://www.cnblogs.com/happyamyhope/p/11547134.html</a></p>
 </li>
 </ul>
-<h5 id="运行Case"><a href="#运行Case" class="headerlink" title="运行Case"></a>运行Case</h5><p>使用<code>robot</code>命令，jenkins可结合<code>rebot</code>使用</p>
-<pre><code>robot --output original.xml tests                          # first execute all tests
-robot --rerunfailed original.xml --output rerun.xml tests  # then re-execute failing
-rebot --merge original.xml rerun.xml                       # finally merge results</code></pre>
+
           
         
       
@@ -946,7 +700,7 @@ rebot --merge original.xml rerun.xml                       # finally merge resul
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/RT使用pycharm点击引用失效问题/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/论文准备/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -965,7 +719,7 @@ rebot --merge original.xml rerun.xml                       # finally merge resul
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/29/RT使用pycharm点击引用失效问题/" itemprop="url">RT使用pycharm点击引用失效问题</a></h1>
+                <a class="post-title-link" href="/2020/03/18/论文准备/" itemprop="url">论文准备</a></h1>
         
 
         <div class="post-meta">
@@ -977,8 +731,8 @@ rebot --merge original.xml rerun.xml                       # finally merge resul
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T19:09:50+08:00">
-                2020-01-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-18T17:00:52+08:00">
+                2020-03-18
               </time>
             
 
@@ -1017,29 +771,32 @@ rebot --merge original.xml rerun.xml                       # finally merge resul
       
         
           
-            <h5 id="pycharm引用库文件失效问题"><a href="#pycharm引用库文件失效问题" class="headerlink" title="pycharm引用库文件失效问题"></a>pycharm引用库文件失效问题</h5><p>点击引用的库文件应用链接无效，导致输入相应库方法无提示，有以下几种检查办法：</p>
+            <p>计算机视觉（CV）领域的四大任务，在CV领域主要有八项任务，其他四大任务包括：图像生成、人体关键点检测、视频分类、度量学习等，其中</p>
+<p>图像分类：为图片中出现的物体目标分类出其所属类别的标签，如画面中的人、楼房、街道、车辆数目等；</p>
+<p>目标检测：将图片或者视频中感兴趣的目标提取出来，对于导盲系统来说，各类的车辆、行人、交通标识、红绿灯都是需要关注的对象；</p>
+<p>图像语义分割：将视野中的车辆和道路勾勒出来是必要的，这需要图像语义分割技术做为支撑，勾勒出图像物体中的前景物体的轮廓；</p>
+<p>场景文字识别：道路名、绿灯倒计时秒数、商店名称等，这些文字对于导盲功能的实现也是至关重要的。</p>
+<p>目标检测的一些常见模型架构：</p>
+<p>R-CNN</p>
+<p>Fast R-CNN</p>
+<p>Faster R-CNN</p>
+<p>Mask R-CNN</p>
+<p>SSD (Single Shot MultiBox Defender)</p>
+<p>YOLO (You Only Look Once)</p>
+<p><a href="https://www.sohu.com/a/340391518_120054440" target="_blank" rel="noopener">https://www.sohu.com/a/340391518_120054440</a></p>
+<p>图像语义分割的常见模型架构：<br>FCN, SegNet/DeconvNet，DeepLab。当然还有一些其他的结构方法，比如有用RNN来做的，还有更有实际意义的weakly-supervised方法等等</p>
 <ul>
-<li><p>1) 检查以下插件是否已安装</p>
-<p>  IntelliBot、IntelliBot@SeleniumLibrary Patched 、Robot Framework support</p>
-</li>
-<li><p>2) 检查IDE设置</p>
-<p>  如pycharm检查Project Interpreter编译器是否错选，或者没选</p>
-</li>
-<li><p>3) 检查库文件引用是否重复</p>
-</li>
-</ul>
-<p>如通过集成已经继承了的库文件，就不要再引用一遍了</p>
-<ul>
-<li><p>4) 更换intelliBot插件</p>
-<p>出错也可能是因为安装的插件有问题，下载地址：<a href="https://github.com/youwi/intellibot/blob/master/intellibot.jar" target="_blank" rel="noopener">https://github.com/youwi/intellibot/blob/master/intellibot.jar</a><br><a href="https://blog.csdn.net/qq_33783424/article/details/80783092" target="_blank" rel="noopener">https://blog.csdn.net/qq_33783424/article/details/80783092</a></p>
-</li>
-<li><p>5) 检查代码格式</p>
-<p>Keywords 前最好留有空格；</p>
-<p>本次未提交文件提交上去；</p>
-</li>
-<li><p>6) 清零</p>
-<p>  如果以上都无法解决，删除本地代码，重新拉取； 重启电脑试试</p>
-</li>
+<li>Weakly- and Semi-Supervised Learning of a Deep Convolutional Network for Semantic Image Segmentation (用于语义分割的弱监督和半监督的深度神经网络)</li>
+<li>Fully Convolutional Networks for Semantic Segmentation (用于语义分割的全卷积神经网络)</li>
+<li>U-Net: Convolutional Networks for Biomedical Image Segmentation (用于生物医学图像的语义分割卷积神经网络)</li>
+<li>The One Hundred Layers Tiramisu: Fully Convolutional DenseNets for Semantic Segmentation （用于语义分割的全卷积DenseNet）</li>
+<li>Multi-Scale Context Aggregation by Dilated Convolutions (基于扩张卷积的多尺度上下文聚合)</li>
+<li>DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs(DeepLab: 使用深度神经网络，空洞卷积，和全连接CRF做语义分割的网络)</li>
+<li>Rethinking Atrous Convolution for Semantic Image Segmentation（语义分割中的空洞卷积的再思考）</li>
+<li>Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation（ 空间金字塔池化模块和编码-解码结构用于语义分割的深度网络结构.）</li>
+<li>FastFCN: Rethinking Dilated Convolution in the Backbone for Semantic Segmentation（Fast FCN:对语义分割分割后端的空洞卷积的再思考）</li>
+<li>Improving Semantic Segmentation via Video Propagation and Label Relaxation（通过视频传播和标签松弛改善语义分割）</li>
+<li>Gated-SCNN: Gated Shape CNNs for Semantic Segmentation（门控-SCNN: 用于语义分割的门控形状卷积神经网络）</li>
 </ul>
 
           
@@ -1089,7 +846,7 @@ rebot --merge original.xml rerun.xml                       # finally merge resul
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/RobotFramework/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/17/xml-dom学习记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -1108,7 +865,7 @@ rebot --merge original.xml rerun.xml                       # finally merge resul
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/29/RobotFramework/" itemprop="url">RT使用语法和技巧</a></h1>
+                <a class="post-title-link" href="/2020/03/17/xml-dom学习记录/" itemprop="url">xml.dom学习记录</a></h1>
         
 
         <div class="post-meta">
@@ -1120,8 +877,8 @@ rebot --merge original.xml rerun.xml                       # finally merge resul
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T11:27:02+08:00">
-                2020-01-29
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-17T20:04:06+08:00">
+                2020-03-17
               </time>
             
 
@@ -1160,131 +917,31 @@ rebot --merge original.xml rerun.xml                       # finally merge resul
       
         
           
-            <p>官方文档：<a href="https://robotframework.org/#/documentation" target="_blank" rel="noopener">https://robotframework.org/#/documentation</a></p>
-<h6 id="架构-amp-变量"><a href="#架构-amp-变量" class="headerlink" title="架构&amp;变量"></a>架构&amp;变量</h6><p>参考： <a href="https://www.jianshu.com/p/dc9dea0741d5" target="_blank" rel="noopener">https://www.jianshu.com/p/dc9dea0741d5</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">*** Variables ***</span><br><span class="line"># 创建scalar变量</span><br><span class="line">$&#123;NAME&#125;             Robot Framework</span><br><span class="line">$&#123;VERSION&#125;         3.0</span><br><span class="line">$&#123;ROBOT&#125;            $&#123;NAME&#125;  $&#123;VERSION&#125;</span><br><span class="line">$&#123;NULL_VAR&#125;         # 空字符串被赋值给了$&#123;NULL_VAR&#125;</span><br><span class="line">$&#123;EXAMPLE&#125;          This value is joined together with a space</span><br><span class="line">...                 1122333333333333333333333333333333</span><br><span class="line">$&#123;LONG_WORDS&#125;       1111111111111111</span><br><span class="line"># 创建列表变量</span><br><span class="line">@&#123;list_data&#125;        1    2    3    4    5</span><br><span class="line">@&#123;list_data2&#125;       a    b    c    d    e    f</span><br><span class="line">#创建字典变量</span><br><span class="line">&amp;&#123;dict_data&#125;        a=b    e=w   y=1    asd=123</span><br><span class="line">&amp;&#123;dict_data1&#125;       a=1    b=2    c=3    d=4</span><br><span class="line">...                 r=7    u=90    # 列表元素太长时使用... 分割</span><br><span class="line"></span><br><span class="line">*** Test Cases ***</span><br><span class="line">test_01</span><br><span class="line">    log    $&#123;NAME&#125;</span><br><span class="line">    log    $&#123;VERSION&#125;</span><br><span class="line">    log   @&#123;list_data&#125; [0]</span><br><span class="line">    log many    &amp;&#123;dict_data&#125;[a]    &amp;&#123;dict_data1&#125;[a]</span><br><span class="line">    log    &amp;&#123;dict_data&#125;[a]</span><br></pre></td></tr></table></figure>
+            <p>参考：<a href="https://www.cnblogs.com/xiaowuyi/archive/2012/10/17/2727912.html" target="_blank" rel="noopener">https://www.cnblogs.com/xiaowuyi/archive/2012/10/17/2727912.html</a><br>主要方法：</p>
+<p>minidom.parse(filename)：加载读取XML文件</p>
+<p>doc.documentElement：获取XML文档对象</p>
+<p>node.getAttribute(AttributeName)：获取XML节点属性值</p>
+<p>node.getElementsByTagName(TagName)：获取XML节点对象集合</p>
+<p>node.childNodes ：返回子节点列表。</p>
+<p>node.childNodes[index].nodeValue：获取XML节点值</p>
+<p>node.firstChild：访问第一个节点，等价于pagexml.childNodes[0]</p>
+<p>实践：逐层获取子Node的值</p>
+<p>源文件：</p>
+<p><img src="/images/pasted-92.png" alt="upload successful"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">#encoding=utf-8</span><br><span class="line">from xml.dom.minidom import parse</span><br><span class="line">import xml.dom.minidom</span><br><span class="line">DOMTree = xml.dom.minidom.parse(&quot;/Users/ly/Documents/config.xml&quot;)</span><br><span class="line">root = DOMTree.documentElement #得到dom对象的根节点</span><br><span class="line">screenshotElementObj=root.getElementsByTagName(&quot;otherFiles&quot;)</span><br><span class="line">print(screenshotElementObj)</span><br><span class="line">if screenshotElementObj:</span><br><span class="line">    scobj=getElementsByTagName(&quot;otherFiles&quot;)[0].getElementsByTagName(&quot;string&quot;)</span><br><span class="line">    print(scobj)</span><br><span class="line">    print(&quot;childNodes：&quot;,scobj[0].childNodes)</span><br><span class="line">    for node in scobj[0].childNodes:</span><br><span class="line">        if node.nodeType in (node.TEXT_NODE,):           	      </span><br><span class="line">        	print(node.nodeName,node.nodeType,node.data)</span><br></pre></td></tr></table></figure>
 
-<h6 id="全局变量怎么用"><a href="#全局变量怎么用" class="headerlink" title="全局变量怎么用"></a>全局变量怎么用</h6><p>问题：想执行一个文件夹下所有的suite，但是需要通过suite1的返回值供其他suite使用</p>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[&lt;DOM Element: otherFiles at 0x10a0a54d0&gt;]</span><br><span class="line">[&lt;DOM Element: string at 0x10a0a55a8&gt;]</span><br><span class="line">(&apos;childNodes\xef\xbc\x9a&apos;, [&lt;DOM Text node &quot;u&apos;selenium-s&apos;...&quot;&gt;])</span><br><span class="line">(&apos;#text&apos;, 3, u&apos;selenium-screenshot-*.png&apos;)</span><br><span class="line">[Finished in 0.1s]</span><br></pre></td></tr></table></figure>
+
+<p>备注：</p>
 <ol>
-<li><p>定义变量后，直接使用下面接收函数返回值，然后全局赋值？No</p>
-<pre><code>${download_dir}    校验已下载模板到本地
-set global variable    ${download_dir}</code></pre></li>
-<li><p>差点放弃的时候，发现使用set variable赋值替代接收的函数会有效果</p>
+<li><p>获取节点后是个List，即使有一项也要记得别忘了加索引如<br>getElementsByTagName(“otherFiles”)</p>
+</li>
+<li><p>获取到childnotes节点后可以逐个判断若是text类型就打印，另外知道nodechild列表也可以直接通过索引打印，有时候可以替换成<br> print(“result:”,scobj[0].childNodes[0].data)</p>
+</li>
+<li><p>有时候提示没有data属性，可能就是None需要判断一下</p>
 </li>
 </ol>
-<h6 id="数字运算"><a href="#数字运算" class="headerlink" title="数字运算"></a>数字运算</h6><p>自增运算</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test_05</span><br><span class="line">    :FOR   $&#123;i&#125;    IN RANGE     4</span><br><span class="line">    \    $&#123;i&#125;    run keyword if   $&#123;i&#125;&gt;2   evaluate    $&#123;i&#125;-1</span><br></pre></td></tr></table></figure>
-
-<p>数字运算不使用evaluate<br>如 ${i+1}</p>
-<p> range范围同python 比如range 4,则i 取值为0，1，2，3</p>
-<h6 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">*** Test Cases ***</span><br><span class="line"></span><br><span class="line">test case8</span><br><span class="line">    $&#123;a&#125;    Set variable    59</span><br><span class="line">    run keyword if    $&#123;a&#125;&gt;=90    log    优秀</span><br><span class="line">    ...    ELSE IF    $&#123;a&#125;&gt;=70    log    良好</span><br><span class="line">    ...    ELSE IF    $&#123;a&#125;&gt;=60    log    及格</span><br><span class="line">    ...    ELSE    log    不及格</span><br></pre></td></tr></table></figure>
-
-<p>条件判断赋值</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;ele&#125;    run keyword if    $&#123;i&#125;&lt;$&#123;pagescount&#125;        Get WebElement    $&#123;ele_path&#125;</span><br></pre></td></tr></table></figure>
-
-<p>一个条件多个执行,注意AND大写</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run keyword if    $&#123;variable&#125;   run keywords  点击按钮    $&#123;homepage_ele&#125;[vacationmode_on]    AND    获取文本    $&#123;homepage_ele&#125;</span><br></pre></td></tr></table></figure>
-
-<p>条件判断字符串不存在的时候,字符串变量必须外边必须加引号用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\    run keyword if    &apos;$&#123;temp&#125;&apos;!=&apos;&apos;   exit for loop</span><br></pre></td></tr></table></figure>
-
-<p>可以使用and和or连接。连接两个条件经常报错，可能是空格的问题，and两边必须保持一个空格</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Run Keyword If   &apos;$&#123;B_name&#125;&apos;==&apos;$&#123;B&#125;&apos; and &apos;$&#123;C&#125;&apos;== &apos;0&apos;</span><br></pre></td></tr></table></figure>
-
-<p>数字使用或操作</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;0|0|0|1|0&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="For循环"><a href="#For循环" class="headerlink" title="For循环"></a>For循环</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test case9</span><br><span class="line">:FOR    $&#123;i&#125;    IN RANGE     1      $&#123;trsize&#125;</span><br><span class="line">\    $&#123;ele&#125;    Catenate    SEPARATOR=$&#123;i+1&#125;   css=tbody tr:nth-of-type(    )&gt;.transaction-escrow-status</span><br><span class="line">\    log    $&#123;ele&#125;</span><br></pre></td></tr></table></figure>
-
-<p>若for循环体中嵌套了条件判断则else前无需加\，否则报错</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\    Run Keyword If    &apos;$&#123;get_value&#125;&apos;!=&apos;register&apos;    获取文本校验    $&#123;ele&#125;    $&#123;get_value&#125;</span><br><span class="line">     ...    ELSE    获取文本校验  $&#123;ele_register&#125;    Register/Login</span><br></pre></td></tr></table></figure>
-
-<h6 id="字符串使用"><a href="#字符串使用" class="headerlink" title="字符串使用"></a>字符串使用</h6><ul>
-<li><p>三目运算</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;seller&#125;    set variable if    $&#123;seller&#125;    $&#123;seller&#125;    $&#123;test_data&#125;[seller][account]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>移除部分字符串</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;t&#125;    remove string     ShopeePay.ps_reports_wallet_all.20191125_20191225.csv    .csv</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;after&#125;=     remove string     $&#123;test&#125;       ,     $&#123;SPACE&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>字符串连接 Catenate（与变量连接直接放一起也可以）<br><img src="/images/pasted-79.png" alt="upload successful"></li>
-</ul>
-<p>字符串转换成数字，可直接使用${${numstr}}或者int(${numstr})</p>
-<ul>
-<li>字符串格式化</li>
-</ul>
-<h6 id="列表操作"><a href="#列表操作" class="headerlink" title="列表操作"></a>列表操作</h6><p>所有列表操作举例：cnblogs.com/ronyjay/p/11598107.html </p>
-<p>对列表进行遍历的时候IN后面需用@</p>
-<p>如果通过“@{}”去定义列表的话，可以通过“log many”关键字进行打印 ,当然也可以选择不这么做默认还是用$<br>列表切片</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;expectedlist&#125;    get slice from list     $&#123;expected&#125;    1</span><br></pre></td></tr></table></figure>
-
-<p>列表元素是整形</p>
-<pre><code>| ${ints} =   | Create List | ${1} | ${2} | ${3} |</code></pre><p>列表列举定义的时候用@,传参的时候需要用$</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">*** Variables ***</span><br><span class="line">@&#123;sales_info&#125;         Sales Info     價格及庫存     mass_update_sales</span><br><span class="line"></span><br><span class="line">*** Test Cases ***</span><br><span class="line">test_01</span><br><span class="line">    我是关键词    $&#123;sales_info&#125;</span><br><span class="line">    </span><br><span class="line">*** keywords ***</span><br><span class="line">我是关键词</span><br><span class="line">    [Arguments]    $&#123;x&#125;</span><br><span class="line">    log   $&#123;x&#125;[1]</span><br></pre></td></tr></table></figure>
-
-<p>若元组传参,这时候必须用@了，不然按照列表的方式认为只能传一个列表变量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test_01</span><br><span class="line">    我是关键词   1   2   3    4</span><br><span class="line"></span><br><span class="line">*** keywords ***</span><br><span class="line">我是关键词</span><br><span class="line">    [Arguments]    @&#123;x&#125;</span><br><span class="line">    log   @&#123;x&#125;[1]</span><br></pre></td></tr></table></figure>
-
-<p>【总结】在RobotFramework中，标量指的是${}，链表指的是@{}，大括号中间的变量名如果是一样的，那么就是一个变量。区别是标量-&gt;整个值就会是一个整体，链表-&gt;代表多个值</p>
-<h6 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h6><p>需要双杠</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;rt&#125;=    Get Regexp Matches        $&#123;test&#125;     \\$\\d,\\d+</span><br><span class="line">should match regexp    $&#123;get_amount&#125;    \\$(\\d)*,?(\\d)+</span><br></pre></td></tr></table></figure>
-
-<p>模糊匹配</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File Should Exist    /Users/liyuanchen/Downloads/weekly_report*</span><br></pre></td></tr></table></figure>
-
-<h6 id="其他关键字"><a href="#其他关键字" class="headerlink" title="其他关键字"></a>其他关键字</h6><ul>
-<li><strong>Get WebElement 和Get WebElements的区别</strong>：前者会中断执行，后者返回空。可使用来判断元素是否存在</li>
-</ul>
-<p><img src="/images/pasted-76.png" alt="upload successful"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;temp&#125;    GetWebElements    css=.username</span><br><span class="line">run keyword if  $&#123;temp&#125;   click button   css=.username</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>对输入框执行ENTER操作可使用<strong>press keys</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">press keys   css=.shopee-input__input    RETURN</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>生成指定数据范围的随机数字(包括左边，也包括右边)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;pagenum&#125;    Evaluate    random.randint(1, $&#123;pagescount+1&#125;)    random</span><br><span class="line">log    $&#123;pagenum&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>robot中，断言有时会失败，但不想影响后面语句的执行，这时候要用到</p>
-<p>  Run Keyword And Continue On Failure</p>
-</li>
-<li><p>计算可使用Evaluate关键字</p>
-<p>  ${rt}    Evaluate    ${num}+1<br>  或${i+1} </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;if_visible_download&#125;    Run_keyword_and_return_status    Element_Should_Contain    Xpath=//button[@class=&apos;shopee-button shopee-button--primary shopee-button--normal&apos;]    Download</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>其他：</p>
-<p>  run keyword and return status</p>
-<p>  Run Keyword And Ignore Error  handle alert<br>#可接收浏览器alert默认接收，即选择OK</p>
-</li>
-<li><p>不支持的操作</p>
-<p> 循环嵌套、条件判断和循环直接组合(可通过定义关键字调用)</p>
-</li>
-</ul>
-<h5 id="为解决有些操作失败重新执行："><a href="#为解决有些操作失败重新执行：" class="headerlink" title="为解决有些操作失败重新执行："></a>为解决有些操作失败重新执行：</h5><h6 id="1-添加关键字"><a href="#1-添加关键字" class="headerlink" title="1.添加关键字"></a>1.添加关键字</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">若找不到元素则重新执行</span><br><span class="line">    [Arguments]    $&#123;locator&#125;    $&#123;keyword&#125;</span><br><span class="line">    $&#123;ele&#125;    get webelements    $&#123;locator&#125;</span><br><span class="line">    run keyword unless     $&#123;ele&#125;     $&#123;keyword&#125;</span><br></pre></td></tr></table></figure>
-
-<h6 id="2-case后添加teardown"><a href="#2-case后添加teardown" class="headerlink" title="2.case后添加teardown"></a>2.case后添加teardown</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">03BlanceAccountCB</span><br><span class="line">    [Documentation]  CB seller进入balance页面，能够展示cb卡片信息,同Bank页面</span><br><span class="line">    [Tags]  all</span><br><span class="line">    [Setup]    获取配置数据</span><br><span class="line">    登录SellerCenter    seller=cbseller</span><br><span class="line">    进入cb_balance模块</span><br><span class="line">    comment  cb账号进如balance校验cb卡片信息</span><br><span class="line">    校验CB卡片信息</span><br><span class="line">    [Teardown]    run keyword if test failed    校验CB卡片信息</span><br></pre></td></tr></table></figure>
-
-<p>也可以放在setting中声明，调用关键字如teststop</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*** Settings ***</span><br><span class="line">Test Teardown     teststop</span><br></pre></td></tr></table></figure>
-
-<p>   3.登陆的时候经常不定时出现某些弹窗影响下一步的case？封装关键字轮询查找弹窗<br>登陆弹窗轮询查找</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Arguments]    $&#123;timeout&#125;=5</span><br><span class="line">:FOR    $&#123;i&#125;    IN RANGE    $&#123;timeout&#125;</span><br><span class="line">\   $&#123;servererror&#125;    弹出框存在则点击    $&#123;homepage_ele&#125;[alert_servererror]     $&#123;timeout&#125;</span><br><span class="line">\   $&#123;version&#125;    弹出框存在则点击    $&#123;login_ele&#125;[version]     $&#123;timeout&#125;</span><br><span class="line">\   $&#123;navigation&#125;    弹出框存在则点击    $&#123;login_ele&#125;[navigation]     $&#123;timeout&#125;</span><br><span class="line">\   $&#123;mainaccount_tips&#125;    弹出框存在则点击    $&#123;login_ele&#125;[mainaccount_tips]     $&#123;timeout&#125;</span><br><span class="line">\   $&#123;mainaccount_tips&#125;    弹出框存在则点击    $&#123;login_ele&#125;[mainaccount_tips]     $&#123;timeout&#125;</span><br><span class="line">\   弹出框存在则点击    $&#123;homepage_ele&#125;[alert_servererror]     $&#123;timeout&#125;</span><br><span class="line">\   exit for loop if   $&#123;$&#123;servererror&#125;|$&#123;version&#125;|$&#123;navigation&#125;|$&#123;mainaccount_tips&#125;|$&#123;mainaccount_tips&#125;&#125;==0</span><br></pre></td></tr></table></figure>
-
-<h5 id="窗口问题："><a href="#窗口问题：" class="headerlink" title="窗口问题："></a>窗口问题：</h5><p>当有两个窗口如果选择新打开的窗口则用select window   NEW   老窗口换成MAIN，但是如果是三个窗口取中间的窗口呢？</p>
-<p>使用Handles解决：</p>
-<p>1、删除第三个窗口<br>2、获取当前Handle,选择最后一个（实践证明，不可用New，若使用可能会认为被关掉的那个才是new，故不生效）</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$&#123;handels_bf&#125;    get window handles</span><br><span class="line">close window</span><br><span class="line">$&#123;handels&#125;    get window handles</span><br><span class="line">$&#123;currenthd&#125;    get from list    $&#123;handels&#125;    -1</span><br><span class="line">select window    $&#123;currenthd&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="多个元素校验–使用或判断"><a href="#多个元素校验–使用或判断" class="headerlink" title="多个元素校验–使用或判断"></a>多个元素校验–使用或判断</h4><pre><code>${status1}   run keyword and return status     wait until element is visible    ${homepage_ele}[button_in_market_continue]
-${status2}   run keyword and return status     wait until element is visible  ${homepage_ele}[vari_marketingcentre]
-校验为真  ${status1} or ${status1}</code></pre><p>或</p>
-<pre><code>校验包含任何一个值
-    [Arguments]    ${str}    @{veluelist}
-    run keyword and continue on failure    should contain any    ${str}    @{veluelist}</code></pre><h4 id="定位元素至可见"><a href="#定位元素至可见" class="headerlink" title="定位元素至可见"></a>定位元素至可见</h4><pre><code>execute javascript    document.documentElement.scrollTop=200</code></pre><p>  若是向上滚动，则数值使用负数</p>
 
           
         
@@ -1333,7 +990,7 @@ ${status2}   run keyword and return status     wait until element is visible  ${
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/mac终端快捷键/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/07/Excel学习/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -1352,7 +1009,7 @@ ${status2}   run keyword and return status     wait until element is visible  ${
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2020/01/28/mac终端快捷键/" itemprop="url">mac终端快捷键使用</a></h1>
+                <a class="post-title-link" href="/2020/03/07/Excel学习/" itemprop="url">Excel学习记录</a></h1>
         
 
         <div class="post-meta">
@@ -1364,8 +1021,8 @@ ${status2}   run keyword and return status     wait until element is visible  ${
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-28T15:41:11+08:00">
-                2020-01-28
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-07T18:12:57+08:00">
+                2020-03-07
               </time>
             
 
@@ -1404,311 +1061,88 @@ ${status2}   run keyword and return status     wait until element is visible  ${
       
         
           
-            <p>常用的快捷键：<br>参考<a href="https://www.jianshu.com/p/87581b2c570c" target="_blank" rel="noopener">https://www.jianshu.com/p/87581b2c570c</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Ctrl + a 跳到行首</span><br><span class="line">Ctrl + e 跳到行尾</span><br><span class="line">Ctrl + l 清屏，相当于执行clear命令</span><br><span class="line">Command + K 清屏</span><br><span class="line">ctrl+u   删除前面的所有内容</span><br></pre></td></tr></table></figure>
-
-<p>mac下是否显示隐藏文件，可使用shit+cmd+句号来切换</p>
-<p>终端相关 </p>
-<p><a href="https://support.apple.com/zh-cn/guide/terminal/trmlshtcts/mac" target="_blank" rel="noopener">https://support.apple.com/zh-cn/guide/terminal/trmlshtcts/mac</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">新建标签页    Command-T</span><br><span class="line">下一个标签页    Control-Tab</span><br><span class="line">上一个标签页    Control-Shift-Tab</span><br><span class="line">放大字体    Command-加号键 (+)</span><br><span class="line">缩小字体   Command-减号键 (–)</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/jenkins安装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/28/jenkins安装/" itemprop="url">Jenkins安装和配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-28T15:13:46+08:00">
-                2020-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h6 id="Ubuntu安装Jenkins"><a href="#Ubuntu安装Jenkins" class="headerlink" title="Ubuntu安装Jenkins"></a>Ubuntu安装Jenkins</h6><p>参考：<br><a href="https://www.jianshu.com/p/845f267aec52" target="_blank" rel="noopener">https://www.jianshu.com/p/845f267aec52</a><br><a href="https://www.cnblogs.com/shuoer/p/9471839.html" target="_blank" rel="noopener">https://www.cnblogs.com/shuoer/p/9471839.html</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#添加官方软件仓库的秘钥到本地的apt秘钥中</span><br><span class="line"> wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -</span><br><span class="line"> </span><br><span class="line">echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list</span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install jenkins</span><br></pre></td></tr></table></figure>
-
-<p>安装成功后打开服务</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@sz-dev-77-89:/var/lib/dpkg# /etc/init.d/jenkins  start</span><br><span class="line">Correct java version found</span><br><span class="line">[ ok ] Starting jenkins (via systemctl): jenkins.service.</span><br><span class="line">root@sz-dev-77-89:/var/lib/dpkg# systemctl status jenkins</span><br></pre></td></tr></table></figure>
-
-<p>安装时若报错：</p>
-<p><img src="/images/pasted-74.png" alt="upload successful"></p>
-<p>使用操作文件/var/lib/dpkg/info解决：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd /var/lib/dpkg/</span><br><span class="line">mv info/ info_bak         </span><br><span class="line">mkdir info                 </span><br><span class="line">apt-get update            </span><br><span class="line">apt-get -f install         </span><br><span class="line">mv info/* info_bak/        </span><br><span class="line">rm -rf info                </span><br><span class="line">mv info_bak info</span><br></pre></td></tr></table></figure>
-
-<h6 id="jenkins节点配置"><a href="#jenkins节点配置" class="headerlink" title="jenkins节点配置"></a>jenkins节点配置</h6><ol>
-<li>在jenkins设置-节点管理中添加新节点，主要配置项如下（以90机器为例）：<br><img src="/images/pasted-109.png" alt="upload successful"></li>
-<li>添加节点后将如下代理链接在90机器浏览器中打开，点击Lunch按钮下载slave文件<br><img src="/images/pasted-108.png" alt="upload successful"></li>
-<li>在90机器成功下载Slave后，可放在桌面打开即启动服务。</li>
-</ol>
-<h6 id="Jenkins安装git插件"><a href="#Jenkins安装git插件" class="headerlink" title="Jenkins安装git插件"></a>Jenkins安装git插件</h6><p>安装jenkins时候安装git插件失败，需在本地先安装git</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install git</span><br></pre></td></tr></table></figure>
-
-<p>然后在插件管理中选中git安装</p>
-<h6 id="Jenkins安装配置git"><a href="#Jenkins安装配置git" class="headerlink" title="Jenkins安装配置git"></a>Jenkins安装配置git</h6><p><img src="/images/pasted-75.png" alt="upload successful"></p>
-<p>【问题】配置git用户时一直报错：Jenkins Host key verification failed</p>
-<p>1.需要在jenkins路径下生产公钥和私钥</p>
-<p>2.把所属用户改成jenkins</p>
-<p>具体步骤   参考<a href="https://blog.csdn.net/hursing/article/details/90521031" target="_blank" rel="noopener">https://blog.csdn.net/hursing/article/details/90521031</a></p>
-<p>1）ssh-keygen -t rsa -C <a href="mailto:jenkinsServerOnLinux@shopeemobile.com" target="_blank" rel="noopener">jenkinsServerOnLinux@shopeemobile.com</a>     </p>
-<p>-c是备注；-f 指定密钥的文件名  ;-t 是type用于指定算法一般rsa;<br>在过程中提示生成路径可以直接改成/var/lib/jenkins/.ssh/id_rsa，其他直接回车即可</p>
-<p>2）生成的公钥放在gitlab下<br>3）按照jenkins提示执行命令<br> git ls-remote -h ssh://gitlab@git.garena.com:2222/autotest/scqa_ui_auto_platform_projects.git HEAD</p>
-<p>根据提示直接yes就好，此步骤会生产know_hosts的文件如果在根路径/root/.ssh下就拷贝过jenkins路径下（不确定这一步的作用是否对结果管用）<br>4）对文件授权<br>chown jenkins:jenkins  id_rsa   id_rsa.pub</p>
-<p>5)重启jenkins<br>/etc/init.d/jenkins restart</p>
-<p>如果没设置管理员密码，需要通过命令获取cat   /var/lib/jenkins/secrets/initialAdminPassword</p>
-<h6 id="设置jenkins无需登录"><a href="#设置jenkins无需登录" class="headerlink" title="设置jenkins无需登录"></a>设置jenkins无需登录</h6><p>链接：<a href="https://www.jianshu.com/p/6591c9bdcca6" target="_blank" rel="noopener">https://www.jianshu.com/p/6591c9bdcca6</a></p>
-<ul>
-<li>进入Jenkins根目录，复制config.xml 为 config.xml.bak用于备份  </li>
-<li>而后打开 config.xml 配置文件；    </li>
-<li>修改“&lt; useSecurity &gt;true&lt; /useSecurity &gt;”为“&lt; useSecurity&gt;false&lt; /useSecurity&gt;”；      </li>
-<li>删掉“&lt; authorizationStrategy …&gt;…&lt; /authorizationStrategy&gt;”；      </li>
-<li>保存修改的confi.xml，重启Jenkins服务已无需登录 </li>
-</ul>
-<h6 id="【问题1】打不开log-html-提示Opening-Robot-Framework-log-failed"><a href="#【问题1】打不开log-html-提示Opening-Robot-Framework-log-failed" class="headerlink" title="【问题1】打不开log.html 提示Opening Robot Framework log failed"></a>【问题1】打不开log.html 提示Opening Robot Framework log failed</h6><p>Verify that you have JavaScript enabled in your browser.<br>Make sure you are using a modern enough browser. Firefox 3.5, IE 8, or equivalent is required, newer browsers are recommended.<br>Check are there messages in your browser’s JavaScript error log. Please report the problem if you suspect you have encountered a bug.<br>…”</p>
-<p>解决办法：<br>    For resolve your problem you must :<br>    - Connect on your jenkins url (http://[IP]:8080/)<br>    - Click on Manage Jenkins from left side panel.<br>    - Click on Script Console<br>    - Copy this into the field<br>    System.setProperty(“hudson.model.DirectoryBrowserSupport.CSP”,”sandbox allow-scripts; default-src ‘none’; img-src ‘self’ data: ; style-src ‘self’ ‘unsafe-inline’ data: ; script-src ‘self’ ‘unsafe-inline’ ‘unsafe-eval’ ;”)</p>
-<pre><code>- Click on Run button.
-- Execute your Jenkins build.</code></pre><h6 id="【问题2】设置multijob构建任务时只执行第一个任务"><a href="#【问题2】设置multijob构建任务时只执行第一个任务" class="headerlink" title="【问题2】设置multijob构建任务时只执行第一个任务"></a>【问题2】设置multijob构建任务时只执行第一个任务</h6><p>   忽略执行错误，继续下一个</p>
-<p>   <img src="/images/pasted-110.png" alt="upload successful"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/本地上传和下载远程LInux/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/28/本地上传和下载远程LInux/" itemprop="url">本地上传和下载远程LInux</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-28T12:41:23+08:00">
-                2020-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>上传命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp path/filename userName@sseverName:path</span><br></pre></td></tr></table></figure>
-
-<p>下载：调换位置即可</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp userName@sseverName:path path/filename</span><br></pre></td></tr></table></figure>
-
-<p>我的执行命令</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo scp /Users/liyuanchen/Documents/workspace/JenkinsTask.zip  xxxxqa@10.12.77.89:/home</span><br></pre></td></tr></table></figure>
-
-<p>【报错】</p>
+            <h4 id="1-数据透视表"><a href="#1-数据透视表" class="headerlink" title="1. 数据透视表"></a>1. 数据透视表</h4><p>位置：插入-数据透视表确认</p>
+<p>作用：可以将数据归类分组统计，以各种组合和形式展示出数据值</p>
+<p>方法：</p>
+<pre><code>1. 选中待整理数据源某单元格，选择插入-数据透视表确认
+2. 向行列拖拽要统计项
+3. 对已完成数据项处理：点击项目右键选择组合，可选择按照年或者月或者季度等重新组合
+4. 对已完成数据值处理：双击左上角默认的求和项单元格，可选择以百分比还是计数等方式展示数值</code></pre><p><img src="/images/pasted-80.png" alt="upload successful"></p>
+<h4 id="2-条件格式"><a href="#2-条件格式" class="headerlink" title="2. 条件格式"></a>2. 条件格式</h4><p>位置：开始-条件格式</p>
+<p>作用：标记数据范围(大于小于…)、标记重复值、标记涨跌、使用数据条<br><img src="/images/pasted-91.png" alt="upload successful"></p>
 <ol>
-<li><p><a href="mailto:xxxxqa@10.12.77.89" target="_blank" rel="noopener">xxxxqa@10.12.77.89</a>: Permission denied (publickey,password). </p>
-<p>解决方法，在同账户下把A的公钥放到B上，注意你scp的账户，添加在该账户下。<br>具体操作：<br>A：cat .ssh/id_rsa.pub<br>B: cat .ssh/authorized_keys （没有该文件创建一个）<br> 把A的公钥贴过来即可</p>
+<li><p>标记数据范围：选中某列数据，选择条件格式中突出显示的比如大于，填写数值或者选中已有单元格，再选择想要标记的格式后确定</p>
 </li>
-<li><p>scp: /home/setuptools/JenkinsTask.zip: Permission denied</p>
-<p>还是报错，按照网上的折腾了一番/etc/ssh/sshd/sshd_config中的PasswordAuthentication和AuthorizedKeysFile,放开了注释保证是开通状态；<br>还是不行，在命令行前加sudo。<br>还是不行，直到更改目标文件夹到xxxxqa，因为原文件夹权限是root，使用xxxxqa用户当然不行啦。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drwxr-xr-x  8 root     root     4096 1月  21 14:40 setuptools</span><br><span class="line">drwxr-xr-x 17 xxxxqa   xxxxqa   4096 1月  27 22:14 xxxxqa</span><br></pre></td></tr></table></figure></li>
+<li><p>标记重复值：选中某列数据，选择条件格式中突出显示的重复值，选择想要标记的格式后确定</p>
+</li>
+<li><p>标记涨跌：大于某列的值标记红色，小于标记绿色<br> 步骤：   </p>
+<ol>
+<li>选中某标准数据单元格后一个单元格，按照步骤1中选择大于，对比值选中标准单元格，但需要手工删掉如B3前面两个美元符号(有美元符号代表固定的单元格)；</li>
+<li>同样方式选中小于的情况</li>
+<li>以上设置的格式使用格式刷刷满所有单元格</li>
+</ol>
+</li>
+<li><p>使用数据条：选中单元格，选择条件格式中的数据条或色阶</p>
+</li>
+<li><p>几个单元格的加减法计算(先输入等号–&gt;选中数据单元格–&gt;加号)。</p>
+<p> <img src="/images/pasted-83.png" alt="upload successful"></p>
+</li>
+<li><p>点击结果单元格出现实线➕后双击，可实现同拖拽至整列的效果。</p>
+</li>
+<li><p>若加法计算的个别单元格是固定的呢？选中该表达式–&gt;F4使其前面添加美元符号(锁定该单元格)</p>
+<p><img src="/images/pasted-84.png" alt="upload successful"></p>
+</li>
+</ol>
+<h4 id="3-动态数据分析报表-切片器"><a href="#3-动态数据分析报表-切片器" class="headerlink" title="3. 动态数据分析报表-切片器"></a>3. 动态数据分析报表-切片器</h4><p>位置：插入-切片器</p>
+<ol>
+<li><p>若左边直接不能拖拽怎么办(版本不同导致)？</p>
+<p> 右键选择数据透视表选项-显示-经典数据透视表布局</p>
+</li>
+<li><p>创建统计图   </p>
+<p> 选中透视表某单元格数据-&gt;插入-&gt;选中某图形(折线图/柱状图等)-&gt;设计中更改样式</p>
+</li>
+<li><p>对透视图加<strong>切片器</strong></p>
+<p> 切片器作用：可以直接进行筛选</p>
+<p> 选中透视表某单元格数据-插入-切片器-设计中更改样式</p>
+</li>
+<li><p>切片器连接图其他透视表</p>
+<p>  选中已有切片器-右键选中报表连接</p>
+</li>
+</ol>
+<h4 id="4-单元格数字格式-分列"><a href="#4-单元格数字格式-分列" class="headerlink" title="4. 单元格数字格式-分列"></a>4. 单元格数字格式-分列</h4><p>   位置：数据-分列</p>
+<ol>
+<li><p>文本和数字格式区别？</p>
+<p> 文本类型一般左上角有绿色箭头标志<br> <img src="/images/pasted-86.png" alt="upload successful"></p>
+<p> 文本无法转换成别的格式？使用<strong>分列</strong>解决</p>
+</li>
+<li><p><strong>分列</strong>：本身作用是对一列数据根据分隔符分成多列，但是最后一步可以设置某列格式。</p>
+<p> 实际常用来进行格式转换</p>
+<p> 有事没事用分列来转换一下，保险 ~    </p>
+</li>
+</ol>
+<h4 id="5-排序"><a href="#5-排序" class="headerlink" title="5. 排序"></a>5. 排序</h4><p>位置：开始-排序和筛选</p>
+<ol>
+<li><p>普通排序：按照值升降排序、按照单元格颜色排序</p>
+</li>
+<li><p>自定义序列：选项-自定义序列，添加自定义的序列-&gt;在数据表使用自定义的序列排序</p>
+</li>
+<li><p>改变行顺序：比如制作工资条，每个单元格前添加一行</p>
+</li>
+</ol>
+<p>方法： 新增一列 使用数值 12345 和1.5 2.5 3.5 然后进行排序<br><img src="/images/pasted-87.png" alt="upload successful"></p>
+<h4 id="6-筛选"><a href="#6-筛选" class="headerlink" title="6. 筛选"></a>6. 筛选</h4><p>位置：开始-排序和筛选</p>
+<ol>
+<li><p>自动筛选<br> 点击某单元格点击筛选即可；数值可根据大于等于筛选；文本可根据开头结尾等筛选</p>
+<p> 若筛选时需筛选星号(默认代表任意字符) ，则需通过<del>转义，如筛选B</del>* </p>
+</li>
+<li><p>高级筛选</p>
+<p>  在数据表旁边新加筛选项-&gt;选中数据任何单元格-&gt;选择高级筛选-》在条件区域里选中刚刚新增的筛选项(记得带上标题)</p>
+<p> 高级筛选可做且和或的筛选关系，其中或是自动筛选无法办到的(同行是且不同行是或)</p>
+<p> <img src="/images/pasted-88.png" alt="upload successful"></p>
+</li>
+<li><p>透视表筛选<br> 直接通过某筛选列进行筛选</p>
+<p> <img src="/images/pasted-90.png" alt="upload successful"></p>
+</li>
 </ol>
 
           
@@ -1758,7 +1192,7 @@ ${status2}   run keyword and return status     wait until element is visible  ${
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/10/Django/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/28/Linux系统实践问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -1777,7 +1211,7 @@ ${status2}   run keyword and return status     wait until element is visible  ${
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/11/10/Django/" itemprop="url">Django</a></h1>
+                <a class="post-title-link" href="/2020/02/28/Linux系统实践问题/" itemprop="url">Linux系统实践问题记录</a></h1>
         
 
         <div class="post-meta">
@@ -1789,8 +1223,8 @@ ${status2}   run keyword and return status     wait until element is visible  ${
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-10T15:41:27+08:00">
-                2019-11-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-28T14:18:35+08:00">
+                2020-02-28
               </time>
             
 
@@ -1829,39 +1263,542 @@ ${status2}   run keyword and return status     wait until element is visible  ${
       
         
           
-            <ul>
-<li><p>MVC的核心是思想是：解耦即减少相互联系，使得各个模块相互独立。</p>
+            <ol>
+<li><p>记录一次在Linux（Ubuntu）中date命令无效的情况</p>
+<p> 解决方案参考<a href="http://blog.sina.cn/dpool/blog/s/blog_413d250e0102z2iy.html" target="_blank" rel="noopener">http://blog.sina.cn/dpool/blog/s/blog_413d250e0102z2iy.html</a></p>
+<pre><code>1、sudo timedatectl set-ntp false
+2、sudo date -s &apos;2020-2-20 12:12:12&apos;
+此时通过命令查看时间的话，就可以发现日期修改成功了，而如果需要将时间同步回去，直接执行 sudo timedatectl set-ntp true即可。</code></pre><p>更改时区：tzselect命令</p>
+<p>参考：<a href="https://blog.csdn.net/zhengchaooo/article/details/79500032" target="_blank" rel="noopener">https://blog.csdn.net/zhengchaooo/article/details/79500032</a></p>
 </li>
-<li><p>Django : MTV </p>
-</li>
-<li><p>安装：pip install Django==1.11.4  不写等号默认安装最新版本</p>
-<p>卸载：pip uninsall Django</p>
-</li>
-<li><p>验证 django.get_version()</p>
-</li>
-<li><p>创建项目：</p>
-<ol>
-<li>创建目录  </li>
-<li>cd到该目录下，输入命令django-admin startproject projectname  </li>
-<li>tree . /F (win)查看目录层级</li>
 </ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-通配符和正则/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/06/shell-通配符和正则/" itemprop="url">shell 通配符和正则表达式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T21:08:33+08:00">
+                2020-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="通配符和正则"><a href="#通配符和正则" class="headerlink" title="通配符和正则"></a>通配符和正则</h5><ul>
+<li><p>shell 元字符(也称为通配符) 由 shell 来解析，如 rm -rf <em>.pdf，元字符</em> Shell 将其解析为任意 多个字符</p>
+<p>正则表达式元字符 由各种执行模式匹配操作的程序来解析，比如 vi、grep、sed、awk、python</p>
 </li>
-<li><p>配置数据库：</p>
-<pre><code>mysql数据库：安装pymysql
-1、setting配置：
-&apos;ENGINE&apos;:&apos;django.db.backends.mysql&apos;,
-&apos;NAME&apos;:&apos;Learn&apos;,
-&apos;USER&apos;:&apos;root&apos;,
-&apos;PASSWORD&apos;:&apos;rock1204&apos;,
-&apos;HOST&apos;:&apos;localhost&apos;,
-&apos;PORT&apos;:&apos;3306&apos;,
-2、在__init__.py中添加 import pymysql pymysql.install_as_MySQLdb()  不添加这些会报错</code></pre></li>
-<li><p>创建应用（app）：<br>可以创建多个应用；</p>
-<p> 步骤：</p>
-<ol>
-<li>在manage所在目录中，输入命令python manage.py startapp myapp</li>
-<li>激活应用，在setting将myapp应用加入到app配置中</li>
+<li><p>shell中定义元字符</p>
+<pre><code>*   任意字符
+?  单个任意字符
+[] 子shell ，不会影响主shell
+[^abcd]这里^是非的意思，但是外面不支持，不同与正则。正则[]里面同此，外面使用是以什么开头的意思
+{} 集合</code></pre></li>
+</ul>
+<ul>
+<li><p>基本正则表达式元字符:</p>
+<pre><code>元字符 功能 示例 ======================================================== ^ 行首定位符 ^love
+$ 行尾定位符 love$
+. 匹配单个任意字符 l..e
+* 匹配前导符 0 到多次 ab*love
+.* 任意多个字符
+[] 匹配指定范围内的一个字符 [lL]ove
+[ - ] 匹配指定范围内的一个字符 [a-z0-9]ove
+[^] 匹配不在指定组内的字符 [^a-z0-9]ove
+\ 用来转义元字符 love\.
+\&lt; 词首定位符 \&lt;love
+\&gt; 词尾定位符 love\&gt;
+\(..\) 匹配稍后使用的字符的标签 :% s/172.16.130.1/172.16.130.5/ :% s/\(172.16.130.\)1/\15/
+:% s/\(172.\)\(16.\)\(130.\)1/\1\2\35/
+:3,9 s/\(.*\)/#\1/
+x\{m\} 字符 x 重复出现 m 次 o\{5\}
+x\{m,\} 字符 x 重复出现 m 次以上 o\{5,\} x\{m,n\} 字符x重复出现m到n次o\{5,10\}</code></pre></li>
+<li><p>扩展正则表达式元字符（egrep或使用转义\）</p>
+<pre><code>+ 匹配一个或多个前导字符 [a-z]+ove
+? 匹配零个或一个前导字符 lo?ve
+a|b 匹配 a 或 b love|hate
+() 组字符 loveable|rs love(able|rs) ov+ (ov)+ (..)(..)\1\2 标签匹配字符 (love)able\1er x{m} 字符x重复m次o{5}
+x{m,} 字符 x 重复至少 m 次 o{5,}
+x{m,n} 字符x重复m到n次o{5,10}</code></pre></li>
+<li><p>其他</p>
+<pre><code>\w  所有字母和数字 相当于[a-zA-Z0-9]*
+\W  非字母和数字
+\b  边界</code></pre></li>
+</ul>
+<h5 id="grep命令"><a href="#grep命令" class="headerlink" title="grep命令"></a>grep命令</h5><ul>
+<li><p>习惯性加上单引号</p>
+</li>
+<li><p>返回状态exit 0 1 2</p>
+</li>
+<li><p>grep -e  相当于 egrep </p>
+</li>
+<li><p>grep  –help |grep ‘-v’<br>其中-v被认为是选项，非模式，所以需要转义</p>
+</li>
+</ul>
+<pre><code>-i, --ignore-case         忽略大小写
+-v, --invert-match        选中不匹配的行
+-q, --quiet, --silent     不显示所有常规输出
+-r, --recursive           等同于--directories=recurse递归目录
+
+-o, --only-matching       只显示匹配PATTERN 部分的行
+-B, --before-context=NUM  打印文本及其前面NUM 行
+-A, --after-context=NUM   打印文本及其后面NUM 行
+-C, --context=NUM         打印NUM 行输出文本
+
+-n, --line-number         输出的同时打印行号</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-变量和数组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/06/shell-变量和数组/" itemprop="url">shell 变量和数组</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T20:17:32+08:00">
+                2020-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><ul>
+<li><p>查看变量: echo $变量名 set(所有变量:包括自定义变量和环境变量) </p>
+</li>
+<li><p>取消变量: unset 变量名</p>
+</li>
+<li><p>位置变量：如通过$1 $2获取第一第二个参数</p>
+</li>
+<li><p>环境变量：export back_dir=xxxx  定义全局变量；或者export $var 转化成全局变量</p>
+</li>
+<li><p>预定义变量</p>
+<pre><code>$0 脚本名
+$* 所有的参数
+$@ 所有的参数
+$# 参数的个数
+$$ 当前进程的 PID
+$! 上一个后台进程的 PID
+$? 上一个命令的返回值 0 表示成功</code></pre><p>$@和$星区别：不加引号时,二者都是返回传入的参数,但加了引号后（”$@”）,此时$*把参数作为一个字符串整体(单字符串)返回,$@把每个参数作为一个字符串返回</p>
+</li>
+<li><p>键盘输入变量：通过read -n 2 -p “please input: “ p</p>
+</li>
+</ul>
+<ul>
+<li><p>调用其他脚本变量值：可在b脚本中通过调用.a.sh,直接获取a的变量数据</p>
+</li>
+<li><p>“”双引号-强引用会替换里面变量值；’’-弱引用，原样输出引用符号</p>
+</li>
+<li><p>变量删除（获取部分字符串）</p>
+<pre><code>${url#*a}  从头到尾最短匹配删除即直到第一个a之前的都删除
+${url##*a}  从头到尾贪婪匹配，删除直到最后一个匹配a
+${url%a*}  后面加%，从后到前最短匹配删除a后面所有字符    
+${url%%}  后面加%，从后到前贪婪匹配删除最后一个a后面所有字符</code></pre></li>
+<li><p>变量替换(最短替换/和贪婪替换//)</p>
+<pre><code>liyuan$ var=tom.ton.com
+liyuan$ echo ${var/to/TO}
+TOm.ton.com
+liyuan$ echo ${var//to/TO}</code></pre></li>
+</ul>
+<ul>
+<li><p>变量替代；可理解为变量初始化</p>
+<pre><code>echo ${var1-aaaaa}
+echo ${var1:-aaaaa}</code></pre><p>  使用 <font color="red">-</font> ,若没有被赋值过，就使用默认值替代(是否unset)</p>
+<p>  使用 <font color="red">:-</font>，区别在于即使赋值空值也会被新值替代(是否为空值)</p>
+</li>
+<li><p>切片操作  echo ${url:5:7}</p>
+</li>
+<li><p>可使用反引号或者$()执行内部命令</p>
+</li>
+<li><p>date +%F  格式化日期输出</p>
+</li>
+<li><p>特殊符号总结</p>
+<pre><code>（） 子shell执行
+(()) 数值比较
+$()  命令替换，同反引号
+$(()) 整数运算
+
+{}  集合
+${}  变量
+
+[]  条件测试
+[[]] 条件测试，支持正则 =~
+$[]  整数运算</code></pre></li>
+</ul>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><ol>
+<li><p>普通数组</p>
+<pre><code>一次赋多值，可指定索引
+# array2=(tom jack alice [20]=aa)
+# echo ${!array2[@]}
+0 1 2 20</code></pre></li>
+<li><p>关联数组</p>
+<p> 必须申明关联数组变量</p>
+<pre><code># declare -A ass_array1
+# ass_array2=([index1]=tom [index2]=jack [index4]=&apos;bash shell&apos;)
+
+查看数组
+# declare -A</code></pre></li>
+<li><p>访问数组元数:</p>
+<pre><code># echo ${ass_array2[index2]} 访问数组中的第二个元数
+# echo ${ass_array2[@]} 访问数组中所有元数 等同于 echo ${array1[*]} 
+# echo ${#ass_array2[@]} 获得数组元数的个数
+# echo ${!ass_array2[@]} 获得数组元数的索引</code></pre></li>
+<li><p>遍历数组</p>
+<p>通过获取数组索引遍历   </p>
+</li>
 </ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/06/shell-函数/" itemprop="url">shell 函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T20:07:46+08:00">
+                2020-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="1-定义函数"><a href="#1-定义函数" class="headerlink" title="1. 定义函数"></a>1. 定义函数</h5><h6 id="方法一（常用）"><a href="#方法一（常用）" class="headerlink" title="方法一（常用）:"></a>方法一（常用）:</h6><pre><code>函数名() { 函数要实现的功能代码 }</code></pre><h6 id="方法二"><a href="#方法二" class="headerlink" title="方法二:"></a>方法二:</h6><pre><code>function 函数名 { 函数要实现的功能代码 }</code></pre><h5 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h5><pre><code>函数名 函数名参数1 参数2</code></pre><p>举例：</p>
+<pre><code>#!/usr/bin/bash
+jiecheng(){
+result=1
+for i in `seq $1`
+do
+        echo $i
+        result=$[$result*$i]
+done
+echo $result
+}
+
+jiecheng $1
+
+1.实践证明，do中的result必须不能加$符号，否则错误
+2.$[]运算结果赋值的时候，=左右不能有空格</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
+<li><p>函数接收位置参数 $1 $2… $n</p>
+</li>
+<li><p>函数接收数组变量使用$@ $*</p>
+</li>
+<li><p>函数接收参数个数$#</p>
+</li>
+<li><p>函数将受到的所有参数赋值给数组 newarray=($*)</p>
+</li>
+<li><p>养成在函数内部的变量习惯性加local关键字供内部函数使用的习惯</p>
 </li>
 </ul>
 
@@ -1903,7 +1840,7 @@ ${status2}   run keyword and return status     wait until element is visible  ${
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/11/">11</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/4/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/6/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1949,7 +1886,7 @@ ${status2}   run keyword and return status     wait until element is visible  ${
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">116</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="躲不掉的风">
 <meta property="og:description" content="Django跨域问题解决由于请求本地服务另外端口号导致的跨域问题，可参考https://www.cnblogs.com/wasbg/p/10973880.htmlhttps://segmentfault.com/a/1190000017952184?utm_source=tag-newest： 前端解决：config/index.js(前提去掉Axios.defaults.baseURL)">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-16T09:07:03.209Z">
+<meta property="og:updated_time" content="2020-10-16T13:22:25.991Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue+Django跨域问题">
 <meta name="twitter:description" content="Django跨域问题解决由于请求本地服务另外端口号导致的跨域问题，可参考https://www.cnblogs.com/wasbg/p/10973880.htmlhttps://segmentfault.com/a/1190000017952184?utm_source=tag-newest： 前端解决：config/index.js(前提去掉Axios.defaults.baseURL)">
@@ -341,28 +341,56 @@
                 &apos;^/&apos;: &apos;/&apos;, //重写,
             }
         }
-    },</code></pre><h6 id="后端解决"><a href="#后端解决" class="headerlink" title="后端解决"></a>后端解决</h6><pre><code>pip install django-cors-headers   
-
- setting中设置：
-
-  1. &apos;corsheaders.middleware.CorsMiddleware&apos; # 新加的插件位置最好放在CommonMiddleware之前
-
-  2. INSTALLED_APPS中添加
-  &apos;corsheaders&apos;,    
-  3. setting文件里新增
-
-  CORS_ORIGIN_ALLOW_ALL = True   //新增   
-  CORS_ALLOW_CREDENTIALS = True  //新增</code></pre><ol>
-<li><p>设置了axios.defaults.baseURL会跳过代理</p>
+    },</code></pre><ol>
+<li><p>设置了axios.defaults.baseURL会跳过代理,所以需要注释掉baseURL</p>
 </li>
-<li><p>浏览器是禁止跨域的，会检查origin是否同源,若非同源则禁止。</p>
-<p> 但是服务端不禁止，在本地运行npm run dev等命令时实际上是用node运行了一个服务器，因此proxyTable实际上是将请求发给自己的服务器，再由服务器转发给后台服务器，做了亦曾代理，因为不会出现跨域问题。</p>
+<li><p>浏览器是禁止跨域的，会检查origin是否同源,若非同源则禁止。但是服务端不禁止，在本地运行npm run dev等命令时实际上是用node运行了一个服务器，因此proxyTable实际上是将请求发给自己的服务器，再由服务器转发给后台服务器，做了亦曾代理，因为不会出现跨域问题。</p>
+<p>proxy 的工作机制是：你依然请求本地地址，即使你 npm run dev 跑起来的东西并没有任何接口能力，而 Webpack 后台会将所有指定的请求转发到 target 对应的地址上。这个转发的过程发生在服务端（也就是 webpack-dev-server），所以你的浏览器是不知道的。</p>
+<h6 id="后端解决"><a href="#后端解决" class="headerlink" title="后端解决"></a>后端解决</h6><p> pip install django-cors-headers   </p>
+<p>  setting中设置：</p>
+<ol>
+<li><p>‘corsheaders.middleware.CorsMiddleware’ # 新加的插件位置最好放在CommonMiddleware之前</p>
+</li>
+<li><p>INSTALLED_APPS中添加<br>‘corsheaders’,    </p>
+</li>
+<li><p>setting文件里新增</p>
+<p>CORS_ORIGIN_ALLOW_ALL = True   //新增<br>CORS_ALLOW_CREDENTIALS = True  //新增</p>
+</li>
+</ol>
 </li>
 </ol>
 <p>【问题】<br>[HPM] Error occurred while trying to proxy request /api/logout/ from localhost:8088 to 127.0.0.1:8000/ (EHOSTUNREACH) (<a href="https://nodejs.org/api/errors.html#errors_common_system_errors" target="_blank" rel="noopener">https://nodejs.org/api/errors.html#errors_common_system_errors</a>)</p>
-<p>解决：</p>
 <p>解决了原来一个warning错后重启了前端服务，服务自动更换了个新的端口，就好了！</p>
-
+<p>【问题2】解决：设置前端代理后，请求后端服务依旧报404</p>
+<p>【详细描述】由于所有接口有前缀measurement，在跨域之前使用baseURL设置成Axios.defaults.baseURL = ‘<a href="http://http://10.12.168.11:8000/measurement" target="_blank" rel="noopener">http://http://10.12.168.11:8000/measurement</a></p>
+<p>后来改成跨域使用proxy试了几种办法：</p>
+<pre><code>由于请求接口本身并没有measurement，所以这样是错误的。
+   proxyTable: {
+    &apos;/measurement&apos;: {
+        target: &apos;http://10.12.168.11:8000&apos;, //后端接口地址
+        changeOrigin: true, //是否允许跨越
+        pathRewrite: {
+            &apos;^/measurement&apos;: &apos;/measurement&apos;, //重写,
+        }
+    }
+ 这个很奇怪，竟然也没行
+    proxyTable: {
+    &apos;/&apos;: {
+        target: &apos;http://10.12.168.11:8000&apos;, //后端接口地址
+        changeOrigin: true, //是否允许跨越
+        pathRewrite: {
+            &apos;^/&apos;: &apos;/measurement&apos;, //重写,
+        }
+    }
+最后还在链接上面添加的前缀 
+proxyTable: {
+    &apos;/&apos;: {
+        target: &apos;http://10.12.168.11:8000/measurement&apos;, //后端接口地址
+        changeOrigin: true, //是否允许跨越
+        pathRewrite: {
+            &apos;^/&apos;: &apos;/&apos;, //重写,
+        }
+    }</code></pre>
       
     </div>
     
@@ -475,7 +503,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">102</span>
+                  <span class="site-state-item-count">116</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
