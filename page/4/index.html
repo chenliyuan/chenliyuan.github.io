@@ -367,6 +367,35 @@ find / -name nginx.conf   2&gt;/dev/null</code></pre></li>
 <p>默认端口占用8080</p>
 </li>
 </ol>
+<h5 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h5><p>参考：<a href="https://www.cnblogs.com/muhy/p/10528449.html" target="_blank" rel="noopener">https://www.cnblogs.com/muhy/p/10528449.html</a></p>
+<pre><code>1. 在http节点下，添加upstream节点。
+
+upstream linuxidc { 
+      server 10.0.6.108:7080; 
+      server 10.0.0.85:8980; 
+}
+
+  2.  将server节点下的location节点中的proxy_pass配置为：http:// + upstream名称，即“
+http://linuxidc”.
+
+location / { 
+            root  html; 
+            index  index.html index.htm; 
+            proxy_pass http://linuxidc; 
+}
+
+    3.  现在负载均衡初步完成了。upstream默认按照轮询方式进行负载；但是还有其他的策略，包括权重、hash、第三方等方式具体见如上链接</code></pre><h5 id="反向代理之-proxy-pass"><a href="#反向代理之-proxy-pass" class="headerlink" title="反向代理之 proxy_pass"></a>反向代理之 proxy_pass</h5><pre><code>参考：https://www.cnblogs.com/yyxianren/p/10831511.html
+
+格式很简单： proxy_pass URL;
+其中URL包含：传输协议（http://, https://等）、主机名（域名或者IP:PORT）、uri。</code></pre><p>  示例如下：</p>
+<pre><code>proxy_pass http://www.xxx.com/;
+proxy_pass http://192.168.200.101:8080/uri;
+proxy_pass unix:/tmp/www.sock;</code></pre><p> 配置示例：</p>
+<pre><code>location /aming/
+{
+    proxy_pass http://192.168.1.10/linux/;
+    ...
+}   </code></pre><p>   【总结】为了方便记忆和规范配置，建议所有的 proxy_pass 后的url都以“/”结尾。<br>proxy_pass <a href="http://192.168.1.10/linux/" target="_blank" rel="noopener">http://192.168.1.10/linux/</a>;</p>
 
           
         
@@ -1961,7 +1990,7 @@ for file in json_file:
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
