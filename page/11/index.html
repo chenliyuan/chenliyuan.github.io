@@ -261,6 +261,378 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/Flask框架学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/15/Flask框架学习/" itemprop="url">Flask+Django框架学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-15T17:50:33+08:00">
+                2019-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">from flask import Flask</span><br><span class="line">app=Flask(__name__)</span><br><span class="line"></span><br><span class="line">@app.route(&apos;/&apos;)</span><br><span class="line">def hello_world():</span><br><span class="line">	return &quot;hello_world&quot;</span><br><span class="line">if __name==&apos;__main__&apos;:</span><br><span class="line">	app.run()</span><br></pre></td></tr></table></figure>
+
+<p>环境：mac 10.12.6  pycharm +Flask</p>
+<p>【问题1】找不到项目的Flask配置位置？debug模式怎么一直是off，即使run后面添加了debug=True？</p>
+<p>Flask配置：点击项目名，在如下位置编辑</p>
+<p><img src="/images/pasted-26.png" alt="upload successful"></p>
+<p><img src="/images/pasted-27.png" alt="upload successful"></p>
+<p>【问题2】执行创建数据库表的操作时提示Mysql Error 2003: Can’t connect to MySQL server on ‘127.0.0.1’ ([Errno 61] Connection refused)<br><img src="/images/pasted-28.png" alt="upload successful"><br>解决：没有安装Mysql服务，于是下载安装，具体见mysql那一篇</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/15/tensorflow环境安装实践2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/15/tensorflow环境安装实践2/" itemprop="url">tensorflow环境安装实践2</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-15T17:03:19+08:00">
+                2019-06-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>由于之前是在本机的python2.7基础上安装的本次希望安装个基于3.x的，为了兼容其他同学的环境代码。<br>方案：使用虚拟隔离环境构建<br>问题1：在本机安装py3.7的包，然后在已经有的virtualenv（之前在py2.7下安装的）下链接此pyh环境提示：<br>New python executable in /Users/cly/Documents/my_env/bin/python3  </p>
+<p>没办法解决，愤然上课去，下课后心平气和的重新用新装的pip3.7重新装了一遍virtualenv，这个问题解决:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MacBook-Pro:bin cly$ pip3 install -U virtualenv</span><br><span class="line">MacBook-Pro:workspace cly$ virtualenv -p /Library/Frameworks/Python.framework/Versions/3.7/bin/python3  my_env</span><br><span class="line">MacBook-Pro:workspace cly$ source my_env/bin/activate  #激活，开始使用</span><br><span class="line">(my_env)MacBook-Pro:workspace cly$ python -V#注意目录前面出现(my_env)</span><br><span class="line">Python 3.7.3</span><br><span class="line">(my_env)MacBook-Pro:workspace cly$ ：deactivate 退出</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/09/tensorflow学习实践二/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/06/09/tensorflow学习实践二/" itemprop="url">tensorflow学习实践二</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-09T17:31:43+08:00">
+                2019-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="可视化利器tensorboard"><a href="#可视化利器tensorboard" class="headerlink" title="可视化利器tensorboard"></a>可视化利器tensorboard</h4><p>待续  </p>
+<h4 id="matplotlib"><a href="#matplotlib" class="headerlink" title="matplotlib"></a>matplotlib</h4><p>=matrix + plot  +library<br>常用子包<strong>pyplot</strong><br><a href="https://matplotlib.org" target="_blank" rel="noopener">https://matplotlib.org</a></p>
+<p><img src="/images/pasted-15.png" alt="upload successful"></p>
+<p><img src="/images/pasted-16.png" alt="upload successful"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/08/tensorflow学习实践/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -897,25 +1269,28 @@
       
         
           
-            <p>git命令基础操作这篇文章很清楚：<a href="https://www.cnblogs.com/tocy/p/git-command-line-manual.html" target="_blank" rel="noopener">https://www.cnblogs.com/tocy/p/git-command-line-manual.html</a></p>
-<h4 id="分支合并到master"><a href="#分支合并到master" class="headerlink" title="分支合并到master"></a>分支合并到master</h4><p><a href="https://blog.csdn.net/boysky0015/article/details/78185879/" target="_blank" rel="noopener">https://blog.csdn.net/boysky0015/article/details/78185879/</a></p>
-<h4 id="创建分支并上传"><a href="#创建分支并上传" class="headerlink" title="创建分支并上传"></a>创建分支并上传</h4><p>1.创建本地分支dev</p>
-<pre><code>git branch dev </code></pre><p>(也可以在gitlab上手动添加后checkout)</p>
-<p>2.切换到分支dev</p>
-<pre><code>git checkout dev</code></pre><p>3.查看远程分支</p>
-<pre><code>git branch -a</code></pre><p>4.将代码暂存在本地</p>
+            <p><img src="/images/pasted-188.png" alt="upload successful"></p>
+<p>git命令基础操作这篇文章很清楚：<a href="https://www.cnblogs.com/tocy/p/git-command-line-manual.html" target="_blank" rel="noopener">https://www.cnblogs.com/tocy/p/git-command-line-manual.html</a></p>
+<h4 id="分支相关"><a href="#分支相关" class="headerlink" title="分支相关"></a>分支相关</h4><p><a href="https://blog.csdn.net/boysky0015/article/details/78185879/" target="_blank" rel="noopener">https://blog.csdn.net/boysky0015/article/details/78185879/</a></p>
+<p>1.新建一个分支，指向指定commit</p>
+<pre><code>git branch [branch] [commit]</code></pre><p>2.创建并切换到分支dev</p>
+<pre><code>git checkout -b dev
+
+相当于git branch dev     git checkout dev</code></pre><p>3.查看远程分支</p>
+<pre><code>git branch -a(本地+远程分支)/-r（仅远程分支）</code></pre><p>4.将代码暂存在本地</p>
 <pre><code>git add .</code></pre><p>5.给暂存在本地的代码打个tag</p>
 <pre><code>git commit -am &quot;first commit&quot;</code></pre><p>6.将本地代码推送到远程指定分支</p>
 <pre><code>git push origin &lt;指定的分支名&gt;</code></pre><p>7.从远程指定分支上拉取代码</p>
-<pre><code>git clone -b  &lt;指定分支名&gt;  &lt;ssh或者http地址&gt; </code></pre><ol start="8">
-<li><p>删除远程分支</p>
-<p> git push origin –delete [branch_name]</p>
-</li>
-</ol>
-<p>链接：<a href="https://www.jianshu.com/p/801d00b15624" target="_blank" rel="noopener">https://www.jianshu.com/p/801d00b15624</a></p>
-<p>拉取新分支</p>
-<pre><code>git checkout  -b new_camp //创建并跳转到new_camp新分支名
-(或你用两步代替：git  branch +新分支名，git  checkout +新的分支名)</code></pre><h2 id="常见出错和问题"><a href="#常见出错和问题" class="headerlink" title="常见出错和问题"></a>常见出错和问题</h2><h6 id="1-出现error-The-following-untracked-working-tree-files-would-be-overwritten-by-checkout"><a href="#1-出现error-The-following-untracked-working-tree-files-would-be-overwritten-by-checkout" class="headerlink" title="1.  出现error: The following untracked working tree files would be overwritten by checkout"></a>1.  出现error: The following untracked working tree files would be overwritten by checkout</h6><p>解决： $ git clean -d -fx “”<br>参考   <a href="http://blog.chinaunix.net/uid-23366077-id-3581375.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-23366077-id-3581375.html</a></p>
+<pre><code>git clone -b  &lt;指定分支名&gt;  &lt;ssh或者http地址&gt; </code></pre><p>8.删除分支</p>
+<pre><code>git push origin --delete [branch_name]  删除远程分支
+
+git branch -d [branch-name] 删除本地分支</code></pre><p>9.选择一个commit，合并进当前分支</p>
+<pre><code>git cherry-pick [commit]</code></pre><p>链接：<a href="https://www.jianshu.com/p/801d00b15624" target="_blank" rel="noopener">https://www.jianshu.com/p/801d00b15624</a></p>
+<h4 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h4><p>   1、git stash</p>
+<pre><code>备份当前工作区的内容，保存到git 栈中，从最近的一次commit中读取相关内容</code></pre><p>   2、git pull  或者做其他的工作    </p>
+<p>   3、git stash pop</p>
+<pre><code>git栈中获取到最近一次stash进去的内容，恢复工作区的内容。。获取之后，会删除栈中对应的stash。。</code></pre><p>   4、git stash list</p>
+<pre><code>显示git栈中的所有工作区内容的备份</code></pre><h2 id="常见出错和问题"><a href="#常见出错和问题" class="headerlink" title="常见出错和问题"></a>常见出错和问题</h2><h6 id="1-出现error-The-following-untracked-working-tree-files-would-be-overwritten-by-checkout"><a href="#1-出现error-The-following-untracked-working-tree-files-would-be-overwritten-by-checkout" class="headerlink" title="1.  出现error: The following untracked working tree files would be overwritten by checkout"></a>1.  出现error: The following untracked working tree files would be overwritten by checkout</h6><p>解决： $ git clean -d -fx “”<br>参考   <a href="http://blog.chinaunix.net/uid-23366077-id-3581375.html" target="_blank" rel="noopener">http://blog.chinaunix.net/uid-23366077-id-3581375.html</a></p>
 <h6 id="2-Git冲突：commit-your-changes-or-stash-them-before-you-can-merge-解决办法"><a href="#2-Git冲突：commit-your-changes-or-stash-them-before-you-can-merge-解决办法" class="headerlink" title="2. Git冲突：commit your changes or stash them before you can merge. 解决办法"></a>2. Git冲突：commit your changes or stash them before you can merge. 解决办法</h6><p>出现这个问题的原因是其他人修改了xxx.php并提交到版本库中去了，而你本地也修改了xxx.php，这时候你进行git pull操作就好出现冲突了，解决方法，在上面的提示中也说的很明确了。<br><a href="https://www.cnblogs.com/wenlj/p/5866356.html" target="_blank" rel="noopener">https://www.cnblogs.com/wenlj/p/5866356.html</a><br>1）直接commit本地的修改 —-也一般不用这种方法<br>2）通过git stash  —- 通常用这种方法</p>
 <pre><code>git stash
 git pull
@@ -1299,891 +1674,6 @@ print(gf._Person__country)#被改变成America2</code></pre><p> <strong>类方�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/24/selenium/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/24/selenium/" itemprop="url">selenium实现web自动化</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-24T23:27:30+08:00">
-                2018-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="web自动化"><a href="#web自动化" class="headerlink" title="web自动化"></a>web自动化</h4><ul>
-<li><p>pom模式：pageobjectmodel我理解是底层逻辑用例的分层</p>
-<pre><code>1.底层封装：即driver层的封装如常用的定位元素方法、输入、键盘鼠标、切换frame以及测试报告HTMLTestRunner模板等
-
-2.page层：根据页面，写页面测试用例如输入登录名，输入密码，点击登录，获取信息后断言
-
-3.用例层：利用unittest框架，结合page页面功能结合生成一条条case
-继承TestCase基类创建用例，方法名均以test开头</code></pre></li>
-<li><p>每个测试的关键是：调用assertEqual()来检查预期的输出；assertTure或assertFalse()来验证一个条件，调用assertRaise()抛出特定异常。从而产生最终结果报告。</p>
-</li>
-<li><p>unittest.main()提供了一个命令行接口</p>
-</li>
-<li><p>setUp()方法前置方法，teatDown()方法用于最后的清理工作。每个测试用例(方法)运行时这两个方法以及<strong>init</strong>()都会被调用一次，setUpclass()和tearDownClass()在所有用例执行前后分别执行。 </p>
-</li>
-<li><p>跳过测试：@unittest.skip(reason)</p>
-<p>跳过被此装饰器装饰的测试。 reason 为测试被跳过的原因。</p>
-</li>
-</ul>
-<h4 id="1-环境搭建"><a href="#1-环境搭建" class="headerlink" title="1.环境搭建"></a>1.环境搭建</h4><p>安装python环境，使用</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install selenium  </span><br><span class="line">pip show selenium   #验证</span><br></pre></td></tr></table></figure>
-
-<p>下载对应浏览器版本驱动 <a href="http://npm.taobao.org/，" target="_blank" rel="noopener">http://npm.taobao.org/，</a><br>配置该驱动（可执行文件）到环境变量。完成后执行代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#coding=utf-8 </span><br><span class="line">from selenium import webdriver</span><br><span class="line">driver = webdriver.Chrome() </span><br><span class="line">driver.get(&quot;http://www.baidu.com&quot;)</span><br><span class="line">driver.find_element_by_id(&quot;kw&quot;).send_keys(&quot;Selenium2&quot;) </span><br><span class="line">driver.find_element_by_id(&quot;su&quot;).click() </span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
-
-<p>若正常运行则成功。  </p>
-<h4 id="2-主要语法"><a href="#2-主要语法" class="headerlink" title="2.主要语法"></a>2.主要语法</h4><h5 id="2-1-定位页面元素的方法"><a href="#2-1-定位页面元素的方法" class="headerlink" title="2.1  定位页面元素的方法"></a>2.1  定位页面元素的方法</h5><pre><code>find_element_by_id() 通过元素的id来查找元素
-find_element_by_name() – 通过元素的name来查找元素
-find_element_by_class_name() – 通过class 来查找
-find_element_by_tag_name() – 通过元素的类型来查找，一般不用这种方式
-find_element_by_link_text() – 通过链接地址来查找元素
-
-find_element_by_partial_link_text()
-find_element_by_xpath() – 通过xpath来查找元素
-find_element_by_css_selector() – 通过css样式来查找元素</code></pre><p> 若需定位一组元素:</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"> #coding=utf-8 </span><br><span class="line"> from selenium import webdriver </span><br><span class="line"> import os</span><br><span class="line">driver = webdriver.Firefox() </span><br><span class="line">file_path = &apos;file:///&apos; + os.path.abspath(&apos;checkbox.html&apos;) </span><br><span class="line">driver.get(file_path)</span><br><span class="line">#通过XPath找到type=checkbox的元素 </span><br><span class="line">#checkboxes = driver.find_elements_by_xpath(&quot;//input[@type=&apos;checkbox&apos;]&quot;)</span><br><span class="line">#通过CSS找到type=checkbox的元素 </span><br><span class="line">checkboxes = driver.find_elements_by_css_selector(&apos;input[type=checkbox]&apos;) </span><br><span class="line">for checkbox in checkboxes: </span><br><span class="line">	checkbox.click()</span><br><span class="line"># 打印当前页面上type为checkbox的个数 </span><br><span class="line">print len(checkboxes)</span><br><span class="line"># 把页面上最后1个checkbox的勾给去掉 driver.find_elements_by_css_selector(&apos;input[type=checkbox]&apos;).pop().click()</span><br><span class="line">driver.quit()</span><br></pre></td></tr></table></figure>
-
-<p>【注意点】  </p>
-<ol>
-<li>查找元素的两种方式对比   </li>
-<li>pop使用，pop(1)是第二个</li>
-</ol>
-<h5 id="2-2-元素常用操作"><a href="#2-2-元素常用操作" class="headerlink" title="2.2  元素常用操作"></a>2.2  元素常用操作</h5><pre><code>clear() – 清除元素内容，一般是清除输入框中的数据
-send_keys() – 在元素中模拟按键输入
-click() – 点击元素
-submit()  -- 提交表单</code></pre><h5 id="2-3-获取元素信息"><a href="#2-3-获取元素信息" class="headerlink" title="2.3 获取元素信息"></a>2.3 获取元素信息</h5><pre><code>size：元素的大小
-text：元素内文本
-
-is_displayed( )  ：元素是否可见
-is_enabled()： 元素是否可用（一般用于判断按钮是否置灰）
-is_selected( ) ： 元素是否被选中（一般用于表单中的单选框和复选框）
-get_attribute ( ) ： 元素的属性（可以获取到所选标签内的属性信息）</code></pre><h5 id="2-4-浏览器操作和属性"><a href="#2-4-浏览器操作和属性" class="headerlink" title="2.4 浏览器操作和属性"></a>2.4 浏览器操作和属性</h5><pre><code>操作方法：    
-back（） 返回上一个页面
-forward（）进入下一个页面
-close（）关闭当前标签页
-quit（）关闭浏览器
-set_window_size(480,800) 设置浏览器大小（传参输入浏览器长、宽）
-maximize_window()  最大化浏览器
-refresh()  刷新页面
-
-属性：
-  current_url :当前页面的URL路径
-  title：当前页面的title名称
-  name：当前浏览器名称
-  page_source：当前html页面源码</code></pre><p><img src="%5Cimages%5Cpasted-71.png" alt="upload successful"><br>参考：<a href="https://blog.csdn.net/CCGGAAG/article/details/75309315" target="_blank" rel="noopener">https://blog.csdn.net/CCGGAAG/article/details/75309315</a></p>
-<h5 id="2-4-鼠标事件-ActionChains"><a href="#2-4-鼠标事件-ActionChains" class="headerlink" title="2.4 鼠标事件  ActionChains"></a>2.4 鼠标事件  ActionChains</h5><p>使用前引入模块：from selenium.webdriver.common.action_chains import ActionChains</p>
-<pre><code>ActionChains 类提供的鼠标操作的常用方法：
- perform() 执行所有 ActionChains 中存储的行为  
- context_click() 右击 
- double_click() 双击 
- drag_and_drop() 拖动 
- move_to_element() 鼠标悬停</code></pre><p>举例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#引入ActionChains类 from selenium.webdriver.common.action_chains import ActionChains</span><br><span class="line">...</span><br><span class="line">#定位到要右击的元素 </span><br><span class="line">right_click =driver.find_element_by_id(&quot;xx&quot;) #对定位到的元素执行鼠标右键操作 </span><br><span class="line">ActionChains(driver).context_click(right_click).perform()</span><br></pre></td></tr></table></figure>
-
-<h5 id="2-5-键盘事件"><a href="#2-5-键盘事件" class="headerlink" title="2.5 键盘事件"></a>2.5 键盘事件</h5><p>   引入模块 from selenium.webdriver.common.keys import Keys</p>
-<pre><code>fromselenium.webdriver.common.keys importKeys
-在使用键盘按键方法前需要先导入 keys 类包。
-下面经常使用到的键盘操作：
-send_keys(Keys.BACK_SPACE) 删除键（BackSpace）
-send_keys(Keys.SPACE) 空格键(Space)
-send_keys(Keys.TAB) 制表键(Tab)
-send_keys(Keys.ESCAPE) 回退键（Esc）
-send_keys(Keys.ENTER) 回车键（Enter）
-《Selenium2Python 自动化测试实战》样张
-81
-send_keys(Keys.CONTROL,&apos;a&apos;) 全选（Ctrl+A）
-send_keys(Keys.CONTROL,&apos;c&apos;) 复制（Ctrl+C）
-send_keys(Keys.CONTROL,&apos;x&apos;) 剪切（Ctrl+X）
-send_keys(Keys.CONTROL,&apos;v&apos;) 粘贴（Ctrl+V）
-send_keys(Keys.F1) 键盘 F1
-……
-send_keys(Keys.F12) 键盘 F12</code></pre><h5 id="2-6-切换frame"><a href="#2-6-切换frame" class="headerlink" title="2.6 切换frame"></a>2.6 切换frame</h5><ul>
-<li><p>切换到一个frame中</p>
-<pre><code>switch_to_frame(frame_reference)
-
-其中frame_reference：id、name、element(定位的某个元素)、索引</code></pre></li>
-</ul>
-<p>常用实例 ：   </p>
-<pre><code># 定位父类层级iframe
-ele_framest = driver.find_element_by_css_selector(&quot;#result &gt; iframe&quot;)
-# 切换到父类层级iframe-通过元素切换
-driver.switch_to_frame(ele_framest)
-或
- driver.switch_to_frame(1)</code></pre><ul>
-<li><p>切换到主界面</p>
-<pre><code>switch_to_default_content()：</code></pre><p>  注：driver.switch_to_frame(None)等同于driver.switch_to_default_content()</p>
-<h4 id="2-7-下拉框"><a href="#2-7-下拉框" class="headerlink" title="2.7 下拉框"></a>2.7 下拉框</h4><p>需引用：from selenium.webdriver.support.ui import Select</p>
-</li>
-</ul>
-<p><img src="%5Cimages%5Cpasted-72.png" alt="upload successful"></p>
-<p>select包内的方法详解</p>
-<p>1.获取option元素</p>
-<pre><code>options：获取包含select下拉框内所有option项element的列表
-
-all_selected_options: 获取当前选中项element的列表
-
-first_selected_option:获取所有下拉选项中的第一个选项的element（或者获取当前选中的这一项）</code></pre><p>2.选择option</p>
-<pre><code>select_by_value(values)：选择option标签中value属性为：values的选项
-
-select_by_index(index_number)：选择索引为index_number的选项（索引从0开始）
-
-select_by_visible_text(text)：选择option选项内容为：text的选项</code></pre><p>3.复选select的情况（select标签中，multiple=”multiple”时，即可多选的select选择框）</p>
-<pre><code>deselect_all: 取消所有已选择的选项
-
-deselect_by_value(values):取消选择option标签中value属性为：values的选项
-
-deselect_by_index(index_number)：取消选择索引为index_number的选项（索引从0开始）
-
-deselect_by_visible_text(text)：取消选择option选项内容为：text的选项</code></pre><p>实例片段：</p>
-<pre><code>options=Select(ele_select).options #定位select元素
-for option in options:
-    print(option.text)
-Select(ele_select).select_by_value(&quot;2&quot;) #选择值是2的项
-sleep(1)
-first_selected_option=Select(ele_select).first_selected_option
-print(first_selected_option.text)#输出第一个选中项文案</code></pre><h5 id="2-8-等待"><a href="#2-8-等待" class="headerlink" title="2.8 等待"></a>2.8 等待</h5><p>具体参考原文：<a href="https://blog.csdn.net/CCGGAAG/article/details/86763952" target="_blank" rel="noopener">https://blog.csdn.net/CCGGAAG/article/details/86763952</a></p>
-<ul>
-<li><p>sleep是强制等待   </p>
-</li>
-<li><p>implicitly_wait()隐形等待 也称为全局等待 </p>
-<p>隐形等待是设置了一个最长等待时间，如果在规定时间内网页加载完成，则执行下一步，否则一直等到时间截止，然后执行下一步。注意这里有一个弊端，那就是程序会一直等待整个页面加载完成，也就是一般情况下你看到浏览器标签栏那个小圈不再转，才会执行下一步</p>
-<pre><code>driver.implicitly_wait(30)  # 隐性等待，最长等30秒</code></pre></li>
-</ul>
-<ul>
-<li><p>WebDriverWait() 显示等待 </p>
-<p>满足条件后继续执行，否则在设置时间过后抛出异常，一般由 until()（或 until_not()）方法配合使用。具体格式如下： </p>
-<pre><code>WebDriverWait(driver, timeout, poll_frequency=POLL_FREQUENCY, ignored_exceptions=None)</code></pre><ul>
-<li><p>driver 所创建的浏览器driver</p>
-</li>
-<li><p>timeout 最长时间长度（默认单位：秒）</p>
-</li>
-<li><p>poll_frequency 间隔检测时长（每）默认0.5秒</p>
-</li>
-<li><p>ignored_exceptions  方法调用中忽略的异常，默认只抛出：找不到元素的异常</p>
-</li>
-</ul>
-<p>大部分返回True/False，极少数返回元素:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#需导入库</span><br><span class="line">from selenium.webdriver.support.ui import WebDriverWait</span><br><span class="line">...</span><br><span class="line">#部分关于元素定位的判断返回类型为：元素</span><br><span class="line">assert_ele = WebDriverWait(driver, 15, 0.5).until(Expect.presence_of_element_located((&quot;id&quot;, &quot;wd1&quot;)))</span><br><span class="line">print(&quot;返回类型 %s&quot; % assert_ele)</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<h4 id="2-9-until-until-not"><a href="#2-9-until-until-not" class="headerlink" title="2.9 until / until_not"></a>2.9 until / until_not</h4><p>直到调用的方法返回值为True</p>
-<p>until(method, message=’’)</p>
-<ul>
-<li>method：expected_conditions库中定义的方法</li>
-<li>message ：自定义报错信息<br>直到调用的方法返回值为False</li>
-</ul>
-<p>until_not(method, message=’’)</p>
-<ul>
-<li>method：expected_conditions库中定义的方法</li>
-<li>message ：自定义报错信息</li>
-</ul>
-<h4 id="2-10-expected-conditions库title-is-title"><a href="#2-10-expected-conditions库title-is-title" class="headerlink" title="2.10 expected_conditions库title_is(title)"></a>2.10 expected_conditions库title_is(title)</h4><pre><code>title：期望的页面标题
-判断当前页面标题是否包含title
-title_contains(title)
-
-title：期望的页面标题
-判断此定位的元素是否存在
-presence_of_element_located(locator)
-
-locator：元素的定位信息
-判断页面网址中是否包含url
-url_contains(url)
-
-url：期望的页面网址
-判断页面网址是否为url
-url_to_be(url)
-
-url：期望的页面网址
-判断页面网址不是url
-url_changes(url)
-
-url：期望的页面网址
-判断此定位的元素是否可见
-visibility_of_element_located(locator)
-
-locator：元素的定位信息
-判断此元素是否可见
-visibility_of(element)
-
-element：所获得的元素
-判断此定位的一组元素是否至少存在一个
-presence_of_all_elements_located(locator)
-
-locator：元素的定位信息
-判断此定位的一组元素至少有一个可见
-visibility_of_any_elements_located(locator)
-
-locator：元素的定位信息
-判断此定位的一组元素全部可见
-visibility_of_all_elements_located(locator)
-
-locator：元素的定位信息
-判断此定位中是否包含text_的内容
-text_to_be_present_in_element(locator, text_)
-
-locator：元素的定位信息
-text_：期望的文本信息
-判断此定位中的value属性中是否包含text_的内容
-text_to_be_present_in_element_value(locator, text_)
-
-locator：元素的定位信息
-text_：期望的文本信息
-判断定位的元素是否为frame，并直接切换到这个frame中
-frame_to_be_available_and_switch_to_it(locator)
-
-locator：元素的定位信息
-判断定位的元素是否不可见
-invisibility_of_element_located(locator)
-
-locator：元素的定位信息
-判断此元素是否不可见
-invisibility_of_element(element)
-
-element：所获得的元素
-判断所定位的元素是否可见且可点击
-element_to_be_clickable(locator)
-
-locator：元素的定位信息
-判断此元素是否不可用
-staleness_of(element)
-
-element：所获得的元素
-判断该元素是否被选中
-element_to_be_selected(element)
-
-element：所获得的元素
-判断定位的元素是否被选中
-element_located_to_be_selected(locator)
-
-locator：元素的定位信息
-判断该元素被选中状态是否和期望状态相同
-element_selection_state_to_be(element,Boolean)
-
-element：所获得的元素
-Boolean：期望的状态（True/False）
-判断定位的元素被选中状态是否和期望状态相同
-element_located_selection_state_to_be(locator,Boolean)
-
-locator：元素的定位信息
-Boolean：期望的状态（True/False）
-判断当前浏览器页签数量是否为num
-number_of_windows_to_be(num)
-
-num：期望的页签数量
-判断此handles页签不是唯一打开的页签
-new_window_is_opened(handles)
-
-handles：页签
-判断是否会出现alert窗口警报
-alert_is_present()</code></pre><p> 示例：</p>
-<pre><code> # WebDriverWait大部分方法返回类型为True\False
-assert_judge = WebDriverWait(driver, 15, 0.5).until_not(Expect.title_is(&quot;网易&quot;))
-print(&quot;返回类型 %s&quot; % assert_judge)
-
-# 判断失败后会报错
-assert_judge = WebDriverWait(driver, 5, 0.5).until(Expect.title_is(&quot;网易&quot;), &quot;错误信息：网页标题不是网易&quot;)</code></pre><ul>
-<li><p>截图</p>
-<pre><code>except : 
-    driver.get_screenshot_as_file(&quot;D:\\baidu_error.jpg&quot;) </code></pre></li>
-<li><p>基础api汇总</p>
-<pre><code>#导入selenium
-from selenium import webdriver
-#创建chrome驱动实例,打开浏览器
-driver=webdriver.Chrome()
-#浏览器最大化
-driver.maximize_window()
-#浏览器最小化
-driver.minimize_window()
-#获取浏览器当前窗口大小
-size=driver.get_window_size()
-#设置浏览器窗口大小
-driver.set_window_size(400,400)
-#打开指定网页
-driver.get(&quot;http://www.so.com&quot;)
-#获取当前页面的链接地址
-url=driver.current_url
-driver.get(&quot;http://baike.so.com&quot;)
-#后退
-driver.back()
-#前进
-driver.forward()
-#浏览器退出
-driver.close()
-driver.quit()
-#截图
-driver.get_screenshot_as_png()
-driver.get_screenshot_as_base64()
-driver.get_screenshot_as_file(&quot;filename&quot;)
-driver.save_screenshot(&quot;filename&quot;)
-#切换到当前被操作元素
-ele=driver.switch_to.active_element
-#切换alert、confirm、prompt框
-alert = driver.switch_to.alert
-#切换到默认页面
-driver.switch_to.default_content()
-#切换iframe
-driver.switch_to.frame(&apos;frame_name&apos;)
-driver.switch_to.frame(1)
-driver.switch_to.frame(driver.find_elements_by_tag_name(&quot;iframe&quot;)[0])
-driver.switch_to.parent_frame()
-#获取浏览器所有句柄
-handles=driver.window_handles
-#获取当前句柄
-current_handle=driver.current_window_handle
-driver.switch_to.window()
-#执行js脚本
-driver.execute_script(&apos;script&apos;)</code></pre></li>
-<li><p>什么是Page Object模型</p>
-<p>创建一个PO模型对应创建页面上一个应用，该页面上的操作和熟悉可以基于这个模型创建对应的页面模型，这样可以减少代码冗余，增强代码的可读性和可维护性。</p>
-</li>
-</ul>
-<h4 id="3-常见问题"><a href="#3-常见问题" class="headerlink" title="3. 常见问题"></a>3. 常见问题</h4><h6 id="3-1-定位元素时候报错or无法正确定位？"><a href="#3-1-定位元素时候报错or无法正确定位？" class="headerlink" title="3.1. 定位元素时候报错or无法正确定位？"></a>3.1. 定位元素时候报错or无法正确定位？</h6><p>解决：</p>
-<ul>
-<li><p>由于新页面没加载出来导致元素定位不到，可以加等待时间，推荐用try catch添加隐式等待。</p>
-</li>
-<li><p>查看元素外边是否被frame包围，若有则先切换到该frame下再定位元素</p>
-<h6 id="3-2-css定位class元素报错？"><a href="#3-2-css定位class元素报错？" class="headerlink" title="3.2. css定位class元素报错？"></a>3.2. css定位class元素报错？</h6><p>需要注意的是：如果 class属性值 里带空格，用.来代替空格(下例中第二个点)</p>
-<pre><code>driver.find_element_by_css_selector(&quot;.search-btn.tjclick&quot;).click()</code></pre><h6 id="3-3-element-click-intercepted-Element-…-is-not-clickable-at-point-453-328-Other-element-would-receive-the-click-……"><a href="#3-3-element-click-intercepted-Element-…-is-not-clickable-at-point-453-328-Other-element-would-receive-the-click-……" class="headerlink" title="3.3. element click intercepted: Element … is not clickable at point (453, 328). Other element would receive the click: ……"></a>3.3. element click intercepted: Element <span class="textC">…</span> is not clickable at point (453, 328). Other element would receive the click: ……</h6><p>意思是有其他的元素掩盖了需要点击的元素<br>解决：</p>
-<pre><code>element = driver.find_element_by_css(&apos;div[class*=&quot;loadingWhiteBox&quot;]&apos;)
-driver.execute_script(&quot;arguments[0].click();&quot;, element)
-
-element = driver.find_element_by_css(&apos;div[class*=&quot;loadingWhiteBox&quot;]&apos;)
-webdriver.ActionChains(driver).move_to_element(element ).click(element ).perform()</code></pre></li>
-</ul>
-<p>原文链接：<a href="https://blog.csdn.net/WanYu_Lss/article/details/84137519" target="_blank" rel="noopener">https://blog.csdn.net/WanYu_Lss/article/details/84137519</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Vim命令及常见问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/16/Vim命令及常见问题/" itemprop="url">Vim命令及常见问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-16T20:55:46+08:00">
-                2018-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>以:和/开头的命令都有历史纪录，可以首先键入:或/然后按上下箭头来选择某个历史命令。</p>
-<h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><ol>
-<li><p>光标定位移动</p>
-<pre><code>hjkl 上下左右移动
-0$  行首尾
-gg G   文首尾
-3G 进入第三行
-/string (n N 可以循环的) 快速定位到某一行 /^d   按照行搜索（注意）
-/txt$
-n&lt;space&gt;  :按下数字后再按空格键，光标会向右移动这一行的 n 个字符</code></pre></li>
-<li><p>文本编辑(少量)</p>
-<pre><code>复制 yy 3yy ygg(复制到行首) yG(复制到行尾) 
-删除 dd 3dd dgg(删除到行首) dG(删除到行尾) 
-粘贴 删除光标所在的字符
-x 删除光标后的字符
-D 删除这行光标后的所有字符
-r 可以用来修改一个字符
-u 撤销
-CTRL+r 反撤销</code></pre></li>
-<li><p>进入其它模式   </p>
-<pre><code>i 进入插入模式  当前字符前
-o 进入插入模式  另起一行
-A 进入插入模式  本行最后面</code></pre></li>
-</ol>
-<ul>
-<li><p>可视化模式</p>
-<pre><code>V   进可视块模式
-ctrl+v  进可视行模式
-R进替换模式
-
-块插入（在指定快前加入字符） 选择快，I 在块前插入字符，按esc一会就实现
-块替换：选择快，r输入替换的字符
-块删除：选择块，d|x
-块赋值，选择块，y</code></pre><p>   例子：多行剪切和粘贴</p>
-<pre><code>定位鼠标到剪切的开始位置
-输入v键开始选择剪切的字符，或者V键是为了选择 整行
-移动方向键到结束的地方
-d键是剪切，y键是复制  x是删除
-移动鼠标到粘贴的位置
-输入P是在鼠标位置前粘贴，输入p键是在鼠标的位置后粘贴</code></pre></li>
-<li><p>扩展命令模式</p>
-<ul>
-<li><p>保存退出</p>
-<pre><code>:10 进入第10行
-:w 保存
-:q 退出
-:wq 保存并退出 :w! 强制保存
-:q! 不保存并退出 :wq! 强制保存退出
-选择块，r 输入替换的字符 选择块，d | x
-选择块，y
-:x
-保存并退出 ZZ</code></pre></li>
-<li><p>查找替换</p>
-<pre><code>:范围 s/old/new/选项
-:1,5 s/root/yang/
-:5,$ s/root/yang/ :1,$ s/root/yang/g
-:% s#/dev/sda#/var/ccc#g :,8 s/root/yang/
-:4,9 s/^#// :5,10 s/.*/#&amp;/
-=
-
-从1-5行的root 替换为yang
-$表示最后一行
-:% s/root/yang/g %表示全文 g表示全局
-从当前行到第8行 4-9行的开头#替换为空</code></pre></li>
-<li><p>读入文件/写文件(另存为) :w</p>
-<pre><code>:w /tmp/aaa.txt 另存为
-:1,3 w /tmp/2.txt 
-:r /etc/hosts
-:5 r /etc/hosts</code></pre></li>
-<li><p>设置环境 临时设置:</p>
-<pre><code>:set nu    设置行号
-:set ic   ignore case不区分大小写
-:set ai    auto indent 自动缩进
-:set list   显示控制字符 
-:set nonu   取消操作
-:set noic   取消操作</code></pre></li>
-<li><p>永久的环境:</p>
-<pre><code>/etc/vimrc ~/.vimrc 修改vim环境配置文件 影响所有系统用户
-# vim ~/.vimrc 影响某一个用户</code></pre></li>
-<li><p>其他</p>
-<pre><code>  # vim -O /etc/hosts /etc/hostname ^ww切换   :qall退出
-# cp /etc/hosts hosts1
-# vimdiff /etc/hosts hosts1</code></pre></li>
-</ul>
-</li>
-</ul>
-<h5 id="详细命令"><a href="#详细命令" class="headerlink" title="详细命令"></a>详细命令</h5><p>一、光标控制命令</p>
-<pre><code>命令                   移动
- k                   向上移一行
- j                   向下移一行
- h                   向左移一个字符
- l                   向右移一个字符
- gg                  移到文件的首行
- G                   移到文件的末行    
- H                   移到屏幕的第一行
- w                   移到下一个字的开头
- W                   移到下一个字的开头，忽略标点符号
- e                   移到下一个字的结尾
- E                   移到下一个字的结尾，忽略标点符号
- ^                   移到当前行首
- $                   移到当前行尾
- {                   移到上一段开头
- }                   移到上一段结尾
- Enter               移到下一行行首</code></pre><p>二、在 vim 中添加文本</p>
-<pre><code>命令                   插入
- i                   在光标前插入文本
- I                   在当前行首插入文本
- a                   在光标后插入文本
- A                   在当前行末插入文本
- o                   在当前行的下边插入新行
- O                   在当前行的上边插入新行
- s                   删除光标所在处字符，并进入插入模式
- S                   删除光标所在的行，并进入插入模式
- :r filename         读入指定文件内容，并插在当前行后
- :nr file            读入文件 file 内容，并插在第 n 行后
- Esc                 回到命令模式</code></pre><p>三、在 vim 中删除文本</p>
-<pre><code>命令                   删除
- x                   删除光标处的字符
- db                  删除光标前面的字
- dw                  删至下一个字的开头
- dd                  删除整行
- :n,md               从第 m 行开始往前删除 n 行
- d$                  从光标处删除到行尾
- d^                  从光标处删除到行首</code></pre><p>四、在 vim 中查找与替换</p>
-<pre><code>  命令                  查找与替换
- /target               在文件中向前查找 target
- ?target               在文件中向后查找 target
-   n                    查找下一个
-   N                    查找上一个
-:set ic                查找时忽略大小写
-:set noic              查找时对大小写敏感
-  %s/text1/text2/g         在整个文件中查找text1并且替换为text2</code></pre><p>【注】其中s是查找search的意思，%是全文所有行，g全局即所有列</p>
-<p>五、在 vim 中复制文本</p>
-<pre><code>命令                      复制
- yy                   复制当前行
- nyy                  从当前开始复制n行
-  p                   粘贴至光标前
-  P                   粘贴至光标后
-  u                   撤消上一次修改
-  U                   撤消所有修改</code></pre><p>六、保存与退出vim</p>
-<pre><code>命令                      保存或退出
- :w                   保存文件但不退出
- :w file              将修改保存在 file 中但不退出
-:wq 或 ZZ 或 :x         保存文件并退出
-   :q!                  不保存文件,强制退出
-   :e!                   放弃所有修改，从上次保存文件开始再编辑</code></pre><p>七、其他选项</p>
-<pre><code> 选项                      作用
- :set all             查看所有选项
- :set nu              设置行号
- :set showmode        显示是输入模式还是替换模式
- :set ts=4            为文本输入设置 tab stops
- :set nonumber        取消显示行数
-：set number  显示行数
- :.=                  查看当前行的行号
- :=                   查看总行数
- ctrl+g             显示文件名、当前的行号、文件的总行数和文件位置的百分比</code></pre><p>这篇文章主要介绍了linux中快速清空文件内容的几种方法,需要的朋友可以参考下</p>
-<pre><code>$ : &gt; filename 
-$ &gt; filename 
-$ echo &quot;&quot; &gt; filename 
-$ echo &gt; filename 
-$ cat /dev/null &gt; filename</code></pre><hr>
-<p>【多行注释】</p>
-<ol>
-<li><p>进入命令行模式，按ctrl + v进入 visual block模式，然后按j, 或者k选中多行，把需要注释的行标记起来</p>
-</li>
-<li><p>按大写字母I，再插入注释符，例如//</p>
-</li>
-<li><p>按esc键就会全部注释了</p>
-</li>
-</ol>
-<p>【取消多行注释】</p>
-<ol>
-<li><p>进入命令行模式，按ctrl + v（一定加ctrl）进入 visual block模式</p>
-</li>
-<li><p>选中所有列的第一列即注释符号</p>
-</li>
-<li><p>按d键就可全部取消注释</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/16/Linux命令篇/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/16/Linux命令篇/" itemprop="url">Android命令篇</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-16T17:30:00+08:00">
-                2018-09-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li>adb shell pm   <a href="https://www.cnblogs.com/FlyToDream/p/10419755.html" target="_blank" rel="noopener">https://www.cnblogs.com/FlyToDream/p/10419755.html</a><br>adb pm  enable com.android.systemui</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2234,7 +1724,7 @@ $ cat /dev/null &gt; filename</code></pre><hr>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">116</span>
+                  <span class="site-state-item-count">119</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -261,6 +261,533 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/elementui使用小记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/24/elementui使用小记/" itemprop="url">elementui使用小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-24T11:26:36+08:00">
+                2020-06-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>需求：表格上拉加载刷新</p>
+<p>尝试单独使用InfiniteScroll 无限滚动 解决，但是一直存在两个问题</p>
+<ol>
+<li>每次重复执行3次</li>
+<li>第二次上拉时不加载</li>
+</ol>
+<p>猜测由于表格特定格式单纯使用InfiniteScroll 受限</p>
+<p>【解决】使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   参考：https://zhuanlan.zhihu.com/p/114965548</span><br><span class="line">2. 在加载树形数据懒加载的时候报错 ```if there&apos;s nested data,rowKey is required</span><br></pre></td></tr></table></figure></p>
+<p> 原因：原来使用懒加载，table数据中没有children字段，但是现在新增了这个字段。</p>
+<p>因此满足了懒加载的第一种策略：即使我根本没有设置第一项(第一项指的是子元素字段，第二项懒加载的时候使用字段)<br><code>:tree-props=&quot;{children: &#39;children&#39;, hasChildren: &#39;hasChildren&#39;}&quot;&gt;</code></p>
+<p>这样直接加载子项目的时候，发现我子项目里缺少id,因此报如上错</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/echarts使用小记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/22/echarts使用小记/" itemprop="url">echarts使用小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-22T14:12:45+08:00">
+                2020-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>echarts及option配置应用</p>
+<pre><code>import echarts from &apos;echarts&apos;;
+Vue.prototype.$echarts = echarts;
+
+import { bar_option, pie_option, line_bugrate_option } from &apos;@/components/chart_options/echart_options.js&apos;;
+Vue.prototype.$echartoptions = { bar_option, line_bugrate_option, pie_option };
+使用
+myChart.setOption(this.$echartoptions.line_bugrate_option);</code></pre></li>
+<li><p>echarts的option内赋值，紧接着在外面值就为空了？</p>
+<p> this和that的问题，option内的this指的是option本身，非本组件</p>
+</li>
+<li><p>如何限制柱形图的条状宽度(竖着)？</p>
+<p>barMaxWidth barMinWidth</p>
+</li>
+<li><p>echarts饼图提示线长度设置</p>
+<pre><code>labelLine:{
+normal:{
+    length:1,//第一段，紧跟饼图
+    length2:6//第二段，距离最远
+}</code></pre><p>   },<br>echarts icon图标格式只支持两种，dataURI和path://</p>
+<p>对于多个path构成的矢量图，可采用dataURL方式，在线很方便转换。</p>
+</li>
+<li><p>Echarts图表重复问题</p>
+<p> 除了数据源需要重置外，echarts需要重置myChart.clear();</p>
+</li>
+<li><p>区分横轴不同文案展示，在xAxis下设置axisLabel：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">axisLabel= &#123;</span><br><span class="line">         formatter: function(value, index) &#123;</span><br><span class="line">           if (value.search(&quot;QA&quot;) != -1) return &quot;&#123;a|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           else if (value.search(&quot;BE&quot;) != -1) &#123;</span><br><span class="line">             return &quot;&#123;b|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           &#125; else &#123;</span><br><span class="line">             return &quot;&#123;c|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;,</span><br><span class="line">         rich: &#123;</span><br><span class="line">           a: &#123;</span><br><span class="line">             color: &quot;red&quot;,</span><br><span class="line">             height: 40,</span><br><span class="line">             fontWeight: &quot;bold&quot;,</span><br><span class="line">           &#125;,</span><br><span class="line">           b: &#123;</span><br><span class="line">             color: &quot;blue&quot;,</span><br><span class="line">             height: 40,</span><br><span class="line">             fontWeight: &quot;bold&quot;,</span><br><span class="line"></span><br><span class="line">           &#125;,</span><br><span class="line">           c: &#123;</span><br><span class="line">             color: &quot;green&quot;,</span><br><span class="line">              height: 40,</span><br><span class="line"></span><br><span class="line">             fontWeight: &quot;bold&quot;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;</span><br><span class="line">       </span><br><span class="line">     &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义提示窗口</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">toolbox: &#123;</span><br><span class="line">      feature: &#123;</span><br><span class="line">        myTool2: &#123;</span><br><span class="line">          show: true, //是否显示</span><br><span class="line">          title: &quot;近半年趋势分析&quot;, //鼠标移动上去显示的文字     &quot;image://data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAFHklEQVRoQ+1Ze0xbVRj/fS2&quot;,</span><br><span class="line">          onclick: function() &#123;</span><br><span class="line">            that.piechartname = chartname;</span><br><span class="line">            that.titlename = &quot;近6个月&quot; + title + &quot;趋势图&quot;;</span><br><span class="line">            that.dialogVisible = true;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>为图标添加自定义图标，点击后弹出说明文案，且可换行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">myTool1: &#123;</span><br><span class="line">      show: showmytools1, //是否显示</span><br><span class="line">      title: &quot;信息说明&quot;, //鼠标移动上去显示的文字</span><br><span class="line">      ...</span><br><span class="line">      onclick: function() &#123;</span><br><span class="line">        that.$confirm(h(&quot;div&quot;, null, msgli), headtitle, &#123;</span><br><span class="line">          showConfirmButton: false,</span><br><span class="line">          showCancelButton: false,</span><br><span class="line">          type: &quot;info&quot;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中文案的处理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">let msgli = [];//最终的显示文本</span><br><span class="line">let h = this.$createElement;</span><br><span class="line">let causeText = [];</span><br><span class="line">let headtitle = title + &quot;说明&quot;;</span><br><span class="line">switch (chartname) &#123;</span><br><span class="line">  case &quot;bug_role&quot;:</span><br><span class="line">    causeText = [</span><br><span class="line">      &quot;根据角色分析Bug分布情况，主要包括QA、FE、BE、PM&quot;,</span><br><span class="line">      &quot;QA: 取QA字段&quot;</span><br><span class="line">    ];</span><br><span class="line">    for (const i in causeText) &#123;</span><br><span class="line">      msgli.push(h(&quot;p&quot;, null, causeText[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    showmytools1 = true;//控制是否展示</span><br><span class="line">    break;</span><br></pre></td></tr></table></figure>
+
+<p>另外一种方式:使用el-dialog</p>
+<p>先定义一个el-dialog</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    &lt;el-dialog :title=&quot;direction_title&quot; :visible.sync=&quot;noteVisible&quot; width=&quot;25%&quot; </span><br><span class="line">top=&quot;15%&quot;  :show-close=&quot;false&quot;&gt;</span><br><span class="line">  &lt;div v-html=&quot;direction_content&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/el-dialog&gt;</span><br></pre></td></tr></table></figure>
+
+<p>在onclick自定义事件中:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">that.direction_title = title + &quot;说明&quot;;//在option中使用that</span><br><span class="line">switch (chartname) &#123;</span><br><span class="line">	case &quot;bug_role&quot;:</span><br><span class="line">        that.direction_content =&quot;&lt;span&gt;说明文字1&lt;/span&gt;&quot; //需要在click事件中赋值，否则出错</span><br><span class="line">        ....</span><br><span class="line">     &#125;</span><br><span class="line">that.noteVisible = true;//控制显示el-dialog</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>自定义的说明图标点击后文字this.direction_content展示的是最后一个饼图的数据？</p>
+<p> 【解决】</p>
+<ul>
+<li>在Onlick的时候再赋值 (尤其针对这种全局共享的语法糖)    </li>
+<li>在内部引用，使用that定义</li>
+</ul>
+</li>
+<li><p>常用功能</p>
+<p> minInterval: 1//在横轴和纵轴添加可限制刻度最小间隔，避免出现小数<br> selector:legend中设置选中规则<br> barMaxWidth: ‘50’,  //现在柱子宽度，避免在极限的时候展示粗细情况</p>
+</li>
+<li><p>纵轴标记线–markline 标记点–markpoint</p>
+</li>
+<li><p>图像链接跳转重复打开多个浏览器tab</p>
+<p>1 使用windows.open 容易出现重复打开窗口的情况；若确保每次都为其提供相同的窗口名称可解决，由于项目中窗口名称不太好取，就采用了下面的方式</p>
+<pre><code>export function openNewurl(url) {
+  var newA = document.createElement(&quot;a&quot;);
+  newA.id = &apos;gg&apos;
+  newA.target = &apos;_blank&apos;;
+  newA.href = url;
+  document.body.appendChild(newA);
+  newA.click();
+  document.body.removeChild(newA);
+}</code></pre><p>2 但是还有重复的情况，排查知进行了多次click事件，原因是进行了重复绑定，需要进行解绑，进行off</p>
+  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chart.off(&apos;click&apos;);</span><br><span class="line">chart.on(&apos;click&apos;, doSomething);</span><br></pre></td></tr></table></figure>
+
+<p>   参考：<a href="https://github.com/apache/incubator-echarts/issues/6089" target="_blank" rel="noopener">https://github.com/apache/incubator-echarts/issues/6089</a></p>
+</li>
+</ol>
+<ul>
+<li><p>横轴坐标重复</p>
+<p>axiosLable中的interval设置为0</p>
+<p><img src="/images/pasted-151.png" alt="upload successful"></p>
+</li>
+<li><p>底部区域展示不全</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grid: &#123;</span><br><span class="line">           bottom: &quot;30%&quot;</span><br><span class="line">         &#125;,</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/CSS使用小记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/22/CSS使用小记/" itemprop="url">CSS使用小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-22T11:25:20+08:00">
+                2020-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>box-shadow 参数(除了color其他单位都是px)</p>
+<pre><code>h-shadow    必需的。水平阴影的位置。允许负值
+v-shadow    必需的。垂直阴影的位置。允许负值
+blur    可选。模糊距离
+spread    可选。阴影的大小
+color    可选。阴影的颜色
+inset</code></pre><p>前两项横竖方向决定了投影方向</p>
+<p>blur 值越大阴影越模糊</p>
+<p>spread值越大范围越大</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow:10px 10px 5px 20px #ee4d2d</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-116.png" alt="upload successful">  </p>
+<p>加inset效果：</p>
+<p><img src="/images/pasted-117.png" alt="upload successful"></p>
+</li>
+<li><p>padding 设置方向，逆时针（即上 右 下 左）</p>
+<p><img src="/images/pasted-115.png" alt="upload successful"></p>
+<p>若有三项，则上，左右，下；若只有两项，则是上下、左右；一项是所有</p>
+<p>margin同理</p>
+</li>
+<li><p>align和text-align的区别<br>align直接写在是div的属性 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div align=&quot;center&quot;&gt; </span><br><span class="line">This is some text! </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>text-align则是Css的属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;text-align:center&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="4">
+<li><p>布局<br>footer如何保持始终在最底部？<a href="https://blog.csdn.net/m0_38099607/article/details/71598423" target="_blank" rel="noopener">https://blog.csdn.net/m0_38099607/article/details/71598423</a></p>
+<p> 父级：</p>
+<pre><code>#container{
+/*保证footer是相对于container位置绝对定位*/
+position:relative;  
+width:100%;
+min-height:100%; 
+/*设置padding-bottom值大于等于footer的height值，以保证main的内容能够全部显示出来而不被footer遮盖；*/  
+padding-bottom: 100px;  
+box-sizing: border-box;</code></pre><p> }</p>
+<p> footer要绝对位置        </p>
+<pre><code>footer{
+width: 100%;
+height:100px;   /* footer的高度一定要是固定值*/ 
+position:absolute;
+bottom:0px;
+left:0px;
+background: #333;</code></pre><p> }</p>
+<p>使得全局撑足屏幕？</p>
+<p>html文件中添加，使用的container100%才生效</p>
+<pre><code>&lt;style type=&quot;text/css&quot;&gt;
+   html,
+   body {
+       height: 100%;
+   }
+
+   body {
+       margin: 0;
+   }</code></pre><p>   </p>
+</li>
+<li><p>div居中</p>
+<p>内部div需要添加</p>
+<pre><code>margin:0 auto</code></pre></li>
+</ol>
+<p>6.display:inline是什么意思?</p>
+<p>  <a href="https://zhidao.baidu.com/question/406681161.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/406681161.html</a></p>
+<p>  css的一个样式:</p>
+<pre><code>inline表示按照内联模式显示，它会和周围的元素在一行。
+
+如果是display:block，它会和周围的元素不在一行，自己单独一行。</code></pre><p>  什么是内联元素？</p>
+<pre><code>内联元素与其他元素会在一行，不会导致换行</code></pre><p> display属性值:</p>
+<pre><code>none 此元素不会被显示。
+block 此元素将显示为块级元素，此元素前后会带有换行符。
+inline 默认。此元素会被显示为内联元素，元素前后没有换行符。
+inline-block 行内块元素。（CSS2.1 新增的值）</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/19/nginx知识小记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -332,8 +859,23 @@
       
         
           
-            <ol>
-<li><p>常用命令：</p>
+            <p>知识网结构图<br><img src="/images/pasted-197.png" alt="upload successful"></p>
+<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p><strong>正向代理</strong>：局域网中的电脑用户想要直接访问网络是不可行的，只能通过代理服务器来访问，这种代理服务就被称为正向代理。</p>
+<p>正向代理类似一个跳板机，代理访问外部资源</p>
+<p>比如我们国内访问谷歌，直接访问访问不到，我们可以通过一个正向代理服务器，请求发到代理服，代理服务器能够访问谷歌，这样由代理去谷歌取到返回数据，再返回给我们，这样我们就能访问谷歌了<br><img src="/images/pasted-198.png" alt="upload successful"></p>
+<p>正向代理的用途：</p>
+<pre><code>（1）访问原来无法访问的资源，如google
+（2）可以做缓存，加速访问资源
+（3）对客户端访问授权，上网进行认证
+（4）代理可以记录用户访问记录（上网行为管理），对外隐藏用户信息</code></pre><p><strong>反向代理</strong>：
+以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器</p>
+<p><img src="/images/pasted-199.png" alt="upload successful"><br>反向代理作用</p>
+<pre><code>(1)保证内网的安全，组织web攻击，大型网站通常将反向代理作为公网访问地址，web服务器是内网
+(2)负载均衡，通过反向代理服务器来优化网站的负载</code></pre><p><strong>总结</strong></p>
+<p>正向代理：客服端和代理对服务端透明；(proxy和客户端合伙)<br>反向代理：代理和服务端对客户端透明；(proxy和服务端合伙)<br><img src="/images/pasted-200.png" alt="upload successful"></p>
+<p><img src="/images/pasted-201.png" alt="upload successful"></p>
+<h4 id="命令和安装："><a href="#命令和安装：" class="headerlink" title="命令和安装："></a>命令和安装：</h4><ol>
+<li><p>常用命令</p>
 <pre><code>nginx -s stop   直接干掉服务
 start nginx     启动服务
 nginx -s quit         优雅停止nginx，有连接时会等连接请求完成再杀死worker进程  
@@ -367,24 +909,20 @@ find / -name nginx.conf   2&gt;/dev/null</code></pre></li>
 <p>默认端口占用8080</p>
 </li>
 </ol>
-<h5 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h5><p>参考：<a href="https://www.cnblogs.com/muhy/p/10528449.html" target="_blank" rel="noopener">https://www.cnblogs.com/muhy/p/10528449.html</a></p>
-<pre><code>1. 在http节点下，添加upstream节点。
-
-upstream linuxidc { 
+<h5 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h5><p> <img src="/images/pasted-202.png" alt="upload successful"></p>
+<p>参考：<a href="https://www.cnblogs.com/muhy/p/10528449.html" target="_blank" rel="noopener">https://www.cnblogs.com/muhy/p/10528449.html</a></p>
+<pre><code>在http节点下，添加upstream节点。
+upstream linuxidc { //负载均衡
       server 10.0.6.108:7080; 
       server 10.0.0.85:8980; 
 }
-
-  2.  将server节点下的location节点中的proxy_pass配置为：http:// + upstream名称，即“
-http://linuxidc”.
-
+将server节点下的location节点中的proxy_pass配置为：http:// + upstream名称，即“http://linuxidc”.
 location / { 
             root  html; 
             index  index.html index.htm; 
             proxy_pass http://linuxidc; 
-}
-
-    3.  现在负载均衡初步完成了。upstream默认按照轮询方式进行负载；但是还有其他的策略，包括权重、hash、第三方等方式具体见如上链接</code></pre><h5 id="反向代理之-proxy-pass"><a href="#反向代理之-proxy-pass" class="headerlink" title="反向代理之 proxy_pass"></a>反向代理之 proxy_pass</h5><pre><code>参考：https://www.cnblogs.com/yyxianren/p/10831511.html
+} </code></pre><p>   现在负载均衡初步完成了。upstream默认按照轮询方式进行负载；但是还有其他的策略，包括权重、hash、第三方等方式具体见如上链接</p>
+<h5 id="反向代理之-proxy-pass"><a href="#反向代理之-proxy-pass" class="headerlink" title="反向代理之 proxy_pass"></a>反向代理之 proxy_pass</h5><pre><code>参考：https://www.cnblogs.com/yyxianren/p/10831511.html
 
 格式很简单： proxy_pass URL;
 其中URL包含：传输协议（http://, https://等）、主机名（域名或者IP:PORT）、uri。</code></pre><p>  示例如下：</p>
@@ -396,7 +934,15 @@ proxy_pass unix:/tmp/www.sock;</code></pre><p> 配置示例：</p>
     proxy_pass http://192.168.1.10/linux/;
     ...
 }   </code></pre><p>   【总结】为了方便记忆和规范配置，建议所有的 proxy_pass 后的url都以“/”结尾。<br>proxy_pass <a href="http://192.168.1.10/linux/" target="_blank" rel="noopener">http://192.168.1.10/linux/</a>;</p>
-
+<h4 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h4><p> <img src="/images/pasted-203.png" alt="upload successful"></p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>1）全局块</p>
+<pre><code>worker_processes  1;</code></pre><p>2）events块</p>
+<pre><code>events {
+     worker_connections  1024;
+}</code></pre><p>3）HTTP块</p>
+<p>  具体配置和优先级见《nginx location匹配优先级》</p>
+<pre><code>location[ = | ~ | ~* | ^~] url{
+}</code></pre>
           
         
       
@@ -1465,431 +2011,6 @@ report,html：为测试报告，整理性的展示测试用例的运行情况</c
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/cmd批处理命令/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/12/cmd批处理命令/" itemprop="url">cmd批处理命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-12T21:44:20+08:00">
-                2020-04-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.cnblogs.com/xpwi/p/9626959.html" target="_blank" rel="noopener">https://www.cnblogs.com/xpwi/p/9626959.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/tesseract训练字库/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/12/tesseract训练字库/" itemprop="url">tesseract训练字库</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-12T13:50:29+08:00">
-                2020-04-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="准备条件："><a href="#准备条件：" class="headerlink" title="准备条件："></a>准备条件：</h4><ol>
-<li>tesseract-OCR   exe  我使用的是c5.0</li>
-<li>jdk</li>
-<li>jTessBoxEditor </li>
-</ol>
-<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ol>
-<li><p>单张图片可直接使用如下命令生成box文件：<br>tesseract myfontlab.normal.exp01.png myfontlab.normal.exp01 -l eng+chi_sim  batch.nochop makebox</p>
-<p>【语法】：tesseract [lang].[fontname].exp[num].tif [lang].[fontname].exp[num] batch.nochop makebox<br>【语法】：<br>lang为语言名称，为了不影响本有的语言eng，chi_sim等等，取成别的,比如数字可以是num,中文myfontlab myeng等<br>fontname为你对这门语言某一字体，你可以填任何你记得住的比如 trumpsb，normal;<br>num为序号；<br>在tesseract中，一定要注意格式</p>
-<p>多张图片，需先使用jTessBoxEditor 的train.bat 合并所有图片为一个tif文件然后使用命令生成box文件</p>
-<p>tesseract myfontlab.normal.exp01.tif myfontlab.normal.exp01 -l eng+chi_sim  batch.nochop makebox</p>
-</li>
-<li><p>用jTessBoxEditor 的train.bat打开tif文件，然后根据实际情况修改box文件，去除多余空格，修改识别文字。</p>
-</li>
-<li><p>产生字符特征文件，生成.tr文件。命令<br>单张推荐：<br>tesseract  myfontlab.normal.exp01.png  myfontlab.normal.exp01  nobatch box.train<br>多张推荐：<br>tesseract myfontlab.normal.exp01.tif myfontlab.normal.exp0 nobatch box.train  </p>
-</li>
-<li><p>生成字符集文件，生产unicharset文件。命令<br>unicharset_extractor myfontlab.normal.exp01.box</p>
-</li>
-<li><p>新建一个font_properties文件。注意，文件的名字就是font_properties，它没有.txt后缀。<br>里面内容写入 normal 0 0 0 0 0 表示默认普通字体</p>
-</li>
-<li><p>生成shape文件，生成五个文件</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shapeclustering -F font_properties -U unicharset myfontlab.normal.exp01.tr</span><br><span class="line"></span><br><span class="line">mftraining -F font_properties -U unicharset -O unicharset myfontlab.normal.exp01.tr</span><br><span class="line">cntraining myfontlab.normal.exp01.tr</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在这五个文件前加上normal.</p>
-</li>
-<li><p>合并五个文件，执行如下命令，会生成目标文件normal.traineddata，<br>combine_tessdata normal.</p>
-</li>
-<li><p>该文件就是训练好的字库。将它复制到你安装的Tesseract程序目录下的“tessdata”目录下即可。</p>
-</li>
-<li><p>验证：tesseract myfontlab.normal.exp01.png out –l normal  查看生成的out.txt文件</p>
-</li>
-</ol>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
-<li>中英文一块识别率很低？使用+连接<br>如： tesseract 05.png 05 -l chi_sim+eng<br>eng+chi_sim效果更好？试了一个案例验证没区别，不知道大数据是不是真的。</li>
-<li>最后有一个识别失败的案例，比如A竟然没有识别出来(box调试的时候已经识别出来了)<br>原因是Box里面A的范围不准确，有两个框，把最外面的删掉，剩余最内部分框框就好了。</li>
-<li>Other case a of A is not in unicharset<br>事实证明这个报错对识别结果未有影响</li>
-<li>语法说明：</li>
-</ol>
-<p>tesseract imagename outputbase [-l lang] [-psm pagesegmode] [configfile…]</p>
-<p>tesseract 图片名 输出文件名 -l 字库文件 -psm pagesegmode 配置文件<br>例如：<br>tesseract test.jpg result -l eng -psm 7 nobatch</p>
-<p>-l eng 表示用英文文字库（默认使用英文。如需要下载中文字库文件，解压后，存放到tessdata目录下去,字库文件扩展名为 .raineddata 简体中文字库文件名为: chi_sim.traineddata，命令为：chi_sim）</p>
-<p>-psm 7 表示告诉tesseract test.jpg图片是一行文本 这个参数可以减少识别错误率. 默认为 3</p>
-<p>configfile 参数值为tessdata\configs 和 tessdata\tessconfigs 目录下的文件名.</p>
-<p>————————————————<br>版权声明：本文为CSDN博主「_Cassie」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/wangyongxia921/article/details/52809079" target="_blank" rel="noopener">https://blog.csdn.net/wangyongxia921/article/details/52809079</a></p>
-<p>参考</p>
-<p><a href="https://blog.csdn.net/qq_31112205/article/details/100159963" target="_blank" rel="noopener">https://blog.csdn.net/qq_31112205/article/details/100159963</a></p>
-<p><a href="https://www.cnblogs.com/wj-1314/p/9454656.html" target="_blank" rel="noopener">https://www.cnblogs.com/wj-1314/p/9454656.html</a></p>
-<p><a href="https://www.cnblogs.com/pyweb/p/11457519.html" target="_blank" rel="noopener">https://www.cnblogs.com/pyweb/p/11457519.html</a>  多样本</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/labelme安装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/29/labelme安装/" itemprop="url">labelme安装和使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-29T21:40:51+08:00">
-                2020-03-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>windows下安装和使用labelme </p>
-<p> 参考：<a href="https://www.jb51.net/article/166528.htm" target="_blank" rel="noopener">https://www.jb51.net/article/166528.htm</a></p>
-<p>  其中anaconda下载使用这个网址，(在官网下载快完成的时候停止了浪费了大把时间…)</p>
-<p><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
-<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>1、管理员身份打开 anaconda prompt</p>
-<p>2、输入命令：conda create –name=labelme python=3.6</p>
-<p>3、输入命令：activate labelme</p>
-<p>(若环境未成功激活，则改用本地cmd)</p>
-<p>4、输入命令：pip install pyqt5，pip install pyside2(自己刚开始没有安装pyside2,运行 \anaconda安装目录\envs\labelme\Scripts\label_json_to_dataset.exe 会出现module “pyside”缺失错误)</p>
-<p>5、输入命令：pip install labelme（由于网络原因或者库的地址，经常运行一半出现错误，不要气馁，多执行几次）</p>
-<p>6、输入命令：labelme 即可打开labelme。如下：</p>
-<p>7、如果将单个json文件生成数据集，运行命令：</p>
-<p>\anaconda安装目录\envs\labelme\Scripts\label_json_to_dataset.exe    \保存xx.json文件地址</p>
-<p>xx.json 会成生成五个文件 img.png，info.yaml，label.png，label_names，label_viz.png。其中label.png即是我们要的label_data了。</p>
-<p>8、批量将json文件生成数据集。编写脚本如下：               </p>
-<pre><code>import os
-path = &apos;D:\\paper\\data\\&apos;  # path是你存放json的路径
-json_file = os.listdir(path)
-for file in json_file:
-    os.system(&quot;python C:\\Users\\Monica\\.conda\\envs\\labelme\\Scripts\\labelme_json_to_dataset.exe %s&quot;%(path + file))</code></pre><p><img src="%5Cimages%5Cpasted-102.png" alt="upload successful"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1940,7 +2061,7 @@ for file in json_file:
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">116</span>
+                  <span class="site-state-item-count">119</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -261,6 +261,408 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/14/分享/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/10/14/分享/" itemprop="url">分享总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-14T15:12:00+08:00">
+                2020-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>Cpython 解释器</p>
+</li>
+<li><p>python 运行原理</p>
+<p>解释成字节码</p>
+<p><img src="/images/pasted-153.png" alt="upload successful"></p>
+<p>字节码插庄<br>栈  堆</p>
+</li>
+<li><p>python 垃圾回收机制是什么</p>
+<p>引用计数</p>
+</li>
+<li><p>如果b=a的话，为什么会有安全问题？</p>
+<p>  因为多个同时进行，引用计数可能会减少</p>
+<p>  如a本身计数是1</p>
+<pre><code>  b=a   //计数是2
+b=a   //本来应该是3，但是同时进行也成了2</code></pre><p> 导致引用计数错误，删除2个后，本来需要存在的却被回收了。      </p>
+</li>
+<li><p>GIL锁</p>
+<p>在IO/100字节码/5ms的时候释放锁，供其他线程调用。</p>
+</li>
+<li><p>实例显示python多线程只占用一个CPU，而java多线程n个线程占用n个cpu.</p>
+</li>
+<li><p>celert默认多进程使用，跟自己写多进程一样。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/14/element-导航高亮问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/10/14/element-导航高亮问题/" itemprop="url">element 导航高亮问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-14T11:46:29+08:00">
+                2020-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h6 id="问题1：刷新页面的时候高亮不见"><a href="#问题1：刷新页面的时候高亮不见" class="headerlink" title="问题1：刷新页面的时候高亮不见"></a>问题1：刷新页面的时候高亮不见</h6><p>设置router模式（启用该模式会在激活导航时以 index 作为 path 进行路由跳转），即Index和path可以一致的，通过获取当前路由的path来定义当前active Index</p>
+<pre><code>this.activeIndex=this.$route.path;//path</code></pre><h6 id="问题2：切换导航条，上一个高亮依旧存在"><a href="#问题2：切换导航条，上一个高亮依旧存在" class="headerlink" title="问题2：切换导航条，上一个高亮依旧存在"></a>问题2：切换导航条，上一个高亮依旧存在</h6><p>解决：</p>
+<p> 通过条用select事件来重新定义activeindex的值</p>
+<pre><code>@select=&quot;handleSelect&quot;</code></pre><p>处理：</p>
+<pre><code> handleSelect(index, index_path) {
+  this.activeIndex=index;
+}</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/11/vuex/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/10/11/vuex/" itemprop="url">vuex</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-11T08:36:47+08:00">
+                2020-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>五大将</p>
+</li>
+<li><p>state 定义变量</p>
+<p>  mapstate:为了减少重复变量的定义,列表或对象声明调用</p>
+</li>
+<li><p>gettters:定义list等方法</p>
+</li>
+<li><p>mutation：修改状态值（注意不可以直接修改）需要定义mutation，在这里不要操作异步数据。<br>  在app.vue中提交</p>
+</li>
+<li><p>actions：类似mutation,但不是直接修改状态，提交mutation.</p>
+<p>  在app.vue中提交</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/24/Vue结构搭建/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1190,454 +1592,6 @@ book = person.person_book.all()</code></pre><h5 id="子表查主表"><a href="#�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/15/Vue报错/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/15/Vue报错/" itemprop="url">Vue报错</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-15T15:09:06+08:00">
-                2020-09-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h6 id="Missing-required-prop-“value”"><a href="#Missing-required-prop-“value”" class="headerlink" title="Missing required prop: “value”"></a>Missing required prop: “value”</h6><p>select组件中 v-model前面加了冒号</p>
-<h6 id="Error-in-render-“TypeError-Cannot-read-property-‘oprations’-of-undefined”"><a href="#Error-in-render-“TypeError-Cannot-read-property-‘oprations’-of-undefined”" class="headerlink" title="Error in render: “TypeError: Cannot read property ‘oprations’ of undefined”"></a>Error in render: “TypeError: Cannot read property ‘oprations’ of undefined”</h6><p>【经过】父组件向子组件传递多个参数太不方便，于是整合成一个Object传过去，但是却报如上错误。<br>实际上功能并未受到影响。<br>【解决】由于初始化render的时候该对象还未取到，为了避免这样的错误，可以在该DOM上加v-if判断</p>
-<p><img src="/images/pasted-148.png" alt="upload successful"></p>
-<h6 id="Invalid-prop-type-check-failed-for-prop-“width”-Expected-Number-with-value-230-got-String-with-value-“230”"><a href="#Invalid-prop-type-check-failed-for-prop-“width”-Expected-Number-with-value-230-got-String-with-value-“230”" class="headerlink" title="Invalid prop: type check failed for prop “width”. Expected Number with value 230, got String with value “230”."></a>Invalid prop: type check failed for prop “width”. Expected Number with value 230, got String with value “230”.</h6><p>解决：改成绑定</p>
-<p><img src="/images/pasted-150.png" alt="upload successful"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/14/MAC配置安卓环境sdk/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/14/MAC配置安卓环境sdk/" itemprop="url">Cordova环境安装mac</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-14T20:37:11+08:00">
-                2020-09-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>win版可参考：<a href="https://shifu-yan.github.io/2020/06/28/%E4%BD%BF%E7%94%A8Cordova%E5%B0%86H5-vue-%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E5%8D%93apk/" target="_blank" rel="noopener">https://shifu-yan.github.io/2020/06/28/%E4%BD%BF%E7%94%A8Cordova%E5%B0%86H5-vue-%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E5%8D%93apk/</a></p>
-<h6 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h6><p>要1.8版本的</p>
-<p>可以先看看这个路径下是否有，有的话直接切就行了</p>
-<p>/Library/Java/JavaVirtualMachines/</p>
-<p><img src="/images/pasted-132.png" alt="upload successful"></p>
-<p>可以参考：<a href="https://blog.csdn.net/liuxy_236/article/details/90381408" target="_blank" rel="noopener">https://blog.csdn.net/liuxy_236/article/details/90381408</a></p>
-<h6 id="安装cordova"><a href="#安装cordova" class="headerlink" title="安装cordova"></a>安装cordova</h6><pre><code>npm install -g cordova</code></pre><h6 id="安卓SDK"><a href="#安卓SDK" class="headerlink" title="安卓SDK"></a>安卓SDK</h6><ol>
-<li><p>打开官网（<a href="https://www.androiddevtools.cn/）-Android" target="_blank" rel="noopener">https://www.androiddevtools.cn/）-Android</a> SDK工具–SDK Tools下载对应sdk  zip包</p>
-</li>
-<li><p>下载后解压</p>
-</li>
-<li><p>打开终端，输入</p>
-<pre><code>vim ~/.bash_profile        </code></pre></li>
-<li><p>添加如下</p>
-<p> export ANDROID_HOME=/Users/shmaur/android-sdk-macosx  //这里为 sdk 路径地址<br> export PATH=$PATH:$ANDROID_HOME/tools<br> export PATH=$PATH:$ANDROID_HOME/platform-tools</p>
-</li>
-<li><p>每次编辑完 .bash_profile 文件后必须要进行：</p>
-<pre><code>source .bash_profile //更新环境变量配置，不更新则不会使配置生效</code></pre></li>
-<li><p>配置好后可以查看一下是否成功：</p>
-<pre><code>echo $PATH</code></pre></li>
-</ol>
-<p>【问题】在tools路径下点击android或者终端./android sdk打不开manager 会报错</p>
-<p>  继续在官网手动下载包发对应目录：</p>
-<pre><code>下载SDK Platform-Tools
-下载Build-Tools
-下载SDK </code></pre><p><img src="/images/pasted-133.png" alt="upload successful"></p>
-<h6 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h6><pre><code>brew install gradle</code></pre><p>  直接安装即可，报错信息不影响</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/11/Vue-Django跨域问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/11/Vue-Django跨域问题/" itemprop="url">Vue+Django跨域问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-11T18:42:29+08:00">
-                2020-09-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="Django跨域问题解决"><a href="#Django跨域问题解决" class="headerlink" title="Django跨域问题解决"></a>Django跨域问题解决</h5><p>由于请求本地服务另外端口号导致的跨域问题，可参考<br><a href="https://www.cnblogs.com/wasbg/p/10973880.html" target="_blank" rel="noopener">https://www.cnblogs.com/wasbg/p/10973880.html</a><br><a href="https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：" target="_blank" rel="noopener">https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：</a></p>
-<h6 id="前端解决："><a href="#前端解决：" class="headerlink" title="前端解决："></a>前端解决：</h6><pre><code>config/index.js(前提去掉Axios.defaults.baseURL)
-    proxyTable: {
-        &apos;/&apos;: {
-            target: &apos;http://127.0.0.1:8000/&apos;, //后端接口地址
-            changeOrigin: true, //是否允许跨越
-            pathRewrite: {
-                &apos;^/&apos;: &apos;/&apos;, //重写,
-            }
-        }
-    },</code></pre><ol>
-<li><p>设置了axios.defaults.baseURL会跳过代理,所以需要注释掉baseURL</p>
-</li>
-<li><p>浏览器是禁止跨域的，会检查origin是否同源,若非同源则禁止。但是服务端不禁止，在本地运行npm run dev等命令时实际上是用node运行了一个服务器，因此proxyTable实际上是将请求发给自己的服务器，再由服务器转发给后台服务器，做了亦曾代理，因为不会出现跨域问题。</p>
-<p>proxy 的工作机制是：你依然请求本地地址，即使你 npm run dev 跑起来的东西并没有任何接口能力，而 Webpack 后台会将所有指定的请求转发到 target 对应的地址上。这个转发的过程发生在服务端（也就是 webpack-dev-server），所以你的浏览器是不知道的。</p>
-<h6 id="后端解决"><a href="#后端解决" class="headerlink" title="后端解决"></a>后端解决</h6><p> pip install django-cors-headers   </p>
-<p>  setting中设置：</p>
-<ol>
-<li><p>‘corsheaders.middleware.CorsMiddleware’ # 新加的插件位置最好放在CommonMiddleware之前</p>
-</li>
-<li><p>INSTALLED_APPS中添加<br>‘corsheaders’,    </p>
-</li>
-<li><p>setting文件里新增</p>
-<p>CORS_ORIGIN_ALLOW_ALL = True   //新增<br>CORS_ALLOW_CREDENTIALS = True  //新增</p>
-</li>
-</ol>
-</li>
-</ol>
-<p>【问题】<br>[HPM] Error occurred while trying to proxy request /api/logout/ from localhost:8088 to 127.0.0.1:8000/ (EHOSTUNREACH) (<a href="https://nodejs.org/api/errors.html#errors_common_system_errors" target="_blank" rel="noopener">https://nodejs.org/api/errors.html#errors_common_system_errors</a>)</p>
-<p>解决了原来一个warning错后重启了前端服务，服务自动更换了个新的端口，就好了！</p>
-<p>【问题2】解决：设置前端代理后，请求后端服务依旧报404</p>
-<p>【详细描述】由于所有接口有前缀measurement，在跨域之前使用baseURL设置成Axios.defaults.baseURL = ‘<a href="http://http://10.12.168.11:8000/measurement" target="_blank" rel="noopener">http://http://10.12.168.11:8000/measurement</a></p>
-<p>后来改成跨域使用proxy试了几种办法：</p>
-<pre><code>由于请求接口本身并没有measurement，所以这样是错误的。
-   proxyTable: {
-    &apos;/measurement&apos;: {
-        target: &apos;http://10.12.168.11:8000&apos;, //后端接口地址
-        changeOrigin: true, //是否允许跨越
-        pathRewrite: {
-            &apos;^/measurement&apos;: &apos;/measurement&apos;, //重写,
-        }
-    }
- 这个很奇怪，竟然也没行
-    proxyTable: {
-    &apos;/&apos;: {
-        target: &apos;http://10.12.168.11:8000&apos;, //后端接口地址
-        changeOrigin: true, //是否允许跨越
-        pathRewrite: {
-            &apos;^/&apos;: &apos;/measurement&apos;, //重写,
-        }
-    }
-最后还在链接上面添加的前缀 
-proxyTable: {
-    &apos;/&apos;: {
-        target: &apos;http://10.12.168.11:8000/measurement&apos;, //后端接口地址
-        changeOrigin: true, //是否允许跨越
-        pathRewrite: {
-            &apos;^/&apos;: &apos;/&apos;, //重写,
-        }
-    }</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1688,7 +1642,7 @@ proxyTable: {
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">116</span>
+                  <span class="site-state-item-count">119</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -79,17 +79,25 @@
 
 
 
-<meta name="description" content="常用命令： nginx -s stop   直接干掉服务 start nginx     启动服务 nginx -s quit         优雅停止nginx，有连接时会等连接请求完成再杀死worker进程    nginx -s reload     优雅重启，并重新载入配置文件nginx.conf  nginx -s reopen     重新打开日志文件，一般用于切割日志  nginx">
+<meta name="description" content="知识网结构图 概念正向代理：局域网中的电脑用户想要直接访问网络是不可行的，只能通过代理服务器来访问，这种代理服务就被称为正向代理。 正向代理类似一个跳板机，代理访问外部资源 比如我们国内访问谷歌，直接访问访问不到，我们可以通过一个正向代理服务器，请求发到代理服，代理服务器能够访问谷歌，这样由代理去谷歌取到返回数据，再返回给我们，这样我们就能访问谷歌了 正向代理的用途： （1）访问原来无法访问的资源">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx使用小记">
 <meta property="og:url" content="http://yoursite.com/2020/06/19/nginx知识小记/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="常用命令： nginx -s stop   直接干掉服务 start nginx     启动服务 nginx -s quit         优雅停止nginx，有连接时会等连接请求完成再杀死worker进程    nginx -s reload     优雅重启，并重新载入配置文件nginx.conf  nginx -s reopen     重新打开日志文件，一般用于切割日志  nginx">
+<meta property="og:description" content="知识网结构图 概念正向代理：局域网中的电脑用户想要直接访问网络是不可行的，只能通过代理服务器来访问，这种代理服务就被称为正向代理。 正向代理类似一个跳板机，代理访问外部资源 比如我们国内访问谷歌，直接访问访问不到，我们可以通过一个正向代理服务器，请求发到代理服，代理服务器能够访问谷歌，这样由代理去谷歌取到返回数据，再返回给我们，这样我们就能访问谷歌了 正向代理的用途： （1）访问原来无法访问的资源">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2021-01-04T11:06:52.784Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-197.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-198.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-199.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-200.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-201.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-202.png">
+<meta property="og:image" content="http://yoursite.com/images/pasted-203.png">
+<meta property="og:updated_time" content="2021-01-12T03:14:18.267Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx使用小记">
-<meta name="twitter:description" content="常用命令： nginx -s stop   直接干掉服务 start nginx     启动服务 nginx -s quit         优雅停止nginx，有连接时会等连接请求完成再杀死worker进程    nginx -s reload     优雅重启，并重新载入配置文件nginx.conf  nginx -s reopen     重新打开日志文件，一般用于切割日志  nginx">
+<meta name="twitter:description" content="知识网结构图 概念正向代理：局域网中的电脑用户想要直接访问网络是不可行的，只能通过代理服务器来访问，这种代理服务就被称为正向代理。 正向代理类似一个跳板机，代理访问外部资源 比如我们国内访问谷歌，直接访问访问不到，我们可以通过一个正向代理服务器，请求发到代理服，代理服务器能够访问谷歌，这样由代理去谷歌取到返回数据，再返回给我们，这样我们就能访问谷歌了 正向代理的用途： （1）访问原来无法访问的资源">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-197.png">
 
 
 
@@ -331,8 +339,23 @@
       
 
       
-        <ol>
-<li><p>常用命令：</p>
+        <p>知识网结构图<br><img src="/images/pasted-197.png" alt="upload successful"></p>
+<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p><strong>正向代理</strong>：局域网中的电脑用户想要直接访问网络是不可行的，只能通过代理服务器来访问，这种代理服务就被称为正向代理。</p>
+<p>正向代理类似一个跳板机，代理访问外部资源</p>
+<p>比如我们国内访问谷歌，直接访问访问不到，我们可以通过一个正向代理服务器，请求发到代理服，代理服务器能够访问谷歌，这样由代理去谷歌取到返回数据，再返回给我们，这样我们就能访问谷歌了<br><img src="/images/pasted-198.png" alt="upload successful"></p>
+<p>正向代理的用途：</p>
+<pre><code>（1）访问原来无法访问的资源，如google
+（2）可以做缓存，加速访问资源
+（3）对客户端访问授权，上网进行认证
+（4）代理可以记录用户访问记录（上网行为管理），对外隐藏用户信息</code></pre><p><strong>反向代理</strong>：
+以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器</p>
+<p><img src="/images/pasted-199.png" alt="upload successful"><br>反向代理作用</p>
+<pre><code>(1)保证内网的安全，组织web攻击，大型网站通常将反向代理作为公网访问地址，web服务器是内网
+(2)负载均衡，通过反向代理服务器来优化网站的负载</code></pre><p><strong>总结</strong></p>
+<p>正向代理：客服端和代理对服务端透明；(proxy和客户端合伙)<br>反向代理：代理和服务端对客户端透明；(proxy和服务端合伙)<br><img src="/images/pasted-200.png" alt="upload successful"></p>
+<p><img src="/images/pasted-201.png" alt="upload successful"></p>
+<h4 id="命令和安装："><a href="#命令和安装：" class="headerlink" title="命令和安装："></a>命令和安装：</h4><ol>
+<li><p>常用命令</p>
 <pre><code>nginx -s stop   直接干掉服务
 start nginx     启动服务
 nginx -s quit         优雅停止nginx，有连接时会等连接请求完成再杀死worker进程  
@@ -366,24 +389,20 @@ find / -name nginx.conf   2&gt;/dev/null</code></pre></li>
 <p>默认端口占用8080</p>
 </li>
 </ol>
-<h5 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h5><p>参考：<a href="https://www.cnblogs.com/muhy/p/10528449.html" target="_blank" rel="noopener">https://www.cnblogs.com/muhy/p/10528449.html</a></p>
-<pre><code>1. 在http节点下，添加upstream节点。
-
-upstream linuxidc { 
+<h5 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h5><p> <img src="/images/pasted-202.png" alt="upload successful"></p>
+<p>参考：<a href="https://www.cnblogs.com/muhy/p/10528449.html" target="_blank" rel="noopener">https://www.cnblogs.com/muhy/p/10528449.html</a></p>
+<pre><code>在http节点下，添加upstream节点。
+upstream linuxidc { //负载均衡
       server 10.0.6.108:7080; 
       server 10.0.0.85:8980; 
 }
-
-  2.  将server节点下的location节点中的proxy_pass配置为：http:// + upstream名称，即“
-http://linuxidc”.
-
+将server节点下的location节点中的proxy_pass配置为：http:// + upstream名称，即“http://linuxidc”.
 location / { 
             root  html; 
             index  index.html index.htm; 
             proxy_pass http://linuxidc; 
-}
-
-    3.  现在负载均衡初步完成了。upstream默认按照轮询方式进行负载；但是还有其他的策略，包括权重、hash、第三方等方式具体见如上链接</code></pre><h5 id="反向代理之-proxy-pass"><a href="#反向代理之-proxy-pass" class="headerlink" title="反向代理之 proxy_pass"></a>反向代理之 proxy_pass</h5><pre><code>参考：https://www.cnblogs.com/yyxianren/p/10831511.html
+} </code></pre><p>   现在负载均衡初步完成了。upstream默认按照轮询方式进行负载；但是还有其他的策略，包括权重、hash、第三方等方式具体见如上链接</p>
+<h5 id="反向代理之-proxy-pass"><a href="#反向代理之-proxy-pass" class="headerlink" title="反向代理之 proxy_pass"></a>反向代理之 proxy_pass</h5><pre><code>参考：https://www.cnblogs.com/yyxianren/p/10831511.html
 
 格式很简单： proxy_pass URL;
 其中URL包含：传输协议（http://, https://等）、主机名（域名或者IP:PORT）、uri。</code></pre><p>  示例如下：</p>
@@ -395,7 +414,15 @@ proxy_pass unix:/tmp/www.sock;</code></pre><p> 配置示例：</p>
     proxy_pass http://192.168.1.10/linux/;
     ...
 }   </code></pre><p>   【总结】为了方便记忆和规范配置，建议所有的 proxy_pass 后的url都以“/”结尾。<br>proxy_pass <a href="http://192.168.1.10/linux/" target="_blank" rel="noopener">http://192.168.1.10/linux/</a>;</p>
-
+<h4 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h4><p> <img src="/images/pasted-203.png" alt="upload successful"></p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>1）全局块</p>
+<pre><code>worker_processes  1;</code></pre><p>2）events块</p>
+<pre><code>events {
+     worker_connections  1024;
+}</code></pre><p>3）HTTP块</p>
+<p>  具体配置和优先级见《nginx location匹配优先级》</p>
+<pre><code>location[ = | ~ | ~* | ^~] url{
+}</code></pre>
       
     </div>
     
@@ -508,7 +535,7 @@ proxy_pass unix:/tmp/www.sock;</code></pre><p> 配置示例：</p>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">116</span>
+                  <span class="site-state-item-count">119</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -554,7 +581,7 @@ proxy_pass unix:/tmp/www.sock;</code></pre><p> 配置示例：</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#负载均衡"><span class="nav-number">1.</span> <span class="nav-text">负载均衡</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反向代理之-proxy-pass"><span class="nav-number">2.</span> <span class="nav-text">反向代理之 proxy_pass</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#概念"><span class="nav-number">1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#命令和安装："><span class="nav-number">2.</span> <span class="nav-text">命令和安装：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#负载均衡"><span class="nav-number">2.1.</span> <span class="nav-text">负载均衡</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#反向代理之-proxy-pass"><span class="nav-number">2.2.</span> <span class="nav-text">反向代理之 proxy_pass</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#动静分离"><span class="nav-number">3.</span> <span class="nav-text">动静分离</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置"><span class="nav-number">4.</span> <span class="nav-text">配置</span></a></li></ol></div>
             
 
           </div>

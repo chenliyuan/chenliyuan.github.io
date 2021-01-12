@@ -261,6 +261,431 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/cmd批处理命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/12/cmd批处理命令/" itemprop="url">cmd批处理命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-12T21:44:20+08:00">
+                2020-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.cnblogs.com/xpwi/p/9626959.html" target="_blank" rel="noopener">https://www.cnblogs.com/xpwi/p/9626959.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/tesseract训练字库/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/12/tesseract训练字库/" itemprop="url">tesseract训练字库</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-12T13:50:29+08:00">
+                2020-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="准备条件："><a href="#准备条件：" class="headerlink" title="准备条件："></a>准备条件：</h4><ol>
+<li>tesseract-OCR   exe  我使用的是c5.0</li>
+<li>jdk</li>
+<li>jTessBoxEditor </li>
+</ol>
+<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><ol>
+<li><p>单张图片可直接使用如下命令生成box文件：<br>tesseract myfontlab.normal.exp01.png myfontlab.normal.exp01 -l eng+chi_sim  batch.nochop makebox</p>
+<p>【语法】：tesseract [lang].[fontname].exp[num].tif [lang].[fontname].exp[num] batch.nochop makebox<br>【语法】：<br>lang为语言名称，为了不影响本有的语言eng，chi_sim等等，取成别的,比如数字可以是num,中文myfontlab myeng等<br>fontname为你对这门语言某一字体，你可以填任何你记得住的比如 trumpsb，normal;<br>num为序号；<br>在tesseract中，一定要注意格式</p>
+<p>多张图片，需先使用jTessBoxEditor 的train.bat 合并所有图片为一个tif文件然后使用命令生成box文件</p>
+<p>tesseract myfontlab.normal.exp01.tif myfontlab.normal.exp01 -l eng+chi_sim  batch.nochop makebox</p>
+</li>
+<li><p>用jTessBoxEditor 的train.bat打开tif文件，然后根据实际情况修改box文件，去除多余空格，修改识别文字。</p>
+</li>
+<li><p>产生字符特征文件，生成.tr文件。命令<br>单张推荐：<br>tesseract  myfontlab.normal.exp01.png  myfontlab.normal.exp01  nobatch box.train<br>多张推荐：<br>tesseract myfontlab.normal.exp01.tif myfontlab.normal.exp0 nobatch box.train  </p>
+</li>
+<li><p>生成字符集文件，生产unicharset文件。命令<br>unicharset_extractor myfontlab.normal.exp01.box</p>
+</li>
+<li><p>新建一个font_properties文件。注意，文件的名字就是font_properties，它没有.txt后缀。<br>里面内容写入 normal 0 0 0 0 0 表示默认普通字体</p>
+</li>
+<li><p>生成shape文件，生成五个文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shapeclustering -F font_properties -U unicharset myfontlab.normal.exp01.tr</span><br><span class="line"></span><br><span class="line">mftraining -F font_properties -U unicharset -O unicharset myfontlab.normal.exp01.tr</span><br><span class="line">cntraining myfontlab.normal.exp01.tr</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在这五个文件前加上normal.</p>
+</li>
+<li><p>合并五个文件，执行如下命令，会生成目标文件normal.traineddata，<br>combine_tessdata normal.</p>
+</li>
+<li><p>该文件就是训练好的字库。将它复制到你安装的Tesseract程序目录下的“tessdata”目录下即可。</p>
+</li>
+<li><p>验证：tesseract myfontlab.normal.exp01.png out –l normal  查看生成的out.txt文件</p>
+</li>
+</ol>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ol>
+<li>中英文一块识别率很低？使用+连接<br>如： tesseract 05.png 05 -l chi_sim+eng<br>eng+chi_sim效果更好？试了一个案例验证没区别，不知道大数据是不是真的。</li>
+<li>最后有一个识别失败的案例，比如A竟然没有识别出来(box调试的时候已经识别出来了)<br>原因是Box里面A的范围不准确，有两个框，把最外面的删掉，剩余最内部分框框就好了。</li>
+<li>Other case a of A is not in unicharset<br>事实证明这个报错对识别结果未有影响</li>
+<li>语法说明：</li>
+</ol>
+<p>tesseract imagename outputbase [-l lang] [-psm pagesegmode] [configfile…]</p>
+<p>tesseract 图片名 输出文件名 -l 字库文件 -psm pagesegmode 配置文件<br>例如：<br>tesseract test.jpg result -l eng -psm 7 nobatch</p>
+<p>-l eng 表示用英文文字库（默认使用英文。如需要下载中文字库文件，解压后，存放到tessdata目录下去,字库文件扩展名为 .raineddata 简体中文字库文件名为: chi_sim.traineddata，命令为：chi_sim）</p>
+<p>-psm 7 表示告诉tesseract test.jpg图片是一行文本 这个参数可以减少识别错误率. 默认为 3</p>
+<p>configfile 参数值为tessdata\configs 和 tessdata\tessconfigs 目录下的文件名.</p>
+<p>————————————————<br>版权声明：本文为CSDN博主「_Cassie」的原创文章，遵循 CC 4.0 BY-SA 版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/wangyongxia921/article/details/52809079" target="_blank" rel="noopener">https://blog.csdn.net/wangyongxia921/article/details/52809079</a></p>
+<p>参考</p>
+<p><a href="https://blog.csdn.net/qq_31112205/article/details/100159963" target="_blank" rel="noopener">https://blog.csdn.net/qq_31112205/article/details/100159963</a></p>
+<p><a href="https://www.cnblogs.com/wj-1314/p/9454656.html" target="_blank" rel="noopener">https://www.cnblogs.com/wj-1314/p/9454656.html</a></p>
+<p><a href="https://www.cnblogs.com/pyweb/p/11457519.html" target="_blank" rel="noopener">https://www.cnblogs.com/pyweb/p/11457519.html</a>  多样本</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/labelme安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/29/labelme安装/" itemprop="url">labelme安装和使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-29T21:40:51+08:00">
+                2020-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>windows下安装和使用labelme </p>
+<p> 参考：<a href="https://www.jb51.net/article/166528.htm" target="_blank" rel="noopener">https://www.jb51.net/article/166528.htm</a></p>
+<p>  其中anaconda下载使用这个网址，(在官网下载快完成的时候停止了浪费了大把时间…)</p>
+<p><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
+<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>1、管理员身份打开 anaconda prompt</p>
+<p>2、输入命令：conda create –name=labelme python=3.6</p>
+<p>3、输入命令：activate labelme</p>
+<p>(若环境未成功激活，则改用本地cmd)</p>
+<p>4、输入命令：pip install pyqt5，pip install pyside2(自己刚开始没有安装pyside2,运行 \anaconda安装目录\envs\labelme\Scripts\label_json_to_dataset.exe 会出现module “pyside”缺失错误)</p>
+<p>5、输入命令：pip install labelme（由于网络原因或者库的地址，经常运行一半出现错误，不要气馁，多执行几次）</p>
+<p>6、输入命令：labelme 即可打开labelme。如下：</p>
+<p>7、如果将单个json文件生成数据集，运行命令：</p>
+<p>\anaconda安装目录\envs\labelme\Scripts\label_json_to_dataset.exe    \保存xx.json文件地址</p>
+<p>xx.json 会成生成五个文件 img.png，info.yaml，label.png，label_names，label_viz.png。其中label.png即是我们要的label_data了。</p>
+<p>8、批量将json文件生成数据集。编写脚本如下：               </p>
+<pre><code>import os
+path = &apos;D:\\paper\\data\\&apos;  # path是你存放json的路径
+json_file = os.listdir(path)
+for file in json_file:
+    os.system(&quot;python C:\\Users\\Monica\\.conda\\envs\\labelme\\Scripts\\labelme_json_to_dataset.exe %s&quot;%(path + file))</code></pre><p><img src="%5Cimages%5Cpasted-102.png" alt="upload successful"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/22/图像处理坐标/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1307,535 +1732,6 @@ conda remove -n learn --all // 删除learn环境及下属所有包</code></pre><
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-通配符和正则/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/06/shell-通配符和正则/" itemprop="url">shell 通配符和正则表达式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T21:08:33+08:00">
-                2020-02-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="通配符和正则"><a href="#通配符和正则" class="headerlink" title="通配符和正则"></a>通配符和正则</h5><ul>
-<li><p>shell 元字符(也称为通配符) 由 shell 来解析，如 rm -rf <em>.pdf，元字符</em> Shell 将其解析为任意 多个字符</p>
-<p>正则表达式元字符 由各种执行模式匹配操作的程序来解析，比如 vi、grep、sed、awk、python</p>
-</li>
-<li><p>shell中定义元字符</p>
-<pre><code>*   任意字符
-?  单个任意字符
-[] 子shell ，不会影响主shell
-[^abcd]这里^是非的意思，但是外面不支持，不同与正则。正则[]里面同此，外面使用是以什么开头的意思
-{} 集合</code></pre></li>
-</ul>
-<ul>
-<li><p>基本正则表达式元字符:</p>
-<pre><code>元字符 功能 示例 ======================================================== ^ 行首定位符 ^love
-$ 行尾定位符 love$
-. 匹配单个任意字符 l..e
-* 匹配前导符 0 到多次 ab*love
-.* 任意多个字符
-[] 匹配指定范围内的一个字符 [lL]ove
-[ - ] 匹配指定范围内的一个字符 [a-z0-9]ove
-[^] 匹配不在指定组内的字符 [^a-z0-9]ove
-\ 用来转义元字符 love\.
-\&lt; 词首定位符 \&lt;love
-\&gt; 词尾定位符 love\&gt;
-\(..\) 匹配稍后使用的字符的标签 :% s/172.16.130.1/172.16.130.5/ :% s/\(172.16.130.\)1/\15/
-:% s/\(172.\)\(16.\)\(130.\)1/\1\2\35/
-:3,9 s/\(.*\)/#\1/
-x\{m\} 字符 x 重复出现 m 次 o\{5\}
-x\{m,\} 字符 x 重复出现 m 次以上 o\{5,\} x\{m,n\} 字符x重复出现m到n次o\{5,10\}</code></pre></li>
-<li><p>扩展正则表达式元字符（egrep或使用转义\）</p>
-<pre><code>+ 匹配一个或多个前导字符 [a-z]+ove
-? 匹配零个或一个前导字符 lo?ve
-a|b 匹配 a 或 b love|hate
-() 组字符 loveable|rs love(able|rs) ov+ (ov)+ (..)(..)\1\2 标签匹配字符 (love)able\1er x{m} 字符x重复m次o{5}
-x{m,} 字符 x 重复至少 m 次 o{5,}
-x{m,n} 字符x重复m到n次o{5,10}</code></pre></li>
-<li><p>其他</p>
-<pre><code>\w  所有字母和数字 相当于[a-zA-Z0-9]*
-\W  非字母和数字
-\b  边界</code></pre></li>
-</ul>
-<h5 id="grep命令"><a href="#grep命令" class="headerlink" title="grep命令"></a>grep命令</h5><ul>
-<li><p>习惯性加上单引号</p>
-</li>
-<li><p>返回状态exit 0 1 2</p>
-</li>
-<li><p>grep -e  相当于 egrep </p>
-</li>
-<li><p>grep  –help |grep ‘-v’<br>其中-v被认为是选项，非模式，所以需要转义</p>
-</li>
-</ul>
-<pre><code>-i, --ignore-case         忽略大小写
--v, --invert-match        选中不匹配的行
--q, --quiet, --silent     不显示所有常规输出
--r, --recursive           等同于--directories=recurse递归目录
-
--o, --only-matching       只显示匹配PATTERN 部分的行
--B, --before-context=NUM  打印文本及其前面NUM 行
--A, --after-context=NUM   打印文本及其后面NUM 行
--C, --context=NUM         打印NUM 行输出文本
-
--n, --line-number         输出的同时打印行号</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-变量和数组/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/06/shell-变量和数组/" itemprop="url">shell 变量和数组</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T20:17:32+08:00">
-                2020-02-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><ul>
-<li><p>查看变量: echo $变量名 set(所有变量:包括自定义变量和环境变量) </p>
-</li>
-<li><p>取消变量: unset 变量名</p>
-</li>
-<li><p>位置变量：如通过$1 $2获取第一第二个参数</p>
-</li>
-<li><p>环境变量：export back_dir=xxxx  定义全局变量；或者export $var 转化成全局变量</p>
-</li>
-<li><p>预定义变量</p>
-<pre><code>$0 脚本名
-$* 所有的参数
-$@ 所有的参数
-$# 参数的个数
-$$ 当前进程的 PID
-$! 上一个后台进程的 PID
-$? 上一个命令的返回值 0 表示成功</code></pre><p>$@和$星区别：不加引号时,二者都是返回传入的参数,但加了引号后（”$@”）,此时$*把参数作为一个字符串整体(单字符串)返回,$@把每个参数作为一个字符串返回</p>
-</li>
-<li><p>键盘输入变量：通过read -n 2 -p “please input: “ p</p>
-</li>
-</ul>
-<ul>
-<li><p>调用其他脚本变量值：可在b脚本中通过调用.a.sh,直接获取a的变量数据</p>
-</li>
-<li><p>“”双引号-强引用会替换里面变量值；’’-弱引用，原样输出引用符号</p>
-</li>
-<li><p>变量删除（获取部分字符串）</p>
-<pre><code>${url#*a}  从头到尾最短匹配删除即直到第一个a之前的都删除
-${url##*a}  从头到尾贪婪匹配，删除直到最后一个匹配a
-${url%a*}  后面加%，从后到前最短匹配删除a后面所有字符    
-${url%%}  后面加%，从后到前贪婪匹配删除最后一个a后面所有字符</code></pre></li>
-<li><p>变量替换(最短替换/和贪婪替换//)</p>
-<pre><code>liyuan$ var=tom.ton.com
-liyuan$ echo ${var/to/TO}
-TOm.ton.com
-liyuan$ echo ${var//to/TO}</code></pre></li>
-</ul>
-<ul>
-<li><p>变量替代；可理解为变量初始化</p>
-<pre><code>echo ${var1-aaaaa}
-echo ${var1:-aaaaa}</code></pre><p>  使用 <font color="red">-</font> ,若没有被赋值过，就使用默认值替代(是否unset)</p>
-<p>  使用 <font color="red">:-</font>，区别在于即使赋值空值也会被新值替代(是否为空值)</p>
-</li>
-<li><p>切片操作  echo ${url:5:7}</p>
-</li>
-<li><p>可使用反引号或者$()执行内部命令</p>
-</li>
-<li><p>date +%F  格式化日期输出</p>
-</li>
-<li><p>特殊符号总结</p>
-<pre><code>（） 子shell执行
-(()) 数值比较
-$()  命令替换，同反引号
-$(()) 整数运算
-
-{}  集合
-${}  变量
-
-[]  条件测试
-[[]] 条件测试，支持正则 =~
-$[]  整数运算</code></pre></li>
-</ul>
-<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><ol>
-<li><p>普通数组</p>
-<pre><code>一次赋多值，可指定索引
-# array2=(tom jack alice [20]=aa)
-# echo ${!array2[@]}
-0 1 2 20</code></pre></li>
-<li><p>关联数组</p>
-<p> 必须申明关联数组变量</p>
-<pre><code># declare -A ass_array1
-# ass_array2=([index1]=tom [index2]=jack [index4]=&apos;bash shell&apos;)
-
-查看数组
-# declare -A</code></pre></li>
-<li><p>访问数组元数:</p>
-<pre><code># echo ${ass_array2[index2]} 访问数组中的第二个元数
-# echo ${ass_array2[@]} 访问数组中所有元数 等同于 echo ${array1[*]} 
-# echo ${#ass_array2[@]} 获得数组元数的个数
-# echo ${!ass_array2[@]} 获得数组元数的索引</code></pre></li>
-<li><p>遍历数组</p>
-<p>通过获取数组索引遍历   </p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-函数/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/06/shell-函数/" itemprop="url">shell 函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T20:07:46+08:00">
-                2020-02-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="1-定义函数"><a href="#1-定义函数" class="headerlink" title="1. 定义函数"></a>1. 定义函数</h5><h6 id="方法一（常用）"><a href="#方法一（常用）" class="headerlink" title="方法一（常用）:"></a>方法一（常用）:</h6><pre><code>函数名() { 函数要实现的功能代码 }</code></pre><h6 id="方法二"><a href="#方法二" class="headerlink" title="方法二:"></a>方法二:</h6><pre><code>function 函数名 { 函数要实现的功能代码 }</code></pre><h5 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h5><pre><code>函数名 函数名参数1 参数2</code></pre><p>举例：</p>
-<pre><code>#!/usr/bin/bash
-jiecheng(){
-result=1
-for i in `seq $1`
-do
-        echo $i
-        result=$[$result*$i]
-done
-echo $result
-}
-
-jiecheng $1
-
-1.实践证明，do中的result必须不能加$符号，否则错误
-2.$[]运算结果赋值的时候，=左右不能有空格</code></pre><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><ul>
-<li><p>函数接收位置参数 $1 $2… $n</p>
-</li>
-<li><p>函数接收数组变量使用$@ $*</p>
-</li>
-<li><p>函数接收参数个数$#</p>
-</li>
-<li><p>函数将受到的所有参数赋值给数组 newarray=($*)</p>
-</li>
-<li><p>养成在函数内部的变量习惯性加local关键字供内部函数使用的习惯</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1886,7 +1782,7 @@ jiecheng $1
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">116</span>
+                  <span class="site-state-item-count">119</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

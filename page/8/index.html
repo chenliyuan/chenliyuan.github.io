@@ -261,6 +261,504 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/26/http前端/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/26/http前端/" itemprop="url">http前端</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-26T15:25:31+08:00">
+                2019-10-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="http版本："><a href="#http版本：" class="headerlink" title="http版本："></a>http版本：</h5><pre><code>http1.0:需要使用keep-alive建立长连接（因为创建tcp连接经过三次握手有一定的开销）。从1.1开始默认支持长连接。
+http1.1:支持只发送header、断点续传、host域
+http2.0（基于https）:多路复用、header数据压缩、服务器推送
+http强制缓存：只要不过期就要走缓存，缺点是不能及时更新。
+http协商缓存：没有修改返304状态码，否则200响应结果。</code></pre><h5 id="浏览器输入网址到加载完页面发生了什么？"><a href="#浏览器输入网址到加载完页面发生了什么？" class="headerlink" title="浏览器输入网址到加载完页面发生了什么？"></a>浏览器输入网址到加载完页面发生了什么？</h5><pre><code>1、    查找DNS缓存（浏览器缓存、操作系统缓存、host查看域名IP、运营商的DNS服务器缓存）
+2、    DNS域名解析，查找相应IP（过程是从后面往前递归查找）如com-&gt;baidu-&gt;www
+3、    发起TCP3次握手 建立TCP连接
+4、    发送http请求  
+5、    服务端处理请求    MVC分层
+6、    浏览器接收响应，解析html文件请求静态资源（css/js/imge，若服务器返回304说明请求资源没做修改从本地缓存取即可）
+7、    根据http响应渲染前端页面，构建DOM树
+8、    关闭tcp连接（四次挥手手）</code></pre><p>参考：<a href="https://www.cnblogs.com/zgq123456/articles/11641187.html" target="_blank" rel="noopener">https://www.cnblogs.com/zgq123456/articles/11641187.html</a></p>
+<p>【几个问题】：</p>
+<pre><code>1、http新版本请求除非connection:close时会断开TCP，否则在请求完成之前不会断开
+2、一个TCP连接中可以对应几个http请求？多个
+3、一个TCP连接中可以一起发送多个http请求么？
+在http2.0提供了多路复用（Multiplexing）支持此功能。
+4、为什么有的时候刷新页面不需要重新建立SSL连接
+ 因为TCP连接维持的时候，SSL自然也会用以前的
+5、浏览器对同一HOST建议TCP连接到数量有没有限制？
+有 chrome最多建议6个TCP连接。不同浏览器限制不同。</code></pre><h5 id="请求报文的格式"><a href="#请求报文的格式" class="headerlink" title="请求报文的格式"></a>请求报文的格式</h5><p>请求行：url、http协议版本、请求方式<br>请求头：<br>Accept<br>Accept-language<br>Accept-Encoding<br>Cache-Control:<br>Cookie<br>Connection:<br>Content-Type:<br>Content-Length:<br>Host:<br>Referer:<br>User-Agent:</p>
+<p>请求体：数据正文(入参)</p>
+<h4 id="请求方法："><a href="#请求方法：" class="headerlink" title="请求方法："></a>请求方法：</h4><p>  GET POST DELETE PUT HEAD</p>
+<pre><code>DELETE:请求服务端删除指定页面
+PUT：使传入数据取代指定的文档内容
+HEAD：类似GET，只是返回内容里只有报头</code></pre><h5 id="状态码："><a href="#状态码：" class="headerlink" title="状态码："></a>状态码：</h5><pre><code>1xx：标识请求已接受，继续处理
+2xx：成功
+3xx：重定向
+4xx：客户端错误
+5xx：服务端错误
+常用几个：
+302:重定向，比如把http请求都转成https
+400：客户端语法错误
+403：服务器拒绝提供服务
+404：请求资源不存在
+500：服务器内部错误</code></pre><h4 id="cookie和session"><a href="#cookie和session" class="headerlink" title="cookie和session"></a>cookie和session</h4><p>cookie相当于用户身份证，session相当于客户表记录</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/23/shell命令总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/23/shell命令总结/" itemprop="url">shell命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-23T17:18:30+08:00">
+                2019-10-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="shell执行"><a href="#shell执行" class="headerlink" title="shell执行"></a>shell执行</h4><ul>
+<li><p>执行脚本</p>
+<pre><code>./01.sh   需要执行权限  在子shell中执行
+bash 01.sh   不需要执行权限  在子shell中执行
+
+. 01.sh  不需要执行权限  在当前shell中执行
+source 01.sh 不需要执行权限  在当前shell中执行</code></pre></li>
+<li><p>调试脚本</p>
+<pre><code>sh -n 02.sh   验证语法是否有错
+sh -vx 02.sh  查看运行详情</code></pre><p>  若想让代码影响当前shell需要在主shell中执行</p>
+</li>
+<li><p>bg 后台 ，fg 前台</p>
+<p>例如：执行 vi /etc/hosts可以通过ctrl+Z暂停退出，在shell窗口通过fg再返回来</p>
+</li>
+<li><p>cat &lt; /etc/hosts 同 cat  /etc/hosts</p>
+</li>
+<li><p>cat &lt;&lt;EOF 把后面输入的内容给cat作为参数执行</p>
+</li>
+<li><p>cat   &gt;file  &lt;&lt;EOF 将后面输入的内容重定向到file文件中</p>
+</li>
+</ul>
+<h5 id="命令行排序-；-amp"><a href="#命令行排序-；-amp" class="headerlink" title="命令行排序 ；&amp; ||"></a>命令行排序 ；&amp; ||</h5><pre><code>;  无论怎样每条都执行  
+&amp;  上一条为真下条才执行  
+||  上条为假下一条才执行  </code></pre><h4 id="运算总结"><a href="#运算总结" class="headerlink" title="运算总结"></a>运算总结</h4><p>使用let、expr、$(())或$[]进行基本的整数运算，使用bc进行高级的运算，包括小数运算。其中expr命令也能进行整数运算，还能判断参数是否为整数.除此外还有awk</p>
+<pre><code>A=5
+B=6
+C= $[$A+$B]  # 方法 1
+let C=$A+$B     #方法2 :可使用let i++
+C= $(($A+$B)) # 方法 3
+C=`expr $A + $B`   # 方法 4
+其他：
+C=`echo $A+$B | bc` # 方法 5
+awk &apos;BEGIN{print &apos;&quot;$A&quot;&apos;+&apos;&quot;$B&quot;&apos;}&apos;  # 方法 6</code></pre><h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
+<li><p>shell中调用Python程序</p>
+<p>使用相同的标识符比如EOF，其中-为了格式考虑</p>
+<pre><code>#!/usr/bin/bash
+echo &quot;hello shell&quot;
+
+/usr/bin/python &lt;&lt;-EOF
+print(&quot;hello python&quot;)
+EOF</code></pre></li>
+<li><p>变量使用推荐加花括号，如${name}，但定义变量时，变量名不加美元符号！</p>
+</li>
+<li><p>字符串可以用单引号，双引号，也可以不用引号</p>
+</li>
+<li><p>语句中一般不包含分号，空格/tab，以及冒号的标点符号；只在特殊条件下使用。</p>
+<ul>
+<li>分号：只有在代码块都写在一行的时候用分号区分，注意then后面和结束不用分号如if [ “$PS1” ]; then echo test is ok; fi</li>
+</ul>
+<ul>
+<li>冒号：主要用于参数扩展。如echo ${a:-newword}或者{a:=newword}即— word前的“-”可以理解为“没定义，则替换成word”；“+”正相反，可以理解为“有定义，则替换成word”。“?”可以理解为“参数到底定义了没，没定义，把word当错误消息打印出来。”<br>除此获取子字符串可以用${parameter:offset}和${parameter:offset:length}若倒数，则加负号如echo $(var: -5)区别于(var:-5)，后者是没定义则替换成5</li>
+</ul>
+</li>
+<li><p>函数内部使用$n来调用入参</p>
+<pre><code>$0当前脚本名称
+$n 参数名
+$#参数总个数
+$*以一个字符串显示所有参数，与$@同义，前者一个字符串输出，后者N个
+$?上个命令的推出状态或函数的返回值
+$$当前shell进程ID</code></pre></li>
+<li><p>和其他语言不同，调用函数仅使用函数名即可,参数直接空格跟后面，没有括号</p>
+</li>
+<li><p>和其他语言不同，shell语言中0代表true，其他值代表false</p>
+</li>
+<li><p>条件表达式要放在方括号[]之间，并且所有地方都要有空格如[ $a == $b ]<br>==用于数字比较[ $a == $b ] ，=用于字符串比较[ $a = $b]<br>条件表达式中运算符前面都有横杠-</p>
+</li>
+<li><p>f 表示文件(普通)存在<br>条件控制：if 要加then fi 循环控制要加do done</p>
+</li>
+<li><p>引用其他文件： .filename或者source filename</p>
+</li>
+<li><p>字符串运算符：单目-z(长度为0) -n（长度不为0） $（是否为空）</p>
+</li>
+<li><p>命令export作用是使变量可以在子shell中使用，与source类似也有区别。</p>
+</li>
+<li><p>使用nohup command &amp;使程序在后台运行，hohup作用是即使session关闭程序也不中断</p>
+</li>
+<li><p>输入重定向与输出相反，command&lt; filename ，是将本来从键盘获取的输入变成了文件，然后利用command执行该文件</p>
+</li>
+<li><p>追加重定向都是双大于等于号，如&gt;&gt;或&lt;&lt;</p>
+</li>
+<li><p>读取文件read:使用 cat 命令并通过管道将结果直接传送给包含 read 命令的 while 命令。如cat test.txt | while read line<br>大括号的作用：相当于创建了个匿名函数，左括号后必须有空格，右括号前的命令必须有分号。</p>
+</li>
+<li><p>怎样获取文件第k行？ head -k filename|tail -1 其中head/tail -n k与head/tail -k相同<br>或者sed -n ‘kp’ filename</p>
+</li>
+<li><p>egrep除了grep -e的功能外，还可以用扩展表达式egrep “^test|^root” /etc/hosts<br>grep xxx filename  文件中包含xx的行记录</p>
+<pre><code>写程序为用户计算主组数目并显示次数和组名
+
+cat /etc/passwd|cut -d: -f4|sort|uniq -c|while read c g
+do
+{ echo $c; grep :$g: /etc/group|cut -d: -f1;}|xargs -n 2
+done</code></pre></li>
+<li><p>文件描述符0代表标准输入、1代表标准输出、2代表标准错误输出。<br>若错误输出和标准输出都同时重定向到一个位置，使用2&gt;&amp;1如</p>
+<pre><code>ls /usr/share/doc &gt; out.txt 2&gt;&amp;1</code></pre></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/21/web测试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/21/web测试/" itemprop="url">web测试</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T15:11:38+08:00">
+                2019-10-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="web测试与APP测试区别"><a href="#web测试与APP测试区别" class="headerlink" title="web测试与APP测试区别"></a>web测试与APP测试区别</h4><p><img src="%5Cimages%5Cpasted-70.png" alt="upload successful"><br>参照：<a href="https://blog.csdn.net/weixin_34043301/article/details/94216811" target="_blank" rel="noopener">https://blog.csdn.net/weixin_34043301/article/details/94216811</a></p>
+<p>H5与web的不同点（具有的app特性）：</p>
+<pre><code>1、网络：2G、3G以及弱网测试
+2、有横屏竖屏之分
+3、兼容：需兼容不同分辨率/操作系统的手机浏览器
+4、手指滑动流畅度，手机点击焦点是否定位准确
+5、关注交互是否友好，尤其弹层
+6、嵌入手机端与native页有交互
+7、返回功能非手机自带，自己拥有</code></pre><p>H5与APP的不同点（具有的web特性）：</p>
+<pre><code>1、可以在PC端浏览器打开进行功能测试
+2、缓存在浏览器上，需要清理缓存测试
+3、安卓和IOS统一版本，一套代码部署</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/19/numpy函数总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1259,441 +1757,6 @@ qps，如果是对一个页面请求一次，形成一个tps，但一次页面�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/TensorFlow实践/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/24/TensorFlow实践/" itemprop="url">TensorFlow实践</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T15:30:42+08:00">
-                2019-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>安装 TensorFlow<br>系统版本：mac 10.12.6 python版本：2.7<br>安装指南：TensorFlow中文社区<br><a href="http://www.tensorfly.cn/tfdoc/get_started/os_setup.html#virtualenv_install" target="_blank" rel="noopener">http://www.tensorfly.cn/tfdoc/get_started/os_setup.html#virtualenv_install</a><br>1）尝试了使用直接安装\homebrew，都会提示错误：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">There was a problem confirming the ssl certificate: [SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:590) - skipping</span><br></pre></td></tr></table></figure>
-
-<p>说是因为python社区已不支持TLS version 1.0 &amp; 1.1，可以通过升级pip实现，但是升级pip还会由于这个问题不能成功，后放弃。但是本机是Python2.7不愿因为安装这个升级python版本，毕竟是几个电脑里唯一一个2.x的版本，希望可以保留。<br>2）使用docker安装<br>参考：<br><a href="https://blog.csdn.net/qq_35624642/article/details/82910641" target="_blank" rel="noopener">https://blog.csdn.net/qq_35624642/article/details/82910641</a><br>报错：<br><img src="https://img-blog.csdnimg.cn/20190322173316121.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>于是试图更改用户名和用户组，查阅各种资料，mac操作用户和用户组跟linux不一样，使用dscl命令<a href="https://www.4455q.com/tech/mac-dscl-user-group-create-delete-append.html" target="_blank" rel="noopener">https://www.4455q.com/tech/mac-dscl-user-group-create-delete-append.html</a><br>查到用户名和用户组id后，使用后：<br><img src="https://img-blog.csdnimg.cn/20190322173457617.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>查看版本和安装路径<br>import tensorflow as tf</p>
-<p>tf.<strong>version</strong></p>
-<p>查询tensorflow安装路径为:</p>
-<p>tf.<strong>path</strong></p>
-<hr>
-<p>docker打开容器运行tensorflow镜像：<br>    <strong>docker run –name xiaolei-tensortflow -it -p 8888:8888 -v ~/tensorflow:/notebooks/data  tensorflow/tensorflow</strong></p>
-<p>docker run 运行镜像，<br>–name 为容器创建别名，<br>-it 保留命令行运行(之后可以输入命令)<br>-p 8888:8888 将本地的8888端口 <a href="http://localhost:8888/" target="_blank" rel="noopener">http://localhost:8888/</a> 映射（对应前面的端口），<br>-v <del>/tensorflow:/notebooks/data 将本地的</del>/tensorflow文件夹挂载到新建容器的/notebooks/data下（这样可是实现本地文件和docker文件互通）<br>tensorflow/tensorflow 为指定的镜像，默认标签为latest（即tensorflow/tensorflow:latest）</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/python读取文件的几种方式/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/24/python读取文件的几种方式/" itemprop="url">python读取文件的几种方式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T15:30:42+08:00">
-                2019-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.python读取文件的几种方式</p>
-<p><strong>read_csv 从文件，url，文件型对象中加载带分隔符的数据。默认分隔符为逗号<br>read_table 从文件，url，文件型对象中加载带分隔符的数据。默认分隔符为制表符（“\t”）<br>read_fwf 读取定宽列格式数据（也就是没有分隔符）<br>read_cliboard 读取剪切板中的数据，可以看做read_table的剪切板。在将网页转换为表格时很有用<br>np.loadtxt()用于从文本加载数据。常用：loadtxt(fname,  delimiter=None)</strong></p>
-<p>2.pandas.read_csv参数整理</p>
-<p>读取CSV（逗号分割）文件到DataFrame<br>也支持文件的部分导入和选择迭代<br>更多帮助参见：<a href="http://pandas.pydata.org/pandas-docs/stable/io.html" target="_blank" rel="noopener">http://pandas.pydata.org/pandas-docs/stable/io.html</a><br>参数：<br>filepath_or_buffer : str，pathlib。str, pathlib.Path, py._path.local.LocalPath or any object with a read() method (such as a file handle or StringIO)<br>可以是URL，可用URL类型包括：http, ftp, s3和文件。对于多文件正在准备中<br>本地文件读取实例：://localhost/path/to/table.csv</p>
-<p>sep : str, default ‘,’<br>指定分隔符。如果不指定参数，则会尝试使用逗号分隔。分隔符长于一个字符并且不是‘\s+’,将使用python的语法分析器。并且忽略数据中的逗号。正则表达式例子：’\r\t’</p>
-<p>delimiter : str, default None<br>定界符，备选分隔符（如果指定该参数，则sep参数失效）</p>
-<p>delim_whitespace : boolean, default False.<br>指定空格(例如’ ‘或者’ ‘)是否作为分隔符使用，等效于设定sep=’\s+’。如果这个参数设定为Ture那么delimiter 参数失效。<br>在新版本0.18.1支持</p>
-<p>header : int or list of ints, default ‘infer’<br>指定行数用来作为列名，数据开始行数。如果文件中没有列名，则默认为0，否则设置为None。如果明确设定header=0 就会替换掉原来存在列名。header参数可以是一个list例如：[0,1,3]，这个list表示将文件中的这些行作为列标题（意味着每一列有多个标题），介于中间的行将被忽略掉（例如本例中的2；本例中的数据1,2,4行将被作为多级标题出现，第3行数据将被丢弃，dataframe的数据从第5行开始。）。<br>注意：如果skip_blank_lines=True 那么header参数忽略注释行和空行，所以header=0表示第一行数据而不是文件的第一行。</p>
-<p>names : array-like, default None<br>用于结果的列名列表，如果数据文件中没有列标题行，就需要执行header=None。默认列表中不能出现重复，除非设定参数mangle_dupe_cols=True。</p>
-<p>index_col : int or sequence or False, default None<br>用作行索引的列编号或者列名，如果给定一个序列则有多个行索引。<br>如果文件不规则，行尾有分隔符，则可以设定index_col=False 来是的pandas不适用第一列作为行索引。</p>
-<p>usecols : array-like, default None<br>返回一个数据子集，该列表中的值必须可以对应到文件中的位置（数字可以对应到指定的列）或者是字符传为文件中的列名。例如：usecols有效参数可能是 [0,1,2]或者是 [‘foo’, ‘bar’, ‘baz’]。使用这个参数可以加快加载速度并降低内存消耗。</p>
-<p>as_recarray : boolean, default False<br>不赞成使用：该参数会在未来版本移除。请使用pd.read_csv(…).to_records()替代。<br>返回一个Numpy的recarray来替代DataFrame。如果该参数设定为True。将会优先squeeze参数使用。并且行索引将不再可用，索引列也将被忽略。</p>
-<p>squeeze : boolean, default False<br>如果文件值包含一列，则返回一个Series</p>
-<p>prefix : str, default None<br>在没有列标题时，给列添加前缀。例如：添加‘X’ 成为 X0, X1, …</p>
-<p>mangle_dupe_cols : boolean, default True<br>重复的列，将‘X’…’X’表示为‘X.0’…’X.N’。如果设定为false则会将所有重名列覆盖。</p>
-<p>dtype : Type name or dict of column -&gt; type, default None<br>每列数据的数据类型。例如 {‘a’: np.float64, ‘b’: np.int32}</p>
-<p>engine : {‘c’, ‘python’}, optional<br>Parser engine to use. The C engine is faster while the python engine is currently more feature-complete.<br>使用的分析引擎。可以选择C或者是python。C引擎快但是Python引擎功能更加完备。</p>
-<p>converters : dict, default None<br>列转换函数的字典。key可以是列名或者列的序号。</p>
-<p>true_values : list, default None<br>Values to consider as True</p>
-<p>false_values : list, default None<br>Values to consider as False</p>
-<p>skipinitialspace : boolean, default False<br>忽略分隔符后的空白（默认为False，即不忽略）.</p>
-<p>skiprows : list-like or integer, default None<br>需要忽略的行数（从文件开始处算起），或需要跳过的行号列表（从0开始）。</p>
-<p>skipfooter : int, default 0<br>从文件尾部开始忽略。 (c引擎不支持)</p>
-<p>skip_footer : int, default 0<br>不推荐使用：建议使用skipfooter ，功能一样。</p>
-<p>nrows : int, default None<br>需要读取的行数（从文件头开始算起）。</p>
-<p>na_values : scalar, str, list-like, or dict, default None<br>一组用于替换NA/NaN的值。如果传参，需要制定特定列的空值。默认为‘1.#IND’, ‘1.#QNAN’, ‘N/A’, ‘NA’, ‘NULL’, ‘NaN’, ‘nan’`.</p>
-<p>keep_default_na : bool, default True<br>如果指定na_values参数，并且keep_default_na=False，那么默认的NaN将被覆盖，否则添加。</p>
-<p>na_filter : boolean, default True<br>是否检查丢失值（空字符串或者是空值）。对于大文件来说数据集中没有空值，设定na_filter=False可以提升读取速度。</p>
-<p>verbose : boolean, default False<br>是否打印各种解析器的输出信息，例如：“非数值列中缺失值的数量”等。</p>
-<p>skip_blank_lines : boolean, default True<br>如果为True，则跳过空行；否则记为NaN。</p>
-<p>parse_dates : boolean or list of ints or names or list of lists or dict, default False<br>boolean. True -&gt; 解析索引<br>list of ints or names. e.g. If [1, 2, 3] -&gt; 解析1,2,3列的值作为独立的日期列；<br>list of lists. e.g. If [[1, 3]] -&gt; 合并1,3列作为一个日期列使用<br>dict, e.g. {‘foo’ : [1, 3]} -&gt; 将1,3列合并，并给合并后的列起名为”foo”</p>
-<p>infer_datetime_format : boolean, default False<br>如果设定为True并且parse_dates 可用，那么pandas将尝试转换为日期类型，如果可以转换，转换方法并解析。在某些情况下会快5~10倍。</p>
-<p>keep_date_col : boolean, default False<br>如果连接多列解析日期，则保持参与连接的列。默认为False。</p>
-<p>date_parser : function, default None<br>用于解析日期的函数，默认使用dateutil.parser.parser来做转换。Pandas尝试使用三种不同的方式解析，如果遇到问题则使用下一种方式。<br>1.使用一个或者多个arrays（由parse_dates指定）作为参数；<br>2.连接指定多列字符串作为一个列作为参数；<br>3.每行调用一次date_parser函数来解析一个或者多个字符串（由parse_dates指定）作为参数。</p>
-<p>dayfirst : boolean, default False<br>DD/MM格式的日期类型</p>
-<p>iterator : boolean, default False<br>返回一个TextFileReader 对象，以便逐块处理文件。</p>
-<p>chunksize : int, default None<br>文件块的大小， See IO Tools docs for more informationon iterator and chunksize.</p>
-<p>compression : {‘infer’, ‘gzip’, ‘bz2’, ‘zip’, ‘xz’, None}, default ‘infer’<br>直接使用磁盘上的压缩文件。如果使用infer参数，则使用 gzip, bz2, zip或者解压文件名中以‘.gz’, ‘.bz2’, ‘.zip’, or ‘xz’这些为后缀的文件，否则不解压。如果使用zip，那么ZIP包中国必须只包含一个文件。设置为None则不解压。<br>新版本0.18.1版本支持zip和xz解压</p>
-<p>thousands : str, default None<br>千分位分割符，如“，”或者“.”</p>
-<p>decimal : str, default ‘.’<br>字符中的小数点 (例如：欧洲数据使用’，‘).</p>
-<p>float_precision : string, default None<br>Specifies which converter the C engine should use for floating-point values. The options are None for the ordinary converter, high for the high-precision converter, and round_trip for the round-trip converter.<br>指定</p>
-<p>lineterminator : str (length 1), default None<br>行分割符，只在C解析器下使用。</p>
-<p>quotechar : str (length 1), optional<br>引号，用作标识开始和解释的字符，引号内的分割符将被忽略。</p>
-<p>quoting : int or csv.QUOTE_* instance, default 0<br>控制csv中的引号常量。可选 QUOTE_MINIMAL (0), QUOTE_ALL (1), QUOTE_NONNUMERIC (2) or QUOTE_NONE (3)</p>
-<p>doublequote : boolean, default True<br>双引号，当单引号已经被定义，并且quoting 参数不是QUOTE_NONE的时候，使用双引号表示引号内的元素作为一个元素使用。</p>
-<p>escapechar : str (length 1), default None<br>当quoting 为QUOTE_NONE时，指定一个字符使的不受分隔符限值。</p>
-<p>comment : str, default None<br>标识着多余的行不被解析。如果该字符出现在行首，这一行将被全部忽略。这个参数只能是一个字符，空行（就像skip_blank_lines=True）注释行被header和skiprows忽略一样。例如如果指定comment=’#’ 解析‘#empty\na,b,c\n1,2,3’ 以header=0 那么返回结果将是以’a,b,c’作为header。</p>
-<p>encoding : str, default None<br>指定字符集类型，通常指定为’utf-8’. List of Python standard encodings</p>
-<p>dialect : str or csv.Dialect instance, default None<br>如果没有指定特定的语言，如果sep大于一个字符则忽略。具体查看csv.Dialect 文档</p>
-<p>tupleize_cols : boolean, default False<br>Leave a list of tuples on columns as is (default is to convert to a Multi Index on the columns)</p>
-<p>error_bad_lines : boolean, default True<br>如果一行包含太多的列，那么默认不会返回DataFrame ，如果设置成false，那么会将改行剔除（只能在C解析器下使用）。</p>
-<p>warn_bad_lines : boolean, default True<br>如果error_bad_lines =False，并且warn_bad_lines =True 那么所有的“bad lines”将会被输出（只能在C解析器下使用）。</p>
-<p>low_memory : boolean, default True<br>分块加载到内存，再低内存消耗中解析。但是可能出现类型混淆。确保类型不被混淆需要设置为False。或者使用dtype 参数指定类型。注意使用chunksize 或者iterator 参数分块读入会将整个文件读入到一个Dataframe，而忽略类型（只能在C解析器中有效）</p>
-<p>buffer_lines : int, default None<br>不推荐使用，这个参数将会在未来版本移除，因为他的值在解析器中不推荐使用</p>
-<p>compact_ints : boolean, default False<br>不推荐使用，这个参数将会在未来版本移除<br>如果设置compact_ints=True ，那么任何有整数类型构成的列将被按照最小的整数类型存储，是否有符号将取决于use_unsigned 参数</p>
-<p>use_unsigned : boolean, default False<br>不推荐使用：这个参数将会在未来版本移除<br>如果整数列被压缩(i.e. compact_ints=True)，指定被压缩的列是有符号还是无符号的。<br>memory_map : boolean, default False<br>如果使用的文件在内存内，那么直接map文件使用。使用这种方式可以避免文件再次进行IO操作。</p>
-<p>参考博文：<br><a href="https://www.cnblogs.com/datablog/p/6127000.html" target="_blank" rel="noopener">https://www.cnblogs.com/datablog/p/6127000.html</a><br><a href="https://www.cnblogs.com/heitaoq/p/7994842.html" target="_blank" rel="noopener">https://www.cnblogs.com/heitaoq/p/7994842.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/使用nc命令传输数据/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/24/使用nc命令传输数据/" itemprop="url">使用nc命令传输数据</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T15:30:42+08:00">
-                2019-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>原文：<a href="https://www.cnblogs.com/nmap/p/6148306.html" target="_blank" rel="noopener">https://www.cnblogs.com/nmap/p/6148306.html</a><br>    nc是netcat的简写，有着网络界的瑞士军刀美誉。因为它短小精悍、功能实用，被设计为一个简单、可靠的网络工具</p>
-<h2 id="使用ncp命令传送数据"><a href="#使用ncp命令传送数据" class="headerlink" title="使用ncp命令传送数据"></a>使用ncp命令传送数据</h2><p>需注意操作次序，receiver先侦听端口，sender向receiver所在机器的该端口发送数据。<br>步骤一：在接收端B侦听端口数据，并将数据写到file里<br>nc -l port &gt;file<br><img src="https://img-blog.csdnimg.cn/20190128143512804.png" alt="在接收端侦听端口数据，并将数据写到file里"><br>步骤二：在发送端A往接收端B的指定端口发送数据，把文件发送过去<br>nc ip port &lt; somefile<br>nc 10.0.1.162 9995 &lt; somefile<br><img src="https://img-blog.csdnimg.cn/20190128143444169.png" alt="在这里插入图片描述"></p>
-<h2 id="安装nc"><a href="#安装nc" class="headerlink" title="安装nc"></a>安装nc</h2><p>1、先将已安装的nc删除</p>
-<p>yum erase nc</p>
-<p>2.下载较低版本的nc的.rpm文件</p>
-<pre><code>wget   http://vault.centos.org/6.6/os/x86_64/Packages/nc-1.84-22.el6.x86_64.rpm</code></pre><p>3.安装.rpm文件</p>
-<p>rpm   -iUv    nc-1.84-22.el6.x86_64.rpm</p>
-<p>原文：<a href="https://blog.csdn.net/yctccg/article/details/52218055" target="_blank" rel="noopener">https://blog.csdn.net/yctccg/article/details/52218055</a> </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1744,7 +1807,7 @@ qps，如果是对一个页面请求一次，形成一个tps，但一次页面�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">116</span>
+                  <span class="site-state-item-count">119</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

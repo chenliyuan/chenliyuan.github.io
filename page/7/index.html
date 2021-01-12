@@ -261,6 +261,559 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/RT本地环境配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/29/RT本地环境配置/" itemprop="url">Robot Framework环境配置和部署</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T21:16:20+08:00">
+                2020-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="安装谷歌浏览器"><a href="#安装谷歌浏览器" class="headerlink" title="安装谷歌浏览器"></a>安装谷歌浏览器</h5><pre><code>在win上安装：现在百度找个可用的chrome包都很难，最后干脆下载了个软件管理，瞬间安装好了。。。
+
+不过要想找历史版本就得海淘碰运气了，本来下载程序依赖79，但是后来79貌似不行了，一直报错，一段时间后还是又升级回了最新80版本</code></pre><ul>
+<li><p>安装chromedriver</p>
+<p><a href="http://chromedriver.chromium.org/downloads" target="_blank" rel="noopener">http://chromedriver.chromium.org/downloads</a><br>或
+<a href="http://chromedriver.storage.googleapis.com/index.html" target="_blank" rel="noopener">http://chromedriver.storage.googleapis.com/index.html</a></p>
+<p>下载的driver的版本需要和浏览器的版本匹配，解压后放到本机,将文件路径添加至PATH中</p>
+<ol>
+<li><p>将下载的可执行文件移到/usr/local/bin下</p>
+<p>sudo mv chromedriver /usr/local/bin/chromedriver</p>
+</li>
+<li><p>: 修改文件权限</p>
+<p>sudo chmod u+x,o+x /usr/local/bin/chromedriver</p>
+</li>
+<li><p>检查是否安装成功:</p>
+<p> chromedriver –version</p>
+</li>
+</ol>
+</li>
+</ul>
+<h5 id="安装本地运行环境依赖库"><a href="#安装本地运行环境依赖库" class="headerlink" title="安装本地运行环境依赖库"></a>安装本地运行环境依赖库</h5><p>  如Python版本：python3.6</p>
+<pre><code>requests==2.22.0
+robotframework==3.1.2
+robotframework-ride==1.7.3.1
+robotframework-seleniumlibrary==3.3.1
+selenium==3.141.0
+xlrd==1.2.0
+Pillow==6.2.1
+
+快速生成requirement.txt的安装文件
+pip freeze &gt; requirements.txt
+安装所需要的文件
+pip install -r requirement.txt</code></pre><h5 id="安装配置IDE–推荐pycharm"><a href="#安装配置IDE–推荐pycharm" class="headerlink" title="安装配置IDE–推荐pycharm"></a>安装配置IDE–推荐pycharm</h5><ul>
+<li><p>安装插件 IntelliBot 、IntelliBot @SeleniumLibrary Patched、Robot Framework support </p>
+</li>
+<li><p>Preferences-Editor-File Types-Robot Feature下添加*.robot类型</p>
+</li>
+<li><p>Tools-External Tools 配置Tool Setting，其中Arguments配置如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--loglevel TRACE -d /Users/liyuan/Documents/Log     $FileName$</span><br><span class="line"></span><br><span class="line">-d /Users/liyuan/Documents/Log --loglevel TRACE -t &quot;$SelectedText$&quot; ./</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-77.png" alt="upload successful"></p>
+<p><img src="/images/pasted-78.png" alt="upload successful"></p>
+</li>
+</ul>
+<h5 id="运行Case"><a href="#运行Case" class="headerlink" title="运行Case"></a>运行Case</h5><p>使用<code>robot</code>命令，jenkins可结合<code>rebot</code>使用</p>
+<pre><code>robot --output original.xml tests                          # first execute all tests
+robot --rerunfailed original.xml --output rerun.xml tests  # then re-execute failing
+rebot --merge original.xml rerun.xml                       # finally merge results</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/RT使用pycharm点击引用失效问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/29/RT使用pycharm点击引用失效问题/" itemprop="url">RT使用pycharm点击引用失效问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T19:09:50+08:00">
+                2020-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="pycharm引用库文件失效问题"><a href="#pycharm引用库文件失效问题" class="headerlink" title="pycharm引用库文件失效问题"></a>pycharm引用库文件失效问题</h5><p>点击引用的库文件应用链接无效，导致输入相应库方法无提示，有以下几种检查办法：</p>
+<ul>
+<li><p>1) 检查以下插件是否已安装</p>
+<p>  IntelliBot、IntelliBot@SeleniumLibrary Patched 、Robot Framework support</p>
+</li>
+<li><p>2) 检查IDE设置</p>
+<p>  如pycharm检查Project Interpreter编译器是否错选，或者没选</p>
+</li>
+<li><p>3) 检查库文件引用是否重复</p>
+</li>
+</ul>
+<p>如通过集成已经继承了的库文件，就不要再引用一遍了</p>
+<ul>
+<li><p>4) 更换intelliBot插件</p>
+<p>出错也可能是因为安装的插件有问题，下载地址：<a href="https://github.com/youwi/intellibot/blob/master/intellibot.jar" target="_blank" rel="noopener">https://github.com/youwi/intellibot/blob/master/intellibot.jar</a><br><a href="https://blog.csdn.net/qq_33783424/article/details/80783092" target="_blank" rel="noopener">https://blog.csdn.net/qq_33783424/article/details/80783092</a></p>
+</li>
+<li><p>5) 检查代码格式</p>
+<p>Keywords 前最好留有空格；</p>
+<p>本次未提交文件提交上去；</p>
+</li>
+<li><p>6) 清零</p>
+<p>  如果以上都无法解决，删除本地代码，重新拉取； 重启电脑试试</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/RobotFramework/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/29/RobotFramework/" itemprop="url">RT使用语法和技巧</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T11:27:02+08:00">
+                2020-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>官方文档：<a href="https://robotframework.org/#/documentation" target="_blank" rel="noopener">https://robotframework.org/#/documentation</a></p>
+<h6 id="架构-amp-变量"><a href="#架构-amp-变量" class="headerlink" title="架构&amp;变量"></a>架构&amp;变量</h6><p>参考： <a href="https://www.jianshu.com/p/dc9dea0741d5" target="_blank" rel="noopener">https://www.jianshu.com/p/dc9dea0741d5</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">*** Variables ***</span><br><span class="line"># 创建scalar变量</span><br><span class="line">$&#123;NAME&#125;             Robot Framework</span><br><span class="line">$&#123;VERSION&#125;         3.0</span><br><span class="line">$&#123;ROBOT&#125;            $&#123;NAME&#125;  $&#123;VERSION&#125;</span><br><span class="line">$&#123;NULL_VAR&#125;         # 空字符串被赋值给了$&#123;NULL_VAR&#125;</span><br><span class="line">$&#123;EXAMPLE&#125;          This value is joined together with a space</span><br><span class="line">...                 1122333333333333333333333333333333</span><br><span class="line">$&#123;LONG_WORDS&#125;       1111111111111111</span><br><span class="line"># 创建列表变量</span><br><span class="line">@&#123;list_data&#125;        1    2    3    4    5</span><br><span class="line">@&#123;list_data2&#125;       a    b    c    d    e    f</span><br><span class="line">#创建字典变量</span><br><span class="line">&amp;&#123;dict_data&#125;        a=b    e=w   y=1    asd=123</span><br><span class="line">&amp;&#123;dict_data1&#125;       a=1    b=2    c=3    d=4</span><br><span class="line">...                 r=7    u=90    # 列表元素太长时使用... 分割</span><br><span class="line"></span><br><span class="line">*** Test Cases ***</span><br><span class="line">test_01</span><br><span class="line">    log    $&#123;NAME&#125;</span><br><span class="line">    log    $&#123;VERSION&#125;</span><br><span class="line">    log   @&#123;list_data&#125; [0]</span><br><span class="line">    log many    &amp;&#123;dict_data&#125;[a]    &amp;&#123;dict_data1&#125;[a]</span><br><span class="line">    log    &amp;&#123;dict_data&#125;[a]</span><br></pre></td></tr></table></figure>
+
+<h6 id="全局变量怎么用"><a href="#全局变量怎么用" class="headerlink" title="全局变量怎么用"></a>全局变量怎么用</h6><p>问题：想执行一个文件夹下所有的suite，但是需要通过suite1的返回值供其他suite使用</p>
+<ol>
+<li><p>定义变量后，直接使用下面接收函数返回值，然后全局赋值？No</p>
+<pre><code>${download_dir}    校验已下载模板到本地
+set global variable    ${download_dir}</code></pre></li>
+<li><p>差点放弃的时候，发现使用set variable赋值替代接收的函数会有效果</p>
+</li>
+</ol>
+<h6 id="数字运算"><a href="#数字运算" class="headerlink" title="数字运算"></a>数字运算</h6><p>自增运算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">test_05</span><br><span class="line">    :FOR   $&#123;i&#125;    IN RANGE     4</span><br><span class="line">    \    $&#123;i&#125;    run keyword if   $&#123;i&#125;&gt;2   evaluate    $&#123;i&#125;-1</span><br></pre></td></tr></table></figure>
+
+<p>数字运算不使用evaluate<br>如 ${i+1}</p>
+<p> range范围同python 比如range 4,则i 取值为0，1，2，3</p>
+<h6 id="条件语句"><a href="#条件语句" class="headerlink" title="条件语句"></a>条件语句</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">*** Test Cases ***</span><br><span class="line"></span><br><span class="line">test case8</span><br><span class="line">    $&#123;a&#125;    Set variable    59</span><br><span class="line">    run keyword if    $&#123;a&#125;&gt;=90    log    优秀</span><br><span class="line">    ...    ELSE IF    $&#123;a&#125;&gt;=70    log    良好</span><br><span class="line">    ...    ELSE IF    $&#123;a&#125;&gt;=60    log    及格</span><br><span class="line">    ...    ELSE    log    不及格</span><br></pre></td></tr></table></figure>
+
+<p>条件判断赋值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;ele&#125;    run keyword if    $&#123;i&#125;&lt;$&#123;pagescount&#125;        Get WebElement    $&#123;ele_path&#125;</span><br></pre></td></tr></table></figure>
+
+<p>一个条件多个执行,注意AND大写</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">run keyword if    $&#123;variable&#125;   run keywords  点击按钮    $&#123;homepage_ele&#125;[vacationmode_on]    AND    获取文本    $&#123;homepage_ele&#125;</span><br></pre></td></tr></table></figure>
+
+<p>条件判断字符串不存在的时候,字符串变量必须外边必须加引号用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">\    run keyword if    &apos;$&#123;temp&#125;&apos;!=&apos;&apos;   exit for loop</span><br></pre></td></tr></table></figure>
+
+<p>可以使用and和or连接。连接两个条件经常报错，可能是空格的问题，and两边必须保持一个空格</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Run Keyword If   &apos;$&#123;B_name&#125;&apos;==&apos;$&#123;B&#125;&apos; and &apos;$&#123;C&#125;&apos;== &apos;0&apos;</span><br></pre></td></tr></table></figure>
+
+<p>数字使用或操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;0|0|0|1|0&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="For循环"><a href="#For循环" class="headerlink" title="For循环"></a>For循环</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test case9</span><br><span class="line">:FOR    $&#123;i&#125;    IN RANGE     1      $&#123;trsize&#125;</span><br><span class="line">\    $&#123;ele&#125;    Catenate    SEPARATOR=$&#123;i+1&#125;   css=tbody tr:nth-of-type(    )&gt;.transaction-escrow-status</span><br><span class="line">\    log    $&#123;ele&#125;</span><br></pre></td></tr></table></figure>
+
+<p>若for循环体中嵌套了条件判断则else前无需加\，否则报错</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\    Run Keyword If    &apos;$&#123;get_value&#125;&apos;!=&apos;register&apos;    获取文本校验    $&#123;ele&#125;    $&#123;get_value&#125;</span><br><span class="line">     ...    ELSE    获取文本校验  $&#123;ele_register&#125;    Register/Login</span><br></pre></td></tr></table></figure>
+
+<h6 id="字符串使用"><a href="#字符串使用" class="headerlink" title="字符串使用"></a>字符串使用</h6><ul>
+<li><p>三目运算</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;seller&#125;    set variable if    $&#123;seller&#125;    $&#123;seller&#125;    $&#123;test_data&#125;[seller][account]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>移除部分字符串</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;t&#125;    remove string     ShopeePay.ps_reports_wallet_all.20191125_20191225.csv    .csv</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;after&#125;=     remove string     $&#123;test&#125;       ,     $&#123;SPACE&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>字符串连接 Catenate（与变量连接直接放一起也可以）<br><img src="/images/pasted-79.png" alt="upload successful"></li>
+</ul>
+<p>字符串转换成数字，可直接使用${${numstr}}或者int(${numstr})</p>
+<ul>
+<li>字符串格式化</li>
+</ul>
+<h6 id="列表操作"><a href="#列表操作" class="headerlink" title="列表操作"></a>列表操作</h6><p>所有列表操作举例：cnblogs.com/ronyjay/p/11598107.html </p>
+<p>对列表进行遍历的时候IN后面需用@</p>
+<p>如果通过“@{}”去定义列表的话，可以通过“log many”关键字进行打印 ,当然也可以选择不这么做默认还是用$<br>列表切片</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;expectedlist&#125;    get slice from list     $&#123;expected&#125;    1</span><br></pre></td></tr></table></figure>
+
+<p>列表元素是整形</p>
+<pre><code>| ${ints} =   | Create List | ${1} | ${2} | ${3} |</code></pre><p>列表列举定义的时候用@,传参的时候需要用$</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">*** Variables ***</span><br><span class="line">@&#123;sales_info&#125;         Sales Info     價格及庫存     mass_update_sales</span><br><span class="line"></span><br><span class="line">*** Test Cases ***</span><br><span class="line">test_01</span><br><span class="line">    我是关键词    $&#123;sales_info&#125;</span><br><span class="line">    </span><br><span class="line">*** keywords ***</span><br><span class="line">我是关键词</span><br><span class="line">    [Arguments]    $&#123;x&#125;</span><br><span class="line">    log   $&#123;x&#125;[1]</span><br></pre></td></tr></table></figure>
+
+<p>若元组传参,这时候必须用@了，不然按照列表的方式认为只能传一个列表变量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">test_01</span><br><span class="line">    我是关键词   1   2   3    4</span><br><span class="line"></span><br><span class="line">*** keywords ***</span><br><span class="line">我是关键词</span><br><span class="line">    [Arguments]    @&#123;x&#125;</span><br><span class="line">    log   @&#123;x&#125;[1]</span><br></pre></td></tr></table></figure>
+
+<p>【总结】在RobotFramework中，标量指的是${}，链表指的是@{}，大括号中间的变量名如果是一样的，那么就是一个变量。区别是标量-&gt;整个值就会是一个整体，链表-&gt;代表多个值</p>
+<h6 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h6><p>需要双杠</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;rt&#125;=    Get Regexp Matches        $&#123;test&#125;     \\$\\d,\\d+</span><br><span class="line">should match regexp    $&#123;get_amount&#125;    \\$(\\d)*,?(\\d)+</span><br></pre></td></tr></table></figure>
+
+<p>模糊匹配</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">File Should Exist    /Users/liyuanchen/Downloads/weekly_report*</span><br></pre></td></tr></table></figure>
+
+<h6 id="其他关键字"><a href="#其他关键字" class="headerlink" title="其他关键字"></a>其他关键字</h6><ul>
+<li><strong>Get WebElement 和Get WebElements的区别</strong>：前者会中断执行，后者返回空。可使用来判断元素是否存在</li>
+</ul>
+<p><img src="/images/pasted-76.png" alt="upload successful"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;temp&#125;    GetWebElements    css=.username</span><br><span class="line">run keyword if  $&#123;temp&#125;   click button   css=.username</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>对输入框执行ENTER操作可使用<strong>press keys</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">press keys   css=.shopee-input__input    RETURN</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成指定数据范围的随机数字(包括左边，也包括右边)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;pagenum&#125;    Evaluate    random.randint(1, $&#123;pagescount+1&#125;)    random</span><br><span class="line">log    $&#123;pagenum&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>robot中，断言有时会失败，但不想影响后面语句的执行，这时候要用到</p>
+<p>  Run Keyword And Continue On Failure</p>
+</li>
+<li><p>计算可使用Evaluate关键字</p>
+<p>  ${rt}    Evaluate    ${num}+1<br>  或${i+1} </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;if_visible_download&#125;    Run_keyword_and_return_status    Element_Should_Contain    Xpath=//button[@class=&apos;shopee-button shopee-button--primary shopee-button--normal&apos;]    Download</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>其他：</p>
+<p>  run keyword and return status</p>
+<p>  Run Keyword And Ignore Error  handle alert<br>#可接收浏览器alert默认接收，即选择OK</p>
+</li>
+<li><p>不支持的操作</p>
+<p> 循环嵌套、条件判断和循环直接组合(可通过定义关键字调用)</p>
+</li>
+</ul>
+<h5 id="为解决有些操作失败重新执行："><a href="#为解决有些操作失败重新执行：" class="headerlink" title="为解决有些操作失败重新执行："></a>为解决有些操作失败重新执行：</h5><h6 id="1-添加关键字"><a href="#1-添加关键字" class="headerlink" title="1.添加关键字"></a>1.添加关键字</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">若找不到元素则重新执行</span><br><span class="line">    [Arguments]    $&#123;locator&#125;    $&#123;keyword&#125;</span><br><span class="line">    $&#123;ele&#125;    get webelements    $&#123;locator&#125;</span><br><span class="line">    run keyword unless     $&#123;ele&#125;     $&#123;keyword&#125;</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-case后添加teardown"><a href="#2-case后添加teardown" class="headerlink" title="2.case后添加teardown"></a>2.case后添加teardown</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">03BlanceAccountCB</span><br><span class="line">    [Documentation]  CB seller进入balance页面，能够展示cb卡片信息,同Bank页面</span><br><span class="line">    [Tags]  all</span><br><span class="line">    [Setup]    获取配置数据</span><br><span class="line">    登录SellerCenter    seller=cbseller</span><br><span class="line">    进入cb_balance模块</span><br><span class="line">    comment  cb账号进如balance校验cb卡片信息</span><br><span class="line">    校验CB卡片信息</span><br><span class="line">    [Teardown]    run keyword if test failed    校验CB卡片信息</span><br></pre></td></tr></table></figure>
+
+<p>也可以放在setting中声明，调用关键字如teststop</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">*** Settings ***</span><br><span class="line">Test Teardown     teststop</span><br></pre></td></tr></table></figure>
+
+<p>   3.登陆的时候经常不定时出现某些弹窗影响下一步的case？封装关键字轮询查找弹窗<br>登陆弹窗轮询查找</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[Arguments]    $&#123;timeout&#125;=5</span><br><span class="line">:FOR    $&#123;i&#125;    IN RANGE    $&#123;timeout&#125;</span><br><span class="line">\   $&#123;servererror&#125;    弹出框存在则点击    $&#123;homepage_ele&#125;[alert_servererror]     $&#123;timeout&#125;</span><br><span class="line">\   $&#123;version&#125;    弹出框存在则点击    $&#123;login_ele&#125;[version]     $&#123;timeout&#125;</span><br><span class="line">\   $&#123;navigation&#125;    弹出框存在则点击    $&#123;login_ele&#125;[navigation]     $&#123;timeout&#125;</span><br><span class="line">\   $&#123;mainaccount_tips&#125;    弹出框存在则点击    $&#123;login_ele&#125;[mainaccount_tips]     $&#123;timeout&#125;</span><br><span class="line">\   $&#123;mainaccount_tips&#125;    弹出框存在则点击    $&#123;login_ele&#125;[mainaccount_tips]     $&#123;timeout&#125;</span><br><span class="line">\   弹出框存在则点击    $&#123;homepage_ele&#125;[alert_servererror]     $&#123;timeout&#125;</span><br><span class="line">\   exit for loop if   $&#123;$&#123;servererror&#125;|$&#123;version&#125;|$&#123;navigation&#125;|$&#123;mainaccount_tips&#125;|$&#123;mainaccount_tips&#125;&#125;==0</span><br></pre></td></tr></table></figure>
+
+<h5 id="窗口问题："><a href="#窗口问题：" class="headerlink" title="窗口问题："></a>窗口问题：</h5><p>当有两个窗口如果选择新打开的窗口则用select window   NEW   老窗口换成MAIN，但是如果是三个窗口取中间的窗口呢？</p>
+<p>使用Handles解决：</p>
+<p>1、删除第三个窗口<br>2、获取当前Handle,选择最后一个（实践证明，不可用New，若使用可能会认为被关掉的那个才是new，故不生效）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$&#123;handels_bf&#125;    get window handles</span><br><span class="line">close window</span><br><span class="line">$&#123;handels&#125;    get window handles</span><br><span class="line">$&#123;currenthd&#125;    get from list    $&#123;handels&#125;    -1</span><br><span class="line">select window    $&#123;currenthd&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="多个元素校验–使用或判断"><a href="#多个元素校验–使用或判断" class="headerlink" title="多个元素校验–使用或判断"></a>多个元素校验–使用或判断</h4><pre><code>${status1}   run keyword and return status     wait until element is visible    ${homepage_ele}[button_in_market_continue]
+${status2}   run keyword and return status     wait until element is visible  ${homepage_ele}[vari_marketingcentre]
+校验为真  ${status1} or ${status1}</code></pre><p>或</p>
+<pre><code>校验包含任何一个值
+    [Arguments]    ${str}    @{veluelist}
+    run keyword and continue on failure    should contain any    ${str}    @{veluelist}</code></pre><h4 id="定位元素至可见"><a href="#定位元素至可见" class="headerlink" title="定位元素至可见"></a>定位元素至可见</h4><pre><code>execute javascript    document.documentElement.scrollTop=200</code></pre><p>  若是向上滚动，则数值使用负数</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/mac终端快捷键/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1365,504 +1918,6 @@ maxLineGap：同一方向上两条线段判定为一条线段的最大允许间�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/26/http前端/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/26/http前端/" itemprop="url">http前端</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-26T15:25:31+08:00">
-                2019-10-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="http版本："><a href="#http版本：" class="headerlink" title="http版本："></a>http版本：</h5><pre><code>http1.0:需要使用keep-alive建立长连接（因为创建tcp连接经过三次握手有一定的开销）。从1.1开始默认支持长连接。
-http1.1:支持只发送header、断点续传、host域
-http2.0（基于https）:多路复用、header数据压缩、服务器推送
-http强制缓存：只要不过期就要走缓存，缺点是不能及时更新。
-http协商缓存：没有修改返304状态码，否则200响应结果。</code></pre><h5 id="浏览器输入网址到加载完页面发生了什么？"><a href="#浏览器输入网址到加载完页面发生了什么？" class="headerlink" title="浏览器输入网址到加载完页面发生了什么？"></a>浏览器输入网址到加载完页面发生了什么？</h5><pre><code>1、    查找DNS缓存（浏览器缓存、操作系统缓存、host查看域名IP、运营商的DNS服务器缓存）
-2、    DNS域名解析，查找相应IP（过程是从后面往前递归查找）如com-&gt;baidu-&gt;www
-3、    发起TCP3次握手 建立TCP连接
-4、    发送http请求  
-5、    服务端处理请求    MVC分层
-6、    浏览器接收响应，解析html文件请求静态资源（css/js/imge，若服务器返回304说明请求资源没做修改从本地缓存取即可）
-7、    根据http响应渲染前端页面，构建DOM树
-8、    关闭tcp连接（四次挥手手）</code></pre><p>参考：<a href="https://www.cnblogs.com/zgq123456/articles/11641187.html" target="_blank" rel="noopener">https://www.cnblogs.com/zgq123456/articles/11641187.html</a></p>
-<p>【几个问题】：</p>
-<pre><code>1、http新版本请求除非connection:close时会断开TCP，否则在请求完成之前不会断开
-2、一个TCP连接中可以对应几个http请求？多个
-3、一个TCP连接中可以一起发送多个http请求么？
-在http2.0提供了多路复用（Multiplexing）支持此功能。
-4、为什么有的时候刷新页面不需要重新建立SSL连接
- 因为TCP连接维持的时候，SSL自然也会用以前的
-5、浏览器对同一HOST建议TCP连接到数量有没有限制？
-有 chrome最多建议6个TCP连接。不同浏览器限制不同。</code></pre><h5 id="请求报文的格式"><a href="#请求报文的格式" class="headerlink" title="请求报文的格式"></a>请求报文的格式</h5><p>请求行：url、http协议版本、请求方式<br>请求头：<br>Accept<br>Accept-language<br>Accept-Encoding<br>Cache-Control:<br>Cookie<br>Connection:<br>Content-Type:<br>Content-Length:<br>Host:<br>Referer:<br>User-Agent:</p>
-<p>请求体：数据正文(入参)</p>
-<h4 id="请求方法："><a href="#请求方法：" class="headerlink" title="请求方法："></a>请求方法：</h4><p>  GET POST DELETE PUT HEAD</p>
-<pre><code>DELETE:请求服务端删除指定页面
-PUT：使传入数据取代指定的文档内容
-HEAD：类似GET，只是返回内容里只有报头</code></pre><h5 id="状态码："><a href="#状态码：" class="headerlink" title="状态码："></a>状态码：</h5><pre><code>1xx：标识请求已接受，继续处理
-2xx：成功
-3xx：重定向
-4xx：客户端错误
-5xx：服务端错误
-常用几个：
-302:重定向，比如把http请求都转成https
-400：客户端语法错误
-403：服务器拒绝提供服务
-404：请求资源不存在
-500：服务器内部错误</code></pre><h4 id="cookie和session"><a href="#cookie和session" class="headerlink" title="cookie和session"></a>cookie和session</h4><p>cookie相当于用户身份证，session相当于客户表记录</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/23/shell命令总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/23/shell命令总结/" itemprop="url">shell命令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-23T17:18:30+08:00">
-                2019-10-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="shell执行"><a href="#shell执行" class="headerlink" title="shell执行"></a>shell执行</h4><ul>
-<li><p>执行脚本</p>
-<pre><code>./01.sh   需要执行权限  在子shell中执行
-bash 01.sh   不需要执行权限  在子shell中执行
-
-. 01.sh  不需要执行权限  在当前shell中执行
-source 01.sh 不需要执行权限  在当前shell中执行</code></pre></li>
-<li><p>调试脚本</p>
-<pre><code>sh -n 02.sh   验证语法是否有错
-sh -vx 02.sh  查看运行详情</code></pre><p>  若想让代码影响当前shell需要在主shell中执行</p>
-</li>
-<li><p>bg 后台 ，fg 前台</p>
-<p>例如：执行 vi /etc/hosts可以通过ctrl+Z暂停退出，在shell窗口通过fg再返回来</p>
-</li>
-<li><p>cat &lt; /etc/hosts 同 cat  /etc/hosts</p>
-</li>
-<li><p>cat &lt;&lt;EOF 把后面输入的内容给cat作为参数执行</p>
-</li>
-<li><p>cat   &gt;file  &lt;&lt;EOF 将后面输入的内容重定向到file文件中</p>
-</li>
-</ul>
-<h5 id="命令行排序-；-amp"><a href="#命令行排序-；-amp" class="headerlink" title="命令行排序 ；&amp; ||"></a>命令行排序 ；&amp; ||</h5><pre><code>;  无论怎样每条都执行  
-&amp;  上一条为真下条才执行  
-||  上条为假下一条才执行  </code></pre><h4 id="运算总结"><a href="#运算总结" class="headerlink" title="运算总结"></a>运算总结</h4><p>使用let、expr、$(())或$[]进行基本的整数运算，使用bc进行高级的运算，包括小数运算。其中expr命令也能进行整数运算，还能判断参数是否为整数.除此外还有awk</p>
-<pre><code>A=5
-B=6
-C= $[$A+$B]  # 方法 1
-let C=$A+$B     #方法2 :可使用let i++
-C= $(($A+$B)) # 方法 3
-C=`expr $A + $B`   # 方法 4
-其他：
-C=`echo $A+$B | bc` # 方法 5
-awk &apos;BEGIN{print &apos;&quot;$A&quot;&apos;+&apos;&quot;$B&quot;&apos;}&apos;  # 方法 6</code></pre><h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
-<li><p>shell中调用Python程序</p>
-<p>使用相同的标识符比如EOF，其中-为了格式考虑</p>
-<pre><code>#!/usr/bin/bash
-echo &quot;hello shell&quot;
-
-/usr/bin/python &lt;&lt;-EOF
-print(&quot;hello python&quot;)
-EOF</code></pre></li>
-<li><p>变量使用推荐加花括号，如${name}，但定义变量时，变量名不加美元符号！</p>
-</li>
-<li><p>字符串可以用单引号，双引号，也可以不用引号</p>
-</li>
-<li><p>语句中一般不包含分号，空格/tab，以及冒号的标点符号；只在特殊条件下使用。</p>
-<ul>
-<li>分号：只有在代码块都写在一行的时候用分号区分，注意then后面和结束不用分号如if [ “$PS1” ]; then echo test is ok; fi</li>
-</ul>
-<ul>
-<li>冒号：主要用于参数扩展。如echo ${a:-newword}或者{a:=newword}即— word前的“-”可以理解为“没定义，则替换成word”；“+”正相反，可以理解为“有定义，则替换成word”。“?”可以理解为“参数到底定义了没，没定义，把word当错误消息打印出来。”<br>除此获取子字符串可以用${parameter:offset}和${parameter:offset:length}若倒数，则加负号如echo $(var: -5)区别于(var:-5)，后者是没定义则替换成5</li>
-</ul>
-</li>
-<li><p>函数内部使用$n来调用入参</p>
-<pre><code>$0当前脚本名称
-$n 参数名
-$#参数总个数
-$*以一个字符串显示所有参数，与$@同义，前者一个字符串输出，后者N个
-$?上个命令的推出状态或函数的返回值
-$$当前shell进程ID</code></pre></li>
-<li><p>和其他语言不同，调用函数仅使用函数名即可,参数直接空格跟后面，没有括号</p>
-</li>
-<li><p>和其他语言不同，shell语言中0代表true，其他值代表false</p>
-</li>
-<li><p>条件表达式要放在方括号[]之间，并且所有地方都要有空格如[ $a == $b ]<br>==用于数字比较[ $a == $b ] ，=用于字符串比较[ $a = $b]<br>条件表达式中运算符前面都有横杠-</p>
-</li>
-<li><p>f 表示文件(普通)存在<br>条件控制：if 要加then fi 循环控制要加do done</p>
-</li>
-<li><p>引用其他文件： .filename或者source filename</p>
-</li>
-<li><p>字符串运算符：单目-z(长度为0) -n（长度不为0） $（是否为空）</p>
-</li>
-<li><p>命令export作用是使变量可以在子shell中使用，与source类似也有区别。</p>
-</li>
-<li><p>使用nohup command &amp;使程序在后台运行，hohup作用是即使session关闭程序也不中断</p>
-</li>
-<li><p>输入重定向与输出相反，command&lt; filename ，是将本来从键盘获取的输入变成了文件，然后利用command执行该文件</p>
-</li>
-<li><p>追加重定向都是双大于等于号，如&gt;&gt;或&lt;&lt;</p>
-</li>
-<li><p>读取文件read:使用 cat 命令并通过管道将结果直接传送给包含 read 命令的 while 命令。如cat test.txt | while read line<br>大括号的作用：相当于创建了个匿名函数，左括号后必须有空格，右括号前的命令必须有分号。</p>
-</li>
-<li><p>怎样获取文件第k行？ head -k filename|tail -1 其中head/tail -n k与head/tail -k相同<br>或者sed -n ‘kp’ filename</p>
-</li>
-<li><p>egrep除了grep -e的功能外，还可以用扩展表达式egrep “^test|^root” /etc/hosts<br>grep xxx filename  文件中包含xx的行记录</p>
-<pre><code>写程序为用户计算主组数目并显示次数和组名
-
-cat /etc/passwd|cut -d: -f4|sort|uniq -c|while read c g
-do
-{ echo $c; grep :$g: /etc/group|cut -d: -f1;}|xargs -n 2
-done</code></pre></li>
-<li><p>文件描述符0代表标准输入、1代表标准输出、2代表标准错误输出。<br>若错误输出和标准输出都同时重定向到一个位置，使用2&gt;&amp;1如</p>
-<pre><code>ls /usr/share/doc &gt; out.txt 2&gt;&amp;1</code></pre></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/21/web测试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/21/web测试/" itemprop="url">web测试</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T15:11:38+08:00">
-                2019-10-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="web测试与APP测试区别"><a href="#web测试与APP测试区别" class="headerlink" title="web测试与APP测试区别"></a>web测试与APP测试区别</h4><p><img src="%5Cimages%5Cpasted-70.png" alt="upload successful"><br>参照：<a href="https://blog.csdn.net/weixin_34043301/article/details/94216811" target="_blank" rel="noopener">https://blog.csdn.net/weixin_34043301/article/details/94216811</a></p>
-<p>H5与web的不同点（具有的app特性）：</p>
-<pre><code>1、网络：2G、3G以及弱网测试
-2、有横屏竖屏之分
-3、兼容：需兼容不同分辨率/操作系统的手机浏览器
-4、手指滑动流畅度，手机点击焦点是否定位准确
-5、关注交互是否友好，尤其弹层
-6、嵌入手机端与native页有交互
-7、返回功能非手机自带，自己拥有</code></pre><p>H5与APP的不同点（具有的web特性）：</p>
-<pre><code>1、可以在PC端浏览器打开进行功能测试
-2、缓存在浏览器上，需要清理缓存测试
-3、安卓和IOS统一版本，一套代码部署</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1913,7 +1968,7 @@ done</code></pre></li>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">116</span>
+                  <span class="site-state-item-count">119</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
