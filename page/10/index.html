@@ -980,6 +980,8 @@ values()</code></pre><h5 id="返回单个对象"><a href="#返回单个对象" c
     ·如果为 True, 这个字段在表中必须有唯一值</code></pre><h4 id="错误调试"><a href="#错误调试" class="headerlink" title="错误调试"></a>错误调试</h4><ol>
 <li>django.db.utils.IntegrityError: UNIQUE constraint failed: wkbenchapp_content.id…<br>migrate更新表的时候不知道怎么回事总是报这个错，怎么改都不行，最后删除migrations里除了初始化外的所有日志，重新从makemigrations来一遍就顺利的好了。</li>
 </ol>
+<h4 id="QueryDict-对象"><a href="#QueryDict-对象" class="headerlink" title="QueryDict 对象"></a>QueryDict 对象</h4><p>转换成dict</p>
+<pre><code>QueryDict.get(key, default)</code></pre><p><a href="https://www.cnblogs.com/scolia/p/5634591.html" target="_blank" rel="noopener">https://www.cnblogs.com/scolia/p/5634591.html</a></p>
 
           
         

@@ -86,10 +86,12 @@
 <meta property="og:site_name" content="躲不掉的风">
 <meta property="og:description" content="需求：表格上拉加载刷新 尝试单独使用InfiniteScroll 无限滚动 解决，但是一直存在两个问题  每次重复执行3次 第二次上拉时不加载  猜测由于表格特定格式单纯使用InfiniteScroll 受限 【解决】使用123   参考：https://zhuanlan.zhihu.com/p/1149655482. 在加载树形数据懒加载的时候报错 ```if there&amp;apos;s nes">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-07-08T11:04:29.639Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-204.png">
+<meta property="og:updated_time" content="2021-01-19T06:24:56.815Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="elementui使用小记">
 <meta name="twitter:description" content="需求：表格上拉加载刷新 尝试单独使用InfiniteScroll 无限滚动 解决，但是一直存在两个问题  每次重复执行3次 第二次上拉时不加载  猜测由于表格特定格式单纯使用InfiniteScroll 受限 【解决】使用123   参考：https://zhuanlan.zhihu.com/p/1149655482. 在加载树形数据懒加载的时候报错 ```if there&amp;apos;s nes">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-204.png">
 
 
 
@@ -343,6 +345,10 @@
 <p> 原因：原来使用懒加载，table数据中没有children字段，但是现在新增了这个字段。</p>
 <p>因此满足了懒加载的第一种策略：即使我根本没有设置第一项(第一项指的是子元素字段，第二项懒加载的时候使用字段)<br><code>:tree-props=&quot;{children: &#39;children&#39;, hasChildren: &#39;hasChildren&#39;}&quot;&gt;</code></p>
 <p>这样直接加载子项目的时候，发现我子项目里缺少id,因此报如上错</p>
+</li>
+<li><p>表单样式–换行展示变成一行展示</p>
+<p><img src="/images/pasted-204.png" alt="upload successful"></p>
+<p>需要设置label-width的值即可</p>
 </li>
 </ol>
 
