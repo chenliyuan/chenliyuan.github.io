@@ -79,19 +79,19 @@
 
 
 
-<meta name="description" content="参考：https://segmentfault.com/a/1190000020885269 类型： location = expression 精准匹配 location expression 普通匹配 location ^~ expression 普通匹配 location ~ regex 正则匹配（区分大小写） location ~* regex 正则匹配（不区分大小写）">
+<meta name="description" content="参考：https://segmentfault.com/a/1190000020885269 类型： location = expression 精准匹配  location expression 普通匹配      location ^~ expression 普通匹配 location ~ regex 正则匹配（区分大小写） location ~* regex 正则匹配（不区分大小写）  lo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx location匹配优先级">
 <meta property="og:url" content="http://yoursite.com/2021/01/11/nginx-location匹配优先级/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="参考：https://segmentfault.com/a/1190000020885269 类型： location = expression 精准匹配 location expression 普通匹配 location ^~ expression 普通匹配 location ~ regex 正则匹配（区分大小写） location ~* regex 正则匹配（不区分大小写）">
+<meta property="og:description" content="参考：https://segmentfault.com/a/1190000020885269 类型： location = expression 精准匹配  location expression 普通匹配      location ^~ expression 普通匹配 location ~ regex 正则匹配（区分大小写） location ~* regex 正则匹配（不区分大小写）  lo">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/pasted-196.png">
 <meta property="og:image" content="http://yoursite.com/images/pasted-195.png">
-<meta property="og:updated_time" content="2021-01-12T03:12:17.899Z">
+<meta property="og:updated_time" content="2021-01-28T02:34:30.212Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx location匹配优先级">
-<meta name="twitter:description" content="参考：https://segmentfault.com/a/1190000020885269 类型： location = expression 精准匹配 location expression 普通匹配 location ^~ expression 普通匹配 location ~ regex 正则匹配（区分大小写） location ~* regex 正则匹配（不区分大小写）">
+<meta name="twitter:description" content="参考：https://segmentfault.com/a/1190000020885269 类型： location = expression 精准匹配  location expression 普通匹配      location ^~ expression 普通匹配 location ~ regex 正则匹配（区分大小写） location ~* regex 正则匹配（不区分大小写）  lo">
 <meta name="twitter:image" content="http://yoursite.com/images/pasted-196.png">
 
 
@@ -336,11 +336,17 @@
       
         <p>参考：<a href="https://segmentfault.com/a/1190000020885269" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020885269</a></p>
 <p>类型：</p>
-<pre><code>location = expression 精准匹配
-location expression 普通匹配
+<pre><code>location = expression 精准匹配 
+location expression 普通匹配     
 location ^~ expression 普通匹配
 location ~ regex 正则匹配（区分大小写）
-location ~* regex 正则匹配（不区分大小写）</code></pre><p><img src="/images/pasted-196.png" alt="upload successful"></p>
+location ~* regex 正则匹配（不区分大小写）
+
+location =/api{}
+location  /api{}
+location ^~/api{}
+location  ~.*api{}
+location  ~*Api{}</code></pre><p><img src="/images/pasted-196.png" alt="upload successful"></p>
 <p><img src="/images/pasted-195.png" alt="upload successful"></p>
 
       
@@ -375,6 +381,10 @@ location ~* regex 正则匹配（不区分大小写）</code></pre><p><img src="
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/01/29/gitlab-CI-CD总结/" rel="prev" title="gitlab CI/CD总结">
+                gitlab CI/CD总结 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -442,7 +452,7 @@ location ~* regex 正则匹配（不区分大小写）</code></pre><p><img src="
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="Django跨域问题解决由于请求本地服务另外端口号导致的跨域问题，可参考https://www.cnblogs.com/wasbg/p/10973880.htmlhttps://segmentfault.com/a/1190000017952184?utm_source=tag-newest： 前端解决：config/index.js(前提去掉Axios.defaults.baseURL)">
+<meta name="description" content="什么是跨域https://www.jianshu.com/p/8fa2acd103ea 跨域：指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。  其实是浏览器的限制。理解这一点很重要！！！  同源策略：是指协议，域名，端口都要相同，其中有一个不同都会产生跨域   描述前提：后端未处理跨域；后端已配到nginx 前端和后端都是https">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Vue+Django跨域问题">
 <meta property="og:url" content="http://yoursite.com/2020/09/11/Vue-Django跨域问题/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="Django跨域问题解决由于请求本地服务另外端口号导致的跨域问题，可参考https://www.cnblogs.com/wasbg/p/10973880.htmlhttps://segmentfault.com/a/1190000017952184?utm_source=tag-newest： 前端解决：config/index.js(前提去掉Axios.defaults.baseURL)">
+<meta property="og:description" content="什么是跨域https://www.jianshu.com/p/8fa2acd103ea 跨域：指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。  其实是浏览器的限制。理解这一点很重要！！！  同源策略：是指协议，域名，端口都要相同，其中有一个不同都会产生跨域   描述前提：后端未处理跨域；后端已配到nginx 前端和后端都是https">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-10-16T13:22:25.991Z">
+<meta property="og:image" content="http://yoursite.com/images/pasted-205.png">
+<meta property="og:updated_time" content="2021-01-28T10:52:27.725Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Vue+Django跨域问题">
-<meta name="twitter:description" content="Django跨域问题解决由于请求本地服务另外端口号导致的跨域问题，可参考https://www.cnblogs.com/wasbg/p/10973880.htmlhttps://segmentfault.com/a/1190000017952184?utm_source=tag-newest： 前端解决：config/index.js(前提去掉Axios.defaults.baseURL)">
+<meta name="twitter:description" content="什么是跨域https://www.jianshu.com/p/8fa2acd103ea 跨域：指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。  其实是浏览器的限制。理解这一点很重要！！！  同源策略：是指协议，域名，端口都要相同，其中有一个不同都会产生跨域   描述前提：后端未处理跨域；后端已配到nginx 前端和后端都是https">
+<meta name="twitter:image" content="http://yoursite.com/images/pasted-205.png">
 
 
 
@@ -331,7 +333,20 @@
       
 
       
-        <h5 id="Django跨域问题解决"><a href="#Django跨域问题解决" class="headerlink" title="Django跨域问题解决"></a>Django跨域问题解决</h5><p>由于请求本地服务另外端口号导致的跨域问题，可参考<br><a href="https://www.cnblogs.com/wasbg/p/10973880.html" target="_blank" rel="noopener">https://www.cnblogs.com/wasbg/p/10973880.html</a><br><a href="https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：" target="_blank" rel="noopener">https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：</a></p>
+        <h5 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h5><p><a href="https://www.jianshu.com/p/8fa2acd103ea" target="_blank" rel="noopener">https://www.jianshu.com/p/8fa2acd103ea</a></p>
+<p>跨域：指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。</p>
+<ol>
+<li><p>其实是浏览器的限制。理解这一点很重要！！！</p>
+</li>
+<li><p>同源策略：是指协议，域名，端口都要相同，其中有一个不同都会产生跨域</p>
+</li>
+</ol>
+<h5 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h5><p>前提：后端未处理跨域；后端已配到nginx</p>
+<pre><code>前端和后端都是https://adu.i.test.shopee.i-----无跨域报错
+
+前端本地 nginx:http:localhost:9999
+请求后端:https://adu.i.test.shopee.io/ ---跨域报错</code></pre><p>  <img src="/images/pasted-205.png" alt="upload successful"></p>
+<h5 id="Django跨域问题解决"><a href="#Django跨域问题解决" class="headerlink" title="Django跨域问题解决"></a>Django跨域问题解决</h5><p>由于请求本地服务另外端口号导致的跨域问题，可参考<br><a href="https://www.cnblogs.com/wasbg/p/10973880.html" target="_blank" rel="noopener">https://www.cnblogs.com/wasbg/p/10973880.html</a><br><a href="https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：" target="_blank" rel="noopener">https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：</a></p>
 <h6 id="前端解决："><a href="#前端解决：" class="headerlink" title="前端解决："></a>前端解决：</h6><pre><code>config/index.js(前提去掉Axios.defaults.baseURL)
     proxyTable: {
         &apos;/&apos;: {
@@ -503,7 +518,7 @@ proxyTable: {
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -549,7 +564,7 @@ proxyTable: {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#Django跨域问题解决"><span class="nav-number">1.</span> <span class="nav-text">Django跨域问题解决</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#前端解决："><span class="nav-number">1.1.</span> <span class="nav-text">前端解决：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#后端解决"><span class="nav-number">1.2.</span> <span class="nav-text">后端解决</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#什么是跨域"><span class="nav-number">1.</span> <span class="nav-text">什么是跨域</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#描述"><span class="nav-number">2.</span> <span class="nav-text">描述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Django跨域问题解决"><span class="nav-number">3.</span> <span class="nav-text">Django跨域问题解决</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#前端解决："><span class="nav-number">3.1.</span> <span class="nav-text">前端解决：</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#后端解决"><span class="nav-number">3.2.</span> <span class="nav-text">后端解决</span></a></li></ol></li></ol></div>
             
 
           </div>

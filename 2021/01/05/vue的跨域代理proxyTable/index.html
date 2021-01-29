@@ -87,7 +87,7 @@
 <meta property="og:description" content="【问题】为什么后者设置跨域请求，有时候报错有时候不报错？ 参考：https://www.cnblogs.com/wasbg/p/12659610.html proxyTable 跨域的基本原理是:在开发模式下,webpack 会为我们提供一个http代理服务器. 我们请求接口的时候,实际上是请求的webpack提供的这个http代理服务器. 在由这个代理服务器请求真是的数据服务器. 最后数据经由w">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/images/pasted-189.png">
-<meta property="og:updated_time" content="2021-01-07T07:14:37.583Z">
+<meta property="og:updated_time" content="2021-01-22T11:12:31.218Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue的跨域代理proxyTable">
 <meta name="twitter:description" content="【问题】为什么后者设置跨域请求，有时候报错有时候不报错？ 参考：https://www.cnblogs.com/wasbg/p/12659610.html proxyTable 跨域的基本原理是:在开发模式下,webpack 会为我们提供一个http代理服务器. 我们请求接口的时候,实际上是请求的webpack提供的这个http代理服务器. 在由这个代理服务器请求真是的数据服务器. 最后数据经由w">
@@ -340,7 +340,7 @@
 在由这个代理服务器请求真是的数据服务器.
 最后数据经由webpack代理服务器,最后转交给我们的vue程序.</code></pre><p> <img src="/images/pasted-189.png" alt="upload successful"></p>
 <p> 为什么加个代理服务器就可以了?</p>
-<p>因为代理服务器不是浏览器,它没有同源策略的限制</p>
+<p><strong>因为代理服务器不是浏览器,它没有同源策略的限制</strong></p>
 <h6 id="具体配置："><a href="#具体配置：" class="headerlink" title="具体配置："></a>具体配置：</h6><pre><code>proxyTable: {
       // 这里配置 &apos;/api&apos; 就等价于 target , 你在链接里访问 /api === http://localhost:54321
       &apos;/api&apos;: {
@@ -473,7 +473,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

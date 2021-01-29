@@ -261,6 +261,255 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/16/refs实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/16/refs实践/" itemprop="url">refs实践</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-16T14:52:55+08:00">
+                2020-11-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、弹窗中直接在created中调用refs赋值报错，但是可以加载Opened回调函数中：</p>
+<pre><code>&lt;el-dialog :visible.sync=&quot;dialogVisible&quot; @open=&quot;getProjectDetail&quot;&gt;</code></pre><p>   <img src="/images/pasted-154.png" alt="upload successful">  </p>
+<p>2、此时在created的调用函数中竟然生效了？猜测是因为1中是dialog需要通过布尔值控制展示，所以不行<br>        created() {<br>        this.getDetail();<br>        }</p>
+<p> <img src="/images/pasted-155.png" alt="upload successful"> </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/18/Word使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/10/18/Word使用/" itemprop="url">Word使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-18T11:51:12+08:00">
+                2020-10-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1、空白页删除</p>
+<ul>
+<li>视图-草稿，可以显示分节符(下一页)</li>
+<li>选中某分节符，mac下fn+delete删除</li>
+</ul>
+<p>2、删除页眉的下划线和回车符，亲测有效，注意找到页眉的样式。</p>
+<p><a href="https://jingyan.baidu.com/article/fc07f989a7b3df12ffe51981.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/fc07f989a7b3df12ffe51981.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/14/分享/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1315,288 +1564,11 @@ book = person.person_book.all()</code></pre><h5 id="子表查主表"><a href="#�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/17/QS/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/17/QS/" itemprop="url">QS</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-17T17:52:46+08:00">
-                2020-09-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>qs可通过npm install qs命令进行安装，是一个npm仓库所管理的包。</p>
-<h6 id="为什么用到qs？"><a href="#为什么用到qs？" class="headerlink" title="为什么用到qs？"></a>为什么用到qs？</h6><p>qs可以解决数组类型的参数。</p>
-<p>具体参考：<a href="https://www.jianshu.com/p/89716216edc2" target="_blank" rel="noopener">https://www.jianshu.com/p/89716216edc2</a></p>
-<h6 id="qs-stringify和JSON-stringify的使用和区别"><a href="#qs-stringify和JSON-stringify的使用和区别" class="headerlink" title="qs.stringify和JSON.stringify的使用和区别"></a>qs.stringify和JSON.stringify的使用和区别</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">qs.stringify(&#123; a: [1, 2, 3] &#125;, &#123; indices: false &#125;);</span><br><span class="line">//  &apos;a=1&amp;a=2&amp;a=3&apos;</span><br></pre></td></tr></table></figure>
-
-<p>【共同点】都是转化成字符串</p>
-<p>【不同点】qs.stringify() 将对象 序列化成以&amp;进行拼接的字符串；而JSON.stringify是转换成json字符串</p>
-<p><img src="/images/pasted-137.png" alt="upload successful"></p>
-<p>参考：<a href="https://www.cnblogs.com/web1/p/8659398.html" target="_blank" rel="noopener">https://www.cnblogs.com/web1/p/8659398.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/17/axios-delete等http请求/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/17/axios-delete等http请求/" itemprop="url">axios delete等http请求</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-17T17:10:14+08:00">
-                2020-09-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="axios-delete的时候报Method-Not-Allowed-405？"><a href="#axios-delete的时候报Method-Not-Allowed-405？" class="headerlink" title="axios delete的时候报Method Not Allowed  405？"></a>axios delete的时候报Method Not Allowed  405？</h5><p>参考：<a href="https://www.jianshu.com/p/85a0bb9436d0" target="_blank" rel="noopener">https://www.jianshu.com/p/85a0bb9436d0</a></p>
-<h6 id="1-params-接url-amp-data"><a href="#1-params-接url-amp-data" class="headerlink" title="1. params(接url)&amp;data"></a>1. params(接url)&amp;data</h6><p>查看源码可知axios传参分别如下,即post第二个参数直接传数据对象即可，但是get需要再包一层。</p>
-<p>若使用Params则会变成&amp;连接的形式在url上请求，若使用data则在body中传</p>
-<p><img src="/images/pasted-135.png" alt="upload successful"></p>
-<p>其中delete与Post不同，参数格式为</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">axios.delete(&#123;</span><br><span class="line">            url: &apos;http://localhost:3000/todos&apos;,</span><br><span class="line">            data: &#123;</span><br><span class="line">                &quot;id&quot;: &quot;a&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">            .then(function (response) &#123;</span><br><span class="line">                console.log(response);</span><br><span class="line">            &#125;)</span><br><span class="line">            .catch(function (response) &#123;</span><br><span class="line">                console.log(response);</span><br><span class="line">            &#125;);</span><br></pre></td></tr></table></figure>
-
-
-<h6 id="2-url直接拼"><a href="#2-url直接拼" class="headerlink" title="2. url直接拼"></a>2. url直接拼</h6> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">axios.delete(&apos;http://localhost:3000/todos/&apos; + id).then(function (res) &#123;</span><br><span class="line">        console.log(res);</span><br><span class="line">    &#125;).catch(function (err) &#123;</span><br><span class="line">         console.log(err)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-
-
-
-<h5 id="关于请求方式"><a href="#关于请求方式" class="headerlink" title="关于请求方式"></a>关于请求方式</h5><p> <a href="https://blog.csdn.net/kjssjj12/article/details/106410399?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param" target="_blank" rel="noopener">https://blog.csdn.net/kjssjj12/article/details/106410399?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param</a></p>
-<p><img src="/images/pasted-136.png" alt="upload successful"></p>
-<p><a href="https://blog.csdn.net/jiangcs520/article/details/70141901/" target="_blank" rel="noopener">https://blog.csdn.net/jiangcs520/article/details/70141901/</a></p>
-<h6 id="content-type"><a href="#content-type" class="headerlink" title="content-type"></a>content-type</h6><p>作用：告诉服务端传递的内容是什么格式，如何接收。常用三个application/json’,’application/x-www-form-urlencoded’,’multipart/form-data’</p>
-<ul>
-<li><p>’application/json’</p>
-<p>传递的是一个json对象，并不是直接丢一个对象过去，需要进行序列化，JSON.stringify(data);</p>
-</li>
-</ul>
-<p><img src="/images/pasted-138.png" alt="upload successful"></p>
-<ul>
-<li><p>application/x-www-form-urlencoded</p>
-<p>若使用params</p>
-<p><img src="/images/pasted-142.png" alt="upload successful"></p>
-<p>否则是这样的</p>
-<p><img src="/images/pasted-139.png" alt="upload successful"></p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1642,7 +1614,7 @@ book = person.person_book.all()</code></pre><h5 id="子表查主表"><a href="#�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

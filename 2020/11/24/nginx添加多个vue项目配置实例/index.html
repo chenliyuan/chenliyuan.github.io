@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="环境：本地mac\nginx  项目配置  index.html文件修改 添加   config/index.js文件修改 修改 assetsPublicPath: ‘/子目录名/‘   3.src/router/index.js文件修改    添加 base: ‘/子目录名/‘ nginx配置：       location /v2{    alias  /Users/liyuanchen/D">
+<meta name="description" content="环境：本地mac\nginx  项目配置  index.html文件修改 添加   config/index.js文件修改 修改 assetsPublicPath: ‘/子目录名/‘   3.src/router/index.js文件修改    添加 base: ‘/子目录名/‘ nginx配置： location /v2{    alias  /Users/liyuanchen/Documen">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nginx添加多个vue项目配置实例">
 <meta property="og:url" content="http://yoursite.com/2020/11/24/nginx添加多个vue项目配置实例/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="环境：本地mac\nginx  项目配置  index.html文件修改 添加   config/index.js文件修改 修改 assetsPublicPath: ‘/子目录名/‘   3.src/router/index.js文件修改    添加 base: ‘/子目录名/‘ nginx配置：       location /v2{    alias  /Users/liyuanchen/D">
+<meta property="og:description" content="环境：本地mac\nginx  项目配置  index.html文件修改 添加   config/index.js文件修改 修改 assetsPublicPath: ‘/子目录名/‘   3.src/router/index.js文件修改    添加 base: ‘/子目录名/‘ nginx配置： location /v2{    alias  /Users/liyuanchen/Documen">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-11-27T10:09:12.499Z">
+<meta property="og:updated_time" content="2021-01-28T09:29:57.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="nginx添加多个vue项目配置实例">
-<meta name="twitter:description" content="环境：本地mac\nginx  项目配置  index.html文件修改 添加   config/index.js文件修改 修改 assetsPublicPath: ‘/子目录名/‘   3.src/router/index.js文件修改    添加 base: ‘/子目录名/‘ nginx配置：       location /v2{    alias  /Users/liyuanchen/D">
+<meta name="twitter:description" content="环境：本地mac\nginx  项目配置  index.html文件修改 添加   config/index.js文件修改 修改 assetsPublicPath: ‘/子目录名/‘   3.src/router/index.js文件修改    添加 base: ‘/子目录名/‘ nginx配置： location /v2{    alias  /Users/liyuanchen/Documen">
 
 
 
@@ -342,7 +342,19 @@
 </li>
 </ol>
 <p>3.src/router/index.js文件修改<br>    添加 base: ‘/子目录名/‘</p>
-<p>nginx配置：<br>       location /v2{<br>    alias  /Users/liyuanchen/Documents/workspace/adu_dist/v2;<br>    index index.html;<br>    try_files $uri $uri/ /v2/index.html;<br> }</p>
+<p>nginx配置：</p>
+<pre><code>location /v2{
+   alias  /Users/liyuanchen/Documents/workspace/adu_dist/v2;
+   index index.html;
+   try_files $uri $uri/ /v2/index.html;
+}</code></pre><p>举例：</p>
+<pre><code> location /images/ {
+    root /opt/html/;
+    try_files $uri   $uri/  /images/default.gif; 
+}</code></pre><p> 比如 请求 127.0.0.1/images/test.gif 会依次查找 </p>
+<p> 1.文件/opt/html/images/test.gif<br> 2.文件夹 /opt/html/images/test.gif/下的index文件<br> 3.请求127.0.0.1/images/default.gif</p>
+<h5 id="index和try-files"><a href="#index和try-files" class="headerlink" title="index和try_files"></a>index和try_files</h5><p>index:<br>我的理解是默认路径，也就是当找不到文件的时候的一个默认的路径，可以配置多个。</p>
+<p>try_files:<br>这个东西是重定向用的，我感觉和index 差不多，不过确实比index 要好用</p>
 
       
     </div>
@@ -431,8 +443,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -447,7 +468,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -483,6 +504,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#index和try-files"><span class="nav-number">1.</span> <span class="nav-text">index和try_files</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

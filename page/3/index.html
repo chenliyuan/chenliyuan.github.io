@@ -261,6 +261,283 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/17/QS/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/17/QS/" itemprop="url">QS</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-17T17:52:46+08:00">
+                2020-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>qs可通过npm install qs命令进行安装，是一个npm仓库所管理的包。</p>
+<h6 id="为什么用到qs？"><a href="#为什么用到qs？" class="headerlink" title="为什么用到qs？"></a>为什么用到qs？</h6><p>qs可以解决数组类型的参数。</p>
+<p>具体参考：<a href="https://www.jianshu.com/p/89716216edc2" target="_blank" rel="noopener">https://www.jianshu.com/p/89716216edc2</a></p>
+<h6 id="qs-stringify和JSON-stringify的使用和区别"><a href="#qs-stringify和JSON-stringify的使用和区别" class="headerlink" title="qs.stringify和JSON.stringify的使用和区别"></a>qs.stringify和JSON.stringify的使用和区别</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">qs.stringify(&#123; a: [1, 2, 3] &#125;, &#123; indices: false &#125;);</span><br><span class="line">//  &apos;a=1&amp;a=2&amp;a=3&apos;</span><br></pre></td></tr></table></figure>
+
+<p>【共同点】都是转化成字符串</p>
+<p>【不同点】qs.stringify() 将对象 序列化成以&amp;进行拼接的字符串；而JSON.stringify是转换成json字符串</p>
+<p><img src="/images/pasted-137.png" alt="upload successful"></p>
+<p>参考：<a href="https://www.cnblogs.com/web1/p/8659398.html" target="_blank" rel="noopener">https://www.cnblogs.com/web1/p/8659398.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/17/axios-delete等http请求/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/17/axios-delete等http请求/" itemprop="url">axios delete等http请求</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-17T17:10:14+08:00">
+                2020-09-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="axios-delete的时候报Method-Not-Allowed-405？"><a href="#axios-delete的时候报Method-Not-Allowed-405？" class="headerlink" title="axios delete的时候报Method Not Allowed  405？"></a>axios delete的时候报Method Not Allowed  405？</h5><p>参考：<a href="https://www.jianshu.com/p/85a0bb9436d0" target="_blank" rel="noopener">https://www.jianshu.com/p/85a0bb9436d0</a></p>
+<h6 id="1-params-接url-amp-data"><a href="#1-params-接url-amp-data" class="headerlink" title="1. params(接url)&amp;data"></a>1. params(接url)&amp;data</h6><p>查看源码可知axios传参分别如下,即post第二个参数直接传数据对象即可，但是get需要再包一层。</p>
+<p>若使用Params则会变成&amp;连接的形式在url上请求，若使用data则在body中传</p>
+<p><img src="/images/pasted-135.png" alt="upload successful"></p>
+<p>其中delete与Post不同，参数格式为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">axios.delete(&#123;</span><br><span class="line">            url: &apos;http://localhost:3000/todos&apos;,</span><br><span class="line">            data: &#123;</span><br><span class="line">                &quot;id&quot;: &quot;a&quot;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">            .then(function (response) &#123;</span><br><span class="line">                console.log(response);</span><br><span class="line">            &#125;)</span><br><span class="line">            .catch(function (response) &#123;</span><br><span class="line">                console.log(response);</span><br><span class="line">            &#125;);</span><br></pre></td></tr></table></figure>
+
+
+<h6 id="2-url直接拼"><a href="#2-url直接拼" class="headerlink" title="2. url直接拼"></a>2. url直接拼</h6> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">axios.delete(&apos;http://localhost:3000/todos/&apos; + id).then(function (res) &#123;</span><br><span class="line">        console.log(res);</span><br><span class="line">    &#125;).catch(function (err) &#123;</span><br><span class="line">         console.log(err)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+
+
+
+<h5 id="关于请求方式"><a href="#关于请求方式" class="headerlink" title="关于请求方式"></a>关于请求方式</h5><p> <a href="https://blog.csdn.net/kjssjj12/article/details/106410399?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param" target="_blank" rel="noopener">https://blog.csdn.net/kjssjj12/article/details/106410399?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.channel_param</a></p>
+<p><img src="/images/pasted-136.png" alt="upload successful"></p>
+<p><a href="https://blog.csdn.net/jiangcs520/article/details/70141901/" target="_blank" rel="noopener">https://blog.csdn.net/jiangcs520/article/details/70141901/</a></p>
+<h6 id="content-type"><a href="#content-type" class="headerlink" title="content-type"></a>content-type</h6><p>作用：告诉服务端传递的内容是什么格式，如何接收。常用三个application/json’,’application/x-www-form-urlencoded’,’multipart/form-data’</p>
+<ul>
+<li><p>’application/json’</p>
+<p>传递的是一个json对象，并不是直接丢一个对象过去，需要进行序列化，JSON.stringify(data);</p>
+</li>
+</ul>
+<p><img src="/images/pasted-138.png" alt="upload successful"></p>
+<ul>
+<li><p>application/x-www-form-urlencoded</p>
+<p>若使用params</p>
+<p><img src="/images/pasted-142.png" alt="upload successful"></p>
+<p>否则是这样的</p>
+<p><img src="/images/pasted-139.png" alt="upload successful"></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/15/Vue报错/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -602,7 +879,20 @@
       
         
           
-            <h5 id="Django跨域问题解决"><a href="#Django跨域问题解决" class="headerlink" title="Django跨域问题解决"></a>Django跨域问题解决</h5><p>由于请求本地服务另外端口号导致的跨域问题，可参考<br><a href="https://www.cnblogs.com/wasbg/p/10973880.html" target="_blank" rel="noopener">https://www.cnblogs.com/wasbg/p/10973880.html</a><br><a href="https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：" target="_blank" rel="noopener">https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：</a></p>
+            <h5 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h5><p><a href="https://www.jianshu.com/p/8fa2acd103ea" target="_blank" rel="noopener">https://www.jianshu.com/p/8fa2acd103ea</a></p>
+<p>跨域：指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。</p>
+<ol>
+<li><p>其实是浏览器的限制。理解这一点很重要！！！</p>
+</li>
+<li><p>同源策略：是指协议，域名，端口都要相同，其中有一个不同都会产生跨域</p>
+</li>
+</ol>
+<h5 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h5><p>前提：后端未处理跨域；后端已配到nginx</p>
+<pre><code>前端和后端都是https://adu.i.test.shopee.i-----无跨域报错
+
+前端本地 nginx:http:localhost:9999
+请求后端:https://adu.i.test.shopee.io/ ---跨域报错</code></pre><p>  <img src="/images/pasted-205.png" alt="upload successful"></p>
+<h5 id="Django跨域问题解决"><a href="#Django跨域问题解决" class="headerlink" title="Django跨域问题解决"></a>Django跨域问题解决</h5><p>由于请求本地服务另外端口号导致的跨域问题，可参考<br><a href="https://www.cnblogs.com/wasbg/p/10973880.html" target="_blank" rel="noopener">https://www.cnblogs.com/wasbg/p/10973880.html</a><br><a href="https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：" target="_blank" rel="noopener">https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：</a></p>
 <h6 id="前端解决："><a href="#前端解决：" class="headerlink" title="前端解决："></a>前端解决：</h6><pre><code>config/index.js(前提去掉Axios.defaults.baseURL)
     proxyTable: {
         &apos;/&apos;: {
@@ -1482,316 +1772,11 @@ manifest.js: 最后一个chunk，被注入了webpackJsonp的定义及异步加�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/10/抠根问底/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/10/抠根问底/" itemprop="url">抠根问底</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-10T10:44:35+08:00">
-                2020-07-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="switch和-if-else的区别"><a href="#switch和-if-else的区别" class="headerlink" title="switch和 if else的区别"></a>switch和 if else的区别</h5><ol>
-<li><p>switch生成调表以空间替换时间（生成跳表）</p>
-</li>
-<li><p>switch表达式生成一次(其实就是一个常量)，ifelse每次都要重新生成，放入寄存器</p>
-<p>PS:  跳表：用于指示实际case分支的地址的</p>
-<p>以下是我的理解:</p>
-<pre><code>switch(no):
-case 8：
-...
-case 90:
-...
-case 3:
-...
-default:...</code></pre><p><img src="/images/pasted-122.png" alt="upload successful"></p>
-<p>生成一个分支+1长度的数组，索引值对应的分支值。</p>
-<p>根据变量值no，获取数组该no索引对应的地址–&gt;跳转到该地址执行该分支代码</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/09/Vue语法小记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/09/Vue语法小记/" itemprop="url">Vue语法小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-09T17:39:56+08:00">
-                2020-07-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>命名规范：</p>
-<p>项目文件夹命名都是 kebab-case命名</p>
-<p>属于components文件夹下的子文件夹，使用大写字母开头的PascalBase风格</p>
-<ol>
-<li>全局通用的组件放在 /src/components下</li>
-<li>其他业务页面中的组件，放在各自页面下的 ./components文件夹下</li>
-<li>每个components文件夹下最多只有一层文件夹，且文件夹名称为组件的名称，文件夹下必须有index.vue或 index.js，其他.vue文件统一大写开头（Pascal case），components下的子文件夹名称统一大写开头（PascalCase）</li>
-</ol>
-</li>
-</ul>
-<ul>
-<li><p>event和method的区别?</p>
-<p>method，可以在程序中直接调用对象的方法, obj.method();</p>
-<p>event 是在事件发生时的处理函数，通过监听事件的方式来设置</p>
-</li>
-<li><p>路由:使用router-link :to 参数值使用this.xxx传参失败。最后使用Push操作解决</p>
-<p> <strong>和name配对的是params，和path配对的是query</strong></p>
-<p> query和params的区别，query相当于get请求，在页面跳转的时候，可以在地址栏看到请求参数，然而params则相当于post请求，参数不会在地址栏中显示。</p>
-<p> <a href="https://www.cnblogs.com/liweiz/p/10519629.html" target="_blank" rel="noopener">https://www.cnblogs.com/liweiz/p/10519629.html</a></p>
-<pre><code>1.命名路由搭配params，刷新页面参数会丢失
-2.查询参数搭配query，刷新页面数据不会丢失
-3.接受参数使用this.$route后面就是搭配路由的名称就能获取到参数的值(如this.$route.query.xxx)</code></pre></li>
-<li><p>main.js和routers文件重复import所有组件</p>
-<p>  封装一个文件调用</p>
-<p><a href="https://blog.csdn.net/yang295242361/article/details/104960383/" target="_blank" rel="noopener">https://blog.csdn.net/yang295242361/article/details/104960383/</a></p>
-</li>
-<li><p>关于VUE中 import 、 export 和 export default</p>
-<p>  <a href="https://www.cnblogs.com/Ryan777/p/10769661.html" target="_blank" rel="noopener">https://www.cnblogs.com/Ryan777/p/10769661.html</a></p>
-<pre><code>1. export default 
-    在一个js文件中只能有一个
-    引用的时候可以自定义名称
-2. export 
-   在一个js文件中可以有多个
-   引用时候需要加上{} import { getList } from ‘./a.js’;
-
-其他:import引用依赖包不需要相对路径，但是引用自己的文件需要相对路径</code></pre></li>
-</ul>
-<ul>
-<li><p>bus总线传值</p>
-<pre><code>bus.$emit(&apos;Click&apos;, {
-    id: id,
-    num:num
-    })
-
-this.$EventBus.$on(&apos;uploading&apos;, val=&gt;{
-    console.log(val)       //打印出来 val ：sure
- })</code></pre></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1837,7 +1822,7 @@ this.$EventBus.$on(&apos;uploading&apos;, val=&gt;{
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

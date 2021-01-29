@@ -261,6 +261,311 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/10/抠根问底/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/10/抠根问底/" itemprop="url">抠根问底</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-10T10:44:35+08:00">
+                2020-07-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="switch和-if-else的区别"><a href="#switch和-if-else的区别" class="headerlink" title="switch和 if else的区别"></a>switch和 if else的区别</h5><ol>
+<li><p>switch生成调表以空间替换时间（生成跳表）</p>
+</li>
+<li><p>switch表达式生成一次(其实就是一个常量)，ifelse每次都要重新生成，放入寄存器</p>
+<p>PS:  跳表：用于指示实际case分支的地址的</p>
+<p>以下是我的理解:</p>
+<pre><code>switch(no):
+case 8：
+...
+case 90:
+...
+case 3:
+...
+default:...</code></pre><p><img src="/images/pasted-122.png" alt="upload successful"></p>
+<p>生成一个分支+1长度的数组，索引值对应的分支值。</p>
+<p>根据变量值no，获取数组该no索引对应的地址–&gt;跳转到该地址执行该分支代码</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/09/Vue语法小记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/07/09/Vue语法小记/" itemprop="url">Vue语法小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-09T17:39:56+08:00">
+                2020-07-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>命名规范：</p>
+<p>项目文件夹命名都是 kebab-case命名</p>
+<p>属于components文件夹下的子文件夹，使用大写字母开头的PascalBase风格</p>
+<ol>
+<li>全局通用的组件放在 /src/components下</li>
+<li>其他业务页面中的组件，放在各自页面下的 ./components文件夹下</li>
+<li>每个components文件夹下最多只有一层文件夹，且文件夹名称为组件的名称，文件夹下必须有index.vue或 index.js，其他.vue文件统一大写开头（Pascal case），components下的子文件夹名称统一大写开头（PascalCase）</li>
+</ol>
+</li>
+</ul>
+<ul>
+<li><p>event和method的区别?</p>
+<p>method，可以在程序中直接调用对象的方法, obj.method();</p>
+<p>event 是在事件发生时的处理函数，通过监听事件的方式来设置</p>
+</li>
+<li><p>路由:使用router-link :to 参数值使用this.xxx传参失败。最后使用Push操作解决</p>
+<p> <strong>和name配对的是params，和path配对的是query</strong></p>
+<p> query和params的区别，query相当于get请求，在页面跳转的时候，可以在地址栏看到请求参数，然而params则相当于post请求，参数不会在地址栏中显示。</p>
+<p> <a href="https://www.cnblogs.com/liweiz/p/10519629.html" target="_blank" rel="noopener">https://www.cnblogs.com/liweiz/p/10519629.html</a></p>
+<pre><code>1.命名路由搭配params，刷新页面参数会丢失
+2.查询参数搭配query，刷新页面数据不会丢失
+3.接受参数使用this.$route后面就是搭配路由的名称就能获取到参数的值(如this.$route.query.xxx)</code></pre></li>
+<li><p>main.js和routers文件重复import所有组件</p>
+<p>  封装一个文件调用</p>
+<p><a href="https://blog.csdn.net/yang295242361/article/details/104960383/" target="_blank" rel="noopener">https://blog.csdn.net/yang295242361/article/details/104960383/</a></p>
+</li>
+<li><p>关于VUE中 import 、 export 和 export default</p>
+<p>  <a href="https://www.cnblogs.com/Ryan777/p/10769661.html" target="_blank" rel="noopener">https://www.cnblogs.com/Ryan777/p/10769661.html</a></p>
+<pre><code>1. export default 
+    在一个js文件中只能有一个
+    引用的时候可以自定义名称
+2. export 
+   在一个js文件中可以有多个
+   引用时候需要加上{} import { getList } from ‘./a.js’;
+
+其他:import引用依赖包不需要相对路径，但是引用自己的文件需要相对路径</code></pre></li>
+</ul>
+<ul>
+<li><p>bus总线传值</p>
+<pre><code>bus.$emit(&apos;Click&apos;, {
+    id: id,
+    num:num
+    })
+
+this.$EventBus.$on(&apos;uploading&apos;, val=&gt;{
+    console.log(val)       //打印出来 val ：sure
+ })</code></pre></li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/elementui使用小记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1768,258 +2073,11 @@ if (&apos;download&apos; in document.createElement(&apos;a&apos;)) { // 支持a�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/24/RT框架/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/24/RT框架/" itemprop="url">RT框架简介</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-24T17:49:49+08:00">
-                2020-04-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>参考链接：<a href="https://www.jianshu.com/p/dc9dea0741d5" target="_blank" rel="noopener">https://www.jianshu.com/p/dc9dea0741d5</a></p>
-<h4 id="robotframework目录文件结构"><a href="#robotframework目录文件结构" class="headerlink" title="robotframework目录文件结构"></a>robotframework目录文件结构</h4><pre><code>robotframework是以project为单位进行管理的  
-一个project可以包含多个Test Suite
-一个Test Suite可以包含多个测试用例
-一个Test Suite有四部分组成：Settings、Variables、Test Cases、Keywords</code></pre><h4 id="查看报告文件"><a href="#查看报告文件" class="headerlink" title="查看报告文件"></a>查看报告文件</h4><pre><code>用例执行完毕后会生成三个文件分别是：log.html、output.xml、report.html
-
-output.xml：记录的测试结果是XML文件，根据特定的需要可以编写脚本读取XML文件并生成特定的测试报告
-log.html：会记录Robotframework运行的每一步操作，主要用于编写测试脚本的过程查看
-report,html：为测试报告，整理性的展示测试用例的运行情况</code></pre><h4 id="结构及关键字"><a href="#结构及关键字" class="headerlink" title="结构及关键字"></a>结构及关键字</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">*** Settings ***</span><br><span class="line">Documentation           这个是当前Test Suite说明文字</span><br><span class="line">Library                 当前Test Suite需要使用的库</span><br><span class="line">Resource                当前Test Suite需要加载使用的资源，可能是参数也可能是用例文件</span><br><span class="line">Metadata                定义元数据</span><br><span class="line">Variables               引用变量文件</span><br><span class="line">Suite Setup             Test Suite执行前的动作</span><br><span class="line">Suite Teardown          Test Suite执行后的动作</span><br><span class="line">Test Setup              Test Case执行前的动作</span><br><span class="line">Test Teardown           Test Case执行后的动作</span><br><span class="line">Force Tags              Test Suite下的所有测试用例都会被打上这个tag</span><br><span class="line">Default Tags            Test Suite的用例如果没有打上tag，就会用这个默认tag，如果打了tag，就会用自己的tag</span><br><span class="line">Test Timeout            设置每一个测试用例的超时时间，只要超过这个时间就会失败，并停止案例运行</span><br><span class="line">...                     这是防止某些情况导致案例一直卡住不动，也不停止也不是失败</span><br><span class="line">Test Template           数据驱动模板（很有用的一个参数）</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">*** Variables ***</span><br><span class="line">$&#123;SCALAR_VARS&#125;          创建scalar参数</span><br><span class="line">@&#123;LIST_VARS&#125;            创建list参数</span><br><span class="line">&amp;&#123;DICT_VARS&#125;            a=创建dictionary参数</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">*** Test Cases ***</span><br><span class="line">Test_01</span><br><span class="line">    [Documentation]     测试用例说明……</span><br><span class="line">    [Template]          数据驱动模板，每条用例只有一个模板</span><br><span class="line">    [Tags]              测试用例标签</span><br><span class="line">    [Setup]             测试用例执行前的动作</span><br><span class="line">    [Teardown]          测试用例执行后的动作</span><br><span class="line">    [Timeout]           测试用例的超时时间</span><br><span class="line">    My Keyword One  </span><br><span class="line"></span><br><span class="line">Test_02</span><br><span class="line">    [Documentation]     。。。</span><br><span class="line">    [Template]          。。。</span><br><span class="line">    [Tags]              。。。</span><br><span class="line">    [Setup]             。。。</span><br><span class="line">    [Teardown]          。。。</span><br><span class="line">    [Timeout]           。。。</span><br><span class="line">    My Keyword Two</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">*** Keywords ***</span><br><span class="line">My Keyword One</span><br><span class="line">    [Documentation]     关键字描述</span><br><span class="line">    [Arguments]         自定义参数设置</span><br><span class="line">    [Return]            将返回值抛出</span><br><span class="line">    [Timeout]           关键字流程执行超时时间</span><br><span class="line">    [Tags]              标签</span><br><span class="line">    [Teardown]          关键字流程结束动作</span><br><span class="line">    log                 $&#123;SCALAR_VARS&#125;</span><br><span class="line">    log Mang            @&#123;LIST_VARS&#125;</span><br><span class="line">    log                 $&#123;DICT_VARS&#125;</span><br><span class="line"></span><br><span class="line">My Keyword Two</span><br><span class="line">    log                 $&#123;SCALAR_VARS&#125;</span><br><span class="line">    log Mang            @&#123;LIST_VARS&#125;</span><br><span class="line">    log                 $&#123;DICT_VARS&#125;</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/21/python爬虫获取cookies/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/04/21/python爬虫获取cookies/" itemprop="url">python爬虫获取cookie</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-21T17:52:54+08:00">
-                2020-04-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.cnblogs.com/sticker0726/articles/10703682.html" target="_blank" rel="noopener">https://www.cnblogs.com/sticker0726/articles/10703682.html</a><br>以上文章有多种方法，实践实现下面一种：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import requests</span><br><span class="line"></span><br><span class="line">url = &apos;https://www.processon.com/login&apos;</span><br><span class="line">login_email = &apos;286933867@qq.com&apos;</span><br><span class="line">login_password = &apos;ZZZ05382881391&apos;</span><br><span class="line"># 创建一个session,作用会自动保存cookie</span><br><span class="line">session = requests.session()</span><br><span class="line">data = &#123;</span><br><span class="line">    &apos;login_email&apos;: login_email,</span><br><span class="line">    &apos;login_password&apos;: login_password</span><br><span class="line">&#125;</span><br><span class="line"># 使用session发起post请求来获取登录后的cookie,cookie已经存在session中</span><br><span class="line">session.post(url = url,data=data)</span><br><span class="line"></span><br><span class="line"># 用session给个人主页发送请求，因为session中已经有cookie了</span><br><span class="line">index_url = &apos;https://www.processon.com/diagrams&apos;</span><br><span class="line">index_page = session.get(url=index_url).text</span><br><span class="line">print(index_page)</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2065,7 +2123,7 @@ report,html：为测试报告，整理性的展示测试用例的运行情况</c
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">119</span>
+                  <span class="site-state-item-count">121</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
