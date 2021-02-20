@@ -261,6 +261,309 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/22/awk知识点汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/22/awk知识点汇总/" itemprop="url">awk知识点汇总</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-22T15:23:35+08:00">
+                2018-08-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>参考原文：<a href="https://blog.csdn.net/liang5603/article/details/80855426" target="_blank" rel="noopener">https://blog.csdn.net/liang5603/article/details/80855426</a></p>
+<p>grep sed awk 被称为linux中的“三剑客”<br>grep更适合单纯的查找或匹配文本<br>sed更适合编辑匹配到的文本<br>awk更适合格式化文本，对文本进行较复杂格式处理</p>
+<h5 id="awk语法："><a href="#awk语法：" class="headerlink" title="awk语法："></a>awk语法：</h5><pre><code>awk [options] &apos;commands&apos; filenames
+
+- options:-F 定义输入字段分隔符，默认的分隔符是空格或制表符(tab)
+- command:
+
+    BEGIN{} {} END{}
+    行处理前 行处理 行处理后</code></pre><p>  例：      </p>
+<pre><code>$ awk &apos;BEGIN{print &quot;begin:&quot;1/2}{print &quot;ok&quot;}END{print&quot;--ending-&quot;}&apos; vimtest.txt 
+begin:0.5
+ok
+ok
+--ending-    </code></pre><h5 id="awk执行原理"><a href="#awk执行原理" class="headerlink" title="awk执行原理"></a>awk执行原理</h5><ol>
+<li>awk 使用一行作为输入，并将这一行赋给内部变量$0，每一行也可称为一个记录，以换行符结束</li>
+</ol>
+<ul>
+<li>(2)然后，行被: (默认为空格或制表符)分解成字段(或域)，每个字段存储在已编号的变量中，从$1 开始，最多达 100 个字段</li>
+<li>(3)awk 如何知道用空格来分隔字段的呢? 因为有一个内部变量 FS 来确定字段分隔符。初始 时，FS 赋为空格</li>
+<li>(4)awk 打印字段时，将以设置的方法使用 print 函数打印，打印时逗号映射为OFS默认为空格</li>
+</ul>
+<h5 id="字段解释"><a href="#字段解释" class="headerlink" title="字段解释"></a>字段解释</h5><pre><code>$0: awk 变量$0 保存当前记录的内容 # awk -F: &apos;{print $0}&apos; /etc/passwd
+NR: The total number of input records seen so far. # awk -F: &apos;{print NR, $0}&apos; /etc/passwd /etc/hosts  （序号值）
+FNR: The input record number in the current input file # awk -F: &apos;{print FNR, $0}&apos; /etc/passwd /etc/hosts
+NF: 保存记录的字段数，$1,$2...$100 # awk -F: &apos;{print $0,NF}&apos; /etc/passwd
+$NF:因为NF是数字，这个就是最大数的变量值即最后一个字段值
+FS: 输入字段分隔符，默认空格 # awk -F: &apos;/alice/{print $1, $3}&apos; /etc/passwd
+# awk -F&apos;[ :\t]&apos; &apos;{print $1,$2,$3}&apos; /etc/passwd
+# awk &apos;BEGIN{FS=&quot;:&quot;} {print $1,$3}&apos; /etc/passwd
+OFS: 输出字段分隔符 # awk -F: &apos;/alice/{print $1,$2,$3,$4}&apos; /etc/passwd
+# awk &apos;BEGIN{FS=&quot;:&quot;; OFS=&quot;+++&quot;} /^root/{print $1,$2,$3,$4}&apos; /etc/passwd
+RS The input record separator, by default a newline. # awk -F: &apos;BEGIN{RS=&quot; &quot;} {print $0}&apos; a.txt
+ORS The output record separator, by default a newline. # awk -F: &apos;BEGIN{ORS=&quot;&quot;} {print $0}&apos; passwd</code></pre><ul>
+<li><p>awk是<strong>逐行</strong>处理的，处理完一行再处理下一行，默认以“换行符”为标记，识别每一行。   </p>
+</li>
+<li><p><strong>awk可用于拼接</strong>。被拼接字符串用双引号括起来 如：awk’{print “column1:”$1,”column2:”$2}’,注意$1这种内置变了不能使用双引号，否则被当做普通文本输出。</p>
+</li>
+<li><p><strong>awk变量</strong>: 分为<strong>内置变量</strong>和自定义变量</p>
+</li>
+<li><p><strong>过滤操作</strong> ：结合运算符在action中判断如awk ‘$1&gt;20’ log.txt 输出第一列值大于2的记录</p>
+</li>
+</ul>
+<blockquote>
+<p>细心如你一定注意到了一个细节，就是在打印 $0 , $1, $2 这些内置变量的时候，都有使用到”$”符号，但是在调用 NR , NF 这些内置变量的时候，就没有使用”$”，如果你有点不习惯，那么可能是因为你已经习惯了使用bash的语法去使用变量，在bash中，我们在引用变量时，都会使用$符进行引用，但是在awk中，只有在引用$0、$1等内置变量的值的时候才会用到”$”,引用其他变量时，不管是内置变量，还是自定义变量，都不使用”$”,而是直接使用变量名。</p>
+</blockquote>
+<h6 id="匹配记录"><a href="#匹配记录" class="headerlink" title="匹配记录"></a>匹配记录</h6><pre><code># awk -F: &apos;$1 ~ /^alice/&apos; /etc/passwd
+# awk -F: &apos;$NF !~ /bash$/&apos; /etc/passwd</code></pre><h6 id="比较表达式"><a href="#比较表达式" class="headerlink" title="比较表达式"></a>比较表达式</h6><p>条件表达式</p>
+<pre><code># awk -F: &apos;$3&gt;300 {print $0}&apos; /etc/passwd
+# awk -F: &apos;{ if($3&gt;300) print $0 }&apos; /etc/passwd
+# awk -F: &apos;{ if($3&gt;300) {print $0} }&apos; /etc/passwd
+# awk -F: &apos;{ if($3&gt;300) {print $3} else{print $1} }&apos; /etc/passwd</code></pre><p>算数运算</p>
+<pre><code># awk -F: &apos;$3 * 10 &gt; 500&apos; /etc/passwd
+# awk -F: &apos;{ if($3*10&gt;500){print $0} }&apos; /etc/passwd</code></pre><p>逻辑运算</p>
+<pre><code># awk -F: &apos;$1~/root/ &amp;&amp; $3&lt;=15&apos; /etc/passwd # awk -F: &apos;$1~/root/ || $3&lt;=15&apos; /etc/passwd
+# awk -F: &apos;!($1~/root/ || $3&lt;=15)&apos; /etc/passwd</code></pre><h6 id="流程控制"><a href="#流程控制" class="headerlink" title="流程控制"></a>流程控制</h6><pre><code>awk -F: &apos;{if($3==0){i++} else if($3&gt;999){k++} else{j++}} END{print i; print k; print j}&apos; /etc/passwd
+
+[root@tianyun ~]# awk -F: &apos;{i=1; while(i&lt;=10) {print $0; i++}}&apos; /etc/passwd //将每行打印 10 次
+
+[root@tianyun ~]# awk -F: &apos;{ for(i=1;i&lt;=10;i++) {print $0} }&apos; /etc/passwd //将每行打印 10 次</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/12/常用的web服务器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/08/12/常用的web服务器/" itemprop="url">常用的web服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-12T19:45:21+08:00">
+                2018-08-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>参考：<a href="http://www.coozhi.com/youxishuma/g4/63698.html" target="_blank" rel="noopener">http://www.coozhi.com/youxishuma/g4/63698.html</a></p>
+<ol>
+<li>Apache<br>也被叫做httpd服务器，是目前使用<strong>最广泛的</strong>web服务器。<br>优点：小巧，灵活，可扩展，稳定<br>缺点：软件开源，漏洞易被发现</li>
+<li>Nginx<br>是<strong>Linux</strong>平台下优秀的web服务器.不仅是HTTP服务器而且也是负载均衡的反向代理。<br>优点：压缩率高，支持负载均衡，<strong>速度快</strong></li>
+<li>IIS<br>IIS是微软平台的web服务器，是针对windows平台的服务器。和NET非常搭配<br>优点：安装配置简单，学起来容易<br>缺点：平台适用性单一，安全性有待提高</li>
+<li>Tomcat<br>免费，深受java开发者喜爱。<br>优点：简单易掌握，部署容易，应用广泛<br>缺点：扩展性不强，可配置性弱，大并发能力不强</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/08/09/python语法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1088,7 +1391,7 @@ make install</code></pre><ul>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">123</span>
+                  <span class="site-state-item-count">125</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -261,6 +261,306 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/jenkins安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/28/jenkins安装/" itemprop="url">Jenkins安装和配置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-28T15:13:46+08:00">
+                2020-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h6 id="Ubuntu安装Jenkins"><a href="#Ubuntu安装Jenkins" class="headerlink" title="Ubuntu安装Jenkins"></a>Ubuntu安装Jenkins</h6><p>参考：<br><a href="https://www.jianshu.com/p/845f267aec52" target="_blank" rel="noopener">https://www.jianshu.com/p/845f267aec52</a><br><a href="https://www.cnblogs.com/shuoer/p/9471839.html" target="_blank" rel="noopener">https://www.cnblogs.com/shuoer/p/9471839.html</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#添加官方软件仓库的秘钥到本地的apt秘钥中</span><br><span class="line"> wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -</span><br><span class="line"> </span><br><span class="line">echo deb http://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list</span><br><span class="line"></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install jenkins</span><br></pre></td></tr></table></figure>
+
+<p>安装成功后打开服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@sz-dev-77-89:/var/lib/dpkg# /etc/init.d/jenkins  start</span><br><span class="line">Correct java version found</span><br><span class="line">[ ok ] Starting jenkins (via systemctl): jenkins.service.</span><br><span class="line">root@sz-dev-77-89:/var/lib/dpkg# systemctl status jenkins</span><br></pre></td></tr></table></figure>
+
+<p>安装时若报错：</p>
+<p><img src="/images/pasted-74.png" alt="upload successful"></p>
+<p>使用操作文件/var/lib/dpkg/info解决：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cd /var/lib/dpkg/</span><br><span class="line">mv info/ info_bak         </span><br><span class="line">mkdir info                 </span><br><span class="line">apt-get update            </span><br><span class="line">apt-get -f install         </span><br><span class="line">mv info/* info_bak/        </span><br><span class="line">rm -rf info                </span><br><span class="line">mv info_bak info</span><br></pre></td></tr></table></figure>
+
+<h6 id="jenkins节点配置"><a href="#jenkins节点配置" class="headerlink" title="jenkins节点配置"></a>jenkins节点配置</h6><ol>
+<li>在jenkins设置-节点管理中添加新节点，主要配置项如下（以90机器为例）：<br><img src="/images/pasted-109.png" alt="upload successful"></li>
+<li>添加节点后将如下代理链接在90机器浏览器中打开，点击Lunch按钮下载slave文件<br><img src="/images/pasted-108.png" alt="upload successful"></li>
+<li>在90机器成功下载Slave后，可放在桌面打开即启动服务。</li>
+</ol>
+<h6 id="Jenkins安装git插件"><a href="#Jenkins安装git插件" class="headerlink" title="Jenkins安装git插件"></a>Jenkins安装git插件</h6><p>安装jenkins时候安装git插件失败，需在本地先安装git</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install git</span><br></pre></td></tr></table></figure>
+
+<p>然后在插件管理中选中git安装</p>
+<h6 id="Jenkins安装配置git"><a href="#Jenkins安装配置git" class="headerlink" title="Jenkins安装配置git"></a>Jenkins安装配置git</h6><p><img src="/images/pasted-75.png" alt="upload successful"></p>
+<p>【问题】配置git用户时一直报错：Jenkins Host key verification failed</p>
+<p>1.需要在jenkins路径下生产公钥和私钥</p>
+<p>2.把所属用户改成jenkins</p>
+<p>具体步骤   参考<a href="https://blog.csdn.net/hursing/article/details/90521031" target="_blank" rel="noopener">https://blog.csdn.net/hursing/article/details/90521031</a></p>
+<p>1）ssh-keygen -t rsa -C <a href="mailto:jenkinsServerOnLinux@shopeemobile.com" target="_blank" rel="noopener">jenkinsServerOnLinux@shopeemobile.com</a>     </p>
+<p>-c是备注；-f 指定密钥的文件名  ;-t 是type用于指定算法一般rsa;<br>在过程中提示生成路径可以直接改成/var/lib/jenkins/.ssh/id_rsa，其他直接回车即可</p>
+<p>2）生成的公钥放在gitlab下<br>3）按照jenkins提示执行命令<br> git ls-remote -h ssh://gitlab@git.garena.com:2222/autotest/scqa_ui_auto_platform_projects.git HEAD</p>
+<p>根据提示直接yes就好，此步骤会生产know_hosts的文件如果在根路径/root/.ssh下就拷贝过jenkins路径下（不确定这一步的作用是否对结果管用）<br>4）对文件授权<br>chown jenkins:jenkins  id_rsa   id_rsa.pub</p>
+<p>5)重启jenkins<br>/etc/init.d/jenkins restart</p>
+<p>如果没设置管理员密码，需要通过命令获取cat   /var/lib/jenkins/secrets/initialAdminPassword</p>
+<h6 id="设置jenkins无需登录"><a href="#设置jenkins无需登录" class="headerlink" title="设置jenkins无需登录"></a>设置jenkins无需登录</h6><p>链接：<a href="https://www.jianshu.com/p/6591c9bdcca6" target="_blank" rel="noopener">https://www.jianshu.com/p/6591c9bdcca6</a></p>
+<ul>
+<li>进入Jenkins根目录，复制config.xml 为 config.xml.bak用于备份  </li>
+<li>而后打开 config.xml 配置文件；    </li>
+<li>修改“&lt; useSecurity &gt;true&lt; /useSecurity &gt;”为“&lt; useSecurity&gt;false&lt; /useSecurity&gt;”；      </li>
+<li>删掉“&lt; authorizationStrategy …&gt;…&lt; /authorizationStrategy&gt;”；      </li>
+<li>保存修改的confi.xml，重启Jenkins服务已无需登录 </li>
+</ul>
+<h6 id="【问题1】打不开log-html-提示Opening-Robot-Framework-log-failed"><a href="#【问题1】打不开log-html-提示Opening-Robot-Framework-log-failed" class="headerlink" title="【问题1】打不开log.html 提示Opening Robot Framework log failed"></a>【问题1】打不开log.html 提示Opening Robot Framework log failed</h6><p>Verify that you have JavaScript enabled in your browser.<br>Make sure you are using a modern enough browser. Firefox 3.5, IE 8, or equivalent is required, newer browsers are recommended.<br>Check are there messages in your browser’s JavaScript error log. Please report the problem if you suspect you have encountered a bug.<br>…”</p>
+<p>解决办法：<br>    For resolve your problem you must :<br>    - Connect on your jenkins url (http://[IP]:8080/)<br>    - Click on Manage Jenkins from left side panel.<br>    - Click on Script Console<br>    - Copy this into the field<br>    System.setProperty(“hudson.model.DirectoryBrowserSupport.CSP”,”sandbox allow-scripts; default-src ‘none’; img-src ‘self’ data: ; style-src ‘self’ ‘unsafe-inline’ data: ; script-src ‘self’ ‘unsafe-inline’ ‘unsafe-eval’ ;”)</p>
+<pre><code>- Click on Run button.
+- Execute your Jenkins build.</code></pre><h6 id="【问题2】设置multijob构建任务时只执行第一个任务"><a href="#【问题2】设置multijob构建任务时只执行第一个任务" class="headerlink" title="【问题2】设置multijob构建任务时只执行第一个任务"></a>【问题2】设置multijob构建任务时只执行第一个任务</h6><p>   忽略执行错误，继续下一个</p>
+<p>   <img src="/images/pasted-110.png" alt="upload successful"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/28/本地上传和下载远程LInux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/28/本地上传和下载远程LInux/" itemprop="url">本地上传和下载远程LInux</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-28T12:41:23+08:00">
+                2020-01-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>上传命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp path/filename userName@sseverName:path</span><br></pre></td></tr></table></figure>
+
+<p>下载：调换位置即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scp userName@sseverName:path path/filename</span><br></pre></td></tr></table></figure>
+
+<p>我的执行命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo scp /Users/liyuanchen/Documents/workspace/JenkinsTask.zip  xxxxqa@10.12.77.89:/home</span><br></pre></td></tr></table></figure>
+
+<p>【报错】</p>
+<ol>
+<li><p><a href="mailto:xxxxqa@10.12.77.89" target="_blank" rel="noopener">xxxxqa@10.12.77.89</a>: Permission denied (publickey,password). </p>
+<p>解决方法，在同账户下把A的公钥放到B上，注意你scp的账户，添加在该账户下。<br>具体操作：<br>A：cat .ssh/id_rsa.pub<br>B: cat .ssh/authorized_keys （没有该文件创建一个）<br> 把A的公钥贴过来即可</p>
+</li>
+<li><p>scp: /home/setuptools/JenkinsTask.zip: Permission denied</p>
+<p>还是报错，按照网上的折腾了一番/etc/ssh/sshd/sshd_config中的PasswordAuthentication和AuthorizedKeysFile,放开了注释保证是开通状态；<br>还是不行，在命令行前加sudo。<br>还是不行，直到更改目标文件夹到xxxxqa，因为原文件夹权限是root，使用xxxxqa用户当然不行啦。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">drwxr-xr-x  8 root     root     4096 1月  21 14:40 setuptools</span><br><span class="line">drwxr-xr-x 17 xxxxqa   xxxxqa   4096 1月  27 22:14 xxxxqa</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/10/Django/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1614,259 +1914,6 @@ done</code></pre></li>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/16/jmeter实践笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/16/jmeter实践笔记/" itemprop="url">jmeter实践笔记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-16T14:10:29+08:00">
-                2019-10-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h4><p>安装参考：<a href="https://blog.csdn.net/lovesoo/article/details/78579547" target="_blank" rel="noopener">https://blog.csdn.net/lovesoo/article/details/78579547</a></p>
-<p>线程数：可以理解为并发数，在jmeter中一个线程代表一个用户。</p>
-<p>Ramp-Up Period (in seconds): 多长时间内初始化完这些线程。单位是秒。我这里设置的是10秒启动100个也就是1秒启动10。</p>
-<p>循环次数：如果你要限定循环次数为10次的话，就取消永远前面的那个勾，然后在后面的文本框里面填写10；在这里我们勾上永远，表示如果不停止或者限定时间将会一直执行下去， 是为了方便调度器的调用。一般勾选永远后要在调度器里填写持续时间。</p>
-<p>对于结果和图表，原生三个元件常用：聚合报告、图表结果、响应时间图</p>
-<h4 id="2-插件使用"><a href="#2-插件使用" class="headerlink" title="2.插件使用"></a>2.插件使用</h4><p>第一步：下载jmeter-plugins，<a href="https://jmeter-plugins.org/install/Install/，安装提示将jar包放在jmeter安装目录lib/ext下" target="_blank" rel="noopener">https://jmeter-plugins.org/install/Install/，安装提示将jar包放在jmeter安装目录lib/ext下</a>  </p>
-<p>第二步：jmeter中option-jmeter plugins Manager-Available Plugins-jdbc Standard Set,点击右下角的Apply Changes and Restart JMeter</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/07/Django项目实践-Crypto库/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/10/07/Django项目实践-Crypto库/" itemprop="url">Crypto模块</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-07T17:12:39+08:00">
-                2019-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>背景：<br>    由于公司接口有加密解密，自定义接口脚本需要调取Crypto模块，之前用的是php调用python脚本实现的结构体，过于繁琐，打算搭建Django框架实现</p>
-<h2 id="问题一："><a href="#问题一：" class="headerlink" title="问题一："></a>问题一：</h2><p>但是搭建后发现调用Crypto模块经常会报错，主要报错是：<br>from Crypto.Cipher import _AES<br>ImportError: DLL load failed: 找不到指定的模块。<br>这个问题困扰了我很久，原来代码目录<br><img src="https://img-blog.csdnimg.cn/201903111457336.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述
-"></p>
-<p>1、一直认为引用这个模块使用的是目录调用，然后验证路径调用是否正确，怎么验证也没发现什么毛病<br>2、文件里引用当前目录的_AES,最开始以为是AES.py文件本身（单下划线私有变量）；后来知道.pyd文件实际上就是个库文件（DLL），才转移到是引用的_ASE.pyd，但是也没有找出找不到它的理由<br><img src="https://img-blog.csdnimg.cn/20190311150008620.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>解决：<br>后来尝试在原来PHP框架里删除该引用文件，发现依旧可用，于是明确一点：该实现并不依赖该路径，而是与系统安装的pycrypto路径文件有关，但是wondows本地一直有问题，于是直接从当前正在使用PHP linux服务器上调试。做法：删除本地目录（直接用系统的，经之前项目验证系统的没问题，可以用），然后启动Django服务就不报错了，后来又调试了下报错都是些其他的问题了，困扰我两周的问题终于终于落幕了，可以收下心做正事了~~</p>
-<h2 id="问题2："><a href="#问题2：" class="headerlink" title="问题2："></a>问题2：</h2><p>虽然在linux上的这个问题莫名其妙的解决了，但是在台式机win7（py3.7）系统上还是有问题，使用django框架吊起来没有问题，但是直接执行python脚本还是会报一样的错误。忍了一段时间后终于忍不下去了。<br>最开始听人说在linux环境可行，于是在windows下打开git bash确实可行，但是还是会报其他的错，可能是因为版本换了，因为他走的是Anaconda里面的插件，后来干脆还是修复本地的吧<br>1、卸载本地的pycrypto<br>卸载失败提示:Cannot uninstall ‘’. It is a distutils installed project and thus we cannot accurately.<br>解决：直接全局搜索对应文件，具体包括 “package name” 文件夹 和 “package name”.egg-info ，找到后直接删除即可<br>2、重新安装pip install pycrypto<br>直接安装报错，使用源码安装？一样报错<br>error: command ‘C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\BIN\<br>x86_amd64\cl.exe’ failed with exit status 2<br>解决：从网上找的经验<br>1）添加VC环境变量，设置用户环境变量，这里划重点！！！是用户环境变量，不是系统环境变量<br>变量名：VCINSTALLDIR<br>（变量值为vs安装路径下的VC，默认是这个）<br>变量值：C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC<br> win+R运行cmd，执行命令set CL=/FI”%VCINSTALLDIR%\INCLUDE\stdint.h” %CL% </p>
-<p>2）安装twisted <a href="https://blog.csdn.net/jiangyunsheng147/article/details/80449556" target="_blank" rel="noopener">https://blog.csdn.net/jiangyunsheng147/article/details/80449556</a></p>
-<p>还会报错warning: GMP or MPIR library not found; Not building Crypto.PublicKey._fastmath.<br>building ‘Crypto.Random.OSRNG.winrandom’ extension<br>error: Unable to find vcvarsall.bat</p>
-<p>3）降低版本3.7–&gt;3.6<br>还是报楼上错误，最后看到有pycrypto-2.6.1.win-amd64-py3.4.exe可行，但是需要3.4.于是降到3.4，刚开始用的exe事32位的不行，后来下了64的果然可以了，搞了一天的环境终于在最后搞定了，也不辜负这一天的工时。<br>插曲：在降低版本的时候，出现了明明已经降到3.4，但是python -V的时候一直仍然显示3.7，后来又是删注册表，又是卸载程序的，我怀疑跟我安装的Anaconda有关系。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1917,7 +1964,7 @@ done</code></pre></li>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">123</span>
+                  <span class="site-state-item-count">125</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

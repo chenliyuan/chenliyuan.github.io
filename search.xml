@@ -4,11 +4,37 @@
   
     
     <entry>
+      <title>js window对象</title>
+      <link href="/2021/02/20/js-window%E5%AF%B9%E8%B1%A1/"/>
+      <url>/2021/02/20/js-window%E5%AF%B9%E8%B1%A1/</url>
+      
+        <content type="html"><![CDATA[<p>我们每次打开一个页面时，浏览器都会自动为这个页面创建一个window对象。</p><h5 id="window下的子对象"><a href="#window下的子对象" class="headerlink" title="window下的子对象"></a>window下的子对象</h5><pre><code>documentlocationnavigatorhistoryscreen</code></pre><p>对于window对象来说，无论是他的属性还是方法，都可以省略window前缀。</p><h5 id="window对象常用方法："><a href="#window对象常用方法：" class="headerlink" title="window对象常用方法："></a>window对象常用方法：</h5><pre><code>alert()//无返回confirm()//确定和取消按钮，返回布尔值prompt(“提示文字”)//返回字符串open(url,target)//target可以为_blank（default）\_self,返回打开的window对象close()setTimeout(code,time)//一次性定时器,毫秒clearTimeout(timer)setInterval()//重复性定时器clearInterval(timer)</code></pre><h5 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h5><pre><code> href  //当前页面地址search //？后面内容hash//#后面内容</code></pre><h5 id="navigator对象"><a href="#navigator对象" class="headerlink" title="navigator对象"></a>navigator对象</h5><pre><code>useragent</code></pre><h5 id="document对象"><a href="#document对象" class="headerlink" title="document对象"></a>document对象</h5><pre><code>document.titledocument.bodydocument.formsdocument.imagesdocument.linksdocument.cookiedocument.URL//当前文档的URLdocument.referer//返回使浏览器到达当前文档的URL</code></pre><h6 id="document对象方法"><a href="#document对象方法" class="headerlink" title="document对象方法"></a>document对象方法</h6><p>除了查找元素的方法外：</p><pre><code>document.createElement()document.createTextNode()document.write()document.writeln()</code></pre>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>JS 事件基础和进阶</title>
+      <link href="/2021/02/20/JS-%E4%BA%8B%E4%BB%B6%E5%9F%BA%E7%A1%80/"/>
+      <url>/2021/02/20/JS-%E4%BA%8B%E4%BB%B6%E5%9F%BA%E7%A1%80/</url>
+      
+        <content type="html"><![CDATA[<h5 id="事件调用方式"><a href="#事件调用方式" class="headerlink" title="事件调用方式"></a>事件调用方式</h5><ul><li><p>在script标签中调用</p><pre><code>obj.事件=function(){}</code></pre></li><li><p>在元素中调用</p></li></ul><h5 id="常见事件有五种："><a href="#常见事件有五种：" class="headerlink" title="常见事件有五种："></a>常见事件有五种：</h5><ul><li>鼠标事件</li><li>键盘事件</li><li>表单事件</li><li>编辑事件</li><li>页面事件</li></ul><h5 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h5><pre><code>onclickonmouseoveronmouseoutonmousedownonmouseuponmousemove</code></pre><h5 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h5><pre><code>onkeydownonkeyup</code></pre><h5 id="表单事件"><a href="#表单事件" class="headerlink" title="表单事件"></a>表单事件</h5><pre><code>onfocus/onblur //获取焦点和失去焦点 onfocus属性区别于focus()方法onselect//区别于select()方法onchange</code></pre><h5 id="编辑事件"><a href="#编辑事件" class="headerlink" title="编辑事件"></a>编辑事件</h5><p>主要用于限制复制操作</p><pre><code>oncopyonselectstart//选中oncontextmenu //右键菜单</code></pre><h5 id="页面事件"><a href="#页面事件" class="headerlink" title="页面事件"></a>页面事件</h5><pre><code>onload//文档下载完成后再执行的一个事件window.onload=function(){}onbeforeunload//离开页面之前的一个事件</code></pre><h5 id="事件处理器和监听器"><a href="#事件处理器和监听器" class="headerlink" title="事件处理器和监听器"></a>事件处理器和监听器</h5><pre><code>oBtn.onclick=function(){}//事件处理器obj.addEventListener(type,fn,false)obj.removeEventListner(type,fn,false)</code></pre><h5 id="event事件"><a href="#event事件" class="headerlink" title="event事件"></a>event事件</h5><pre><code>每个事件都有对应的event对象event对象属性：typekeyCodeshiftKeyctrlKeyaltKey</code></pre><h5 id="this"><a href="#this" class="headerlink" title="this"></a>this</h5><p>哪个DOM对象调用了this所在的函数，那么this指向的就是哪个DOM对象</p><p>this只有在被调用的时候才确定下来</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>JS DOM基础</title>
       <link href="/2021/02/19/JS-DOM%E5%9F%BA%E7%A1%80/"/>
       <url>/2021/02/19/JS-DOM%E5%9F%BA%E7%A1%80/</url>
       
-        <content type="html"><![CDATA[<p>DOM节点有12种类型，常见的有三种ger，可以根据nodeType判断类型：</p><ul><li>元素节点1</li><li>属性节点2</li><li>文本节点3</li></ul><h6 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h6><pre><code>getElementById()#前面只接documentgetElementsByTagName()#前面既接document又可接DOM对象，返回多个元素，可以操作动态DOMgetElementsByClassName()querySelector()和querySelectorAll()getElementsByName()#只用于表单的单选或复选按钮document.title和document.body</code></pre><h6 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h6><pre><code>A.appendChild(B) //把B插入到A的内部去，可用于文本也可用于元素var e1=document.createElement(&quot;元素名&quot;)var txt=document.createTextNode(&quot;文本内容&quot;)e1.appendChild(txt)e2.appendChild(e1)A.insertBefore(B,ref)//将新元素插入到父元素之前，与appendChild相反A.remove(B) //删除父元素下的子元素obj.cloneNode(bool)//复制元素，bool为true或1则复制本身及以下所有子元素A.replace(new,old)//替换父元素下的两个子元素</code></pre>]]></content>
+        <content type="html"><![CDATA[<p>DOM节点有12种类型，常见的有三种ger，可以根据nodeType判断类型：</p><ul><li>元素节点1</li><li>属性节点2</li><li>文本节点3</li></ul><h5 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h5><pre><code>getElementById()#前面只接documentgetElementsByTagName()#前面既接document又可接DOM对象，返回多个元素，可以操作动态DOMgetElementsByClassName()querySelector()和querySelectorAll()getElementsByName()#只用于表单的单选或复选按钮document.title和document.body</code></pre><h5 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h5><pre><code>A.appendChild(B) //把B插入到A的内部去，可用于文本也可用于元素var e1=document.createElement(&quot;元素名&quot;)var txt=document.createTextNode(&quot;文本内容&quot;)e1.appendChild(txt)e2.appendChild(e1)A.insertBefore(B,ref)//将新元素插入到父元素之前，与appendChild相反A.remove(B) //删除父元素下的子元素obj.cloneNode(bool)//复制元素，bool为true或1则复制本身及以下所有子元素A.replace(new,old)//替换父元素下的两个子元素</code></pre><h5 id="属性操作"><a href="#属性操作" class="headerlink" title="属性操作"></a>属性操作</h5><pre><code>obj.attrobj.attr=&quot;值&quot;obj.getAttribute(&quot;attr&quot;)obj.setAttribute(&quot;attr&quot;)obj.hasAttribute(&quot;attr&quot;)</code></pre><h6 id="CSS属性操作"><a href="#CSS属性操作" class="headerlink" title="CSS属性操作"></a>CSS属性操作</h6><p><strong>获取</strong></p><pre><code>getComputedStyle(obj).attr//其中attr是骆驼峰型的CSS属性名，如backgroundColorgetComputedStyle(obj).[&quot;attr&quot;]</code></pre><p><strong>设置</strong></p><pre><code>obj.style.attr=&quot;值&quot;//等价于obj.style[&quot;attr&quot;]  obj.style.cssText=&quot;很多值&quot;eg:  oDiv.style.cssText=&quot;width:100px;height:100px&quot;;</code></pre><h5 id="DOM遍历"><a href="#DOM遍历" class="headerlink" title="DOM遍历"></a>DOM遍历</h5><pre><code>Obj.parentNode //查找父元素obj.children\firstElementChild\lastElementChild//查找子元素不建议使用obj.childNodes\firstChild\lastChild(不仅包括元素节点，还包括文本节点)obj.previousElementSibling/nextElementSibling//查找兄弟节点</code></pre><h5 id="innerHTML和innerText"><a href="#innerHTML和innerText" class="headerlink" title="innerHTML和innerText"></a>innerHTML和innerText</h5><pre><code>获取内部元素和内部文本</code></pre>]]></content>
       
       
       

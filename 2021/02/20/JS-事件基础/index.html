@@ -79,19 +79,17 @@
 
 
 
-<meta name="description" content="web测试与APP测试区别参照：https://blog.csdn.net/weixin_34043301/article/details/94216811 H5与web的不同点（具有的app特性）： 1、网络：2G、3G以及弱网测试 2、有横屏竖屏之分 3、兼容：需兼容不同分辨率/操作系统的手机浏览器 4、手指滑动流畅度，手机点击焦点是否定位准确 5、关注交互是否友好，尤其弹层 6、嵌入手机端与">
+<meta name="description" content="事件调用方式 在script标签中调用 obj.事件=function(){} 在元素中调用   常见事件有五种： 鼠标事件 键盘事件 表单事件 编辑事件 页面事件  鼠标事件onclick onmouseover onmouseout onmousedown onmouseup onmousemove键盘事件onkeydown onkeyup表单事件onfocus/onblur //获取焦点和失">
 <meta property="og:type" content="article">
-<meta property="og:title" content="web测试">
-<meta property="og:url" content="http://yoursite.com/2019/10/21/web测试/index.html">
+<meta property="og:title" content="JS 事件基础和进阶">
+<meta property="og:url" content="http://yoursite.com/2021/02/20/JS-事件基础/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="web测试与APP测试区别参照：https://blog.csdn.net/weixin_34043301/article/details/94216811 H5与web的不同点（具有的app特性）： 1、网络：2G、3G以及弱网测试 2、有横屏竖屏之分 3、兼容：需兼容不同分辨率/操作系统的手机浏览器 4、手指滑动流畅度，手机点击焦点是否定位准确 5、关注交互是否友好，尤其弹层 6、嵌入手机端与">
+<meta property="og:description" content="事件调用方式 在script标签中调用 obj.事件=function(){} 在元素中调用   常见事件有五种： 鼠标事件 键盘事件 表单事件 编辑事件 页面事件  鼠标事件onclick onmouseover onmouseout onmousedown onmouseup onmousemove键盘事件onkeydown onkeyup表单事件onfocus/onblur //获取焦点和失">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/10/21/web测试/%5Cimages%5Cpasted-70.png">
-<meta property="og:updated_time" content="2020-01-28T04:29:49.832Z">
+<meta property="og:updated_time" content="2021-02-20T06:56:59.626Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="web测试">
-<meta name="twitter:description" content="web测试与APP测试区别参照：https://blog.csdn.net/weixin_34043301/article/details/94216811 H5与web的不同点（具有的app特性）： 1、网络：2G、3G以及弱网测试 2、有横屏竖屏之分 3、兼容：需兼容不同分辨率/操作系统的手机浏览器 4、手指滑动流畅度，手机点击焦点是否定位准确 5、关注交互是否友好，尤其弹层 6、嵌入手机端与">
-<meta name="twitter:image" content="http://yoursite.com/2019/10/21/web测试/%5Cimages%5Cpasted-70.png">
+<meta name="twitter:title" content="JS 事件基础和进阶">
+<meta name="twitter:description" content="事件调用方式 在script标签中调用 obj.事件=function(){} 在元素中调用   常见事件有五种： 鼠标事件 键盘事件 表单事件 编辑事件 页面事件  鼠标事件onclick onmouseover onmouseout onmousedown onmouseup onmousemove键盘事件onkeydown onkeyup表单事件onfocus/onblur //获取焦点和失">
 
 
 
@@ -121,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/21/web测试/">
+  <link rel="canonical" href="http://yoursite.com/2021/02/20/JS-事件基础/">
 
 
 
 
 
-  <title>web测试 | 躲不掉的风</title>
+  <title>JS 事件基础和进阶 | 躲不掉的风</title>
   
 
 
@@ -266,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/21/web测试/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/20/JS-事件基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -283,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">web测试</h1>
+          <h1 class="post-title" itemprop="name headline">JS 事件基础和进阶</h1>
         
 
         <div class="post-meta">
@@ -295,8 +293,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T15:11:38+08:00">
-                2019-10-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-20T11:43:05+08:00">
+                2021-02-20
               </time>
             
 
@@ -333,18 +331,43 @@
       
 
       
-        <h4 id="web测试与APP测试区别"><a href="#web测试与APP测试区别" class="headerlink" title="web测试与APP测试区别"></a>web测试与APP测试区别</h4><p><img src="%5Cimages%5Cpasted-70.png" alt="upload successful"><br>参照：<a href="https://blog.csdn.net/weixin_34043301/article/details/94216811" target="_blank" rel="noopener">https://blog.csdn.net/weixin_34043301/article/details/94216811</a></p>
-<p>H5与web的不同点（具有的app特性）：</p>
-<pre><code>1、网络：2G、3G以及弱网测试
-2、有横屏竖屏之分
-3、兼容：需兼容不同分辨率/操作系统的手机浏览器
-4、手指滑动流畅度，手机点击焦点是否定位准确
-5、关注交互是否友好，尤其弹层
-6、嵌入手机端与native页有交互
-7、返回功能非手机自带，自己拥有</code></pre><p>H5与APP的不同点（具有的web特性）：</p>
-<pre><code>1、可以在PC端浏览器打开进行功能测试
-2、缓存在浏览器上，需要清理缓存测试
-3、安卓和IOS统一版本，一套代码部署</code></pre>
+        <h5 id="事件调用方式"><a href="#事件调用方式" class="headerlink" title="事件调用方式"></a>事件调用方式</h5><ul>
+<li><p>在script标签中调用</p>
+<pre><code>obj.事件=function(){}</code></pre></li>
+<li><p>在元素中调用</p>
+</li>
+</ul>
+<h5 id="常见事件有五种："><a href="#常见事件有五种：" class="headerlink" title="常见事件有五种："></a>常见事件有五种：</h5><ul>
+<li>鼠标事件</li>
+<li>键盘事件</li>
+<li>表单事件</li>
+<li>编辑事件</li>
+<li>页面事件</li>
+</ul>
+<h5 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h5><pre><code>onclick
+onmouseover
+onmouseout
+onmousedown
+onmouseup
+onmousemove</code></pre><h5 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h5><pre><code>onkeydown
+onkeyup</code></pre><h5 id="表单事件"><a href="#表单事件" class="headerlink" title="表单事件"></a>表单事件</h5><pre><code>onfocus/onblur //获取焦点和失去焦点 onfocus属性区别于focus()方法
+onselect//区别于select()方法
+onchange</code></pre><h5 id="编辑事件"><a href="#编辑事件" class="headerlink" title="编辑事件"></a>编辑事件</h5><p>主要用于限制复制操作</p>
+<pre><code>oncopy
+onselectstart//选中
+oncontextmenu //右键菜单</code></pre><h5 id="页面事件"><a href="#页面事件" class="headerlink" title="页面事件"></a>页面事件</h5><pre><code>onload//文档下载完成后再执行的一个事件
+window.onload=function(){}
+onbeforeunload//离开页面之前的一个事件</code></pre><h5 id="事件处理器和监听器"><a href="#事件处理器和监听器" class="headerlink" title="事件处理器和监听器"></a>事件处理器和监听器</h5><pre><code>oBtn.onclick=function(){}//事件处理器
+obj.addEventListener(type,fn,false)
+obj.removeEventListner(type,fn,false)</code></pre><h5 id="event事件"><a href="#event事件" class="headerlink" title="event事件"></a>event事件</h5><pre><code>每个事件都有对应的event对象
+event对象属性：
+type
+keyCode
+shiftKey
+ctrlKey
+altKey</code></pre><h5 id="this"><a href="#this" class="headerlink" title="this"></a>this</h5><p>哪个DOM对象调用了this所在的函数，那么this指向的就是哪个DOM对象</p>
+<p>this只有在被调用的时候才确定下来</p>
+
       
     </div>
     
@@ -368,8 +391,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/19/numpy函数总结/" rel="next" title="numpy函数总结">
-                <i class="fa fa-chevron-left"></i> numpy函数总结
+              <a href="/2021/02/19/JS-DOM基础/" rel="next" title="JS DOM基础">
+                <i class="fa fa-chevron-left"></i> JS DOM基础
               </a>
             
           </div>
@@ -378,8 +401,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2019/10/23/shell命令总结/" rel="prev" title="shell命令">
-                shell命令 <i class="fa fa-chevron-right"></i>
+              <a href="/2021/02/20/js-window对象/" rel="prev" title="js window对象">
+                js window对象 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -503,7 +526,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#web测试与APP测试区别"><span class="nav-number">1.</span> <span class="nav-text">web测试与APP测试区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#事件调用方式"><span class="nav-number">1.</span> <span class="nav-text">事件调用方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常见事件有五种："><span class="nav-number">2.</span> <span class="nav-text">常见事件有五种：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#鼠标事件"><span class="nav-number">3.</span> <span class="nav-text">鼠标事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#键盘事件"><span class="nav-number">4.</span> <span class="nav-text">键盘事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#表单事件"><span class="nav-number">5.</span> <span class="nav-text">表单事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#编辑事件"><span class="nav-number">6.</span> <span class="nav-text">编辑事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#页面事件"><span class="nav-number">7.</span> <span class="nav-text">页面事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#事件处理器和监听器"><span class="nav-number">8.</span> <span class="nav-text">事件处理器和监听器</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#event事件"><span class="nav-number">9.</span> <span class="nav-text">event事件</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#this"><span class="nav-number">10.</span> <span class="nav-text">this</span></a></li></ol></div>
             
 
           </div>

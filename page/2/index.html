@@ -261,6 +261,269 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/27/keep-alive/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/27/keep-alive/" itemprop="url">keep alive</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-27T18:09:30+08:00">
+                2020-11-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://zhuanlan.zhihu.com/p/48628352" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/48628352</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/24/nginx添加多个vue项目配置实例/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/24/nginx添加多个vue项目配置实例/" itemprop="url">nginx添加多个vue项目配置实例</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-24T18:40:32+08:00">
+                2020-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>环境：本地mac\nginx</li>
+</ol>
+<p>项目配置</p>
+<ol>
+<li><p>index.html文件修改<br> 添加 <meta base="/子目录名/"></p>
+</li>
+<li><p>config/index.js文件修改<br> 修改 assetsPublicPath: ‘/子目录名/‘</p>
+</li>
+</ol>
+<p>3.src/router/index.js文件修改<br>    添加 base: ‘/子目录名/‘</p>
+<p>nginx配置：</p>
+<pre><code>location /v2{
+   alias  /Users/liyuanchen/Documents/workspace/adu_dist/v2;
+   index index.html;
+   try_files $uri $uri/ /v2/index.html;
+}</code></pre><p>举例：</p>
+<pre><code> location /images/ {
+    root /opt/html/;
+    try_files $uri   $uri/  /images/default.gif; 
+}</code></pre><p> 比如 请求 127.0.0.1/images/test.gif 会依次查找 </p>
+<p> 1.文件/opt/html/images/test.gif<br> 2.文件夹 /opt/html/images/test.gif/下的index文件<br> 3.请求127.0.0.1/images/default.gif</p>
+<h5 id="index和try-files"><a href="#index和try-files" class="headerlink" title="index和try_files"></a>index和try_files</h5><p>index:<br>我的理解是默认路径，也就是当找不到文件的时候的一个默认的路径，可以配置多个。</p>
+<p>try_files:<br>这个东西是重定向用的，我感觉和index 差不多，不过确实比index 要好用</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/20/js常见问题和总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1271,283 +1534,6 @@ b=a   //本来应该是3，但是同时进行也成了2</code></pre><p> 导致�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/23/axios-get传递数组/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/23/axios-get传递数组/" itemprop="url">axios get和post传递数组</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-23T11:08:02+08:00">
-                2020-09-23
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h6 id="格式化数组参数的三种方法：https-www-cnblogs-com-boshow-p-13432156-html"><a href="#格式化数组参数的三种方法：https-www-cnblogs-com-boshow-p-13432156-html" class="headerlink" title="格式化数组参数的三种方法：https://www.cnblogs.com/boshow/p/13432156.html"></a>格式化数组参数的三种方法：<a href="https://www.cnblogs.com/boshow/p/13432156.html" target="_blank" rel="noopener">https://www.cnblogs.com/boshow/p/13432156.html</a></h6><pre><code>qs.stringify({ a: [&apos;b&apos;, &apos;c&apos;] }, { arrayFormat: &apos;indices&apos; })
-// &apos;a[0]=b&amp;a[1]=c&apos;
-qs.stringify({ a: [&apos;b&apos;, &apos;c&apos;] }, { arrayFormat: &apos;brackets&apos; })
-// &apos;a[]=b&amp;a[]=c&apos;
-qs.stringify({ a: [&apos;b&apos;, &apos;c&apos;] }, { arrayFormat: &apos;repeat&apos; })
-// &apos;a=b&amp;a=c&apos;</code></pre><h6 id="get传参"><a href="#get传参" class="headerlink" title="get传参"></a>get传参</h6><p> 更改get默认序列变化格式</p>
-<pre><code> export function get(url, params) {
-    console.log(&apos;getArray&apos;, params, QS.stringify(params, { arrayFormat: &apos;repeat&apos; }))
-    return new Promise((resolve, reject) =&gt; {
-        Axios.get(url, {
-                params: params,
-                paramsSerializer: function(params) {
-                    return QS.stringify(params, { arrayFormat: &apos;repeat&apos; })
-                }
-            }).then(res =&gt; {
-                resolve(res.data);
-            })
-            .catch(err =&gt; {
-                reject(err)
-            })
-    });
-}</code></pre><h6 id="post传参"><a href="#post传参" class="headerlink" title="post传参"></a>post传参</h6><pre><code>export function post(url, params, q) {
-    return new Promise((resolve, reject) =&gt; {
-        Axios.post(url, QS.stringify(params, { indices: false }), q)
-            .then(res =&gt; {
-                resolve(res.data);
-            })
-            .catch(err =&gt; {
-                reject(err.data)
-            })
-    });
-};</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/DjangoURL转换器使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/19/DjangoURL转换器使用/" itemprop="url">DjangoURL转换器使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-19T19:22:47+08:00">
-                2020-09-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://www.cnblogs.com/zheng-weimin/p/10148771.html" target="_blank" rel="noopener">https://www.cnblogs.com/zheng-weimin/p/10148771.html</a></p>
-<h5 id="1-实例"><a href="#1-实例" class="headerlink" title="1. 实例"></a>1. 实例</h5><p>第一步：在url中定义，具体支持类型见如上链接</p>
-<pre><code>path(&apos;mysheets/&lt;int:myid&gt;/&apos;,get_mysheets)</code></pre><p>第二步：view中接收参数，这里需要注意位置和名称的一致性。</p>
-<pre><code>def  get_mysheets(request,myid):
-     print(&apos;我获取到的参数是&apos;,myid)</code></pre><h6 id="2-常用类型"><a href="#2-常用类型" class="headerlink" title="2. 常用类型"></a>2. 常用类型</h6><pre><code>str：非空的字符串类型。默认的转换器。但是不能包含斜杠；
-int：匹配任意的零或者正数的整形。到视图函数中就是一个int类型；
-slug：由英文中的横杠 - ，或者下划线 _ 连接英文字符或者数字而成的字符串；
-uuid：匹配 uuid 字符串；
-path：匹配非空的英文字符串，可以包含斜杠；</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1598,7 +1584,7 @@ path：匹配非空的英文字符串，可以包含斜杠；</code></pre>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">123</span>
+                  <span class="site-state-item-count">125</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

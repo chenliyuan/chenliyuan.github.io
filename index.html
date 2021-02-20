@@ -261,6 +261,307 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/20/js-window对象/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/20/js-window对象/" itemprop="url">js window对象</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-20T14:57:41+08:00">
+                2021-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>我们每次打开一个页面时，浏览器都会自动为这个页面创建一个window对象。</p>
+<h5 id="window下的子对象"><a href="#window下的子对象" class="headerlink" title="window下的子对象"></a>window下的子对象</h5><pre><code>document
+location
+navigator
+history
+screen</code></pre><p>对于window对象来说，无论是他的属性还是方法，都可以省略window前缀。</p>
+<h5 id="window对象常用方法："><a href="#window对象常用方法：" class="headerlink" title="window对象常用方法："></a>window对象常用方法：</h5><pre><code>alert()//无返回
+confirm()//确定和取消按钮，返回布尔值
+prompt(“提示文字”)//返回字符串
+open(url,target)//target可以为_blank（default）\_self,返回打开的window对象
+close()
+setTimeout(code,time)//一次性定时器,毫秒
+clearTimeout(timer)
+setInterval()//重复性定时器
+clearInterval(timer)</code></pre><h5 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h5><pre><code> href  //当前页面地址
+search //？后面内容
+hash//#后面内容</code></pre><h5 id="navigator对象"><a href="#navigator对象" class="headerlink" title="navigator对象"></a>navigator对象</h5><pre><code>useragent</code></pre><h5 id="document对象"><a href="#document对象" class="headerlink" title="document对象"></a>document对象</h5><pre><code>document.title
+document.body
+document.forms
+document.images
+document.links
+document.cookie
+document.URL//当前文档的URL
+document.referer//返回使浏览器到达当前文档的URL</code></pre><h6 id="document对象方法"><a href="#document对象方法" class="headerlink" title="document对象方法"></a>document对象方法</h6><p>除了查找元素的方法外：</p>
+<pre><code>document.createElement()
+document.createTextNode()
+document.write()
+document.writeln()</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/20/JS-事件基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/20/JS-事件基础/" itemprop="url">JS 事件基础和进阶</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-20T11:43:05+08:00">
+                2021-02-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="事件调用方式"><a href="#事件调用方式" class="headerlink" title="事件调用方式"></a>事件调用方式</h5><ul>
+<li><p>在script标签中调用</p>
+<pre><code>obj.事件=function(){}</code></pre></li>
+<li><p>在元素中调用</p>
+</li>
+</ul>
+<h5 id="常见事件有五种："><a href="#常见事件有五种：" class="headerlink" title="常见事件有五种："></a>常见事件有五种：</h5><ul>
+<li>鼠标事件</li>
+<li>键盘事件</li>
+<li>表单事件</li>
+<li>编辑事件</li>
+<li>页面事件</li>
+</ul>
+<h5 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h5><pre><code>onclick
+onmouseover
+onmouseout
+onmousedown
+onmouseup
+onmousemove</code></pre><h5 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h5><pre><code>onkeydown
+onkeyup</code></pre><h5 id="表单事件"><a href="#表单事件" class="headerlink" title="表单事件"></a>表单事件</h5><pre><code>onfocus/onblur //获取焦点和失去焦点 onfocus属性区别于focus()方法
+onselect//区别于select()方法
+onchange</code></pre><h5 id="编辑事件"><a href="#编辑事件" class="headerlink" title="编辑事件"></a>编辑事件</h5><p>主要用于限制复制操作</p>
+<pre><code>oncopy
+onselectstart//选中
+oncontextmenu //右键菜单</code></pre><h5 id="页面事件"><a href="#页面事件" class="headerlink" title="页面事件"></a>页面事件</h5><pre><code>onload//文档下载完成后再执行的一个事件
+window.onload=function(){}
+onbeforeunload//离开页面之前的一个事件</code></pre><h5 id="事件处理器和监听器"><a href="#事件处理器和监听器" class="headerlink" title="事件处理器和监听器"></a>事件处理器和监听器</h5><pre><code>oBtn.onclick=function(){}//事件处理器
+obj.addEventListener(type,fn,false)
+obj.removeEventListner(type,fn,false)</code></pre><h5 id="event事件"><a href="#event事件" class="headerlink" title="event事件"></a>event事件</h5><pre><code>每个事件都有对应的event对象
+event对象属性：
+type
+keyCode
+shiftKey
+ctrlKey
+altKey</code></pre><h5 id="this"><a href="#this" class="headerlink" title="this"></a>this</h5><p>哪个DOM对象调用了this所在的函数，那么this指向的就是哪个DOM对象</p>
+<p>this只有在被调用的时候才确定下来</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/19/JS-DOM基础/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -338,12 +639,12 @@
 <li>属性节点2</li>
 <li>文本节点3</li>
 </ul>
-<h6 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h6><pre><code>getElementById()#前面只接document
+<h5 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h5><pre><code>getElementById()#前面只接document
 getElementsByTagName()#前面既接document又可接DOM对象，返回多个元素，可以操作动态DOM
 getElementsByClassName()
 querySelector()和querySelectorAll()
 getElementsByName()#只用于表单的单选或复选按钮
-document.title和document.body</code></pre><h6 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h6><pre><code>A.appendChild(B) //把B插入到A的内部去，可用于文本也可用于元素
+document.title和document.body</code></pre><h5 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h5><pre><code>A.appendChild(B) //把B插入到A的内部去，可用于文本也可用于元素
 
 var e1=document.createElement(&quot;元素名&quot;)
 var txt=document.createTextNode(&quot;文本内容&quot;)
@@ -353,7 +654,20 @@ e2.appendChild(e1)
 A.insertBefore(B,ref)//将新元素插入到父元素之前，与appendChild相反
 A.remove(B) //删除父元素下的子元素
 obj.cloneNode(bool)//复制元素，bool为true或1则复制本身及以下所有子元素
-A.replace(new,old)//替换父元素下的两个子元素</code></pre>
+A.replace(new,old)//替换父元素下的两个子元素</code></pre><h5 id="属性操作"><a href="#属性操作" class="headerlink" title="属性操作"></a>属性操作</h5><pre><code>obj.attr
+obj.attr=&quot;值&quot;
+obj.getAttribute(&quot;attr&quot;)
+obj.setAttribute(&quot;attr&quot;)
+obj.hasAttribute(&quot;attr&quot;)</code></pre><h6 id="CSS属性操作"><a href="#CSS属性操作" class="headerlink" title="CSS属性操作"></a>CSS属性操作</h6><p><strong>获取</strong></p>
+<pre><code>getComputedStyle(obj).attr//其中attr是骆驼峰型的CSS属性名，如backgroundColor
+getComputedStyle(obj).[&quot;attr&quot;]</code></pre><p><strong>设置</strong></p>
+<pre><code>obj.style.attr=&quot;值&quot;//等价于obj.style[&quot;attr&quot;]  
+
+obj.style.cssText=&quot;很多值&quot;
+eg:  oDiv.style.cssText=&quot;width:100px;height:100px&quot;;</code></pre><h5 id="DOM遍历"><a href="#DOM遍历" class="headerlink" title="DOM遍历"></a>DOM遍历</h5><pre><code>Obj.parentNode //查找父元素
+obj.children\firstElementChild\lastElementChild//查找子元素
+不建议使用obj.childNodes\firstChild\lastChild(不仅包括元素节点，还包括文本节点)
+obj.previousElementSibling/nextElementSibling//查找兄弟节点</code></pre><h5 id="innerHTML和innerText"><a href="#innerHTML和innerText" class="headerlink" title="innerHTML和innerText"></a>innerHTML和innerText</h5><pre><code>获取内部元素和内部文本</code></pre>
           
         
       
@@ -1473,269 +1787,6 @@ console.log(&quot;Server running at http://127.0.0.1:3000/&quot;);</code></pre>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/27/keep-alive/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/11/27/keep-alive/" itemprop="url">keep alive</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-27T18:09:30+08:00">
-                2020-11-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><a href="https://zhuanlan.zhihu.com/p/48628352" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/48628352</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/24/nginx添加多个vue项目配置实例/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/11/24/nginx添加多个vue项目配置实例/" itemprop="url">nginx添加多个vue项目配置实例</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-24T18:40:32+08:00">
-                2020-11-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>环境：本地mac\nginx</li>
-</ol>
-<p>项目配置</p>
-<ol>
-<li><p>index.html文件修改<br> 添加 <meta base="/子目录名/"></p>
-</li>
-<li><p>config/index.js文件修改<br> 修改 assetsPublicPath: ‘/子目录名/‘</p>
-</li>
-</ol>
-<p>3.src/router/index.js文件修改<br>    添加 base: ‘/子目录名/‘</p>
-<p>nginx配置：</p>
-<pre><code>location /v2{
-   alias  /Users/liyuanchen/Documents/workspace/adu_dist/v2;
-   index index.html;
-   try_files $uri $uri/ /v2/index.html;
-}</code></pre><p>举例：</p>
-<pre><code> location /images/ {
-    root /opt/html/;
-    try_files $uri   $uri/  /images/default.gif; 
-}</code></pre><p> 比如 请求 127.0.0.1/images/test.gif 会依次查找 </p>
-<p> 1.文件/opt/html/images/test.gif<br> 2.文件夹 /opt/html/images/test.gif/下的index文件<br> 3.请求127.0.0.1/images/default.gif</p>
-<h5 id="index和try-files"><a href="#index和try-files" class="headerlink" title="index和try_files"></a>index和try_files</h5><p>index:<br>我的理解是默认路径，也就是当找不到文件的时候的一个默认的路径，可以配置多个。</p>
-<p>try_files:<br>这个东西是重定向用的，我感觉和index 差不多，不过确实比index 要好用</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1786,7 +1837,7 @@ console.log(&quot;Server running at http://127.0.0.1:3000/&quot;);</code></pre>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">123</span>
+                  <span class="site-state-item-count">125</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

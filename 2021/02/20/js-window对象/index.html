@@ -79,19 +79,17 @@
 
 
 
-<meta name="description" content="web测试与APP测试区别参照：https://blog.csdn.net/weixin_34043301/article/details/94216811 H5与web的不同点（具有的app特性）： 1、网络：2G、3G以及弱网测试 2、有横屏竖屏之分 3、兼容：需兼容不同分辨率/操作系统的手机浏览器 4、手指滑动流畅度，手机点击焦点是否定位准确 5、关注交互是否友好，尤其弹层 6、嵌入手机端与">
+<meta name="description" content="我们每次打开一个页面时，浏览器都会自动为这个页面创建一个window对象。 window下的子对象document location navigator history screen对于window对象来说，无论是他的属性还是方法，都可以省略window前缀。 window对象常用方法：alert()//无返回 confirm()//确定和取消按钮，返回布尔值 prompt(“提示文字”)//返回">
 <meta property="og:type" content="article">
-<meta property="og:title" content="web测试">
-<meta property="og:url" content="http://yoursite.com/2019/10/21/web测试/index.html">
+<meta property="og:title" content="js window对象">
+<meta property="og:url" content="http://yoursite.com/2021/02/20/js-window对象/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="web测试与APP测试区别参照：https://blog.csdn.net/weixin_34043301/article/details/94216811 H5与web的不同点（具有的app特性）： 1、网络：2G、3G以及弱网测试 2、有横屏竖屏之分 3、兼容：需兼容不同分辨率/操作系统的手机浏览器 4、手指滑动流畅度，手机点击焦点是否定位准确 5、关注交互是否友好，尤其弹层 6、嵌入手机端与">
+<meta property="og:description" content="我们每次打开一个页面时，浏览器都会自动为这个页面创建一个window对象。 window下的子对象document location navigator history screen对于window对象来说，无论是他的属性还是方法，都可以省略window前缀。 window对象常用方法：alert()//无返回 confirm()//确定和取消按钮，返回布尔值 prompt(“提示文字”)//返回">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2019/10/21/web测试/%5Cimages%5Cpasted-70.png">
-<meta property="og:updated_time" content="2020-01-28T04:29:49.832Z">
+<meta property="og:updated_time" content="2021-02-20T07:12:26.837Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="web测试">
-<meta name="twitter:description" content="web测试与APP测试区别参照：https://blog.csdn.net/weixin_34043301/article/details/94216811 H5与web的不同点（具有的app特性）： 1、网络：2G、3G以及弱网测试 2、有横屏竖屏之分 3、兼容：需兼容不同分辨率/操作系统的手机浏览器 4、手指滑动流畅度，手机点击焦点是否定位准确 5、关注交互是否友好，尤其弹层 6、嵌入手机端与">
-<meta name="twitter:image" content="http://yoursite.com/2019/10/21/web测试/%5Cimages%5Cpasted-70.png">
+<meta name="twitter:title" content="js window对象">
+<meta name="twitter:description" content="我们每次打开一个页面时，浏览器都会自动为这个页面创建一个window对象。 window下的子对象document location navigator history screen对于window对象来说，无论是他的属性还是方法，都可以省略window前缀。 window对象常用方法：alert()//无返回 confirm()//确定和取消按钮，返回布尔值 prompt(“提示文字”)//返回">
 
 
 
@@ -121,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/10/21/web测试/">
+  <link rel="canonical" href="http://yoursite.com/2021/02/20/js-window对象/">
 
 
 
 
 
-  <title>web测试 | 躲不掉的风</title>
+  <title>js window对象 | 躲不掉的风</title>
   
 
 
@@ -266,7 +264,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/21/web测试/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/20/js-window对象/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="躲不掉的风">
@@ -283,7 +281,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">web测试</h1>
+          <h1 class="post-title" itemprop="name headline">js window对象</h1>
         
 
         <div class="post-meta">
@@ -295,8 +293,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-21T15:11:38+08:00">
-                2019-10-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-20T14:57:41+08:00">
+                2021-02-20
               </time>
             
 
@@ -333,18 +331,34 @@
       
 
       
-        <h4 id="web测试与APP测试区别"><a href="#web测试与APP测试区别" class="headerlink" title="web测试与APP测试区别"></a>web测试与APP测试区别</h4><p><img src="%5Cimages%5Cpasted-70.png" alt="upload successful"><br>参照：<a href="https://blog.csdn.net/weixin_34043301/article/details/94216811" target="_blank" rel="noopener">https://blog.csdn.net/weixin_34043301/article/details/94216811</a></p>
-<p>H5与web的不同点（具有的app特性）：</p>
-<pre><code>1、网络：2G、3G以及弱网测试
-2、有横屏竖屏之分
-3、兼容：需兼容不同分辨率/操作系统的手机浏览器
-4、手指滑动流畅度，手机点击焦点是否定位准确
-5、关注交互是否友好，尤其弹层
-6、嵌入手机端与native页有交互
-7、返回功能非手机自带，自己拥有</code></pre><p>H5与APP的不同点（具有的web特性）：</p>
-<pre><code>1、可以在PC端浏览器打开进行功能测试
-2、缓存在浏览器上，需要清理缓存测试
-3、安卓和IOS统一版本，一套代码部署</code></pre>
+        <p>我们每次打开一个页面时，浏览器都会自动为这个页面创建一个window对象。</p>
+<h5 id="window下的子对象"><a href="#window下的子对象" class="headerlink" title="window下的子对象"></a>window下的子对象</h5><pre><code>document
+location
+navigator
+history
+screen</code></pre><p>对于window对象来说，无论是他的属性还是方法，都可以省略window前缀。</p>
+<h5 id="window对象常用方法："><a href="#window对象常用方法：" class="headerlink" title="window对象常用方法："></a>window对象常用方法：</h5><pre><code>alert()//无返回
+confirm()//确定和取消按钮，返回布尔值
+prompt(“提示文字”)//返回字符串
+open(url,target)//target可以为_blank（default）\_self,返回打开的window对象
+close()
+setTimeout(code,time)//一次性定时器,毫秒
+clearTimeout(timer)
+setInterval()//重复性定时器
+clearInterval(timer)</code></pre><h5 id="location对象"><a href="#location对象" class="headerlink" title="location对象"></a>location对象</h5><pre><code> href  //当前页面地址
+search //？后面内容
+hash//#后面内容</code></pre><h5 id="navigator对象"><a href="#navigator对象" class="headerlink" title="navigator对象"></a>navigator对象</h5><pre><code>useragent</code></pre><h5 id="document对象"><a href="#document对象" class="headerlink" title="document对象"></a>document对象</h5><pre><code>document.title
+document.body
+document.forms
+document.images
+document.links
+document.cookie
+document.URL//当前文档的URL
+document.referer//返回使浏览器到达当前文档的URL</code></pre><h6 id="document对象方法"><a href="#document对象方法" class="headerlink" title="document对象方法"></a>document对象方法</h6><p>除了查找元素的方法外：</p>
+<pre><code>document.createElement()
+document.createTextNode()
+document.write()
+document.writeln()</code></pre>
       
     </div>
     
@@ -368,8 +382,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/10/19/numpy函数总结/" rel="next" title="numpy函数总结">
-                <i class="fa fa-chevron-left"></i> numpy函数总结
+              <a href="/2021/02/20/JS-事件基础/" rel="next" title="JS 事件基础和进阶">
+                <i class="fa fa-chevron-left"></i> JS 事件基础和进阶
               </a>
             
           </div>
@@ -377,10 +391,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/10/23/shell命令总结/" rel="prev" title="shell命令">
-                shell命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -503,7 +513,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#web测试与APP测试区别"><span class="nav-number">1.</span> <span class="nav-text">web测试与APP测试区别</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#window下的子对象"><span class="nav-number">1.</span> <span class="nav-text">window下的子对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#window对象常用方法："><span class="nav-number">2.</span> <span class="nav-text">window对象常用方法：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#location对象"><span class="nav-number">3.</span> <span class="nav-text">location对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#navigator对象"><span class="nav-number">4.</span> <span class="nav-text">navigator对象</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#document对象"><span class="nav-number">5.</span> <span class="nav-text">document对象</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#document对象方法"><span class="nav-number">5.1.</span> <span class="nav-text">document对象方法</span></a></li></ol></li></ol></div>
             
 
           </div>
