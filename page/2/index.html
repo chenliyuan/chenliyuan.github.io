@@ -261,6 +261,256 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/20/js常见问题和总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/20/js常见问题和总结/" itemprop="url">js常见问题和总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-20T15:07:09+08:00">
+                2020-11-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <pre><code>a=[1,2]
+a.indexOf(&quot;All&quot;)?1:2//返回1</code></pre><p>1：通过从列表查找某元素的Index来判断元素是否存在正确<br>2：三目运算，若正确则会取第一项，否则取第二项<br>3：问题在于：a.indexOf(“All”)返回的是-1，而js不会当成false逻辑处理，所以需要改成</p>
+<pre><code>a.indexOf(&quot;All&quot;)&lt;0?1:2//返回2</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/19/router/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/19/router/" itemprop="url">router</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-19T15:23:08+08:00">
+                2020-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p> <a href="https://blog.csdn.net/qq_35432904/article/details/91552845" target="_blank" rel="noopener">https://blog.csdn.net/qq_35432904/article/details/91552845</a></p>
+<pre><code>{
+   path: &apos;/detail/:id/&apos;,
+   name: &quot;detail&quot;,
+   component: detail//这个details是传进来的组件名称
+ }
+
+使用： 
+方法1：&lt;router-link :to=&quot;{ name: &apos;details&apos;, params: { id: 123 }}&quot;&gt;点击按钮&lt;/router-link&gt;
+方法2：this.$router.push({name:&apos;details&apos;,params:{id:123}})
+页面url显示结果是：http://localhost:8081/#/details/123</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/16/refs实践/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1298,272 +1548,6 @@ path：匹配非空的英文字符串，可以包含斜杠；</code></pre>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/Django模型models字段/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/19/Django模型models字段/" itemprop="url">Django模型models字段</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-19T18:08:39+08:00">
-                2020-09-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>全全的好文 ：<a href="https://www.jb51.net/article/186742.htm" target="_blank" rel="noopener">https://www.jb51.net/article/186742.htm</a></p>
-<h5 id="常见的FieldType数据库字段类型"><a href="#常见的FieldType数据库字段类型" class="headerlink" title="常见的FieldType数据库字段类型"></a>常见的FieldType数据库字段类型</h5><p>1、AutoField：自增Field域，自动增加的一个数据库字段类型，例如id字段就可以使用该数据类型，参数中必须填入primary_key=True</p>
-<p>2、BigAutoField：和AutoField相同，只是比AutoField要大，参数中必须填入primary_key=True</p>
-<p>3、BigIntegerField：大整型，只要用于存储整型的数据</p>
-<p>4、BinaryField：主要是存储原始的二进制数据</p>
-<p>5、BooleanField：主要是存储布尔类型的数据，0和1</p>
-<p>6、CharField：主要存储字符串的数据类型</p>
-<p>7、DateField：主要存储日期类型的数据类型，日期格式为YYYY-MM-DD</p>
-<p>8、DateTimeField：主要存储时间相关的数据类型，格式为YYYY-MM-DD HH:MM:[ss[.uuuuuu]][TZ]</p>
-<p>注意：DateField与DateTimeField有两个属性，配置auto_now_add=True，创建数据记录的时候会把当前时间添加到数据库，配置auto_now=True，每次更新数据记录的时候都会更新该字段</p>
-<p>9、DecimalField：主要存储固定精度的十进制数据</p>
-<h5 id="【问题】"><a href="#【问题】" class="headerlink" title="【问题】"></a>【问题】</h5><p> 数据存库的时候，提示类似如下问题<br>Exception Value: (1048, “Column ‘sheet_id’ cannot be null”)</p>
-<p>【原因/解决】创建自增字段的时候字段使用错误，应该使用AutoField字段</p>
-<h5 id="AutoField"><a href="#AutoField" class="headerlink" title="AutoField"></a>AutoField</h5><p>Django默认的行为就像这样</p>
-<pre><code>class TestModel(models.Model):
-id = models.AutoField(primary_key=True) </code></pre><p>若手动增加AutoField列，注意添加主键</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/Django外键使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/19/Django外键使用/" itemprop="url">Django外键使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-19T17:45:39+08:00">
-                2020-09-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="外键定义"><a href="#外键定义" class="headerlink" title="外键定义"></a>外键定义</h4><p><a href="https://blog.csdn.net/hpu_yly_bj/article/details/78939748" target="_blank" rel="noopener">https://blog.csdn.net/hpu_yly_bj/article/details/78939748</a></p>
-<pre><code>class Person(models.Model);
-name = models.CharField(&apos;作者姓名&apos;, max_length=10)
-age = models.IntegerField(&apos;作者年龄&apos;)
-
-class Book(models.Model):
-person = models.ForeignKey(Person, related_name=&apos;person_book&apos;，on_delete=models.CASCADE)
-title = models.CharField(&apos;书籍名称&apos;, max_length=10)
-pubtime = models.DateField(&apos;出版时间&apos;)</code></pre><p>  <strong>on_delete</strong></p>
-<pre><code>on_delete=models.CASCADE, # 删除关联数据,与之关联也删除</code></pre><p>   其他 <a href="https://www.jianshu.com/p/6240ed7dd3ea" target="_blank" rel="noopener">https://www.jianshu.com/p/6240ed7dd3ea</a></p>
-<h4 id="查询"><a href="#查询" class="headerlink" title="查询"></a>查询</h4><h5 id="主表查询字表"><a href="#主表查询字表" class="headerlink" title="主表查询字表"></a>主表查询字表</h5><pre><code>book = person.book_set.all() #默认机制属性，即字表后加set
-若设置了related_name，则还可以：
-book = person.person_book.all()</code></pre><h5 id="子表查主表"><a href="#子表查主表" class="headerlink" title="子表查主表"></a>子表查主表</h5><pre><code>p = book.person</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1614,7 +1598,7 @@ book = person.person_book.all()</code></pre><h5 id="子表查主表"><a href="#�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">121</span>
+                  <span class="site-state-item-count">123</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
