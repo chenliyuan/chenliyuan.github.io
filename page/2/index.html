@@ -261,6 +261,355 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/05/vue的跨域代理proxyTable/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/05/vue的跨域代理proxyTable/" itemprop="url">vue的跨域代理proxyTable</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-05T14:53:03+08:00">
+                2021-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>【问题】为什么后者设置跨域请求，有时候报错有时候不报错？</p>
+<p>参考：<a href="https://www.cnblogs.com/wasbg/p/12659610.html" target="_blank" rel="noopener">https://www.cnblogs.com/wasbg/p/12659610.html</a></p>
+<h6 id="proxyTable-跨域的基本原理是"><a href="#proxyTable-跨域的基本原理是" class="headerlink" title="proxyTable 跨域的基本原理是:"></a>proxyTable 跨域的基本原理是:</h6><pre><code>在开发模式下,webpack 会为我们提供一个http代理服务器.
+我们请求接口的时候,实际上是请求的webpack提供的这个http代理服务器.
+在由这个代理服务器请求真是的数据服务器.
+最后数据经由webpack代理服务器,最后转交给我们的vue程序.</code></pre><p> <img src="/images/pasted-189.png" alt="upload successful"></p>
+<p> 为什么加个代理服务器就可以了?</p>
+<p><strong>因为代理服务器不是浏览器,它没有同源策略的限制</strong></p>
+<h6 id="具体配置："><a href="#具体配置：" class="headerlink" title="具体配置："></a>具体配置：</h6><pre><code>proxyTable: {
+      // 这里配置 &apos;/api&apos; 就等价于 target , 你在链接里访问 /api === http://localhost:54321
+      &apos;/api&apos;: {
+        target: &apos;http://localhost:54321/&apos;, // 真是服务器的接口地址 // http://localhost:54321/json.data.json,
+        secure: true, // 如果是 https ,需要开启这个选项
+        changeOrigin: true, // 是否是跨域请求?肯定是啊,不跨域就没有必要配置这个proxyTable了.
+        pathRewirte: {
+          // 这里是追加链接,比如真是接口里包含了 /api,就需要这样配置.
+
+          &apos;/^api&apos;: &apos;api/&apos;, 
+          // 等价于 
+          // step 1  /api = http://localhost:54321/
+          // step 2 /^api = /api + api == http://localhost:54321/api
+        }
+      }
+     },</code></pre><h6 id="proxyTable-和-axios-defaults-baseURL"><a href="#proxyTable-和-axios-defaults-baseURL" class="headerlink" title="proxyTable 和  axios.defaults.baseURL"></a>proxyTable 和  axios.defaults.baseURL</h6><p>  前者适合本地调试使用</p>
+<p>  后者适合生产环境</p>
+<p>【解决】为什么后者设置跨域请求，有时候报错有时候不报错？</p>
+<p>   按理说应该报错，但是若后端处理了跨域就不会报错。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/12/22/http缓存/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/12/22/http缓存/" itemprop="url">http缓存分享汇总</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-12-22T11:43:21+08:00">
+                2020-12-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h5><p>Web 缓存是指一个 Web 资源（如 html 页面，图片，js，数据等）存在于 Web 服务器和客户端（浏览器）之间的副本。<br>缓存会根据进来的请求保存输出内容的副本；当下一个请求来到的时候，如果是相同的 URL，缓存会根据缓存机制决定是直接使用副本响应访问请求，还是向源服务器再次发送请求。</p>
+<h5 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h5><p><img src="/images/pasted-156.png" alt="upload successful"></p>
+<h5 id="为什么使用缓存"><a href="#为什么使用缓存" class="headerlink" title="为什么使用缓存"></a>为什么使用缓存</h5><pre><code>减少网络延迟：可以明显加快页面打开速度，达到更好的用户体验。
+
+减少网络带宽消耗：当web缓存副本被使用时，只会产生极小的网络流量，可以有效降低运营成本。
+
+降低服务器压力：给网络资源设定有效期之后，用户可以重复使用本地缓存，减少对源服务器的请求，简介降低了对服务器的压力，同时搜索引擎的爬虫机器人也能根据过期机制降低爬取的频率，也能有效降低服务器压力。</code></pre><h5 id="缓存区域"><a href="#缓存区域" class="headerlink" title="缓存区域"></a>缓存区域</h5><pre><code>from memory cache：快速读取、时效性、js/图片
+from disk cache：比较慢、css文件</code></pre><h5 id="主要头部字段"><a href="#主要头部字段" class="headerlink" title="主要头部字段"></a>主要头部字段</h5><p>  <img src="/images/pasted-160.png" alt="upload successful"></p>
+<pre><code>Pragma 只有一个属性值，就是 no-cache ，效果和 Cache-Control 中的 no-cache 一致，不使用强缓存，需要与服务器验证缓存是否新鲜，在 3 个头部属性中的优先级最高。（已废弃）
+Expires 的值是一个 HTTP 日期，在浏览器发起请求时，会根据系统时间和 Expires 的值进行比较，如果系统时间超过了 Expires 的值，缓存失效。
+Cache-Control：
+max-age：单位是秒，缓存时间计算的方式是距离发起的时间的秒数，超过间隔的秒数缓存失效
+no-cache：不使用强缓存，需要与服务器验证缓存是否新鲜
+no-store：禁止使用缓存（包括协商缓存），每次都向服务器请求最新的资源
+private：专用于个人的缓存，中间代理、CDN 等不能缓存此响应
+public：响应可以被中间代理、CDN 等缓存</code></pre><p>有了Last-Modified为什么还需要Etag？</p>
+<pre><code>Last-Modified的值单位为秒。如果服务资源在1秒内发生多次变更，那服务器通过秒级对比就没办法发现文件是否已经变更。
+一些特殊场景下，有些资源会被定时更新或者修改，但是其内容并未发生改变，而最后修改时间却在变化，导致客户端缓存定期失效，没有达到使用缓存的目的。
+服务器可能因为一些其他原因，其时间没有与代理服务器或客户端时间保持一致，因时间偏差，从而导致缓存失效。</code></pre><p>有了Etag为什么还需要Last-Modified？</p>
+<pre><code>Etag的值是服务器计算出的一串hash值，如果计算过程较复杂，比较消耗性能，那使用Last-Modified会比较合适
+如果获取某些文件的最后修改时间比较容易，而文件的变更频率也不高，那无疑使用Last-Modified更合适</code></pre><h5 id="缓存流程"><a href="#缓存流程" class="headerlink" title="缓存流程"></a>缓存流程</h5><p>  强缓存：不会向服务器发送请求，直接从缓存中读取资源，在chrome控制台的network选项中可以看到该请求返回200的状态码;</p>
+<p>  协商缓存：向服务器发送请求，服务器会根据这个请求的request header的一些参数来判断是否命中协商缓存，如果命中，则返回304状态码并带上新的response header通知浏览器从缓存中读取资源；</p>
+<p>两者的共同点是，都是从客户端缓存中读取资源；区别是强缓存不会发请求，协商缓存会发请求。</p>
+<p><img src="/images/pasted-186.png" alt="upload successful"></p>
+<p><img src="/images/pasted-187.png" alt="upload successful"></p>
+<h5 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h5><p>nginx配置添加响应头？</p>
+<p>response header一般都是以key：value的形式，例如</p>
+<pre><code>add_header Cache-Control no-store</code></pre><p>频繁变动的资源：</p>
+<pre><code>完全不缓存：no-store
+协商缓存：no-cache；配合协商缓存</code></pre><p>不经常变动的资源和文件：</p>
+<pre><code>css\js\图片文件资源可以设置一个较长的缓存有效期；
+  只有当文件名变化的时候才更新</code></pre><h5 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h5><p>问题一：  同时在nginx和Server端添加缓存标识，为何Server端没有生效？</p>
+<p><img src="/images/pasted-179.png" alt="upload successful"><br>原来：<br><img src="/images/pasted-180.png" alt="upload successful"><br>修改后<br><img src="/images/pasted-181.png" alt="upload successful"></p>
+<p>问题二：当在Nginx和Server端都配置缓存，是否都会被带上？最终的缓存取的哪一方？</p>
+<p><img src="/images/pasted-183.png" alt="upload successful"></p>
+<p>问题三：接口返回是否可以缓存？可以。</p>
+<h5 id="附："><a href="#附：" class="headerlink" title="附："></a>附：</h5><p>cache.html</p>
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+  &lt;link rel=&quot;icon&quot; href=&quot;data:;base64,=&quot;&gt;
+  &lt;meta http-equiv=&quot;Pragma&quot; content=&quot;no-cache&quot; /&gt;
+  &lt;title&gt;cache&lt;/title&gt;
+  &lt;script src=&quot;/cache.js&quot;&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;cache&lt;/h1&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><p>cache.js</p>
+<pre><code>let http = require(&apos;http&apos;),
+fs = require(&apos;fs&apos;),
+path = require(&apos;path&apos;),
+url = require(&quot;url&quot;)
+http.createServer((req,res)=&gt;{
+  let pathname = __dirname + url.parse(req.url).pathname; // 获取文件路径
+  let statusCode = 200 // 响应头状态码
+  let extname = path.extname(pathname) // 获取文件扩展名
+  let headType = &apos;text/html&apos; // 内容类型
+  if( extname){
+    switch(extname){
+      case &apos;.html&apos;:
+       headType = &apos;text/html&apos;
+      break;
+      case &apos;.js&apos;:
+        headType = &apos;text/javascript&apos;
+      break;
+    }
+  }
+  fs.readFile(pathname, function (err, data) {
+    res.writeHead(statusCode, {
+      &apos;Content-Type&apos;: headType,
+      // &apos;Expires&apos;:new Date(Date.now() + 3000).toUTCString()
+      // &apos;Cache-Control&apos;:&apos;max-age=10&apos;,
+      // &apos;Pragma&apos;:&apos;no-cache&apos;,
+
+      &apos;Cache-Control&apos;:&apos;no-store&apos;,
+      // &apos;Cache-Control&apos;:&apos;no-cache&apos;
+    });
+    res.end(data);
+  });
+}).listen(3000)
+
+console.log(&quot;Server running at http://127.0.0.1:3000/&quot;);</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/27/keep-alive/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1279,261 +1628,6 @@ b=a   //本来应该是3，但是同时进行也成了2</code></pre><p> 导致�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/11/vuex/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/10/11/vuex/" itemprop="url">vuex</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-11T08:36:47+08:00">
-                2020-10-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>五大将</p>
-</li>
-<li><p>state 定义变量</p>
-<p>  mapstate:为了减少重复变量的定义,列表或对象声明调用</p>
-</li>
-<li><p>gettters:定义list等方法</p>
-</li>
-<li><p>mutation：修改状态值（注意不可以直接修改）需要定义mutation，在这里不要操作异步数据。<br>  在app.vue中提交</p>
-</li>
-<li><p>actions：类似mutation,但不是直接修改状态，提交mutation.</p>
-<p>  在app.vue中提交</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/24/Vue结构搭建/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/24/Vue结构搭建/" itemprop="url">Vue项目架构搭建</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-24T17:39:58+08:00">
-                2020-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>数据流向和路由跳转如下<br><img src="/images/pasted-149.png" alt="upload successful"></p>
-<p>【原因】拆分成index和login两部分主要原因是login页面不使用与各个其他模块相同的页面设计部分。</p>
-<p>【方式】主要通过留 <router-view>口子，通过路由跳转来实现<br>嵌套功能</router-view></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1584,7 +1678,7 @@ b=a   //本来应该是3，但是同时进行也成了2</code></pre><p> 导致�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">125</span>
+                  <span class="site-state-item-count">127</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

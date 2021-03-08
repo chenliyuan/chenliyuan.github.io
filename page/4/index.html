@@ -261,6 +261,375 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/11/Vue-Django跨域问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/11/Vue-Django跨域问题/" itemprop="url">Vue+Django跨域问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-11T18:42:29+08:00">
+                2020-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="什么是跨域"><a href="#什么是跨域" class="headerlink" title="什么是跨域"></a>什么是跨域</h5><p><a href="https://www.jianshu.com/p/8fa2acd103ea" target="_blank" rel="noopener">https://www.jianshu.com/p/8fa2acd103ea</a></p>
+<p>跨域：指的是浏览器不能执行其他网站的脚本。它是由浏览器的同源策略造成的，是浏览器对javascript施加的安全限制。</p>
+<ol>
+<li><p>其实是浏览器的限制。理解这一点很重要！！！</p>
+</li>
+<li><p>同源策略：是指协议，域名，端口都要相同，其中有一个不同都会产生跨域</p>
+</li>
+</ol>
+<h5 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h5><p>前提：后端未处理跨域；后端已配到nginx</p>
+<pre><code>前端和后端都是https://adu.i.test.shopee.i-----无跨域报错
+
+前端本地 nginx:http:localhost:9999
+请求后端:https://adu.i.test.shopee.io/ ---跨域报错</code></pre><p>  <img src="/images/pasted-205.png" alt="upload successful"></p>
+<h5 id="Django跨域问题解决"><a href="#Django跨域问题解决" class="headerlink" title="Django跨域问题解决"></a>Django跨域问题解决</h5><p>由于请求本地服务另外端口号导致的跨域问题，可参考<br><a href="https://www.cnblogs.com/wasbg/p/10973880.html" target="_blank" rel="noopener">https://www.cnblogs.com/wasbg/p/10973880.html</a><br><a href="https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：" target="_blank" rel="noopener">https://segmentfault.com/a/1190000017952184?utm_source=tag-newest：</a></p>
+<h6 id="前端解决："><a href="#前端解决：" class="headerlink" title="前端解决："></a>前端解决：</h6><pre><code>config/index.js(前提去掉Axios.defaults.baseURL)
+    proxyTable: {
+        &apos;/&apos;: {
+            target: &apos;http://127.0.0.1:8000/&apos;, //后端接口地址
+            changeOrigin: true, //是否允许跨越
+            pathRewrite: {
+                &apos;^/&apos;: &apos;/&apos;, //重写,
+            }
+        }
+    },</code></pre><ol>
+<li><p>设置了axios.defaults.baseURL会跳过代理,所以需要注释掉baseURL</p>
+</li>
+<li><p>浏览器是禁止跨域的，会检查origin是否同源,若非同源则禁止。但是服务端不禁止，在本地运行npm run dev等命令时实际上是用node运行了一个服务器，因此proxyTable实际上是将请求发给自己的服务器，再由服务器转发给后台服务器，做了亦曾代理，因为不会出现跨域问题。</p>
+<p>proxy 的工作机制是：你依然请求本地地址，即使你 npm run dev 跑起来的东西并没有任何接口能力，而 Webpack 后台会将所有指定的请求转发到 target 对应的地址上。这个转发的过程发生在服务端（也就是 webpack-dev-server），所以你的浏览器是不知道的。</p>
+<h6 id="后端解决"><a href="#后端解决" class="headerlink" title="后端解决"></a>后端解决</h6><p> pip install django-cors-headers   </p>
+<p>  setting中设置：</p>
+<ol>
+<li><p>‘corsheaders.middleware.CorsMiddleware’ # 新加的插件位置最好放在CommonMiddleware之前</p>
+</li>
+<li><p>INSTALLED_APPS中添加<br>‘corsheaders’,    </p>
+</li>
+<li><p>setting文件里新增</p>
+<p>CORS_ORIGIN_ALLOW_ALL = True   //新增<br>CORS_ALLOW_CREDENTIALS = True  //新增</p>
+</li>
+</ol>
+</li>
+</ol>
+<p>【问题】<br>[HPM] Error occurred while trying to proxy request /api/logout/ from localhost:8088 to 127.0.0.1:8000/ (EHOSTUNREACH) (<a href="https://nodejs.org/api/errors.html#errors_common_system_errors" target="_blank" rel="noopener">https://nodejs.org/api/errors.html#errors_common_system_errors</a>)</p>
+<p>解决了原来一个warning错后重启了前端服务，服务自动更换了个新的端口，就好了！</p>
+<p>【问题2】解决：设置前端代理后，请求后端服务依旧报404</p>
+<p>【详细描述】由于所有接口有前缀measurement，在跨域之前使用baseURL设置成Axios.defaults.baseURL = ‘<a href="http://http://10.12.168.11:8000/measurement" target="_blank" rel="noopener">http://http://10.12.168.11:8000/measurement</a></p>
+<p>后来改成跨域使用proxy试了几种办法：</p>
+<pre><code>由于请求接口本身并没有measurement，所以这样是错误的。
+   proxyTable: {
+    &apos;/measurement&apos;: {
+        target: &apos;http://10.12.168.11:8000&apos;, //后端接口地址
+        changeOrigin: true, //是否允许跨越
+        pathRewrite: {
+            &apos;^/measurement&apos;: &apos;/measurement&apos;, //重写,
+        }
+    }
+ 这个很奇怪，竟然也没行
+    proxyTable: {
+    &apos;/&apos;: {
+        target: &apos;http://10.12.168.11:8000&apos;, //后端接口地址
+        changeOrigin: true, //是否允许跨越
+        pathRewrite: {
+            &apos;^/&apos;: &apos;/measurement&apos;, //重写,
+        }
+    }
+最后还在链接上面添加的前缀 
+proxyTable: {
+    &apos;/&apos;: {
+        target: &apos;http://10.12.168.11:8000/measurement&apos;, //后端接口地址
+        changeOrigin: true, //是否允许跨越
+        pathRewrite: {
+            &apos;^/&apos;: &apos;/&apos;, //重写,
+        }
+    }</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/17/Sonarque/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/08/17/Sonarque/" itemprop="url">Sonarque</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-17T11:21:26+08:00">
+                2020-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="/images/pasted-126.png" alt="upload successful"></p>
+<h3 id="理论和安装准备"><a href="#理论和安装准备" class="headerlink" title="理论和安装准备"></a>理论和安装准备</h3><h6 id="sonarque对js的安全检查"><a href="#sonarque对js的安全检查" class="headerlink" title="sonarque对js的安全检查"></a>sonarque对js的安全检查</h6><p>导致漏洞：</p>
+<pre><code>1、凭据允许访问敏感组件，例如数据库，文件存储，API或服务。 
+2、标准输入
+3、使用命令行
+4、使用套接字
+5、Xpath注入    
+原因： 就是XPath解析器本身对URL、表单中提交的代码内容未做严格限制，导致恶意代码可以直接解析执行。
+举例：如
+   //users/user[loginID/text()=’abc’ and password/text()=’test123’] 中
+   注入：/users/user[LoginID/text()=&apos;&apos;or 1=1 and password/text()=&apos;&apos;or 1=1]。
+6、散列数据(哈希)
+7、加密数据
+8、正则表达式敏感  * + {
+9、跨文档消息传递
+10、随机数生成器
+11、SQL查询
+12、动态执行代码 (硬编码)
+let func = Function（&apos;obj&apos;+ propName）; //敏感
+13、使用OS命令时使用Shell解释器
+14、跨域资源共享
+15、Cookie</code></pre><h6 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h6><pre><code>硬编码：就是将数据直接写入到代码中进行编译开发
+软编码：则是将数据与源代码解耦
+硬编码就是什么都在你的程序代码里面写死了，你想稍微修改一下效果，都得修改你的代码。
+举个例子：举个例子，比如说你做个软件，他有菜单栏，你如果把菜单的标题全部写在代码里，那如果现在要换英文的，你就不得不改变代码。
+现在换一种方式，你把菜单标题全部写在一个文本里，比如叫title.txt，现在你要英文，那么只要把title.txt里面相对应的值换成英文就可以了。
+不用在去该代码本身。</code></pre><h6 id="连接数据库"><a href="#连接数据库" class="headerlink" title="连接数据库"></a>连接数据库</h6><ol>
+<li><p>安装mysql</p>
+<p>报错 org.sonar.process.MessageException: Unsupported JDBC driver provider: mysql</p>
+</li>
+</ol>
+<p> ** SonarQube 7.9以上版本已不再支持mysql**</p>
+<ol start="2">
+<li><p>安装PostgreSQL </p>
+<p><a href="https://www.cnblogs.com/sea-stream/p/11197603.html" target="_blank" rel="noopener">https://www.cnblogs.com/sea-stream/p/11197603.html</a></p>
+<p>如何配置sonar.properties</p>
+<p><a href="https://www.cnblogs.com/Simple-Small/archive/2020/05/13/12882948.html" target="_blank" rel="noopener">https://www.cnblogs.com/Simple-Small/archive/2020/05/13/12882948.html</a>    </p>
+</li>
+<li><p>通过命令扫描：<br><img src="/images/pasted-129.png" alt="upload successful"></p>
+</li>
+<li><p>中文插件</p>
+<p>SonarQube默认为英文，我们可以安装SonarQube提供提供了中文插件，以便更好地熟悉使用。</p>
+<p>github地址：</p>
+<p><a href="https://github.com/SonarQubeCommunity/sonar-l10n-zh" target="_blank" rel="noopener">https://github.com/SonarQubeCommunity/sonar-l10n-zh</a></p>
+<p>找到对应的released版本jar包下载后，放入sonar目录如下后重启</p>
+<pre><code>sonarqube-6.5/extensions/plugins</code></pre></li>
+</ol>
+<h3 id="实践"><a href="#实践" class="headerlink" title="实践"></a>实践</h3><h6 id="运行sonar"><a href="#运行sonar" class="headerlink" title="运行sonar"></a>运行sonar</h6><p>官网下载zip报(或者百度云)</p>
+<ul>
+<li><p>解压后相关命令</p>
+<pre><code>sh sonarqube-8.3.1.34397/bin/macosx-universal-64/sonar.sh  console
+
+tail -f /Users/liyuanchen/Documents/sonarqube-8.3.1.34397/logs/sonar.log
+
+打开本地9000端口即可</code></pre></li>
+<li><p>扫描项目</p>
+<p> <img src="/images/pasted-130.png" alt="upload successful"></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/13/静态代码扫描/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1498,402 +1867,6 @@ normal:{
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/CSS使用小记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/22/CSS使用小记/" itemprop="url">CSS使用小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-22T11:25:20+08:00">
-                2020-06-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>box-shadow 参数(除了color其他单位都是px)</p>
-<pre><code>h-shadow    必需的。水平阴影的位置。允许负值
-v-shadow    必需的。垂直阴影的位置。允许负值
-blur    可选。模糊距离
-spread    可选。阴影的大小
-color    可选。阴影的颜色
-inset</code></pre><p>前两项横竖方向决定了投影方向</p>
-<p>blur 值越大阴影越模糊</p>
-<p>spread值越大范围越大</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow:10px 10px 5px 20px #ee4d2d</span><br></pre></td></tr></table></figure>
-
-<p><img src="/images/pasted-116.png" alt="upload successful">  </p>
-<p>加inset效果：</p>
-<p><img src="/images/pasted-117.png" alt="upload successful"></p>
-</li>
-<li><p>padding 设置方向，逆时针（即上 右 下 左）</p>
-<p><img src="/images/pasted-115.png" alt="upload successful"></p>
-<p>若有三项，则上，左右，下；若只有两项，则是上下、左右；一项是所有</p>
-<p>margin同理</p>
-</li>
-<li><p>align和text-align的区别<br>align直接写在是div的属性 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div align=&quot;center&quot;&gt; </span><br><span class="line">This is some text! </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-
-<p>text-align则是Css的属性</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;text-align:center&quot;&gt;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="4">
-<li><p>布局<br>footer如何保持始终在最底部？<a href="https://blog.csdn.net/m0_38099607/article/details/71598423" target="_blank" rel="noopener">https://blog.csdn.net/m0_38099607/article/details/71598423</a></p>
-<p> 父级：</p>
-<pre><code>#container{
-/*保证footer是相对于container位置绝对定位*/
-position:relative;  
-width:100%;
-min-height:100%; 
-/*设置padding-bottom值大于等于footer的height值，以保证main的内容能够全部显示出来而不被footer遮盖；*/  
-padding-bottom: 100px;  
-box-sizing: border-box;</code></pre><p> }</p>
-<p> footer要绝对位置        </p>
-<pre><code>footer{
-width: 100%;
-height:100px;   /* footer的高度一定要是固定值*/ 
-position:absolute;
-bottom:0px;
-left:0px;
-background: #333;</code></pre><p> }</p>
-<p>使得全局撑足屏幕？</p>
-<p>html文件中添加，使用的container100%才生效</p>
-<pre><code>&lt;style type=&quot;text/css&quot;&gt;
-   html,
-   body {
-       height: 100%;
-   }
-
-   body {
-       margin: 0;
-   }</code></pre><p>   </p>
-</li>
-<li><p>div居中</p>
-<p>内部div需要添加</p>
-<pre><code>margin:0 auto</code></pre></li>
-</ol>
-<p>6.display:inline是什么意思?</p>
-<p>  <a href="https://zhidao.baidu.com/question/406681161.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/406681161.html</a></p>
-<p>  css的一个样式:</p>
-<pre><code>inline表示按照内联模式显示，它会和周围的元素在一行。
-
-如果是display:block，它会和周围的元素不在一行，自己单独一行。</code></pre><p>  什么是内联元素？</p>
-<pre><code>内联元素与其他元素会在一行，不会导致换行</code></pre><p> display属性值:</p>
-<pre><code>none 此元素不会被显示。
-block 此元素将显示为块级元素，此元素前后会带有换行符。
-inline 默认。此元素会被显示为内联元素，元素前后没有换行符。
-inline-block 行内块元素。（CSS2.1 新增的值）</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/19/nginx知识小记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/19/nginx知识小记/" itemprop="url">nginx使用小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-19T10:38:15+08:00">
-                2020-06-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>知识网结构图<br><img src="/images/pasted-197.png" alt="upload successful"></p>
-<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p><strong>正向代理</strong>：局域网中的电脑用户想要直接访问网络是不可行的，只能通过代理服务器来访问，这种代理服务就被称为正向代理。</p>
-<p>正向代理类似一个跳板机，代理访问外部资源</p>
-<p>比如我们国内访问谷歌，直接访问访问不到，我们可以通过一个正向代理服务器，请求发到代理服，代理服务器能够访问谷歌，这样由代理去谷歌取到返回数据，再返回给我们，这样我们就能访问谷歌了<br><img src="/images/pasted-198.png" alt="upload successful"></p>
-<p>正向代理的用途：</p>
-<pre><code>（1）访问原来无法访问的资源，如google
-（2）可以做缓存，加速访问资源
-（3）对客户端访问授权，上网进行认证
-（4）代理可以记录用户访问记录（上网行为管理），对外隐藏用户信息</code></pre><p><strong>反向代理</strong>：
-以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器</p>
-<p><img src="/images/pasted-199.png" alt="upload successful"><br>反向代理作用</p>
-<pre><code>(1)保证内网的安全，组织web攻击，大型网站通常将反向代理作为公网访问地址，web服务器是内网
-(2)负载均衡，通过反向代理服务器来优化网站的负载</code></pre><p><strong>总结</strong></p>
-<p>正向代理：客服端和代理对服务端透明；(proxy和客户端合伙)<br>反向代理：代理和服务端对客户端透明；(proxy和服务端合伙)<br><img src="/images/pasted-200.png" alt="upload successful"></p>
-<p><img src="/images/pasted-201.png" alt="upload successful"></p>
-<h4 id="命令和安装："><a href="#命令和安装：" class="headerlink" title="命令和安装："></a>命令和安装：</h4><ol>
-<li><p>常用命令</p>
-<pre><code>nginx -s stop   直接干掉服务
-start nginx     启动服务
-nginx -s quit         优雅停止nginx，有连接时会等连接请求完成再杀死worker进程  
- nginx -s reload     优雅重启，并重新载入配置文件nginx.conf
- nginx -s reopen     重新打开日志文件，一般用于切割日志
- nginx -v            查看版本  
- nginx -t            检查nginx的配置文件
- nginx -h            查看帮助信息
- nginx -V       详细版本信息，包括编译参数 
- nginx  -c filename  指定配置文件</code></pre></li>
-<li><p>查找和安装：</p>
-<pre><code>sudo apt-get install nginx
-cd /etc/nginx/conf.d
-查找
-find / -name nginx.conf   2&gt;/dev/null</code></pre></li>
-<li><p>没有root权限？</p>
-<p> 以非root权限安装nginx及运行:<br> <a href="https://www.cnblogs.com/xmaples/p/5836818.html" target="_blank" rel="noopener">https://www.cnblogs.com/xmaples/p/5836818.html</a></p>
-<p> 测试<br> pgrep -a nginx<br> nginx -c /home/ld-sgdev/liyuan_chen/nginx.conf<br> 验证<br> curl localhost:8080<br> 使用命令：<br> lsof -i :8080</p>
-</li>
-<li><p>修改nginx重启后未生效？<br> 很多进程需要逐一杀除</p>
-<p> ps -ef|grep nginx|awk ‘{print $2}’|xargs kill -9</p>
-</li>
-<li><p>nginx: [error] open() “/usr/local/var/run/nginx.pid” failed (2: No such file or directory)</p>
-<p> 直接启动命令nginx(非重启)，重新生成nginx.pid就可以了：</p>
-</li>
-<li><p>Mixed Content: The page at ‘xxx’ was loaded over HTTPS, but requested an insecure resource ‘xxx’.</p>
-<p>【解决】添加：<code>&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;upgrade-insecure-requests&quot;&gt;</code></p>
-</li>
-<li><p>mac 使用brew安装后默认地址：</p>
-<p>/usr/local/etc/nginx/nginx.conf </p>
-<p>默认端口占用8080</p>
-</li>
-</ol>
-<h5 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h5><p> <img src="/images/pasted-202.png" alt="upload successful"></p>
-<p>参考：<a href="https://www.cnblogs.com/muhy/p/10528449.html" target="_blank" rel="noopener">https://www.cnblogs.com/muhy/p/10528449.html</a></p>
-<pre><code>在http节点下，添加upstream节点。
-upstream linuxidc { //负载均衡
-      server 10.0.6.108:7080; 
-      server 10.0.0.85:8980; 
-}
-将server节点下的location节点中的proxy_pass配置为：http:// + upstream名称，即“http://linuxidc”.
-location / { 
-            root  html; 
-            index  index.html index.htm; 
-            proxy_pass http://linuxidc; 
-} </code></pre><p>   现在负载均衡初步完成了。upstream默认按照轮询方式进行负载；但是还有其他的策略，包括权重、hash、第三方等方式具体见如上链接</p>
-<h5 id="反向代理之-proxy-pass"><a href="#反向代理之-proxy-pass" class="headerlink" title="反向代理之 proxy_pass"></a>反向代理之 proxy_pass</h5><pre><code>参考：https://www.cnblogs.com/yyxianren/p/10831511.html
-
-格式很简单： proxy_pass URL;
-其中URL包含：传输协议（http://, https://等）、主机名（域名或者IP:PORT）、uri。</code></pre><p>  示例如下：</p>
-<pre><code>proxy_pass http://www.xxx.com/;
-proxy_pass http://192.168.200.101:8080/uri;
-proxy_pass unix:/tmp/www.sock;</code></pre><p> 配置示例：</p>
-<pre><code>location /aming/
-{
-    proxy_pass http://192.168.1.10/linux/;
-    ...
-}   </code></pre><p>   【总结】为了方便记忆和规范配置，建议所有的 proxy_pass 后的url都以“/”结尾。<br>proxy_pass <a href="http://192.168.1.10/linux/" target="_blank" rel="noopener">http://192.168.1.10/linux/</a>;</p>
-<h4 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h4><p> <img src="/images/pasted-203.png" alt="upload successful"></p>
-<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>1）全局块</p>
-<pre><code>worker_processes  1;</code></pre><p>2）events块</p>
-<pre><code>events {
-     worker_connections  1024;
-}</code></pre><p>3）HTTP块</p>
-<p>  具体配置和优先级见《nginx location匹配优先级》</p>
-<pre><code>location[ = | ~ | ~* | ^~] url{
-}</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1944,7 +1917,7 @@ proxy_pass unix:/tmp/www.sock;</code></pre><p> 配置示例：</p>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">125</span>
+                  <span class="site-state-item-count">127</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

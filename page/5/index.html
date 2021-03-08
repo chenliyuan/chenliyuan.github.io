@@ -261,6 +261,402 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/CSS使用小记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/22/CSS使用小记/" itemprop="url">CSS使用小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-22T11:25:20+08:00">
+                2020-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>box-shadow 参数(除了color其他单位都是px)</p>
+<pre><code>h-shadow    必需的。水平阴影的位置。允许负值
+v-shadow    必需的。垂直阴影的位置。允许负值
+blur    可选。模糊距离
+spread    可选。阴影的大小
+color    可选。阴影的颜色
+inset</code></pre><p>前两项横竖方向决定了投影方向</p>
+<p>blur 值越大阴影越模糊</p>
+<p>spread值越大范围越大</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">box-shadow:10px 10px 5px 20px #ee4d2d</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/pasted-116.png" alt="upload successful">  </p>
+<p>加inset效果：</p>
+<p><img src="/images/pasted-117.png" alt="upload successful"></p>
+</li>
+<li><p>padding 设置方向，逆时针（即上 右 下 左）</p>
+<p><img src="/images/pasted-115.png" alt="upload successful"></p>
+<p>若有三项，则上，左右，下；若只有两项，则是上下、左右；一项是所有</p>
+<p>margin同理</p>
+</li>
+<li><p>align和text-align的区别<br>align直接写在是div的属性 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div align=&quot;center&quot;&gt; </span><br><span class="line">This is some text! </span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+
+<p>text-align则是Css的属性</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div style=&quot;text-align:center&quot;&gt;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="4">
+<li><p>布局<br>footer如何保持始终在最底部？<a href="https://blog.csdn.net/m0_38099607/article/details/71598423" target="_blank" rel="noopener">https://blog.csdn.net/m0_38099607/article/details/71598423</a></p>
+<p> 父级：</p>
+<pre><code>#container{
+/*保证footer是相对于container位置绝对定位*/
+position:relative;  
+width:100%;
+min-height:100%; 
+/*设置padding-bottom值大于等于footer的height值，以保证main的内容能够全部显示出来而不被footer遮盖；*/  
+padding-bottom: 100px;  
+box-sizing: border-box;</code></pre><p> }</p>
+<p> footer要绝对位置        </p>
+<pre><code>footer{
+width: 100%;
+height:100px;   /* footer的高度一定要是固定值*/ 
+position:absolute;
+bottom:0px;
+left:0px;
+background: #333;</code></pre><p> }</p>
+<p>使得全局撑足屏幕？</p>
+<p>html文件中添加，使用的container100%才生效</p>
+<pre><code>&lt;style type=&quot;text/css&quot;&gt;
+   html,
+   body {
+       height: 100%;
+   }
+
+   body {
+       margin: 0;
+   }</code></pre><p>   </p>
+</li>
+<li><p>div居中</p>
+<p>内部div需要添加</p>
+<pre><code>margin:0 auto</code></pre></li>
+</ol>
+<p>6.display:inline是什么意思?</p>
+<p>  <a href="https://zhidao.baidu.com/question/406681161.html" target="_blank" rel="noopener">https://zhidao.baidu.com/question/406681161.html</a></p>
+<p>  css的一个样式:</p>
+<pre><code>inline表示按照内联模式显示，它会和周围的元素在一行。
+
+如果是display:block，它会和周围的元素不在一行，自己单独一行。</code></pre><p>  什么是内联元素？</p>
+<pre><code>内联元素与其他元素会在一行，不会导致换行</code></pre><p> display属性值:</p>
+<pre><code>none 此元素不会被显示。
+block 此元素将显示为块级元素，此元素前后会带有换行符。
+inline 默认。此元素会被显示为内联元素，元素前后没有换行符。
+inline-block 行内块元素。（CSS2.1 新增的值）</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/19/nginx知识小记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/19/nginx知识小记/" itemprop="url">nginx使用小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-19T10:38:15+08:00">
+                2020-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>知识网结构图<br><img src="/images/pasted-197.png" alt="upload successful"></p>
+<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p><strong>正向代理</strong>：局域网中的电脑用户想要直接访问网络是不可行的，只能通过代理服务器来访问，这种代理服务就被称为正向代理。</p>
+<p>正向代理类似一个跳板机，代理访问外部资源</p>
+<p>比如我们国内访问谷歌，直接访问访问不到，我们可以通过一个正向代理服务器，请求发到代理服，代理服务器能够访问谷歌，这样由代理去谷歌取到返回数据，再返回给我们，这样我们就能访问谷歌了<br><img src="/images/pasted-198.png" alt="upload successful"></p>
+<p>正向代理的用途：</p>
+<pre><code>（1）访问原来无法访问的资源，如google
+（2）可以做缓存，加速访问资源
+（3）对客户端访问授权，上网进行认证
+（4）代理可以记录用户访问记录（上网行为管理），对外隐藏用户信息</code></pre><p><strong>反向代理</strong>：
+以代理服务器来接受internet上的连接请求，然后将请求转发给内部网络上的服务器，并将从服务器上得到的结果返回给internet上请求连接的客户端，此时代理服务器对外就表现为一个服务器</p>
+<p><img src="/images/pasted-199.png" alt="upload successful"><br>反向代理作用</p>
+<pre><code>(1)保证内网的安全，组织web攻击，大型网站通常将反向代理作为公网访问地址，web服务器是内网
+(2)负载均衡，通过反向代理服务器来优化网站的负载</code></pre><p><strong>总结</strong></p>
+<p>正向代理：客服端和代理对服务端透明；(proxy和客户端合伙)<br>反向代理：代理和服务端对客户端透明；(proxy和服务端合伙)<br><img src="/images/pasted-200.png" alt="upload successful"></p>
+<p><img src="/images/pasted-201.png" alt="upload successful"></p>
+<h4 id="命令和安装："><a href="#命令和安装：" class="headerlink" title="命令和安装："></a>命令和安装：</h4><ol>
+<li><p>常用命令</p>
+<pre><code>nginx -s stop   直接干掉服务
+start nginx     启动服务
+nginx -s quit         优雅停止nginx，有连接时会等连接请求完成再杀死worker进程  
+ nginx -s reload     优雅重启，并重新载入配置文件nginx.conf
+ nginx -s reopen     重新打开日志文件，一般用于切割日志
+ nginx -v            查看版本  
+ nginx -t            检查nginx的配置文件
+ nginx -h            查看帮助信息
+ nginx -V       详细版本信息，包括编译参数 
+ nginx  -c filename  指定配置文件</code></pre></li>
+<li><p>查找和安装：</p>
+<pre><code>sudo apt-get install nginx
+cd /etc/nginx/conf.d
+查找
+find / -name nginx.conf   2&gt;/dev/null</code></pre></li>
+<li><p>没有root权限？</p>
+<p> 以非root权限安装nginx及运行:<br> <a href="https://www.cnblogs.com/xmaples/p/5836818.html" target="_blank" rel="noopener">https://www.cnblogs.com/xmaples/p/5836818.html</a></p>
+<p> 测试<br> pgrep -a nginx<br> nginx -c /home/ld-sgdev/liyuan_chen/nginx.conf<br> 验证<br> curl localhost:8080<br> 使用命令：<br> lsof -i :8080</p>
+</li>
+<li><p>修改nginx重启后未生效？<br> 很多进程需要逐一杀除</p>
+<p> ps -ef|grep nginx|awk ‘{print $2}’|xargs kill -9</p>
+</li>
+<li><p>nginx: [error] open() “/usr/local/var/run/nginx.pid” failed (2: No such file or directory)</p>
+<p> 直接启动命令nginx(非重启)，重新生成nginx.pid就可以了：</p>
+</li>
+<li><p>Mixed Content: The page at ‘xxx’ was loaded over HTTPS, but requested an insecure resource ‘xxx’.</p>
+<p>【解决】添加：<code>&lt;meta http-equiv=&quot;Content-Security-Policy&quot; content=&quot;upgrade-insecure-requests&quot;&gt;</code></p>
+</li>
+<li><p>mac 使用brew安装后默认地址：</p>
+<p>/usr/local/etc/nginx/nginx.conf </p>
+<p>默认端口占用8080</p>
+</li>
+</ol>
+<h5 id="负载均衡"><a href="#负载均衡" class="headerlink" title="负载均衡"></a>负载均衡</h5><p> <img src="/images/pasted-202.png" alt="upload successful"></p>
+<p>参考：<a href="https://www.cnblogs.com/muhy/p/10528449.html" target="_blank" rel="noopener">https://www.cnblogs.com/muhy/p/10528449.html</a></p>
+<pre><code>在http节点下，添加upstream节点。
+upstream linuxidc { //负载均衡
+      server 10.0.6.108:7080; 
+      server 10.0.0.85:8980; 
+}
+将server节点下的location节点中的proxy_pass配置为：http:// + upstream名称，即“http://linuxidc”.
+location / { 
+            root  html; 
+            index  index.html index.htm; 
+            proxy_pass http://linuxidc; 
+} </code></pre><p>   现在负载均衡初步完成了。upstream默认按照轮询方式进行负载；但是还有其他的策略，包括权重、hash、第三方等方式具体见如上链接</p>
+<h5 id="反向代理之-proxy-pass"><a href="#反向代理之-proxy-pass" class="headerlink" title="反向代理之 proxy_pass"></a>反向代理之 proxy_pass</h5><pre><code>参考：https://www.cnblogs.com/yyxianren/p/10831511.html
+
+格式很简单： proxy_pass URL;
+其中URL包含：传输协议（http://, https://等）、主机名（域名或者IP:PORT）、uri。</code></pre><p>  示例如下：</p>
+<pre><code>proxy_pass http://www.xxx.com/;
+proxy_pass http://192.168.200.101:8080/uri;
+proxy_pass unix:/tmp/www.sock;</code></pre><p> 配置示例：</p>
+<pre><code>location /aming/
+{
+    proxy_pass http://192.168.1.10/linux/;
+    ...
+}   </code></pre><p>   【总结】为了方便记忆和规范配置，建议所有的 proxy_pass 后的url都以“/”结尾。<br>proxy_pass <a href="http://192.168.1.10/linux/" target="_blank" rel="noopener">http://192.168.1.10/linux/</a>;</p>
+<h4 id="动静分离"><a href="#动静分离" class="headerlink" title="动静分离"></a>动静分离</h4><p> <img src="/images/pasted-203.png" alt="upload successful"></p>
+<h4 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h4><p>1）全局块</p>
+<pre><code>worker_processes  1;</code></pre><p>2）events块</p>
+<pre><code>events {
+     worker_connections  1024;
+}</code></pre><p>3）HTTP块</p>
+<p>  具体配置和优先级见《nginx location匹配优先级》</p>
+<pre><code>location[ = | ~ | ~* | ^~] url{
+}</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/18/JS语法汇总/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1568,275 +1964,6 @@ report,html：为测试报告，整理性的展示测试用例的运行情况</c
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/29/labelme安装/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/29/labelme安装/" itemprop="url">labelme安装和使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-29T21:40:51+08:00">
-                2020-03-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>windows下安装和使用labelme </p>
-<p> 参考：<a href="https://www.jb51.net/article/166528.htm" target="_blank" rel="noopener">https://www.jb51.net/article/166528.htm</a></p>
-<p>  其中anaconda下载使用这个网址，(在官网下载快完成的时候停止了浪费了大把时间…)</p>
-<p><a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
-<h4 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h4><p>1、管理员身份打开 anaconda prompt</p>
-<p>2、输入命令：conda create –name=labelme python=3.6</p>
-<p>3、输入命令：activate labelme</p>
-<p>(若环境未成功激活，则改用本地cmd)</p>
-<p>4、输入命令：pip install pyqt5，pip install pyside2(自己刚开始没有安装pyside2,运行 \anaconda安装目录\envs\labelme\Scripts\label_json_to_dataset.exe 会出现module “pyside”缺失错误)</p>
-<p>5、输入命令：pip install labelme（由于网络原因或者库的地址，经常运行一半出现错误，不要气馁，多执行几次）</p>
-<p>6、输入命令：labelme 即可打开labelme。如下：</p>
-<p>7、如果将单个json文件生成数据集，运行命令：</p>
-<p>\anaconda安装目录\envs\labelme\Scripts\label_json_to_dataset.exe    \保存xx.json文件地址</p>
-<p>xx.json 会成生成五个文件 img.png，info.yaml，label.png，label_names，label_viz.png。其中label.png即是我们要的label_data了。</p>
-<p>8、批量将json文件生成数据集。编写脚本如下：               </p>
-<pre><code>import os
-path = &apos;D:\\paper\\data\\&apos;  # path是你存放json的路径
-json_file = os.listdir(path)
-for file in json_file:
-    os.system(&quot;python C:\\Users\\Monica\\.conda\\envs\\labelme\\Scripts\\labelme_json_to_dataset.exe %s&quot;%(path + file))</code></pre><p><img src="%5Cimages%5Cpasted-102.png" alt="upload successful"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/22/图像处理坐标/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/22/图像处理坐标/" itemprop="url">图像处理坐标</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-22T10:45:48+08:00">
-                2020-03-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>如何画矩形：<a href="https://www.cnblogs.com/ivy-blogs/p/10628189.html" target="_blank" rel="noopener">https://www.cnblogs.com/ivy-blogs/p/10628189.html</a></p>
-<pre><code>image_path = &apos;&apos;
-image = cv2.imread(image_path)
-first_point = (100, 100)
-last_point = (100, 100)
-
-cv2.rectangle(image, first_point, last_point, (0, 255, 0), 2)
-cv2.imwrite(image_path, image)</code></pre><p>first_point和last_point都是矩形在图片的像素坐标位置，且坐标位置为int整型。</p>
-<p>** first_point为矩形左上角的坐标位置**</p>
-<p>** last_point为矩形右下角的坐标位置**</p>
-<p>该两点的存在刚好能够组成一个矩形</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1887,7 +2014,7 @@ cv2.imwrite(image_path, image)</code></pre><p>first_point和last_point都是矩�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">125</span>
+                  <span class="site-state-item-count">127</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
