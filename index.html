@@ -261,6 +261,139 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/12/ES6语法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/03/12/ES6语法/" itemprop="url">ES6语法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-03-12T17:07:11+08:00">
+                2021-03-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h6 id="let-var-const"><a href="#let-var-const" class="headerlink" title="let  var  const"></a>let  var  const</h6><ul>
+<li><p>let仅在代码块内有效，var是全局有效</p>
+</li>
+<li><p>let不可重复声明，否则报错。var可以重复。</p>
+</li>
+<li><p>let不存在变量提升，var可以变量提升</p>
+<pre><code>console.log(a);  //ReferenceError: a is not defined
+let a = &quot;apple&quot;;
+console.log(b);  //undefined
+var b = &quot;banana&quot;;</code></pre></li>
+<li><p>const声明一个只读变量（常量），声明后不允许改变。</p>
+</li>
+</ul>
+<h6 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h6><p>includes()<br>startsWith()<br>endsWith()<br>‘’.repeat(2)<br>padStart  //字符串补全<br>padEnd</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/04/uwsgi问题排查/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1356,15 +1489,19 @@ Math.random()//生成0~1随机数
           
             <p>根据提示的信息进行安装(setting-runnser中查看)</p>
 <p><img src="/images/pasted-207.png" alt="upload successful"></p>
-<p>1、安装gitlab runnner</p>
-<p>2、注册gitlab runnner</p>
-<p> 注册流程：<a href="https://docs.gitlab.com/runner/register/" target="_blank" rel="noopener">https://docs.gitlab.com/runner/register/</a></p>
+<h4 id="1、安装gitlab-runnner"><a href="#1、安装gitlab-runnner" class="headerlink" title="1、安装gitlab runnner"></a>1、安装gitlab runnner</h4><p>可使用二进制<br><a href="https://docs.gitlab.com/runner/install/linux-manually.html" target="_blank" rel="noopener">https://docs.gitlab.com/runner/install/linux-manually.html</a></p>
+<p><img src="/images/pasted-211.png" alt="upload successful"></p>
+<h4 id="2、注册gitlab-runnner"><a href="#2、注册gitlab-runnner" class="headerlink" title="2、注册gitlab runnner"></a>2、注册gitlab runnner</h4><p> 注册流程：<a href="https://docs.gitlab.com/runner/register/" target="_blank" rel="noopener">https://docs.gitlab.com/runner/register/</a></p>
 <pre><code>sudo gitlab-runner register</code></pre><p> 相关命令：<br> <a href="https://www.cnblogs.com/sanduzxcvbnm/p/13891452.html" target="_blank" rel="noopener">https://www.cnblogs.com/sanduzxcvbnm/p/13891452.html</a></p>
-<pre><code>gitlab-runner list      #此命令列出了保存在配置文件中的所有运行程序</code></pre><p>3、在项目根目录下添加.gitlab-ci.yml 并配置。具体配置规则</p>
-<p>  .gitlab-ci.yml 用来配置 CI 用你的项目中做哪些操作，这个文件位于仓库的<strong>根目录</strong>。</p>
-<p>  当有新内容push到仓库，或者有代码合并后，GitLab会查找是否有.gitlab-ci.yml文件，如果文件存在，Runners将会根据该文件的内容开始build本次commit。</p>
-<p>  .gitlab-ci.yml 使用YAML语法， 你需要格外注意缩进格式，要用空格来缩进，不能用tabs来缩进。<br>  <a href="https://segmentfault.com/a/1190000019540360" target="_blank" rel="noopener">https://segmentfault.com/a/1190000019540360</a></p>
-<p> 前端vue：</p>
+<pre><code>gitlab-runner list      #此命令列出了保存在配置文件中的所有运行程序</code></pre><p>此时查看gitlab-setting-CI/CD-runnser可见已配的runners</p>
+<p> <img src="/images/pasted-212.png" alt="upload successful"></p>
+<h4 id="3、-gitlab-ci-yml配置"><a href="#3、-gitlab-ci-yml配置" class="headerlink" title="3、.gitlab-ci.yml配置"></a>3、.gitlab-ci.yml配置</h4><p>在项目根目录下添加.gitlab-ci.yml 并配置。介绍：</p>
+<pre><code>.gitlab-ci.yml 用来配置 CI 用你的项目中做哪些操作，这个文件位于仓库的**根目录**。
+
+当有新内容push到仓库，或者有代码合并后，GitLab会查找是否有.gitlab-ci.yml文件，如果文件存在，Runners将会根据该文件的内容开始build本次commit。
+
+.gitlab-ci.yml 使用YAML语法， 你需要格外注意缩进格式，要用空格来缩进，不能用tabs来缩进。
+https://segmentfault.com/a/1190000019540360</code></pre><p> 具体配置实例：<br> 前端vue：</p>
 <pre><code>job-adu-master: #job name可以随意命名
   stage: build
   script:
@@ -1393,6 +1530,20 @@ Math.random()//生成0~1随机数
     - test
   tags:
     - adu2-be-test # 对应部署服务器注册的gitlab-runner tag</code></pre><p>对于Django服务的配置可使用deplay.sh脚本具体配置…</p>
+<p>【问题】</p>
+<h5 id="问题1：运行ci后who-am-i提示用户是gitlab-runner-且执行rm命令提示无权限"><a href="#问题1：运行ci后who-am-i提示用户是gitlab-runner-且执行rm命令提示无权限" class="headerlink" title="问题1：运行ci后who am i提示用户是gitlab-runner,且执行rm命令提示无权限"></a>问题1：运行ci后who am i提示用户是gitlab-runner,且执行rm命令提示无权限</h5><p>解决：更改安装时设置的默认用户为root</p>
+<p>安装gitlab-runner默认会将用户设置为：gitlab-runner，该设置会使编写.ci的脚本，操作带来很大不便，本人深受其害。</p>
+<p>1.通过ps aux|grep gitlab-runner命令查看gitlab-runner进程，可以查看到gitlab-runner的工作目录和默认用户等一系列相关信息。</p>
+<p>2.通过该命令sudo gitlab-runner uninstall可以删除掉gitlab-runner</p>
+<p>3.重新安装gitlab-runner并将用户设置为root  gitlab-runner install –working-directory /home/gitlab-runner –user root</p>
+<p>4.sudo service gitlab-runner restart重启gitlab-runner</p>
+<p>5.再通过第一步的命令查看gitlab-runner看默认用户是否变成root</p>
+<p>原文链接：<a href="https://blog.csdn.net/white_pure/article/details/108039238" target="_blank" rel="noopener">https://blog.csdn.net/white_pure/article/details/108039238</a></p>
+<h5 id="问题2：npm未安装（环境ubuntu）"><a href="#问题2：npm未安装（环境ubuntu）" class="headerlink" title="问题2：npm未安装（环境ubuntu）"></a>问题2：npm未安装（环境ubuntu）</h5><pre><code>sudo apt install -y node
+npm -v 查看当前版本是老版本如3.x
+sudo npm install -g n
+n 1.14.10（也可以latest）</code></pre><p>期间若有提示则按照提示执行 </p>
+<pre><code>PATH=&quot;$PATH&quot;</code></pre><p><a href="https://www.jianshu.com/p/d934d3ba67ec" target="_blank" rel="noopener">https://www.jianshu.com/p/d934d3ba67ec</a></p>
 
           
         
@@ -1561,142 +1712,6 @@ location  ~*Api{}</code></pre><p><img src="/images/pasted-196.png" alt="upload s
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/06/history/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/06/history/" itemprop="url">Vue Router history模式的配置方法及其原理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-06T19:12:53+08:00">
-                2021-01-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>【问题】两个项目，其中一个项目本地调试时刷新会404，另外一个不会？</p>
-<p>   <img src="/images/pasted-193.png" alt="upload successful"></p>
-<p>【解决】参考上文<a href="https://blog.csdn.net/localhost_8000/article/details/90368839" target="_blank" rel="noopener">https://blog.csdn.net/localhost_8000/article/details/90368839</a></p>
-<ol>
-<li><p>根据上文提示，开发环境devServer中存在historyApiFallback配置项，但是查看到已经设有配置</p>
-<pre><code>devServer: {
-   disableHostCheck:true,//不做host检查
-   clientLogLevel: &apos;warning&apos;,
-   historyApiFallback: {
-     rewrites: [
-       { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, &apos;index.html&apos;) },
-     ],
-   },</code></pre></li>
-<li><p>分析rewrites中路径中存在config.dev.assetsPublicPath，查看到出现404的项目assetsPublicPath为空，问题找到。将其改成根目录’/‘即可。         </p>
-<pre><code>assetsPublicPath: &apos;/&apos;,</code></pre></li>
-</ol>
-<p>  【其他】原理好文：<a href="https://juejin.cn/post/6844903856359342087" target="_blank" rel="noopener">https://juejin.cn/post/6844903856359342087</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1747,7 +1762,7 @@ location  ~*Api{}</code></pre><p><img src="/images/pasted-196.png" alt="upload s
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">128</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

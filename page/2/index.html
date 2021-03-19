@@ -261,6 +261,142 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/06/history/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/06/history/" itemprop="url">Vue Router history模式的配置方法及其原理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-06T19:12:53+08:00">
+                2021-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>【问题】两个项目，其中一个项目本地调试时刷新会404，另外一个不会？</p>
+<p>   <img src="/images/pasted-193.png" alt="upload successful"></p>
+<p>【解决】参考上文<a href="https://blog.csdn.net/localhost_8000/article/details/90368839" target="_blank" rel="noopener">https://blog.csdn.net/localhost_8000/article/details/90368839</a></p>
+<ol>
+<li><p>根据上文提示，开发环境devServer中存在historyApiFallback配置项，但是查看到已经设有配置</p>
+<pre><code>devServer: {
+   disableHostCheck:true,//不做host检查
+   clientLogLevel: &apos;warning&apos;,
+   historyApiFallback: {
+     rewrites: [
+       { from: /.*/, to: path.posix.join(config.dev.assetsPublicPath, &apos;index.html&apos;) },
+     ],
+   },</code></pre></li>
+<li><p>分析rewrites中路径中存在config.dev.assetsPublicPath，查看到出现404的项目assetsPublicPath为空，问题找到。将其改成根目录’/‘即可。         </p>
+<pre><code>assetsPublicPath: &apos;/&apos;,</code></pre></li>
+</ol>
+<p>  【其他】原理好文：<a href="https://juejin.cn/post/6844903856359342087" target="_blank" rel="noopener">https://juejin.cn/post/6844903856359342087</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/05/vue的跨域代理proxyTable/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1503,131 +1639,6 @@ b=a   //本来应该是3，但是同时进行也成了2</code></pre><p> 导致�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/14/element-导航高亮问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/10/14/element-导航高亮问题/" itemprop="url">element 导航高亮问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-14T11:46:29+08:00">
-                2020-10-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h6 id="问题1：刷新页面的时候高亮不见"><a href="#问题1：刷新页面的时候高亮不见" class="headerlink" title="问题1：刷新页面的时候高亮不见"></a>问题1：刷新页面的时候高亮不见</h6><p>设置router模式（启用该模式会在激活导航时以 index 作为 path 进行路由跳转），即Index和path可以一致的，通过获取当前路由的path来定义当前active Index</p>
-<pre><code>this.activeIndex=this.$route.path;//path</code></pre><h6 id="问题2：切换导航条，上一个高亮依旧存在"><a href="#问题2：切换导航条，上一个高亮依旧存在" class="headerlink" title="问题2：切换导航条，上一个高亮依旧存在"></a>问题2：切换导航条，上一个高亮依旧存在</h6><p>解决：</p>
-<p> 通过条用select事件来重新定义activeindex的值</p>
-<pre><code>@select=&quot;handleSelect&quot;</code></pre><p>处理：</p>
-<pre><code> handleSelect(index, index_path) {
-  this.activeIndex=index;
-}</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1678,7 +1689,7 @@ b=a   //本来应该是3，但是同时进行也成了2</code></pre><p> 导致�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">128</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

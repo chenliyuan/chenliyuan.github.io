@@ -261,6 +261,152 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/14/MAC配置安卓环境sdk/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/14/MAC配置安卓环境sdk/" itemprop="url">Cordova环境安装mac</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-14T20:37:11+08:00">
+                2020-09-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>win版可参考：<a href="https://shifu-yan.github.io/2020/06/28/%E4%BD%BF%E7%94%A8Cordova%E5%B0%86H5-vue-%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E5%8D%93apk/" target="_blank" rel="noopener">https://shifu-yan.github.io/2020/06/28/%E4%BD%BF%E7%94%A8Cordova%E5%B0%86H5-vue-%E6%89%93%E5%8C%85%E4%B8%BA%E5%AE%89%E5%8D%93apk/</a></p>
+<h6 id="JDK"><a href="#JDK" class="headerlink" title="JDK"></a>JDK</h6><p>要1.8版本的</p>
+<p>可以先看看这个路径下是否有，有的话直接切就行了</p>
+<p>/Library/Java/JavaVirtualMachines/</p>
+<p><img src="/images/pasted-132.png" alt="upload successful"></p>
+<p>可以参考：<a href="https://blog.csdn.net/liuxy_236/article/details/90381408" target="_blank" rel="noopener">https://blog.csdn.net/liuxy_236/article/details/90381408</a></p>
+<h6 id="安装cordova"><a href="#安装cordova" class="headerlink" title="安装cordova"></a>安装cordova</h6><pre><code>npm install -g cordova</code></pre><h6 id="安卓SDK"><a href="#安卓SDK" class="headerlink" title="安卓SDK"></a>安卓SDK</h6><ol>
+<li><p>打开官网（<a href="https://www.androiddevtools.cn/）-Android" target="_blank" rel="noopener">https://www.androiddevtools.cn/）-Android</a> SDK工具–SDK Tools下载对应sdk  zip包</p>
+</li>
+<li><p>下载后解压</p>
+</li>
+<li><p>打开终端，输入</p>
+<pre><code>vim ~/.bash_profile        </code></pre></li>
+<li><p>添加如下</p>
+<p> export ANDROID_HOME=/Users/shmaur/android-sdk-macosx  //这里为 sdk 路径地址<br> export PATH=$PATH:$ANDROID_HOME/tools<br> export PATH=$PATH:$ANDROID_HOME/platform-tools</p>
+</li>
+<li><p>每次编辑完 .bash_profile 文件后必须要进行：</p>
+<pre><code>source .bash_profile //更新环境变量配置，不更新则不会使配置生效</code></pre></li>
+<li><p>配置好后可以查看一下是否成功：</p>
+<pre><code>echo $PATH</code></pre></li>
+</ol>
+<p>【问题】在tools路径下点击android或者终端./android sdk打不开manager 会报错</p>
+<p>  继续在官网手动下载包发对应目录：</p>
+<pre><code>下载SDK Platform-Tools
+下载Build-Tools
+下载SDK </code></pre><p><img src="/images/pasted-133.png" alt="upload successful"></p>
+<h6 id="Gradle"><a href="#Gradle" class="headerlink" title="Gradle"></a>Gradle</h6><pre><code>brew install gradle</code></pre><p>  直接安装即可，报错信息不影响</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/11/Vue-Django跨域问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1667,206 +1813,6 @@ this.$EventBus.$on(&apos;uploading&apos;, val=&gt;{
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/22/echarts使用小记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/22/echarts使用小记/" itemprop="url">echarts使用小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-22T14:12:45+08:00">
-                2020-06-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>echarts及option配置应用</p>
-<pre><code>import echarts from &apos;echarts&apos;;
-Vue.prototype.$echarts = echarts;
-
-import { bar_option, pie_option, line_bugrate_option } from &apos;@/components/chart_options/echart_options.js&apos;;
-Vue.prototype.$echartoptions = { bar_option, line_bugrate_option, pie_option };
-使用
-myChart.setOption(this.$echartoptions.line_bugrate_option);</code></pre></li>
-<li><p>echarts的option内赋值，紧接着在外面值就为空了？</p>
-<p> this和that的问题，option内的this指的是option本身，非本组件</p>
-</li>
-<li><p>如何限制柱形图的条状宽度(竖着)？</p>
-<p>barMaxWidth barMinWidth</p>
-</li>
-<li><p>echarts饼图提示线长度设置</p>
-<pre><code>labelLine:{
-normal:{
-    length:1,//第一段，紧跟饼图
-    length2:6//第二段，距离最远
-}</code></pre><p>   },<br>echarts icon图标格式只支持两种，dataURI和path://</p>
-<p>对于多个path构成的矢量图，可采用dataURL方式，在线很方便转换。</p>
-</li>
-<li><p>Echarts图表重复问题</p>
-<p> 除了数据源需要重置外，echarts需要重置myChart.clear();</p>
-</li>
-<li><p>区分横轴不同文案展示，在xAxis下设置axisLabel：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">axisLabel= &#123;</span><br><span class="line">         formatter: function(value, index) &#123;</span><br><span class="line">           if (value.search(&quot;QA&quot;) != -1) return &quot;&#123;a|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           else if (value.search(&quot;BE&quot;) != -1) &#123;</span><br><span class="line">             return &quot;&#123;b|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           &#125; else &#123;</span><br><span class="line">             return &quot;&#123;c|&quot; + value + &quot;&#125;&quot;;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;,</span><br><span class="line">         rich: &#123;</span><br><span class="line">           a: &#123;</span><br><span class="line">             color: &quot;red&quot;,</span><br><span class="line">             height: 40,</span><br><span class="line">             fontWeight: &quot;bold&quot;,</span><br><span class="line">           &#125;,</span><br><span class="line">           b: &#123;</span><br><span class="line">             color: &quot;blue&quot;,</span><br><span class="line">             height: 40,</span><br><span class="line">             fontWeight: &quot;bold&quot;,</span><br><span class="line"></span><br><span class="line">           &#125;,</span><br><span class="line">           c: &#123;</span><br><span class="line">             color: &quot;green&quot;,</span><br><span class="line">              height: 40,</span><br><span class="line"></span><br><span class="line">             fontWeight: &quot;bold&quot;</span><br><span class="line">           &#125;</span><br><span class="line">         &#125;</span><br><span class="line">       </span><br><span class="line">     &#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自定义提示窗口</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">toolbox: &#123;</span><br><span class="line">      feature: &#123;</span><br><span class="line">        myTool2: &#123;</span><br><span class="line">          show: true, //是否显示</span><br><span class="line">          title: &quot;近半年趋势分析&quot;, //鼠标移动上去显示的文字     &quot;image://data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAFHklEQVRoQ+1Ze0xbVRj/fS2&quot;,</span><br><span class="line">          onclick: function() &#123;</span><br><span class="line">            that.piechartname = chartname;</span><br><span class="line">            that.titlename = &quot;近6个月&quot; + title + &quot;趋势图&quot;;</span><br><span class="line">            that.dialogVisible = true;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>为图标添加自定义图标，点击后弹出说明文案，且可换行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">myTool1: &#123;</span><br><span class="line">      show: showmytools1, //是否显示</span><br><span class="line">      title: &quot;信息说明&quot;, //鼠标移动上去显示的文字</span><br><span class="line">      ...</span><br><span class="line">      onclick: function() &#123;</span><br><span class="line">        that.$confirm(h(&quot;div&quot;, null, msgli), headtitle, &#123;</span><br><span class="line">          showConfirmButton: false,</span><br><span class="line">          showCancelButton: false,</span><br><span class="line">          type: &quot;info&quot;</span><br><span class="line">        &#125;);</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中文案的处理</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">let msgli = [];//最终的显示文本</span><br><span class="line">let h = this.$createElement;</span><br><span class="line">let causeText = [];</span><br><span class="line">let headtitle = title + &quot;说明&quot;;</span><br><span class="line">switch (chartname) &#123;</span><br><span class="line">  case &quot;bug_role&quot;:</span><br><span class="line">    causeText = [</span><br><span class="line">      &quot;根据角色分析Bug分布情况，主要包括QA、FE、BE、PM&quot;,</span><br><span class="line">      &quot;QA: 取QA字段&quot;</span><br><span class="line">    ];</span><br><span class="line">    for (const i in causeText) &#123;</span><br><span class="line">      msgli.push(h(&quot;p&quot;, null, causeText[i]));</span><br><span class="line">    &#125;</span><br><span class="line">    showmytools1 = true;//控制是否展示</span><br><span class="line">    break;</span><br></pre></td></tr></table></figure>
-
-<p>另外一种方式:使用el-dialog</p>
-<p>先定义一个el-dialog</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">    &lt;el-dialog :title=&quot;direction_title&quot; :visible.sync=&quot;noteVisible&quot; width=&quot;25%&quot; </span><br><span class="line">top=&quot;15%&quot;  :show-close=&quot;false&quot;&gt;</span><br><span class="line">  &lt;div v-html=&quot;direction_content&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;/el-dialog&gt;</span><br></pre></td></tr></table></figure>
-
-<p>在onclick自定义事件中:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">that.direction_title = title + &quot;说明&quot;;//在option中使用that</span><br><span class="line">switch (chartname) &#123;</span><br><span class="line">	case &quot;bug_role&quot;:</span><br><span class="line">        that.direction_content =&quot;&lt;span&gt;说明文字1&lt;/span&gt;&quot; //需要在click事件中赋值，否则出错</span><br><span class="line">        ....</span><br><span class="line">     &#125;</span><br><span class="line">that.noteVisible = true;//控制显示el-dialog</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>自定义的说明图标点击后文字this.direction_content展示的是最后一个饼图的数据？</p>
-<p> 【解决】</p>
-<ul>
-<li>在Onlick的时候再赋值 (尤其针对这种全局共享的语法糖)    </li>
-<li>在内部引用，使用that定义</li>
-</ul>
-</li>
-<li><p>常用功能</p>
-<p> minInterval: 1//在横轴和纵轴添加可限制刻度最小间隔，避免出现小数<br> selector:legend中设置选中规则<br> barMaxWidth: ‘50’,  //现在柱子宽度，避免在极限的时候展示粗细情况</p>
-</li>
-<li><p>纵轴标记线–markline 标记点–markpoint</p>
-</li>
-<li><p>图像链接跳转重复打开多个浏览器tab</p>
-<p>1 使用windows.open 容易出现重复打开窗口的情况；若确保每次都为其提供相同的窗口名称可解决，由于项目中窗口名称不太好取，就采用了下面的方式</p>
-<pre><code>export function openNewurl(url) {
-  var newA = document.createElement(&quot;a&quot;);
-  newA.id = &apos;gg&apos;
-  newA.target = &apos;_blank&apos;;
-  newA.href = url;
-  document.body.appendChild(newA);
-  newA.click();
-  document.body.removeChild(newA);
-}</code></pre><p>2 但是还有重复的情况，排查知进行了多次click事件，原因是进行了重复绑定，需要进行解绑，进行off</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chart.off(&apos;click&apos;);</span><br><span class="line">chart.on(&apos;click&apos;, doSomething);</span><br></pre></td></tr></table></figure>
-
-<p>   参考：<a href="https://github.com/apache/incubator-echarts/issues/6089" target="_blank" rel="noopener">https://github.com/apache/incubator-echarts/issues/6089</a></p>
-</li>
-</ol>
-<ul>
-<li><p>横轴坐标重复</p>
-<p>axiosLable中的interval设置为0</p>
-<p><img src="/images/pasted-151.png" alt="upload successful"></p>
-</li>
-<li><p>底部区域展示不全</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">grid: &#123;</span><br><span class="line">           bottom: &quot;30%&quot;</span><br><span class="line">         &#125;,</span><br></pre></td></tr></table></figure></li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1917,7 +1863,7 @@ normal:{
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">128</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

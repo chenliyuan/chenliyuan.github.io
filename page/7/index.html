@@ -261,6 +261,209 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-变量和数组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/06/shell-变量和数组/" itemprop="url">shell 变量和数组</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T20:17:32+08:00">
+                2020-02-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><ul>
+<li><p>查看变量: echo $变量名 set(所有变量:包括自定义变量和环境变量) </p>
+</li>
+<li><p>取消变量: unset 变量名</p>
+</li>
+<li><p>位置变量：如通过$1 $2获取第一第二个参数</p>
+</li>
+<li><p>环境变量：export back_dir=xxxx  定义全局变量；或者export $var 转化成全局变量</p>
+</li>
+<li><p>预定义变量</p>
+<pre><code>$0 脚本名
+$* 所有的参数
+$@ 所有的参数
+$# 参数的个数
+$$ 当前进程的 PID
+$! 上一个后台进程的 PID
+$? 上一个命令的返回值 0 表示成功</code></pre><p>$@和$星区别：不加引号时,二者都是返回传入的参数,但加了引号后（”$@”）,此时$*把参数作为一个字符串整体(单字符串)返回,$@把每个参数作为一个字符串返回</p>
+</li>
+<li><p>键盘输入变量：通过read -n 2 -p “please input: “ p</p>
+</li>
+</ul>
+<ul>
+<li><p>调用其他脚本变量值：可在b脚本中通过调用.a.sh,直接获取a的变量数据</p>
+</li>
+<li><p>“”双引号-强引用会替换里面变量值；’’-弱引用，原样输出引用符号</p>
+</li>
+<li><p>变量删除（获取部分字符串）</p>
+<pre><code>${url#*a}  从头到尾最短匹配删除即直到第一个a之前的都删除
+${url##*a}  从头到尾贪婪匹配，删除直到最后一个匹配a
+${url%a*}  后面加%，从后到前最短匹配删除a后面所有字符    
+${url%%}  后面加%，从后到前贪婪匹配删除最后一个a后面所有字符</code></pre></li>
+<li><p>变量替换(最短替换/和贪婪替换//)</p>
+<pre><code>liyuan$ var=tom.ton.com
+liyuan$ echo ${var/to/TO}
+TOm.ton.com
+liyuan$ echo ${var//to/TO}</code></pre></li>
+</ul>
+<ul>
+<li><p>变量替代；可理解为变量初始化</p>
+<pre><code>echo ${var1-aaaaa}
+echo ${var1:-aaaaa}</code></pre><p>  使用 <font color="red">-</font> ,若没有被赋值过，就使用默认值替代(是否unset)</p>
+<p>  使用 <font color="red">:-</font>，区别在于即使赋值空值也会被新值替代(是否为空值)</p>
+</li>
+<li><p>切片操作  echo ${url:5:7}</p>
+</li>
+<li><p>可使用反引号或者$()执行内部命令</p>
+</li>
+<li><p>date +%F  格式化日期输出</p>
+</li>
+<li><p>特殊符号总结</p>
+<pre><code>（） 子shell执行
+(()) 数值比较
+$()  命令替换，同反引号
+$(()) 整数运算
+
+{}  集合
+${}  变量
+
+[]  条件测试
+[[]] 条件测试，支持正则 =~
+$[]  整数运算</code></pre></li>
+</ul>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><ol>
+<li><p>普通数组</p>
+<pre><code>一次赋多值，可指定索引
+# array2=(tom jack alice [20]=aa)
+# echo ${!array2[@]}
+0 1 2 20</code></pre></li>
+<li><p>关联数组</p>
+<p> 必须申明关联数组变量</p>
+<pre><code># declare -A ass_array1
+# ass_array2=([index1]=tom [index2]=jack [index4]=&apos;bash shell&apos;)
+
+查看数组
+# declare -A</code></pre></li>
+<li><p>访问数组元数:</p>
+<pre><code># echo ${ass_array2[index2]} 访问数组中的第二个元数
+# echo ${ass_array2[@]} 访问数组中所有元数 等同于 echo ${array1[*]} 
+# echo ${#ass_array2[@]} 获得数组元数的个数
+# echo ${!ass_array2[@]} 获得数组元数的索引</code></pre></li>
+<li><p>遍历数组</p>
+<p>通过获取数组索引遍历   </p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-函数/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1801,149 +2004,6 @@ rebot --merge original.xml rerun.xml                       # finally merge resul
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/RT使用pycharm点击引用失效问题/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/01/29/RT使用pycharm点击引用失效问题/" itemprop="url">RT使用pycharm点击引用失效问题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T19:09:50+08:00">
-                2020-01-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="pycharm引用库文件失效问题"><a href="#pycharm引用库文件失效问题" class="headerlink" title="pycharm引用库文件失效问题"></a>pycharm引用库文件失效问题</h5><p>点击引用的库文件应用链接无效，导致输入相应库方法无提示，有以下几种检查办法：</p>
-<ul>
-<li><p>1) 检查以下插件是否已安装</p>
-<p>  IntelliBot、IntelliBot@SeleniumLibrary Patched 、Robot Framework support</p>
-</li>
-<li><p>2) 检查IDE设置</p>
-<p>  如pycharm检查Project Interpreter编译器是否错选，或者没选</p>
-</li>
-<li><p>3) 检查库文件引用是否重复</p>
-</li>
-</ul>
-<p>如通过集成已经继承了的库文件，就不要再引用一遍了</p>
-<ul>
-<li><p>4) 更换intelliBot插件</p>
-<p>出错也可能是因为安装的插件有问题，下载地址：<a href="https://github.com/youwi/intellibot/blob/master/intellibot.jar" target="_blank" rel="noopener">https://github.com/youwi/intellibot/blob/master/intellibot.jar</a><br><a href="https://blog.csdn.net/qq_33783424/article/details/80783092" target="_blank" rel="noopener">https://blog.csdn.net/qq_33783424/article/details/80783092</a></p>
-</li>
-<li><p>5) 检查代码格式</p>
-<p>Keywords 前最好留有空格；</p>
-<p>本次未提交文件提交上去；</p>
-</li>
-<li><p>6) 清零</p>
-<p>  如果以上都无法解决，删除本地代码，重新拉取； 重启电脑试试</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1994,7 +2054,7 @@ rebot --merge original.xml rerun.xml                       # finally merge resul
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">127</span>
+                  <span class="site-state-item-count">128</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
