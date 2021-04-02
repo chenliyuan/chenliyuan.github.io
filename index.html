@@ -261,6 +261,203 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/01/Celery-in-Django/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/04/01/Celery-in-Django/" itemprop="url">Celery 定时任务实践</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-01T18:01:41+08:00">
+                2021-04-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="Celery可以做什么？"><a href="#Celery可以做什么？" class="headerlink" title="Celery可以做什么？"></a>Celery可以做什么？</h5><ul>
+<li><p>异步任务：WEB任务、再如发送邮件、发消息</p>
+</li>
+<li><p>定时任务</p>
+</li>
+</ul>
+<h5 id="在Django实现定时任务"><a href="#在Django实现定时任务" class="headerlink" title="在Django实现定时任务"></a>在Django实现定时任务</h5><p>参照原文：<a href="https://www.jianshu.com/p/173070bcdfaf" target="_blank" rel="noopener">https://www.jianshu.com/p/173070bcdfaf</a></p>
+<p>假设所有环境已经搭建完毕</p>
+<h6 id="1、创建Django项目和新建app"><a href="#1、创建Django项目和新建app" class="headerlink" title="1、创建Django项目和新建app"></a>1、创建Django项目和新建app</h6><pre><code>django-admin.py startproject myDjangoDemo #创建项目容器
+python manage.py startapp testcelery  #创建新的app并将其配置到setting中INSTALLED_APPS</code></pre><h6 id="2、设置setting中celery相关项参数"><a href="#2、设置setting中celery相关项参数" class="headerlink" title="2、设置setting中celery相关项参数"></a>2、设置setting中celery相关项参数</h6><pre><code>CELERY_ACCEPT_CONTENT = [&apos;json&apos;]
+CELERY_TASK_SERIALIZER = &apos;json&apos;
+CELERY_TIMEZONE = TIME_ZONE
+CELERY_ENABLE_UTC = True</code></pre><h6 id="4、创建和设置celery-py文件内容"><a href="#4、创建和设置celery-py文件内容" class="headerlink" title="4、创建和设置celery.py文件内容"></a>4、创建和设置celery.py文件内容</h6><pre><code>import os
+from celery import Celery
+from celery.schedules import crontab
+from django.conf import settings
+
+os.environ.setdefault(&apos;DJANGO_SETTINGS_MODULE&apos;, &apos;myDjangoDemo.settings&apos;)
+
+app = Celery(&apos;myDjangoDemo&apos;,broker = &apos;redis://localhost:6379/0&apos;,backend=&apos;redis://localhost:6379/1&apos;)
+
+app.config_from_object(&apos;django.conf:settings&apos;,namespace=&apos;CELERY&apos;)
+#下面的设置就是关于调度器beat的设置
+app.conf.beat_schedule ={
+        &apos;auto_schedule&apos;:{                           #取个名字
+            &apos;task&apos;:&apos;testcelery.tasks.auto_schedule&apos;,    #设置是要将哪个任务进行定时
+            &apos;schedule&apos;:crontab(minute=&apos;*&apos;),   #每分钟执行一次
+        },
+}
+app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)</code></pre><h6 id="5、新app中创建task任务"><a href="#5、新app中创建task任务" class="headerlink" title="5、新app中创建task任务"></a>5、新app中创建task任务</h6><pre><code>from celery import  shared_task
+@shared_task
+def auto_schedule():
+    print (&apos;auto_schedule test?&apos;)
+    return &apos;success&apos;</code></pre><h6 id="6、执行任务，检验结果"><a href="#6、执行任务，检验结果" class="headerlink" title="6、执行任务，检验结果"></a>6、执行任务，检验结果</h6><pre><code>celery -A myDjangoDemo worker -B -l info</code></pre><p>  其中A指的是app  B指的是Beat。此命令同时启动了worker和beat</p>
+<p>  执行结果如下：<br> <img src="/images/pasted-214.png" alt="upload successful"></p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>1、beat_schedule、BROKER_URL、RESULT_BACKEND 也可以在setting中一并设置。前面需要加前缀CELERY_</p>
+<p>主要相关参数说明如下：</p>
+<pre><code>BROKER_URL = &apos;redis://127.0.0.1:6379/0&apos;  celery中间人 redis://redis服务所在的ip地址:端口/数据库号
+CELERY_RESULT_BACKEND = &apos;redis://127.0.0.1:6379/0&apos; celery结果返回，可用于跟踪结果
+CELERY_TASK_RESULT_EXPIRES = 18000         celery任务结果有效期  
+
+CELERY_TASK_SERIALIZER = &apos;json&apos;                 任务序列化结构  
+CELERY_RESULT_SERIALIZER = &apos;json&apos;               结果序列化结构  
+CELERY_ACCEPT_CONTENT=[&apos;json&apos;]                  celery接收内容类型  
+CELERY_TIMEZONE = &apos;Asia/Shanghai&apos;                  celery使用的时区  
+CELERY_ENABLE_UTC = True                          启动时区设置  
+CELERYD_LOG_FILE=&quot;/var/log/celery/celery.log&quot;  celery日志存储位置  
+celery.config_from_object(&apos;celeryconfig1&apos;)     celery配置文档  </code></pre><p>2、celery crontab表达式</p>
+<pre><code>crontab(minute=15)
+#每小时的15分，执行一次任务
+crontab(minute=0, hour=0)
+#每天0点0分 执行一次任务
+crontab(minute=&apos;0,30&apos;)
+#每个小时的0分和30分 都执行一次任务
+crontab(minute=&apos;*&apos;, hour=&apos;9-12&apos;)
+#指定9点到12点 每分钟执行一次任务
+crontab(hour=&apos;9-12,20&apos;)
+#指定9点到12点和20点 每分钟执行一次任务
+————————————————
+原文链接：https://blog.csdn.net/dasfa11/article/details/114695837</code></pre><h5 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h5><p>【不生效】刚开始没有生效以为是redis的问题，毕竟redis我什么也没有操作。<br>【解决】跟redis无关。是设置的schedule有问题，时间还没到（设置了minite和hour比较固定），设置成*以后，每分钟执行才看到结果。</p>
+<p>【时间不对】log中显示的时间和实际时间不符合，待解决。<br><img src="/images/pasted-215.png" alt="upload successful"></p>
+<pre><code>原来是时区写错了，应该是上海</code></pre><p>【redis】redis的作用，待看。</p>
+<hr>
+<p><strong>Celery架构：</strong></p>
+<p><img src="/images/pasted-213.png" alt="upload successful"></p>
+<p><strong>celery 的5个角色</strong></p>
+<p>Task</p>
+<p>就是任务，有异步任务和定时任务</p>
+<p>Broker</p>
+<p>中间人，接收生产者发来的消息即Task，将任务存入队列。任务的消费者是Worker。</p>
+<p>Celery本身不提供队列服务，推荐用Redis或RabbitMQ实现队列服务。</p>
+<p>Worker</p>
+<p>执行任务的单元，它实时监控消息队列，如果有任务就获取任务并执行它。</p>
+<p>Beat</p>
+<p>定时任务调度器，根据配置定时将任务发送给Broker。</p>
+<p>Backend</p>
+<p>用于存储任务的执行结果。</p>
+<p>原文链接：<a href="https://blog.csdn.net/u010339879/article/details/97691231" target="_blank" rel="noopener">https://blog.csdn.net/u010339879/article/details/97691231</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/12/ES6语法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1579,139 +1776,6 @@ n 1.14.10（也可以latest）</code></pre><p>期间若有提示则按照提示�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/11/nginx-location匹配优先级/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/01/11/nginx-location匹配优先级/" itemprop="url">nginx location匹配优先级</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-11T19:43:00+08:00">
-                2021-01-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>参考：<a href="https://segmentfault.com/a/1190000020885269" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020885269</a></p>
-<p>类型：</p>
-<pre><code>location = expression 精准匹配 
-location expression 普通匹配     
-location ^~ expression 普通匹配
-location ~ regex 正则匹配（区分大小写）
-location ~* regex 正则匹配（不区分大小写）
-
-location =/api{}
-location  /api{}
-location ^~/api{}
-location  ~.*api{}
-location  ~*Api{}</code></pre><p><img src="/images/pasted-196.png" alt="upload successful"></p>
-<p><img src="/images/pasted-195.png" alt="upload successful"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1762,7 +1826,7 @@ location  ~*Api{}</code></pre><p><img src="/images/pasted-196.png" alt="upload s
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

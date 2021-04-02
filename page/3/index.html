@@ -261,6 +261,150 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/14/分享/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/10/14/分享/" itemprop="url">分享总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-14T15:12:00+08:00">
+                2020-10-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li><p>Cpython 解释器</p>
+</li>
+<li><p>python 运行原理</p>
+<p>解释成字节码</p>
+<p><img src="/images/pasted-153.png" alt="upload successful"></p>
+<p>字节码插庄<br>栈  堆</p>
+</li>
+<li><p>python 垃圾回收机制是什么</p>
+<p>引用计数</p>
+</li>
+<li><p>如果b=a的话，为什么会有安全问题？</p>
+<p>  因为多个同时进行，引用计数可能会减少</p>
+<p>  如a本身计数是1</p>
+<pre><code>  b=a   //计数是2
+b=a   //本来应该是3，但是同时进行也成了2</code></pre><p> 导致引用计数错误，删除2个后，本来需要存在的却被回收了。      </p>
+</li>
+<li><p>GIL锁</p>
+<p>在IO/100字节码/5ms的时候释放锁，供其他线程调用。</p>
+</li>
+<li><p>实例显示python多线程只占用一个CPU，而java多线程n个线程占用n个cpu.</p>
+</li>
+<li><p>celert默认多进程使用，跟自己写多进程一样。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/14/element-导航高亮问题/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1448,130 +1592,6 @@ book = person.person_book.all()</code></pre><h5 id="子表查主表"><a href="#�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/15/Vue报错/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/09/15/Vue报错/" itemprop="url">Vue报错</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-15T15:09:06+08:00">
-                2020-09-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h6 id="Missing-required-prop-“value”"><a href="#Missing-required-prop-“value”" class="headerlink" title="Missing required prop: “value”"></a>Missing required prop: “value”</h6><p>select组件中 v-model前面加了冒号</p>
-<h6 id="Error-in-render-“TypeError-Cannot-read-property-‘oprations’-of-undefined”"><a href="#Error-in-render-“TypeError-Cannot-read-property-‘oprations’-of-undefined”" class="headerlink" title="Error in render: “TypeError: Cannot read property ‘oprations’ of undefined”"></a>Error in render: “TypeError: Cannot read property ‘oprations’ of undefined”</h6><p>【经过】父组件向子组件传递多个参数太不方便，于是整合成一个Object传过去，但是却报如上错误。<br>实际上功能并未受到影响。<br>【解决】由于初始化render的时候该对象还未取到，为了避免这样的错误，可以在该DOM上加v-if判断</p>
-<p><img src="/images/pasted-148.png" alt="upload successful"></p>
-<h6 id="Invalid-prop-type-check-failed-for-prop-“width”-Expected-Number-with-value-230-got-String-with-value-“230”"><a href="#Invalid-prop-type-check-failed-for-prop-“width”-Expected-Number-with-value-230-got-String-with-value-“230”" class="headerlink" title="Invalid prop: type check failed for prop “width”. Expected Number with value 230, got String with value “230”."></a>Invalid prop: type check failed for prop “width”. Expected Number with value 230, got String with value “230”.</h6><p>解决：改成绑定</p>
-<p><img src="/images/pasted-150.png" alt="upload successful"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1622,7 +1642,7 @@ book = person.person_book.all()</code></pre><h5 id="子表查主表"><a href="#�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

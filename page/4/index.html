@@ -261,6 +261,130 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/15/Vue报错/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/15/Vue报错/" itemprop="url">Vue报错</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-15T15:09:06+08:00">
+                2020-09-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h6 id="Missing-required-prop-“value”"><a href="#Missing-required-prop-“value”" class="headerlink" title="Missing required prop: “value”"></a>Missing required prop: “value”</h6><p>select组件中 v-model前面加了冒号</p>
+<h6 id="Error-in-render-“TypeError-Cannot-read-property-‘oprations’-of-undefined”"><a href="#Error-in-render-“TypeError-Cannot-read-property-‘oprations’-of-undefined”" class="headerlink" title="Error in render: “TypeError: Cannot read property ‘oprations’ of undefined”"></a>Error in render: “TypeError: Cannot read property ‘oprations’ of undefined”</h6><p>【经过】父组件向子组件传递多个参数太不方便，于是整合成一个Object传过去，但是却报如上错误。<br>实际上功能并未受到影响。<br>【解决】由于初始化render的时候该对象还未取到，为了避免这样的错误，可以在该DOM上加v-if判断</p>
+<p><img src="/images/pasted-148.png" alt="upload successful"></p>
+<h6 id="Invalid-prop-type-check-failed-for-prop-“width”-Expected-Number-with-value-230-got-String-with-value-“230”"><a href="#Invalid-prop-type-check-failed-for-prop-“width”-Expected-Number-with-value-230-got-String-with-value-“230”" class="headerlink" title="Invalid prop: type check failed for prop “width”. Expected Number with value 230, got String with value “230”."></a>Invalid prop: type check failed for prop “width”. Expected Number with value 230, got String with value “230”.</h6><p>解决：改成绑定</p>
+<p><img src="/images/pasted-150.png" alt="upload successful"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/14/MAC配置安卓环境sdk/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1676,143 +1800,6 @@ this.$EventBus.$on(&apos;uploading&apos;, val=&gt;{
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/24/elementui使用小记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/06/24/elementui使用小记/" itemprop="url">elementui使用小记</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-24T11:26:36+08:00">
-                2020-06-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>需求：表格上拉加载刷新</p>
-<p>尝试单独使用InfiniteScroll 无限滚动 解决，但是一直存在两个问题</p>
-<ol>
-<li>每次重复执行3次</li>
-<li>第二次上拉时不加载</li>
-</ol>
-<p>猜测由于表格特定格式单纯使用InfiniteScroll 受限</p>
-<p>【解决】使用<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">   参考：https://zhuanlan.zhihu.com/p/114965548</span><br><span class="line">2. 在加载树形数据懒加载的时候报错 ```if there&apos;s nested data,rowKey is required</span><br></pre></td></tr></table></figure></p>
-<p> 原因：原来使用懒加载，table数据中没有children字段，但是现在新增了这个字段。</p>
-<p>因此满足了懒加载的第一种策略：即使我根本没有设置第一项(第一项指的是子元素字段，第二项懒加载的时候使用字段)<br><code>:tree-props=&quot;{children: &#39;children&#39;, hasChildren: &#39;hasChildren&#39;}&quot;&gt;</code></p>
-<p>这样直接加载子项目的时候，发现我子项目里缺少id,因此报如上错</p>
-</li>
-<li><p>表单样式–换行展示变成一行展示</p>
-<p><img src="/images/pasted-204.png" alt="upload successful"></p>
-<p>需要设置label-width的值即可</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1863,7 +1850,7 @@ this.$EventBus.$on(&apos;uploading&apos;, val=&gt;{
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

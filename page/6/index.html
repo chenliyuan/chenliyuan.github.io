@@ -261,6 +261,126 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/cmd批处理命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/12/cmd批处理命令/" itemprop="url">cmd批处理命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-12T21:44:20+08:00">
+                2020-04-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.cnblogs.com/xpwi/p/9626959.html" target="_blank" rel="noopener">https://www.cnblogs.com/xpwi/p/9626959.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/12/tesseract训练字库/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1612,186 +1732,6 @@ conda remove -n learn --all // 删除learn环境及下属所有包</code></pre><
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/06/shell-通配符和正则/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/06/shell-通配符和正则/" itemprop="url">shell 通配符和正则表达式</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-06T21:08:33+08:00">
-                2020-02-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="通配符和正则"><a href="#通配符和正则" class="headerlink" title="通配符和正则"></a>通配符和正则</h5><ul>
-<li><p>shell 元字符(也称为通配符) 由 shell 来解析，如 rm -rf <em>.pdf，元字符</em> Shell 将其解析为任意 多个字符</p>
-<p>正则表达式元字符 由各种执行模式匹配操作的程序来解析，比如 vi、grep、sed、awk、python</p>
-</li>
-<li><p>shell中定义元字符</p>
-<pre><code>*   任意字符
-?  单个任意字符
-[] 子shell ，不会影响主shell
-[^abcd]这里^是非的意思，但是外面不支持，不同与正则。正则[]里面同此，外面使用是以什么开头的意思
-{} 集合</code></pre></li>
-</ul>
-<ul>
-<li><p>基本正则表达式元字符:</p>
-<pre><code>元字符 功能 示例 ======================================================== ^ 行首定位符 ^love
-$ 行尾定位符 love$
-. 匹配单个任意字符 l..e
-* 匹配前导符 0 到多次 ab*love
-.* 任意多个字符
-[] 匹配指定范围内的一个字符 [lL]ove
-[ - ] 匹配指定范围内的一个字符 [a-z0-9]ove
-[^] 匹配不在指定组内的字符 [^a-z0-9]ove
-\ 用来转义元字符 love\.
-\&lt; 词首定位符 \&lt;love
-\&gt; 词尾定位符 love\&gt;
-\(..\) 匹配稍后使用的字符的标签 :% s/172.16.130.1/172.16.130.5/ :% s/\(172.16.130.\)1/\15/
-:% s/\(172.\)\(16.\)\(130.\)1/\1\2\35/
-:3,9 s/\(.*\)/#\1/
-x\{m\} 字符 x 重复出现 m 次 o\{5\}
-x\{m,\} 字符 x 重复出现 m 次以上 o\{5,\} x\{m,n\} 字符x重复出现m到n次o\{5,10\}</code></pre></li>
-<li><p>扩展正则表达式元字符（egrep或使用转义\）</p>
-<pre><code>+ 匹配一个或多个前导字符 [a-z]+ove
-? 匹配零个或一个前导字符 lo?ve
-a|b 匹配 a 或 b love|hate
-() 组字符 loveable|rs love(able|rs) ov+ (ov)+ (..)(..)\1\2 标签匹配字符 (love)able\1er x{m} 字符x重复m次o{5}
-x{m,} 字符 x 重复至少 m 次 o{5,}
-x{m,n} 字符x重复m到n次o{5,10}</code></pre></li>
-<li><p>其他</p>
-<pre><code>\w  所有字母和数字 相当于[a-zA-Z0-9]*
-\W  非字母和数字
-\b  边界</code></pre></li>
-</ul>
-<h5 id="grep命令"><a href="#grep命令" class="headerlink" title="grep命令"></a>grep命令</h5><ul>
-<li><p>习惯性加上单引号</p>
-</li>
-<li><p>返回状态exit 0 1 2</p>
-</li>
-<li><p>grep -e  相当于 egrep </p>
-</li>
-<li><p>grep  –help |grep ‘-v’<br>其中-v被认为是选项，非模式，所以需要转义</p>
-</li>
-</ul>
-<pre><code>-i, --ignore-case         忽略大小写
--v, --invert-match        选中不匹配的行
--q, --quiet, --silent     不显示所有常规输出
--r, --recursive           等同于--directories=recurse递归目录
-
--o, --only-matching       只显示匹配PATTERN 部分的行
--B, --before-context=NUM  打印文本及其前面NUM 行
--A, --after-context=NUM   打印文本及其后面NUM 行
--C, --context=NUM         打印NUM 行输出文本
-
--n, --line-number         输出的同时打印行号</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1842,7 +1782,7 @@ x{m,n} 字符x重复m到n次o{5,10}</code></pre></li>
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

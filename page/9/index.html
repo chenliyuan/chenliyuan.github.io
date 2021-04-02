@@ -261,6 +261,161 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/26/http前端/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/10/26/http前端/" itemprop="url">http前端</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-10-26T15:25:31+08:00">
+                2019-10-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="http版本："><a href="#http版本：" class="headerlink" title="http版本："></a>http版本：</h5><pre><code>http1.0:需要使用keep-alive建立长连接（因为创建tcp连接经过三次握手有一定的开销）。从1.1开始默认支持长连接。
+http1.1:支持只发送header、断点续传、host域
+http2.0（基于https）:多路复用、header数据压缩、服务器推送
+http强制缓存：只要不过期就要走缓存，缺点是不能及时更新。
+http协商缓存：没有修改返304状态码，否则200响应结果。</code></pre><h5 id="浏览器输入网址到加载完页面发生了什么？"><a href="#浏览器输入网址到加载完页面发生了什么？" class="headerlink" title="浏览器输入网址到加载完页面发生了什么？"></a>浏览器输入网址到加载完页面发生了什么？</h5><pre><code>1、    查找DNS缓存（浏览器缓存、操作系统缓存、host查看域名IP、运营商的DNS服务器缓存）
+2、    DNS域名解析，查找相应IP（过程是从后面往前递归查找）如com-&gt;baidu-&gt;www
+3、    发起TCP3次握手 建立TCP连接
+4、    发送http请求  
+5、    服务端处理请求    MVC分层
+6、    浏览器接收响应，解析html文件请求静态资源（css/js/imge，若服务器返回304说明请求资源没做修改从本地缓存取即可）
+7、    根据http响应渲染前端页面，构建DOM树
+8、    关闭tcp连接（四次挥手手）</code></pre><p>参考：<a href="https://www.cnblogs.com/zgq123456/articles/11641187.html" target="_blank" rel="noopener">https://www.cnblogs.com/zgq123456/articles/11641187.html</a></p>
+<p>【几个问题】：</p>
+<pre><code>1、http新版本请求除非connection:close时会断开TCP，否则在请求完成之前不会断开
+2、一个TCP连接中可以对应几个http请求？多个
+3、一个TCP连接中可以一起发送多个http请求么？
+在http2.0提供了多路复用（Multiplexing）支持此功能。
+4、为什么有的时候刷新页面不需要重新建立SSL连接
+ 因为TCP连接维持的时候，SSL自然也会用以前的
+5、浏览器对同一HOST建议TCP连接到数量有没有限制？
+有 chrome最多建议6个TCP连接。不同浏览器限制不同。</code></pre><h5 id="请求报文的格式"><a href="#请求报文的格式" class="headerlink" title="请求报文的格式"></a>请求报文的格式</h5><p>请求行：url、http协议版本、请求方式<br>请求头：<br>Accept<br>Accept-language<br>Accept-Encoding<br>Cache-Control:<br>Cookie<br>Connection:<br>Content-Type:<br>Content-Length:<br>Host:<br>Referer:<br>User-Agent:</p>
+<p>请求体：数据正文(入参)</p>
+<h4 id="请求方法："><a href="#请求方法：" class="headerlink" title="请求方法："></a>请求方法：</h4><p>  GET POST DELETE PUT HEAD</p>
+<pre><code>DELETE:请求服务端删除指定页面
+PUT：使传入数据取代指定的文档内容
+HEAD：类似GET，只是返回内容里只有报头</code></pre><h5 id="状态码："><a href="#状态码：" class="headerlink" title="状态码："></a>状态码：</h5><pre><code>1xx：标识请求已接受，继续处理
+2xx：成功
+3xx：重定向
+4xx：客户端错误
+5xx：服务端错误
+常用几个：
+302:重定向，比如把http请求都转成https
+400：客户端语法错误
+403：服务器拒绝提供服务
+404：请求资源不存在
+500：服务器内部错误</code></pre><h4 id="cookie和session"><a href="#cookie和session" class="headerlink" title="cookie和session"></a>cookie和session</h4><p>cookie相当于用户身份证，session相当于客户表记录</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/10/23/shell命令总结/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1602,138 +1757,6 @@ qps，如果是对一个页面请求一次，形成一个tps，但一次页面�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/TensorFlow实践/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/09/24/TensorFlow实践/" itemprop="url">TensorFlow实践</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T15:30:42+08:00">
-                2019-09-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li>安装 TensorFlow<br>系统版本：mac 10.12.6 python版本：2.7<br>安装指南：TensorFlow中文社区<br><a href="http://www.tensorfly.cn/tfdoc/get_started/os_setup.html#virtualenv_install" target="_blank" rel="noopener">http://www.tensorfly.cn/tfdoc/get_started/os_setup.html#virtualenv_install</a><br>1）尝试了使用直接安装\homebrew，都会提示错误：</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">There was a problem confirming the ssl certificate: [SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:590) - skipping</span><br></pre></td></tr></table></figure>
-
-<p>说是因为python社区已不支持TLS version 1.0 &amp; 1.1，可以通过升级pip实现，但是升级pip还会由于这个问题不能成功，后放弃。但是本机是Python2.7不愿因为安装这个升级python版本，毕竟是几个电脑里唯一一个2.x的版本，希望可以保留。<br>2）使用docker安装<br>参考：<br><a href="https://blog.csdn.net/qq_35624642/article/details/82910641" target="_blank" rel="noopener">https://blog.csdn.net/qq_35624642/article/details/82910641</a><br>报错：<br><img src="https://img-blog.csdnimg.cn/20190322173316121.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>于是试图更改用户名和用户组，查阅各种资料，mac操作用户和用户组跟linux不一样，使用dscl命令<a href="https://www.4455q.com/tech/mac-dscl-user-group-create-delete-append.html" target="_blank" rel="noopener">https://www.4455q.com/tech/mac-dscl-user-group-create-delete-append.html</a><br>查到用户名和用户组id后，使用后：<br><img src="https://img-blog.csdnimg.cn/20190322173457617.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
-<p>查看版本和安装路径<br>import tensorflow as tf</p>
-<p>tf.<strong>version</strong></p>
-<p>查询tensorflow安装路径为:</p>
-<p>tf.<strong>path</strong></p>
-<hr>
-<p>docker打开容器运行tensorflow镜像：<br>    <strong>docker run –name xiaolei-tensortflow -it -p 8888:8888 -v ~/tensorflow:/notebooks/data  tensorflow/tensorflow</strong></p>
-<p>docker run 运行镜像，<br>–name 为容器创建别名，<br>-it 保留命令行运行(之后可以输入命令)<br>-p 8888:8888 将本地的8888端口 <a href="http://localhost:8888/" target="_blank" rel="noopener">http://localhost:8888/</a> 映射（对应前面的端口），<br>-v <del>/tensorflow:/notebooks/data 将本地的</del>/tensorflow文件夹挂载到新建容器的/notebooks/data下（这样可是实现本地文件和docker文件互通）<br>tensorflow/tensorflow 为指定的镜像，默认标签为latest（即tensorflow/tensorflow:latest）</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1784,7 +1807,7 @@ qps，如果是对一个页面请求一次，形成一个tps，但一次页面�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

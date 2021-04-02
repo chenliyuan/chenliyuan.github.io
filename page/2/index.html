@@ -261,6 +261,139 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/11/nginx-location匹配优先级/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/11/nginx-location匹配优先级/" itemprop="url">nginx location匹配优先级</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-11T19:43:00+08:00">
+                2021-01-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>参考：<a href="https://segmentfault.com/a/1190000020885269" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020885269</a></p>
+<p>类型：</p>
+<pre><code>location = expression 精准匹配 
+location expression 普通匹配     
+location ^~ expression 普通匹配
+location ~ regex 正则匹配（区分大小写）
+location ~* regex 正则匹配（不区分大小写）
+
+location =/api{}
+location  /api{}
+location ^~/api{}
+location  ~.*api{}
+location  ~*Api{}</code></pre><p><img src="/images/pasted-196.png" alt="upload successful"></p>
+<p><img src="/images/pasted-195.png" alt="upload successful"></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/06/history/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1495,150 +1628,6 @@ a.indexOf(&quot;All&quot;)?1:2//返回1</code></pre><p>1：通过从列表查找
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/14/分享/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/10/14/分享/" itemprop="url">分享总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-14T15:12:00+08:00">
-                2020-10-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>Cpython 解释器</p>
-</li>
-<li><p>python 运行原理</p>
-<p>解释成字节码</p>
-<p><img src="/images/pasted-153.png" alt="upload successful"></p>
-<p>字节码插庄<br>栈  堆</p>
-</li>
-<li><p>python 垃圾回收机制是什么</p>
-<p>引用计数</p>
-</li>
-<li><p>如果b=a的话，为什么会有安全问题？</p>
-<p>  因为多个同时进行，引用计数可能会减少</p>
-<p>  如a本身计数是1</p>
-<pre><code>  b=a   //计数是2
-b=a   //本来应该是3，但是同时进行也成了2</code></pre><p> 导致引用计数错误，删除2个后，本来需要存在的却被回收了。      </p>
-</li>
-<li><p>GIL锁</p>
-<p>在IO/100字节码/5ms的时候释放锁，供其他线程调用。</p>
-</li>
-<li><p>实例显示python多线程只占用一个CPU，而java多线程n个线程占用n个cpu.</p>
-</li>
-<li><p>celert默认多进程使用，跟自己写多进程一样。</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1689,7 +1678,7 @@ b=a   //本来应该是3，但是同时进行也成了2</code></pre><p> 导致�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

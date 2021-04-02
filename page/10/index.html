@@ -261,6 +261,138 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/TensorFlow实践/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/24/TensorFlow实践/" itemprop="url">TensorFlow实践</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-24T15:30:42+08:00">
+                2019-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ol>
+<li>安装 TensorFlow<br>系统版本：mac 10.12.6 python版本：2.7<br>安装指南：TensorFlow中文社区<br><a href="http://www.tensorfly.cn/tfdoc/get_started/os_setup.html#virtualenv_install" target="_blank" rel="noopener">http://www.tensorfly.cn/tfdoc/get_started/os_setup.html#virtualenv_install</a><br>1）尝试了使用直接安装\homebrew，都会提示错误：</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">There was a problem confirming the ssl certificate: [SSL: TLSV1_ALERT_PROTOCOL_VERSION] tlsv1 alert protocol version (_ssl.c:590) - skipping</span><br></pre></td></tr></table></figure>
+
+<p>说是因为python社区已不支持TLS version 1.0 &amp; 1.1，可以通过升级pip实现，但是升级pip还会由于这个问题不能成功，后放弃。但是本机是Python2.7不愿因为安装这个升级python版本，毕竟是几个电脑里唯一一个2.x的版本，希望可以保留。<br>2）使用docker安装<br>参考：<br><a href="https://blog.csdn.net/qq_35624642/article/details/82910641" target="_blank" rel="noopener">https://blog.csdn.net/qq_35624642/article/details/82910641</a><br>报错：<br><img src="https://img-blog.csdnimg.cn/20190322173316121.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>于是试图更改用户名和用户组，查阅各种资料，mac操作用户和用户组跟linux不一样，使用dscl命令<a href="https://www.4455q.com/tech/mac-dscl-user-group-create-delete-append.html" target="_blank" rel="noopener">https://www.4455q.com/tech/mac-dscl-user-group-create-delete-append.html</a><br>查到用户名和用户组id后，使用后：<br><img src="https://img-blog.csdnimg.cn/20190322173457617.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3N1cGVyX2NoZW5seQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<p>查看版本和安装路径<br>import tensorflow as tf</p>
+<p>tf.<strong>version</strong></p>
+<p>查询tensorflow安装路径为:</p>
+<p>tf.<strong>path</strong></p>
+<hr>
+<p>docker打开容器运行tensorflow镜像：<br>    <strong>docker run –name xiaolei-tensortflow -it -p 8888:8888 -v ~/tensorflow:/notebooks/data  tensorflow/tensorflow</strong></p>
+<p>docker run 运行镜像，<br>–name 为容器创建别名，<br>-it 保留命令行运行(之后可以输入命令)<br>-p 8888:8888 将本地的8888端口 <a href="http://localhost:8888/" target="_blank" rel="noopener">http://localhost:8888/</a> 映射（对应前面的端口），<br>-v <del>/tensorflow:/notebooks/data 将本地的</del>/tensorflow文件夹挂载到新建容器的/notebooks/data下（这样可是实现本地文件和docker文件互通）<br>tensorflow/tensorflow 为指定的镜像，默认标签为latest（即tensorflow/tensorflow:latest）</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/09/24/python读取文件的几种方式/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1729,158 +1861,6 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/07/14/Django模板/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/07/14/Django模板/" itemprop="url">Django模板template</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-07-14T08:43:07+08:00">
-                2019-07-14
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ol>
-<li><p>模板标签</p>
-<ul>
-<li>循环标签（for标签）<br>这种适合返回的字典值是列表的情况<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%for value in value_list %&#125;</span><br><span class="line">	&#123;&#123;value&#125;&#125;</span><br><span class="line">&#123;%endfor%&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<p>for遍历<br>除了普通列表遍历还可以实现:  </p>
-<ul>
-<li><p>对列表进行翻转</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% for obj in list reversed%&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>循环遍历字典</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;%for key ,value in data.items %&#125;</span><br><span class="line">		&#123;&#123;key&#125;&#125;:&#123;&#123;value&#125;&#125;</span><br><span class="line">&#123;%endfor%&#125;</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<ul>
-<li>条件控制标签<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">  &#123;% if condition1 %&#125;</span><br><span class="line">	...</span><br><span class="line">&#123;% elif condition2 %&#125;</span><br><span class="line">	...</span><br><span class="line">&#123;% else %&#125;</span><br><span class="line">	...</span><br><span class="line">&#123;% endif %&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ol start="2">
-<li>过滤器<br>在原来值后面加上过滤的关键字，起到过滤效果<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;somekeyname|upper|first|lower|length&#125;&#125;</span><br><span class="line">常用的过滤器：</span><br><span class="line">capfirst首字母大写</span><br><span class="line">cut：删除指定值，如&#123;&#123;value|cut:&quot;&quot;&#125;&#125;</span><br><span class="line">date:格式化日期，如&#123;&#123;value|date:&quot;D d M Y&quot;&#125;&#125;</span><br><span class="line">default</span><br><span class="line">join拼接如&#123;&#123;value|join:&quot;//&quot;&#125;&#125;</span><br><span class="line">truncatewords 缩短内容长度</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-</li>
-</ol>
-<p>  【问题】  </p>
-<ol>
-<li>表单提交返回后，请求input中填写值不展示？<br>value中设置返回值：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">input type=&quot;text&quot; name=&quot;phone&quot; placeholder=&quot;手机号&quot; value=&#123;&#123; cardno &#125;&#125;&gt;&lt;/td&gt;</span><br></pre></td></tr></table></figure></li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1931,7 +1911,7 @@ slug:匹配任意slug字符串，可以包含任意ASCII字符、数字、-、_�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">128</span>
+                  <span class="site-state-item-count">129</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
