@@ -79,17 +79,14 @@
 
 
 
-<meta name="description" content="全全的好文 ：https://www.jb51.net/article/186742.htm 常见的FieldType数据库字段类型1、AutoField：自增Field域，自动增加的一个数据库字段类型，例如id字段就可以使用该数据类型，参数中必须填入primary_key=True 2、BigAutoField：和AutoField相同，只是比AutoField要大，参数中必须填入primary">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Django模型models字段">
 <meta property="og:url" content="http://yoursite.com/2020/09/19/Django模型models字段/index.html">
 <meta property="og:site_name" content="躲不掉的风">
-<meta property="og:description" content="全全的好文 ：https://www.jb51.net/article/186742.htm 常见的FieldType数据库字段类型1、AutoField：自增Field域，自动增加的一个数据库字段类型，例如id字段就可以使用该数据类型，参数中必须填入primary_key=True 2、BigAutoField：和AutoField相同，只是比AutoField要大，参数中必须填入primary">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-09-19T10:15:22.770Z">
+<meta property="og:updated_time" content="2021-04-06T07:23:58.038Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Django模型models字段">
-<meta name="twitter:description" content="全全的好文 ：https://www.jb51.net/article/186742.htm 常见的FieldType数据库字段类型1、AutoField：自增Field域，自动增加的一个数据库字段类型，例如id字段就可以使用该数据类型，参数中必须填入primary_key=True 2、BigAutoField：和AutoField相同，只是比AutoField要大，参数中必须填入primary">
 
 
 
@@ -331,23 +328,7 @@
       
 
       
-        <p>全全的好文 ：<a href="https://www.jb51.net/article/186742.htm" target="_blank" rel="noopener">https://www.jb51.net/article/186742.htm</a></p>
-<h5 id="常见的FieldType数据库字段类型"><a href="#常见的FieldType数据库字段类型" class="headerlink" title="常见的FieldType数据库字段类型"></a>常见的FieldType数据库字段类型</h5><p>1、AutoField：自增Field域，自动增加的一个数据库字段类型，例如id字段就可以使用该数据类型，参数中必须填入primary_key=True</p>
-<p>2、BigAutoField：和AutoField相同，只是比AutoField要大，参数中必须填入primary_key=True</p>
-<p>3、BigIntegerField：大整型，只要用于存储整型的数据</p>
-<p>4、BinaryField：主要是存储原始的二进制数据</p>
-<p>5、BooleanField：主要是存储布尔类型的数据，0和1</p>
-<p>6、CharField：主要存储字符串的数据类型</p>
-<p>7、DateField：主要存储日期类型的数据类型，日期格式为YYYY-MM-DD</p>
-<p>8、DateTimeField：主要存储时间相关的数据类型，格式为YYYY-MM-DD HH:MM:[ss[.uuuuuu]][TZ]</p>
-<p>注意：DateField与DateTimeField有两个属性，配置auto_now_add=True，创建数据记录的时候会把当前时间添加到数据库，配置auto_now=True，每次更新数据记录的时候都会更新该字段</p>
-<p>9、DecimalField：主要存储固定精度的十进制数据</p>
-<h5 id="【问题】"><a href="#【问题】" class="headerlink" title="【问题】"></a>【问题】</h5><p> 数据存库的时候，提示类似如下问题<br>Exception Value: (1048, “Column ‘sheet_id’ cannot be null”)</p>
-<p>【原因/解决】创建自增字段的时候字段使用错误，应该使用AutoField字段</p>
-<h5 id="AutoField"><a href="#AutoField" class="headerlink" title="AutoField"></a>AutoField</h5><p>Django默认的行为就像这样</p>
-<pre><code>class TestModel(models.Model):
-id = models.AutoField(primary_key=True) </code></pre><p>若手动增加AutoField列，注意添加主键</p>
-
+        
       
     </div>
     
@@ -435,17 +416,8 @@ id = models.AutoField(primary_key=True) </code></pre><p>若手动增加AutoField
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -460,7 +432,7 @@ id = models.AutoField(primary_key=True) </code></pre><p>若手动增加AutoField
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">129</span>
+                  <span class="site-state-item-count">133</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -496,22 +468,6 @@ id = models.AutoField(primary_key=True) </code></pre><p>若手动增加AutoField
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#常见的FieldType数据库字段类型"><span class="nav-number">1.</span> <span class="nav-text">常见的FieldType数据库字段类型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#【问题】"><span class="nav-number">2.</span> <span class="nav-text">【问题】</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#AutoField"><span class="nav-number">3.</span> <span class="nav-text">AutoField</span></a></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       

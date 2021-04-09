@@ -261,6 +261,672 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/02/RT中的chrome设置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/02/RT中的chrome设置/" itemprop="url">RT中的chrome设置</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-02T17:09:00+08:00">
+                2020-02-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="1-jenkins在执行远程docker-chrome-hub运行RT时候报错："><a href="#1-jenkins在执行远程docker-chrome-hub运行RT时候报错：" class="headerlink" title="1.jenkins在执行远程docker chrome hub运行RT时候报错："></a>1.jenkins在执行远程docker chrome hub运行RT时候报错：</h5><pre><code>selenium.common.exceptions.WebDriverException: Message: unknown error: session deleted because of page crash
+from unknown error: cannot determine loading status
+from tab crashed</code></pre><ul>
+<li>解决方法一</li>
+</ul>
+<p>一个解决办法就是要添加chrome参数Add the following chrome_options:</p>
+<pre><code>chrome_options.add_argument(&apos;--no-sandbox&apos;)   </code></pre><p>参考：<a href="https://stackoverflow.com/questions/53902507/unknown-error-session-deleted-because-of-page-crash-from-unknown-error-cannot" target="_blank" rel="noopener">https://stackoverflow.com/questions/53902507/unknown-error-session-deleted-because-of-page-crash-from-unknown-error-cannot</a></p>
+<h6 id="那么这些参数都有哪些意义呢？"><a href="#那么这些参数都有哪些意义呢？" class="headerlink" title="那么这些参数都有哪些意义呢？"></a>那么这些参数都有哪些意义呢？</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">from selenium import webdriver</span><br><span class="line">from selenium.webdriver.chrome.options import Options</span><br><span class="line">chrome_options = Options()</span><br><span class="line">chrome_options.add_argument(&apos;--no-sandbox&apos;)#停止使用沙箱模式（沙箱模式就是一个封闭的独立的环境。）,也可解决DevToolsActivePort文件不存在的报错</span><br><span class="line">chrome_options.add_argument(&apos;window-size=1920x3000&apos;) #指定浏览器分辨率</span><br><span class="line">chrome_options.add_argument(&apos;--disable-gpu&apos;) #谷歌文档提到需要加上这个属性来规避bug</span><br><span class="line">chrome_options.add_argument(&apos;--hide-scrollbars&apos;) #隐藏滚动条, 应对一些特殊页面</span><br><span class="line">chrome_options.add_argument(&apos;blink-settings=imagesEnabled=false&apos;) #不加载图片, 提升速度</span><br><span class="line">chrome_options.add_argument(&apos;--headless&apos;) #浏览器不提供可视化页面. linux下如果系统不支持可视化不加这条会启动失败</span><br><span class="line">chrome_options.binary_location = r&quot;C:\Program Files (x86)\Google\Chrome\Application\chrome.exe&quot; #手动指定使用的浏览器位置</span><br><span class="line"></span><br><span class="line">driver=webdriver.Chrome(chrome_options=chrome_options)</span><br><span class="line">driver.get(&apos;https://www.baidu.com&apos;)</span><br><span class="line"></span><br><span class="line">print(&apos;hao123&apos; in driver.page_source)</span><br><span class="line">driver.close() #切记关闭浏览器，回收资源</span><br></pre></td></tr></table></figure>
+
+<h6 id="如何在RT中应用？"><a href="#如何在RT中应用？" class="headerlink" title="如何在RT中应用？"></a>如何在RT中应用？</h6><p>RT中添加需要转化成capabilities这样才可在使用远程driver的时候应用。</p>
+<p>参考大神:<a href="https://stackoverflow.com/questions/46812155/how-to-run-headless-remote-chrome-using-robot-framework/46817149" target="_blank" rel="noopener">https://stackoverflow.com/questions/46812155/how-to-run-headless-remote-chrome-using-robot-framework/46817149</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Headless Chrome - Open Browser</span><br><span class="line">    $&#123;chrome_options&#125; =     Evaluate    sys.modules[&apos;selenium.webdriver&apos;].ChromeOptions()    sys, selenium.webdriver</span><br><span class="line">    Call Method    $&#123;chrome_options&#125;   add_argument    headless</span><br><span class="line">    Call Method    $&#123;chrome_options&#125;   add_argument    disable-gpu</span><br><span class="line">    $&#123;options&#125;=     Call Method     $&#123;chrome_options&#125;    to_capabilities     </span><br><span class="line"></span><br><span class="line">    Open Browser    http://cnn.com    browser=chrome    remote_url=http://localhost:4444/wd/hub     desired_capabilities=$&#123;options&#125;</span><br><span class="line"></span><br><span class="line">    Maximize Browser Window</span><br><span class="line">    Capture Page Screenshot</span><br></pre></td></tr></table></figure>
+
+<p>解决方法二：方法一并没有有效的解决问题，以下贴出完整的问题log</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">[ WARN ] Keyword &apos;Capture Page Screenshot&apos; could not be run on failure: WebDriverException: Message: Session [0c86405952403c3719bb6d9e8467b7f9] was terminated due to BROWSER_TIMEOUT</span><br><span class="line">Stacktrace:</span><br><span class="line">    at org.openqa.grid.internal.ActiveTestSessions.getExistingSession (ActiveTestSessions.java:115)</span><br><span class="line">    at org.openqa.grid.internal.DefaultGridRegistry.getExistingSession (DefaultGridRegistry.java:387)</span><br><span class="line">    at org.openqa.grid.web.servlet.handler.RequestHandler.getSession (RequestHandler.java:241)</span><br><span class="line">    at org.openqa.grid.web.servlet.handler.RequestHandler.process (RequestHandler.java:123)</span><br><span class="line">    at org.openqa.grid.web.servlet.DriverServlet.process (DriverServlet.java:85)</span><br><span class="line">    at org.openqa.grid.web.servlet.DriverServlet.doGet (DriverServlet.java:63)</span><br><span class="line">    at javax.servlet.http.HttpServlet.service (HttpServlet.java:687)</span><br><span class="line">    at javax.servlet.http.HttpServlet.service (HttpServlet.java:790)</span><br><span class="line">    at org.seleniumhq.jetty9.servlet.ServletHolder.handle (ServletHolder.java:865)</span><br><span class="line">    at org.seleniumhq.jetty9.servlet.ServletHandler.doHandle (ServletHandler.java:535)</span><br><span class="line">    [ Message content over the limit has been removed. ]</span><br><span class="line">    at org.seleniumhq.jetty9.io.AbstractConnection$ReadCallback.succeeded (AbstractConnection.java:305)</span><br><span class="line">    at org.seleniumhq.jetty9.io.FillInterest.fillable (FillInterest.java:103)</span><br><span class="line">    at org.seleniumhq.jetty9.io.ChannelEndPoint$2.run (ChannelEndPoint.java:118)</span><br><span class="line">    at org.seleniumhq.jetty9.util.thread.strategy.EatWhatYouKill.runTask (EatWhatYouKill.java:333)</span><br><span class="line">    at org.seleniumhq.jetty9.util.thread.strategy.EatWhatYouKill.doProduce (EatWhatYouKill.java:310)</span><br><span class="line">    at org.seleniumhq.jetty9.util.thread.strategy.EatWhatYouKill.tryProduce (EatWhatYouKill.java:168)</span><br><span class="line">    at org.seleniumhq.jetty9.util.thread.strategy.EatWhatYouKill.run (EatWhatYouKill.java:126)</span><br><span class="line">    at org.seleniumhq.jetty9.util.thread.ReservedThreadExecutor$ReservedThread.run (ReservedThreadExecutor.java:366)</span><br><span class="line">    at org.seleniumhq.jetty9.util.thread.QueuedThreadPool.runJob (QueuedThreadPool.java:765)</span><br><span class="line">    at org.seleniumhq.jetty9.util.thread.QueuedThreadPool$2.run (QueuedThreadPool.java:683)</span><br><span class="line">    at java.lang.Thread.run (Thread.java:748)</span><br><span class="line">| FAIL |</span><br><span class="line">WebDriverException: Message: unknown error: session deleted because of page crash</span><br><span class="line">from unknown error: cannot determine loading status</span><br><span class="line">from tab crashed</span><br><span class="line">  (Session info: chrome=79.0.3945.79)</span><br></pre></td></tr></table></figure>
+
+<p>解决方法：增加共享内存<br>虽然通过df -h 可以看到/dev/shm有7个多G的空间，但是容器默认配置共享空间是64M：”default-shm-size”: “64M”,使用docker for python 可以通过添加–shm-size参数来修改,官方参数说明</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shm_size (str or int) – Size of /dev/shm (e.g. 1G).</span><br></pre></td></tr></table></figure>
+
+<p>参考<br><a href="https://github.com/elgalu/docker-selenium/issues/20" target="_blank" rel="noopener">https://github.com/elgalu/docker-selenium/issues/20</a><br><a href="https://www.zhihu.com/question/40125229?sort=created" target="_blank" rel="noopener">https://www.zhihu.com/question/40125229?sort=created</a><br><a href="https://blog.csdn.net/isea533/article/details/95197468" target="_blank" rel="noopener">https://blog.csdn.net/isea533/article/details/95197468</a><br><a href="https://www.cnblogs.com/FZfangzheng/p/10851762.html" target="_blank" rel="noopener">https://www.cnblogs.com/FZfangzheng/p/10851762.html</a><br><a href="https://docker-py.readthedocs.io/en/stable/containers.html" target="_blank" rel="noopener">https://docker-py.readthedocs.io/en/stable/containers.html</a></p>
+<p>Finally:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">client.containers.run(&apos;selenium/hub&apos;, name=hub_name, detach=True, tty=True, stdin_open=True,publish_all_ports=True,shm_size=&apos;1G&apos;)</span><br></pre></td></tr></table></figure>
+
+<h6 id="2-chrome远程下载"><a href="#2-chrome远程下载" class="headerlink" title="2. chrome远程下载"></a>2. chrome远程下载</h6><p>  解决：使用谷歌驱动获取远程下载路径文件列表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">from openapi_utils import split_order, init_forder</span><br><span class="line">from robot.libraries.BuiltIn import BuiltIn</span><br><span class="line">def get_downloaded_files():</span><br><span class="line">    seleniumlib = BuiltIn().get_library_instance(&apos;SeleniumLibrary&apos;)</span><br><span class="line">    driver = seleniumlib.driver</span><br><span class="line">    if not driver.current_url.startswith(&quot;chrome://downloads&quot;):</span><br><span class="line">        driver.get(&quot;chrome://downloads/&quot;)</span><br><span class="line"></span><br><span class="line">    return driver.execute_script( \</span><br><span class="line">    &quot;return downloads.Manager.get().items_   &quot;</span><br><span class="line">    &quot;  .filter(e =&gt; e.state === &apos;COMPLETE&apos;)  &quot;</span><br><span class="line">    &quot;  .map(e =&gt; e.filePath || e.file_path); &quot; )</span><br></pre></td></tr></table></figure>
+
+<h6 id="3-使用以上js下载脚本时一直提示这个错"><a href="#3-使用以上js下载脚本时一直提示这个错" class="headerlink" title="3. 使用以上js下载脚本时一直提示这个错"></a>3. 使用以上js下载脚本时一直提示这个错</h6><p>JavascriptException: Message: javascript error: Cannot read property ‘get’ of undefined<br>  (Session info: chrome=80.0.3987.122)</p>
+<p>  原因是chrome版本的问题，可能是80版本不兼容，将版本将至79且禁止浏览器更新~</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/01/RT运行命令/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/02/01/RT运行命令/" itemprop="url">RT运行命令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-01T20:20:11+08:00">
+                2020-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="robot命令"><a href="#robot命令" class="headerlink" title="robot命令"></a>robot命令</h5><p>使用1：运行程序并生成报告</p>
+<pre><code>robot -d Output --loglevel TRACE -v env:$env -v HUB:$hub -i $area SellerCenterUI/TestCase/06Wallet/</code></pre><p>使用2：重新运行失败的case</p>
+<pre><code>robot -d Output --rerunfailed Output/output.xml --output rerun.xml --loglevel TRACE -v env:$env -v HUB:$hub  -i $area SellerCenterUI/TestCase/01Login/</code></pre><p>据robot –help可知</p>
+<pre><code>-d  --outputdir dir       Where to create output files. The default is the directory where tests are run from and the given path   is considered relative to that unless it is absolute.即指定生成报告的文件
+-L --loglevel level      Threshold level for logging. Available levels: TRACE,DEBUG, INFO (default), WARN, NONE (no logging).
+ -i --include tag * 
+ -v --variable name:value *      Set variables in the test data. Only scalar variables with string value are supported and name is given without `${}`.
+  -R --rerunfailed output       Select failed tests from an earlier output file</code></pre><h5 id="rebot命令"><a href="#rebot命令" class="headerlink" title="rebot命令"></a>rebot命令</h5><p>使用：合并报告</p>
+<pre><code>/usr/local/python3/bin/rebot -d Output --output output.xml --merge Output/output.xml Output/rerun.xml</code></pre><p>   使用rebot –help可知</p>
+<pre><code>-o --output file         XML output file. Not created unless this option is specified. Given path, similarly as paths given to --log, --report and --xunit, is relative to --outputdir unless given as an absolute path.
+-R --merge               When combining results, merge outputs together Example: rebot --merge orig.xml rerun.xml</code></pre><p>  最终根据xml文件生成Log和Report文件（个人理解）</p>
+<pre><code>Output:  /var/lib/jenkins/workspace/Staging/login for th/Output/output.xml
+Log:     /var/lib/jenkins/workspace/Staging/login for th/Output/log.html
+Report:  /var/lib/jenkins/workspace/Staging/login for th/Output/report.html</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/31/Selenium下Docker使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/31/Selenium下Docker使用/" itemprop="url">Selenium&Docker使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-31T22:15:05+08:00">
+                2020-01-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="Docker-API"><a href="#Docker-API" class="headerlink" title="Docker  API"></a>Docker  API</h4><p>原文：<a href="https://www.missshi.cn/api/view/blog/5a63285f0a745f6335000008" target="_blank" rel="noopener">https://www.missshi.cn/api/view/blog/5a63285f0a745f6335000008</a></p>
+<p>在Docker的生态系统中，存在下列三种API：</p>
+<ol>
+<li><p>Reistry API：与存储Docker镜像的Registry相关的功能。</p>
+</li>
+<li><p>Docker Hub API：与Docker Hub相关的功能</p>
+</li>
+<li><p>** Docker Remote API：与Docker守护进程相关的功能**</p>
+</li>
+</ol>
+<h4 id="Docker-Remote-API"><a href="#Docker-Remote-API" class="headerlink" title="Docker Remote API"></a>Docker Remote API</h4><p>  以下可以得到类似的docker info时的JSON格式的数据</p>
+<pre><code>curl http://10.129.144.66:2375/info</code></pre><p>  调用/images/json接口可以获取<strong>镜像</strong>列表：</p>
+<pre><code>curl http://example.com:2375/images/json | python -mjson.tool</code></pre><p>  调用/containers/json接口可以获取正在运行中的<strong>容器</strong>列表：</p>
+<pre><code>curl http://example.com:2375/containers/json | python -mjson.tool</code></pre><p>  其中python -mjson.tool可以将JSON数据格式化显示。</p>
+<h4 id="Python调用Docker-API"><a href="#Python调用Docker-API" class="headerlink" title="Python调用Docker API"></a>Python调用Docker API</h4><p>对于原生Docker Remote API而言，虽然功能很强大，但是使用起来并不是十分的方便。</p>
+<p>为了简化Docker Remote API的使用，Python针对Docker API进行了封装，提供了一套完整的Python第三方库：docker，专门用于操作调用Docker服务。</p>
+<p>可通过pip安装</p>
+<pre><code>pip install docker</code></pre><p>创建一个docker_api.py的文件，修改文件内容如下：</p>
+<pre><code>import docker
+client = docker.DockerClient(base_url=&apos;tcp://example.com:2375&apos;, version=&quot;auto&quot;)
+client.containers.run(&quot;ubuntu&quot;, &quot;echo hello world&quot;)</code></pre><p>client.containers.run相当于docker run，参数ports字典类型，端口映射 {8000: 80}表示容器的8000端口映射到宿主机的80端口</p>
+<p>对于client.containers.run的函数的返回值，当detach=False时，返回值是运行过程中的日志，而当detach=True时，返回值是<strong>Container对象</strong>。</p>
+<h4 id="Selenium-Grid"><a href="#Selenium-Grid" class="headerlink" title="Selenium Grid"></a>Selenium Grid</h4><p>  本文参考 <a href="https://www.cnblogs.com/hellangels333/p/9749905.html" target="_blank" rel="noopener">https://www.cnblogs.com/hellangels333/p/9749905.html</a><br>  <a href="https://www.cnblogs.com/nanaheidebk/p/10109013.html" target="_blank" rel="noopener">https://www.cnblogs.com/nanaheidebk/p/10109013.html</a></p>
+<p>  具体可看原文，原文更加详细，以下为部分摘录：</p>
+<p>  这里主要针对的是 Selenium Grid，它用于分布式自动化测试，就是一套Selenium 代码可在不同的环境上运行。刚好，Docker可快速的创建各种环境。</p>
+<h6 id="Selenium-Grid-有两个概念"><a href="#Selenium-Grid-有两个概念" class="headerlink" title="Selenium Grid 有两个概念"></a>Selenium Grid 有两个概念</h6><ul>
+<li><p>hub ：主节点，你可以看作 “北京总公司的测试经理”。</p>
+</li>
+<li><p>node：分支节点，你可以看作 “北京总公司的测试小兵A” 和 “上海分公司的测试小兵B”，还有 “深圳分公司的测试小兵C” …。</p>
+<p>也就是说在Selenium Grid中只能有一个主hub，但可以在本地或远程建立 N 多个分支node，测试脚本指向主hub，由主hub 分配给本地/远程node 运行测试用例。node有两种，一个是firefox，一个chrome。   </p>
+<p>  hub：selenium/hub<br>  node：selenium/node-firefox ， selenium/node-chrome  </p>
+</li>
+</ul>
+<h6 id="docker-selenium-环境安装"><a href="#docker-selenium-环境安装" class="headerlink" title="docker selenium 环境安装"></a>docker selenium 环境安装</h6><ol>
+<li><p>下载主hub镜像（北京总公司的测试经理）</p>
+<pre><code>$ sudo docker pull selenium/hub</code></pre></li>
+<li><p>下载主node chrome 镜像（上海分公司的测试小兵B）</p>
+<pre><code>$ sudo docker pull selenium/node-chrome</code></pre></li>
+<li><p>启动主hub容器</p>
+<pre><code>$ sudo docker run -d -P --name selenium-hub selenium/hub</code></pre><p>  -P 表示 Docker 会随机映射一个 49000~49900 的端口到内部容器开放的网络端口。<br> -d 表示在后台运行<br> -name  命名<br> selenium/hub：运行的镜像名称  </p>
+</li>
+<li><p>启动分支node chrome 容器</p>
+<pre><code>$ sudo docker run -d --link selenium-hub:hub selenium/node-chrome</code></pre><p> –link 通过 link 关联 selenium-hub 容器，并为其设置了别名hub，链接别名是selenium-hub的容器(即上面启动的容器)     </p>
+</li>
+<li><p>查看容器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  LiyuanChendeMacBook-Pro:~ liyuanchen$ docker ps</span><br><span class="line">CONTAINER ID        IMAGE                  COMMAND                  CREATED             STATUS              PORTS                     NAMES</span><br><span class="line">e96d18013f73        selenium/node-chrome   &quot;/opt/bin/entry_poin…&quot;   4 seconds ago       Up 3 seconds                                  eager_sammet</span><br><span class="line">b9449483ccb5        selenium/hub           &quot;/opt/bin/entry_poin…&quot;   2 minutes ago       Up 2 minutes        0.0.0.0:32768-&gt;4444/tcp   selenium-hub                             eloquent_gates</span><br></pre></td></tr></table></figure>
+
+<p>Selenium/hub 容器的端口号为 4444，而对Ubuntu映射的端口为 32768，前面通过 -P 参数自动分配。</p>
+<p>工作原理：</p>
+<p> <font color="red">selenium Grid脚本 -&gt; ubuntu(32768) -&gt; Hub容器(4444) -&gt; Node Chrome 容器</font></p>
+<p>最终得到可使用的hub链接是：<a href="http://127.0.0.1:32768/wd/hub" target="_blank" rel="noopener">http://127.0.0.1:32768/wd/hub</a></p>
+<h6 id="本地实践"><a href="#本地实践" class="headerlink" title="本地实践"></a>本地实践</h6><ol>
+<li><p>启动主hub容器，获取端口号（按照如上命令）</p>
+</li>
+<li><p>启动分支node chrome 容器（按照如上命令）</p>
+</li>
+<li><p>使用HUB执行RT命令运行robot命令</p>
+<pre><code>robot -d Output --loglevel TRACE -v env:staging -v area:sg  -v HUB:http://127.0.0.1:32769/wd/hub   -i all -i sg  SellerCenterUI/TestCase/03HomePage/</code></pre></li>
+</ol>
+<p>若改成使用 Remote API 启动容器呢？</p>
+</li>
+</ol>
+<h6 id="Docker-SDK-for-Python"><a href="#Docker-SDK-for-Python" class="headerlink" title="Docker SDK for Python"></a>Docker SDK for Python</h6><p>官方文档：<a href="https://docker-py.readthedocs.io/en/stable/index.html" target="_blank" rel="noopener">https://docker-py.readthedocs.io/en/stable/index.html</a></p>
+<p>众所周知，Docker向外界提供了一个API来管理其中的资源。这个API可以是socket文件形式的（一般也是默认的，在/var/run/docker.sock中），也可以是TCP形式的,本次项目使用的TCP方式定义</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/元素定位问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/01/29/元素定位问题/" itemprop="url">RT定位元素问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-01-29T21:49:53+08:00">
+                2020-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>【问题】各种找不到元素</p>
+<h6 id="语法问题-低级错误导致高级提醒"><a href="#语法问题-低级错误导致高级提醒" class="headerlink" title="语法问题-低级错误导致高级提醒"></a>语法问题-低级错误导致高级提醒</h6><ol>
+<li><p>元素名称错误，比如后面少了对应右括号 ）</p>
+</li>
+<li><p>元素本身就不存在，比如调试元素在所在环境中不存在，然而编写代码定位的时候使用的是线上环境账号，其具有该元素，造成元素找不到</p>
+</li>
+<li><p>元素前面未加css=或者xpath=类型名称</p>
+</li>
+<li><p>css父子关系之间不用空格，用点来替代；祖辈关系使用单个空格</p>
+</li>
+<li><p>TypeError: Failed to execute ‘evaluate’ on ‘Document’: The result is not a node set, and therefore cannot be converted to the desired type.</p>
+<p> 原因：多写了个xpath</p>
+<pre><code>xpath=xpath=//div/ul  </code></pre></li>
+</ol>
+<h6 id="其他报错信息"><a href="#其他报错信息" class="headerlink" title="其他报错信息"></a>其他报错信息</h6><p>【解决原则】 判断元素存在后再操作；使用get webelements或者status等待判断</p>
+<ol>
+<li><p>元素不在屏幕可视范围内导致找不到元素。可使用滚动查找元素：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ExecuteJavascriptdocument.documentElement.scrollTop=10000</span><br></pre></td></tr></table></figure>
+
+<p> scroll element into view  ${locator}貌似不好用</p>
+</li>
+<li><p>AttributeError: ‘list’ object has no attribute ‘startswith’？<br> 也是因为没有找到元素报的错，要保证元素存在的时候再进行操作</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$&#123;obj&#125;    GetWebElements    $&#123;homepage_ele&#125;[button_proceed]</span><br><span class="line">Runkeywordif    $&#123;obj&#125;  click element    $&#123;obj&#125;</span><br></pre></td></tr></table></figure>
+
+<p> click element后面的按钮元素多次被我写成了对象，会报这个错</p>
+</li>
+<li><p>is not clickable at point (1435, 107). Other element would receive the click: &lt;div class=”shopee-modal__container”</p>
+<p>确实是被其他元素遮挡住了</p>
+</li>
+<li><p>StaleElementReferenceException: Message: stale element reference: element is not attached to the page document</p>
+<p> 很多时候sleep一下就好了</p>
+</li>
+<li><p>一个查了很久的问题，有个场景，进入链接后如果有密码框则点击按钮，但是第一个链接执行之后第二个链接依旧检测到有密码框于是就开始找按钮（实际没有）</p>
+<p> 本来以为是变量第二次赋值的时候有第一次的缓存，但是重新设置${None}后依旧无效。</p>
+<p> 原因：第二个link页面没有展示密码框但是元素中却能搜索到这个css元素值。</p>
+</li>
+<li><p>元素一直定位不到，本地机器可以。但是实际看页面上是展示出该元素的</p>
+<ul>
+<li><p>后来找人查了很久，还是最后查出还是之前我怀疑过的一个问题，就是侧边栏的链接父元素class会变化，后来由开发得知是根据高度来判断的，后来兼容使用模糊匹配xpath=//ul[contains(@class, ‘sidebar’)]//a[contains(text(),”{}”)]</p>
+</li>
+<li><p>但是有时候按照文本查找的元素类型会变化</p>
+</li>
+</ul>
+<p>如在测试环境是这样的：</p>
+<p><img src="/images/pasted-96.png" alt="upload successful"></p>
+<p>但是在预发环境确是这样：</p>
+<p><img src="/images/pasted-95.png" alt="upload successful"></p>
+<p>解决办法还是找到共同点，获取公共元素进行定位如href：</p>
+<pre><code>//ul[contains(@class, &apos;sidebar&apos;)]//a[@href=&apos;/portal/finance/income&apos;]</code></pre></li>
+<li><p>相较上面还有更狠的，不仅环境不同元素取值不同，而且同一个元素会变化</p>
+<p>思路：</p>
+<ol>
+<li><p>根据环境设置元素模板，封装公共方法</p>
+</li>
+<li><p>使用或来判断(之前一直没找到或怎么用)</p>
+</li>
+</ol>
+<p>变化前：  <img src="/images/pasted-98.png" alt="upload successful"></p>
+<p>变化后：  <img src="/images/pasted-100.png" alt="upload successful"></p>
+<p>即在sidebar-container的div和ul之间总变化一个div,最后使用或限制class属性：</p>
+<pre><code>//div[@class=&apos;sidebar&apos; or contains(@class, &apos;sidebar-fixed&apos;)]//span[contains(text(),”xxx“)]/..    </code></pre></li>
+<li><p>同一个页面元素有时候路径不同，需要综合不同情况时的共同点，来取该元素的值。<br>比如my wallet链接。有时候是a有时候是div有时候span，可以考虑使用模糊匹配</p>
+</li>
+<li><p>JavascriptException: Message: javascript error: Failed to execute ‘elementsFromPoint’ on ‘Document’: The provided double value is non-finite.</p>
+<pre><code>scroll element into view  css=.multiple-level-items &gt; li:nth-of-type(1)</code></pre><p>原因：取消使用scroll element into view关键字 </p>
+</li>
+<li><p>不包含元素</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">xpath=//span[not(contains(text(),&apos;Women Clothes&apos;))]</span><br><span class="line">xpath=//div[@class=&apos;btn-wrap-right&apos;][not(contains(@style,&apos;display&apos;))]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>使用preceding-sibling\following-sibling\ancestor</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">xpath=//label[@class=&apos;shopee-radio&apos;]/span[contains(text(),&apos;&#123;&#125;&apos;)]/preceding-sibling::span</span><br><span class="line"></span><br><span class="line">xpath=//span[contains(text(), &apos;$&#123;image_name&#125;&apos;)]/ancestor::li//label</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>页面加载时间不确定，除了固定等待如何判断何时校验元素出现？ </p>
+<p>抓取loading元素，判断该元素何时不在即可</p>
+</li>
+<li><p>浮层上面的元素怎么定位(直接去取的话，与元素定位无法实现同步)</p>
+<p> 右键点击浮层上的元素，点击‘检查’，即可定位到该元素位置，可用console进行调试</p>
+</li>
+<li><p>svg 突然click失败了，之前还是好的，改成该元素上面的i也不行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ElementClickInterceptedException: Message: element click intercepted: Element &lt;i class=&quot;shopee-icon shopee-table__sort-icon up&quot;&gt;...&lt;/i&gt; is not clickable at point (1098, 441). Other element would receive the click: &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 16 16&quot;&gt; &lt;/svg&gt; (Session info: chrome=79.0.3945.117)</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<p>  解决:该用press keys最终实现了该功能<br>  <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">press keys    $&#123;mediaspace_ele&#125;[button_storage_up]    RETURN</span><br></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/01/29/RT本地环境配置/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1226,703 +1892,11 @@ ${status2}   run keyword and return status     wait until element is visible  ${
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/10/Django/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/10/Django/" itemprop="url">Django</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-10T15:41:27+08:00">
-                2019-11-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <ul>
-<li><p>MVC的核心是思想是：解耦即减少相互联系，使得各个模块相互独立。</p>
-</li>
-<li><p>Django : MTV </p>
-</li>
-<li><p>安装：pip install Django==1.11.4  不写等号默认安装最新版本</p>
-<p>卸载：pip uninsall Django</p>
-</li>
-<li><p>验证 django.get_version()</p>
-</li>
-<li><p>创建项目：</p>
-<ol>
-<li>创建目录  </li>
-<li>cd到该目录下，输入命令django-admin startproject projectname  </li>
-<li>tree . /F (win)查看目录层级</li>
-</ol>
-</li>
-<li><p>配置数据库：</p>
-<pre><code>mysql数据库：安装pymysql
-1、setting配置：
-&apos;ENGINE&apos;:&apos;django.db.backends.mysql&apos;,
-&apos;NAME&apos;:&apos;Learn&apos;,
-&apos;USER&apos;:&apos;root&apos;,
-&apos;PASSWORD&apos;:&apos;rock1204&apos;,
-&apos;HOST&apos;:&apos;localhost&apos;,
-&apos;PORT&apos;:&apos;3306&apos;,
-2、在__init__.py中添加 import pymysql pymysql.install_as_MySQLdb()  不添加这些会报错</code></pre></li>
-<li><p>创建应用（app）：<br>可以创建多个应用；</p>
-<p> 步骤：</p>
-<ol>
-<li>在manage所在目录中，输入命令python manage.py startapp myapp</li>
-<li>激活应用，在setting将myapp应用加入到app配置中</li>
-</ol>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/10/正则表达式-grep/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/10/正则表达式-grep/" itemprop="url">正则表达式+grep</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-10T15:30:42+08:00">
-                2019-11-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="正则表表达式"><a href="#正则表表达式" class="headerlink" title="正则表表达式"></a>正则表表达式</h4><ul>
-<li>shell 通配符不区分大小写，正则区分;  </li>
-<li>是一种字符模式（pattern）；  </li>
-<li>绝大部分正则表达式都被放在两个正斜杠之间；  </li>
-<li>元字符是最重要的概念;  </li>
-<li>习惯:加单引号如  grep ‘^root’ /etc/passwd   </li>
-</ul>
-<h5 id="基本元字符"><a href="#基本元字符" class="headerlink" title="基本元字符"></a>基本元字符</h5><pre><code>^ 行首定位符
-$ 行尾定位符
-.指的是任意一个字符
-* 单独不能活，指的是前面字符出现次数&gt;=0
-.*任意多个字符（无敌了）
-[]匹配指定范围内的一个字符 [lL]ove
-[ - ]匹配指定范围内的一个字符 [a-z0-9]ove
-[^]用来匹配不在指定范围内的字符
-    注意与外面的^的区别：外面的指的是行首，[]里面的指的是取反，如[^0-9A-Z]love不在0-9和A-Z范围内的一个字符
-\ 用来转义后面的字符，使得后面字符失去元字符作用
-\&lt;词首定位符
-\&gt;词尾定位符 \&lt;love\&gt;指的是love这个单词
-\(..\)匹配稍后使用的字符的标签  如vim中替换:%s#\(10.18.40.\)#\1200#   其中\1替代的是第一个括号的内容
-x\{m\}x重复出现m次  o\{5\}
-x\{m,\}x重复出现m次及以上 o\{5,\}
-x\{m,n\}x重复出现m次到n次 o\{5,8\}
-\+
-\|</code></pre><h5 id="扩展元字符"><a href="#扩展元字符" class="headerlink" title="扩展元字符"></a>扩展元字符</h5><pre><code>+ 单独不能活，指的是前面字符出现次数&gt;=1  
-    grep &apos;ro\+t&apos; /etc/passwd  或者 egrep &apos;ro+t&apos; /etc/passwd  （grep不支持元字符，需要转义，或者替换成egrep）
-? 单独不能活，指的是前面字符出现次数0次或者1次
-a|b 匹配a或b
-()组字符  ov+ 指的是v出现1次或多次 (ov)+ 指的是ov出现1次或多次 
-(..)(..)\1\2 标签匹配字符 （love)able\1er     
-x{m}x重复出现m次  o{5}
-x{m,}x重复出现m次及以上 o｛5,}
-x{m,n}x重复出现m次到n次 o{5,8}</code></pre><h4 id="grep-egrep-fgrep"><a href="#grep-egrep-fgrep" class="headerlink" title="grep/egrep/fgrep"></a>grep/egrep/fgrep</h4><p>  grep：支持基本元字符  grep -e 等价于egrep<br>  egrep:支持扩展元字符<br>  fgrep   </p>
-<pre><code>格式： grep [选项] PATTERN filename1 filename2
-如：grep -i &apos;Tom&apos; /etc/passwd</code></pre><p>   特别可以使用：</p>
-<pre><code>    \w 代表所有字母与数字  等价于[a-zA-Z0-9]
-    \W 代表所有字母与数字之外的字符   等价于[^a-zA-Z0-9]
-    \b 词边界 等价于\&lt; \&gt;
-
-选项参数：
--i  忽略大小写
--q   quiet  无输出
--v    反向查找
-grep --help|grep &apos;\-v&apos;
--r/-R 针对目录文件
--o  only match 只打印找到的内容，非匹配的整行
--n 显示行号
--l 显示匹配的目录  grep -l &apos;root&apos; /etc/passwd  /etc/shadow /etc/hosts
--A  后几行
--B  前几行
--C  前后几行</code></pre><h6 id="正则表达式-和-的区别？"><a href="#正则表达式-和-的区别？" class="headerlink" title="正则表达式()和[]的区别？"></a>正则表达式()和[]的区别？</h6><ul>
-<li><p>（）表示分组，可以有多个字符</p>
-<p>  (ab){1,3},就表示ab一起连续出现最少1次，最多三次。如果没有括号的话，ab{1,3},<br>(abc|bcd|cde),表示这一段是abc、bcd、cde三者之一</p>
-</li>
-<li><p>[]单个进行匹配</p>
-<p>  例如[(a)],会匹配(、a、)、这三个字符</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/05/matplotlib/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/05/matplotlib/" itemprop="url">matplotlib_pyplot</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-05T12:36:15+08:00">
-                2019-11-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="pyplot"><a href="#pyplot" class="headerlink" title="pyplot"></a>pyplot</h4><p>subplot(numRows, numCols, plotnum)   如</p>
-<pre><code>plt.figure()
-plt.subplot(121) #一行两列，处于第一个位置
-plt.title(&quot;line&quot;)
-#只有一个列表，默认索引为X轴坐标
-p1=plt.plot(range(5),linewidth=2.0,color=&apos;g&apos;)
-p2=plt.plot([5,4,3,2,1],linewidth=2.0,color=&apos;r&apos;)
-
-plt.xlabel(&quot;this is x&quot;)
-plt.ylabel(&quot;this is y&quot;)
-plt.legend([p1,p2],[&apos;p1label&apos;,&apos;p2label&apos;])
-#print(line)
-#line.set(color = &apos;g&apos;,linewidth = 2.0)
-
-plt.subplot(122)
-plt.title(&quot;src_img&quot;)
-plt.imshow(src_img, cmap=&apos;gray&apos;)
-plt.savefig(&quot;d:/cly/xuanxiu/img/test.png&quot;)#不支持jpg
-
-plt.show()#必须加</code></pre><h4 id="pyplot-legend"><a href="#pyplot-legend" class="headerlink" title="pyplot.legend"></a>pyplot.legend</h4><p>loc：位置信息</p>
-<pre><code>0: ‘best&apos;
-1: ‘upper right&apos;
-2: ‘upper left&apos;
-3: ‘lower left&apos;
-4: ‘lower right&apos;
-5: ‘right&apos;
-6: ‘center left&apos;
-7: ‘center right&apos;
-8: ‘lower center&apos;
-9: ‘upper center&apos;
-10: ‘center&apos;</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/04/python-OpenCV/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/11/04/python-OpenCV/" itemprop="url">python  OpenCV</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-11-04T20:24:15+08:00">
-                2019-11-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><pre><code>pip install opencv-python</code></pre><h4 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h4><pre><code>import cv2
-img=cv2.imread(&quot;D:/cly/xuanxiu/img/girl.jpg&quot;)
-imgGray=cv2.imread(&quot;D:/cly/xuanxiu/img/girl.jpg&quot;,0)#生成灰色图片
-print(img.shape)#图片高、宽、通道（即y轴，x轴，通道）
-print(img.size)#图总像素
-print(img.dtype)#图片数据类型是uint8
-
-print(imgGray.shape)#图片高、宽、通道；灰色图不返通道
-#操作：中值滤波
-result=cv2.medianBlur(imgGray,3)
-cv2.namedWindow(&apos;result&apos;,0)#创建窗口
-cv2.resizeWindow(&apos;result&apos;,300,400)#设置大小
-
-cv2.imshow(&quot;result&quot;,result)#显示图片  
-cv2.waitKey(0)#等待图片关闭
-cv2.destroyAllWindows()#销毁所有窗口</code></pre><h5 id="cv2-resize-函数的使用"><a href="#cv2-resize-函数的使用" class="headerlink" title="cv2.resize()函数的使用"></a>cv2.resize()函数的使用</h5><p><a href="https://www.jb51.net/article/163516.htm" target="_blank" rel="noopener">https://www.jb51.net/article/163516.htm</a></p>
-<p>常用于等比缩小比例，若参数中不适用fx而是使用指定dsize的话，需要注意的是(宽，长)即横纵坐标的顺序，这里也与shape里出来的相反</p>
-<pre><code>import cv2
-img = cv2.imread(&quot;./Pictures/python.png&quot;)
-print(&apos;Original Dimensions : &apos;, img.shape)
-resized = cv2.resize(img, None, fx=0.6, fy=0.6, interpolation=cv2.INTER_AREA)
-print(&apos;Resized Dimensions : &apos;,resized.shape)</code></pre><h5 id="像素坐标"><a href="#像素坐标" class="headerlink" title="像素坐标"></a>像素坐标</h5><p>图片是由像素组成的矩阵，彩色图片访问方式为：</p>
-<pre><code>img[i,j,c]</code></pre><p>i表示图片的行数，j表示图片的列数，c表示图片的通道数（RGB三通道分别对应0，1，2）。坐标是从左上角开始。</p>
-<p>灰度图片访问方式为：</p>
-<pre><code>gray[i,j]  即  gray[row,col] 即gray[y,x]</code></pre><p> 【注】坐标系这里有点晕，总结就是使用<strong>像素</strong>查找的时候前面是y后面是x跟正常是反着的(跟shape返回一致)，但是<strong>坐标</strong>点的话记得不要取错还是(x,y)<br>    若是直线坐标是[x,y,x1,y1]</p>
-<p> 需要注意的是(容易弄反，记住下面图就好了)</p>
-<pre><code>row == height == Point.y
-col == width  == Point.x</code></pre><p><img src="/images/pasted-97.png" alt="upload successful"></p>
-<h5 id="图像二值化"><a href="#图像二值化" class="headerlink" title="图像二值化"></a>图像二值化</h5><p>图像预处理一般步骤</p>
-<p><img src="/images/pasted-131.png" alt="upload successful"></p>
-<p>好文章：<a href="https://www.cnblogs.com/ssyfj/p/9272615.html" target="_blank" rel="noopener">https://www.cnblogs.com/ssyfj/p/9272615.html</a></p>
-<p>就是把图像分成两种颜色：黑和白，1白色，0黑色</p>
-<h5 id="噪声处理"><a href="#噪声处理" class="headerlink" title="噪声处理"></a>噪声处理</h5><p><a href="https://blog.csdn.net/RRWJ__/article/details/101013012" target="_blank" rel="noopener">https://blog.csdn.net/RRWJ__/article/details/101013012</a></p>
-<pre><code>blur = cv.blur(img,(15,15)) #均值滤波
-blur = cv.GaussianBlur(img,(5,5),0)#高斯滤波
-blur = cv.medianBlur(img,5)#中值滤波，去除椒盐噪声
-blur = cv.bilateralFilter(img,9,75,75)#双边滤波</code></pre><p>OpenCV提供了这种技术的四种变体。参考：<a href="https://blog.csdn.net/xiao_lxl/article/details/95346589" target="_blank" rel="noopener">https://blog.csdn.net/xiao_lxl/article/details/95346589</a></p>
-<pre><code>cv2.fastNlMeansDenoising（） - 使用单个灰度图像
-cv2.fastNlMeansDenoisingColored（） - 使用彩色图像。
-cv2.fastNlMeansDenoisingMulti（） - 用于在短时间内捕获的图像序列（灰度图像）
-cv2.fastNlMeansDenoisingColoredMulti（） - 与上面相同，但用于彩色图像。</code></pre><ul>
-<li><p>中值滤波：medianBlur </p>
-<p>优点：中值滤波在一定的条件下可以克服常见线性滤波器如方框滤波器、均值滤波等带来的图像细节模糊，而且对滤除脉冲干扰及图像扫描噪声非常有效，也常用于保护边缘信息, 保存边缘的特性使它在不希望出现边缘模糊的场合也很有用，是非常经典的平滑噪声处理方法。</p>
-<p>缺点：但是中值滤波的缺点也很明显，因为要进行排序操作，所以处理的时间长，是均值滤波的5倍以上。</p>
-<p>python代码实现：<br><a href="https://blog.csdn.net/A_Z666666/article/details/81324288" target="_blank" rel="noopener">https://blog.csdn.net/A_Z666666/article/details/81324288</a></p>
-</li>
-<li><p>双边滤波 bilateralFilter</p>
-<p>是一种非线性滤波方法。能够保持边界清晰的情况下有效的去除噪声，但是这种操作比较慢。它拥有着美颜的效果。</p>
-<pre><code>dst = cv2.bilateralFilter(src=image, d=0, sigmaColor=100, sigmaSpace=15)
-
-src：原图像；
-d：像素的邻域直径，可有sigmaColor和sigmaSpace计算可得；
-sigmaColor：颜色空间的标准方差，一般尽可能大；（越大越模糊）
-sigmaSpace：坐标空间的标准方差(像素单位)，一般尽可能小。(发现越大处理时间越久)</code></pre><p>链接：<a href="https://www.jianshu.com/p/6c8db06bb0dc" target="_blank" rel="noopener">https://www.jianshu.com/p/6c8db06bb0dc</a><br>链接：<a href="https://www.jianshu.com/p/8d11e26c9665" target="_blank" rel="noopener">https://www.jianshu.com/p/8d11e26c9665</a></p>
-</li>
-</ul>
-<h5 id="文字区域识别-投影法"><a href="#文字区域识别-投影法" class="headerlink" title="文字区域识别-投影法"></a>文字区域识别-投影法</h5><p>最简单的投影：</p>
-<p>水平方向投影，将图像数组进行列求和；</p>
-<p>垂直方向投影，将图像数组进行行求和；<br><a href="https://www.jb51.net/article/178717.htm" target="_blank" rel="noopener">https://www.jb51.net/article/178717.htm</a><br><a href="https://www.jianshu.com/p/69940784c428?utm_source=oschina-app" target="_blank" rel="noopener">https://www.jianshu.com/p/69940784c428?utm_source=oschina-app</a></p>
-<h5 id="getStructuringElement-函数"><a href="#getStructuringElement-函数" class="headerlink" title="getStructuringElement()函数"></a>getStructuringElement()函数</h5><p>返回指定形状和尺寸的结构元素,一般在调用erode以及dilate函数之前，可根据特定的内核进行直线提取：</p>
-<p><img src="%5Cimages%5Cpasted-103.png" alt="upload successful"><br><a href="https://blog.csdn.net/u013066730/article/details/97242189" target="_blank" rel="noopener">https://blog.csdn.net/u013066730/article/details/97242189</a><br><a href="https://www.bilibili.com/read/cv2725908/" target="_blank" rel="noopener">https://www.bilibili.com/read/cv2725908/</a></p>
-<h5 id="cv2-bitwise-and-函数"><a href="#cv2-bitwise-and-函数" class="headerlink" title="cv2.bitwise_and() 函数"></a>cv2.bitwise_and() 函数</h5><p>cv2.bitwise_and()是对二进制数据进行“与”操作，即对图像（灰度图像或彩色图像均可）每个像素值进行二进制“与”操作，1&amp;1=1，1&amp;0=0，0&amp;1=0，0&amp;0=0</p>
-<pre><code>OutputArray dst  = cv2.bitwise_and(InputArray src1, InputArray src2, InputArray mask=noArray());//dst = src1 &amp; src2</code></pre><p>OutputArray dst  = cv2.bitwise_and(InputArray src1, InputArray src2, InputArray mask=noArray());//dst = src1 &amp; src2</p>
-<p>参考：<a href="https://blog.csdn.net/Hren0412/article/details/97623740" target="_blank" rel="noopener">https://blog.csdn.net/Hren0412/article/details/97623740</a></p>
-<h5 id="cv2-HoughLines"><a href="#cv2-HoughLines" class="headerlink" title="cv2.HoughLines"></a>cv2.HoughLines</h5><p>cv2.HoughLines()函数是在二值图像中查找直线，cv2.HoughLinesP()函数可以查找直线段。</p>
-<pre><code>cv2.HoughLinesP()函数原型：
-
-HoughLinesP(image, rho, theta, threshold, lines=None, minLineLength=None, maxLineGap=None) 
-
-image： 必须是二值图像，推荐使用canny边缘检测的结果图像； 
-rho: 线段以像素为单位的距离精度，double类型的，推荐用1.0 
-theta： 线段以弧度为单位的角度精度，推荐用numpy.pi/180 
-threshod: 累加平面的阈值参数，int类型，超过设定阈值才被检测出线段，值越大，基本上意味着检出的线段越长，检出的线段个数越少。根据情况推荐先用100试试
-lines：这个参数的意义未知，发现不同的lines对结果没影响，但是不要忽略了它的存在 
-minLineLength：线段以像素为单位的最小长度，根据应用场景设置 
-maxLineGap：同一方向上两条线段判定为一条线段的最大允许间隔（断裂），超过了设定值，则把两条线段当成一条线段，值越大，允许线段上的断裂越大，越有可能检出潜在的直线段</code></pre><p>参考：<a href="https://www.cnblogs.com/mtcnn/p/9411774.html" target="_blank" rel="noopener">https://www.cnblogs.com/mtcnn/p/9411774.html</a></p>
-<h5 id="高级形态学变换："><a href="#高级形态学变换：" class="headerlink" title="高级形态学变换："></a>高级形态学变换：</h5><pre><code>开运算：
-先腐蚀，再膨胀，可清除一些小东西(亮的)，放大局部低亮度的区域
-闭运算：
-先膨胀，再腐蚀，可清除小黑点
-形态学梯度：
-膨胀图与腐蚀图之差，提取物体边缘
-顶帽：
-原图像-开运算图，突出原图像中比周围亮的区域
-黑帽：
-闭运算图-原图像，突出原图像中比周围暗的区域</code></pre><p>原文链接：<a href="https://blog.csdn.net/keen_zuxwang/article/details/72768092" target="_blank" rel="noopener">https://blog.csdn.net/keen_zuxwang/article/details/72768092</a></p>
-<h5 id="霍夫曼变换直线检测"><a href="#霍夫曼变换直线检测" class="headerlink" title="霍夫曼变换直线检测"></a>霍夫曼变换直线检测</h5><p><a href="https://www.jb51.net/article/165241.htm" target="_blank" rel="noopener">https://www.jb51.net/article/165241.htm</a></p>
-<h4 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h4><p>1、读取图片尽量不用中文路径</p>
-<p>2、不加waitKey造成程序无响应</p>
-<p>3、 在Pycharm中运行cv.imshow()函数的时候，图形界面闪了一下就消失了</p>
-<p>原来，在运行cv2.imshow后，需要使用cv2.waitKey来保持窗口的显示。</p>
-<p>再添加个cv2.destroyAllWindows()点击enter可自动销毁图片</p>
-<p><a href="https://my.oschina.net/u/4070307/blog/3008278" target="_blank" rel="noopener">https://my.oschina.net/u/4070307/blog/3008278</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/7/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/9/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1968,7 +1942,7 @@ maxLineGap：同一方向上两条线段判定为一条线段的最大允许间�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">129</span>
+                  <span class="site-state-item-count">133</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

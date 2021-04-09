@@ -261,6 +261,644 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/19/JS-DOM基础/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/19/JS-DOM基础/" itemprop="url">JS DOM基础</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-19T10:27:28+08:00">
+                2021-02-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>DOM节点有12种类型，常见的有三种ger，可以根据nodeType判断类型：</p>
+<ul>
+<li>元素节点1</li>
+<li>属性节点2</li>
+<li>文本节点3</li>
+</ul>
+<h5 id="获取元素"><a href="#获取元素" class="headerlink" title="获取元素"></a>获取元素</h5><pre><code>getElementById()#前面只接document
+getElementsByTagName()#前面既接document又可接DOM对象，返回多个元素，可以操作动态DOM
+getElementsByClassName()
+querySelector()和querySelectorAll()
+getElementsByName()#只用于表单的单选或复选按钮
+document.title和document.body</code></pre><h5 id="创建元素"><a href="#创建元素" class="headerlink" title="创建元素"></a>创建元素</h5><pre><code>A.appendChild(B) //把B插入到A的内部去，可用于文本也可用于元素
+
+var e1=document.createElement(&quot;元素名&quot;)
+var txt=document.createTextNode(&quot;文本内容&quot;)
+e1.appendChild(txt)
+e2.appendChild(e1)
+
+A.insertBefore(B,ref)//将新元素插入到父元素之前，与appendChild相反
+A.remove(B) //删除父元素下的子元素
+obj.cloneNode(bool)//复制元素，bool为true或1则复制本身及以下所有子元素
+A.replace(new,old)//替换父元素下的两个子元素</code></pre><h5 id="属性操作"><a href="#属性操作" class="headerlink" title="属性操作"></a>属性操作</h5><pre><code>obj.attr
+obj.attr=&quot;值&quot;
+obj.getAttribute(&quot;attr&quot;)
+obj.setAttribute(&quot;attr&quot;)
+obj.hasAttribute(&quot;attr&quot;)</code></pre><h6 id="CSS属性操作"><a href="#CSS属性操作" class="headerlink" title="CSS属性操作"></a>CSS属性操作</h6><p><strong>获取</strong></p>
+<pre><code>getComputedStyle(obj).attr//其中attr是骆驼峰型的CSS属性名，如backgroundColor
+getComputedStyle(obj).[&quot;attr&quot;]</code></pre><p><strong>设置</strong></p>
+<pre><code>obj.style.attr=&quot;值&quot;//等价于obj.style[&quot;attr&quot;]  
+
+obj.style.cssText=&quot;很多值&quot;
+eg:  oDiv.style.cssText=&quot;width:100px;height:100px&quot;;</code></pre><h5 id="DOM遍历"><a href="#DOM遍历" class="headerlink" title="DOM遍历"></a>DOM遍历</h5><pre><code>Obj.parentNode //查找父元素
+obj.children\firstElementChild\lastElementChild//查找子元素
+不建议使用obj.childNodes\firstChild\lastChild(不仅包括元素节点，还包括文本节点)
+obj.previousElementSibling/nextElementSibling//查找兄弟节点</code></pre><h5 id="innerHTML和innerText"><a href="#innerHTML和innerText" class="headerlink" title="innerHTML和innerText"></a>innerHTML和innerText</h5><pre><code>获取内部元素和内部文本</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/19/JS学习记录/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/02/19/JS学习记录/" itemprop="url">JS常用的内置对象</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-19T10:01:58+08:00">
+                2021-02-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>常用的内置对象有四种：</p>
+<ul>
+<li>字符串对象：String</li>
+<li>数组对象： Array</li>
+<li>日期对象:Date</li>
+<li>数值对象: Math</li>
+</ul>
+<h5 id="字符串对象"><a href="#字符串对象" class="headerlink" title="字符串对象"></a>字符串对象</h5><pre><code>字符串名.length
+字符串名.toLowerCase()  字符串名.toUpperCase()
+字符串名.charAt(n)//获取字符串中第N+1个字符
+字符串名.substring(start,end)//截取字符串[start,end)
+字符串名.replace(原字符串，替换字符串)
+字符串名.replace(正则表达式，替换字符串)//如str.replace(/loser/g,&quot;hero&quot;)
+字符串名.split(&quot;分割符&quot;)
+字符串名.indexOf(指定字符串)
+字符串名.lastIndexOf(指定字符串)</code></pre><h5 id="数组对象"><a href="#数组对象" class="headerlink" title="数组对象"></a>数组对象</h5><pre><code>var 数组名= new Array(元素1，元素2...)
+var 数组名=[元素1，元素2...]
+数组名.length
+数组名.slice(start,end)//[start,end)
+数组名.push(新元素1，新元素2...)//数组结尾添加元素
+数组名.unshift(新元素1，新元素2...)//数组开头添加元素
+数组名.shift()//删除数组开头的第一个元素
+数组名.pop()//删除数组最后一个元素
+数组名.sort(函数名)//升降排序，数组本身会变动
+数组名.reverse()//数组颠倒顺序
+数组名.join(&quot;连接符&quot;)</code></pre><h5 id="时间对象"><a href="#时间对象" class="headerlink" title="时间对象"></a>时间对象</h5><pre><code>var 日期对象名 = new Date()
+获取类方法：
+getFullYear()
+getMonth()//0-11
+getDate()//1-31
+getHours()
+getMinutes()
+getSeconds()
+getDay()//获取星期几
+
+设置类方法：
+setFullYear(year,month,day)//year必选
+setMonth(month,day)//month必选
+setDate()
+setHours()
+setMinutes()
+setSeconds()</code></pre><h5 id="数学对象"><a href="#数学对象" class="headerlink" title="数学对象"></a>数学对象</h5><pre><code>Math.max(a,b,...n)
+Math.min(a,b,...n)
+Math.floor(x)//向下取整，“地板”
+Math.ceil(x)//向上取整，&apos;天花板&quot;
+Math.random()//生成0~1随机数
+    Math.random()*m
+   Math.random()*m+n</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/29/google谷歌授权失败问题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/29/google谷歌授权失败问题/" itemprop="url">google谷歌授权失败问题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-29T15:05:07+08:00">
+                2021-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>【问题描述】登陆后进系统发送邮件正常弹出授权；刷新页面后再次发送报告报错</p>
+<p>【问题1】为什么刷新后会报错？</p>
+<p>  异步初始化时当调用grantOfflineAccess时初始化未结束：</p>
+<pre><code>window.gapi.auth2.init({
+        client_id: that.client_id,
+        scope: &quot;https://www.googleapis.com/auth/gmail.send&quot;
+      });
+    isauth({//请求授权接口
+    }).then((res) =&gt; {
+      if (res.status_code == 255) {
+         window.gapi.auth2.getAuthInstance().grantOfflineAccess({
+        ......
+        })</code></pre><p>【如何解决】改成同步执行</p>
+<pre><code>isauth({ //请求授权接口
+        ......
+          window.gapi.auth2
+            .init({
+              client_id: that.client_id,
+            })
+            .then(() =&gt; {##控制异步操作，等待初始化执行完毕
+          window.gapi.auth2.getAuthInstance().grantOfflineAccess({
+                  scope: &quot;https://www.googleapis.com/auth/gmail.send&quot;,
+                })</code></pre><p>  【问题2】为什么第一次登陆后发报告不报错？ </p>
+<p>  登陆时调用的插件vue-google-signin-button，其中源码中已包含了Init操作。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/29/gitlab-CI-CD总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/01/29/gitlab-CI-CD总结/" itemprop="url">gitlab CI/CD总结</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-01-29T14:12:35+08:00">
+                2021-01-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>根据提示的信息进行安装(setting-runnser中查看)</p>
+<p><img src="/images/pasted-207.png" alt="upload successful"></p>
+<h4 id="1、安装gitlab-runnner"><a href="#1、安装gitlab-runnner" class="headerlink" title="1、安装gitlab runnner"></a>1、安装gitlab runnner</h4><p>可使用二进制<br><a href="https://docs.gitlab.com/runner/install/linux-manually.html" target="_blank" rel="noopener">https://docs.gitlab.com/runner/install/linux-manually.html</a></p>
+<p><img src="/images/pasted-211.png" alt="upload successful"></p>
+<h4 id="2、注册gitlab-runnner"><a href="#2、注册gitlab-runnner" class="headerlink" title="2、注册gitlab runnner"></a>2、注册gitlab runnner</h4><p> 注册流程：<a href="https://docs.gitlab.com/runner/register/" target="_blank" rel="noopener">https://docs.gitlab.com/runner/register/</a></p>
+<pre><code>sudo gitlab-runner register</code></pre><p> 相关命令：<br> <a href="https://www.cnblogs.com/sanduzxcvbnm/p/13891452.html" target="_blank" rel="noopener">https://www.cnblogs.com/sanduzxcvbnm/p/13891452.html</a></p>
+<pre><code>gitlab-runner list      #此命令列出了保存在配置文件中的所有运行程序</code></pre><p>此时查看gitlab-setting-CI/CD-runnser可见已配的runners</p>
+<p> <img src="/images/pasted-212.png" alt="upload successful"></p>
+<h4 id="3、-gitlab-ci-yml配置"><a href="#3、-gitlab-ci-yml配置" class="headerlink" title="3、.gitlab-ci.yml配置"></a>3、.gitlab-ci.yml配置</h4><p>在项目根目录下添加.gitlab-ci.yml 并配置。介绍：</p>
+<pre><code>.gitlab-ci.yml 用来配置 CI 用你的项目中做哪些操作，这个文件位于仓库的**根目录**。
+
+当有新内容push到仓库，或者有代码合并后，GitLab会查找是否有.gitlab-ci.yml文件，如果文件存在，Runners将会根据该文件的内容开始build本次commit。
+
+.gitlab-ci.yml 使用YAML语法， 你需要格外注意缩进格式，要用空格来缩进，不能用tabs来缩进。
+https://segmentfault.com/a/1190000019540360</code></pre><p> 具体配置实例：<br> 前端vue：</p>
+<pre><code>job-adu-master: #job name可以随意命名
+  stage: build
+  script:
+    - pwd
+    - whoami
+    - npm install --unsafe-perm
+    - npm run build
+    - ls
+    - tar -zcvf dist.tar.gz dist/
+    - rm -rf /home/shopee/adu/aduv2_dist/*
+    - \cp dist.tar.gz /home/shopee/adu/aduv2_dist
+    - cd /home/shopee/adu/aduv2_dist
+    - tar -zxvf dist.tar.gz
+  only:
+    - master # 该job仅在master分支执行
+  when: manual # 该job执行需手动触发
+  tags:
+    - adu-front-prod # 对应部署服务器注册的gitlab-runner tag</code></pre><p>  后端Django</p>
+<pre><code>job-adu2-test:
+  stage: deploy
+  script:
+    - pwd
+    - whoami
+    - bash deploy.sh --env test --pull --restart_worker --restart_beat # 执行部署脚本
+  only:
+    - test
+  tags:
+    - adu2-be-test # 对应部署服务器注册的gitlab-runner tag</code></pre><p>对于Django服务的配置可使用deplay.sh脚本具体配置…</p>
+<p>【问题】</p>
+<h5 id="问题1：运行ci后who-am-i提示用户是gitlab-runner-且执行rm命令提示无权限"><a href="#问题1：运行ci后who-am-i提示用户是gitlab-runner-且执行rm命令提示无权限" class="headerlink" title="问题1：运行ci后who am i提示用户是gitlab-runner,且执行rm命令提示无权限"></a>问题1：运行ci后who am i提示用户是gitlab-runner,且执行rm命令提示无权限</h5><p>解决：更改安装时设置的默认用户为root</p>
+<p>安装gitlab-runner默认会将用户设置为：gitlab-runner，该设置会使编写.ci的脚本，操作带来很大不便，本人深受其害。</p>
+<p>1.通过ps aux|grep gitlab-runner命令查看gitlab-runner进程，可以查看到gitlab-runner的工作目录和默认用户等一系列相关信息。</p>
+<p>2.通过该命令sudo gitlab-runner uninstall可以删除掉gitlab-runner</p>
+<p>3.重新安装gitlab-runner并将用户设置为root  gitlab-runner install –working-directory /home/gitlab-runner –user root</p>
+<p>4.sudo service gitlab-runner restart重启gitlab-runner</p>
+<p>5.再通过第一步的命令查看gitlab-runner看默认用户是否变成root</p>
+<p>原文链接：<a href="https://blog.csdn.net/white_pure/article/details/108039238" target="_blank" rel="noopener">https://blog.csdn.net/white_pure/article/details/108039238</a></p>
+<h5 id="问题2：npm未安装（环境ubuntu）"><a href="#问题2：npm未安装（环境ubuntu）" class="headerlink" title="问题2：npm未安装（环境ubuntu）"></a>问题2：npm未安装（环境ubuntu）</h5><pre><code>sudo apt install -y node
+npm -v 查看当前版本是老版本如3.x
+sudo npm install -g n
+n 1.14.10（也可以latest）</code></pre><p>期间若有提示则按照提示执行 </p>
+<pre><code>PATH=&quot;$PATH&quot;</code></pre><p><a href="https://www.jianshu.com/p/d934d3ba67ec" target="_blank" rel="noopener">https://www.jianshu.com/p/d934d3ba67ec</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/01/11/nginx-location匹配优先级/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1129,510 +1767,11 @@ console.log(&quot;Server running at http://127.0.0.1:3000/&quot;);</code></pre>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/20/js常见问题和总结/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/11/20/js常见问题和总结/" itemprop="url">js常见问题和总结</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-20T15:07:09+08:00">
-                2020-11-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <pre><code>a=[1,2]
-a.indexOf(&quot;All&quot;)?1:2//返回1</code></pre><p>1：通过从列表查找某元素的Index来判断元素是否存在正确<br>2：三目运算，若正确则会取第一项，否则取第二项<br>3：问题在于：a.indexOf(“All”)返回的是-1，而js不会当成false逻辑处理，所以需要改成</p>
-<pre><code>a.indexOf(&quot;All&quot;)&lt;0?1:2//返回2</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/19/router/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/11/19/router/" itemprop="url">router</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-19T15:23:08+08:00">
-                2020-11-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p> <a href="https://blog.csdn.net/qq_35432904/article/details/91552845" target="_blank" rel="noopener">https://blog.csdn.net/qq_35432904/article/details/91552845</a></p>
-<pre><code>{
-   path: &apos;/detail/:id/&apos;,
-   name: &quot;detail&quot;,
-   component: detail//这个details是传进来的组件名称
- }
-
-使用： 
-方法1：&lt;router-link :to=&quot;{ name: &apos;details&apos;, params: { id: 123 }}&quot;&gt;点击按钮&lt;/router-link&gt;
-方法2：this.$router.push({name:&apos;details&apos;,params:{id:123}})
-页面url显示结果是：http://localhost:8081/#/details/123</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/16/refs实践/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/11/16/refs实践/" itemprop="url">refs实践</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-11-16T14:52:55+08:00">
-                2020-11-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1、弹窗中直接在created中调用refs赋值报错，但是可以加载Opened回调函数中：</p>
-<pre><code>&lt;el-dialog :visible.sync=&quot;dialogVisible&quot; @open=&quot;getProjectDetail&quot;&gt;</code></pre><p>   <img src="/images/pasted-154.png" alt="upload successful">  </p>
-<p>2、此时在created的调用函数中竟然生效了？猜测是因为1中是dialog需要通过布尔值控制展示，所以不行<br>        created() {<br>        this.getDetail();<br>        }</p>
-<p> <img src="/images/pasted-155.png" alt="upload successful"> </p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/10/18/Word使用/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/10/18/Word使用/" itemprop="url">Word使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-10-18T11:51:12+08:00">
-                2020-10-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1、空白页删除</p>
-<ul>
-<li>视图-草稿，可以显示分节符(下一页)</li>
-<li>选中某分节符，mac下fn+delete删除</li>
-</ul>
-<p>2、删除页眉的下划线和回车符，亲测有效，注意找到页眉的样式。</p>
-<p><a href="https://jingyan.baidu.com/article/fc07f989a7b3df12ffe51981.html" target="_blank" rel="noopener">https://jingyan.baidu.com/article/fc07f989a7b3df12ffe51981.html</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/13/">13</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/14/">14</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1678,7 +1817,7 @@ a.indexOf(&quot;All&quot;)?1:2//返回1</code></pre><p>1：通过从列表查找
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">129</span>
+                  <span class="site-state-item-count">133</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
