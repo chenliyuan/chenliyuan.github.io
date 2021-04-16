@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>vite和webpack</title>
+      <link href="/2021/04/16/vite%E5%92%8Cwebpack/"/>
+      <url>/2021/04/16/vite%E5%92%8Cwebpack/</url>
+      
+        <content type="html"><![CDATA[<ul><li><p>vite 针对于vue3.0以上</p></li><li><p>vite主要侧重在开发模式，打包到生产环境可以用传统的rollup，也可以手动安装webpack</p></li><li><p>vite 优势</p><pre><code>加速启动时间真正是热启动按需加载模块</code></pre></li></ul><ul><li><p>webpack原理图</p><p>  webpack会先打包，然后启动开发服务器，请求服务器时直接给予打包结果。</p></li></ul><p><img src="/images/pasted-216.png" alt="upload successful"></p><ul><li><p>vite原理图</p><p> 而vite是直接启动开发服务器，请求哪个模块再对该模块进行实时编译。</p></li></ul><p><img src="/images/pasted-217.png" alt="upload successful"></p><p>原文：<a href="http://www.5imoban.net/jiaocheng/nodejs/2021/0205/4706.html" target="_blank" rel="noopener">http://www.5imoban.net/jiaocheng/nodejs/2021/0205/4706.html</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>闭包 wrapper</title>
       <link href="/2021/04/09/%E9%97%AD%E5%8C%85-wrapper/"/>
       <url>/2021/04/09/%E9%97%AD%E5%8C%85-wrapper/</url>
@@ -191,6 +204,19 @@
       <url>/2021/01/11/nginx-location%E5%8C%B9%E9%85%8D%E4%BC%98%E5%85%88%E7%BA%A7/</url>
       
         <content type="html"><![CDATA[<p>参考：<a href="https://segmentfault.com/a/1190000020885269" target="_blank" rel="noopener">https://segmentfault.com/a/1190000020885269</a></p><p>类型：</p><pre><code>location = expression 精准匹配 location expression 普通匹配     location ^~ expression 普通匹配location ~ regex 正则匹配（区分大小写）location ~* regex 正则匹配（不区分大小写）location =/api{}location  /api{}location ^~/api{}location  ~.*api{}location  ~*Api{}</code></pre><p><img src="/images/pasted-196.png" alt="upload successful"></p><p><img src="/images/pasted-195.png" alt="upload successful"></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>axios接口返回html格式</title>
+      <link href="/2021/01/07/axios%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9Ehtml%E6%A0%BC%E5%BC%8F/"/>
+      <url>/2021/01/07/axios%E6%8E%A5%E5%8F%A3%E8%BF%94%E5%9B%9Ehtml%E6%A0%BC%E5%BC%8F/</url>
+      
+        <content type="html"><![CDATA[<p><img src="/images/pasted-192.png" alt="upload successful"><br>如上图，一个普通的Get接口但是接口返回竟然是html格式，非json<br>但是从浏览器打开竟然是好的，直接返回的json格式</p><p>并且这里涉及到重定向，浏览器重定向成功，服务端返回却是失败的</p><p><img src="/images/pasted-194.png" alt="upload successful"></p><p>【过程】一度怀疑后端返回格式做了手脚，改成了Html的格式<br>    前端尝试在request header中添加content-type未成功</p><p>【解决】无意中发现url后面多了个斜杠/<br>       去掉后即解决</p><p>【原因猜测】</p><ol><li>后面添加了/说明是目录，后端可能是觉得目录中需要返回Html。但是不加/默认会返回json的格式？</li><li>Django可以接收这样的格式正常返回json格式。但是后端是go的时候不正确，是后端服务框架机制处理问题？</li></ol>]]></content>
       
       
       

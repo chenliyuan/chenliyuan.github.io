@@ -261,6 +261,283 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/23/axios-get传递数组/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/23/axios-get传递数组/" itemprop="url">axios get和post传递数组</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-23T11:08:02+08:00">
+                2020-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h6 id="格式化数组参数的三种方法：https-www-cnblogs-com-boshow-p-13432156-html"><a href="#格式化数组参数的三种方法：https-www-cnblogs-com-boshow-p-13432156-html" class="headerlink" title="格式化数组参数的三种方法：https://www.cnblogs.com/boshow/p/13432156.html"></a>格式化数组参数的三种方法：<a href="https://www.cnblogs.com/boshow/p/13432156.html" target="_blank" rel="noopener">https://www.cnblogs.com/boshow/p/13432156.html</a></h6><pre><code>qs.stringify({ a: [&apos;b&apos;, &apos;c&apos;] }, { arrayFormat: &apos;indices&apos; })
+// &apos;a[0]=b&amp;a[1]=c&apos;
+qs.stringify({ a: [&apos;b&apos;, &apos;c&apos;] }, { arrayFormat: &apos;brackets&apos; })
+// &apos;a[]=b&amp;a[]=c&apos;
+qs.stringify({ a: [&apos;b&apos;, &apos;c&apos;] }, { arrayFormat: &apos;repeat&apos; })
+// &apos;a=b&amp;a=c&apos;</code></pre><h6 id="get传参"><a href="#get传参" class="headerlink" title="get传参"></a>get传参</h6><p> 更改get默认序列变化格式</p>
+<pre><code> export function get(url, params) {
+    console.log(&apos;getArray&apos;, params, QS.stringify(params, { arrayFormat: &apos;repeat&apos; }))
+    return new Promise((resolve, reject) =&gt; {
+        Axios.get(url, {
+                params: params,
+                paramsSerializer: function(params) {
+                    return QS.stringify(params, { arrayFormat: &apos;repeat&apos; })
+                }
+            }).then(res =&gt; {
+                resolve(res.data);
+            })
+            .catch(err =&gt; {
+                reject(err)
+            })
+    });
+}</code></pre><h6 id="post传参"><a href="#post传参" class="headerlink" title="post传参"></a>post传参</h6><pre><code>export function post(url, params, q) {
+    return new Promise((resolve, reject) =&gt; {
+        Axios.post(url, QS.stringify(params, { indices: false }), q)
+            .then(res =&gt; {
+                resolve(res.data);
+            })
+            .catch(err =&gt; {
+                reject(err.data)
+            })
+    });
+};</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/DjangoURL转换器使用/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/09/19/DjangoURL转换器使用/" itemprop="url">DjangoURL转换器使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-09-19T19:22:47+08:00">
+                2020-09-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://www.cnblogs.com/zheng-weimin/p/10148771.html" target="_blank" rel="noopener">https://www.cnblogs.com/zheng-weimin/p/10148771.html</a></p>
+<h5 id="1-实例"><a href="#1-实例" class="headerlink" title="1. 实例"></a>1. 实例</h5><p>第一步：在url中定义，具体支持类型见如上链接</p>
+<pre><code>path(&apos;mysheets/&lt;int:myid&gt;/&apos;,get_mysheets)</code></pre><p>第二步：view中接收参数，这里需要注意位置和名称的一致性。</p>
+<pre><code>def  get_mysheets(request,myid):
+     print(&apos;我获取到的参数是&apos;,myid)</code></pre><h6 id="2-常用类型"><a href="#2-常用类型" class="headerlink" title="2. 常用类型"></a>2. 常用类型</h6><pre><code>str：非空的字符串类型。默认的转换器。但是不能包含斜杠；
+int：匹配任意的零或者正数的整形。到视图函数中就是一个int类型；
+slug：由英文中的横杠 - ，或者下划线 _ 连接英文字符或者数字而成的字符串；
+uuid：匹配 uuid 字符串；
+path：匹配非空的英文字符串，可以包含斜杠；</code></pre>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/09/19/Django模型models字段/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1414,364 +1691,6 @@ tail -f /Users/liyuanchen/Documents/sonarqube-8.3.1.34397/logs/sonar.log
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/08/13/静态代码扫描/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/08/13/静态代码扫描/" itemprop="url">静态代码扫描</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-08-13T15:22:40+08:00">
-                2020-08-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="Eslint"><a href="#Eslint" class="headerlink" title="Eslint"></a>Eslint</h3><p>ESLint 是用来检查我们写的 JavaScript代码是否满足指定规则的静态代码检查工具。</p>
-<p>用途：</p>
-<p>1、审查代码是否符合编码规范和统一的代码风格；<br>2、审查代码是否存在语法错误；<br><a href="https://zhuanlan.zhihu.com/p/81541854" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/81541854</a></p>
-<h5 id="rules"><a href="#rules" class="headerlink" title="rules"></a>rules</h5><p>验证规则是写在 .eslintrc 文件中的 rules 下面的，配置一条验证规则，这么写规则名，值可以是以下几种:</p>
-<p>1)、off 或 0：表示不验证规则。<br>2)、warn 或 1：表示验证规则，当不满足时，给警告。<br>3)、error 或 2 ：表示验证规则，不满足时报错。<br>4)、如果规则有参数，则这么写<br>规则名: 【值, 参数1, 参数2…】 </p>
-<p>链接：<a href="https://www.jianshu.com/p/04256932d5e5" target="_blank" rel="noopener">https://www.jianshu.com/p/04256932d5e5</a></p>
-<h5 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h5>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/07/24/google认证和授权登陆/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/07/24/google认证和授权登陆/" itemprop="url">google认证和授权登陆</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-07-24T14:02:01+08:00">
-                2020-07-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h6 id="google认证"><a href="#google认证" class="headerlink" title="google认证"></a>google认证</h6><ol>
-<li><p>开发者平台：<a href="https://console.developers.google.com/apis/credentials?project=probable-goods-278213&amp;supportedpurview=project" target="_blank" rel="noopener">https://console.developers.google.com/apis/credentials?project=probable-goods-278213&amp;supportedpurview=project</a></p>
-<p>在以上google开发者平台注册Client ID。</p>
-<p>分别在Authorized JavaScript origins 和Authorized redirect URIs 处注册</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">https://localhost:8080//本地</span><br><span class="line">https://test.test.io //线上</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>利用其写登陆功能：    </p>
-<p><a href="https://www.npmjs.com/package/vue-google-signin-button" target="_blank" rel="noopener">https://www.npmjs.com/package/vue-google-signin-button</a></p>
-</li>
-</ol>
-<p>具体步骤：</p>
-<pre><code>1. npm install vue-google-signin-button
-
-2. 添加
-&lt;script src=&quot;static/utils/googleclient.js&quot;&gt;&lt;/script&gt;
-...
-import GSignInButton from &apos;vue-google-signin-button&apos;
-Vue.use(GSignInButton)
-
-3. 登陆页
-    &lt;template&gt;
-  &lt;g-signin-button
-    :params=&quot;googleSignInParams&quot;
-    @success=&quot;onSignInSuccess&quot;
-    @error=&quot;onSignInError&quot;&gt;
-    Sign in with Google
-  &lt;/g-signin-button&gt;
-&lt;/template&gt;
-
-&lt;script&gt;
-export default {
-  data () {
-    return {
-      /**
-       * The Auth2 parameters, as seen on
-       * https://developers.google.com/identity/sign-in/web/reference#gapiauth2initparams.
-       * As the very least, a valid client_id must present.
-       * @type {Object} 
-       */
-      googleSignInParams: {
-        client_id: &apos;YOUR_APP_CLIENT_ID.apps.googleusercontent.com&apos;
-      }
-    }
-  },
-  methods: {
-    onSignInSuccess (googleUser) {
-      // `googleUser` is the GoogleUser object that represents the just-signed-in user.
-      // See https://developers.google.com/identity/sign-in/web/reference#users
-      const profile = googleUser.getBasicProfile() // etc etc
-    },
-    onSignInError (error) {
-      // `error` contains any error occurred.
-      console.log(&apos;OH NOES&apos;, error)
-    }
-  }
-}
-   &lt;/script&gt; 
-    &lt;style&gt;
-.g-signin-button {
-  /* This is where you control how the button looks. Be creative! */
-  display: inline-block;
-  padding: 4px 8px;
-  border-radius: 3px;
-  background-color: #3c82f7;
-  color: #fff;
-  box-shadow: 0 3px 0 #0f69ff;
-}
-&lt;/style&gt; </code></pre><ol>
-<li><p>打包后js文件 </p>
-<pre><code> app.js：基本就是你实际编写的那个app.vue(.vue或.js?),没这个页面跑不起来.
-
-vendor.js:vue-cli全家桶默认配置里面这个chunk就是将所有从node_modules/里require(import)的依赖都打包到这里，所以这个就是所有node_modules/下的被require(import)的js文件
-
-manifest.js: 最后一个chunk，被注入了webpackJsonp的定义及异步加载相关的定义(webpack调用CommonsChunkPlugin处理后模块管理的核心,因为是核心,所以要第一个进行加载,不然会报错).
-
-作者：_双眸
-链接：https://www.jianshu.com/p/7a888571522d
-来源：简书
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</code></pre></li>
-</ol>
-<h5 id="auth2-授权"><a href="#auth2-授权" class="headerlink" title="auth2 授权"></a>auth2 授权</h5><p>有使用授权邮箱的需求，于是该用auth2</p>
-<p>前提是已注册了clientid</p>
-<p>官网<br><a href="https://developers.google.com/identity/sign-in/web/reference" target="_blank" rel="noopener">https://developers.google.com/identity/sign-in/web/reference</a></p>
-<p> VUE中实现</p>
-<ol>
-<li><p>首先html中引用</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=&quot;https://apis.google.com/js/client.js&quot; async defer&gt;&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>init</p>
- <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">let that = this;</span><br><span class="line">     window.gapi.load(&quot;auth2&quot;, function() &#123;</span><br><span class="line">       if (!window.gapi) &#123;</span><br><span class="line">         throw new Error(</span><br><span class="line">           &apos;&quot;https://apis.google.com/js/api:client.js&quot; needs to be included as a &lt;script&gt;.&apos;</span><br><span class="line">         );</span><br><span class="line">       &#125;</span><br><span class="line">       that.auth = window.gapi.auth2.init(&#123;</span><br><span class="line">         client_id:</span><br><span class="line">           &quot;386555551764-ii8s4iv83e6bev0akiquniqsl2oh64q1.apps.googleusercontent.com&quot;,</span><br><span class="line">         // Scopes to request in addition to &apos;profile&apos; and &apos;email&apos;</span><br><span class="line">         scope: &quot;https://mail.google.com/&quot;</span><br><span class="line">       &#125;);</span><br><span class="line">       console.log(&quot;auth2&quot;, that.auth);</span><br><span class="line">     &#125;);</span><br><span class="line">   &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ol>
-<ol start="3">
-<li><p>获取授权code和身份认证信息</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">let that=this;</span><br><span class="line">var GoogleAuth = window.gapi.auth2.getAuthInstance();</span><br><span class="line">   this.auth.grantOfflineAccess().then(function(authResult) &#123;</span><br><span class="line">   //获取到认证码</span><br><span class="line">   console.log(authResult.code)</span><br><span class="line">   //登陆后方可获取用户身份信息，之前获取为空</span><br><span class="line">     var GoogleUser = GoogleAuth.currentUser.get()</span><br><span class="line">     const profile = GoogleUser.getBasicProfile();</span><br><span class="line">     const authResponse = GoogleUser.getAuthResponse();</span><br></pre></td></tr></table></figure>
-
-<p>得到的code传给后端用于：<a href="http://www.zyiz.net/tech/detail-142921.html" target="_blank" rel="noopener">http://www.zyiz.net/tech/detail-142921.html</a></p>
-<ul>
-<li><p>code是第三方用来获取access_token的，code的超时时间为10分钟，一个code只能成功换取一次access_token即失效。code的临时性和一次性保障了微信授权登录的安全性。</p>
-</li>
-<li><p>通过code参数加上AppID和AppSecret等，通过API换取access_token（接口调用凭证）。</p>
-</li>
-<li><p>通过access_token进行接口调用，获取用户基本数据资源或帮助用户实现基本操</p>
-</li>
-</ul>
-</li>
-</ol>
-<ol start="4">
-<li><p>scope更换后登陆依旧带有原来的权限？</p>
-<p> <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener">https://myaccount.google.com/permissions</a> 去除原来的权限</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1822,7 +1741,7 @@ manifest.js: 最后一个chunk，被注入了webpackJsonp的定义及异步加�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">133</span>
+                  <span class="site-state-item-count">135</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -261,6 +261,315 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/21/mac下python3-tesseract-pytesseract-的安装与调试/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/21/mac下python3-tesseract-pytesseract-的安装与调试/" itemprop="url"> tesseract 的环境安装</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-21T12:15:51+08:00">
+                2020-03-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h6 id="windows-10-安装"><a href="#windows-10-安装" class="headerlink" title="windows 10 安装:"></a>windows 10 安装:</h6><p>第一步在虚拟环境或者正式环境pip安装：</p>
+<pre><code>pip install pytesseract
+ pip install pillow</code></pre><p>第二步 安装Tesseract-OCR    </p>
+<ul>
+<li><p>下载安装包官网：<br>注意版本之前由于使用3.0.2一直报错，后来换成5.0才好</p>
+<p>  <a href="https://github.com/UB-Mannheim/tesseract/wiki" target="_blank" rel="noopener">https://github.com/UB-Mannheim/tesseract/wiki</a><br>一路安装时可选择下语言包</p>
+</li>
+<li><p>系统环境Path变量配置：</p>
+<p>  <img src="%5Cimages%5Cpasted-106.png" alt="upload successful"></p>
+<p>  <a href="https://www.cnblogs.com/chenshengkai/p/11318272.html" target="_blank" rel="noopener">https://www.cnblogs.com/chenshengkai/p/11318272.html</a></p>
+<p>  验证： </p>
+<pre><code>tesseract --version</code></pre></li>
+<li><p>在python文件下搜索pytesseract.py文件并修改路径：<br>tesseract_cmd = ‘C:\Program Files\Tesseract-OCR\tesseract.exe’</p>
+</li>
+</ul>
+<p><img src="%5Cimages%5Cpasted-104.png" alt="upload successful"></p>
+<p>   参考<br>   <a href="https://www.cnblogs.com/chenshengkai/p/11318387.html" target="_blank" rel="noopener">https://www.cnblogs.com/chenshengkai/p/11318387.html</a><br>    <a href="https://blog.csdn.net/qq_38161040/article/details/90649497" target="_blank" rel="noopener">https://blog.csdn.net/qq_38161040/article/details/90649497</a></p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pytesseract</span><br><span class="line">from PIL import Image</span><br><span class="line"></span><br><span class="line">image = Image.open(&quot;data/enzh.png&quot;)</span><br><span class="line">code = pytesseract.image_to_string(image,lang=&apos;chi_sim&apos;)</span><br><span class="line">print(code)</span><br></pre></td></tr></table></figure>
+
+<h6 id="mac安装"><a href="#mac安装" class="headerlink" title="mac安装"></a>mac安装</h6><ol>
+<li><p>pip install pytesseract<br>pip install tesseract  </p>
+<p>之后运行demo一直报这个错：</p>
+<p>NotADirectoryError: [Errno 20] Not a directory: ‘tesseract’</p>
+<p>后来看到帖子说mac必须得用brew安装才行(救星)，又重新安装了一次，果然成功了</p>
+<p>brew install tesseract</p>
+<p>参考： <a href="https://blog.csdn.net/weixin_38246633/article/details/82993678" target="_blank" rel="noopener">https://blog.csdn.net/weixin_38246633/article/details/82993678</a></p>
+</li>
+<li><p>紧接着又报错：</p>
+<pre><code>pytesseract.pytesseract.TesseractError: (1, &apos;Error opening data file /usr/local/share/tessdata/chi_sim.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your &quot;tessdata&quot; directory. Failed loading language \&apos;chi_sim\&apos; Tesseract couldn\&apos;t load any languages! Could not initialize tesseract.&apos;)</code></pre><p>感谢文章：<br>   <a href="https://blog.csdn.net/magicianofcodes/article/details/79401622" target="_blank" rel="noopener">https://blog.csdn.net/magicianofcodes/article/details/79401622</a></p>
+<p> 即根据错误提示：</p>
+<p>1）.  需要设置环境变量    </p>
+<pre><code>export TESSDATA_PREFIX=/usr/local/Cellar/tesseract/3.05.01/share/tessdata
+export PATH=$PATH:$TESSDATA_PREFIX</code></pre><p>2）. 下载语言包</p>
+<p> <a href="https://github.com/tesseract-ocr/tessdata" target="_blank" rel="noopener">https://github.com/tesseract-ocr/tessdata</a></p>
+<p>下载相应缺少的语言包(这里是chi_sim)，然后放在/usr/local/Cellar/tesseract/3.05.01/share/tessdata之下</p>
+<p>至此，成功 ~</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/conda/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/18/conda/" itemprop="url">Anaconda  conda使用</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-18T18:28:58+08:00">
+                2020-03-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h5 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h5><ul>
+<li><p>环境 mac ：官网下载sh包，</p>
+<p> sh   Miniconda3-latest-MacOSX-x86_64.sh</p>
+<p>安装后去/xxx/miniconda3/bin下执行 </p>
+<p> .  activate</p>
+</li>
+<li><p>windows安装</p>
+<p>下载： <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
+</li>
+</ul>
+<h4 id="2、conda命令"><a href="#2、conda命令" class="headerlink" title="2、conda命令"></a>2、conda命令</h4><pre><code>conda #可查帮助信息
+conda info -e
+source activate deeplearning   #进入我们的虚拟环境其中deeplearning是名称
+  #退出虚拟环境
+conda remove -n deeplearning --all
+conda list 查看已安装软件
+conda available packages
+conda search source deactivategatk
+conda install gatk
+ which gatk  查看软件安装位置
+conda update gatk  升级软件
+conda remove gatk  卸载指定软件
+conda env list  环境列表，星号代表当前环境
+activate learn  切换到learn环境
+activate // 切换到base环境
+conda create -n learn python=3 // 创建一个名为learn的环境并指定python版本为3(的最新版本)
+conda remove -n learn --all // 删除learn环境及下属所有包</code></pre><p>  虚拟环境的使用：</p>
+<p>  <img src="/images/pasted-93.png" alt="upload successful"></p>
+<h4 id="3、问题"><a href="#3、问题" class="headerlink" title="3、问题"></a>3、问题</h4><ul>
+<li><p>【Anaconda】关于conda使用环境未被激活的问题</p>
+<pre><code>由powershell改成使用cmd</code></pre><p>  参考：<a href="https://www.cnblogs.com/happyamyhope/p/11547134.html" target="_blank" rel="noopener">https://www.cnblogs.com/happyamyhope/p/11547134.html</a></p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/论文准备/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1563,415 +1872,6 @@ if test &quot;$bool&quot; = &quot;true&quot;; then</code></pre></li>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/03/Go语言/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/03/Go语言/" itemprop="url">Go语言</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-03T19:56:22+08:00">
-                2020-02-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h4 id="IDE"><a href="#IDE" class="headerlink" title="IDE"></a>IDE</h4><p>官网下载atom，并安装go-plus插件</p>
-<h4 id="运行程序"><a href="#运行程序" class="headerlink" title="运行程序"></a>运行程序</h4><pre><code>go run hello.go
-或者
-$ go build hello.go 
-$ ls
-hello    hello.go
-$ ./hello</code></pre><h4 id="特点-与其他语言差别"><a href="#特点-与其他语言差别" class="headerlink" title="特点:与其他语言差别"></a>特点:与其他语言差别</h4><ul>
-<li><p>应用程序入口</p>
-<ol>
-<li>必须是 main 包：package main</li>
-<li>必须是 main ⽅法：func main()</li>
-<li>⽂件名不⼀定是 main.go</li>
-</ol>
-</li>
-<li><p>Go 中 main 函数不⽀持任何返回值<br>通过 os.Exit 来返回状态</p>
-</li>
-<li><p>main 函数不⽀持传⼊参数 func main(arg []string) 是错误的<br>在程序中直接通过 os.Args 获取命令⾏参数 </p>
-</li>
-<li><p>编写测试程序</p>
-<ol>
-<li>源码⽂件以 _test 结尾：xxx_test.go</li>
-<li>测试⽅法名以 Test 开头：func TestXXX(t *testing.T){}</li>
-</ol>
-<p>运行测试程序：</p>
-<p>1）Atom-&gt;preferences-&gt;packages<br>搜索找到go-plus<br>在settings中，Test配置中选中 Run with verbose flag setting<br>2）若不好用，可以用修改快捷键绑定keymap.cson文件,先执行保存再使用快捷键运行</p>
-</li>
-<li><p>不支持隐式类型转换，如Int和Int64。别名和原有类型也不能进⾏隐式类型转换</p>
-</li>
-<li><p>不支持指针运算</p>
-</li>
-<li><p>运算符之后后置++和–</p>
-</li>
-<li><p>&amp;^ 运算符：只要后面是1，结果变成0，否则为左边值即不变</p>
-<p>   1 &amp;^ 0 – 1<br>   1 &amp;^ 1 – 0<br>   0 &amp;^ 1 – 0<br>   0 &amp;^ 0 – 0</p>
-</li>
-<li><p>string 是值类型，其默认的初始化值为空字符串，⽽不是 nil</p>
-</li>
-<li><p>Go 语⾔仅⽀持循环关键字 for</p>
-</li>
-<li><p>条件语句</p>
-<ol>
-<li>condition 表达式结果必须为布尔值</li>
-<li>⽀持变量赋值：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">if  var declaration;  condition &#123;</span><br><span class="line">    // code to be executed if condition is true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ol>
-</li>
-<li><p>switch条件</p>
-<ol>
-<li>条件表达式不限制为常量或者整数；</li>
-<li>单个 case 中，可以出现多个结果选项, 使⽤逗号分隔；</li>
-<li>Go 语⾔不需要⽤break来明确退出⼀个 case；</li>
-<li>可以不设定 switch 之后的条件表达式，在此种情况下，整个 switch 结构与多个 if…else… 的逻辑作⽤等同</li>
-</ol>
-</li>
-</ul>
-<h5 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h5><ul>
-<li>数组的声明<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var a [3] int //声明并初始化为默认零值</span><br><span class="line">a[0] = 1</span><br><span class="line">b := [3]int&#123;1, 2, 3&#125; //声明同时初始化</span><br></pre></td></tr></table></figure>
-
-
-</li>
-</ul>
-<ul>
-<li>数组元素遍历</li>
-</ul>
-<pre><code>func TestTravelArray(t *testing.T) {
- a := [...]int{1, 2, 3, 4, 5} //不指定元素个数
- for idx/*索引*/, elem/*元素*/ := range a {
- fmt.Println(idx, elem)
- }</code></pre><ul>
-<li><p>数组截取</p>
-<pre><code>a := [...]int{1, 2, 3, 4, 5}
-a[1:2] //2
-a[1:3] //2,3
-a[1:len(a)] //2,3,4,5
-a[1:] //2,3,4,5
-a[:3] //1,2,3</code></pre><p>  负数索引？不支持</p>
-</li>
-</ul>
-<h5 id="Go-语言切片-Slice"><a href="#Go-语言切片-Slice" class="headerlink" title="Go 语言切片(Slice)"></a>Go 语言切片(Slice)</h5><p>Go 语言切片是对数组的抽象。</p>
-<p>Go 数组的长度不可改变，在特定场景中这样的集合就不太适用，Go中提供了一种灵活，功能强悍的内置类型切片(“动态数组”),与数组相比切片的长度是不固定的，可以追加元素，在追加时可能使切片的容量增大。 </p>
-<ul>
-<li><p>初始化同数组，缺少长度 </p>
-</li>
-<li><p>数组可以比较，切片不可比较</p>
-<p>切⽚声明</p>
-<pre><code> var s0 []int
- s0 = append(s0, 1)
- s := []int{}
- s1 := []int{1, 2, 3}
- s2 := make([]int, 2, 4)  
-make参数/*[]type, len, cap
-其中len个元素会被初始化为默认零值，未初始化元素不可以访问
-*/</code></pre></li>
-<li><p>len() cap()  make()</p>
-<p>append() 和 copy() 函数</p>
-</li>
-</ul>
-<h5 id="Map"><a href="#Map" class="headerlink" title="Map"></a>Map</h5><ul>
-<li><p>Map 声明</p>
-<p>  声明变量，默认 map 是 nil</p>
-<pre><code>var map_variable map[key_data_type]value_data_type</code></pre><p>  使用 make 函数</p>
-<pre><code>map_variable := make(map[key_data_type]value_data_type)</code></pre><p>  举例：</p>
-<pre><code>m := map[string]int{&quot;one&quot;: 1, &quot;two&quot;: 2, &quot;three&quot;: 3}
-m1 := map[string]int{}
-m1[&quot;one&quot;] = 1
-m2 := make(map[string]int, 10 /*Initial Capacity*/)</code></pre></li>
-<li><p>在访问的 Key 不存在时，仍会返回零值，不能通过返回 nil 来判断元素是否存在</p>
-</li>
-<li><p>Mapi遍历</p>
-<pre><code>m := map[string]int{&quot;one&quot;: 1}
-for k, v := range m {
-    t.Log(k, v)
-}</code></pre></li>
-<li><p>Mapi delete()函数</p>
-</li>
-<li><p>Go 的内置集合中没有 Set 实现， 可以 map[type]bool</p>
-</li>
-</ul>
-<h5 id="字符串与字符编码"><a href="#字符串与字符编码" class="headerlink" title="字符串与字符编码"></a>字符串与字符编码</h5><p>字符串是只读不可变的byte slice</p>
-<p>len()函数得出的是byte的长度而未必是字符长度。</p>
-<p>rune()函数:得到unicode编码</p>
-<p>常用的函数包：strings strconv<br>如：split join Atoi  itoA</p>
-<h5 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h5><p>可单独声明，也可以一次声明多个变量：如</p>
-<pre><code>var a string = &quot;Runoob&quot;
-var b, c int = 1, 2</code></pre><ul>
-<li><p>若没有初始化系统默认为0或者False或者”“</p>
-</li>
-<li><p>也可是不指定类型，系统自动识别</p>
-</li>
-<li><p>使用因式分解关键字写法</p>
-<pre><code>var (  // 这种因式分解关键字的写法一般用于声明全局变量
-  a int
-  b bool
-  )</code></pre></li>
-<li><p>也可是省略var,使用:=来声明新变量</p>
-<pre><code>vname1, vname2, vname3 := v1, v2, v3</code></pre></li>
-</ul>
-<h5 id="常量：iota"><a href="#常量：iota" class="headerlink" title="常量：iota"></a>常量：iota</h5><p> iota 在 const关键字出现时将被重置为 0(const 内部的第一行之前)，const 中每<font color="red">新增一行</font>常量声明将使 iota 计数一次</p>
-<pre><code>package main
-import &quot;fmt&quot;
-func main() {
-    const (
-            a = iota   //0
-            b          //1
-            c          //2
-            d = &quot;ha&quot;   //独立值，iota += 1
-            e          //&quot;ha&quot;   iota += 1
-            f = 100    //iota +=1
-            g          //100  iota +=1
-            h = iota   //7,恢复计数
-            i          //8
-    )
-    fmt.Println(a,b,c,d,e,f,g,h,i)
-}</code></pre><h6 id="记录"><a href="#记录" class="headerlink" title="记录"></a>记录</h6><pre><code>t.Logf(&quot;%T&quot;, aP)</code></pre>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/02/03/python-GIL/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/02/03/python-GIL/" itemprop="url">Python-GIL&进程线程</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-02-03T18:27:32+08:00">
-                2020-02-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="GIL-全局解释器锁"><a href="#GIL-全局解释器锁" class="headerlink" title="GIL 全局解释器锁"></a>GIL 全局解释器锁</h5><p>GIL本质就是一把互斥锁，既然是互斥锁，所有互斥锁的本质都一样，都是将并发运行变成串行，以此来控制同一时间内共享数据只能被一个任务所修改，进而保证数据安全。</p>
-<h6 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h6><p>  使用死循环程序while True:pass</p>
-<p>  双核CPU:可用htop实时查看进程占用情况</p>
-<ul>
-<li>单进程单线程执行1个线程   CPU1占满100%</li>
-<li>单进程多线程执行两个线程   各占用50%（加起来是一个核）</li>
-<li>使用多进程执行两个进程   各占满100%（每个进程真正占满一个核）</li>
-</ul>
-<h6 id="结论：python中多线程是假的。只有多进程能实现并发，每个进程占用一个CPU。"><a href="#结论：python中多线程是假的。只有多进程能实现并发，每个进程占用一个CPU。" class="headerlink" title="结论：python中多线程是假的。只有多进程能实现并发，每个进程占用一个CPU。"></a>结论：<font color="red">python中多线程是假的。只有多进程能实现并发</font>，每个进程占用一个CPU。</h6><h6 id="原因：GIL：使得多线程程序一个时刻只能有一个线程在使用。"><a href="#原因：GIL：使得多线程程序一个时刻只能有一个线程在使用。" class="headerlink" title="原因：GIL：使得多线程程序一个时刻只能有一个线程在使用。"></a>原因：<font color="red">GIL</font>：使得多线程程序一个时刻只能有一个线程在使用。</h6><p>为什么python有这个问题？</p>
-<pre><code>实际不是python本身的问题，而是由于其解释器的限制：
-Python默认使用C-python解释器（其他版本比如Java版的python解释器就不会有这个问题,但是这个GIL问题不容易解决所以至今依旧如此）</code></pre><p>所以python可使用多进程来实现多任务并发，替代多线程实现。</p>
-<h5 id="多线程是否要比单线程快？"><a href="#多线程是否要比单线程快？" class="headerlink" title="多线程是否要比单线程快？"></a>多线程是否要比单线程快？</h5><p>回答：是的。因为多线程会在适当的实际执行必要的操作，避免等待造成的时间消耗。增加效率。</p>
-<h5 id="什么时候用进程什么时候用线程？"><a href="#什么时候用进程什么时候用线程？" class="headerlink" title="什么时候用进程什么时候用线程？"></a>什么时候用进程什么时候用线程？</h5><ul>
-<li><p>计算密集型程序：进程（可以发挥多核cpu的作用）</p>
-</li>
-<li><p>io密集型程序：线程、协程（可以充分利用等待时间）</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2022,7 +1922,7 @@ Python默认使用C-python解释器（其他版本比如Java版的python解释�
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">133</span>
+                  <span class="site-state-item-count">135</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

@@ -261,6 +261,148 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/16/vite和webpack/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/04/16/vite和webpack/" itemprop="url">vite和webpack</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-16T14:46:08+08:00">
+                2021-04-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <ul>
+<li><p>vite 针对于vue3.0以上</p>
+</li>
+<li><p>vite主要侧重在开发模式，打包到生产环境可以用传统的rollup，也可以手动安装webpack</p>
+</li>
+<li><p>vite 优势</p>
+<pre><code>加速启动时间
+真正是热启动
+按需加载模块</code></pre></li>
+</ul>
+<ul>
+<li><p>webpack原理图</p>
+<p>  webpack会先打包，然后启动开发服务器，请求服务器时直接给予打包结果。</p>
+</li>
+</ul>
+<p><img src="/images/pasted-216.png" alt="upload successful"></p>
+<ul>
+<li><p>vite原理图</p>
+<p> 而vite是直接启动开发服务器，请求哪个模块再对该模块进行实时编译。</p>
+</li>
+</ul>
+<p><img src="/images/pasted-217.png" alt="upload successful"></p>
+<p>原文：<a href="http://www.5imoban.net/jiaocheng/nodejs/2021/0205/4706.html" target="_blank" rel="noopener">http://www.5imoban.net/jiaocheng/nodejs/2021/0205/4706.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/04/09/闭包-wrapper/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1547,161 +1689,6 @@ document.writeln()</code></pre>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/02/20/JS-事件基础/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2021/02/20/JS-事件基础/" itemprop="url">JS 事件基础和进阶</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-02-20T11:43:05+08:00">
-                2021-02-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="事件调用方式"><a href="#事件调用方式" class="headerlink" title="事件调用方式"></a>事件调用方式</h5><ul>
-<li><p>在script标签中调用</p>
-<pre><code>obj.事件=function(){}</code></pre></li>
-<li><p>在元素中调用</p>
-</li>
-</ul>
-<h5 id="常见事件有五种："><a href="#常见事件有五种：" class="headerlink" title="常见事件有五种："></a>常见事件有五种：</h5><ul>
-<li>鼠标事件</li>
-<li>键盘事件</li>
-<li>表单事件</li>
-<li>编辑事件</li>
-<li>页面事件</li>
-</ul>
-<h5 id="鼠标事件"><a href="#鼠标事件" class="headerlink" title="鼠标事件"></a>鼠标事件</h5><pre><code>onclick
-onmouseover
-onmouseout
-onmousedown
-onmouseup
-onmousemove</code></pre><h5 id="键盘事件"><a href="#键盘事件" class="headerlink" title="键盘事件"></a>键盘事件</h5><pre><code>onkeydown
-onkeyup</code></pre><h5 id="表单事件"><a href="#表单事件" class="headerlink" title="表单事件"></a>表单事件</h5><pre><code>onfocus/onblur //获取焦点和失去焦点 onfocus属性区别于focus()方法
-onselect//区别于select()方法
-onchange</code></pre><h5 id="编辑事件"><a href="#编辑事件" class="headerlink" title="编辑事件"></a>编辑事件</h5><p>主要用于限制复制操作</p>
-<pre><code>oncopy
-onselectstart//选中
-oncontextmenu //右键菜单</code></pre><h5 id="页面事件"><a href="#页面事件" class="headerlink" title="页面事件"></a>页面事件</h5><pre><code>onload//文档下载完成后再执行的一个事件
-window.onload=function(){}
-onbeforeunload//离开页面之前的一个事件</code></pre><h5 id="事件处理器和监听器"><a href="#事件处理器和监听器" class="headerlink" title="事件处理器和监听器"></a>事件处理器和监听器</h5><pre><code>oBtn.onclick=function(){}//事件处理器
-obj.addEventListener(type,fn,false)
-obj.removeEventListner(type,fn,false)</code></pre><h5 id="event事件"><a href="#event事件" class="headerlink" title="event事件"></a>event事件</h5><pre><code>每个事件都有对应的event对象
-event对象属性：
-type
-keyCode
-shiftKey
-ctrlKey
-altKey</code></pre><h5 id="this"><a href="#this" class="headerlink" title="this"></a>this</h5><p>哪个DOM对象调用了this所在的函数，那么this指向的就是哪个DOM对象</p>
-<p>this只有在被调用的时候才确定下来</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1752,7 +1739,7 @@ altKey</code></pre><h5 id="this"><a href="#this" class="headerlink" title="this"
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">133</span>
+                  <span class="site-state-item-count">135</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

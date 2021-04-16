@@ -261,6 +261,429 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/18/JS语法汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/18/JS语法汇总/" itemprop="url">JS语法使用小记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-18T18:09:11+08:00">
+                2020-06-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>js数组操作方法以及es6新增方法:<a href="https://www.cnblogs.com/Ky-Thompson23/p/12408795.html" target="_blank" rel="noopener">https://www.cnblogs.com/Ky-Thompson23/p/12408795.html</a></p>
+<ol>
+<li><p>JS合并两个数组 </p>
+<p>apply会改变原数组的值</p>
+<pre><code>a.push.apply(a,[4,5,6]);  </code></pre><p>concat不会改变原数组的值</p>
+<pre><code>arr1 = [1,2];
+arr2 = [&quot;aa&quot;,&quot;as&quot;];
+console.log(arr1.concat(arr2));//[1, 2, &quot;aa&quot;, &quot;as&quot;]</code></pre></li>
+<li><p>删除数组某项    </p>
+<p> splice(index,len,[item]) 注释：该方法会改变原始数组。<br> index:数组开始下标 </p>
+<p> len: 替换/删除的长度</p>
+<p> item:替换的值，删除操作的话 item为空</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;]; </span><br><span class="line">arr.splice(1,1); </span><br><span class="line">console.log(arr); </span><br><span class="line">//[&apos;a&apos;,&apos;c&apos;,&apos;d&apos;];</span><br></pre></td></tr></table></figure>
+
+<p> 删除某值元素</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=[1,2,3]</span><br><span class="line">a.splice(a.indexOf(2),1)// [1,3]</span><br></pre></td></tr></table></figure>
+
+<p> 参考 <a href="https://www.jb51.net/article/134312.htm" target="_blank" rel="noopener">https://www.jb51.net/article/134312.htm</a></p>
+<p>添加 —- len设置为0，item为添加的值 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> var arr = [&apos;a&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;]; </span><br><span class="line">arr.splice(1,0,&apos;ttt&apos;); </span><br><span class="line">console.log(arr); </span><br><span class="line">//[&apos;a&apos;,&apos;ttt&apos;,&apos;b&apos;,&apos;c&apos;,&apos;d&apos;] 表示在下标为1处添加一项&apos;ttt&apos;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>JS 排序功能  sort()</p>
+<ul>
+<li><p>【原理】当数组长度&lt;=10的时候，采用插入排序；&gt;10的时候，采用快排。(当数据量很小的时候，插入排序效率优于快排)</p>
+<p>对于长度大于1000的数组，采用的是快排与插入排序混合的方式进行排序的.</p>
+</li>
+<li><p>array.sort(fun)；参数fun可选，规定排序顺序。默认字母排序</p>
+<p>示例：<br> var arr3 = [30,10,111,35,1899,50,45];<br> arr3.sort(function(a,b){<br>  return a - b;<br> })<br> console.log(arr3);//输出 [10, 30, 35, 45, 50, 111, 1899]</p>
+<p>多属性判断排序(在project&amp;role相同的情况下才排序)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> export function compare(property, index, type) &#123;</span><br><span class="line"> return function(a, b) &#123;</span><br><span class="line">        if (a.project == b.project &amp;&amp; a.role == b.role) &#123;</span><br><span class="line">            var value1 = a[property][index];</span><br><span class="line">            var value2 = b[property][index];</span><br><span class="line">            if (type == &quot;ascending&quot;) &#123;</span><br><span class="line">                return value1 - value2;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                return value2 - value1;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+</li>
+</ol>
+<pre><code>具体可参考：https://www.cnblogs.com/lyc10/p/11348419.html</code></pre><ol start="3">
+<li><p>filter()函数</p>
+<p> 和map()类似，Array的filter()也接收一个函数。和map()不同的是，filter()把传入的函数依次作用于每个元素，然后根据返回值是true还是false决定保留还是丢弃该元素。</p>
+<pre><code>&lt;script type=&quot;text/javascript&quot;&gt;
+        var arr = [0,1,2,3,4,5,1,4,0];
+        var arr_filter = arr.filter(function(x){
+            return x%2 == 0;/* 筛选偶数 */ 
+        })
+        console.log(arr_filter)
+    &lt;/script&gt;</code></pre><p> 参考：<a href="https://www.cnblogs.com/jianxian/p/10582683.html" target="_blank" rel="noopener">https://www.cnblogs.com/jianxian/p/10582683.html</a></p>
+<p> 推荐：<a href="https://www.cnblogs.com/saifei/p/9043821.html" target="_blank" rel="noopener">https://www.cnblogs.com/saifei/p/9043821.html</a></p>
+<pre><code>var summary = origin_outline
+  .replace(/&lt;\/p&gt;/g, &quot;&quot;)
+  .split(&quot;&lt;p&gt;&quot;)
+  .filter(function(s) {
+    return s &amp;&amp; s.trim();
+  })
+  .map(function(m) {
+    return m.trim();
+  });</code></pre></li>
+<li><p>ES箭头函数</p>
+<p>基本形式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">let sum = (num1,num2) =&gt; num1 + num2;</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+<ol start="8">
+<li><p>引用类型和值类型</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let  tmp=this.a;   //this.a=[&#123;pj:&apos;listing&apos;&#125;&#125;]</span><br><span class="line">console.log(&quot;初始化的值：&quot;,tmp,this.a);</span><br><span class="line">tmp[&apos;aa&apos;]=111</span><br></pre></td></tr></table></figure>
+
+<p> 此段代码在console.log中返回：[{pj:’listing’,aa:111}}]  [{pj:’listing’,aa:111}}]</p>
+<p> 问题：<br> 1：为何tmp在打印的时候值已经变化？难道先执行下面再执行上面？<br> 2：为何tmp变化会引发a值的变化</p>
+<p> 解答：</p>
+<ol>
+<li><p><img src="/images/pasted-120.png" alt="upload successful"><br>如下代码片段</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var json = &#123;a:1,b:2&#125; </span><br><span class="line">console.log(json.a)//打印出来是3，不是1</span><br><span class="line">json.a = 3;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>赋值操作其实引用的都是同一块地址内容，所以一个改动会影响另一个取值的变化</p>
+<p>这里使用深拷贝解决<br>深浅拷贝：<a href="https://www.cnblogs.com/panrui1994/p/9378696.html" target="_blank" rel="noopener">https://www.cnblogs.com/panrui1994/p/9378696.html</a></p>
+</li>
+</ol>
+<p> <strong>深拷贝方法1</strong>: Object.assign(target, …sources)  对象</p>
+<p> 【注】assign方式用于对象方可实现深拷贝，[]不可以，因为内部若有对象，其对象依旧是引用类型可以变化)</p>
+<p> <strong>深拷贝方法2</strong>: JSON.parse(JSON.stringify(obj))</p>
+<p> 最终使用JSON.parse实现(JSON.stringify(obj)就是把对象转成字符串，然后JSON.parse就是把字符串再变为对象，那就完全是一个新的对象了，所有的东西都是新的</p>
+</li>
+<li><p>console.log的常用语法</p>
+<ul>
+<li>console.table，格式化表格</li>
+<li>统计代码执行时间<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">console.time(&apos;统计时间&apos;)</span><br><span class="line">for(var i = 0; i &lt; 999 ;i++)&#123;&#125;</span><br><span class="line">console.timeEnd(&apos;统计时间&apos;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>数组对象筛选</p>
+   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">8. 对象列表排重</span><br></pre></td></tr></table></figure>
+
+<p>  function unique(arr,field){</p>
+<pre><code>var map = {};
+var res = [];
+for (var i = 0; i &lt; arr.length; i++) {
+    if (!map[arr[i][field]]) {
+        map[arr[i][field]]=1;//巧妙利用对象键值唯一性判重
+        res.push(arr[i]);
+    }
+}
+ return res;</code></pre>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">  原文链接：https://blog.csdn.net/qq_36949713/java/article/details/81942370</span><br><span class="line">  </span><br><span class="line">10. JS Base64转码</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<p>let Base64 = {<br>    encode(str) {<br>        // first we use encodeURIComponent to get percent-encoded UTF-8,<br>        // then we convert the percent encodings into raw bytes which<br>        // can be fed into btoa.<br>        return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,<br>            function toSolidBytes(match, p1) {<br>                return String.fromCharCode(‘0x’ + p1);<br>            }));<br>    },<br>    decode(str) {<br>        // Going backwards: from bytestream, to percent-encoding, to original string.<br>        return decodeURIComponent(atob(str).split(‘’).map(function(c) {<br>            return ‘%’ + (‘00’ + c.charCodeAt(0).toString(16)).slice(-2);<br>        }).join(‘’));<br>    }<br>};<br>```
+对于json数据，先转换成字符串<br>Base64.encode(JSON.stringify(this.result))</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/09/vue线上部署和维护/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="躲不掉的风">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="躲不掉的风">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/06/09/vue线上部署和维护/" itemprop="url">vue线上部署和维护</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-06-09T11:55:38+08:00">
+                2020-06-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h6 id="同步上线文件http-server"><a href="#同步上线文件http-server" class="headerlink" title="同步上线文件http.server"></a>同步上线文件http.server</h6><pre><code>简单办法：启动本地服务：
+
+  python3 -m http.server 8000（python3）
+  curl -O  http://10.12.169.57:8000/dist.tar.gz</code></pre><h6 id="CSS文件不生效问题："><a href="#CSS文件不生效问题：" class="headerlink" title="CSS文件不生效问题："></a>CSS文件不生效问题：</h6><p>解决：1.  设置一些配置信息？—–依旧未生效<br><a href="https://www.jb51.net/article/174089.htm" target="_blank" rel="noopener">https://www.jb51.net/article/174089.htm</a></p>
+<h6 id="域名配置"><a href="#域名配置" class="headerlink" title="域名配置"></a>域名配置</h6><pre><code>netstat -nltp 查看
+
+切换至root  :sudo su root</code></pre><h6 id="引用的css样式文件大部分没有生效？"><a href="#引用的css样式文件大部分没有生效？" class="headerlink" title="引用的css样式文件大部分没有生效？"></a>引用的css样式文件大部分没有生效？</h6><p>  【解决】</p>
+<ol>
+<li><p>一共三种引用方式，在main.js\index.html\app.vue中引入。<br>其中app中引入:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;style&gt;</span><br><span class="line">  @import &apos;./../static/css/global.css&apos;; /*引入公共样式*/</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+
+<p>参考： <a href="https://blog.csdn.net/HY_358116732/article/details/82219387" target="_blank" rel="noopener">https://blog.csdn.net/HY_358116732/article/details/82219387</a></p>
+</li>
+<li><p>将element-ui的引用提到最最前面</p>
+<p>因为引用的css样式是针对此ui进行的覆盖修改，所以需要在其后面引用，才起到覆盖的作用。</p>
+</li>
+</ol>
+<h6 id="传文件使用-gitlab一致报错"><a href="#传文件使用-gitlab一致报错" class="headerlink" title="传文件使用 gitlab一致报错"></a>传文件使用 gitlab一致报错</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Warning: Permanently added &apos;gitlab.com,172.65.251.78&apos; (ECDSA) to the list of known hosts.</span><br><span class="line">Permission denied (publickey).</span><br></pre></td></tr></table></figure>
+
+<p>ping一下gitlab.com获取ip,然后设置host对应gitlab.com</p>
+<h6 id="上线步骤："><a href="#上线步骤：" class="headerlink" title="上线步骤："></a>上线步骤：</h6><pre><code>更改google认证，改成线上id
+本地和git上：清除dist文件
+npm run build pro
+生成dist文件拷贝到git文件(同步使用)
+git add .
+git commit -m &quot;update&quot;
+git push
+服务端git pull</code></pre><h6 id="浏览器缓存问题"><a href="#浏览器缓存问题" class="headerlink" title="浏览器缓存问题"></a>浏览器缓存问题</h6><ul>
+<li><p>(1) nginx配置修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">add_header Cache-Control &quot;no-cache, no-store&quot;;</span><br><span class="line">add_header Pragma no-cache;//http 1.0旧版本</span><br></pre></td></tr></table></figure>
+
+<p>  no-cache, no-store选择一个即可</p>
+<p>  no-cache浏览器会缓存，但刷新页面或者重新打开时 会请求服务器，服务器可以响应304，如果文件有改动就会响应200</p>
+<p>no-store浏览器不缓存，刷新页面需要重新下载页面</p>
+<p>Nginx下关于缓存控制字段cache-control的配置说明:<br><a href="https://www.cnblogs.com/kevingrace/p/10459429.html" target="_blank" rel="noopener">https://www.cnblogs.com/kevingrace/p/10459429.html</a></p>
+</li>
+<li><p>(2) 修改文件 webpack .prod.conf.js,使用时间戳动态定义版本号</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">const Version = new Date().getTime();</span><br><span class="line">...</span><br><span class="line">filename: utils.assetsPath(&apos;js/[name].[chunkhash]._&apos; + Version + &apos;.js&apos;),</span><br><span class="line">...</span><br><span class="line">filename: utils.assetsPath(&apos;css/[name].[contenthash]._&apos; + Version + &apos;.css&apos;),</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ul>
+<p> 但是后来经过实践证明，只需要配置nginx即可，每次刷新即可更新。猜测</p>
+<ol>
+<li>每次html不取缓存，拿到的js都是实际服务器文件</li>
+<li>脚手架本身使用hash生成js和css文件，会根据改动更新文件名</li>
+</ol>
+<h6 id="http和https实际上是跨域问题！！！"><a href="#http和https实际上是跨域问题！！！" class="headerlink" title="http和https实际上是跨域问题！！！"></a>http和https实际上是跨域问题！！！</h6><p>  本地调试如果不设置会默认Https访问，但是服务端只能接收http协议，所以需要处理<br>  config/index.js:</p>
+<pre><code>proxyTable: {
+    &apos;/measurement&apos;: {
+        target: &apos;http://10.12.170.210:8000&apos;, //后端接口地址
+        changeOrigin: true, //是否允许跨越
+        pathRewrite: {
+            &apos;^/measurement&apos;: &apos;/measurement&apos;, //重写,
+        }
+    }
+},</code></pre><p>和
+main.js:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.defaults.baseURL = &apos;/measurement&apos;</span><br></pre></td></tr></table></figure>
+
+<h6 id="vue-elementUI打包后elmentui自带图标失效问题"><a href="#vue-elementUI打包后elmentui自带图标失效问题" class="headerlink" title="vue+elementUI打包后elmentui自带图标失效问题"></a>vue+elementUI打包后elmentui自带图标失效问题</h6><p>原文：<a href="https://blog.csdn.net/qq_37827221/article/details/100707748https://blog.csdn.net/qq_37827221/article/details/100707748" target="_blank" rel="noopener">https://blog.csdn.net/qq_37827221/article/details/100707748https://blog.csdn.net/qq_37827221/article/details/100707748</a><br>【问题】elmentui自带图标失效，本地打prod包就没有问题，一旦把相同的文件放在服务器就不对了</p>
+<p><img src="/images/pasted-124.png" alt="upload successful"><br>【原因】通过本地文件上传git后，再服务端拉取git代码的方式部署</p>
+<p>  但是由于git冲突(具体为啥不清楚)导致拉取git文件不全，没有拉取到font文件夹内容</p>
+<p>  【解决】删除文件，重新git clone到服务器端，保证代码统一</p>
+<p><img src="/images/pasted-125.png" alt="upload successful"></p>
+<h6 id="生产环境排序功能失效"><a href="#生产环境排序功能失效" class="headerlink" title="生产环境排序功能失效"></a>生产环境排序功能失效</h6><p>【原因】为了屏蔽线上log,在webpack.pro.config中新增了限制字段 </p>
+<pre><code>new UglifyJsPlugin({
+    uglifyOptions: {
+        compress: {
+            warnings: false,
+            // drop_debugger: true, //新增
+            // drop_console: true, //新增
+        }
+    },</code></pre><p>本身这个没有问题，但是排序的部分使用了log打印的方式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(val.sort(this.$compareInGroup(this.sortkey, 0, this.order)));</span><br></pre></td></tr></table></figure>
+
+<p>【解决】去掉console.log即可</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/07/vue-Django项目实践/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1414,315 +1837,6 @@ cv2.imwrite(image_path, image)</code></pre><p>first_point和last_point都是矩�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/21/mac下python3-tesseract-pytesseract-的安装与调试/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/21/mac下python3-tesseract-pytesseract-的安装与调试/" itemprop="url"> tesseract 的环境安装</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-21T12:15:51+08:00">
-                2020-03-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h6 id="windows-10-安装"><a href="#windows-10-安装" class="headerlink" title="windows 10 安装:"></a>windows 10 安装:</h6><p>第一步在虚拟环境或者正式环境pip安装：</p>
-<pre><code>pip install pytesseract
- pip install pillow</code></pre><p>第二步 安装Tesseract-OCR    </p>
-<ul>
-<li><p>下载安装包官网：<br>注意版本之前由于使用3.0.2一直报错，后来换成5.0才好</p>
-<p>  <a href="https://github.com/UB-Mannheim/tesseract/wiki" target="_blank" rel="noopener">https://github.com/UB-Mannheim/tesseract/wiki</a><br>一路安装时可选择下语言包</p>
-</li>
-<li><p>系统环境Path变量配置：</p>
-<p>  <img src="%5Cimages%5Cpasted-106.png" alt="upload successful"></p>
-<p>  <a href="https://www.cnblogs.com/chenshengkai/p/11318272.html" target="_blank" rel="noopener">https://www.cnblogs.com/chenshengkai/p/11318272.html</a></p>
-<p>  验证： </p>
-<pre><code>tesseract --version</code></pre></li>
-<li><p>在python文件下搜索pytesseract.py文件并修改路径：<br>tesseract_cmd = ‘C:\Program Files\Tesseract-OCR\tesseract.exe’</p>
-</li>
-</ul>
-<p><img src="%5Cimages%5Cpasted-104.png" alt="upload successful"></p>
-<p>   参考<br>   <a href="https://www.cnblogs.com/chenshengkai/p/11318387.html" target="_blank" rel="noopener">https://www.cnblogs.com/chenshengkai/p/11318387.html</a><br>    <a href="https://blog.csdn.net/qq_38161040/article/details/90649497" target="_blank" rel="noopener">https://blog.csdn.net/qq_38161040/article/details/90649497</a></p>
-   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import pytesseract</span><br><span class="line">from PIL import Image</span><br><span class="line"></span><br><span class="line">image = Image.open(&quot;data/enzh.png&quot;)</span><br><span class="line">code = pytesseract.image_to_string(image,lang=&apos;chi_sim&apos;)</span><br><span class="line">print(code)</span><br></pre></td></tr></table></figure>
-
-<h6 id="mac安装"><a href="#mac安装" class="headerlink" title="mac安装"></a>mac安装</h6><ol>
-<li><p>pip install pytesseract<br>pip install tesseract  </p>
-<p>之后运行demo一直报这个错：</p>
-<p>NotADirectoryError: [Errno 20] Not a directory: ‘tesseract’</p>
-<p>后来看到帖子说mac必须得用brew安装才行(救星)，又重新安装了一次，果然成功了</p>
-<p>brew install tesseract</p>
-<p>参考： <a href="https://blog.csdn.net/weixin_38246633/article/details/82993678" target="_blank" rel="noopener">https://blog.csdn.net/weixin_38246633/article/details/82993678</a></p>
-</li>
-<li><p>紧接着又报错：</p>
-<pre><code>pytesseract.pytesseract.TesseractError: (1, &apos;Error opening data file /usr/local/share/tessdata/chi_sim.traineddata Please make sure the TESSDATA_PREFIX environment variable is set to your &quot;tessdata&quot; directory. Failed loading language \&apos;chi_sim\&apos; Tesseract couldn\&apos;t load any languages! Could not initialize tesseract.&apos;)</code></pre><p>感谢文章：<br>   <a href="https://blog.csdn.net/magicianofcodes/article/details/79401622" target="_blank" rel="noopener">https://blog.csdn.net/magicianofcodes/article/details/79401622</a></p>
-<p> 即根据错误提示：</p>
-<p>1）.  需要设置环境变量    </p>
-<pre><code>export TESSDATA_PREFIX=/usr/local/Cellar/tesseract/3.05.01/share/tessdata
-export PATH=$PATH:$TESSDATA_PREFIX</code></pre><p>2）. 下载语言包</p>
-<p> <a href="https://github.com/tesseract-ocr/tessdata" target="_blank" rel="noopener">https://github.com/tesseract-ocr/tessdata</a></p>
-<p>下载相应缺少的语言包(这里是chi_sim)，然后放在/usr/local/Cellar/tesseract/3.05.01/share/tessdata之下</p>
-<p>至此，成功 ~</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/18/conda/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="躲不掉的风">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="躲不掉的风">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/18/conda/" itemprop="url">Anaconda  conda使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-03-18T18:28:58+08:00">
-                2020-03-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h5 id="1、安装"><a href="#1、安装" class="headerlink" title="1、安装"></a>1、安装</h5><ul>
-<li><p>环境 mac ：官网下载sh包，</p>
-<p> sh   Miniconda3-latest-MacOSX-x86_64.sh</p>
-<p>安装后去/xxx/miniconda3/bin下执行 </p>
-<p> .  activate</p>
-</li>
-<li><p>windows安装</p>
-<p>下载： <a href="https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/</a></p>
-</li>
-</ul>
-<h4 id="2、conda命令"><a href="#2、conda命令" class="headerlink" title="2、conda命令"></a>2、conda命令</h4><pre><code>conda #可查帮助信息
-conda info -e
-source activate deeplearning   #进入我们的虚拟环境其中deeplearning是名称
-  #退出虚拟环境
-conda remove -n deeplearning --all
-conda list 查看已安装软件
-conda available packages
-conda search source deactivategatk
-conda install gatk
- which gatk  查看软件安装位置
-conda update gatk  升级软件
-conda remove gatk  卸载指定软件
-conda env list  环境列表，星号代表当前环境
-activate learn  切换到learn环境
-activate // 切换到base环境
-conda create -n learn python=3 // 创建一个名为learn的环境并指定python版本为3(的最新版本)
-conda remove -n learn --all // 删除learn环境及下属所有包</code></pre><p>  虚拟环境的使用：</p>
-<p>  <img src="/images/pasted-93.png" alt="upload successful"></p>
-<h4 id="3、问题"><a href="#3、问题" class="headerlink" title="3、问题"></a>3、问题</h4><ul>
-<li><p>【Anaconda】关于conda使用环境未被激活的问题</p>
-<pre><code>由powershell改成使用cmd</code></pre><p>  参考：<a href="https://www.cnblogs.com/happyamyhope/p/11547134.html" target="_blank" rel="noopener">https://www.cnblogs.com/happyamyhope/p/11547134.html</a></p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1773,7 +1887,7 @@ conda remove -n learn --all // 删除learn环境及下属所有包</code></pre><
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">133</span>
+                  <span class="site-state-item-count">135</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
